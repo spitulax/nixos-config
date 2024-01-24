@@ -4,10 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    hardware.url = "github:NixOS/nixos-hardware/master";
+    hardware.url = "github:NixOS/nixos-hardware";
   };
 
   outputs = { self, nixpkgs, home-manager, hardware, ... }@inputs: 
@@ -27,6 +27,12 @@
         modules = [ ./systems/barbatos ];
         specialArgs = { inherit inputs; };
       };
+
+      # Test VM
+      "astaroth" = lib.nixosSystem {
+        modules = [ ./systems/astaroth ];
+        specialArgs = { inherit inputs; };
+      };
     };
 
     homeConfigurations = {
@@ -35,7 +41,14 @@
         inherit pkgs;
         modules = [ ./users/bintang/barbatos.nix ];
         extraSpecialArgs = { inherit inputs; };
-      }
+      };
+
+      # Test VM
+      "bintang@astaroth" = lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./users/bintang/astaroth.nix ];
+        extraSpecialArgs = { inherit inputs; };
+      };
     };
   };
 }
