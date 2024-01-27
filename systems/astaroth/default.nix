@@ -15,38 +15,17 @@
   environment.systemPackages = with pkgs; [
     neovim
     gf
-    wget
-    curl
     git
-    gh
-    gnupg
     gcc
-    alacritty
-    gotop
-    htop
-    neofetch
     brave
     syncthing
     chafa
-    cloc
-    eza
-    fd
-    fzf
-    imagemagick
     lua
     gnumake
-    starship
-    man-db
     nodejs
     python3
     python311Packages.pip
     python311Packages.pynvim
-    ripgrep
-    tmux
-    unzip
-    yadm
-    fontpreview
-    tldr
     sxiv
     xclip
     fira
@@ -60,7 +39,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 # Networking
-  networking.hostName = "nixos";
+  networking.hostName = "astaroth";
   networking.networkmanager.enable = true;
 
 # Locales
@@ -93,8 +72,10 @@
     })
     config.nix.registry;
   nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
-    settings.auto-optimise-store = true;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
     gc = {
       automatic = true;
       dates = "weekly";
@@ -103,7 +84,7 @@
   };
   nixpkgs.config.allowUnfree = true;
 
-# Desktop
+# Display
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
