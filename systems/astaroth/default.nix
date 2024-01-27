@@ -51,6 +51,7 @@
     xclip
     fira
     poly
+    kitty
     lua-language-server
   ];
 
@@ -109,9 +110,12 @@
     displayManager.defaultSession = "plasma";
     desktopManager.plasma5.enable = true;
   };
+  xdg.portal.enable = true;
   #TODO: Packages for nerdfonts {https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/data/fonts/nerdfonts/default.nix}
   fonts = {
     fontconfig.defaultFonts = {
+      serif = [ "Poly" ];
+      sansSerif = [ "Fira Sans" ];
       monospace = [ "FiraCode Nerd Font" ];
     };
   };
