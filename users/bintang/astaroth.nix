@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ./env
+    ./misc
     ./cli
     ./nvim
     ./syncthing

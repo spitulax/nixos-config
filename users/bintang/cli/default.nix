@@ -4,9 +4,9 @@
   ...
 }: {
   imports = [
-    ./fish
-    ./starship
-    ./git
+    ./fish.nix
+    ./starship.nix
+    ./git.nix
   ];
 
   home.packages = with pkgs; [
