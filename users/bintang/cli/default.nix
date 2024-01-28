@@ -24,6 +24,7 @@
     tmux
     fontpreview
     tldr
+    trash-cli
 
     # monitoring
     btop

@@ -90,7 +90,7 @@
       git_metrics = {
         added_style = "green";
         deleted_style = "red";
-        only_nonzero_diffs = true;
+        only_nonzero_diffs = false;
         format = "[$added]($added_style)[$deleted]($deleted_style) ";
         disabled = false;
       };

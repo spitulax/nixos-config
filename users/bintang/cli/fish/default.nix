@@ -19,6 +19,7 @@
       "..." = "cd ../..";
       q = "exit";
       ns = "sudo nixos-rebuild switch --flake .";
+      # TODO: trash-cli shortcuts
       # colorizer
       grep = "grep --color";
       egrep = "egrep --color";

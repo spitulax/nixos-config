@@ -8,6 +8,7 @@
   imports = [
     ./env
     ./cli
+    ./nvim
     ./syncthing
   ];
 
