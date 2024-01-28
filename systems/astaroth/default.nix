@@ -1,4 +1,10 @@
-{ lib, pkgs, inputs, config, ... }: {
+{
+  lib,
+  pkgs,
+  inputs,
+  config,
+  ...
+}: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
@@ -6,12 +12,12 @@
   ];
 
   home-manager.users.bintang = import ../../users/bintang/astaroth.nix;
-  home-manager.extraSpecialArgs = { inherit inputs; };
+  home-manager.extraSpecialArgs = {inherit inputs;};
 
   security.sudo.wheelNeedsPassword = false;
   programs.fish.enable = true;
 
-# Packages
+  # Packages
   environment.systemPackages = with pkgs; [
     neovim
     gf
@@ -34,15 +40,15 @@
     lua-language-server
   ];
 
-# Bootloader
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-# Networking
+  # Networking
   networking.hostName = "astaroth";
   networking.networkmanager.enable = true;
 
-# Locales
+  # Locales
   time.timeZone = "Asia/Jakarta";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -61,7 +67,7 @@
     xkbVariant = "";
   };
 
-# Nix
+  # Nix
   nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
   nix.nixPath = ["/etc/nix/path"];
   environment.etc =
@@ -73,7 +79,7 @@
     config.nix.registry;
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
     };
     gc = {
@@ -84,7 +90,7 @@
   };
   nixpkgs.config.allowUnfree = true;
 
-# Display
+  # Display
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
@@ -95,15 +101,15 @@
   #TODO: Packages for nerdfonts {https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/data/fonts/nerdfonts/default.nix}
   fonts = {
     fontconfig.defaultFonts = {
-      serif = [ "Poly" ];
-      sansSerif = [ "Fira Sans" ];
-      monospace = [ "FiraCode Nerd Font" ];
+      serif = ["Poly"];
+      sansSerif = ["Fira Sans"];
+      monospace = ["FiraCode Nerd Font"];
     };
   };
 
-# Virtualization
+  # Virtualization
   virtualisation.vmware.guest.enable = true;
 
-# State version
+  # State version
   system.stateVersion = "23.11";
 }
