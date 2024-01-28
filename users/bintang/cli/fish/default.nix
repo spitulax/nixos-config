@@ -19,8 +19,8 @@
       "..." = "cd ../..";
       q = "exit";
       ns = "sudo nixos-rebuild switch --flake .";
-      prm = "rm";
       rm = "trash-put";
+      prm = "/usr/bin/env rm";
       restore = "trash-restore";
       # colorizer
       grep = "grep --color";

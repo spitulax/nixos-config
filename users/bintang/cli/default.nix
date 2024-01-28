@@ -6,6 +6,7 @@
   imports = [
     ./fish
     ./starship
+    ./git
   ];
 
   home.packages = with pkgs; [
@@ -38,7 +39,6 @@
 
     # misc
     gnupg
-    gh
     nix-output-monitor
   ];
 }
