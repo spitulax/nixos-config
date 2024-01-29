@@ -18,7 +18,7 @@
       ".." = "cd ..";
       "..." = "cd ../..";
       q = "exit";
-      ns = "sudo nixos-rebuild switch --flake .";
+      ns = "nix fmt ~/.nixos-config && sudo nixos-rebuild switch --flake ~/.nixos-config";
       rm = "trash-put";
       prm = "/usr/bin/env rm";
       restore = "trash-restore";

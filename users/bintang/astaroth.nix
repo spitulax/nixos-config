@@ -6,10 +6,10 @@
   ...
 }: {
   imports = [
+    ./dev
+    ./apps
     ./misc
     ./cli
-    ./nvim
-    ./syncthing
   ];
 
   home = {
