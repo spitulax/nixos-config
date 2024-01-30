@@ -17,14 +17,18 @@
       ".." = "cd ..";
       "..." = "cd ../..";
       q = "exit";
-      ns = "nix fmt ~/.nixos-config && sudo nixos-rebuild switch --flake ~/.nixos-config";
+      nu = "nix flake update $CONFIG";
+      ns = "nix fmt $CONFIG && sudo nixos-rebuild switch --flake $CONFIG";
       rm = "trash-put";
       prm = "/usr/bin/env rm";
       restore = "trash-restore";
+      cat = "bat";
       # colorizer
       grep = "grep --color";
       egrep = "egrep --color";
       fgrep = "fgrep --color";
+      # misc
+      clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
     };
 
     functions = {

@@ -5,9 +5,9 @@
   programs.kitty = {
     enable = true;
     theme = "Catppuccin-Mocha";
+    font.size = 12.0;
+    font.name = config.fontProfile.monospace;
     settings = {
-      # Font
-      font_size = 12;
       # Mouse
       mouse_hide_wait = -1;
       url_style = "straight";

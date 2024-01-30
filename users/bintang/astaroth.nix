@@ -10,6 +10,7 @@
     ./apps
     ./misc
     ./cli
+    ./desktop
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   # User info

@@ -16,22 +16,9 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
-    neovim
-    gf
-    gcc
-    brave
-    chafa
-    lua
-    gnumake
-    nodejs
-    python3
-    python311Packages.pip
-    python311Packages.pynvim
-    xclip
-    fira
-    poly
-    kitty
-    lua-language-server
+    vim
+    wget
+    git
   ];
 
   # Bootloader
@@ -92,14 +79,6 @@
     desktopManager.plasma5.enable = true;
   };
   xdg.portal.enable = true;
-  #TODO: Packages for nerdfonts {https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/data/fonts/nerdfonts/default.nix}
-  fonts = {
-    fontconfig.defaultFonts = {
-      serif = [ "Poly" ];
-      sansSerif = [ "Fira Sans" ];
-      monospace = [ "FiraCode Nerd Font" ];
-    };
-  };
 
   # Virtualization
   virtualisation.vmware.guest.enable = true;

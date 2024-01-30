@@ -25,6 +25,7 @@
     fontpreview
     tldr
     trash-cli
+    bat
 
     # monitoring
     btop
@@ -39,5 +40,6 @@
     # misc
     gnupg
     nix-output-monitor
+    chafa
   ];
 }

@@ -15,7 +15,7 @@ in
     THIRDPARTY = "$HOME/Thirdparty";
     SOFTWARE = "$HOME/Software";
     TEMPDIR = "$HOME/.temp";
-    CONFIG = "$HOME/.nixos-config";
+    CONFIG = "$HOME/Config";
     GPG_TTY = "$(tty)";
   };
   xdg = {
