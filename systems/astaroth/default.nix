@@ -1,5 +1,6 @@
 { lib
 , pkgs
+, outputs
 , inputs
 , config
 , ...
@@ -8,10 +9,7 @@
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
     ../users/bintang.nix
-  ];
-
-  home-manager.users.bintang = import ../../users/bintang/astaroth.nix;
-  home-manager.extraSpecialArgs = { inherit inputs; };
+  ] ++ (builtins.attrValues outputs.nixosModules);
 
   security.sudo.wheelNeedsPassword = false;
   programs.fish.enable = true;
@@ -20,10 +18,8 @@
   environment.systemPackages = with pkgs; [
     neovim
     gf
-    git
     gcc
     brave
-    syncthing
     chafa
     lua
     gnumake
@@ -31,7 +27,6 @@
     python3
     python311Packages.pip
     python311Packages.pynvim
-    sxiv
     xclip
     fira
     poly
@@ -78,8 +73,9 @@
       config.nix.registry;
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      warn-dirty = false;
     };
     gc = {
       automatic = true;
@@ -87,7 +83,6 @@
       options = "--delete-older-than +3";
     };
   };
-  nixpkgs.config.allowUnfree = true;
 
   # Display
   services.xserver = {

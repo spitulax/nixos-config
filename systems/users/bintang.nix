@@ -1,5 +1,7 @@
 { pkgs
 , config
+, inputs
+, outputs
 , ...
 }: {
   users.users.bintang = {
@@ -9,4 +11,7 @@
     shell = pkgs.fish;
     packages = with pkgs; [ home-manager ];
   };
+
+  home-manager.users.bintang = import ../../users/bintang/astaroth.nix;
+  home-manager.extraSpecialArgs = { inherit inputs outputs; };
 }
