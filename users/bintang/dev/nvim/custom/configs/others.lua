@@ -26,4 +26,8 @@ M.blankline = {
   context_char = '┃',
 }
 
+M.git_conflict = {
+  default_mappings = false,
+}
+
 return M

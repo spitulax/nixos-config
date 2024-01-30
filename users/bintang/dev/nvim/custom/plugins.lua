@@ -1,5 +1,23 @@
 local lazy_load = require("core.utils").lazy_load
 
+local function load_on_git(plugin)
+  vim.api.nvim_create_autocmd({ "BufRead" }, {
+    callback = function()
+      vim.fn.jobstart({"git", "-C", vim.loop.cwd(), "rev-parse"},
+        {
+          on_exit = function(_, return_code)
+            if return_code == 0 then
+              vim.schedule(function()
+                require("lazy").load { plugins = { plugin } }
+              end)
+            end
+          end
+        }
+      )
+    end,
+  })
+end
+
 local M = {
   "nvim-lua/popup.nvim",
 
@@ -52,21 +70,7 @@ local M = {
   {
     "lewis6991/gitsigns.nvim",
     init = function()
-      vim.api.nvim_create_autocmd({ "BufRead" }, {
-        callback = function()
-          vim.fn.jobstart({"git", "-C", vim.loop.cwd(), "rev-parse"},
-            {
-              on_exit = function(_, return_code)
-                if return_code == 0 then
-                  vim.schedule(function()
-                    require("lazy").load { plugins = { "gitsigns.nvim" } }
-                  end)
-                end
-              end
-            }
-          )
-        end,
-      })
+      load_on_git("gitsigns.nvim")
     end,
     opts = function()
       return vim.tbl_deep_extend("force", require("plugins.configs.others").gitsigns, require("custom.configs.others").gitsigns)
@@ -189,6 +193,17 @@ local M = {
     end,
     config = function(_, opts)
       require("live-command").setup(opts)
+    end,
+  },
+
+  {
+    'akinsho/git-conflict.nvim',
+    version = "*",
+    init = function()
+      load_on_git("git-conflict.nvim")
+    end,
+    opts = function()
+      return require("custom.configs.others").git_conflict
     end,
   },
 }

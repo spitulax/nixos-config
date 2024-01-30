@@ -219,4 +219,15 @@ M.nvterm = {
   },
 }
 
+M.git_conflict = {
+  n = {
+    ["co"] = { "<Plug>(git-conflict-ours)", "Choose ours" },
+    ["ct"] = { "<Plug>(git-conflict-theirs)", "Choose theirs" },
+    ["cb"] = { "<Plug>(git-conflict-both)", "Choose both" },
+    ["c0"] = { "<Plug>(git-conflict-none)", "Choose none" },
+    ["cp"] = { "<Plug>(git-conflict-prev-conflict)", "Move to previous conflict" },
+    ["cn"] = { "<Plug>(git-conflict-next-conflict)", "Move to next conflict" },
+  },
+}
+
 return M
