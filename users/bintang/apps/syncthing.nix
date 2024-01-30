@@ -1,7 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   # TODO: Add config.xml here
   # home.file.".config/syncthing/config.xml".source = ./config.xml;
@@ -17,6 +16,6 @@
     exec = "syncthing --browser-only";
     icon = "syncthing";
     terminal = false;
-    categories = ["Utility"];
+    categories = [ "Utility" ];
   };
 }

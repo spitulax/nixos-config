@@ -1,7 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   programs.git = {
     enable = true;
@@ -31,7 +30,7 @@
     enable = true;
     gitCredentialHelper = {
       enable = true;
-      hosts = ["https://github.com" "https://gist.github.com"];
+      hosts = [ "https://github.com" "https://gist.github.com" ];
     };
     settings = {
       editor = "nvim";

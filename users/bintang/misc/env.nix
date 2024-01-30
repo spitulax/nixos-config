@@ -1,10 +1,11 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config
+, pkgs
+, ...
+}:
+let
   home = config.home.homeDirectory;
-in {
+in
+{
   # Environment variables
   home.sessionVariables = {
     PATH = "$HOME/.cargo/bin:$HOME/.local/bin:$PATH";

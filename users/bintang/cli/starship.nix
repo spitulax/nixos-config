@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }: {
   programs.starship = {
     enable = true;
@@ -60,7 +59,7 @@
         style = "bold purple";
         truncation_symbol = "..";
         only_attached = false;
-        ignore_branches = [];
+        ignore_branches = [ ];
         disabled = false;
       };
 

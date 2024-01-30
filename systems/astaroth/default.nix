@@ -1,9 +1,8 @@
-{
-  lib,
-  pkgs,
-  inputs,
-  config,
-  ...
+{ lib
+, pkgs
+, inputs
+, config
+, ...
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -12,7 +11,7 @@
   ];
 
   home-manager.users.bintang = import ../../users/bintang/astaroth.nix;
-  home-manager.extraSpecialArgs = {inherit inputs;};
+  home-manager.extraSpecialArgs = { inherit inputs; };
 
   security.sudo.wheelNeedsPassword = false;
   programs.fish.enable = true;
@@ -68,18 +67,18 @@
   };
 
   # Nix
-  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-  nix.nixPath = ["/etc/nix/path"];
+  nix.registry = (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+  nix.nixPath = [ "/etc/nix/path" ];
   environment.etc =
     lib.mapAttrs'
-    (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    })
-    config.nix.registry;
+      (name: value: {
+        name = "nix/path/${name}";
+        value.source = value.flake;
+      })
+      config.nix.registry;
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
     gc = {
@@ -101,9 +100,9 @@
   #TODO: Packages for nerdfonts {https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/data/fonts/nerdfonts/default.nix}
   fonts = {
     fontconfig.defaultFonts = {
-      serif = ["Poly"];
-      sansSerif = ["Fira Sans"];
-      monospace = ["FiraCode Nerd Font"];
+      serif = [ "Poly" ];
+      sansSerif = [ "Fira Sans" ];
+      monospace = [ "FiraCode Nerd Font" ];
     };
   };
 
