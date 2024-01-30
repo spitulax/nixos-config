@@ -6,6 +6,7 @@
     ./fish.nix
     ./starship.nix
     ./git.nix
+    ./gh.nix
   ];
 
   home.packages = with pkgs; [
