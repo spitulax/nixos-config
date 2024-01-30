@@ -51,11 +51,43 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1706371002,
+        "narHash": "sha256-dwuorKimqSYgyu8Cw6ncKhyQjUDOyuXoxDTVmAXq88s=",
+        "path": "/nix/store/gsydlhd8sya1wf5prv1p8sg4dd91gna4-source",
+        "rev": "c002c6aa977ad22c60398daaa9be52f2203d0006",
+        "type": "path"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nvchad": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1706626552,
+        "narHash": "sha256-CrhvOkVgMKXU8g9WmpTDVK1WewdQe0j2dlfKWOaF2VI=",
+        "owner": "spitulax",
+        "repo": "nix-NvChad",
+        "rev": "6b1094b5dae31e155104fff9488e21761d2028de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "spitulax",
+        "repo": "nix-NvChad",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "hardware": "hardware",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nvchad": "nvchad"
       }
     }
   },

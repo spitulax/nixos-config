@@ -8,6 +8,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     hardware.url = "github:NixOS/nixos-hardware";
+
+    nvchad.url = "github:spitulax/nix-NvChad";
   };
 
   outputs =
