@@ -4,6 +4,7 @@
 }: {
   imports = [
     ./font.nix
+    ./gtk.nix
   ];
 
   # TODO: Move this later

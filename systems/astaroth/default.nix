@@ -43,9 +43,9 @@
     LC_TELEPHONE = "id_ID.UTF-8";
     LC_TIME = "id_ID.UTF-8";
   };
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Nix
