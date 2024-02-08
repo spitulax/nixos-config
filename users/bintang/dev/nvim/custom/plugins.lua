@@ -123,6 +123,12 @@ local M = {
           return require("custom.configs.others").neoclip
         end
       },
+      {
+        "ahmedkhalf/project.nvim",
+        config = function(_, opts)
+          require("project_nvim").setup(opts)
+        end,
+      },
     },
     opts = function()
       return vim.tbl_deep_extend("force", require("plugins.configs.telescope"), require("custom.configs.telescope"))

@@ -149,6 +149,7 @@ M.telescope = {
     -- extensions
     ["<leader>fxm"] = { "<cmd> Telescope media_files <CR>", "Preview media" },
     ["<leader>fl"]  = { "<cmd> Telescope neoclip <CR>", "Preview clipboard" },
+    ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "Project list" },
   },
 }
 

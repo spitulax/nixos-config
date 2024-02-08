@@ -3,7 +3,7 @@ local opts = {
     n = { ["<C-c>"] = require("telescope.actions").close },
   },
 
-  extensions_list = { "media_files", "neoclip" },
+  extensions_list = { "media_files", "neoclip", "projects" },
   extensions = {
     media_files = {
       filetypes = { "png", "webp", "jpg", "jpeg", "svg" },
