@@ -221,11 +221,17 @@ local M = {
     version = "*",
     init = function()
       lazy_load("hop.nvim")
-      load_mappings("hop")
+      load_mappings("hop", { silent = true })
     end,
     opts = function()
       return require("custom.configs.others").hop
     end,
+  },
+
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+    config = true,
   },
 }
 

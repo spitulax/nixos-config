@@ -243,9 +243,12 @@ M.git_conflict = {
 M.hop = {
   plugin = true,
   n = {
-    ["<Tab>"] = { ":HopWord<cr>", ""},
-    ["<Tab>/"] = { ":HopPattern<cr>", ""},
-    ["<Tab>l"] = { ":HopLineStart<cr>", ""},
+    ["<Tab>"] = { ":HopWord<cr>", "Hop word" },
+    ["<Tab>c"] = { ":HopChar1<cr>", "Hop one char" },
+    ["<Tab>C"] = { ":HopChar2<cr>", "Hop two chars" },
+    ["<Tab>/"] = { ":HopPattern<cr>", "Hop search pattern" },
+    ["<Tab>l"] = { ":HopLineStart<cr>", "Hop line start" },
+    ["<Tab>L"] = { ":HopLine<cr>", "Hop line" },
   },
 }
 
