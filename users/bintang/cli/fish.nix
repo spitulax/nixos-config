@@ -17,8 +17,6 @@
       ".." = "cd ..";
       "..." = "cd ../..";
       q = "exit";
-      nu = "nix flake update $CONFIG";
-      ns = "nix fmt $CONFIG && sudo nixos-rebuild switch --flake $CONFIG";
       rm = "trash-put";
       prm = "/usr/bin/env rm";
       restore = "trash-restore";
@@ -73,5 +71,24 @@
         bind '$' __history_previous_command_arguments
       end
     '';
+  };
+
+  home.file.".local/bin/nixbuild" = {
+    text = ''
+      #!/usr/bin/env bash
+      cd $CONFIG
+      nix fmt
+      sudo nixos-rebuild switch --flake .
+    '';
+    executable = true;
+  };
+  home.file.".local/bin/homebuild" = {
+    text = ''
+      #!/usr/bin/env bash
+      cd $CONFIG
+      nix fmt
+      home-manager switch --flake .
+    '';
+    executable = true;
   };
 }

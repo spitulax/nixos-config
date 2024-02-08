@@ -231,12 +231,21 @@ M.nvterm = {
 M.git_conflict = {
   plugin = true,
   n = {
-    ["co"] = { "<Plug>(git-conflict-ours)", "Choose ours" },
-    ["ct"] = { "<Plug>(git-conflict-theirs)", "Choose theirs" },
-    ["cb"] = { "<Plug>(git-conflict-both)", "Choose both" },
-    ["c0"] = { "<Plug>(git-conflict-none)", "Choose none" },
-    ["cp"] = { "<Plug>(git-conflict-prev-conflict)", "Move to previous conflict" },
-    ["cn"] = { "<Plug>(git-conflict-next-conflict)", "Move to next conflict" },
+    ["<leader>Co"] = { "<Plug>(git-conflict-ours)", "Choose ours" },
+    ["<leader>Ct"] = { "<Plug>(git-conflict-theirs)", "Choose theirs" },
+    ["<leader>Cb"] = { "<Plug>(git-conflict-both)", "Choose both" },
+    ["<leader>C0"] = { "<Plug>(git-conflict-none)", "Choose none" },
+    ["<leader>Cp"] = { "<Plug>(git-conflict-prev-conflict)", "Move to previous conflict" },
+    ["<leader>Cn"] = { "<Plug>(git-conflict-next-conflict)", "Move to next conflict" },
+  },
+}
+
+M.hop = {
+  plugin = true,
+  n = {
+    ["<Tab>"] = { ":HopWord<cr>", ""},
+    ["<Tab>/"] = { ":HopPattern<cr>", ""},
+    ["<Tab>l"] = { ":HopLineStart<cr>", ""},
   },
 }
 

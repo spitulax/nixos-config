@@ -215,6 +215,18 @@ local M = {
       return require("custom.configs.others").git_conflict
     end,
   },
+
+  {
+    "smoka7/hop.nvim",
+    version = "*",
+    init = function()
+      lazy_load("hop.nvim")
+      load_mappings("hop")
+    end,
+    opts = function()
+      return require("custom.configs.others").hop
+    end,
+  },
 }
 
 return M

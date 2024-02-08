@@ -30,4 +30,8 @@ M.git_conflict = {
   default_mappings = false,
 }
 
+M.hop = {
+  multi_windows = true,
+}
+
 return M
