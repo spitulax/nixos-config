@@ -19,6 +19,8 @@ opt.clipboard = ""
 opt.complete = ""
 opt.timeoutlen = 500
 
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 -- @TODO: use better tabline
 vim.api.nvim_exec([[
   function MyTabLabel(n)
