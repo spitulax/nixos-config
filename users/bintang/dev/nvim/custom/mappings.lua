@@ -126,6 +126,7 @@ M.lspconfig = {
 }
 
 M.telescope = {
+  plugin = true,
   n = {
     -- find
     ["<leader>fe"] = {
@@ -148,7 +149,12 @@ M.telescope = {
     -- extensions
     ["<leader>fxm"] = { "<cmd> Telescope media_files <CR>", "Preview media" },
     ["<leader>fl"]  = { "<cmd> Telescope neoclip <CR>", "Preview clipboard" },
-    -- harpoon
+  },
+}
+
+M.harpoon = {
+  plugin = true,
+  n = {
     ["<leader>h"] = {
       function()
         local harpoon = require("harpoon")
@@ -158,16 +164,18 @@ M.telescope = {
     ["<leader>p"] = { function() require("harpoon"):list():prev() end, "Jump to previous buffer in harpoon list" },
     ["<leader>n"] = { function() require("harpoon"):list():next() end, "Jump to next buffer in harpoon list" },
     ["<leader>cl"] = { function() require("harpoon"):list():clear() end, "Clear harpoon list" },
-  },
+  }
 }
 
 M.neogit = {
+  plugin = true,
   n = {
     ["<leader>g"] = { "<cmd>Neogit<cr>", "Open Neogit" },
   },
 }
 
 M.icon_picker = {
+  plugin = true,
   n = {
     ["<leader>i"] = { "<cmd>IconPickerYank<cr>", "Open icon picker" },
   },
@@ -177,6 +185,7 @@ M.icon_picker = {
 }
 
 M.nvterm = {
+  plugin = true,
   n = {
     ["<leader>T"] = {
       function()
@@ -220,6 +229,7 @@ M.nvterm = {
 }
 
 M.git_conflict = {
+  plugin = true,
   n = {
     ["co"] = { "<Plug>(git-conflict-ours)", "Choose ours" },
     ["ct"] = { "<Plug>(git-conflict-theirs)", "Choose theirs" },

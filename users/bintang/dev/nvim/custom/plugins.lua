@@ -1,4 +1,5 @@
 local lazy_load = require("core.utils").lazy_load
+local load_mappings = require("core.utils").load_mappings
 
 local function load_on_git(plugin)
   vim.api.nvim_create_autocmd({ "BufRead" }, {
@@ -104,6 +105,9 @@ local M = {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     lazy = false,
+    init = function()
+      load_mappings("harpoon")
+    end,
     config = function(_, _)
       require("harpoon").setup({})
     end,
@@ -159,6 +163,9 @@ local M = {
 
   {
     "NeogitOrg/neogit",
+    init = function()
+      load_mappings("neogit")
+    end,
     opts = function()
       return require("custom.configs.neogit")
     end,
@@ -177,6 +184,7 @@ local M = {
     "ziontee113/icon-picker.nvim",
     init = function()
       lazy_load("icon-picker.nvim")
+      load_mappings("icon_picker")
     end,
     config = function()
       require("icon-picker").setup({ disable_legacy_commands = true })
@@ -201,6 +209,7 @@ local M = {
     version = "*",
     init = function()
       load_on_git("git-conflict.nvim")
+      load_mappings("git_conflict")
     end,
     opts = function()
       return require("custom.configs.others").git_conflict

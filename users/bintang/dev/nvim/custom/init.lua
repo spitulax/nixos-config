@@ -3,7 +3,7 @@ local g = vim.g
 
 opt.listchars = {
   space = "·",
-  tab = "←-→",
+  tab = "<->",
   trail = "∼",
   nbsp = "-",
 }
@@ -19,6 +19,7 @@ opt.clipboard = ""
 opt.complete = ""
 opt.timeoutlen = 500
 
+-- @TODO: use better tabline
 vim.api.nvim_exec([[
   function MyTabLabel(n)
     let buflist = tabpagebuflist(a:n)
