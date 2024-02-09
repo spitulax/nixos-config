@@ -85,6 +85,28 @@ local statusline_modules = {
   end,
 }
 
+local tabufline_modules = {
+  tablist = function()
+    local result, number_of_tabs = "", vim.fn.tabpagenr "$"
+
+    for i = 1, number_of_tabs, 1 do
+      local tab_hl = ((i == vim.fn.tabpagenr()) and "%#TbLineTabOn# ") or "%#TbLineTabOff# "
+      result = result .. ("%" .. i .. "@TbGotoTab@" .. tab_hl .. i .. " ")
+    end
+
+    return result .. "%#TblineFill#" .. "%="
+  end,
+
+  bufname = function()
+    local bufname = vim.api.nvim_buf_get_name(vim.fn.bufnr("%"))
+    local name = (bufname:find(vim.fn.getcwd(), 1, true) ~= nil) and vim.fn.fnamemodify(bufname, ":.") or ""
+    name = (name:find("NvimTree", 1, true) ~= nil) and "NvimTree" or name
+    name = "%#StatusLine#" .. name
+    return name
+  end,
+}
+
+
 local M = {}
 
 M.statusline = {
@@ -104,6 +126,16 @@ M.statusline = {
       table.insert(modules, 3, statusline_modules.modified())
     end
   end
+}
+
+M.tabufline = {
+  enabled = true,
+  show_numbers = false,
+  overriden_modules = function(modules)
+    modules[4] = tabufline_modules.bufname()
+    modules[3] = tabufline_modules.tablist()
+    table.remove(modules, 2) -- remove buffer list
+  end,
 }
 
 return M

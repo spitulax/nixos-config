@@ -19,13 +19,7 @@ M.ui = {
 
   statusline = require("custom.ui").statusline,
 
-  tabufline = {
-    enabled = false,
-    show_numbers = false,
-    overriden_modules = function(modules)
-      table.remove(modules, 4) -- remove tabufline buttons
-    end,
-  },
+  tabufline = require("custom.ui").tabufline,
 
   nvdash = {
     load_on_startup = false,
