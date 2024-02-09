@@ -7,7 +7,7 @@
     ./gtk.nix
   ];
 
-  # TODO: Move this later
+  # @TODO: Move this later
   home.packages = with pkgs; [
     brave
     xclip

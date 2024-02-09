@@ -33,6 +33,12 @@
       homeManagerModules = import ./modules/home-manager;
 
       nixosConfigurations = {
+        # Personal laptop
+        "barbatos" = lib.nixosSystem {
+          modules = [ ./systems/barbatos ];
+          specialArgs = { inherit inputs outputs; };
+        };
+
         # Test VM
         "astaroth" = lib.nixosSystem {
           modules = [ ./systems/astaroth ];
@@ -41,6 +47,13 @@
       };
 
       homeConfigurations = {
+        # Personal laptop
+        "bintang@barbatos" = lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./users/bintang/barbatos.nix ];
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
+
         # Test VM
         "bintang@astaroth" = lib.homeManagerConfiguration {
           inherit pkgs;

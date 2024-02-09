@@ -2,7 +2,7 @@
 , pkgs
 , ...
 }: {
-  # TODO: Add config.xml here
+  # @TODO: Add config.xml here
   # home.file.".config/syncthing/config.xml".source = ./config.xml;
 
   services.syncthing = {

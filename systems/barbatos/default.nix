@@ -8,15 +8,16 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ../global
-    ./hardware-configuration.nix
+    # @TODO ./hardware-configuration.nix
     ../users/bintang.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
   # Networking
-  networking.hostName = "astaroth";
+  networking.hostName = "barbatos";
   networking.networkmanager.enable = true;
 
   # Display
+  # @TODO: Add hyprland (see notes)
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
@@ -24,9 +25,6 @@
     desktopManager.plasma5.enable = true;
   };
   xdg.portal.enable = true;
-
-  # Virtualization
-  virtualisation.vmware.guest.enable = true;
 
   # State version
   system.stateVersion = "23.11";

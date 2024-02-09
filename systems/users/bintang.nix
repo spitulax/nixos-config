@@ -12,6 +12,6 @@
     packages = with pkgs; [ home-manager ];
   };
 
-  home-manager.users.bintang = import ../../users/bintang/astaroth.nix;
+  home-manager.users.bintang = import ../../users/bintang/${config.networking.hostName}.nix;
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
 }
