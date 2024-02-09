@@ -7,8 +7,9 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    # @TODO: inputs.nixos-hardware.nixosModules.
     ../global
-    # @TODO ./hardware-configuration.nix
+    # @TODO: ./hardware-configuration.nix
     ../users/bintang.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
