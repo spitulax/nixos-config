@@ -65,7 +65,7 @@ local statusline_modules = {
   end,
 
   cursor_position = function()
-    return vim.o.columns > 140 and "%#StText# %l,%c  " or ""
+    return vim.o.columns > 140 and "%#StText# %l:%c:%P  " or ""
   end,
 
   filetype = function()
