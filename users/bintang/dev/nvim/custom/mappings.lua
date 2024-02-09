@@ -128,6 +128,7 @@ M.lspconfig = {
 M.telescope = {
   plugin = true,
   n = {
+    ["<leader>tr"] = { "<cmd> Telescope resume <CR>", "Resume Telescope" },
     -- find
     ["<leader>fe"] = {
       function()
@@ -140,12 +141,13 @@ M.telescope = {
     ["<leader>o"]   = { "<cmd> Telescope find_files <CR>", "Find files in cwd" },
     ["<M-b>"]       = { "<cmd> Telescope buffers <CR>", "Find opened buffers" },
     ["<leader>fk"]  = { "<cmd> Telescope keymaps <CR>", "Find assigned keybindings" },
-    ["<leader>ft"]  = { "<cmd> Telescope builtin <CR>", "Find Telescope builtin commands"},
-    ["<leader>fc"]  = { "<cmd> Telescope highlights <CR>", "List highlight groups"},
+    ["<leader>ft"]  = { "<cmd> Telescope builtin <CR>", "Find Telescope builtin commands" },
+    ["<leader>fc"]  = { "<cmd> Telescope highlights <CR>", "List highlight groups" },
+    ["<leader>fM"]  = { "<cmd> Telescope man_pages <CR>", "Find man pages" },
     -- git
     ["<leader>gc"]  = { "<cmd> Telescope git_commits <CR>", "Git commits" },
     ["<leader>gb"]  = { "<cmd> Telescope git_branches <CR>", "Git branches" },
-    ["<leader>gs"]  = { "<cmd> Telescope git_status <CR>", "Git status" },
+    ["<leader>gs"]  = { "<cmd> Telescope git_stash <CR>", "Git stash" },
     -- extensions
     ["<leader>fxm"] = { "<cmd> Telescope media_files <CR>", "Preview media" },
     ["<leader>fl"]  = { "<cmd> Telescope neoclip <CR>", "Preview clipboard" },
@@ -244,13 +246,21 @@ M.git_conflict = {
 M.hop = {
   plugin = true,
   n = {
-    ["<Tab>"] = { ":HopWord<cr>", "Hop word" },
-    ["<Tab>c"] = { ":HopChar1<cr>", "Hop one char" },
-    ["<Tab>C"] = { ":HopChar2<cr>", "Hop two chars" },
-    ["<Tab>/"] = { ":HopPattern<cr>", "Hop search pattern" },
-    ["<Tab>l"] = { ":HopLineStart<cr>", "Hop line start" },
-    ["<Tab>L"] = { ":HopLine<cr>", "Hop line" },
+    ["<Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },
+    ["<Tab>c"] = { "<cmd>HopChar1<cr>", "Hop one char" },
+    ["<Tab>C"] = { "<cmd>HopChar2<cr>", "Hop two chars" },
+    ["<Tab>/"] = { "<cmd>HopPattern<cr>", "Hop search pattern" },
+    ["<Tab>l"] = { "<cmd>HopLineStart<cr>", "Hop line start" },
+    ["<Tab>L"] = { "<cmd>HopLine<cr>", "Hop line" },
   },
+}
+
+M.gitsigns = {
+  plugin = true,
+  n = {
+    ["<leader>B"] = { "<cmd>Gitsigns blame_line<CR>", "Blame line" },
+    ["<leader>tb"] = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Toggle current line blame" },
+  }
 }
 
 return M

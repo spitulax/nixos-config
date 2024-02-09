@@ -31,7 +31,7 @@ local opts = {
     ["<C-e>"] = vim.NIL,
   },
   sources = {
-    -- { name = "nvim_lsp" },
+    { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "path" },
     { name = "buffer" },

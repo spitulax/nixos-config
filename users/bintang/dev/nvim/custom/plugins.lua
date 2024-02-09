@@ -72,6 +72,7 @@ local M = {
     "lewis6991/gitsigns.nvim",
     init = function()
       load_on_git("gitsigns.nvim")
+      load_mappings("gitsigns", { silent = true })
     end,
     opts = function()
       return vim.tbl_deep_extend("force", require("plugins.configs.others").gitsigns, require("custom.configs.others").gitsigns)
@@ -115,6 +116,7 @@ local M = {
 
   {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    lazy = false,
     dependencies = {
       'nvim-telescope/telescope-media-files.nvim',
       {
@@ -170,7 +172,7 @@ local M = {
   {
     "NeogitOrg/neogit",
     init = function()
-      load_mappings("neogit")
+      load_mappings("neogit", { silent = true })
     end,
     opts = function()
       return require("custom.configs.neogit")
@@ -190,7 +192,7 @@ local M = {
     "ziontee113/icon-picker.nvim",
     init = function()
       lazy_load("icon-picker.nvim")
-      load_mappings("icon_picker")
+      load_mappings("icon_picker", { silent = true })
     end,
     config = function()
       require("icon-picker").setup({ disable_legacy_commands = true })
@@ -206,6 +208,7 @@ local M = {
       return require("custom.configs.live-command")
     end,
     config = function(_, opts)
+---@diagnostic disable-next-line: different-requires
       require("live-command").setup(opts)
     end,
   },
@@ -215,7 +218,7 @@ local M = {
     version = "*",
     init = function()
       load_on_git("git-conflict.nvim")
-      load_mappings("git_conflict")
+      load_mappings("git_conflict", { silent = true })
     end,
     opts = function()
       return require("custom.configs.others").git_conflict
