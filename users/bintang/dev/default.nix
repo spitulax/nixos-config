@@ -1,5 +1,6 @@
 { config
 , pkgs
+, lib
 , ...
 }: {
   imports = [
@@ -13,7 +14,7 @@
     gdb
 
     # Languages
-    # gcc # TODO: Use nix shell
+    (hiPrio gcc)
     clang
     lua
 

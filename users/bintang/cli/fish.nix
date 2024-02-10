@@ -77,7 +77,6 @@
     text = ''
       #!/usr/bin/env bash
       cd $CONFIG
-      nix fmt
       sudo nixos-rebuild switch --flake .
     '';
     executable = true;
@@ -86,7 +85,6 @@
     text = ''
       #!/usr/bin/env bash
       cd $CONFIG
-      nix fmt
       home-manager switch --flake .
     '';
     executable = true;

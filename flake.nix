@@ -34,10 +34,10 @@
 
       nixosConfigurations = {
         # Personal laptop
-        "barbatos" = lib.nixosSystem {
-          modules = [ ./systems/barbatos ];
-          specialArgs = { inherit inputs outputs; };
-        };
+        # "barbatos" = lib.nixosSystem {
+        #   modules = [ ./systems/barbatos ];
+        #   specialArgs = { inherit inputs outputs; };
+        # };
 
         # Test VM
         "astaroth" = lib.nixosSystem {
@@ -48,11 +48,11 @@
 
       homeConfigurations = {
         # Personal laptop
-        "bintang@barbatos" = lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./users/bintang/barbatos.nix ];
-          extraSpecialArgs = { inherit inputs outputs; };
-        };
+        # "bintang@barbatos" = lib.homeManagerConfiguration {
+        #   inherit pkgs;
+        #   modules = [ ./users/bintang/barbatos.nix ];
+        #   extraSpecialArgs = { inherit inputs outputs; };
+        # };
 
         # Test VM
         "bintang@astaroth" = lib.homeManagerConfiguration {
