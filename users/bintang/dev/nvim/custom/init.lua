@@ -20,3 +20,9 @@ opt.complete = ""
 opt.timeoutlen = 500
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    require("base46").load_all_highlights()
+  end,
+})

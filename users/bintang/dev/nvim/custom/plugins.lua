@@ -258,6 +258,15 @@ local M = {
       return require("custom.configs.others").spectre
     end,
   },
+
+  {
+    "folke/todo-comments.nvim",
+    init = function()
+      lazy_load("todo-comments.nvim")
+      load_mappings("todo")
+    end,
+    config = true,
+  },
 }
 
 return M
