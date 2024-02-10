@@ -45,6 +45,9 @@ M.general = {
   n = {
     -- shortcuts
     ["!"] = { ":!", "Enter shell command mode", opts = { nowait = true } },
+    ["<leader>rt"] = { function()
+      require("base46").load_all_highlights()
+    end, "Reload highlights" },
     ["<C-p>"] = { "\"+p", "Paste from + register (p)" },
     ["<M-p>"] = { "\"+P", "Paste from + register (P)" },
     ["<C-y>"] = { "\"+y", "Yank to + register" },
@@ -250,7 +253,7 @@ M.hop = {
   plugin = true,
   n = {
     ["<Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },
-    ["<Tab>w"] = { "<cmd>HopWord<cr>", "Hop word" },
+    ["<Tab><Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },
     ["<Tab>c"] = { "<cmd>HopChar1<cr>", "Hop one char" },
     ["<Tab>C"] = { "<cmd>HopChar2<cr>", "Hop two chars" },
     ["<Tab>/"] = { "<cmd>HopPattern<cr>", "Hop search pattern" },
@@ -259,7 +262,7 @@ M.hop = {
   },
   v = {
     ["<Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },
-    ["<Tab>w"] = { "<cmd>HopWord<cr>", "Hop word" },
+    ["<Tab><Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },
     ["<Tab>c"] = { "<cmd>HopChar1<cr>", "Hop one char" },
     ["<Tab>C"] = { "<cmd>HopChar2<cr>", "Hop two chars" },
     ["<Tab>/"] = { "<cmd>HopPattern<cr>", "Hop search pattern" },

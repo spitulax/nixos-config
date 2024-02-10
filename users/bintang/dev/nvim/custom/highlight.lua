@@ -2,37 +2,23 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-  -- Nvim
-  CursorLine = { bg = "NONE" },
-  CursorLineNr = { bold = true, fg = "white" },
-  Visual = { bg = "one_bg2" },
-
-  -- Nvim-tree
+  CursorLineNr = { bold = true },
+  Visual = { reverse = true },
   NvimTreeRootFolder = { fg = "green" },
-
-  -- Statusline
-  St_Mode = { bg = "NONE" },
-
-  -- Syntax highlighting
-  Special = { fg = "nord_blue" },
-  Boolean = { bold = true },
+  Comment = { fg = "light_grey", italic = true },
+  Conditional = { bold = true },
   Keyword = { bold = true },
   Type = { bold = true },
+  Typedef = { bold = true },
 }
 
 ---@type Base46HLGroupsList
 M.add = {
-  -- Nvim
-  TabLine = { underline = false, bg = "NONE", fg = "light_grey" },
-  TabLineSel = { bold = true, bg = "NONE", fg = "blue" },
-  TabLineFill = { bg = "NONE" },
-  LineNr = { fg = "light_grey" },
-
-  -- Syntax highlighting
-  Comment = { fg = "light_grey", italic = true },
-
-  -- Statusline
   NvimTreeModifiedFile = { fg = "orange" },
+  CurSearch = { fg = "black", bg = "orange" },
+  IncSearch = { fg = "black", bg = "orange" },
+  Search = { fg = "black", bg = "yellow" },
+  CursorLine = { bg = "one_bg" },
 }
 
 return M

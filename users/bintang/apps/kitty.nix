@@ -16,13 +16,13 @@
       # Window layout
       remember_window_size = "yes";
       enabled_layouts = "*";
-      hide_window_decorations = "yes";
+      hide_window_decorations = "no";
       # Tab bar
       tab_bar_min_tabs = 2;
       tab_bar_edge = "top";
       tab_bar_style = "powerline";
       # Color scheme
-      background_opacity = "0.9";
+      background_opacity = "1.0";
     };
     extraConfig = ''
       font_features FiraCodeNF-Reg +cv10 +ss01 +ss05 +ss04 +ss03 +ss02

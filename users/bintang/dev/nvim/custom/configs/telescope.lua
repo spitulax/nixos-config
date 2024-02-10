@@ -1,9 +1,11 @@
 local opts = {
-  mappings = {
-    n = { ["<C-c>"] = require("telescope.actions").close },
+  defaults = {
+    mappings = {
+      n = { ["<C-c>"] = require("telescope.actions").close },
+    },
   },
 
-  extensions_list = { "media_files", "neoclip", "projects" },
+  extensions_list = { "media_files", "neoclip" },
   extensions = {
     media_files = {
       filetypes = { "png", "webp", "jpg", "jpeg", "svg" },

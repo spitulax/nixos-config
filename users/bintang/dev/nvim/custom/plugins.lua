@@ -229,6 +229,7 @@ local M = {
     "smoka7/hop.nvim",
     version = "*",
     init = function()
+      dofile(vim.g.base46_cache .. "hop")
       lazy_load("hop.nvim")
       load_mappings("hop", { silent = true })
     end,
