@@ -242,6 +242,17 @@ local M = {
     lazy = false,
     config = true,
   },
+
+  {
+    "nvim-pack/nvim-spectre",
+    init = function()
+      lazy_load("nvim-spectre")
+      load_mappings("spectre")
+    end,
+    opts = function()
+      return require("custom.configs.others").spectre
+    end,
+  },
 }
 
 return M

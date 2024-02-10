@@ -34,4 +34,8 @@ M.hop = {
   multi_windows = true,
 }
 
+M.spectre = {
+  is_insert_mode = true,
+}
+
 return M
