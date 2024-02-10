@@ -1,6 +1,6 @@
 local cmp = require("cmp")
 
-local opts = {
+local opts = vim.tbl_deep_extend("force", require("plugins.configs.cmp"), {
   preselect = cmp.PreselectMode.None,
   completion = {
     keyword_length = 2,
@@ -37,6 +37,36 @@ local opts = {
     { name = "buffer" },
     { name = "nvim_lua" },
   },
+})
+
+cmp.setup(opts)
+
+local cmdline_mapping = {
+  ["<C-n>"] = {
+    c = false,
+  },
+  ["<C-p>"] = {
+    c = false,
+  },
+  ["<C-l>"] = {
+    c = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    }),
+  },
 }
 
-return opts
+cmp.setup.cmdline('/', {
+ mapping = cmp.mapping.preset.cmdline(cmdline_mapping),
+  sources = {
+    { name = 'buffer' },
+  },
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(cmdline_mapping),
+  sources = {
+    { name = "path" },
+    { name = "cmdline" },
+  },
+})

@@ -97,9 +97,13 @@ local M = {
 
   {
     "hrsh7th/nvim-cmp",
-    opts = function()
-      return vim.tbl_deep_extend("force", require("plugins.configs.cmp"), require("custom.configs.cmp"))
-    end
+    event = { "InsertEnter", "CmdlineEnter" },
+    dependencies = {
+      "hrsh7th/cmp-cmdline",
+    },
+    config = function(_, _)
+      require("custom.configs.cmp")
+    end,
   },
 
   {
