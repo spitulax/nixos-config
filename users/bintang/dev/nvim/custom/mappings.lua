@@ -145,7 +145,8 @@ M.telescope = {
     ["<leader>fk"]  = { "<cmd> Telescope keymaps <CR>", "Find assigned keybindings" },
     ["<leader>ft"]  = { "<cmd> Telescope builtin <CR>", "Find Telescope builtin commands" },
     ["<leader>fc"]  = { "<cmd> Telescope highlights <CR>", "List highlight groups" },
-    ["<leader>fM"]  = { "<cmd> Telescope man_pages <CR>", "Find man pages" },
+    ["<leader>fM"]  = { "<cmd> Telescope man_pages sections={'ALL'}<CR>", "Find man pages" },
+    ["<leader>fH"]  = { "<cmd> Telescope man_pages sections={'3'}<CR>", "Find man pages in section 3" },
     -- git
     ["<leader>gc"]  = { "<cmd> Telescope git_commits <CR>", "Git commits" },
     ["<leader>gb"]  = { "<cmd> Telescope git_branches <CR>", "Git branches" },
