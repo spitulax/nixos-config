@@ -11,6 +11,7 @@
     ./misc
     ./cli
     ./desktop
+    ./service
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   # User info
@@ -29,10 +30,10 @@
     };
   };
 
-  # # Fix DPI
-  # xresources.properties = {
-  #   "Xft.dpi" = 105;
-  # };
+  # Fix DPI
+  xresources.properties = {
+    "Xft.dpi" = 115;
+  };
 
   systemd.user.startServices = "sd-switch";
   programs.home-manager.enable = true;

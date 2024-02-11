@@ -7,7 +7,7 @@
   users.users.bintang = {
     isNormalUser = true;
     description = "Bintang";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "input" "networkmanager" "wheel" ];
     shell = pkgs.fish;
     packages = with pkgs; [ home-manager ];
   };

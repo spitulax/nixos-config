@@ -11,7 +11,7 @@
     ];
     nerdFonts = [
       "FiraCode"
-      # "Iosevka" # installing Iosevka is stuck at building Iosevka.tar.xz
+      # "Iosevka" # FIX: installing Iosevka is stuck at building Iosevka.tar.xz
       "JetBrainsMono"
     ];
 

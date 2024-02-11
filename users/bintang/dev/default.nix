@@ -17,6 +17,7 @@
     (hiPrio gcc)
     clang
     lua
+    ruby
 
     # LSPs
     lua-language-server
@@ -25,8 +26,5 @@
     # Misc
     gnumake
     nodejs
-
-    # Man pages
-    stdman
   ];
 }

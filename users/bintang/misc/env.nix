@@ -17,6 +17,7 @@ in
     TEMPDIR = "$HOME/.temp";
     CONFIG = "$HOME/Config";
     GPG_TTY = "$(tty)";
+    XCOMPOSEFILE = "$XDG_CONFIG_HOME/XCompose";
   };
   xdg = {
     enable = true;

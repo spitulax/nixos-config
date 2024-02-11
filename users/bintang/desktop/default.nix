@@ -9,7 +9,14 @@
 
   # @TODO: Move this later
   home.packages = with pkgs; [
-    brave
     xclip
+    wl-clipboard
+
+    brave
+    yewtube
+    exaile
+    keymapper
+    zapzap
+    libsForQt5.bismuth
   ];
 }

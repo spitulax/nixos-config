@@ -1,1 +1,3 @@
-{ }
+{
+  keymapper = ./keymapper.nix;
+}

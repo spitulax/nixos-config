@@ -3,7 +3,7 @@
 , ...
 }: {
   imports = [
-    ./keyboard.nix
-    ./env.nix
+    ./fusuma.nix
+    ./keymapper.nix
   ];
 }

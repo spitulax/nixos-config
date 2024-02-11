@@ -1,18 +1,5 @@
 {
   "nodes": {
-    "hardware": {
-      "locked": {
-        "lastModified": 1707211557,
-        "narHash": "sha256-LTKTzZ6fM5j8XWXf51IMBzDaOaJg9kYWLUZxoIhzRN8=",
-        "path": "/nix/store/g40m8zlcnwgy8m4gjg303zny6sssldy9-source",
-        "rev": "6e5cc385fc8cf5ca6495d70243074ccdea9f64c7",
-        "type": "path"
-      },
-      "original": {
-        "id": "hardware",
-        "type": "indirect"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -97,7 +84,6 @@
     },
     "root": {
       "inputs": {
-        "hardware": "hardware",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",

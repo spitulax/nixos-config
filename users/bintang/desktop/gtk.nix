@@ -5,7 +5,7 @@
   gtk = {
     enable = true;
     cursorTheme = {
-      name = "Adwaita";
+      name = "breeze_cursors";
       size = 24;
     };
     iconTheme.name = "breeze-dark";

@@ -4,6 +4,10 @@
 , config
 , ...
 }: {
+  imports = [
+    ./keymapper.nix
+  ];
+
   security.sudo.wheelNeedsPassword = false;
   programs.fish.enable = true;
 
