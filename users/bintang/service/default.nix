@@ -6,4 +6,8 @@
     ./fusuma.nix
     ./keymapper.nix
   ];
+
+  home.packages = with pkgs; [
+    keymapper
+  ];
 }
