@@ -73,10 +73,12 @@ in
     }];
   };
   programs.ssh = {
-    knownHosts = builtins.mapAttrs (name: _: {
-      publicKeyFile = ../${name}/ssh_host_ed25519_key.pub;
-      extraHostNames = [ "localhost" ];
-    }) hosts;
+    knownHosts = builtins.mapAttrs
+      (name: _: {
+        publicKeyFile = ../${name}/ssh_host_ed25519_key.pub;
+        extraHostNames = [ "localhost" ];
+      })
+      hosts;
   };
   security.pam.sshAgentAuth = {
     enable = true;
