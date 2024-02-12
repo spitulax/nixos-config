@@ -22,7 +22,7 @@
       user = {
         name = "Bintang";
         email = "bintangadiputrapratama@gmail.com";
-        signing.key = "CEA66159F05DBA82253ACDEC4B7E05AA0F905C0D";
+        signingkey = "929ED6C40414D3F5";
       };
       commit.gpgSign = true;
       gpg.program = "${config.programs.gpg.package}/bin/gpg2";

@@ -10,7 +10,7 @@
     extraGroups = [ "input" "networkmanager" "wheel" ];
     shell = pkgs.fish;
     packages = with pkgs; [ home-manager ];
-    openssh.authorizedKeys.keyFiles = [ ../../users/bintang/ssh.pub ];
+    openssh.authorizedKeys.keyFiles = [ ../../users/bintang/keys/ssh.pub ];
     hashedPasswordFile = config.sops.secrets.password-bintang.path;
   };
 
