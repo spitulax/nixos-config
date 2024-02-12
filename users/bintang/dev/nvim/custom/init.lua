@@ -18,6 +18,7 @@ opt.cursorline = true
 opt.clipboard = ""
 opt.complete = ""
 opt.timeoutlen = 500
+opt.scrolloff = 5
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 

@@ -3,5 +3,6 @@
 , ...
 }: {
   home.keyboard.options = [ "compose:ralt" ];
-  xdg.configFile."XCompose".source = ./XCompose;
+  home.sessionVariables.XCOMPOSEFILE = "$XDG_CONFIG_HOME/XCompose";
+  home.file.".config/XCompose".source = ./XCompose;
 }

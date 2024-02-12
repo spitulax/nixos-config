@@ -10,6 +10,9 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nvchad.url = "github:spitulax/nix-NvChad";
+
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -39,10 +42,10 @@
         };
 
         # Test VM
-        "astaroth" = lib.nixosSystem {
-          modules = [ ./systems/astaroth ];
-          specialArgs = { inherit inputs outputs; };
-        };
+        # "astaroth" = lib.nixosSystem {
+        #   modules = [ ./systems/astaroth ];
+        #   specialArgs = { inherit inputs outputs; };
+        # };
       };
 
       homeConfigurations = {
@@ -54,11 +57,11 @@
         };
 
         # Test VM
-        "bintang@astaroth" = lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./users/bintang/astaroth.nix ];
-          extraSpecialArgs = { inherit inputs outputs; };
-        };
+        # "bintang@astaroth" = lib.homeManagerConfiguration {
+        #   inherit pkgs;
+        #   modules = [ ./users/bintang/astaroth.nix ];
+        #   extraSpecialArgs = { inherit inputs outputs; };
+        # };
       };
     };
 }

@@ -7,6 +7,8 @@
     ./starship.nix
     ./git.nix
     ./gh.nix
+    ./gpg.nix
+    ./ssh.nix
   ];
 
   home.packages = with pkgs; [
@@ -27,6 +29,8 @@
     tldr
     trash-cli
     bat
+    vulnix
+    sops
 
     # monitoring
     btop
@@ -41,6 +45,6 @@
     # misc
     gnupg
     nix-output-monitor
-    chafa
+    chafa # for telescope-media-files.nvim
   ];
 }

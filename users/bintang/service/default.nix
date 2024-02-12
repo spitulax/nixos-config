@@ -3,6 +3,7 @@
 , ...
 }: {
   imports = [
+    ./syncthing
     ./fusuma.nix
     ./keymapper.nix
   ];

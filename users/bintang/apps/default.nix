@@ -4,7 +4,6 @@
 }: {
   imports = [
     ./kitty.nix
-    ./syncthing.nix
     ./zapzap.nix
   ];
 

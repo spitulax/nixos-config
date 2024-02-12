@@ -5,5 +5,6 @@
   imports = [
     ./keyboard.nix
     ./env.nix
+    ./sops.nix
   ];
 }

@@ -3,12 +3,20 @@
 , lib
 , ...
 }: {
-  # @TODO: Add config.xml here
-  # home.file.".config/syncthing/config.xml".source = ./config.xml;
+  home.sessionVariables = {
+    STCONFDIR = "$XDG_CONFIG_HOME/syncthing";
+    STDATADIR = "$XDG_DATA_HOME/syncthing";
+    STNODEFAULTFOLDER = "";
+  };
+  home.packages = [ pkgs.syncthingtray ];
 
   services.syncthing = {
     enable = true;
-    tray.enable = true;
+    tray = {
+      enable = true;
+      package = pkgs.syncthingtray;
+      command = "syncthingtray";
+    };
   };
 
   xdg.desktopEntries = lib.mkIf config.services.syncthing.enable {
