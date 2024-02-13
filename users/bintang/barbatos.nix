@@ -6,6 +6,7 @@
 , ...
 }: {
   imports = [
+    inputs.sops-nix.homeManagerModules.sops
     ./dev
     ./apps
     ./misc
