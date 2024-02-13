@@ -34,6 +34,25 @@ in
   boot.kernelModules = [ "synaptics_usb" ];
   services.thermald.enable = true;
 
+  # Input device
+  services.xserver.libinput = {
+    enable = true;
+    mouse = {
+      accelProfile = "flat";
+      accelSpeed = "0.4";
+      tapping = false;
+    };
+    touchpad = {
+      accelProfile = "adaptive";
+      accelSpeed = "0.4";
+      disableWhileTyping = true;
+      naturalScrolling = true;
+      tapping = true;
+      tappingButtonMap = "lrm";
+      tappingDragLock = true;
+    };
+  };
+
   # Networking
   networking.hostName = "barbatos";
   networking.networkmanager.enable = true;
