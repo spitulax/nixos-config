@@ -62,4 +62,9 @@
       options = "--delete-older-than +3";
     };
   };
+
+  # Sudo
+  security.sudo = {
+    execWheelOnly = true;
+  };
 }

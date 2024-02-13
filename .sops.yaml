@@ -10,3 +10,8 @@ creation_rules:
       - age:
         - *bintang
         - *barbatos
+  - path_regex: users/bintang/secrets.yaml$
+    key_groups:
+      - age:
+        - *bintang
+        - *barbatos
