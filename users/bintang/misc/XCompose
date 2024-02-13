@@ -93,7 +93,7 @@ include "%L"
 <Multi_key> <bar> <apostrophe>		               : "ˈ"	U02C8		# PRIMARY STRESS
 <Multi_key> <bar> <comma>		                     : "ˌ"	U02CC		# SECONDARY STRESS
 <Multi_key> <asciicircum> <asciicircum> <h>      : "ʰ"  U02B0   # ASPIRATION
-<Multi_key> <asciicircum> <asciicircum> <h> <h>  : "ʱ"  U02B1   # BREATHY
+<Multi_key> <asciicircum> <asciicircum> <H>      : "ʱ"  U02B1   # BREATHY
 <Multi_key> <asciicircum> <asciicircum> <j>      : "ʲ"  U02B2   # PALATALIZATION
 <Multi_key> <asciicircum> <asciicircum> <w>      : "ʷ"  U02B7   # LABIALIZATION
 <Multi_key> <asciicircum> <question> <period>	   : "ˀ"  U02C0   # GLOTTALIZATION
