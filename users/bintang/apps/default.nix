@@ -4,13 +4,8 @@
 }: {
   imports = [
     ./kitty.nix
+    ./browser.nix
     ./zapzap.nix
     ./elisa.nix
-  ];
-
-  home.packages = with pkgs; [
-    brave
-    yewtube
-    zapzap
   ];
 }

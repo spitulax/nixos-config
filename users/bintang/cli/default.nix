@@ -46,5 +46,6 @@
     gnupg
     nix-output-monitor
     chafa # for telescope-media-files.nvim
+    yewtube # youtube cli
   ];
 }
