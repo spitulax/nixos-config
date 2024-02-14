@@ -7,10 +7,14 @@
     [ElisaFileIndexer]
     RootPath[$e]=$HOME/Music
 
+    [PlayerSettings]
+    ShowSystemTrayIcon=true
+    UseFavoriteStyleRatings=true
+
     [UiSettings]
     ColorScheme=
 
     [Views]
-    InitialView=AllAlbums
+    EmbeddedView=AllAlbums
   '';
 }
