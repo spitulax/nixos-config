@@ -64,8 +64,28 @@ M.general = {
         end)
       end,
       "Change buffer" },
-    ["<leader>x"] = { "<cmd>lua MiniBufremove.delete(0)<cr>", "Close current buffer", opts = { silent = true } },
-    ["<leader>X"] = { "<cmd>lua MiniBufremove.delete(vim.fn.bufnr('#'))<cr>", "Close previous buffer", opts = { silent = true } },
+    ["<leader>x"] = {
+      function()
+        MiniBufremove.delete(0)
+      end,
+      "Close current buffer"
+    },
+    ["<leader>X"] = {
+      function()
+        MiniBufremove.delete(vim.fn.bufnr('#'))
+      end,
+      "Close previous buffer"
+    },
+    ["<leader>bo"] = {
+      function()
+        for i = 1, vim.fn.bufnr('$') do
+          if vim.fn.bufexists(i) == 1 and i ~= vim.fn.bufnr('%') then
+            MiniBufremove.delete(i)
+          end
+        end
+      end,
+      "Close all other buffers"
+    },
     ["<leader>S"] = {
       function()
         local buf = vim.api.nvim_create_buf(true, true)
