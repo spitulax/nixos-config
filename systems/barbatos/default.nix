@@ -33,6 +33,10 @@ in
   hardware.enableRedistributableFirmware = true;
   boot.kernelModules = [ "synaptics_usb" ];
   services.thermald.enable = true;
+  environment.systemPackages = with pkgs; [
+    intel-gpu-tools # GPU usage monitor
+    pciutils
+  ];
 
   # Input device
   services.xserver.libinput = {
