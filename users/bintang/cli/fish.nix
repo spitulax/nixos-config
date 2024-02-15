@@ -2,6 +2,11 @@
 , pkgs
 , ...
 }: {
+  programs.zoxide = {
+    enable = true;
+    options = [ "--cmd cd" ];
+  };
+
   programs.fish = {
     enable = true;
 
@@ -20,12 +25,13 @@
       rm = "trash-put";
       prm = "/usr/bin/env rm";
       restore = "trash-restore";
-      cat = "bat";
+      cat = "bat";  # colorful cat (not lolcat)
       # colorizer
       grep = "grep --color";
       egrep = "egrep --color";
       fgrep = "fgrep --color";
       # misc
+      # this will wipe the scoll buffer instead of just zt-ing the current prompt
       clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
     };
 
