@@ -56,5 +56,6 @@
     pciutils
     vdpauinfo
     intel-gpu-tools
+    xorg.xdpyinfo
   ];
 }
