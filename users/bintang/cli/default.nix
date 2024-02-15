@@ -47,5 +47,14 @@
     nix-output-monitor
     chafa # for telescope-media-files.nvim
     yewtube # youtube cli
+
+    # hardware monitoring
+    inxi
+    glxinfo
+    lm_sensors
+    libva-utils
+    pciutils
+    vdpauinfo
+    intel-gpu-tools
   ];
 }

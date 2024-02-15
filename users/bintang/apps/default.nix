@@ -7,5 +7,7 @@
     ./browser.nix
     ./zapzap.nix
     ./elisa.nix
+    ./obs.nix
+    ./mpv.nix
   ];
 }

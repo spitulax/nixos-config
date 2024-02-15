@@ -25,7 +25,7 @@
       rm = "trash-put";
       prm = "/usr/bin/env rm";
       restore = "trash-restore";
-      cat = "bat";  # colorful cat (not lolcat)
+      cat = "bat"; # colorful cat (not lolcat)
       # colorizer
       grep = "grep --color";
       egrep = "egrep --color";

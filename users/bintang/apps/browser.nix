@@ -4,6 +4,7 @@
 }: {
   programs.brave = {
     enable = true;
+    commandLineArgs = [ "--enable-features=VaapiVideoDecodeLinuxGL" ]; # make video hardware decoding work
     extensions = [
       { id = "kfhgpagdjjoieckminnmigmpeclkdmjm"; } # Automatic Twitch
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark Reader
