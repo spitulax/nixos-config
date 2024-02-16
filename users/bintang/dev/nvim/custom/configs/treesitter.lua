@@ -15,6 +15,7 @@ local opts = {
     "vimdoc",
     "make",
     "nix",
+    "go",
   },
 }
 

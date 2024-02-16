@@ -120,8 +120,8 @@ M.general = {
 
 M.nvimtree = {
   n = {
-    ["<leader>t"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree", opts = { nowait = true } },
+    ["<leader>E"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree", opts = { nowait = true } },
   },
 }
 

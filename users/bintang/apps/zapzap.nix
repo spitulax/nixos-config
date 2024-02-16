@@ -13,7 +13,7 @@
 
     [system]
     donation_message=false
-    hide_bar_users=false
+    hide_bar_users=true
     keep_background=true
     spellCheckers=false
     start_system=true
