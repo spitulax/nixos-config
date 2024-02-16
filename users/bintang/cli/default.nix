@@ -10,6 +10,7 @@
     ./gpg.nix
     ./ssh.nix
     ./btop.nix
+    ./neofetch.nix
   ];
 
   home.packages = with pkgs; [
@@ -18,7 +19,6 @@
     wget
     curl
     eza
-    neofetch
     fd
     fzf
     which

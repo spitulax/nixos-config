@@ -99,7 +99,14 @@ local tabufline_modules = {
 
   bufname = function()
     local bufname = vim.api.nvim_buf_get_name(vim.fn.bufnr("%"))
-    local name = (bufname:find(vim.fn.getcwd(), 1, true) ~= nil) and vim.fn.fnamemodify(bufname, ":.") or ""
+    local name
+    if bufname:find(vim.fn.getcwd(), 1, true) ~= nil then
+      name = vim.fn.fnamemodify(bufname, ":.")
+    elseif bufname:find(vim.loop.os_homedir(), 1, true) ~= nil then
+      name = vim.fn.fnamemodify(bufname, ":~")
+    else
+      name = ""
+    end
     name = (name:find("NvimTree", 1, true) ~= nil) and "NvimTree" or name
     name = "%#StatusLine#" .. name
     return name
