@@ -9,6 +9,7 @@
     ./gh.nix
     ./gpg.nix
     ./ssh.nix
+    ./btop.nix
   ];
 
   home.packages = with pkgs; [
@@ -33,7 +34,6 @@
     sops
 
     # monitoring
-    btop
     htop
 
     # archives
