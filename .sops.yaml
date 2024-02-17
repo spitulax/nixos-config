@@ -5,12 +5,12 @@ keys:
     - &barbatos age1v333uk8wm849lnegw4ra4pydlvgdqjn6fn288dd2a8fz2sdm0sys306qeq
 
 creation_rules:
-  - path_regex: systems/global/secrets.yaml$
+  - path_regex: secrets/global/.*$
     key_groups:
       - age:
         - *bintang
         - *barbatos
-  - path_regex: users/bintang/secrets.yaml$
+  - path_regex: secrets/bintang/.*$
     key_groups:
       - age:
         - *bintang

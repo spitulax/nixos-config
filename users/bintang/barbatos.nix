@@ -3,6 +3,7 @@
 , pkgs
 , inputs
 , outputs
+, nixosConfig
 , ...
 }: {
   imports = [

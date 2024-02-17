@@ -53,7 +53,10 @@
         "bintang@barbatos" = lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./users/bintang/barbatos.nix ];
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            nixosConfig = outputs.nixosConfigurations."barbatos".config;
+          };
         };
 
         # Test VM

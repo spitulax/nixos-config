@@ -27,6 +27,7 @@ in
 
   # Sops
   sops.age.sshKeyPaths = map (k: k.path) config.services.openssh.hostKeys;
+  sops.defaultSopsFile = ../../secrets/global/secrets.yaml;
 
   # Hardware
   hardware.opengl.enable = true;

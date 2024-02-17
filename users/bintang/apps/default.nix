@@ -1,5 +1,6 @@
 { config
 , pkgs
+, nixosConfig
 , ...
 }: {
   imports = [
@@ -9,5 +10,6 @@
     ./elisa.nix
     ./obs.nix
     ./mpv.nix
+    ./bitwarden.nix
   ];
 }

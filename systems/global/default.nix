@@ -68,4 +68,7 @@
   security.sudo = {
     execWheelOnly = true;
   };
+
+  # Services
+  services.dbus.packages = [ pkgs.gcr ];
 }

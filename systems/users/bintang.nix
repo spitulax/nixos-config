@@ -14,9 +14,16 @@
     hashedPasswordFile = config.sops.secrets.password-bintang.path;
   };
 
-  sops.secrets.password-bintang = {
-    sopsFile = ../global/secrets.yaml;
-    neededForUsers = true;
+  sops.secrets = {
+    password-bintang = {
+      neededForUsers = true;
+      sopsFile = ../../secrets/global/secrets.yaml;
+    };
+    gh-hosts = {
+      owner = "bintang";
+      group = "users";
+      sopsFile = ../../secrets/bintang/gh.yaml;
+    };
   };
 
   home-manager.users.bintang = import ../../users/bintang/${config.networking.hostName}.nix;

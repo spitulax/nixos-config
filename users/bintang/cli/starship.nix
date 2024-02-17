@@ -9,6 +9,7 @@
       add_newline = false;
       command_timeout = 5000;
       format = lib.concatStrings [
+        "$cmd_duration"
         "$directory"
         "$git_branch"
         "$git_commit"
@@ -22,17 +23,17 @@
         format = "$symbol ";
         success_symbol = "[](bold green)";
         error_symbol = "[](bold red)";
-        vimcmd_symbol = "[](bold green)";
-        vimcmd_replace_one_symbol = "[](bold yellow)";
-        vimcmd_replace_symbol = "[](bold yellow)";
-        vimcmd_visual_symbol = "[](bold blue)";
+        vimcmd_symbol = "[󰄾](bold green)";
+        vimcmd_replace_one_symbol = "[󰄾](bold yellow)";
+        vimcmd_replace_symbol = "[󰄾](bold yellow)";
+        vimcmd_visual_symbol = "[󰄾](bold blue)";
         disabled = false;
       };
 
       cmd_duration = {
         min_time = 5000;
         show_milliseconds = false;
-        format = "[ $duration]($style)";
+        format = "[$duration ]($style)";
         style = "bold yellow";
         disabled = false;
       };
