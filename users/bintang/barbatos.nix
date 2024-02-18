@@ -23,6 +23,11 @@
     stateVersion = "23.11";
   };
 
+  # Extra packages
+  home.packages = [
+    inputs.nh.packages."x86_64-linux".default
+  ];
+
   # Overlay
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;

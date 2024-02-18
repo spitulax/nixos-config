@@ -7,7 +7,7 @@ let
 in
 {
   # Environment variables
-  home.sessionVariables = {
+  home.sessionVariables = rec {
     PATH = "$HOME/.cargo/bin:$HOME/.local/bin:$PATH";
     EDITOR = "nvim";
     REPOS = "$HOME/Repos";
@@ -16,6 +16,7 @@ in
     SOFTWARE = "$HOME/Software";
     TEMPDIR = "$HOME/.temp";
     CONFIG = "$HOME/Config";
+    FLAKE = CONFIG;
     GPG_TTY = "$(tty)";
   };
   xdg = {

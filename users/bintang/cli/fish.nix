@@ -78,21 +78,4 @@
       end
     '';
   };
-
-  home.file.".local/bin/nixbuild" = {
-    text = ''
-      #!/usr/bin/env bash
-      cd $CONFIG
-      sudo nixos-rebuild switch --flake .
-    '';
-    executable = true;
-  };
-  home.file.".local/bin/homebuild" = {
-    text = ''
-      #!/usr/bin/env bash
-      cd $CONFIG
-      home-manager switch --flake .
-    '';
-    executable = true;
-  };
 }
