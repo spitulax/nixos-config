@@ -52,6 +52,10 @@ M.general = {
     ["<M-p>"] = { "\"+P", "Paste from + register (P)" },
     ["<C-y>"] = { "\"+y", "Yank to + register" },
     ["<leader>Q"] = { "<cmd>qa<cr>", "Close Neovim" },
+    ["("] = { "zh", "Scroll to left" },
+    [")"] = { "zl", "Scroll to right" },
+
+    -- buffer management
     ["<M-.>"] = { "<cmd>bn<cr>", "Goto next buffer" },
     ["<M-,>"] = { "<cmd>bp<cr>", "Goto prev buffer" },
     ["<leader>O"] = {
@@ -107,6 +111,18 @@ M.general = {
     ["<M-t>"] = { "<cmd>tabnew<cr>", "Create new tab" },
     ["<M-q>"] = { "<cmd>tabclose<cr>", "Close current tab" },
     ["<M-a>"] = { "<cmd>tabonly<cr>", "Close all other tabs" },
+
+    -- toggles
+    ["<leader>tw"] = {
+      function()
+        if vim.o.wrap then
+          vim.o.wrap = false
+        else
+          vim.o.wrap = true
+        end
+      end,
+      "Toggle line wrap"
+    },
   },
 
   v = {

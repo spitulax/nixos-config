@@ -3,22 +3,27 @@ local g = vim.g
 
 opt.listchars = {
   space = "·",
-  tab = "<->",
+  tab = "->",
   trail = "∼",
   nbsp = "-",
+  extends = "→",
+  precedes = "←",
 }
 opt.list = true
 
+opt.wrap = false
 opt.shiftwidth = 2
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.number = true
-opt.relativenumber = true
+opt.relativenumber = false
 opt.cursorline = true
 opt.clipboard = ""
 opt.complete = ""
 opt.timeoutlen = 500
 opt.scrolloff = 5
+opt.sidescrolloff = 5
+opt.sidescroll = 5
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
