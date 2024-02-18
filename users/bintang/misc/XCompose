@@ -89,6 +89,8 @@ include "%L"
 <Multi_key> <backslash> <2> <grave>	: "̏"	U030f	# COMBINING DOUBLE GRAVE ACCENT
 
 ### IPA ###
+# TODO: Extend this
+
 # Superscripts/Suprasegmentals
 <Multi_key> <bar> <apostrophe>		               : "ˈ"	U02C8		# PRIMARY STRESS
 <Multi_key> <bar> <comma>		                     : "ˌ"	U02CC		# SECONDARY STRESS
@@ -132,8 +134,8 @@ include "%L"
 <Multi_key> <h> <apostrophe>	      : "ɦ"   U0266     # VOICED GLOTTAL FRICATIVE
 <Multi_key> <w> <w>			            : "ʍ"	  U028D		  # VOICELESS LABIOVELAR FRICATIVE
 # Taps/Flaps and Trills
-<MULTI_KEY> <R> <D>                 : "ɾ"   U027E   # VOICED ALVEOLAR FLAP
-<MULTI_KEY> <QUESTION> <BRACELEFT>	: "ʢ"	  U02A2		# VOICED EPIGLOTTAL TRILL
+<Multi_key> <r> <d>                 : "ɾ"   U027E   # VOICED ALVEOLAR FLAP
+<Multi_key> <question> <braceleft>	: "ʢ"	  U02A2		# VOICED EPIGLOTTAL TRILL
 # Approximants
 <Multi_key> <r> <r>           : "ɹ"   U0279     # VOICED ALVEOLAR APPROXIMANT
 <Multi_key> <l> <comma>		    : "ɭ"   U026D     # VOICED RETROFLEX LATERAL APPROXIMANT

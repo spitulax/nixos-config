@@ -13,11 +13,12 @@
     ];
     nerdFonts = [
       "FiraCode"
-      # "Iosevka" # FIX: installing Iosevka is stuck at building Iosevka.tar.xz
+      "Iosevka"
       "JetBrainsMono"
     ];
 
-    monospace = "FiraCode Nerd Font";
+    monospace = "Iosevka Nerd Font";  # IOSEVKA SUPREMACY!!!!!!!!!!
+                                      # Other fonts struggle to display some diacritics such as l̩,ŋ̍
     serif = "Poly";
     sansSerif = "Fira Sans";
   };

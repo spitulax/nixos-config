@@ -20,27 +20,28 @@
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
-  environment.systemPackages = with pkgs; [
-    # Bar
-    (waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      })
-    )
-    # eww # TODO: Configure eww
-
-    # Notif daemon
-    dunst
-    libnotify
-
-    # Wallpaper
-    swww
-
-    # Launcher/Picker
-    rofi-wayland
-    rofimoji
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   # Bar
+  #   (waybar.overrideAttrs (oldAttrs: {
+  #       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+  #     })
+  #   )
+  #   # eww # TODO: Configure eww
+  #
+  #   # Notif daemon
+  #   dunst
+  #   libnotify
+  #
+  #   # Wallpaper
+  #   swww
+  #
+  #   # Launcher/Picker
+  #   rofi-wayland
+  #   rofimoji
+  # ];
 
   environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
+    # FIX: keys defined in user's xcompose file do not work if this is enabled
+    # NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
   };
 }
