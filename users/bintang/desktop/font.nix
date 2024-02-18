@@ -8,6 +8,8 @@
     fonts = with pkgs; [
       poly
       fira
+      noto-fonts-cjk-serif
+      noto-fonts-cjk-sans
     ];
     nerdFonts = [
       "FiraCode"
