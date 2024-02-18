@@ -20,6 +20,7 @@ in
     ./hardware-configuration.nix
     ../global
     ../users/bintang.nix
+    ../features/desktop.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
   # Home Manager
@@ -58,17 +59,6 @@ in
   # Networking
   networking.hostName = "barbatos";
   networking.networkmanager.enable = true;
-
-  # Display
-  # @TODO: Add hyprland (see notes)
-  services.xserver = {
-    enable = true;
-    displayManager.sddm.enable = true;
-    displayManager.defaultSession = "plasma";
-    desktopManager.plasma5.enable = true;
-  };
-  programs.xwayland.enable = true;
-  xdg.portal.enable = true;
 
   # Sounds
   sound.enable = true;
