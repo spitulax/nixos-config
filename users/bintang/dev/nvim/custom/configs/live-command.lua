@@ -1,4 +1,6 @@
-local opts = {
+local M = {}
+
+M.opts = {
   commands = {
     Norm = { cmd = "norm" },
     Reg = {
@@ -11,4 +13,4 @@ local opts = {
   },
 }
 
-return opts
+return M

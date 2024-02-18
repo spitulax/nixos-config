@@ -19,6 +19,7 @@ M.add = {
   IncSearch = { fg = "black", bg = "orange" },
   Search = { fg = "black", bg = "yellow" },
   CursorLine = { bg = "one_bg" },
+  GitSignsCurrentLineBlame = { link = "Comment" },
 }
 
 return M

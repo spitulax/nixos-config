@@ -1,4 +1,6 @@
-local opts = {
+local M = {}
+
+M.opts = {
   plugins = {
     marks = false,
   },
@@ -10,4 +12,4 @@ local opts = {
   },
 }
 
-return opts
+return M

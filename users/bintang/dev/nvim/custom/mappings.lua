@@ -134,211 +134,26 @@ M.general = {
   },
 }
 
-M.nvimtree = {
-  n = {
-    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree", opts = { nowait = true } },
-    ["<leader>E"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree", opts = { nowait = true } },
-  },
+local mappings = {
+  "nvimtree",
+  "lspconfig",
+  "telescope",
+  "harpoon",
+  "neogit",
+  "icon_picker",
+  "nvterm",
+  "git_conflict",
+  "hop",
+  "gitsigns",
+  "spectre",
+  "todo",
 }
 
-M.lspconfig = {
-  n = {
-    ["<leader>lf"] = {
-      function()
-        vim.diagnostic.open_float { border = "rounded" }
-      end,
-      "Floating diagnostic",
-    },
-
-    ["[d"] = {
-      function()
-        vim.diagnostic.goto_prev { float = { border = "rounded" } }
-      end,
-      "Goto prev diagnostic",
-    },
-
-    ["]d"] = {
-      function()
-        vim.diagnostic.goto_next { float = { border = "rounded" } }
-      end,
-      "Goto next diagnostic",
-    },
-  },
-}
-
-M.telescope = {
-  plugin = true,
-  n = {
-    ["<leader>tr"] = { "<cmd> Telescope resume <CR>", "Resume Telescope" },
-    -- find
-    ["<leader>fe"] = {
-      function()
-        prompt_callback("Find files in", "file", function(input)
-          vim.cmd("Telescope find_files cwd=" .. input)
-        end)
-      end,
-      "Find files in specified directory",
-    },
-    ["<leader>o"]   = { "<cmd> Telescope find_files <CR>", "Find files in cwd" },
-    ["<M-b>"]       = { "<cmd> Telescope buffers <CR>", "Find opened buffers" },
-    ["<leader>fk"]  = { "<cmd> Telescope keymaps <CR>", "Find assigned keybindings" },
-    ["<leader>ft"]  = { "<cmd> Telescope builtin <CR>", "Find Telescope builtin commands" },
-    ["<leader>fc"]  = { "<cmd> Telescope highlights <CR>", "List highlight groups" },
-    ["<leader>fM"]  = { "<cmd> Telescope man_pages sections={'ALL'}<CR>", "Find man pages" },
-    ["<leader>fH"]  = { "<cmd> Telescope man_pages sections={'3'}<CR>", "Find man pages in section 3" },
-    -- git
-    ["<leader>gc"]  = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-    ["<leader>gb"]  = { "<cmd> Telescope git_branches <CR>", "Git branches" },
-    ["<leader>gs"]  = { "<cmd> Telescope git_stash <CR>", "Git stash" },
-    -- extensions
-    ["<leader>fxm"] = { "<cmd> Telescope media_files <CR>", "Preview media" },
-    ["<leader>fl"]  = { "<cmd> Telescope neoclip <CR>", "Preview clipboard" },
-    ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "Project list" },
-  },
-}
-
-M.harpoon = {
-  plugin = true,
-  n = {
-    ["<leader>h"] = {
-      function()
-        local harpoon = require("harpoon")
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-      end, "Open harpoon window" },
-    ["<leader>a"] = { function() require("harpoon"):list():append() end, "Add buffer to harpoon list" },
-    ["<leader>p"] = { function() require("harpoon"):list():prev() end, "Jump to previous buffer in harpoon list" },
-    ["<leader>n"] = { function() require("harpoon"):list():next() end, "Jump to next buffer in harpoon list" },
-    ["<leader>cl"] = { function() require("harpoon"):list():clear() end, "Clear harpoon list" },
-  }
-}
-
-M.neogit = {
-  plugin = true,
-  n = {
-    ["<leader>g"] = { "<cmd>Neogit<cr>", "Open Neogit" },
-  },
-}
-
-M.icon_picker = {
-  plugin = true,
-  n = {
-    ["<leader>i"] = { "<cmd>IconPickerYank<cr>", "Open icon picker" },
-  },
-  i = {
-    ["<C-a>"] = { "<cmd>IconPickerInsert<cr>", "Insert an icon" },
-  },
-}
-
-M.nvterm = {
-  plugin = true,
-  n = {
-    ["<leader>T"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "Toggle floating term",
-    },
-    ["<leader>TH"] = {
-      function()
-        require("nvterm.terminal").toggle "horizontal"
-      end,
-      "Toggle horizontal term",
-    },
-    ["<leader>TV"] = {
-      function()
-        require("nvterm.terminal").toggle "vertical"
-      end,
-      "Toggle vertical term",
-    },
-  },
-  t = {
-    ["<leader>T"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "Toggle floating term",
-    },
-    ["<leader>TH"] = {
-      function()
-        require("nvterm.terminal").toggle "horizontal"
-      end,
-      "Toggle horizontal term",
-    },
-    ["<leader>TV"] = {
-      function()
-        require("nvterm.terminal").toggle "vertical"
-      end,
-      "Toggle vertical term",
-    },
-  },
-}
-
-M.git_conflict = {
-  plugin = true,
-  n = {
-    ["<leader>Co"] = { "<Plug>(git-conflict-ours)", "Choose ours" },
-    ["<leader>Ct"] = { "<Plug>(git-conflict-theirs)", "Choose theirs" },
-    ["<leader>Cb"] = { "<Plug>(git-conflict-both)", "Choose both" },
-    ["<leader>C0"] = { "<Plug>(git-conflict-none)", "Choose none" },
-    ["<leader>Cp"] = { "<Plug>(git-conflict-prev-conflict)", "Move to previous conflict" },
-    ["<leader>Cn"] = { "<Plug>(git-conflict-next-conflict)", "Move to next conflict" },
-  },
-}
-
-M.hop = {
-  plugin = true,
-  n = {
-    ["<Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },
-    ["<Tab><Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },
-    ["<Tab>c"] = { "<cmd>HopChar1<cr>", "Hop one char" },
-    ["<Tab>C"] = { "<cmd>HopChar2<cr>", "Hop two chars" },
-    ["<Tab>/"] = { "<cmd>HopPattern<cr>", "Hop search pattern" },
-    ["<Tab>l"] = { "<cmd>HopLineStart<cr>", "Hop line start" },
-    ["<Tab>L"] = { "<cmd>HopLine<cr>", "Hop line" },
-  },
-  v = {
-    ["<Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },
-    ["<Tab><Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },
-    ["<Tab>c"] = { "<cmd>HopChar1<cr>", "Hop one char" },
-    ["<Tab>C"] = { "<cmd>HopChar2<cr>", "Hop two chars" },
-    ["<Tab>/"] = { "<cmd>HopPattern<cr>", "Hop search pattern" },
-    ["<Tab>l"] = { "<cmd>HopLineStart<cr>", "Hop line start" },
-    ["<Tab>L"] = { "<cmd>HopLine<cr>", "Hop line" },
-  },
-}
-
-M.gitsigns = {
-  plugin = true,
-  n = {
-    ["<leader>B"] = { "<cmd>Gitsigns blame_line<CR>", "Blame line" },
-    ["<leader>tb"] = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Toggle current line blame" },
-  }
-}
-
-M.spectre = {
-  plugin = true,
-  n = {
-    ["<leader>s"] = { "<cmd>Spectre<cr>", "Open Spectre" }, -- mini.surround key bindings only work in visual mode
-  },
-}
-
-M.todo = {
-  plugin = true,
-  n = {
-    ["[t"] = {
-      function()
-        require("todo-comments").jump_prev()
-      end,
-      "Jump to previous todo comment"
-    },
-    ["]t"] = {
-      function()
-        require("todo-comments").jump_next()
-      end,
-      "Jump to next todo comment"
-    },
-    ["fq"] = { "<cmd>TodoTelescope<CR>", "Search all todo comments" },
-  },
-}
+for _, plugin in ipairs(mappings) do
+  local table = require("custom.configs." .. plugin).mappings
+  if table ~= nil then
+    M[plugin] = table
+  end
+end
 
 return M

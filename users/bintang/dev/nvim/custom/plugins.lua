@@ -38,14 +38,15 @@ local M = {
     build = ":Neorg sync-parsers",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = function()
-      return require("custom.configs.neorg")
+      return require("custom.configs.neorg").opts
     end,
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function()
-      return vim.tbl_deep_extend("force", require("plugins.configs.treesitter"), require("custom.configs.treesitter"))
+      return vim.tbl_deep_extend("force", require("plugins.configs.treesitter"),
+        require("custom.configs.treesitter").opts)
     end,
   },
 
@@ -64,7 +65,8 @@ local M = {
   {
     "nvim-tree/nvim-tree.lua",
     opts = function()
-      return vim.tbl_deep_extend("force", require("plugins.configs.nvimtree"), require("custom.configs.nvim-tree"))
+      return vim.tbl_deep_extend("force", require("plugins.configs.nvimtree"),
+        require("custom.configs.nvimtree").opts)
     end,
   },
 
@@ -75,23 +77,24 @@ local M = {
       load_mappings("gitsigns", { silent = true })
     end,
     opts = function()
-      return vim.tbl_deep_extend("force", require("plugins.configs.others").gitsigns, require("custom.configs.others").gitsigns)
+      return vim.tbl_deep_extend("force", require("plugins.configs.others").gitsigns,
+        require("custom.configs.gitsigns").opts)
     end,
   },
 
   {
     "williamboman/mason.nvim",
     enabled = false,
-    opts = function()
-      return require("custom.configs.mason")
-    end,
   },
 
   {
     "neovim/nvim-lspconfig",
     config = function()
       require("plugins.configs.lspconfig")
-      require("custom.configs.lspconfig")
+      local lspconfig = require("lspconfig")
+      local on_attach = require("plugins.configs.lspconfig").on_attach
+      local capabilities = require("plugins.configs.lspconfig").capabilities
+      require("custom.configs.lspconfig").setup(lspconfig, on_attach, capabilities)
     end,
   },
 
@@ -102,7 +105,7 @@ local M = {
       "hrsh7th/cmp-cmdline",
     },
     config = function(_, _)
-      require("custom.configs.cmp")
+      require("custom.configs.cmp").setup()
     end,
   },
 
@@ -126,7 +129,7 @@ local M = {
       {
         "AckslD/nvim-neoclip.lua",
         opts = function()
-          return require("custom.configs.others").neoclip
+          return require("custom.configs.neoclip").opts
         end
       },
       {
@@ -137,7 +140,8 @@ local M = {
       },
     },
     opts = function()
-      return vim.tbl_deep_extend("force", require("plugins.configs.telescope"), require("custom.configs.telescope"))
+      return vim.tbl_deep_extend("force", require("plugins.configs.telescope"),
+        require("custom.configs.telescope").opts)
     end,
   },
 
@@ -156,14 +160,15 @@ local M = {
   {
     "lukas-reineke/indent-blankline.nvim",
     opts = function()
-      return vim.tbl_deep_extend("force", require("plugins.configs.others").blankline, require("custom.configs.others").blankline)
+      return vim.tbl_deep_extend("force", require("plugins.configs.others").blankline,
+        require("custom.configs.blankline").opts)
     end
   },
 
   {
     "folke/which-key.nvim",
     opts = function()
-      return require("custom.configs.which-key")
+      return require("custom.configs.which-key").opts
     end,
   },
 
@@ -179,7 +184,7 @@ local M = {
       load_mappings("neogit", { silent = true })
     end,
     opts = function()
-      return require("custom.configs.neogit")
+      return require("custom.configs.neogit").opts
     end,
     cmd = "Neogit",
   },
@@ -188,7 +193,7 @@ local M = {
     'stevearc/dressing.nvim',
     event = { "BufEnter" },
     opts = function()
-      return require("custom.configs.dressing")
+      return require("custom.configs.dressing").opts
     end,
   },
 
@@ -209,11 +214,11 @@ local M = {
       lazy_load("live-command.nvim")
     end,
     opts = function()
-      return require("custom.configs.live-command")
+      return require("custom.configs.live-command").opts
     end,
     config = function(_, opts)
 ---@diagnostic disable-next-line: different-requires
-      require("live-command").setup(opts)
+      require("live-command").setup(opts) -- lazy.nvim default config function didn't work
     end,
   },
 
@@ -225,7 +230,7 @@ local M = {
       load_mappings("git_conflict", { silent = true })
     end,
     opts = function()
-      return require("custom.configs.others").git_conflict
+      return require("custom.configs.git_conflict").opts
     end,
   },
 
@@ -238,7 +243,7 @@ local M = {
       load_mappings("hop", { silent = true })
     end,
     opts = function()
-      return require("custom.configs.others").hop
+      return require("custom.configs.hop").opts
     end,
   },
 
@@ -255,7 +260,7 @@ local M = {
       load_mappings("spectre")
     end,
     opts = function()
-      return require("custom.configs.others").spectre
+      return require("custom.configs.spectre").opts
     end,
   },
 

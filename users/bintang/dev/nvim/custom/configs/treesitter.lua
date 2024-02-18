@@ -1,4 +1,6 @@
-local opts = {
+local M = {}
+
+M.opts = {
   ensure_installed = {
     "lua",
     "norg",
@@ -19,4 +21,4 @@ local opts = {
   },
 }
 
-return opts
+return M

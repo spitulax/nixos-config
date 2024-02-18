@@ -1,4 +1,6 @@
-local opts = {
+local M = {}
+
+M.opts = {
   input = {
     default_prompt = "Input: ",
     title_pos = "center",
@@ -22,4 +24,4 @@ local opts = {
   },
 }
 
-return opts
+return M

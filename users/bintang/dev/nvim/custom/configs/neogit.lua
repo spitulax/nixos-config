@@ -1,4 +1,6 @@
-local opts = {
+local M = {}
+
+M.opts = {
   graph_style = "unicode",
   commit_select_view = {
     kind = "auto",
@@ -30,4 +32,11 @@ local opts = {
   },
 }
 
-return opts
+M.mappings = {
+  plugin = true,
+  n = {
+    ["<leader>g"] = { "<cmd>Neogit<cr>", "Open Neogit" },
+  },
+}
+
+return M

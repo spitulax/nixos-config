@@ -1,4 +1,6 @@
-local opts = {
+local M = {}
+
+M.opts = {
   modified = {
     enable = true,
     show_on_dirs = false,
@@ -41,4 +43,11 @@ local opts = {
   },
 }
 
-return opts
+M.mappings = {
+  n = {
+    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree", opts = { nowait = true } },
+    ["<leader>E"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree", opts = { nowait = true } },
+  },
+}
+
+return M
