@@ -90,6 +90,16 @@ M.general = {
       end,
       "Close all other buffers"
     },
+    ["<leader>bx"] = {
+      function()
+        for i = 1, vim.fn.bufnr('$') do
+          if vim.fn.bufexists(i) == 1 then
+            MiniBufremove.delete(i)
+          end
+        end
+      end,
+      "Close all buffers"
+    },
     ["<leader>S"] = {
       function()
         local buf = vim.api.nvim_create_buf(true, true)
