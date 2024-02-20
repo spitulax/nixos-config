@@ -25,6 +25,8 @@ opt.scrolloff = 5
 opt.sidescrolloff = 5
 opt.sidescroll = 5
 
+g.c_syntax_for_h  = 1
+
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 vim.api.nvim_create_autocmd("VimEnter", {

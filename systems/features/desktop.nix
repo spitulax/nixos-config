@@ -21,6 +21,8 @@
   };
 
   # environment.systemPackages = with pkgs; [
+  #   swaylock
+  #
   #   # Bar
   #   (waybar.overrideAttrs (oldAttrs: {
   #       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];

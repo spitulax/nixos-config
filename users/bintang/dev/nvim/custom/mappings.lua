@@ -132,6 +132,11 @@ M.general = {
     ["<C-p>"] = { "\"+p", "Paste from + register (p)" },
     ["<C-y>"] = { "\"+y", "Yank to + register" },
   },
+
+  t = {
+    ["<C-\\>"] = { "<C-\\><C-n>", "Leave terminal mode", opts = { silent = true, nowait = true } },
+    ["<M-c>"] = { "<C-\\><C-n><C-w>q", "Close terminal" , opts = { silent = true, nowait = true } },
+  },
 }
 
 local mappings = {

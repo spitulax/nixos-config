@@ -3,13 +3,19 @@ local M = {}
 M.mappings = {
   plugin = true,
   n = {
-    ["<leader>T"] = {
+    ["<leader>TF"] = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
       "Toggle floating term",
     },
     ["<leader>TH"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "Toggle horizontal term",
+    },
+    ["<leader>,"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
@@ -23,13 +29,19 @@ M.mappings = {
     },
   },
   t = {
-    ["<leader>T"] = {
+    ["<leader>TF"] = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
       "Toggle floating term",
     },
     ["<leader>TH"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "Toggle horizontal term",
+    },
+    ["<leader>,"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
