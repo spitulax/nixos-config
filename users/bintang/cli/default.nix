@@ -11,6 +11,7 @@
     ./ssh.nix
     ./btop.nix
     ./neofetch.nix
+    ./spotdl.nix
   ];
 
   home.packages = with pkgs; [
@@ -32,6 +33,7 @@
     bat
     vulnix
     sops
+    mediainfo
 
     # monitoring
     htop
@@ -46,7 +48,7 @@
     gnupg
     nix-output-monitor
     chafa # for telescope-media-files.nvim
-    yewtube # youtube cli
+    yt-dlp
 
     # hardware monitoring
     inxi

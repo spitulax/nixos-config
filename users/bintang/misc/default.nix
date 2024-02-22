@@ -11,5 +11,6 @@
   home.packages = with pkgs; [
     ffmpeg
     jre8
+    cloudflare-warp
   ];
 }
