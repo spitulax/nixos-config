@@ -49,15 +49,5 @@
     nix-output-monitor
     chafa # for telescope-media-files.nvim
     yt-dlp
-
-    # hardware monitoring
-    inxi
-    glxinfo
-    lm_sensors
-    libva-utils
-    pciutils
-    vdpauinfo
-    intel-gpu-tools
-    xorg.xdpyinfo
   ];
 }

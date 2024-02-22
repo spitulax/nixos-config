@@ -98,6 +98,17 @@ in
 
   # Misc programs
   programs.gamemode.enable = true;
+  environment.systemPackages = with pkgs; [
+    # hardware monitoring
+    inxi
+    glxinfo
+    lm_sensors
+    libva-utils
+    pciutils
+    vdpauinfo
+    intel-gpu-tools
+    xorg.xdpyinfo
+  ];
 
   # Misc services
   services.printing.enable = true;

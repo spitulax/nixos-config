@@ -12,4 +12,8 @@
     ./mpv.nix
     ./bitwarden.nix
   ];
+
+  home.packages = with pkgs; [
+    # ferdium # FIX: stuck downloading uhhhhhh....
+  ];
 }
