@@ -50,6 +50,10 @@
         name = "Discord";
         id = "pliiebkcmokkgndfalahlmimanmbjlab";
       }
+      {
+        name = "Syncthing";
+        id = "mfinobjnbcnohnemakjeccbjljpebmlm"; # on port 8384
+      }
     ];
   };
 }

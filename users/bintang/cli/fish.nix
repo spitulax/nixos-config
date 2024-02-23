@@ -23,9 +23,10 @@
       "..." = "cd ../..";
       q = "exit";
       rm = "trash-put";
-      prm = "/usr/bin/env rm";
+      orm = "/usr/bin/env rm";
       restore = "trash-restore";
       cat = "bat"; # colorful cat (not lolcat)
+      ocat = "/usr/bin/env cat";
       # colorizer
       grep = "grep --color";
       egrep = "egrep --color";

@@ -19,15 +19,16 @@
     };
   };
 
-  xdg.desktopEntries = lib.mkIf config.services.syncthing.enable {
-    syncthing = {
-      type = "Application";
-      name = "Syncthing";
-      comment = "Sync files between hosts";
-      exec = "syncthing --browser-only";
-      icon = "syncthing";
-      terminal = false;
-      categories = [ "Utility" ];
-    };
-  };
+  # Use the web app
+  # xdg.desktopEntries = lib.mkIf config.services.syncthing.enable {
+  #   syncthing = {
+  #     type = "Application";
+  #     name = "Syncthing";
+  #     comment = "Sync files between hosts";
+  #     exec = "syncthing --browser-only";
+  #     icon = "syncthing";
+  #     terminal = false;
+  #     categories = [ "Utility" ];
+  #   };
+  # };
 }
