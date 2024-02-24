@@ -27,11 +27,4 @@ in
   # Steam
   hardware.steam-hardware.enable = true;
   programs.steam.enable = true;
-  nixpkgs.overlays = [
-    (_: prev: {
-       steam = prev.steam.override {
-         extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${nix-gaming-pkgs.proton-ge}'";
-       };
-     })
-  ];
 }

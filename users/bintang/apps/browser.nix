@@ -5,7 +5,7 @@
   programs.brave = {
     enable = true;
     commandLineArgs = [
-      "--enable-features=VaapiVideoDecodeLinuxGL"
+      # "--enable-features=VaapiVideoDecodeLinuxGL"
       "--password-store=gnome"
       "--ignore-gpu-blocklist"
       "--profile-directory=Default"

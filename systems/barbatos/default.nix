@@ -23,7 +23,6 @@ in
     ../users/bintang.nix
     ../features/desktop.nix
     ../features/gaming.nix
-    ../features/cachix.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
   # Home Manager

@@ -1,6 +1,7 @@
 { pkgs
 , lib
 , inputs
+, outputs
 , config
 , ...
 }: {
@@ -11,15 +12,17 @@
   programs.fish.enable = true;
 
   # Packages
+  nixProxy.enable = true;
   environment.systemPackages = with pkgs; [
     vim
     wget
     git
     nix-alien
+    cachix
   ];
   nixpkgs.overlays = [
     inputs.nix-alien.overlays.default
-  ];
+  ] ++ builtins.attrValues outputs.nixosOverlays;
   programs.nix-ld.enable = true;
 
   # Bootloader

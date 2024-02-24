@@ -21,6 +21,9 @@
     nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-alien.url = "github:thiagokokada/nix-alien";
+
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -38,7 +41,16 @@
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
-      overlays = import ./overlays { inherit inputs outputs; };
+      checks.${system} = {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixpkgs-fmt.enable = true;
+          };
+        };
+      };
+      overlays = import ./overlays { inherit inputs outputs pkgs; };
+      nixosOverlays = import ./overlays/nixos.nix { inherit inputs outputs pkgs; };
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
 
@@ -75,4 +87,13 @@
         # };
       };
     };
+
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-gaming.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+    ];
+  };
 }

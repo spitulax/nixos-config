@@ -7,6 +7,10 @@ let
   nix-gaming-pkgs = inputs.nix-gaming.packages.${pkgs.system};
 in
 {
+  imports = [
+    ./games.nix
+  ];
+
   home.packages = with pkgs; [
     mangohud
     protontricks
