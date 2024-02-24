@@ -49,6 +49,19 @@
           };
         };
       };
+      devShells.${system} = let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            bashInteractive
+            gcc
+          ];
+          shellHook = ''
+            ${self.checks.${system}.pre-commit-check.shellHook}
+          '';
+        };
+      };
       overlays = import ./overlays { inherit inputs outputs pkgs; };
       nixosOverlays = import ./overlays/nixos.nix { inherit inputs outputs pkgs; };
       nixosModules = import ./modules/nixos;

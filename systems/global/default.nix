@@ -12,7 +12,6 @@
   programs.fish.enable = true;
 
   # Packages
-  nixProxy.enable = true;
   environment.systemPackages = with pkgs; [
     vim
     wget
