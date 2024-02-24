@@ -15,7 +15,12 @@
     vim
     wget
     git
+    nix-alien
   ];
+  nixpkgs.overlays = [
+    inputs.nix-alien.overlays.default
+  ];
+  programs.nix-ld.enable = true;
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -64,7 +69,10 @@
       options = "--delete-older-than +3";
     };
   };
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = (_: true);
+  };
 
   # Sudo
   security.sudo = {
