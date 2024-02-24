@@ -1,5 +1,5 @@
 {
-  description = "NixOS Configuration";
+  description = "My NixOS Configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -49,19 +49,21 @@
           };
         };
       };
-      devShells.${system} = let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in {
-        default = pkgs.mkShell {
-          packages = with pkgs; [
-            bashInteractive
-            gcc
-          ];
-          shellHook = ''
-            ${self.checks.${system}.pre-commit-check.shellHook}
-          '';
+      devShells.${system} =
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            packages = with pkgs; [
+              bashInteractive
+              gcc
+            ];
+            shellHook = ''
+              ${self.checks.${system}.pre-commit-check.shellHook}
+            '';
+          };
         };
-      };
       overlays = import ./overlays { inherit inputs outputs pkgs; };
       nixosOverlays = import ./overlays/nixos.nix { inherit inputs outputs pkgs; };
       nixosModules = import ./modules/nixos;
