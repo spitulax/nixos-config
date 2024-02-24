@@ -15,7 +15,7 @@ M.mappings = {
       end,
       "Toggle horizontal term",
     },
-    ["<leader>,"] = {
+    ["<C-,>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
@@ -29,29 +29,11 @@ M.mappings = {
     },
   },
   t = {
-    ["<leader>TF"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "Toggle floating term",
-    },
-    ["<leader>TH"] = {
+    ["<C-,>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
       "Toggle horizontal term",
-    },
-    ["<leader>,"] = {
-      function()
-        require("nvterm.terminal").toggle "horizontal"
-      end,
-      "Toggle horizontal term",
-    },
-    ["<leader>TV"] = {
-      function()
-        require("nvterm.terminal").toggle "vertical"
-      end,
-      "Toggle vertical term",
     },
   },
 }

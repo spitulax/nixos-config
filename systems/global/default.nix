@@ -56,6 +56,7 @@
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       warn-dirty = false;
+      trusted-users = [ "root" "@wheel" ];
     };
     gc = {
       automatic = true;
@@ -63,6 +64,7 @@
       options = "--delete-older-than +3";
     };
   };
+  nixpkgs.config.allowUnfree = true;
 
   # Sudo
   security.sudo = {
@@ -71,4 +73,5 @@
 
   # Services
   services.dbus.packages = [ pkgs.gcr ];
+  services.flatpak.enable = true;
 }

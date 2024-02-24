@@ -15,5 +15,7 @@
 
   home.packages = with pkgs; [
     # ferdium # FIX: stuck downloading uhhhhhh....
+    aseprite
+    krita
   ];
 }

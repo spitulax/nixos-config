@@ -17,10 +17,13 @@ in
     nixos-hardware.nixosModules.common-pc-laptop
     nixos-hardware.nixosModules.common-pc-laptop-acpi_call
     nixos-hardware.nixosModules.common-pc-laptop-ssd
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
     ./hardware-configuration.nix
     ../global
     ../users/bintang.nix
     ../features/desktop.nix
+    ../features/gaming.nix
+    ../features/cachix.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
   # Home Manager
@@ -70,6 +73,11 @@ in
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+    lowLatency = {
+      enable = true;
+      quantum = 64;
+      rate = 48000;
+    };
   };
 
   # OpenSSH
@@ -97,7 +105,6 @@ in
   };
 
   # Misc programs
-  programs.gamemode.enable = true;
   environment.systemPackages = with pkgs; [
     # hardware monitoring
     inxi

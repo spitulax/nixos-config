@@ -16,6 +16,7 @@ in
     SOFTWARE = "$HOME/Software";
     TEMPDIR = "$HOME/.temp";
     CONFIG = "$HOME/Config";
+    GAMES = "$HOME/Games";
     FLAKE = CONFIG;
     GPG_TTY = "$(tty)";
   };
@@ -42,6 +43,7 @@ in
         XDG_THIRDPARTY_DIR = "${home}/Thirdparty";
         XDG_BACKUP_DIR = "${home}/Backups";
         XDG_TEMP_DIR = "${home}/.temp";
+        XDG_GAME_DIR = "${home}/Games";
       };
     };
   };

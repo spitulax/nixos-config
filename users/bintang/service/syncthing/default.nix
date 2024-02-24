@@ -8,12 +8,11 @@
     STDATADIR = "$XDG_DATA_HOME/syncthing";
     STNODEFAULTFOLDER = "";
   };
-  home.packages = [ pkgs.syncthingtray ];
 
   services.syncthing = {
     enable = true;
     tray = {
-      enable = true;
+      enable = false;
       package = pkgs.syncthingtray;
       command = "syncthingtray";
     };

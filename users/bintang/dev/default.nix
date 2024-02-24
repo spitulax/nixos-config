@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./nvim
+    ./godot
     ./python.nix
     ./rust.nix
   ];
@@ -30,5 +31,6 @@
     # Misc
     gnumake
     nodejs
+    pkg-config
   ];
 }

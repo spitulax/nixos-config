@@ -14,6 +14,7 @@
     ./cli
     ./desktop
     ./service
+    ./gaming
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   # User info
