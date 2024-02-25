@@ -85,15 +85,19 @@ in
     settings = {
       PasswordAuthentication = false;
     };
+    hostKeys = [{
+      path = "/etc/ssh/ssh_host_ed25519_key";
+      type = "ed25519";
+    }];
   };
-  # programs.ssh = {
-  #   knownHosts = builtins.mapAttrs
-  #     (name: _: {
-  #       publicKeyFile = ../${name}/ssh_host_rsa_key.pub;
-  #       extraHostNames = [ "localhost" ];
-  #     })
-  #     hosts;
-  # };
+  programs.ssh = {
+    knownHosts = builtins.mapAttrs
+      (name: _: {
+        publicKeyFile = ../${name}/ssh_host_rsa_key.pub;
+        extraHostNames = [ "localhost" ];
+      })
+      hosts;
+  };
 
   # Misc programs
   environment.systemPackages = with pkgs; [
