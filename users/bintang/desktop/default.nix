@@ -10,5 +10,6 @@
   home.packages = with pkgs; [
     xclip
     wl-clipboard
+    libsForQt5.kdialog
   ];
 }

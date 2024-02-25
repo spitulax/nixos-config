@@ -6,5 +6,6 @@
     openrct2
     openttd
     unciv
+    shattered-pixel-dungeon
   ];
 }
