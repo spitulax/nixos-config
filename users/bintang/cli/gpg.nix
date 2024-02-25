@@ -5,8 +5,6 @@
   home.packages = with pkgs; [ pinentry-gnome gcr ];
   services.gpg-agent = {
     enable = true;
-    enableSshSupport = true;
-    sshKeys = [ "7A7FDDEBBF361CDA7C09C470ECE1F17BBDA22717" ];
     pinentryFlavor = "gnome3";
     enableExtraSocket = true;
     defaultCacheTtl = 604800; # 604800 secs = one week

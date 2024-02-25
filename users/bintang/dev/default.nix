@@ -4,7 +4,6 @@
 , ...
 }: {
   imports = [
-    ./nvim
     ./godot
     ./python.nix
     ./rust.nix

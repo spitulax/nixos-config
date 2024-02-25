@@ -2,7 +2,7 @@ keys:
   - &users:
     - &bintang age1rgp5tfsaa6tw96h6eh7l4tdl6a2nsmgc854vgncc47sq4ytu8qkq3lc6p3
   - &hosts:
-    - &barbatos age1v333uk8wm849lnegw4ra4pydlvgdqjn6fn288dd2a8fz2sdm0sys306qeq
+    - &barbatos age1yz03wy9s2x8qlwytlqgsq38dn9z0vz6rfpxanp73lcdyh0650efs7f45lw
 
 creation_rules:
   - path_regex: secrets/global/.*$

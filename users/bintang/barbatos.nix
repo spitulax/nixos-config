@@ -15,6 +15,7 @@
     ./desktop
     ./service
     ./gaming
+    ./nvim
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   # User info
@@ -26,7 +27,7 @@
 
   # Extra packages
   home.packages = [
-    inputs.nh.packages."x86_64-linux".default
+    inputs.nh.packages.${pkgs.system}.default
   ];
 
   # Overlay

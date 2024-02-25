@@ -29,7 +29,7 @@ in
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
 
   # Sops
-  sops.age.sshKeyPaths = map (k: k.path) config.services.openssh.hostKeys;
+  sops.age.sshKeyPaths = [ /etc/ssh/ssh_host_ed25519_key ];
   sops.defaultSopsFile = ../../secrets/global/secrets.yaml;
 
   # Hardware
@@ -85,23 +85,15 @@ in
     settings = {
       PasswordAuthentication = false;
     };
-    hostKeys = [{
-      path = "/etc/ssh/ssh_host_ed25519_key";
-      type = "ed25519";
-    }];
   };
-  programs.ssh = {
-    knownHosts = builtins.mapAttrs
-      (name: _: {
-        publicKeyFile = ../${name}/ssh_host_ed25519_key.pub;
-        extraHostNames = [ "localhost" ];
-      })
-      hosts;
-  };
-  security.pam.sshAgentAuth = {
-    enable = true;
-    authorizedKeysFiles = [ "/etc/ssh/authorized_keys.d/%u" ];
-  };
+  # programs.ssh = {
+  #   knownHosts = builtins.mapAttrs
+  #     (name: _: {
+  #       publicKeyFile = ../${name}/ssh_host_rsa_key.pub;
+  #       extraHostNames = [ "localhost" ];
+  #     })
+  #     hosts;
+  # };
 
   # Misc programs
   environment.systemPackages = with pkgs; [

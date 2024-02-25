@@ -4,7 +4,7 @@
 , ...
 }: {
   sops = {
-    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+    age.sshKeyPaths = [ /home/bintang/.ssh/id_ed25519 ];
     defaultSopsFile = ../../../secrets/bintang/secrets.yaml;
   };
   systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
