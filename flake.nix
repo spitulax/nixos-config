@@ -97,7 +97,8 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    nvchad.url = "github:spitulax/nix-NvChad";
+    nvchad.url = "github:NvChad/NvChad/v2.0";
+    nvchad.flake = false;
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";

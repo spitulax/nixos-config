@@ -355,34 +355,20 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1708118438,
-        "narHash": "sha256-kk9/0nuVgA220FcqH/D2xaN6uGyHp/zoxPNUmPCMmEE=",
-        "path": "/nix/store/bg5fbkfa5x53clcjf4p5p92k1l3w8x38-source",
-        "rev": "5863c27340ba4de8f83e7e3c023b9599c3cb3c80",
-        "type": "path"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
     "nvchad": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
+      "flake": false,
       "locked": {
-        "lastModified": 1708782487,
-        "narHash": "sha256-/8Z9P9KnQf7v0xhxu4yCno7O2ETOHYH9RlN4apsZDLM=",
-        "owner": "spitulax",
-        "repo": "nix-NvChad",
-        "rev": "dcc0a14fc93065f078ff81a71290e7c34c269d80",
+        "lastModified": 1708131671,
+        "narHash": "sha256-GBuINStWMofqxhx4DcDOpjl8echsLwJXih+NQZQMZfI=",
+        "owner": "NvChad",
+        "repo": "NvChad",
+        "rev": "8aec881517ae9e39990507f3bc7dfebfb38d531a",
         "type": "github"
       },
       "original": {
-        "owner": "spitulax",
-        "repo": "nix-NvChad",
+        "owner": "NvChad",
+        "ref": "v2.0",
+        "repo": "NvChad",
         "type": "github"
       }
     },
