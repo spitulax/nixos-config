@@ -38,6 +38,14 @@ in
   boot.kernelModules = [ "synaptics_usb" ];
   services.thermald.enable = true;
   hardware.videoAccel.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
+  environment.etc."bluetooth/audio.conf".text = ''
+    [General]
+    Enable=Source
+  '';
 
   # Input device
   services.xserver.libinput = {
