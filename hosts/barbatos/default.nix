@@ -40,7 +40,7 @@ in
   hardware.videoAccel.enable = true;
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = false;
+    powerOnBoot = true;
   };
   environment.etc."bluetooth/audio.conf".text = ''
     [General]
