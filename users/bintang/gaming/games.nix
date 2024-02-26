@@ -7,5 +7,6 @@
     openttd
     unciv
     shattered-pixel-dungeon
+    retroarch
   ];
 }

@@ -1,4 +1,4 @@
-<h2 align="center">spitulax's NixOS Config</h2>
+<h1 align="center">spitulax's NixOS Config</h1>
 
 This is my [NixOS](https://nixos.org/) configuration for my systems.
 This uses [Nix Flakes](https://nixos.wiki/wiki/Flakes) and if you want to use this for yourself, feel free!
