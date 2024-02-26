@@ -25,17 +25,12 @@
     stateVersion = "23.11";
   };
 
-  # Extra packages
-  home.packages = [
-    inputs.nh.packages.${pkgs.system}.default
-  ];
-
   # Overlay
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 

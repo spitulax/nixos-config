@@ -4,7 +4,7 @@
 , ...
 }:
 let
-  nvchad = inputs.nvchad;
+  inherit (inputs) nvchad;
 in
 {
   programs.neovim = {

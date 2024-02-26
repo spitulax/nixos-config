@@ -31,8 +31,6 @@
     tldr
     trash-cli
     bat
-    vulnix
-    sops
     mediainfo
 
     # monitoring
@@ -46,7 +44,6 @@
 
     # misc
     gnupg
-    nix-output-monitor
     chafa # for telescope-media-files.nvim
     yt-dlp
   ];

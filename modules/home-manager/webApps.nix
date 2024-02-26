@@ -85,28 +85,31 @@ in
   };
 
   config = mkIf cfg.enable {
-    xdg.desktopEntries = builtins.listToAttrs (builtins.map (app:
-      let
-        exec = "${cfg.defaultBrowserExec} --profile-directory=${cfg.defaultProfile} --app-id=${app.id}";
-      in
-      {
-        name = "${cfg.defaultBrowserName}-${app.id}-${cfg.defaultProfile}";
-        value = {
-          inherit exec;
-          type = "Application";
-          icon = "${cfg.defaultBrowserName}-${app.id}-${cfg.defaultProfile}";
-          name = "${app.name}";
-          startupNotify = true;
-          terminal = false;
-          settings = {
-            StartupWMClass = "crx_${app.id}";
+    xdg.desktopEntries = builtins.listToAttrs (builtins.map
+      (app:
+        let
+          exec = "${cfg.defaultBrowserExec} --profile-directory=${cfg.defaultProfile} --app-id=${app.id}";
+        in
+        {
+          name = "${cfg.defaultBrowserName}-${app.id}-${cfg.defaultProfile}";
+          value = {
+            inherit exec;
+            type = "Application";
+            icon = "${cfg.defaultBrowserName}-${app.id}-${cfg.defaultProfile}";
+            name = "${app.name}";
+            startupNotify = true;
+            terminal = false;
+            settings = {
+              StartupWMClass = "crx_${app.id}";
+            };
+            actions = builtins.mapAttrs
+              (name: action: {
+                inherit name;
+                exec = "${exec} \"--app-launch-url-for-shortcuts-menu-item=${action.launchUrl}\"";
+              })
+              app.actions;
           };
-          actions = builtins.mapAttrs (name: action: {
-            name = name;
-            exec = "${exec} \"--app-launch-url-for-shortcuts-menu-item=${action.launchUrl}\"";
-          }) app.actions;
-        };
-      })
-    cfg.apps);
+        })
+      cfg.apps);
   };
 }

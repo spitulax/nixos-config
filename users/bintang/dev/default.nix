@@ -7,6 +7,7 @@
     ./godot
     ./python.nix
     ./rust.nix
+    ./nix.nix
   ];
 
   home.packages = with pkgs; [

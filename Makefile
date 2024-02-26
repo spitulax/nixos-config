@@ -1,4 +1,4 @@
-.PHONY: nixos home update upinput repl clean delete
+.PHONY: nixos home update upinput repl clean delete check
 
 nixos:
 	nh os switch -- --accept-flake-config
@@ -20,3 +20,6 @@ clean:
 
 delete:
 	nh clean all
+
+check:
+	statix check .
