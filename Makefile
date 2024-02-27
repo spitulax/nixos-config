@@ -1,10 +1,12 @@
-.PHONY: nixos home update upinput repl clean delete check
+.PHONY: nixos home upgrade update upinput repl clean delete check
 
 nixos:
 	nh os switch -- --accept-flake-config
 
 home:
 	nh home switch -- --accept-flake-config
+
+upgrade: update nixos
 
 update:
 	nix flake update

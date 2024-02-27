@@ -32,6 +32,7 @@
     trash-cli
     bat
     mediainfo
+    dust
 
     # monitoring
     htop

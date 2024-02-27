@@ -19,7 +19,7 @@ in
       general = {
         igpu_desiredgov = "performance";
         igpu_power_threshold = -1;
-        renice = 20;
+        renice = 15;
       };
     };
   };

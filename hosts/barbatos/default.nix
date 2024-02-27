@@ -45,6 +45,7 @@
     vdpauinfo
     intel-gpu-tools
     xorg.xdpyinfo
+    powertop
   ];
 
   # Misc services
