@@ -6,6 +6,7 @@
     ./keyboard.nix
     ./env.nix
     ./sops.nix
+    ./nix.nix
   ];
 
   home.packages = with pkgs; [

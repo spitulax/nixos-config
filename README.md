@@ -36,7 +36,7 @@ Here are some of the programs configured in this repo.
 
 #### Development
 
-- **Text Editor**: [Neovim][Neovim] [(details)](./users/bintang/nvim)
+- **Text Editor**: [Neovim][Neovim] [(details)](./users/nvim)
 - **Game Engine**: [Godot Engine][Godot Engine]
 
 #### Misc

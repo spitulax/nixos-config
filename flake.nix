@@ -39,7 +39,7 @@
             '';
           };
         };
-      overlays = import ./overlays { inherit inputs outputs pkgs; };
+      homeOverlays = import ./overlays/home.nix { inherit inputs outputs pkgs; };
       nixosOverlays = import ./overlays/nixos.nix { inherit inputs outputs pkgs; };
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
@@ -50,12 +50,6 @@
           modules = [ ./hosts/barbatos ];
           specialArgs = { inherit inputs outputs; };
         };
-
-        # Test VM
-        # "astaroth" = lib.nixosSystem {
-        #   modules = [ ./hosts/astaroth ];
-        #   specialArgs = { inherit inputs outputs; };
-        # };
       };
 
       homeConfigurations = {
@@ -65,16 +59,8 @@
           modules = [ ./users/bintang/barbatos.nix ];
           extraSpecialArgs = {
             inherit inputs outputs;
-            nixosConfig = outputs.nixosConfigurations."barbatos".config;
           };
         };
-
-        # Test VM
-        # "bintang@astaroth" = lib.homeManagerConfiguration {
-        #   inherit pkgs;
-        #   modules = [ ./users/bintang/astaroth.nix ];
-        #   extraSpecialArgs = { inherit inputs outputs; };
-        # };
       };
     };
 

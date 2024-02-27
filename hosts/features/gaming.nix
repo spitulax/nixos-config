@@ -9,6 +9,7 @@ in
 {
   imports = [
     inputs.nix-gaming.nixosModules.steamCompat
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
   # Gamemode
@@ -27,4 +28,13 @@ in
   # Steam
   hardware.steam-hardware.enable = true;
   programs.steam.enable = true;
+
+  # Pipewire Low Latency
+  services.pipewire = {
+    lowLatency = {
+      enable = true;
+      quantum = 64;
+      rate = 48000;
+    };
+  };
 }

@@ -18,7 +18,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    hardware.opengl.enable = lib.mkForce true;
+    hardware.opengl.extraPackages = with pkgs; [
       intel-media-driver
       libva
       libvdpau
