@@ -30,11 +30,12 @@ in
   programs.steam.enable = true;
 
   # Pipewire Low Latency
-  services.pipewire = {
-    lowLatency = {
-      enable = true;
-      quantum = 64;
-      rate = 48000;
-    };
-  };
+  # FAILED: probably because nix-gaming
+  # services.pipewire = {
+  #   lowLatency = {
+  #     enable = true;
+  #     quantum = 64;
+  #     rate = 48000;
+  #   };
+  # };
 }
