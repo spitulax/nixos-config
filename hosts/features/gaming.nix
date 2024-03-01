@@ -30,7 +30,7 @@ in
   programs.steam.enable = true;
 
   # Pipewire Low Latency
-  # FAILED: probably because nix-gaming
+  # FAILED: {https://github.com/fufexan/nix-gaming/issues/161}
   # services.pipewire = {
   #   lowLatency = {
   #     enable = true;
