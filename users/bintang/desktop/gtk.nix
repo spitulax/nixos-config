@@ -28,5 +28,20 @@ in
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
     gtk3.extraConfig = extraConfig;
     gtk4.extraConfig = extraConfig;
+    gtk2.extraConfig = ''
+      gtk-enable-animations=1
+      gtk-primary-button-warps-slider=0
+      gtk-toolbar-style=3
+      gtk-menu-images=1
+      gtk-button-images=1
+    '';
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.whitesur-cursors;
+    name = "WhiteSur-cursors";
+    size = 24;
   };
 }

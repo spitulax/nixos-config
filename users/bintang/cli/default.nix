@@ -11,6 +11,7 @@
     ./ssh.nix
     ./btop.nix
     ./neofetch.nix
+    ./fastfetch.nix
     ./spotdl.nix
   ];
 
