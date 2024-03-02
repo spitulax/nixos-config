@@ -26,7 +26,7 @@ in
     configHome = "${home}/.config";
     dataHome = "${home}/.local/share";
     stateHome = "${home}/.local/state";
-    userDirs = {
+    userDirs = rec {
       enable = true;
       createDirectories = true;
       desktop = "${home}/Desktop";
@@ -44,6 +44,8 @@ in
         XDG_BACKUP_DIR = "${home}/Backups";
         XDG_TEMP_DIR = "${home}/.temp";
         XDG_GAME_DIR = "${home}/Games";
+        XDG_SCREENSHOT_DIR = "${pictures}/Screenshots";
+        XDG_CAPTURE_DIR = "${videos}/Captures";
       };
     };
   };
