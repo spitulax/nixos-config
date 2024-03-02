@@ -23,7 +23,7 @@
 
   # OpenSSH
   services.openssh = {
-    enable = true;
+    enable = lib.mkDefault false;
     settings = {
       PasswordAuthentication = false;
     };

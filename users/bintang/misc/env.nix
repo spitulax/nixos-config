@@ -48,5 +48,13 @@ in
         XDG_CAPTURE_DIR = "${videos}/Captures";
       };
     };
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "inode/directory" = "thunar.desktop";
+        "x-scheme-handler/http" = "brave-browser.desktop";
+        "x-scheme-handler/https" = "brave-browser.desktop";
+      };
+    };
   };
 }

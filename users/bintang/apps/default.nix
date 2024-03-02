@@ -10,7 +10,6 @@
     ./obs.nix
     ./mpv.nix
     ./bitwarden.nix
-    ./thunar.nix
   ];
 
   home.packages = with pkgs; [
