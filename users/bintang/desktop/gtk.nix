@@ -1,20 +1,32 @@
 { config
 , pkgs
 , ...
-}: {
+}:
+let
+  extraConfig = {
+    gtk-application-prefer-dark-theme = true;
+    gtk-decoration-layout = "close,minimize,maximize:menu";
+  };
+in
+{
   gtk = {
     enable = true;
-    cursorTheme = {
-      name = "breeze_cursors";
-      size = 24;
+    theme = {
+      package = pkgs.whitesur-gtk-theme.override {
+        iconVariant = "tux";
+      };
+      name = "WhiteSur-Dark";
     };
-    iconTheme.name = "breeze-dark";
+    iconTheme = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
+    };
     font = {
       name = config.fontProfile.sansSerif;
       size = 10;
     };
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
+    gtk3.extraConfig = extraConfig;
+    gtk4.extraConfig = extraConfig;
   };
 }

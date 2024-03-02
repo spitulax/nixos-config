@@ -1,7 +1,12 @@
 { config
 , pkgs
+, inputs
 , ...
 }: {
+  imports = [
+    ./apps/thunar.nix
+  ];
+
   xdg.portal = {
     enable = true;
   };
@@ -18,6 +23,7 @@
   programs.hyprland = {
     enable = true;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
   # environment.systemPackages = with pkgs; [
@@ -31,7 +37,7 @@
   #   # eww # TODO: Configure eww
   #
   #   # Notif daemon
-  #   dunst
+  #   mako # wayland notif daemon alternative to dunst
   #   libnotify
   #
   #   # Wallpaper
@@ -40,10 +46,13 @@
   #   # Launcher/Picker
   #   rofi-wayland
   #   rofimoji
+  #
+  #   # Screenshot
+  #   flameshot
+  #   grim
   # ];
 
   environment.sessionVariables = {
-    # FIX: keys defined in user's xcompose file do not work if this is enabled
-    # NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
   };
 }

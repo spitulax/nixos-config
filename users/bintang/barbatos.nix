@@ -14,8 +14,10 @@
     ./cli
     ./desktop
     ./service
+    ./nix
     ./gaming
     ./nvim
+    ./hyprland
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   # User info
