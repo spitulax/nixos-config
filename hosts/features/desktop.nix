@@ -26,31 +26,31 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
-  # environment.systemPackages = with pkgs; [
-  #   swaylock
-  #
-  #   # Bar
-  #   (waybar.overrideAttrs (oldAttrs: {
-  #       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-  #     })
-  #   )
-  #   # eww # TODO: Configure eww
-  #
-  #   # Notif daemon
-  #   mako # wayland notif daemon alternative to dunst
-  #   libnotify
-  #
-  #   # Wallpaper
-  #   swww
-  #
-  #   # Launcher/Picker
-  #   rofi-wayland
-  #   rofimoji
-  #
-  #   # Screenshot
-  #   flameshot
-  #   grim
-  # ];
+  environment.systemPackages = with pkgs; [
+    swaylock
+
+    # Bar
+    (waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    })
+    )
+    # eww # TODO: Configure eww
+
+    # Notif daemon
+    mako # wayland notif daemon alternative to dunst
+    libnotify
+
+    # Wallpaper
+    swww
+
+    # Launcher/Picker
+    wofi
+    rofimoji
+
+    # Screenshot
+    flameshot
+    grim
+  ];
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
