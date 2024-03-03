@@ -5,12 +5,12 @@
   imports = [
     ./font.nix
     ./gtk.nix
+    ./qt.nix
   ];
 
   home.packages = with pkgs; [
     xclip
     wl-clipboard
-    adwaita-qt
-    kdePackages.kdialog
+    libsForQt5.kdialog
   ];
 }
