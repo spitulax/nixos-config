@@ -104,12 +104,19 @@ local tabufline_modules = {
       name = vim.fn.fnamemodify(bufname, ":.")
     elseif bufname:find(vim.loop.os_homedir(), 1, true) ~= nil then
       name = vim.fn.fnamemodify(bufname, ":~")
+    elseif bufname:sub(1, #("term://")) == "term://" then
+      name = "Terminal"
     else
       name = ""
     end
     name = (name:find("NvimTree", 1, true) ~= nil) and "NvimTree" or name
     name = "%#StatusLine#" .. name
     return name
+  end,
+
+  clock = function()
+    local time = os.date("%H:%M:%S")
+    return "%#StatusLine#" .. "  " .. time
   end,
 }
 
@@ -137,8 +144,10 @@ M.statusline = {
 
 M.tabufline = {
   enabled = true,
+  lazyload = false,
   show_numbers = false,
   overriden_modules = function(modules)
+    modules[5] = tabufline_modules.clock()
     modules[4] = tabufline_modules.bufname()
     modules[3] = tabufline_modules.tablist()
     table.remove(modules, 2) -- remove buffer list

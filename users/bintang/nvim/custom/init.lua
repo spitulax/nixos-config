@@ -34,3 +34,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
     require("base46").load_all_highlights()
   end,
 })
+
+-- Update tabline every second
+vim.fn.timer_start(1000, function() vim.cmd("redrawtabline") end, { ["repeat"] = -1 })
