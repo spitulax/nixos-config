@@ -113,11 +113,6 @@ local tabufline_modules = {
     name = "%#StatusLine#" .. name
     return name
   end,
-
-  clock = function()
-    local time = os.date("%H:%M:%S")
-    return "%#StatusLine#" .. "  " .. time
-  end,
 }
 
 
@@ -147,7 +142,6 @@ M.tabufline = {
   lazyload = false,
   show_numbers = false,
   overriden_modules = function(modules)
-    modules[5] = tabufline_modules.clock()
     modules[4] = tabufline_modules.bufname()
     modules[3] = tabufline_modules.tablist()
     table.remove(modules, 2) -- remove buffer list

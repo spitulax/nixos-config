@@ -272,6 +272,14 @@ local M = {
     end,
     config = true,
   },
+
+  {
+    "christoomey/vim-tmux-navigator",
+    init = function()
+      load_mappings("vim_tmux")
+    end,
+    lazy = false,
+  },
 }
 
 return M

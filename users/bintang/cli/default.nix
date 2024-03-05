@@ -13,6 +13,7 @@
     ./neofetch.nix
     ./fastfetch.nix
     ./spotdl.nix
+    ./tmux.nix
   ];
 
   home.packages = with pkgs; [
