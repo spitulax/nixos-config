@@ -1,6 +1,7 @@
 { config
 , pkgs
 , outputs
+, lib
 , ...
 }: {
   nixpkgs = {
@@ -12,7 +13,7 @@
   };
 
   nix = {
-    package = pkgs.nix;
+    package = lib.mkForce pkgs.nix;
     settings = {
       substituters = [
         "https://cache.nixos.org"
