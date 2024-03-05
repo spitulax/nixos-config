@@ -27,7 +27,6 @@
     file
     imagemagick
     cloc
-    tmux
     fontpreview
     tldr
     trash-cli
