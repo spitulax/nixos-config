@@ -91,5 +91,7 @@
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
+
+    hyprland.url = "github:hyprwm/hyprland";
   };
 }

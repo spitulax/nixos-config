@@ -31,10 +31,7 @@
     swaylock
 
     # Bar
-    (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    })
-    )
+    waybar
     # eww # TODO: Configure eww
 
     # Notif daemon
