@@ -10,6 +10,7 @@
 
   xdg.portal = {
     enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
 
   services.xserver = {
@@ -17,7 +18,7 @@
     desktopManager.plasma5.enable = true;
 
     displayManager.sddm.enable = true;
-    displayManager.defaultSession = "plasma";
+    displayManager.defaultSession = "plasmawayland";
   };
   programs.xwayland.enable = true;
 

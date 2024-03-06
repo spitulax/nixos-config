@@ -16,5 +16,6 @@
     pixelorama
     krita
     webcamoid
+    nomacs
   ];
 }

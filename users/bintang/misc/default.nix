@@ -7,6 +7,7 @@
     ./env.nix
     ./sops.nix
     ./entries.nix
+    ./mime.nix
   ];
 
   home.packages = with pkgs; [
