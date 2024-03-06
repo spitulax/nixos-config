@@ -42,7 +42,7 @@
     swww
 
     # Launcher/Picker
-    wofi
+    rofi-wayland
     rofimoji
 
     # Screenshot

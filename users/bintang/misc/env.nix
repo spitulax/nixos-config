@@ -51,6 +51,7 @@ in
     mimeApps = {
       enable = true;
       defaultApplications = {
+        "text/plain" = "nvim.desktop";
         "inode/directory" = "thunar.desktop";
         "x-scheme-handler/http" = "brave-browser.desktop";
         "x-scheme-handler/https" = "brave-browser.desktop";
