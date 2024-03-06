@@ -11,7 +11,6 @@ M.opts = {
 }
 
 M.mappings = {
-  plugin = true,
   n = {
     ["<leader>tr"] = { "<cmd> Telescope resume <CR>", "Resume Telescope" },
     -- find

@@ -19,10 +19,13 @@ Here are some of the programs configured in this repo.
 #### Desktop
 
 - **Display Manager**: [SDDM][SDDM]
+- **Window Manager (Wayland)**: [Hyprland][Hyprland]
+- **Desktop Environment (Wayland + X11)**: [KDE Plasma][KDE Plasma]
 
 #### CLI Tools
 
 - **Terminal Emulator**: [Kitty][Kitty]
+- **Terminal Multiplexer**: [Tmux][Tmux]
 - **Shell**: [Fish][Fish]
 - **Shell Prompt**: [Starship][Starship]
 - **Resource Monitoring**: [Btop][Btop]
@@ -33,6 +36,10 @@ Here are some of the programs configured in this repo.
 - **Screen Recording**: [OBS][OBS]
 - **WhatsApp Client**: [ZapZap][ZapZap]
 - **Password Manager**: [Bitwarden][Bitwarden]
+- **File Manager**: [Thunar][Thunar]
+- **Screenshot**: [Flameshot][Flameshot]
+- **Media Player**: [Mpv][Mpv]
+- **Painting**: [Krita][Krita] + [Pixelorama][Pixelorama]
 
 #### Development
 
@@ -49,9 +56,9 @@ Here are some of the programs configured in this repo.
 
 ## To-Do
 
+- [ ] [Hyprland][Hyprland] (WIP)
 - [ ] Nix devshells and templates
 - [ ] Set up [impermanence](https://github.com/nix-community/impermanence)
-- [ ] [Hyprland][Hyprland]
 - [ ] [Yazi][Yazi]
 
 [SDDM]: https://github.com/sddm/sddm
@@ -72,3 +79,10 @@ Here are some of the programs configured in this repo.
 [Keymapper]: https://github.com/houmain/keymapper
 [Hyprland]: https://github.com/hyprwm/Hyprland
 [Yazi]: https://github.com/sxyazi/yazi
+[KDE Plasma]: https://kde.org/plasma-desktop
+[Tmux]: https://github.com/tmux/tmux
+[Thunar]: https://gitlab.xfce.org/xfce/thunar
+[Flameshot]: https://github.com/flameshot-org/flameshot
+[Mpv]: https://mpv.io/
+[Krita]: https://krita.org/
+[Pixelorama]: https://orama-interactive.itch.io/pixelorama

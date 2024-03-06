@@ -14,7 +14,7 @@
     plasma-systemmonitor
     gwenview
     konsole
-    kwallet
+    kwalletmanager
   ];
   services.xserver.displayManager.sddm.theme = "WhiteSur";
 }

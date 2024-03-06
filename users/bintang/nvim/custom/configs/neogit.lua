@@ -33,7 +33,6 @@ M.opts = {
 }
 
 M.mappings = {
-  plugin = true,
   n = {
     ["<leader>g"] = { "<cmd>Neogit<cr>", "Open Neogit" },
   },

@@ -5,7 +5,6 @@ M.opts = {
 }
 
 M.mappings = {
-  plugin = true,
   n = {
     ["<Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },
     ["<Tab><Tab>"] = { "<cmd>HopWord<cr>", "Hop word" },

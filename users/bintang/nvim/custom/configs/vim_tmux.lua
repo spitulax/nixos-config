@@ -1,7 +1,6 @@
 local M = {}
 
 M.mappings = {
-  plugin = true,
   n = {
     ["<C-h>"] = { "<cmd>TmuxNavigateLeft<cr>", "Window left" },
     ["<C-j>"] = { "<cmd>TmuxNavigateDown<cr>", "Window down" },

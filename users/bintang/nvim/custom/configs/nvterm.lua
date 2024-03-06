@@ -1,7 +1,6 @@
 local M = {}
 
 M.mappings = {
-  plugin = true,
   n = {
     ["<leader>TF"] = {
       function()

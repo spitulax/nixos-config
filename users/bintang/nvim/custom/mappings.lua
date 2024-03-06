@@ -168,7 +168,7 @@ local mappings = {
 for _, plugin in ipairs(mappings) do
   local table = require("custom.configs." .. plugin).mappings
   if table ~= nil then
-    M[plugin] = table
+    M[plugin] = vim.tbl_extend("force", table, { plugin = true })
   end
 end
 

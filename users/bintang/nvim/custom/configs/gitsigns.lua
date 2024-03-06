@@ -12,7 +12,6 @@ M.opts = {
 }
 
 M.mappings = {
-  plugin = true,
   n = {
     ["<leader>B"] = { "<cmd>Gitsigns blame_line<CR>", "Blame line" },
     ["<leader>tb"] = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Toggle current line blame" },

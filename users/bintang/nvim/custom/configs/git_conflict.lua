@@ -5,7 +5,6 @@ M.opts = {
 }
 
 M.mappings = {
-  plugin = true,
   n = {
     ["<leader>Co"] = { "<Plug>(git-conflict-ours)", "Choose ours" },
     ["<leader>Ct"] = { "<Plug>(git-conflict-theirs)", "Choose theirs" },

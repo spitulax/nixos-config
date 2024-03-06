@@ -5,7 +5,6 @@ M.opts = {
 }
 
 M.mappings = {
-  plugin = true,
   n = {
     ["<leader>s"] = { "<cmd>Spectre<cr>", "Open Spectre" }, -- mini.surround key bindings only work in visual mode
   },
