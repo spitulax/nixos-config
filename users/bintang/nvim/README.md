@@ -34,6 +34,7 @@ Each file should return a table that optionally contains:
 - `setup`: a function that will be called when the plugin is loaded.
 - `opts`: a table that will override the plugin's default settings.
 - `mappings`: a table that contains mappings that will be loaded alongside the plugin [(details)](#configuring-mappings).
+
 You must explicitly state in [`plugins.lua`](./custom/plugins.lua) that the plugin will use any of these tables.
 - **To use `setup`:**
 ```lua
