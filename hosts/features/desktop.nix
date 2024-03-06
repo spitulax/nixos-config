@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./apps/thunar.nix
+    ./plasma.nix
   ];
 
   xdg.portal = {
@@ -37,7 +38,7 @@
     # eww # TODO: Configure eww
 
     # Notif daemon
-    mako # wayland notif daemon alternative to dunst
+    dunst
     libnotify
 
     # Wallpaper

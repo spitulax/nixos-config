@@ -55,6 +55,19 @@ in
         "x-scheme-handler/http" = "brave-browser.desktop";
         "x-scheme-handler/https" = "brave-browser.desktop";
       };
+      associations.added = {
+        "image/png" = "org.kde.gwenview.desktop";
+        "image/jpeg" = "org.kde.gwenview.desktop";
+        "video/ogg" = "mpv.desktop";
+        "video/x-msvideo" = "mpv.desktop";
+        "audio/mpeg" = "mpv.desktop";
+        "video/quicktime" = "mpv.desktop";
+        "video/webm" = "mpv.desktop";
+        "video/x-flv" = "mpv.desktop";
+        "video/mp4" = "mpv.desktop";
+        "audio/x-flac" = "mpv.desktop";
+        "audio/mp4" = "mpv.desktop";
+      };
     };
   };
 }

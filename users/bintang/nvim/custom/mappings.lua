@@ -110,7 +110,7 @@ M.general = {
 
     -- window and tab management
     ["<M-w>"] = { "<C-w>|", "Max out window width" },
-    ["<M-h>"] = { "<C-w>_", "Max out window height" },
+    ["<M-u>"] = { "<C-w>_", "Max out window height" },
     ["<C-c>"] = { "<C-w>q", "Close current window" },
     ["<M-c>"] = { "<C-w>o", "Close all other windows" },
     ["<M-=>"] = { "<C-w>+", "Increase window height" },
@@ -162,6 +162,7 @@ local mappings = {
   "gitsigns",
   "spectre",
   "todo",
+  "vim_tmux",
 }
 
 for _, plugin in ipairs(mappings) do

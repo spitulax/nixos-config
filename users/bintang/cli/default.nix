@@ -11,7 +11,9 @@
     ./ssh.nix
     ./btop.nix
     ./neofetch.nix
+    ./fastfetch.nix
     ./spotdl.nix
+    ./tmux.nix
   ];
 
   home.packages = with pkgs; [
@@ -26,7 +28,6 @@
     file
     imagemagick
     cloc
-    tmux
     fontpreview
     tldr
     trash-cli

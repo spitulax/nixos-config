@@ -104,6 +104,8 @@ local tabufline_modules = {
       name = vim.fn.fnamemodify(bufname, ":.")
     elseif bufname:find(vim.loop.os_homedir(), 1, true) ~= nil then
       name = vim.fn.fnamemodify(bufname, ":~")
+    elseif bufname:sub(1, #("term://")) == "term://" then
+      name = "Terminal"
     else
       name = ""
     end
@@ -137,6 +139,7 @@ M.statusline = {
 
 M.tabufline = {
   enabled = true,
+  lazyload = false,
   show_numbers = false,
   overriden_modules = function(modules)
     modules[4] = tabufline_modules.bufname()

@@ -22,12 +22,12 @@ M.opts = {
   },
   mappings = {
     commit_editor = {
-      ["<c-cr>"] = "Submit",
-      ["<c-bs>"] = "Abort",
+      ["<m-cr>"] = "Submit",
+      ["<m-bs>"] = "Abort",
     },
     rebase_editor = {
-      ["<c-cr>"] = "Submit",
-      ["<c-bs>"] = "Abort",
+      ["<m-cr>"] = "Submit",
+      ["<m-bs>"] = "Abort",
     },
   },
 }

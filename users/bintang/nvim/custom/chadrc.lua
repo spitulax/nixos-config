@@ -7,7 +7,7 @@ M.plugins = "custom.plugins"
 
 M.ui = {
   theme = "catppuccin",
-  transparency = false,
+  transparency = true,
   lsp_semantic_tokens = true,
 
   hl_override = highlight.override,

@@ -5,20 +5,12 @@
   imports = [
     ./font.nix
     ./gtk.nix
+    ./qt.nix
   ];
 
   home.packages = with pkgs; [
     xclip
     wl-clipboard
-    adwaita-qt
-    kdePackages.kdialog
+    libsForQt5.kdialog
   ];
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.whitesur-cursors;
-    name = "WhiteSur-cursors";
-    size = 24;
-  };
 }

@@ -1,10 +1,10 @@
 .PHONY: nixos home upgrade update upinput repl clean delete check
 
 nixos:
-	nh os switch -- --accept-flake-config
+	nh os switch
 
 home:
-	nh home switch -- --accept-flake-config
+	nh home switch
 
 upgrade: update nixos
 

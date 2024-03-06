@@ -5,7 +5,7 @@
   programs.brave = {
     enable = true;
     commandLineArgs = [
-      # "--enable-features=VaapiVideoDecodeLinuxGL"
+      "--enable-features=VaapiVideoDecodeLinuxGL" # NB: hardware video encoding is not available on Linux
       "--password-store=gnome"
       "--ignore-gpu-blocklist"
       "--profile-directory=Default"
