@@ -18,6 +18,7 @@
       default-timeout=10000
       ignore-timeout=1
       max-visible=10
+      max-icon-size=32
 
       [urgency=low]
       text-color=#6c7086
