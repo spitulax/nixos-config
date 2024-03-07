@@ -10,8 +10,8 @@
       "x-scheme-handler/https" = "brave-browser.desktop";
     };
     associations.added = {
-      "image/png" = "org.kde.gwenview.desktop";
-      "image/jpeg" = "org.kde.gwenview.desktop";
+      "image/png" = "nomacs.desktop";
+      "image/jpeg" = "nomacs.desktop";
       "video/ogg" = "mpv.desktop";
       "video/x-msvideo" = "mpv.desktop";
       "audio/mpeg" = "mpv.desktop";

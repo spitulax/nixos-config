@@ -32,5 +32,6 @@
     gnumake
     nodejs
     pkg-config
+    jq
   ];
 }

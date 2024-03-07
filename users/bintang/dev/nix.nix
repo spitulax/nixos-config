@@ -8,5 +8,6 @@
     nix-output-monitor
     sops
     statix
-  ] ++ [ inputs.nh.packages.${pkgs.system}.default ];
+    (nh.override { nix-output-monitor = pkgs.nix-output-monitor; })
+  ];
 }

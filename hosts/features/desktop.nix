@@ -36,7 +36,8 @@
     # eww # TODO: Configure eww
 
     # Notif daemon
-    dunst
+    # dunst
+    mako # wayland alternative
     libnotify
 
     # Wallpaper
