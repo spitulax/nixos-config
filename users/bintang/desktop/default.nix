@@ -3,26 +3,44 @@
 , ...
 }: {
   imports = [
+    ./hyprland
+    ./waybar
     ./font.nix
     ./gtk.nix
     ./qt.nix
+    # ./dunst.nix
+    ./keymapper.nix
+    ./mako.nix
   ];
 
   home.packages = with pkgs; [
-    xclip
+    # core
     wl-clipboard
-    libsForQt5.kdialog
+    light
+    gnome.zenity
+
+    # for Hyprland
     swaylock
+    swayidle
     waybar
     # eww # TODO: Configure eww
-    # dunst
-    mako
-    libnotify
+    wlogout
     swww
     rofi-wayland
     rofimoji
+
+    # screenshot
     flameshot
     grim
     slurp
+
+    # notification
+    mako
+    libnotify
+
+    # misc
+    alsa-utils
+    networkmanagerapplet
+    keymapper
   ];
 }

@@ -14,11 +14,11 @@ in
       enable = lib.mkEnableOption "keymapper";
 
       systemdTarget = lib.mkOption {
-        type = lib.types.str;
-        default = "graphical-session.target";
-        example = "sway-session.target";
+        type = lib.types.listOf lib.types.str;
+        default = "[ \"graphical-session.target\" ]";
+        example = "[ \"sway-session.target\" ]";
         description = ''
-          Systemd target to bind to.
+          Systemd targets to bind to.
         '';
       };
 
@@ -43,7 +43,7 @@ in
         RestartSec = "5";
       };
       Install = {
-        WantedBy = [ cfg.systemdTarget ];
+        WantedBy = cfg.systemdTarget;
       };
     };
 

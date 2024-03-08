@@ -5,6 +5,7 @@
 }: {
   services.keymapper = {
     enable = true;
+    systemdTarget = [ "hyprland-session.target" "graphical-session.target" ];
     extraConfig = ''
       Shift   >> Shift
       Control >> Control

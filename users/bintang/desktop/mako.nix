@@ -9,13 +9,14 @@
       on-button-left=exec makoctl menu -n "$id" ${pkgs.rofi-wayland}/bin/rofi -dmenu -p 'Select action'
       on-button-middle=dismiss-all
       on-button-right=dismiss
+      on-notify=exec mpv /run/current-system/sw/share/sounds/freedesktop/stereo/message.oga
       font=${config.fontProfile.sansSerif} 12
       background-color=#101020
       border-color=#7f849c
       border-radius=12
       progress-color=over #585b70
       format=<i><b>%a</b></i> ⋅ <b>%s</b>\n<small>%b</small>
-      default-timeout=10000
+      default-timeout=5000
       ignore-timeout=1
       max-visible=10
       max-icon-size=32
