@@ -38,6 +38,7 @@
 
       bind -n M-H previous-window
       bind -n M-L next-window
+      bind C-l send-keys 'C-l'
 
       bind '"' split-window -c "#{pane_current_path}"
       bind '%' split-window -h -c "#{pane_current_path}"
