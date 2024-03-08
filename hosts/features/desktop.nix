@@ -28,30 +28,6 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
-  environment.systemPackages = with pkgs; [
-    swaylock
-
-    # Bar
-    waybar
-    # eww # TODO: Configure eww
-
-    # Notif daemon
-    # dunst
-    mako # wayland alternative
-    libnotify
-
-    # Wallpaper
-    swww
-
-    # Launcher/Picker
-    rofi-wayland
-    rofimoji
-
-    # Screenshot
-    flameshot
-    grim
-  ];
-
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
   };

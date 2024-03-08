@@ -12,5 +12,17 @@
     xclip
     wl-clipboard
     libsForQt5.kdialog
+    swaylock
+    waybar
+    # eww # TODO: Configure eww
+    # dunst
+    mako
+    libnotify
+    swww
+    rofi-wayland
+    rofimoji
+    flameshot
+    grim
+    slurp
   ];
 }

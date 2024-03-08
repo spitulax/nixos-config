@@ -19,6 +19,8 @@
       ignore-timeout=1
       max-visible=10
       max-icon-size=32
+      width=400
+      height=200
 
       [urgency=low]
       text-color=#6c7086

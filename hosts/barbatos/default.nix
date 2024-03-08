@@ -46,6 +46,7 @@
     intel-gpu-tools
     xorg.xdpyinfo
     powertop
+    usbutils
   ];
 
   # Misc services
