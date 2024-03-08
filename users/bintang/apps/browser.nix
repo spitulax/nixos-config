@@ -7,8 +7,10 @@
     commandLineArgs = [
       "--enable-features=VaapiVideoDecodeLinuxGL" # NB: hardware video encoding is not available on Linux
       "--password-store=gnome"
-      "--ignore-gpu-blocklist"
       "--profile-directory=Default"
+      "--ozone-platform-hint=auto"
+      "--ignore-gpu-blocklist"
+      "--force-device-scale-factor=1.0" # without this sometimes tab bar gets unusually big at least on KDE Plasma Wayland
     ];
     extensions = [
       { id = "kfhgpagdjjoieckminnmigmpeclkdmjm"; } # Automatic Twitch
