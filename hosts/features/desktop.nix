@@ -4,7 +4,6 @@
 , ...
 }: {
   imports = [
-    ./apps/thunar.nix
     ./plasma.nix
   ];
 
@@ -15,8 +14,6 @@
 
   services.xserver = {
     enable = true;
-    desktopManager.plasma5.enable = true;
-
     displayManager.sddm.enable = true;
     displayManager.defaultSession = "plasmawayland";
   };
@@ -27,4 +24,11 @@
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
+
+  services.tumbler.enable = true; # Thumbnail support for images
+  environment.systemPackages = with pkgs; [
+    # File preview
+    webp-pixbuf-loader # .webp
+    ffmpegthumbnailer # video
+  ];
 }

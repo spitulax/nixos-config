@@ -14,6 +14,7 @@
     ./fastfetch.nix
     ./spotdl.nix
     ./tmux.nix
+    ./scripts.nix
   ];
 
   home.packages = with pkgs; [

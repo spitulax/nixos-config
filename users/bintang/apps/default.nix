@@ -17,5 +17,6 @@
     krita
     webcamoid
     nomacs
+    libsForQt5.dolphin
   ];
 }

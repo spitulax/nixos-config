@@ -36,7 +36,7 @@ Here are some of the programs configured in this repo.
 - **Screen Recording**: [OBS][OBS]
 - **WhatsApp Client**: [ZapZap][ZapZap]
 - **Password Manager**: [Bitwarden][Bitwarden]
-- **File Manager**: [Thunar][Thunar]
+- **File Manager**: [Dolphin][Dolphin]
 - **Screenshot**: [Flameshot][Flameshot]
 - **Media Player**: [Mpv][Mpv]
 - **Painting**: [Krita][Krita] + [Pixelorama][Pixelorama]
@@ -81,7 +81,7 @@ Here are some of the programs configured in this repo.
 [Yazi]: https://github.com/sxyazi/yazi
 [KDE Plasma]: https://kde.org/plasma-desktop
 [Tmux]: https://github.com/tmux/tmux
-[Thunar]: https://gitlab.xfce.org/xfce/thunar
+[Dolphin]: https://apps.kde.org/dolphin
 [Flameshot]: https://github.com/flameshot-org/flameshot
 [Mpv]: https://mpv.io/
 [Krita]: https://krita.org/

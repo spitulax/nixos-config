@@ -16,6 +16,7 @@
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
+      packages.${system} = import ./packages { inherit pkgs; }; # build with `nix build`. these packages also get added to nixpkgs overlay
       checks.${system} = {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
           src = ./.;
