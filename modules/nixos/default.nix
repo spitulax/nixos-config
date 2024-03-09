@@ -3,6 +3,7 @@
   gaming = import ./gaming.nix;
   keymapper = import ./keymapper.nix;
   video-hardware = import ./video-hardware.nix;
+  vm = import ./vm.nix;
 
   # Global configs
   common = import ./common;

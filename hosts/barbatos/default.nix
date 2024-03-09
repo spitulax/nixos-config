@@ -16,6 +16,7 @@
     keymapper
     gaming
     video-hardware
+    vm
 
     common
     desktop
@@ -27,6 +28,10 @@
   hardware.enableRedistributableFirmware = true;
   boot.kernelModules = [ "synaptics_usb" ];
   services.thermald.enable = true;
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+    options rfkill master_switch_mode=2
+  '';
 
   # Networking
   networking.hostName = "barbatos";

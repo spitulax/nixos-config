@@ -11,7 +11,13 @@
   users.users.bintang = {
     isNormalUser = true;
     description = "Bintang";
-    extraGroups = [ "input" "networkmanager" "wheel" "gamemode" ];
+    extraGroups = [
+      "input"
+      "networkmanager"
+      "wheel"
+      "gamemode"
+      "libvirtd"
+    ];
     shell = pkgs.fish;
     packages = with pkgs; [ home-manager ];
     openssh.authorizedKeys.keyFiles = [ ../../../users/bintang/keys/ssh-rsa.pub ../../../users/bintang/keys/ssh-ed25519.pub ];
