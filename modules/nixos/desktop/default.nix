@@ -5,6 +5,10 @@
 }: {
   imports = [
     ./plasma.nix
+    ./imgpreview.nix
+    ./input.nix
+    ./sound.nix
+    ./opengl.nix
   ];
 
   xdg.portal = {
@@ -24,11 +28,4 @@
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
-
-  services.tumbler.enable = true; # Thumbnail support for images
-  environment.systemPackages = with pkgs; [
-    # File preview
-    webp-pixbuf-loader # .webp
-    ffmpegthumbnailer # video
-  ];
 }

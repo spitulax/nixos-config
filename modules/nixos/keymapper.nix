@@ -4,29 +4,55 @@
 , lib
 , config
 , ...
-}:
-let
-  cfg = config.services.keymapper;
-in
-{
-  options = {
-    services.keymapper = {
-      enable = lib.mkEnableOption "keymapper";
-      extraArgs = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
-        default = [ ];
-        description = "Extra arguments to pass to keymapperd";
+}: {
+  systemd = {
+    # Found that keymapperd can get stuck in a loop and eat up CPU
+    timers.keymapper-mon = {
+      enable = true;
+      wantedBy = [ "keymapper.service" ];
+      timerConfig = {
+        OnCalendar = "*-*-* *:*:00";
+        AccuracySec = "60";
+        Persistent = true;
       };
     };
-  };
 
-  config = lib.mkIf cfg.enable {
-    systemd.services.keymapper = {
+    services.keymapper-mon = {
+      enable = true;
+      wantedBy = [ "keymapper.service" ];
+      path = [
+        config.systemd.package
+        pkgs.procps
+        pkgs.bc
+        pkgs.coreutils
+        pkgs.gawk
+      ];
+      script = ''
+        cpu=$(ps -p $(pgrep keymapperd) -u --no-headers | awk '{ print $3 }' | bc)
+        if test $cpu -gt 10; then
+          systemctl restart keymapperd
+        fi
+      '';
+    };
+
+    services.keymapper-restart = {
+      enable = true;
+      wantedBy = [ "post-resume.target" ];
+      path = [
+        config.systemd.package
+      ];
+      script = ''
+        systemctl restart keymapper
+      '';
+    };
+
+    services.keymapper = {
+      enable = true;
       description = "Keymapper";
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.keymapper}/bin/keymapperd ${lib.concatStringsSep " " cfg.extraArgs}";
+        ExecStart = "${pkgs.keymapper}/bin/keymapperd -v";
         Restart = "always";
         RestartSec = "5";
       };

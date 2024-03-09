@@ -7,6 +7,11 @@
 }: {
   imports = [
     ./nix.nix
+    ./bluetooth.nix
+    ./flatpak.nix
+    ./home-manager.nix
+    ./security.nix
+    ./sops.nix
   ];
 
   programs.fish.enable = true;
@@ -23,7 +28,7 @@
 
   # OpenSSH
   services.openssh = {
-    enable = lib.mkDefault false;
+    enable = lib.mkDefault true;
     settings = {
       PasswordAuthentication = false;
     };
@@ -37,7 +42,7 @@
   programs.ssh = {
     knownHosts = builtins.mapAttrs
       (name: _: {
-        publicKeyFile = ../${name}/ssh_host_rsa_key.pub;
+        publicKeyFile = ../../../hosts/${name}/ssh_host_rsa_key.pub;
         extraHostNames = [ "localhost" ];
       })
       outputs.nixosConfigurations;

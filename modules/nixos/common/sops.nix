@@ -5,5 +5,5 @@
     inputs.sops-nix.nixosModules.sops
   ];
   sops.age.sshKeyPaths = [ /etc/ssh/ssh_host_ed25519_key ];
-  sops.defaultSopsFile = ../../secrets/global/secrets.yaml;
+  sops.defaultSopsFile = ../../../secrets/global/secrets.yaml;
 }

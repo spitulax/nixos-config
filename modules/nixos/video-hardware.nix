@@ -6,29 +6,17 @@
 , pkgs
 , lib
 , ...
-}:
-let
-  cfg = config.hardware.videoAccel;
-in
-{
-  options = {
-    hardware.videoAccel = {
-      enable = lib.mkEnableOption "videoAccel";
-    };
-  };
+}: {
+  hardware.opengl.enable = lib.mkForce true;
+  hardware.opengl.extraPackages = with pkgs; [
+    intel-media-driver
+    libva
+    libvdpau
+  ];
 
-  config = lib.mkIf cfg.enable {
-    hardware.opengl.enable = lib.mkForce true;
-    hardware.opengl.extraPackages = with pkgs; [
-      intel-media-driver
-      libva
-      libvdpau
-    ];
-
-    # explicitly states what driver to use
-    environment.variables = {
-      LIBVA_DRIVER_NAME = "iHD";
-      VDPAU_DRIVER = "va_gl";
-    };
+  # explicitly states what driver to use
+  environment.variables = {
+    LIBVA_DRIVER_NAME = "iHD";
+    VDPAU_DRIVER = "va_gl";
   };
 }

@@ -12,24 +12,21 @@
     nixos-hardware.nixosModules.common-pc-laptop-acpi_call
     nixos-hardware.nixosModules.common-pc-laptop-ssd
     ./hardware-configuration.nix
-    ../global/desktop.nix
+  ] ++ (with outputs.nixosModules; [
+    keymapper
+    gaming
+    video-hardware
 
-    # Optional features
-    ../features/desktop.nix
-    ../features/gaming.nix
-    ../features/keymapper.nix
-    ../features/home-manager.nix
-    ../features/sops.nix
+    common
+    desktop
 
-    # Users
-    ../users/bintang.nix
-  ] ++ (builtins.attrValues outputs.nixosModules);
+    users.bintang
+  ]);
 
   # Hardware
   hardware.enableRedistributableFirmware = true;
   boot.kernelModules = [ "synaptics_usb" ];
   services.thermald.enable = true;
-  hardware.videoAccel.enable = true;
 
   # Networking
   networking.hostName = "barbatos";

@@ -10,6 +10,13 @@
 
 - `video-hardware.nix`: Force enabling hardware video acceleration for Intel UHD Graphics
 - `keymapper.nix`: Enabling system keymapper service
+- `gaming.nix`: Adds steam, gamemode, and other features optimized for gaming
+
+These modules are used inside hosts declaration:
+- `common/`: Common config for all hosts
+- `desktop/`: Features to enable for desktop hosts
+- `server/`: Features to enable for server hosts
+- `users/`: The configs for adding users to a host
 
 ## Credits
 

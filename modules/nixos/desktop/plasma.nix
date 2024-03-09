@@ -16,7 +16,7 @@
   environment.plasma5.excludePackages = with pkgs.libsForQt5; [
     elisa
     ark
-    # spectacle # TODO: config flameshot
+    # spectacle # TODO: config flameshot (autostart it)
     gwenview
     konsole
   ];
