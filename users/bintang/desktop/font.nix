@@ -22,7 +22,6 @@
       noto-fonts-color-emoji
 
       # Icons
-      material-design-icons
       font-awesome
 
       # Misc/All
@@ -30,14 +29,13 @@
       noto-fonts-lgc-plus
     ];
     nerdFonts = [
-      "FiraCode"
+      # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/data/fonts/nerdfonts/shas.nix
+      "NerdFontsSymbolsOnly"
       "Iosevka"
-      "JetBrainsMono"
     ];
 
-    monospace = "Iosevka Nerd Font"; # IOSEVKA SUPREMACY!!!!!!!!!!
-    # Other fonts struggle to display some diacritics such as l̩,ŋ̍
-    serif = "Poly";
-    sansSerif = "Fira Sans";
+    monospace = "Iosevka Nerd Font";
+    serif = "Source Serif 3";
+    sansSerif = "Source Sans 4";
   };
 }
