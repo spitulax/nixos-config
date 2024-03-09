@@ -8,10 +8,9 @@
       "--enable-features=VaapiVideoDecodeLinuxGL" # NB: hardware video encoding is not available on Linux
       "--password-store=gnome"
       "--profile-directory=Default"
-      "--ozone-platform-hint=auto"
+      "--ozone-platform-hint=wayland"
       "--ignore-gpu-blocklist"
       "--force-device-scale-factor=1.0" # without this sometimes tab bar gets unusually big at least on KDE Plasma Wayland
-      # NB: one of these flags probably enabled pinch to zoom gesture
     ];
     extensions = [
       { id = "kfhgpagdjjoieckminnmigmpeclkdmjm"; } # Automatic Twitch
