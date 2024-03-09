@@ -17,6 +17,7 @@
     ./packages.nix
     ./locale.nix
     ./openssh.nix
+    ./zram.nix
   ];
 
   # Bootloader
