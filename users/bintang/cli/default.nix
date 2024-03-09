@@ -18,35 +18,14 @@
   ];
 
   home.packages = with pkgs; [
-    # shell utils
-    ripgrep
-    wget
-    curl
     eza
-    fd
-    fzf
-    which
-    file
+    ripgrep
     imagemagick
     cloc
     fontpreview
-    tldr
     trash-cli
     bat
-    mediainfo
     dust
-
-    # monitoring
-    htop
-
-    # archives
-    zip
-    unzip
-    xz
-    p7zip
-
-    # misc
-    gnupg
     chafa # for telescope-media-files.nvim
     yt-dlp
   ];

@@ -34,16 +34,10 @@
   # Misc programs
   environment.systemPackages = with pkgs; [
     # hardware monitoring
-    inxi
-    glxinfo
-    lm_sensors
     libva-utils
-    pciutils
     vdpauinfo
     intel-gpu-tools
-    xorg.xdpyinfo
     powertop
-    usbutils
   ];
 
   # Misc services
