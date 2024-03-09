@@ -4,13 +4,10 @@
 }: {
   imports = [
     ./hyprland
-    ./waybar
     ./font.nix
     ./gtk.nix
     ./qt.nix
-    # ./dunst.nix
     ./keymapper.nix
-    ./mako.nix
   ];
 
   home.packages = with pkgs; [
