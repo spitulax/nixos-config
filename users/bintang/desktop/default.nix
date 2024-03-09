@@ -4,11 +4,12 @@
 }: {
   imports = [
     ./hyprland
-    ./font.nix
     ./gtk.nix
     ./qt.nix
     ./keymapper.nix
   ];
+
+  fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     # core

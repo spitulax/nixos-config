@@ -20,7 +20,7 @@ in
       name = "Adwaita";
     };
     font = {
-      name = config.fontProfile.sansSerif;
+      name = "sans-serif";
       size = 10;
     };
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";

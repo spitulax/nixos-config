@@ -9,6 +9,7 @@
     ./input.nix
     ./sound.nix
     ./opengl.nix
+    ./fonts.nix
   ];
 
   xdg.portal = {

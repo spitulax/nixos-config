@@ -6,7 +6,7 @@
     enable = true;
     # theme = "Catppuccin-Mocha";
     font.size = 12.0;
-    font.name = config.fontProfile.monospace;
+    font.name = "monospace";
     settings = {
       # Mouse
       mouse_hide_wait = -1;

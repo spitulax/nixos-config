@@ -10,7 +10,7 @@
       on-button-middle=dismiss-all
       on-button-right=dismiss
       on-notify=exec mpv /run/current-system/sw/share/sounds/freedesktop/stereo/message.oga
-      font=${config.fontProfile.sansSerif} 12
+      font=sans-serif 12
       background-color=#101020
       border-color=#7f849c
       border-radius=12
