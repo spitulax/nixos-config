@@ -34,4 +34,5 @@
 
   # Services
   services.dbus.packages = [ pkgs.gcr ];
+  services.gvfs.enable = true;
 }

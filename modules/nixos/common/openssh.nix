@@ -3,6 +3,7 @@
 , lib
 , ...
 }: {
+  programs.ssh.startAgent = true;
   services.openssh = {
     enable = lib.mkDefault true;
     settings = {
