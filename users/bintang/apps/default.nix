@@ -10,6 +10,7 @@
     ./obs.nix
     ./mpv.nix
     ./bitwarden.nix
+    ./entertainment.nix
   ];
 
   home.packages = with pkgs; [

@@ -86,10 +86,15 @@
     nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-alien.url = "github:thiagokokada/nix-alien";
+    # Do not modify nix-alien's inputs
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland.url = "github:hyprwm/hyprland";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
+
+    lobster.url = "github:justchokingaround/lobster";
+    lobster.inputs.nixpkgs.follows = "nixpkgs";
   };
 }
