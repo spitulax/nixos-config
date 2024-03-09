@@ -1,12 +1,16 @@
-.PHONY: nixos home upgrade update upinput repl clean delete check
+.PHONY: build nixos home upgrade update upinput repl clean delete check
+
+upgrade: update build
+
+build: nixos
+	git add -A
+	git commit -m "build $(shell date '+%F %R')"
 
 nixos:
 	nh os switch
 
 home:
 	nh home switch
-
-upgrade: update nixos
 
 update:
 	nix flake update
