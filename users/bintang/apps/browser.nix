@@ -56,6 +56,10 @@
         name = "Syncthing";
         id = "mfinobjnbcnohnemakjeccbjljpebmlm"; # on port 8384
       }
+      {
+        name = "Anilist";
+        id = "nhpkhfhppiampjblenncchhnipmeafgd";
+      }
     ];
   };
 }
