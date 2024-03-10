@@ -19,6 +19,7 @@
     # spectacle # TODO: config flameshot (autostart it)
     gwenview
     konsole
+    okular
   ];
   services.xserver.displayManager.sddm.theme = "WhiteSur";
 }

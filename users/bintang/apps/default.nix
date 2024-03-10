@@ -11,6 +11,7 @@
     ./mpv.nix
     ./bitwarden.nix
     ./entertainment.nix
+    ./zathura.nix
   ];
 
   home.packages = with pkgs; [

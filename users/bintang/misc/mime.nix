@@ -10,6 +10,7 @@
       "x-scheme-handler/https" = "brave-browser.desktop";
     };
     associations.added = {
+      "application/pdf" = "org.pwmt.zathura.desktop";
       "image/png" = "nomacs.desktop";
       "image/jpeg" = "nomacs.desktop";
       "video/ogg" = "mpv.desktop";
