@@ -20,5 +20,6 @@
     webcamoid
     nomacs
     libsForQt5.dolphin
+    kooha
   ];
 }
