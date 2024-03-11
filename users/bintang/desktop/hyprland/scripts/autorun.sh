@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 
-mako
+# Autostart apps
 zapzap
+blueman-tray
+waybar

@@ -14,8 +14,10 @@
     extraConfig = builtins.readFile ./hyprland.conf;
   };
 
-  home.file.".config/hypr/scripts" = {
-    source = ./scripts;
-    recursive = true;
+  home.file = {
+    ".config/hypr/scripts" = {
+      source = ./scripts;
+      recursive = true;
+    };
   };
 }
