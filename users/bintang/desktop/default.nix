@@ -4,6 +4,7 @@
 }: {
   imports = [
     ./hyprland
+    ./eww
     ./gtk.nix
     ./qt.nix
     ./keymapper.nix
@@ -20,8 +21,7 @@
     # for Hyprland
     swaylock
     swayidle
-    waybar
-    # eww # TODO: Configure eww
+    eww
     wlogout
     swww
     rofi-wayland

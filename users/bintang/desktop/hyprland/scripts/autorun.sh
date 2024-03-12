@@ -3,4 +3,3 @@
 # Autostart apps
 zapzap
 blueman-tray
-waybar
