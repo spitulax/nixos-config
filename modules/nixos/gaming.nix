@@ -8,7 +8,8 @@ let
 in
 {
   imports = [
-    inputs.nix-gaming.nixosModules.steamCompat
+    # FAILED: {https://github.com/fufexan/nix-gaming/issues/163}
+    # inputs.nix-gaming.nixosModules.steamCompat
     inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 

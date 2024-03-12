@@ -3,8 +3,6 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    openrct2
-    shattered-pixel-dungeon
     pcsx2
   ];
 }
