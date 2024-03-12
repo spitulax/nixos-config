@@ -138,7 +138,7 @@ M.general = {
   v = {
     -- shortcuts
     ["!"] = { ":!", "Enter shell command mode", opts = { nowait = true } },
-    ["<C-n>"] = { ":Norm ", "Execute normal mode commands", opts = { nowait = true } },
+    ["<C-n>"] = { ":norm ", "Execute normal mode commands", opts = { nowait = true } },
     ["<C-p>"] = { "\"+p", "Paste from + register (p)" },
     ["<C-y>"] = { "\"+y", "Yank to + register" },
   },

@@ -9,6 +9,7 @@
       "--password-store=gnome"
       "--profile-directory=Default"
       "--ozone-platform-hint=wayland"
+      # "--ozone-platform-hint=x11"   # for working compose key
       "--ignore-gpu-blocklist"
       "--force-device-scale-factor=1.0" # without this sometimes tab bar gets unusually big at least on KDE Plasma Wayland
     ];
