@@ -109,6 +109,7 @@ include "%L"
 # Nasals
 <Multi_key> <m> <comma>		    : "ɱ"   U0273     # VOICED LABIODENTAL NASAL
 <Multi_key> <n> <comma>		    : "ɳ"   U0273     # VOICED RETROFLEX NASAL
+<Multi_key> <n> <y>		        : "ɲ"   U0273     # VOICED PALATAL NASAL
 # Stops
 <Multi_key> <t> <comma>		        : "ʈ"   U0288     # VOICELESS RETROFLEX STOP
 <Multi_key> <d> <comma>		        : "ɖ"   U0256     # VOICED RETROFLEX STOP
@@ -127,6 +128,8 @@ include "%L"
 <Multi_key> <l> <z>			            : "ɮ"	  U026E		  # VOICED ALVEOLAR LATERAL FRICATIVE
 <Multi_key> <s> <h>			            : "ʃ"	  U0283		  # VOICELESS POSTALVEOLAR FRICATIVE
 <Multi_key> <z> <h>			            : "ʒ"	  U0292		  # VOICED POSTALVEOLAR FRICATIVE
+<Multi_key> <s> <y>			            : "ɕ"	  U0283		  # VOICELESS ALVEOLOPALATAL FRICATIVE
+<Multi_key> <z> <y>			            : "ʑ"	  U0292		  # VOICED ALVEOLOPALATAL FRICATIVE
 <Multi_key> <s> <comma>		          : "ʂ"   U0282     # VOICELESS RETROFLEX FRICATIVE
 <Multi_key> <z> <comma>		          : "ʐ"   U0290     # VOICED RETROFLEX FRICATIVE
 <Multi_key> <g> <h>	     	          : "ɣ"   U0263     # VOICED VELAR FRICATIVE
@@ -142,6 +145,7 @@ include "%L"
 <Multi_key> <y> <y>			      : "ʎ"	  U028E		  # VOICED PALATAL LATERAL APPROXIMANT
 <Multi_key> <h> <h>			      : "ɥ"	  U0265		  # VOICED LABIOPALATAL APPROXIMANT
 # Vowels
+<Multi_key> <i> <i>			                : "ɨ"	U026F		        # HIGH CENTRAL UNROUNDED VOWEL
 <Multi_key> <u> <i>			                : "ɯ"	U026F		        # HIGH BACK UNROUNDED VOWEL
 <Multi_key> <i> <h>                     : "ɪ"	U026A		        # NEAR HIGH FRONT UNROUNDED VOWEL
 <Multi_key> <u> <h>			                : "ʊ"	U028A		        # NEAR HIGH BACK ROUNDED VOWEL

@@ -42,7 +42,6 @@
     libva-utils
     vdpauinfo
     intel-gpu-tools
-    powertop
   ];
 
   # Misc services
