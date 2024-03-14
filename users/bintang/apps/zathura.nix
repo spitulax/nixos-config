@@ -13,12 +13,6 @@ in
 {
   programs.zathura = {
     enable = true;
-    mappings = {
-      "h" = "navigate previous";
-      "l" = "navigate next";
-      "<C-h>" = "navigate left";
-      "<C-l>" = "navigate right";
-    };
     options = with colors; {
       completion-bg = bg1;
       completion-fg = text;
@@ -47,7 +41,7 @@ in
       index-active-fg = bg0;
       index-bg = bg1;
       index-fg = text;
-      page-padding = 3;
+      page-padding = 5;
       pages-per-row = 2;
       advance-pages-per-row = true;
       scroll-page-aware = true;

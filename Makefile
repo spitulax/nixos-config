@@ -1,4 +1,4 @@
-.PHONY: build nixos home upgrade update upinput repl clean delete check
+.PHONY: build nixos home upgrade update upinput repl clean delete check boot
 
 upgrade: update build
 
@@ -11,6 +11,9 @@ nixos:
 
 home:
 	nh home switch
+
+boot:
+	nh os boot
 
 update:
 	nix flake update
