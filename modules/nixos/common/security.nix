@@ -1,5 +1,6 @@
 { config
 , pkgs
+, lib
 , ...
 }:
 let
@@ -8,10 +9,10 @@ in
 {
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  environment.systemPackages = with pkgs; [ pinentry-gnome gcr ];
+  environment.systemPackages = with pkgs; [ gcr ];
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "gnome3";
+    pinentryPackage = lib.mkForce pkgs.pinentry-gnome3;
     enableExtraSocket = true;
     settings = {
       default-cache-ttl = cacheTime;

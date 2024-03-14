@@ -9,7 +9,6 @@
     ./zapzap.nix
     ./obs.nix
     ./mpv.nix
-    ./bitwarden.nix
     ./entertainment.nix
     ./zathura.nix
   ];

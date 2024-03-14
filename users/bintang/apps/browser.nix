@@ -62,6 +62,10 @@
         name = "Anilist";
         id = "nhpkhfhppiampjblenncchhnipmeafgd";
       }
+      {
+        name = "Bitwarden";
+        id = "hophjnbpmamkldmdaeggjlnpfechpkfl";
+      }
     ];
   };
 }
