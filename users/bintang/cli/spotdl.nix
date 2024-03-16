@@ -2,7 +2,8 @@
 , pkgs
 , ...
 }: {
-  home.packages = [ pkgs.spotdl ];
+  # ffmpeg 6 won't work, spotdl will stuck at converting
+  home.packages = [ (pkgs.spotdl.override { ffmpeg = pkgs.ffmpeg_4; }) ];
   home.file.".local/share/spotdl/config.json".text = ''
     {
       "max_retries": 3,
