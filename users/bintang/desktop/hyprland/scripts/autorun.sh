@@ -2,4 +2,4 @@
 
 # Autostart apps
 zapzap
-blueman-tray
+blueman-applet

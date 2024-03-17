@@ -1,54 +1,81 @@
 {
   "position": "top",
   "layer": "top",
+  "spacing": 8,
 
   "modules-left": [
-    "temperature",
-    "backlight",
     "hyprland/workspaces"
   ],
+  "modules-center": [
+    "hyprland/window"
+  ],
   "modules-right": [
-    "pulseaudio",
-    "battery",
     "memory",
     "cpu",
     "network",
+    "pulseaudio",
+    "battery",
     "clock",
+    "custom/notification",
     "idle_inhibitor",
     "tray"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",
-    "on-click": "activate",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "10": "〇",
-      "focused": "",
-      "default": ""
+      "1": "",
+      "2": "",
+      "3": "󰭹",
+      "4": "",
+      "5": "",
+    },
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+  },
+
+  "hyprland/window": {
+    "format": "{title}",
+    "separate-outputs": true,
+    "rewrite": {
+      "(.*) - Brave": " $1",
+      "ZapZap.*": "󰭹 ZapZap",
+      "tmux.*": " tmux",
     }
   },
 
   "clock": {
-    "interval": 60,
-    "align": 0,
-    "rotate": 0,
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": " {:%H:%M}",
-    "format-alt": " {:%a %b %d, %G}"
+    "interval": 1,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "format": " {:%H:%M:%S %Z}",
+    "format-alt": " {:%a %d %b}",
+    "locale": "en_US.UTF-8",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "format": {
+        "months":     "<span color='#89b4fa'><b>{}</b></span>",
+        "days":       "<span color='#cdd6f4'>{}</span>",
+        "weekdays":   "<span color='#fab387' overline='single' overline_color='#6c7086'><b>{}</b></span>",
+        "today":      "<span color='#89b4fa'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "tz_up",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+    "timezones": [
+      "Asia/Jakarta",
+      "Atlantic/Reykjavik"
+    ]
   },
   "cpu": {
-    "format": "\udb80\udf5b {usage}%",
+    "format": "󰍛 {usage}%",
     "interval": 1,
-    "on-click-middle": "kitty btop",
-    "on-click-right": "kitty btop"
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -137,13 +164,19 @@
       "critical": 15
     },
     "max-length": 20,
-    "format": "{icon} {capacity}%",
-    "format-warning": "{icon} {capacity}%",
-    "format-critical": "{icon} {capacity}%",
-    "format-charging": "<span font-family='Font Awesome 6 Free'></span> {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{icon} {time}",
-    "format-full": " {capacity}%",
+    "format": "{icon}{capacity}%",
+    "format-discharging-warning": "{capacity}%",
+    "format-discharging-critical": "{capacity}%",
+    "format-charging": "󱐋{capacity}%",
+    "format-plugged": "{capacity}%",
+    "format-alt": null,
+    "format-full": "{capacity}%",
+    "tooltip-format": "{timeTo}{time}",
+    "format-time": " ⋅ {H}h {M}m remaining",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
     "format-icons": [
       " ",
       " ",
@@ -151,5 +184,10 @@
       " ",
       " "
     ]
+  },
+  "custom/notification": {
+    "exec": "[[ $(makoctl mode) = 'do-not-disturb' ]] && echo '' || echo ''",
+    "restart-interval": 1,
+    "on-click": "[[ $(makoctl mode) = 'do-not-disturb' ]] && makoctl mode -r do-not-disturb || makoctl mode -s do-not-disturb"
   },
 }
