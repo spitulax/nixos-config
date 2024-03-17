@@ -9,6 +9,7 @@
   common = import ./common;
   desktop = import ./desktop;
   server = import ./server;
+  laptop = import ./laptop.nix;
 
   # Users
   users = {

@@ -20,6 +20,7 @@
 
     common
     desktop
+    laptop
 
     users.bintang
   ]);
