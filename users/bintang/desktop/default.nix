@@ -15,7 +15,7 @@
   home.packages = with pkgs; [
     # core
     wl-clipboard
-    light
+    brightnessctl
     gnome.zenity
 
     # for Hyprland
