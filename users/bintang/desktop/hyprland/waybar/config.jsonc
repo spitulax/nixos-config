@@ -44,6 +44,9 @@
       "(.*) - Brave": " $1",
       "ZapZap.*": "󰭹 ZapZap",
       "tmux.*": " tmux",
+      "Youtube.*": "󰗃 YouTube",
+      "Twitch.*": " Twitch",
+      "Github.*": " Github",
     }
   },
 
@@ -98,8 +101,8 @@
       "format-wifi": " {essid}",
       "format-ethernet": " {ipaddr}/{cidr}",
       "format-linked": " {ifname} (No IP)",
-      "format-disconnected": "睊 Disconnected",
-      "format-disabled": "睊 Disabled",
+      "format-disconnected": "✈ Disconnected",
+      "format-disabled": "✈ Disabled",
       "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
       "tooltip-format": " {ifname} via {gwaddr}",
       "on-click-middle": "nm-connection-editor",
@@ -158,21 +161,21 @@
   "battery": {
     "bat": "BAT0",
     "adapter": "ADP0",
-    "interval": 60,
+    "interval": 1,
     "states": {
       "warning": 30,
       "critical": 15
     },
     "max-length": 20,
     "format": "{icon}{capacity}%",
-    "format-discharging-warning": "{capacity}%",
-    "format-discharging-critical": "{capacity}%",
-    "format-charging": "󱐋{capacity}%",
-    "format-plugged": "{capacity}%",
+    "format-discharging-warning": " {capacity}%",
+    "format-discharging-critical": " {capacity}%",
+    "format-charging": "󱐋 {capacity}%",
+    "format-plugged": " {capacity}%",
     "format-alt": null,
-    "format-full": "{capacity}%",
-    "tooltip-format": "{timeTo}{time}",
-    "format-time": " ⋅ {H}h {M}m remaining",
+    "format-full": " {capacity}%",
+    "tooltip-format": "{timeTo}",
+    "format-time": "{H}h {M}m",
     "states": {
       "warning": 20,
       "critical": 10
@@ -186,8 +189,9 @@
     ]
   },
   "custom/notification": {
-    "exec": "[[ $(makoctl mode) = 'do-not-disturb' ]] && echo '' || echo ''",
+    "exec": "~/.config/waybar/scripts/mako.sh show",
     "restart-interval": 1,
-    "on-click": "[[ $(makoctl mode) = 'do-not-disturb' ]] && makoctl mode -r do-not-disturb || makoctl mode -s do-not-disturb"
+    "return-type": "json",
+    "on-click": "~/.config/waybar/scripts/mako.sh toggle"
   },
 }
