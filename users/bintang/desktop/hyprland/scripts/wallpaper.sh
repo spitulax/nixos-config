@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
+pkill swww-daemon
+swww init
+
 if [ "$WALLPAPER" != "" ]; then
-  swww init
   swww img $WALLPAPER
 fi

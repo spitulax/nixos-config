@@ -2,22 +2,26 @@
   "position": "top",
   "layer": "top",
   "spacing": 8,
+  "height": 35,
 
   "modules-left": [
+    "group/power-menu",
+    "gamemode",
     "hyprland/workspaces"
   ],
   "modules-center": [
     "hyprland/window"
   ],
   "modules-right": [
+    "disk",
     "memory",
     "cpu",
     "network",
     "pulseaudio",
     "battery",
+    "power-profiles-daemon",
     "clock",
     "custom/notification",
-    "idle_inhibitor",
     "tray"
   ],
   "hyprland/workspaces": {
@@ -52,9 +56,9 @@
 
   "clock": {
     "interval": 1,
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "format": " {:%H:%M:%S %Z}",
-    "format-alt": " {:%a %d %b}",
+    "tooltip-format": "<span color='#89b4fa'><big><b>{:%Y}</b></big></span>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%H:%M:%S %Z}",
+    "format-alt": "{:%a %d %b}",
     "locale": "en_US.UTF-8",
     "calendar": {
       "mode": "year",
@@ -76,83 +80,69 @@
       "Atlantic/Reykjavik"
     ]
   },
-  "cpu": {
-    "format": "󰍛 {usage}%",
-    "interval": 1,
+  "disk": {
+    "format": "󰗮",
+    "format-alt": "{used}",
+    "tooltip-format": "Used: {used}/{total} ({percentage_used}%)\nFree: {free} ({percentage_free}%)"
   },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "\uf06e",
-      "deactivated": "\uf070"
-    },
-    "tooltip": false
+  "cpu": {
+    "format": "󰘚",
+    "format-alt": "{load}",
+    "interval": 1,
   },
   "memory": {
-    "format": "\udb83\udee0 {percentage}%",
+    "format": "󰍛",
+    "format-alt": "{used}G",
     "interval": 1,
-    "states": {
-      "warning": 85
-    }
+    "tooltip-format": "Memory: {used}G/{total}G ({percentage}%)\n        {avail}G available\nSwap  : {swapUsed}G/{swapTotal}G ({swapPercentage}%)\n        {swapAvail}G available"
+  },
+  "gamemode": {
+    "glyph": "󰓅", // TODO: make it red or smth
+    "use-icon": false,
   },
   "network": {
-      "interval": 5,
-      //"interface": "wlan*", // (Optional) To force the use of this interface, set it for netspeed to work
-      "format-wifi": " {essid}",
-      "format-ethernet": " {ipaddr}/{cidr}",
-      "format-linked": " {ifname} (No IP)",
-      "format-disconnected": "✈ Disconnected",
-      "format-disabled": "✈ Disabled",
-      "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
-      "tooltip-format": " {ifname} via {gwaddr}",
-      "on-click-middle": "nm-connection-editor",
-      "on-click-right": "kitty nmtui"
+    "interval": 2,
+    "format": " {bandwidthDownBytes}",
+    "format-alt": " {bandwidthUpBytes}",
+    "format-disconnected": "✈ Disconnected",
+    "tooltip-format-wifi": " {essid} {signalStrength}% · {ipaddr}",
+    "tooltip-format-ethernet": "󰈀 {ipaddr}/{cidr} · {ipaddr}",
+    "tooltip-format-disconnected": "",
+  },
+  "power-profiles-daemon": {
+    "tooltip-format": "Current profile: {profile}",
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   },
   "pulseaudio": {
-      //"format": "{volume}% {icon} {format_source}",
-      "format": "{icon} {volume}%",
-      "format-muted": " Mute",
-      "format-bluetooth": " {volume}% {format_source}",
-      "format-bluetooth-muted": " Mute",
-      "format-source": " {volume}%",
-      "format-source-muted": "",
-      "format-icons": {
-          "headphone": "",
-          "hands-free": "",
-          "headset": "",
-          "phone": "",
-          "portable": "",
-          "car": "",
-          "default": [
-              "",
-              "",
-              ""
-          ]
-      },
-      "scroll-step": 5.0,
-      // Commands to execute on events
-      "on-click": "amixer set Master toggle",
-      "on-click-right": "pavucontrol",
-      "smooth-scrolling-threshold": 1,
-  },
-  "temperature": {
-    "format": "\uf2c9 {temperatureC}\u00b0C",
-    "thermal-zone": 2,
-    "tooltip": false
-  },
-  "backlight": {
-    "format": "{icon} {percent}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format": "{icon} {volume}%",
+    "format-muted": " {volume}%",
+    "format-bluetooth": " {volume}% {format_source}",
+    "format-bluetooth-muted": " Mute",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 1.0,
+    // Commands to execute on events
+    "on-click": "amixer set Master toggle",
+    "on-click-right": "pavucontrol",
+    "smooth-scrolling-threshold": 1,
   },
   "tray": {
     "icon-size": 15,
@@ -188,10 +178,46 @@
       " "
     ]
   },
+
   "custom/notification": {
     "exec": "~/.config/waybar/scripts/mako.sh show",
-    "restart-interval": 1,
     "return-type": "json",
-    "on-click": "~/.config/waybar/scripts/mako.sh toggle"
+    "interval": "once",
+    "on-click": "~/.config/waybar/scripts/mako.sh toggle && pkill -RTMIN+8 waybar",
+    "signal": 8
   },
+
+  "group/power-menu": { // TODO: fix styling
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "power-menu",
+    },
+    "modules": [
+      "custom/power",
+      "custom/quit",
+      "custom/lock",
+      "custom/reboot",
+    ]
+  },
+  "custom/quit": {
+    "format": "󰗼",
+    "tooltip": false,
+    "on-double-click-right": "hyprctl dispatch exit"
+  },
+  "custom/lock": {
+    "format": "󰍁",
+    "tooltip": false,
+    "on-double-click-right": "swaylock"
+  },
+  "custom/reboot": {
+    "format": "󰜉",
+    "tooltip": false,
+    "on-double-click-right": "reboot"
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-double-click-right": "shutdown now"
+  }
 }

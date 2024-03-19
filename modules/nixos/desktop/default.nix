@@ -29,4 +29,6 @@
     portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
+
+  security.pam.services.swaylock = { };
 }
