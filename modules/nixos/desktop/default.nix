@@ -20,7 +20,7 @@
   services.xserver = {
     enable = true;
     displayManager.sddm.enable = true;
-    displayManager.defaultSession = "plasmawayland";
+    displayManager.defaultSession = "hyprland";
   };
   programs.xwayland.enable = true;
 

@@ -15,8 +15,10 @@
   home.packages = with pkgs; [
     # core
     wl-clipboard
+    cliphist
     brightnessctl
     gnome.zenity
+    libsForQt5.polkit-kde-agent
 
     # for Hyprland
     swaylock

@@ -35,4 +35,5 @@
   # Services
   services.dbus.packages = [ pkgs.gcr ];
   services.gvfs.enable = true;
+  services.udisks2.enable = true;
 }

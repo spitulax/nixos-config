@@ -9,6 +9,10 @@ let
   };
 in
 {
+  home.packages = with pkgs; [
+    nwg-look
+  ];
+
   gtk = {
     enable = true;
     theme = {
