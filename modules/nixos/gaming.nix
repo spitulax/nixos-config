@@ -8,8 +8,7 @@ let
 in
 {
   imports = [
-    # FAILED: {https://github.com/fufexan/nix-gaming/issues/163}
-    # inputs.nix-gaming.nixosModules.steamCompat
+    inputs.nix-gaming.nixosModules.steamCompat
     inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
@@ -29,6 +28,9 @@ in
   # Steam
   hardware.steam-hardware.enable = true;
   programs.steam.enable = true;
+  programs.steam.extraCompatPackages = [
+    nix-gaming-pkgs.proton-ge
+  ];
 
   # Pipewire Low Latency
   # FAILED: {https://github.com/fufexan/nix-gaming/issues/161}
