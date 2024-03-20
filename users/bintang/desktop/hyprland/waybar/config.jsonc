@@ -6,7 +6,6 @@
 
   "modules-left": [
     "group/power-menu",
-    "gamemode",
     "hyprland/workspaces"
   ],
   "modules-center": [
@@ -22,17 +21,18 @@
     "power-profiles-daemon",
     "clock",
     "custom/notification",
+    "custom/cloudflare",
     "tray"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "1": "",
+      "1": "",
       "2": "",
-      "3": "󰭹",
+      "3": "",
       "4": "",
-      "5": "",
-      "69": "󰇙",
+      "5": "",
+      "69": "",
     },
     "on-click": "activate",
     "persistent-workspaces": {
@@ -97,10 +97,6 @@
     "interval": 1,
     "tooltip-format": "Memory: {used}G/{total}G ({percentage}%)\n        {avail}G available\nSwap  : {swapUsed}G/{swapTotal}G ({swapPercentage}%)\n        {swapAvail}G available"
   },
-  "gamemode": {
-    "glyph": "󰓅", // TODO: make it red or smth
-    "use-icon": false,
-  },
   "network": {
     "interval": 2,
     "format": " {bandwidthDownBytes}",
@@ -121,22 +117,22 @@
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-muted": " {volume}%",
-    "format-bluetooth": " {volume}% {format_source}",
-    "format-bluetooth-muted": " Mute",
+    "format-muted": "󰝟 {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-bluetooth-muted": "󰝟 {volume}%",
     "format-source": " {volume}%",
     "format-source-muted": "",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
+      "headphone": "󰋋",
+      "hands-free": "󰋍",
+      "headset": "󰋎",
+      "phone": "󰏲",
+      "portable": "󰏲",
+      "car": "󰄋",
       "default": [
-        "",
-        "",
-        ""
+        "󰕿",
+        "󰖀",
+        "󰕾"
       ]
     },
     "scroll-step": 1.0,
@@ -184,11 +180,17 @@
     "exec": "~/.config/waybar/scripts/mako.sh show",
     "return-type": "json",
     "interval": "once",
-    "on-click": "~/.config/waybar/scripts/mako.sh toggle && pkill -RTMIN+8 waybar",
-    "signal": 8
+    "on-click": "~/.config/waybar/scripts/mako.sh toggle && pkill -RTMIN+1 waybar",
+    "signal": 1
   },
 
-  "group/power-menu": { // TODO: fix styling
+  "custom/cloudflare": {
+    "exec": "~/.config/waybar/scripts/cloudflare.sh",
+    "tooltip": false,
+    "restart-interval": 10
+  },
+
+  "group/power-menu": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 500,

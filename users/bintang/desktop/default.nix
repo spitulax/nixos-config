@@ -42,5 +42,6 @@
     alsa-utils
     networkmanagerapplet
     keymapper
+    pavucontrol
   ];
 }

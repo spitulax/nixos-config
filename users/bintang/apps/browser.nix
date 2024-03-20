@@ -8,7 +8,7 @@
       "--enable-features=VaapiVideoDecodeLinuxGL" # NB: hardware video encoding is not available on Linux
       "--password-store=gnome"
       "--profile-directory=Default"
-      "--ozone-platform-hint=wayland"
+      "--ozone-platform=wayland"
       # "--ignore-gpu-blocklist"
       "--enable-wayland-ime"
       "--gtk-version=4"

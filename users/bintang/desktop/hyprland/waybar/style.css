@@ -6,131 +6,99 @@
   font-family: "Iosevka Nerd Font Propo";
   font-size: 12pt;
   font-weight: bold;
-  border-radius: 8px;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
-@keyframes blink_red {
-  to {
-    background-color: rgb(242, 143, 173);
-    color: rgb(26, 24, 38);
-  }
-}
-.warning,
-.critical,
-.urgent {
-  animation-name: blink_red;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
+
 window#waybar {
-  background-color: transparent;
-  border: 2px solid alpha(@crust, 0.3);
+  background-color: alpha(@base, 0.5);
+  border-bottom: 2px solid alpha(@crust, 0.5);
+  transition-property: background-color;
+  transition-duration: .5s;
 }
-window > box {
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 5px;
-  background-color: shade(@base, 0.9);
-  padding: 3px;
-  padding-left: 8px;
-  border: 2px none #33ccff;
-}
+
 #workspaces {
-  padding-left: 0px;
-  padding-right: 4px;
+  background-color: alpha(@surface1, 0.5);
+  border-radius: 20px;
 }
 #workspaces button {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 6px;
-  padding-right: 6px;
+  font-family: "Font Awesome 6 Free";
+  border-radius: 20px;
+  border: 1.5px solid @blue;
+}
+#workspaces button.empty {
+  border: 0;
 }
 #workspaces button.active {
-  background-color: rgb(181, 232, 224);
-  color: rgb(26, 24, 38);
+  background-color: alpha(@overlay0, 0.5);
+  border: 1.5px solid @teal;
 }
 #workspaces button.urgent {
-  color: rgb(26, 24, 38);
+  border: 1.5px solid @red;
 }
 #workspaces button:hover {
-  background-color: rgb(248, 189, 150);
-  color: rgb(26, 24, 38);
+  background-color: alpha(@overlay0, 0.5);
 }
+
 tooltip {
-  background: rgb(48, 45, 65);
+  background: alpha(@mantle, 0.8);
+  border-radius: 8px;
+  border: 1px solid @blue;
 }
 tooltip label {
-  color: rgb(217, 224, 238);
+  color: @text;
 }
-#mode,
-#clock,
+
+#window {
+  background-color: alpha(@overlay0, 0.5);
+  border: 1.5px solid @blue;
+  border-radius: 20px;
+  padding: 0 2em;
+  margin: 0 2em;
+}
+window#waybar.empty #window {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+
+#disk,
 #memory,
-#temperature,
 #cpu,
-#temperature,
-#backlight,
-#pulseaudio,
 #network,
+#pulseaudio,
 #battery,
-
-/* #mode { */
-/* 	margin-left: 10px; */
-/* 	background-color: rgb(248, 189, 150); */
-/*     color: rgb(26, 24, 38); */
-/* } */
-#memory {
-  color: rgb(181, 232, 224);
-}
-#cpu {
-  color: rgb(245, 194, 231);
-}
-#clock {
-  color: rgb(217, 224, 238);
+#power-profiles-daemon,
+#clock,
+#custom-notification,
+#custom-cloudflare {
+  padding: 0 3px;
+  border-bottom: 1px solid @blue;
 }
 
-#idle_inhibitor {
-  color: rgb(221, 182, 242);
+#power-menu {
+  border-radius: 20px;
+  background-color: alpha(@surface0, 0.5);
+  border: 1.5px solid @blue;
+  margin-left: 5px;
+  padding: 0 8px;
+}
+
+#custom-quit,
+#custom-lock,
+#custom-reboot,
+#custom-power {
   padding-right: 8px;
+  border-radius: 20px;
 }
-#battery {
-  min-width: 55px;
-  color: rgb(126, 186, 244);
+#custom-power {
+  padding: 0;
 }
-#battery.charging,
-#battery.full,
-#battery.plugged {
-  color: #26a65b;
+#custom-reboot {
+  padding-right: 0;
 }
-#battery.critical:not(.charging) {
-  color: #f53c3c;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+#custom-quit {
+  padding-left: 8px;
 }
-#temperature {
-  color: rgb(150, 205, 251);
-}
-#backlight {
-  color: rgb(248, 189, 150);
-}
-#pulseaudio {
-  color: rgb(245, 224, 220);
-}
-#network {
-  color: #abe9b3;
-}
-#network.disconnected {
-  color: rgb(255, 255, 255);
-}
-#tray {
-  padding-right: 8px;
-  padding-left: 10px;
-}
-.power-menu {
-  color: rgb(242, 143, 173);
-}
+
+/* TODO: https://github.com/Alexays/Waybar/issues/2989 */
