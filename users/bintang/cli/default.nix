@@ -15,6 +15,7 @@
     ./spotdl.nix
     ./tmux.nix
     ./scripts.nix
+    ./cava.nix
   ];
 
   home.packages = with pkgs; [
