@@ -72,7 +72,7 @@ window#waybar.empty #window {
 #clock,
 #custom-notification,
 #custom-cloudflare {
-  padding: 0 3px;
+  padding: 0 2px;
   border-bottom: 1px solid @blue;
 }
 
