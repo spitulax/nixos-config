@@ -1,7 +1,12 @@
 { config
 , pkgs
+, outputs
 , ...
 }: {
+  imports = [
+    outputs.homeManagerModules.webApps
+  ];
+
   programs.brave = {
     enable = true;
     commandLineArgs = [
@@ -30,6 +35,7 @@
     defaultProfile = "Default";
     # You must install it in your profile first and I don't know how to automate that
     # I suppose I can use the --app switch instead but it's kinda meh
+    # FAILED: run `nix repl .` and try to print `xdg.desktopEntries`
     apps = [
       {
         name = "GitHub";

@@ -1,8 +1,5 @@
 { pkgs
 , ...
 }: {
-  home.packages = with pkgs; [
-    plasma-restartshell
-    reminder
-  ];
+  home.packages = builtins.attrValues pkgs.custom.scripts;
 }

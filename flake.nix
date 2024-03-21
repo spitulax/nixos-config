@@ -66,18 +66,17 @@
       };
     };
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs = rec {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.follows = "nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    #############################
 
-    nvchad.url = "github:NvChad/NvChad/v2.0";
-    nvchad.flake = false;
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -94,7 +93,9 @@
     hyprland.url = "github:hyprwm/hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
-    lobster.url = "github:justchokingaround/lobster";
-    lobster.inputs.nixpkgs.follows = "nixpkgs";
+    #############################
+
+    nvchad.url = "github:NvChad/NvChad/v2.0";
+    nvchad.flake = false;
   };
 }

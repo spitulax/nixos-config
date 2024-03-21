@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
 # Display wallpaper
-pkill swww-daemon
-swww init
-if [ "$WALLPAPER" != "" ]; then
-  swww img $WALLPAPER
-fi
+wallpaper
 
 # Start waybar
 pkill waybar

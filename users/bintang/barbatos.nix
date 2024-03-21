@@ -17,7 +17,7 @@
     ./nix
     ./gaming
     ./nvim
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ];
 
   # User info
   home = {

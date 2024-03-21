@@ -19,7 +19,6 @@ in
     GAMES = "$HOME/Games";
     FLAKE = CONFIG;
     GPG_TTY = "$(tty)";
-    WALLPAPER = "$HOME/Pictures/Wallpapers/wallhaven-8586my.png";
   };
   xdg = {
     enable = true;

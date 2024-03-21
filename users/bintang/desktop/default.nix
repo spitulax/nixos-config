@@ -4,7 +4,6 @@
 }: {
   imports = [
     ./hyprland
-    ./eww
     ./gtk.nix
     ./qt.nix
     ./keymapper.nix
