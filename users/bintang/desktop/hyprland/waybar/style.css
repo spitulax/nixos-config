@@ -64,26 +64,38 @@ window#waybar.empty #window {
 
 #disk,
 #memory,
-#cpu,
+#cpu {
+}
+
 #network,
 #pulseaudio,
 #battery,
-#power-profiles-daemon,
-#clock,
-#custom-notification,
-#custom-cloudflare {
+#custom-cloudflare,
+#clock {
   padding: 0 2px;
   border-bottom: 1px solid @blue;
 }
 
+#buttons,
+#tray,
 #power-menu {
   border-radius: 20px;
-  background-color: alpha(@surface0, 0.5);
   border: 1.5px solid @blue;
-  margin-left: 5px;
+  background-color: alpha(@surface1, 0.5);
   padding: 0 8px;
 }
 
+#power-profiles-daemon {
+  margin-left: 2px;
+}
+
+#tray {
+  margin-right: 5px;
+}
+
+#power-menu {
+  margin-left: 5px;
+}
 #custom-quit,
 #custom-lock,
 #custom-reboot,

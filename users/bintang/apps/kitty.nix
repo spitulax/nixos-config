@@ -22,7 +22,7 @@
       tab_bar_edge = "top";
       tab_bar_style = "powerline";
       # Color scheme
-      background_opacity = "1.0";
+      background_opacity = "0.8";
     };
     extraConfig = ''
       include ./theme.conf

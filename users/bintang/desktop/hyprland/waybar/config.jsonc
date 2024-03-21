@@ -6,22 +6,21 @@
 
   "modules-left": [
     "group/power-menu",
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "memory",
+    "cpu",
+    "disk",
   ],
   "modules-center": [
     "hyprland/window"
   ],
   "modules-right": [
-    "disk",
-    "memory",
-    "cpu",
     "network",
     "pulseaudio",
     "battery",
-    "power-profiles-daemon",
     "clock",
-    "custom/notification",
-    "custom/cloudflare",
+    "group/buttons",
+    "cloudflare",
     "tray"
   ],
   "hyprland/workspaces": {
@@ -82,18 +81,18 @@
     ]
   },
   "disk": {
-    "format": "󰗮",
-    "format-alt": "{used}",
+    "format": "{used}",
+    "format-alt": "󰗮",
     "tooltip-format": "Used: {used}/{total} ({percentage_used}%)\nFree: {free} ({percentage_free}%)"
   },
   "cpu": {
-    "format": "󰘚",
-    "format-alt": "{load}",
+    "format": "{load}",
+    "format-alt": "󰘚",
     "interval": 1,
   },
   "memory": {
-    "format": "󰍛",
-    "format-alt": "{used}G",
+    "format": "{used}G",
+    "format-alt": "󰍛",
     "interval": 1,
     "tooltip-format": "Memory: {used}G/{total}G ({percentage}%)\n        {avail}G available\nSwap  : {swapUsed}G/{swapTotal}G ({swapPercentage}%)\n        {swapAvail}G available"
   },
@@ -105,15 +104,6 @@
     "tooltip-format-wifi": " {essid} {signalStrength}% · {ipaddr}",
     "tooltip-format-ethernet": "󰈀 {ipaddr}/{cidr} · {ipaddr}",
     "tooltip-format-disconnected": "",
-  },
-  "power-profiles-daemon": {
-    "tooltip-format": "Current profile: {profile}",
-    "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
-    }
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -175,7 +165,23 @@
       " "
     ]
   },
+  "custom/cloudflare": {
+    "exec": "~/.config/waybar/scripts/cloudflare.sh",
+    "tooltip": false,
+    "restart-interval": 10
+  },
 
+  "group/buttons": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "buttons",
+    },
+    "modules": [
+      "custom/notification",
+      "power-profiles-daemon",
+    ]
+  },
   "custom/notification": {
     "exec": "~/.config/waybar/scripts/mako.sh show",
     "return-type": "json",
@@ -183,11 +189,14 @@
     "on-click": "~/.config/waybar/scripts/mako.sh toggle && pkill -RTMIN+1 waybar",
     "signal": 1
   },
-
-  "custom/cloudflare": {
-    "exec": "~/.config/waybar/scripts/cloudflare.sh",
-    "tooltip": false,
-    "restart-interval": 10
+  "power-profiles-daemon": {
+    "tooltip-format": "Current profile: {profile}",
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   },
 
   "group/power-menu": {
