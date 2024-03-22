@@ -10,14 +10,10 @@ in
   home.sessionVariables = rec {
     PATH = "$HOME/.cargo/bin:$HOME/.local/bin:$PATH";
     EDITOR = "nvim";
-    REPOS = "$HOME/Repos";
-    NOTES = "$HOME/Notes";
-    THIRDPARTY = "$HOME/Thirdparty";
-    SOFTWARE = "$HOME/Software";
-    TEMPDIR = "$HOME/.temp";
-    CONFIG = "$HOME/Config";
-    GAMES = "$HOME/Games";
-    FLAKE = CONFIG;
+    TERMINAL = "kitty";
+    BROWSER = "brave";
+    FILE_MANAGER = "dolphin";
+    FLAKE = "$HOME/Config";
     GPG_TTY = "$(tty)";
   };
   xdg = {

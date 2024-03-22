@@ -5,29 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.programs.chromium.webApps;
+  cfg = config.programs.brave.webApps;
 in
 {
-  options.programs.chromium.webApps = {
+  options.programs.brave.webApps = {
     enable = mkEnableOption "web apps";
-
-    defaultBrowserName = mkOption {
-      type = types.str;
-      example = literalExpression "brave";
-      description = "The default browser's name for namespacing";
-    };
-
-    defaultBrowserExec = mkOption {
-      type = types.path;
-      example = literalExpression "\${pkgs.brave}/opt/brave.com/brave/brave-browser";
-      description = "The default browser executable for running the apps.";
-    };
-
-    defaultProfile = mkOption {
-      type = types.str;
-      default = literalExpression "Default";
-      description = "The default profile to use when opening the apps.";
-    };
 
     apps = mkOption {
       type = with types; listOf (submodule {
@@ -82,20 +64,28 @@ in
       '';
       description = "The extension ID of the app.";
     };
+
+    commandLineArgs = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+      description = "The command line arguments to pass to the browser";
+      example = "config.programs.brave.commandLineArgs";
+    };
   };
 
   config = mkIf cfg.enable {
     xdg.desktopEntries = builtins.listToAttrs (builtins.map
       (app:
         let
-          exec = "${cfg.defaultBrowserExec} --profile-directory=${cfg.defaultProfile} --app-id=${app.id}";
+          exec = "${pkgs.brave}/bin/brave --app-id=${app.id} " + (lib.strings.concatStringsSep " " cfg.commandLineArgs);
+          name = "brave-${app.id}-Default";
         in
         {
-          name = "${cfg.defaultBrowserName}-${app.id}-${cfg.defaultProfile}";
+          inherit name;
           value = {
             inherit exec;
             type = "Application";
-            icon = "${cfg.defaultBrowserName}-${app.id}-${cfg.defaultProfile}";
+            icon = "brave-${app.id}-Default";
             name = "${app.name}";
             startupNotify = true;
             terminal = false;
@@ -111,5 +101,15 @@ in
           };
         })
       cfg.apps);
+
+    # Add the desktop entries to ~/.local/share/applications
+    # home.file = builtins.listToAttrs (builtins.map (app:
+    #   let
+    #     name = "${cfg.defaultBrowserName}-${app.id}-${cfg.defaultProfile}";
+    #   in {
+    #     name = ".local/share/applications/${name}.desktop";
+    #     value.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.nix-profile/share/applications/${name}.desktop";
+    #   }
+    # ) cfg.apps);
   };
 }

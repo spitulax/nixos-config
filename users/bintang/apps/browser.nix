@@ -28,14 +28,11 @@
     ];
   };
 
-  programs.chromium.webApps = {
+  programs.brave.webApps = {
     enable = true;
-    defaultBrowserName = "brave";
-    defaultBrowserExec = "${pkgs.brave}/opt/brave.com/brave/brave-browser";
-    defaultProfile = "Default";
+    commandLineArgs = config.programs.brave.commandLineArgs;
     # You must install it in your profile first and I don't know how to automate that
     # I suppose I can use the --app switch instead but it's kinda meh
-    # FAILED: run `nix repl .` and try to print `xdg.desktopEntries`
     apps = [
       {
         name = "GitHub";
