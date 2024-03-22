@@ -26,7 +26,7 @@
           set -g @catppuccin_window_status_enable "yes"
           set -g @catppuccin_window_status_icon_enable "no"
           set -g @catppuccin_status_modules "date_time session"
-          set -g @catppuccin_date_time_text "%d/%m/%Y %H:%M:%S"
+          set -g @catppuccin_date_time_text "%d/%m/%Y %H:%M"
         '';
       }
     ];

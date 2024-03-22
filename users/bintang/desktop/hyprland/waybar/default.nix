@@ -1,9 +1,11 @@
 { config
 , pkgs
+, inputs
 , ...
 }: {
   programs.waybar = {
     enable = true;
+    package = inputs.nixpkgs-temp.legacyPackages.${pkgs.system}.waybar;
   };
 
   home.file = {
