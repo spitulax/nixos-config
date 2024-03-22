@@ -29,7 +29,6 @@
     rofimoji
 
     # screenshot
-    flameshot
     grim
     slurp
 
