@@ -2,6 +2,7 @@
   "position": "top",
   "layer": "top",
   "spacing": 8,
+  "margin-bottom": 10,
   "height": 35,
 
   "modules-left": [
@@ -10,9 +11,11 @@
     "memory",
     "cpu",
     "disk",
+    "custom/scratchpad",
+    "custom/layout",
   ],
   "modules-center": [
-    "hyprland/window"
+    "hyprland/window",
   ],
   "modules-right": [
     "network",
@@ -41,12 +44,25 @@
     "on-scroll-down": "hyprctl dispatch workspace e+1",
   },
 
+  "custom/scratchpad": {
+    "restart-interval": 1,
+    "exec": "[[ $(hyprctl activewindow -j | jq -r '.workspace.name') = 'special' ]] && echo '(scratch)'",
+    "tooltip": false,
+  },
+
+  "custom/layout": {
+    "restart-interval": 1,
+    "exec": "[[ $(hyprctl getoption general:layout -j | jq -r '.str') = 'master' ]] && echo '(master)'",
+    "tooltip": false,
+  },
+
   "hyprland/window": {
     "format": "{title}",
     "separate-outputs": true,
+    "on-click-right": "exec hyprctl dispatch killactive",
     "rewrite": {
       "(.*) - Brave": " $1",
-      "ZapZap.*": "󰭹 ZapZap",
+      "ZapZap(.*)": " ZapZap$1",
       "tmux.*": " tmux",
       "Youtube.*": "󰗃 YouTube",
       "Twitch.*": " Twitch",

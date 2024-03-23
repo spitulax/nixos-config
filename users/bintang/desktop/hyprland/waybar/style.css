@@ -76,6 +76,17 @@ window#waybar.empty #window {
   border-bottom: 1px solid @blue;
 }
 
+#battery.charging,
+#battery.plugged,
+#battery.full {
+  color: @green;
+}
+
+#battery.warning,
+#battery.critical {
+  color: @red;
+}
+
 #buttons,
 #custom-cloudflare,
 #tray,

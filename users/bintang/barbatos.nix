@@ -26,11 +26,12 @@
     stateVersion = "23.11";
   };
 
-  # Fix DPI
-  xresources.properties = {
-    "Xft.dpi" = 115;
-  };
-
   systemd.user.startServices = "sd-switch";
   programs.home-manager.enable = true;
+
+  wayland.windowManager.hyprland = {
+    settings = {
+      monitor = "eDP-1,preferred,auto,1";
+    };
+  };
 }

@@ -25,6 +25,10 @@
   };
 
   home.file = {
+    ".config/hypr/catppuccin-mocha.conf".source = ./catppuccin-mocha.conf;
+  };
+
+  home.file = {
     ".config/hypr/scripts" = {
       source = ./scripts;
       recursive = true;

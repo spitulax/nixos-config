@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Display wallpaper
+sleep 1
 wallpaper
 
 # Start waybar
