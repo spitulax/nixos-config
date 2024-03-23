@@ -30,7 +30,7 @@
       script = ''
         cpu=$(ps -p $(pgrep keymapperd) -u --no-headers | awk '{ print $3 }' | bc)
         if test $cpu -gt 10; then
-          systemctl restart keymapperd
+          systemctl restart keymapper
         fi
       '';
     };

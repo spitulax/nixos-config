@@ -13,6 +13,10 @@ let
   '';
 in
 {
+  home.packages = [
+    pkgs.keymapper
+  ];
+
   systemd.user.services.keymapper = {
     Unit = {
       X-SwitchMethod = "restart";

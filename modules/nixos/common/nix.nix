@@ -35,8 +35,6 @@
       allowUnfree = true;
       allowUnfreePredicate = _: true;
     };
-    overlays = [
-      inputs.nix-alien.overlays.default
-    ] ++ (builtins.attrValues outputs.nixosOverlays);
+    overlays = outputs.nixpkgsOverlays;
   };
 }

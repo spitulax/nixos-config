@@ -15,7 +15,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      inherit (self) inputs;
+      inherit (self) inputs outputs;
       formatter.${system} = pkgs.nixpkgs-fmt;
       packages.${system} = import ./packages { inherit pkgs; }; # build with `nix build`. these packages also get added to nixpkgs overlay
       checks.${system} = {
@@ -41,8 +41,12 @@
             '';
           };
         };
-      homeOverlays = import ./overlays/home.nix { inherit inputs outputs pkgs; };
-      nixosOverlays = import ./overlays/nixos.nix { inherit inputs outputs pkgs; };
+
+      overlays = import ./overlays { inherit inputs outputs; };
+      nixpkgsOverlays = [
+        inputs.nix-alien.overlays.default
+      ] ++ (builtins.attrValues outputs.overlays);
+
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
 

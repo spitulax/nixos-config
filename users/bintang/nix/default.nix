@@ -5,7 +5,7 @@
 , ...
 }: {
   nixpkgs = {
-    overlays = builtins.attrValues outputs.homeOverlays;
+    overlays = outputs.nixpkgsOverlays;
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;

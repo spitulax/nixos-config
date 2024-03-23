@@ -77,6 +77,8 @@ window#waybar.empty #window {
 }
 
 #battery.charging,
+#battery.charging.warning,
+#battery.charging.critical,
 #battery.plugged,
 #battery.full {
   color: @green;

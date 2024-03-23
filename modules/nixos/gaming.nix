@@ -2,11 +2,7 @@
 , pkgs
 , inputs
 , ...
-}:
-let
-  nix-gaming-pkgs = inputs.nix-gaming.packages.${pkgs.system};
-in
-{
+}: {
   imports = [
     inputs.nix-gaming.nixosModules.steamCompat
     inputs.nix-gaming.nixosModules.pipewireLowLatency
@@ -29,7 +25,7 @@ in
   hardware.steam-hardware.enable = true;
   programs.steam.enable = true;
   programs.steam.extraCompatPackages = [
-    nix-gaming-pkgs.proton-ge
+    pkgs.inputs.nix-gaming.proton-ge
   ];
 
   # Pipewire Low Latency

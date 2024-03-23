@@ -2,11 +2,7 @@
 , pkgs
 , inputs
 , ...
-}:
-let
-  nix-gaming-pkgs = inputs.nix-gaming.packages.${pkgs.system};
-in
-{
+}: {
   imports = [
     ./games.nix
   ];
@@ -21,7 +17,7 @@ in
     # gamescope
     # dxvk
     # vkd3d-proton
-  ] ++ (with nix-gaming-pkgs; [
+  ] ++ (with pkgs.inputs.nix-gaming; [
     # FAILED: {https://github.com/fufexan/nix-gaming/pull/86}
     # dxvk
     # vkd3d-proton
