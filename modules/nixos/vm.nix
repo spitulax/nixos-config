@@ -21,9 +21,7 @@ in
     };
     environment.systemPackages = with pkgs; [
       virt-manager
-      (qemu.override {
-        hostCpuOnly = !cfg.qemuAllArch;
-      })
+      (if cfg.qemuAllArch then qemu else qemu_kvm)
     ];
   };
 }

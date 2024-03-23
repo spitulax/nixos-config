@@ -72,9 +72,6 @@
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
 
-    # FAILED: https://nixpk.gs/pr-tracker.html?pr=297158
-    nixpkgs-temp.url = "github:nixos/nixpkgs?rev=c75037bbf9093a2acb617804ee46320d6d1fea5a";
-
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 

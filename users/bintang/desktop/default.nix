@@ -22,8 +22,6 @@
     # for Hyprland
     swaylock
     swayidle
-    eww
-    wlogout
     swww
     rofi-wayland
     rofimoji

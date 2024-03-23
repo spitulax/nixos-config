@@ -5,7 +5,7 @@
 }: {
   programs.waybar = {
     enable = true;
-    package = inputs.nixpkgs-temp.legacyPackages.${pkgs.system}.waybar;
+    package = pkgs.waybar;
   };
 
   home.file = {
