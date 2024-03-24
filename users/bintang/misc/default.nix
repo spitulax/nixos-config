@@ -12,6 +12,7 @@
 
   home.packages = with pkgs; [
     ffmpeg
+    jre8 # TODO: package lexurgy
     cloudflare-warp
   ];
 }
