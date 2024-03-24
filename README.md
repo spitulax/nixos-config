@@ -20,7 +20,6 @@ Here are some of the programs configured in this repo.
 
 - **Display Manager**: [SDDM][SDDM]
 - **Window Manager (Wayland)**: [Hyprland][Hyprland]
-- **Desktop Environment (Wayland + X11)**: [KDE Plasma][KDE Plasma]
 
 #### CLI Tools
 
@@ -37,9 +36,11 @@ Here are some of the programs configured in this repo.
 - **WhatsApp Client**: [ZapZap][ZapZap]
 - **Password Manager**: [Bitwarden][Bitwarden]
 - **File Manager**: [Dolphin][Dolphin]
-- **Screenshot**: [Flameshot][Flameshot]
+- **Screenshot**: [Grim][Grim]
 - **Media Player**: [Mpv][Mpv]
-- **Painting**: [Krita][Krita] + [Pixelorama][Pixelorama]
+- **Painting**: [Krita][Krita]
+- **Image Viewer**: [Nomacs][Nomacs]
+- **PDF Viewer**: [Zathura][Zathura]
 
 #### Development
 
@@ -56,10 +57,8 @@ Here are some of the programs configured in this repo.
 
 ## To-Do
 
-- [ ] [Hyprland][Hyprland] (WIP)
 - [ ] Nix devshells and templates
 - [ ] Set up [impermanence](https://github.com/nix-community/impermanence)
-- [ ] [Yazi][Yazi]
 
 [SDDM]: https://github.com/sddm/sddm
 [Kitty]: https://github.com/kovidgoyal/kitty
@@ -78,11 +77,10 @@ Here are some of the programs configured in this repo.
 [Syncthing]: https://github.com/syncthing/syncthing
 [Keymapper]: https://github.com/houmain/keymapper
 [Hyprland]: https://github.com/hyprwm/Hyprland
-[Yazi]: https://github.com/sxyazi/yazi
-[KDE Plasma]: https://kde.org/plasma-desktop
 [Tmux]: https://github.com/tmux/tmux
 [Dolphin]: https://apps.kde.org/dolphin
-[Flameshot]: https://github.com/flameshot-org/flameshot
+[Grim]: https://sr.ht/~emersion/grim
 [Mpv]: https://mpv.io/
 [Krita]: https://krita.org/
-[Pixelorama]: https://orama-interactive.itch.io/pixelorama
+[Nomacs]: https://nomacs.org/
+[Zathura]: https://git.pwmt.org/pwmt/zathura

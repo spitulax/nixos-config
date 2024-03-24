@@ -2,7 +2,6 @@
 
 ## Home Manager Modules
 
-- `fonts.nix`: Makes installing fonts and nerdfonts easy
 - `keymapper.nix`: Enabling keymapper per user
 - `webApps.nix`: Adding browser apps to desktop entry declaratively
 
@@ -11,6 +10,8 @@
 - `video-hardware.nix`: Force enabling hardware video acceleration for Intel UHD Graphics
 - `keymapper.nix`: Enabling system keymapper service
 - `gaming.nix`: Adds steam, gamemode, and other features optimized for gaming
+- `laptop.nix`: Laptop specific config, eg. lid action
+- `vm.nix`: Setting up virtualization, eg. qemu and waydroid
 
 These modules are used inside hosts declaration:
 - `common/`: Common config for all hosts

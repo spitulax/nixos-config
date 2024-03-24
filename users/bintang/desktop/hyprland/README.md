@@ -1,4 +1,7 @@
-# Hyprland Configuration (WIP)
+# Hyprland Configuration
+
+NOTE:
+- Monitor configuration is defined for each hosts in `/users/<user>/<host>.nix`.
 
 ## Mako (`./mako/`)
 
@@ -7,10 +10,12 @@
 ## Scripts (`./scripts/`)
 
 - `autorun.sh`: executed on launch
+- `run.sh`: launcher for common apps
+- `screenshot.sh`: wrapper script to [grim](https://sr.ht/~emersion/grim)
 
 ## Waybar (`./waybar/`)
 
-[Waybar](https://github.com/alexays/waybar) configuration (WIP).
+[Waybar](https://github.com/alexays/waybar) configuration.
 
 ## TODO
 

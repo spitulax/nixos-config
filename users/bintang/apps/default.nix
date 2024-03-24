@@ -14,9 +14,7 @@
   ];
 
   home.packages = with pkgs; [
-    pixelorama
     krita
-    webcamoid
     nomacs
     libsForQt5.dolphin
   ];
