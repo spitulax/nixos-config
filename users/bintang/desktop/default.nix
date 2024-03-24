@@ -4,6 +4,7 @@
 }: {
   imports = [
     ./hyprland
+    ./kvantum.nix
     ./gtk.nix
     ./qt.nix
     ./keymapper.nix
@@ -39,4 +40,12 @@
     networkmanagerapplet
     pavucontrol
   ];
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.catppuccin-cursors.mochaDark;
+    name = "Catppuccin-Mocha-Dark-Cursors";
+    size = 24;
+  };
 }

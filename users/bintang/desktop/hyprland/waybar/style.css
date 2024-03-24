@@ -1,7 +1,6 @@
 @import "catppuccin-mocha.css";
 
 * {
-  /* https://docs.gtk.org/gtk3/css-overview.html#colors */
   color: @text;
   font-family: "Iosevka Nerd Font Propo";
   font-size: 12pt;
@@ -47,6 +46,7 @@ tooltip {
 }
 tooltip label {
   color: @text;
+  margin: 0.5em;
 }
 
 #window {
@@ -96,11 +96,11 @@ window#waybar.empty #window {
   border-radius: 20px;
   border: 1.5px solid @blue;
   background-color: alpha(@surface1, 0.5);
-  padding: 0 8px;
+  padding: 0 0.75em;
 }
 
 #power-profiles-daemon {
-  margin-left: 2px;
+  margin-left: 5px;
 }
 
 #tray {

@@ -9,8 +9,8 @@
       "x-scheme-handler/http" = "brave-browser.desktop";
       "x-scheme-handler/https" = "brave-browser.desktop";
       "application/pdf" = "org.pwmt.zathura.desktop";
-      "image/png" = "nomacs.desktop";
-      "image/jpeg" = "nomacs.desktop";
+      "image/png" = "org.nomacs.ImageLounge.desktop";
+      "image/jpeg" = "org.nomacs.ImageLounge.desktop";
       "video/ogg" = "mpv.desktop";
       "video/x-msvideo" = "mpv.desktop";
       "audio/mpeg" = "mpv.desktop";

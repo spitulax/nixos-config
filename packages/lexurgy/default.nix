@@ -11,6 +11,9 @@ stdenvNoCC.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
+  dontConfigure = true;
+  dontBuild = true;
+
   installPhase = ''
     mkdir -p $out
     cp -r ./* $out

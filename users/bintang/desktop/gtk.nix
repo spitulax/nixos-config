@@ -16,8 +16,12 @@ in
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.whitesur-gtk-theme;
-      name = "WhiteSur-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "blue" ];
+        tweaks = [ "rimless" ];
+        variant = "mocha";
+      };
+      name = "Catppuccin-Mocha-Standard-Blue-Dark";
     };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
@@ -39,11 +43,9 @@ in
     '';
   };
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.whitesur-cursors;
-    name = "WhiteSur-cursors";
-    size = 24;
+  xdg.configFile = {
+    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
   };
 }

@@ -19,7 +19,6 @@
     # ffmpeg 6 won't work, spotdl will stuck at converting
     spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
 
-    # TODO: upstream this
     keymapper = prev.keymapper.overrideAttrs (newAttrs: oldAttrs: {
       version = "3.5.3";
       src = final.fetchFromGitHub {

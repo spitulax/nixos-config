@@ -12,6 +12,7 @@
 - `gaming.nix`: Adds steam, gamemode, and other features optimized for gaming
 - `laptop.nix`: Laptop specific config, eg. lid action
 - `vm.nix`: Setting up virtualization, eg. qemu and waydroid
+- `plasma.nix`: KDE Plasma 5
 
 These modules are used inside hosts declaration:
 - `common/`: Common config for all hosts

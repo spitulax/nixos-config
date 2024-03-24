@@ -22,7 +22,6 @@
     nmon
     sysbench
     powertop
-    nvtop
 
     # archives
     zip

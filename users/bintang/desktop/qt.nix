@@ -4,14 +4,12 @@
 }: {
   home.packages = with pkgs; [
     libsForQt5.qt5ct
-    kdePackages.qt6ct
+    libsForQt5.qtstyleplugin-kvantum
   ];
 
   qt = {
     enable = true;
-    # style = {
-    #   name = "Adwaita-dark";
-    #   package = pkgs.adwaita-qt;
-    # };
+    platformTheme = "qtct";
+    style.name = "kvantum";
   };
 }

@@ -4,6 +4,7 @@
   keymapper = import ./keymapper.nix;
   video-hardware = import ./video-hardware.nix;
   vm = import ./vm.nix;
+  plasma = import ./plasma.nix;
 
   # Global configs
   common = import ./common;
