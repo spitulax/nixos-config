@@ -1,10 +1,12 @@
 { pkgs
 , ...
-}: {
+}: with pkgs; {
   # Simple scripts
   custom.scripts = {
-    plasma-restartshell = pkgs.callPackage ./plasma-restartshell { };
-    reminder = pkgs.callPackage ./reminder { };
-    wallpaper = pkgs.callPackage ./wallpaper { };
+    plasma-restartshell = callPackage ./plasma-restartshell { };
+    reminder = callPackage ./reminder { };
+    wallpaper = callPackage ./wallpaper { };
   };
+
+  lexurgy = callPackage ./lexurgy { inherit pkgs; };
 }

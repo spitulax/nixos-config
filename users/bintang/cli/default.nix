@@ -29,5 +29,6 @@
     dust
     chafa # for telescope-media-files.nvim
     yt-dlp
+    lexurgy
   ];
 }

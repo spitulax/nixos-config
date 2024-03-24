@@ -30,7 +30,7 @@
 
   programs.brave.webApps = {
     enable = true;
-    commandLineArgs = config.programs.brave.commandLineArgs;
+    inherit (config.programs.brave) commandLineArgs;
     # You must install it in your profile first and I don't know how to automate that
     # I suppose I can use the --app switch instead but it's kinda meh
     apps = [
