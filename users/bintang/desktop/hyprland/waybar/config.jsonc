@@ -58,6 +58,7 @@
 
   "hyprland/window": {
     "format": "{title}",
+    "max-length": 200,
     "separate-outputs": true,
     "on-click-right": "exec hyprctl dispatch killactive",
     "rewrite": {
@@ -159,7 +160,6 @@
       "warning": 30,
       "critical": 15
     },
-    "max-length": 20,
     "format": "{icon}{capacity}%",
     "format-discharging-warning": " {capacity}%",
     "format-discharging-critical": " {capacity}%",

@@ -55,6 +55,8 @@ tooltip label {
   border-radius: 20px;
   padding: 0 2em;
   margin: 0 2em;
+  font-weight: normal;
+  font-size: 5pt;
 }
 window#waybar.empty #window {
   background-color: transparent;

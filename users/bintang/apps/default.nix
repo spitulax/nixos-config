@@ -11,11 +11,11 @@
     ./mpv.nix
     ./entertainment.nix
     ./zathura.nix
+    ./dolphin.nix
   ];
 
   home.packages = with pkgs; [
     krita
     nomacs
-    libsForQt5.dolphin
   ];
 }

@@ -8,7 +8,7 @@
       enable = true;
       defaultFonts = {
         serif = [ "Source Serif 3" ];
-        sansSerif = [ "Source Sans 4" ];
+        sansSerif = [ "Fira Sans" ];
         monospace = [ "Iosevka Nerd Font" ];
         emoji = [ "Noto Color Emoji" ];
       };
