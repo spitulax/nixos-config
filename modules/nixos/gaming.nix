@@ -4,20 +4,12 @@
 , ...
 }: {
   imports = [
-    inputs.nix-gaming.nixosModules.steamCompat
     inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
   # Gamemode
   programs.gamemode = {
     enable = true;
-    settings = {
-      general = {
-        igpu_desiredgov = "performance";
-        igpu_power_threshold = -1;
-        renice = 15;
-      };
-    };
   };
   boot.kernelModules = [ "linux_xanmod" ];
 

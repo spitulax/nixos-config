@@ -5,6 +5,7 @@
   video-hardware = import ./video-hardware.nix;
   vm = import ./vm.nix;
   plasma = import ./plasma.nix;
+  zram = import ./zram.nix;
 
   # Global configs
   common = import ./common;

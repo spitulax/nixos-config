@@ -15,6 +15,7 @@ in
     FILE_MANAGER = "dolphin";
     FLAKE = "$HOME/Config";
     GPG_TTY = "$(tty)";
+    WINEPREFIX = "${config.xdg.dataHome}/wine";
   };
   xdg = {
     enable = true;

@@ -13,8 +13,8 @@
     # winetricks
 
     # These packages is needed for lutris
-    # lutris
-    # gamescope
+    lutris
+    gamescope
     # dxvk
     # vkd3d-proton
   ] ++ (with pkgs.inputs.nix-gaming; [

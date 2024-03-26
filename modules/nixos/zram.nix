@@ -1,5 +1,4 @@
 {
-  # TODO: the swap partition may be unnecessary
   zramSwap = {
     enable = true;
     algorithm = "zstd";

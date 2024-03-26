@@ -48,6 +48,15 @@
 
   # Misc services
   services.printing.enable = false;
+  programs.gamemode = {
+    settings = {
+      general = {
+        igpu_desiredgov = "performance";
+        igpu_power_threshold = -1;
+        renice = 15;
+      };
+    };
+  };
 
   # State version
   system.stateVersion = "23.11";
