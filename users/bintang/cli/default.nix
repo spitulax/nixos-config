@@ -27,8 +27,9 @@
     trash-cli
     bat
     dust
-    chafa # for telescope-media-files.nvim
+    chafa
     yt-dlp
     lexurgy
+    exiftool
   ];
 }

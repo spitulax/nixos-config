@@ -8,7 +8,6 @@
     overlays = outputs.nixpkgsOverlays;
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = _: true;
     };
   };
 

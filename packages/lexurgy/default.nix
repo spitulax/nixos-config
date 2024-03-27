@@ -10,13 +10,14 @@ stdenvNoCC.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
+  buildInputs = [ jre_minimal ];
 
   dontConfigure = true;
   dontBuild = true;
 
   installPhase = ''
     mkdir -p $out
-    cp -r ./* $out
+    mv * $out
     rm $out/bin/*.bat
     wrapProgram $out/bin/lexurgy \
       --set JAVA_HOME ${jre_minimal.home}
@@ -24,8 +25,9 @@ stdenvNoCC.mkDerivation rec {
 
   meta = {
     description = "A high-powered sound change applier";
+    mainProgram = "lexurgy";
     homepage = "https://github.com/def-gthill/lexurgy";
     license = lib.licenses.gpl3Only;
-    # maintainers = with lib.maintainers; [  ];
+    maintainers = with lib.maintainers; [ spitulax ];
   };
 }

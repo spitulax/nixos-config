@@ -1,6 +1,6 @@
 {
   services.logind = {
-    lidSwitch = "lock";
+    lidSwitch = "ignore";
     powerKey = "suspend";
   };
 }
