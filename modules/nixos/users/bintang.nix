@@ -29,16 +29,6 @@
       neededForUsers = true;
       sopsFile = ../../../secrets/global/secrets.yaml;
     };
-    gh-hosts = {
-      owner = "bintang";
-      group = "users";
-      sopsFile = ../../../secrets/bintang/gh.yaml;
-    };
-    gh-token = {
-      owner = "bintang";
-      group = "users";
-      sopsFile = ../../../secrets/bintang/gh-token.yaml;
-    };
   };
 
   home-manager.users.bintang = import ../../../users/bintang/${config.networking.hostName}.nix;

@@ -1,6 +1,5 @@
 { config
 , pkgs
-, nixosConfig
 , ...
 }: {
   imports = [

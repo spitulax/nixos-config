@@ -18,17 +18,6 @@
 
     # ffmpeg 6 won't work, spotdl will stuck at converting
     spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
-
-    keymapper = prev.keymapper.overrideAttrs (newAttrs: oldAttrs: {
-      version = "3.5.3";
-      src = final.fetchFromGitHub {
-        owner = "houmain";
-        repo = "keymapper";
-        rev = newAttrs.version;
-        hash = "sha256-CfZdLeWgeNwy9tEJ3UDRplV0sRcKE4J6d3CxC9gqdmE=";
-      };
-      nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ final.libxkbcommon ];
-    });
   };
 
   # For every flake input, aliases 'pkgs.inputs.${flake}' to

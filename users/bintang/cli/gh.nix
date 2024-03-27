@@ -1,6 +1,5 @@
 { config
 , pkgs
-, nixosConfig
 , ...
 }: {
   programs.gh = {
