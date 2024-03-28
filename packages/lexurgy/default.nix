@@ -1,5 +1,9 @@
-{ pkgs }:
-with pkgs;
+{ stdenvNoCC
+, fetchurl
+, makeWrapper
+, jre_minimal
+, lib
+}:
 stdenvNoCC.mkDerivation rec {
   pname = "lexurgy";
   version = "1.5.0";

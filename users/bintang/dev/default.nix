@@ -1,6 +1,4 @@
-{ config
-, pkgs
-, lib
+{ pkgs
 , ...
 }: {
   imports = [
@@ -19,14 +17,9 @@
     # Languages
     (hiPrio gcc)
     clang
-    lua
+    luajit
     ruby
     go
-
-    # LSPs
-    lua-language-server
-    clang-tools
-    gopls
 
     # Misc
     gnumake

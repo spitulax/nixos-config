@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function(lspconfig, on_attach, capabilities)
-  local servers = { "clangd", "rust_analyzer", "gopls" }
+  local servers = { "clangd", "rust_analyzer", "gopls", "nil_ls" }
 
   for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {

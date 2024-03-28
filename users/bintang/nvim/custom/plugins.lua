@@ -23,6 +23,12 @@ local M = {
   "nvim-lua/popup.nvim",
 
   {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
+
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = false,
@@ -35,8 +41,9 @@ local M = {
   {
     "nvim-neorg/neorg",
     ft = "norg",
+    dependencies = { "luarocks.nvim" },
     build = ":Neorg sync-parsers",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = "Neorg",
     opts = function()
       return require("custom.configs.neorg").opts
     end,

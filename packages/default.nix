@@ -5,7 +5,8 @@
   custom.scripts = {
     reminder = callPackage ./reminder { };
     wallpaper = callPackage ./wallpaper { };
+    screenshot = callPackage ./screenshot { };
   };
 
-  lexurgy = callPackage ./lexurgy { inherit pkgs; };
+  lexurgy = callPackage ./lexurgy { };
 }

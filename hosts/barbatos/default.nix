@@ -1,8 +1,6 @@
-{ lib
-, pkgs
+{ pkgs
 , outputs
 , inputs
-, config
 , ...
 }: {
   imports = with inputs; [

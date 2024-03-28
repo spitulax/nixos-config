@@ -14,4 +14,10 @@ M.opts = {
   },
 }
 
+M.mappings = {
+  n = {
+    ["<leader>N"] = { "<cmd>Neorg toc<cr>", "Toggle table of contents in norg files" },
+  },
+}
+
 return M

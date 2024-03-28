@@ -163,6 +163,7 @@ local mappings = {
   "spectre",
   "todo",
   "vim_tmux",
+  "neorg",
 }
 
 for _, plugin in ipairs(mappings) do

@@ -1,5 +1,4 @@
-{ config
-, pkgs
+{ pkgs
 , inputs
 , ...
 }:
@@ -11,6 +10,21 @@ in
     enable = true;
     withNodeJs = true;
     withPython3 = true;
+    withRuby = true;
+    extraPackages = with pkgs; [
+      # LSPs
+      lua-language-server
+      clang-tools
+      gopls
+      nil
+      rust-analyzer
+
+      # Required
+      luajit # for luarocks.nvim
+    ];
+    extraPython3Packages = ps: with ps; [
+      pynvim
+    ];
   };
 
   home.file.".config/nvim/lua/custom" = {

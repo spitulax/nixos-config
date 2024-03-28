@@ -11,7 +11,6 @@ NOTE:
 
 - `autorun.sh`: executed on launch
 - `run.sh`: launcher for common apps
-- `screenshot.sh`: wrapper script to [grim](https://sr.ht/~emersion/grim)
 
 ## Waybar (`./waybar/`)
 

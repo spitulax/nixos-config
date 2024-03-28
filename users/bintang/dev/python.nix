@@ -1,9 +1,9 @@
-{ config
-, pkgs
+{ pkgs
 , ...
 }: {
-  home.packages = [ pkgs.python3 ] ++ (with pkgs.python311Packages; [
-    pip
-    pynvim
-  ]);
+  home.packages = with pkgs; [
+    (python3.withPackages (ps: with ps; [
+      # Some python packages
+    ]))
+  ];
 }
