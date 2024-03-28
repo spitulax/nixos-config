@@ -42,7 +42,7 @@ local M = {
     "nvim-neorg/neorg",
     ft = "norg",
     dependencies = { "luarocks.nvim" },
-    build = ":Neorg sync-parsers",
+    -- build = ":Neorg sync-parsers", -- neorg provides it's own build script
     cmd = "Neorg",
     opts = function()
       return require("custom.configs.neorg").opts

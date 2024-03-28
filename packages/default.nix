@@ -6,6 +6,7 @@
     reminder = callPackage ./reminder { };
     wallpaper = callPackage ./wallpaper { };
     screenshot = callPackage ./screenshot { };
+    lazyup = callPackage ./lazyup { };
   };
 
   lexurgy = callPackage ./lexurgy { };

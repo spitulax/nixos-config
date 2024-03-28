@@ -27,15 +27,20 @@ in
     ];
   };
 
-  home.file.".config/nvim/lua/custom" = {
-    source = ./custom;
-    recursive = true;
+  home.file = {
+    ".config/nvim/lua/custom" = {
+      source = ./custom;
+      recursive = true;
+    };
+    ".config/nvim/lua" = {
+      source = "${nvchad}/lua";
+      recursive = true;
+    };
+    ".config/nvim/init.lua" = {
+      source = "${nvchad}/init.lua";
+    };
+    ".config/nvim/lazy-lock.json" = {
+      source = ./lazy-lock.json;
+    };
   };
-
-  home.file.".config/nvim/lua" = {
-    source = "${nvchad}/lua";
-    recursive = true;
-  };
-
-  home.file.".config/nvim/init.lua".source = "${nvchad}/init.lua";
 }
