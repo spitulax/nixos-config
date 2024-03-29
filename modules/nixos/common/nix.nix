@@ -21,7 +21,7 @@
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       warn-dirty = false;
       trusted-users = [ "root" "@wheel" ];
-      nix-path = "nixpkgs=/etc/nix/inputs/nixpkgs"; # https://github.com/NixOS/nix/issues/9574
+      nix-path = "nixpkgs=/etc/nix/path/nixpkgs"; # https://github.com/NixOS/nix/issues/9574
     };
     gc = {
       automatic = true;
@@ -31,9 +31,7 @@
   };
 
   nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
+    config.allowUnfree = true;
     overlays = outputs.nixpkgsOverlays;
   };
 }

@@ -9,24 +9,25 @@
     } @ inputs:
     let
       inherit (self) outputs;
-      system = "x86_64-linux";
-
       lib = nixpkgs.lib // home-manager.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system} system);
+      pkgsFor = lib.genAttrs systems (system: nixpkgs.legacyPackages.${system});
     in
     {
       inherit (self) inputs outputs;
-      formatter.${system} = pkgs.nixpkgs-fmt;
-      packages.${system} = import ./packages { inherit pkgs; }; # build with `nix build`. these packages also get added to nixpkgs overlay
-      checks.${system} = {
+
+      formatter = forEachSystem (pkgs: _: pkgs.nixpkgs-fmt);
+      packages = forEachSystem (pkgs: _: import ./packages { inherit pkgs; });
+      checks = forEachSystem (pkgs: system: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
             nixpkgs-fmt.enable = true;
           };
         };
-      };
-      devShells.${system} =
+      });
+      devShells = forEachSystem (pkgs: system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in
@@ -40,7 +41,7 @@
               ${self.checks.${system}.pre-commit-check.shellHook}
             '';
           };
-        };
+        });
 
       overlays = import ./overlays { inherit inputs outputs; };
       nixpkgsOverlays = [
@@ -58,14 +59,22 @@
         };
       };
 
+      # Android on termux
+      nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+        modules = [ ./hosts/dantalion ];
+        pkgs = pkgsFor.aarch64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
       homeConfigurations = {
         # Personal laptop
         "bintang@barbatos" = lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = pkgsFor.x86_64-linux;
           modules = [ ./users/bintang/barbatos.nix ];
           extraSpecialArgs = {
             inherit inputs outputs;
-            nixosConfig = outputs.nixosConfigurations."barbatos";
           };
         };
       };
@@ -78,6 +87,10 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-on-droid.url = "github:nix-community/nix-on-droid";
+    nix-on-droid.inputs.nixpkgs.follows = "nixpkgs";
+    nix-on-droid.inputs.home-manager.follows = "home-manager";
 
     #############################
 

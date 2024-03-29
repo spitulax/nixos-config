@@ -15,9 +15,4 @@
       editor = "nvim";
     };
   };
-
-  sops.secrets.gh-hosts = {
-    sopsFile = ../../../secrets/bintang/gh.yaml;
-    path = "${config.xdg.configHome}/gh/hosts.yml";
-  };
 }

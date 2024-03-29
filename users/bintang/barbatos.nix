@@ -16,6 +16,8 @@
     ./nix
     ./gaming
     ./nvim
+    ./features/keyboard.nix
+    ./features/sops.nix
   ];
 
   # User info

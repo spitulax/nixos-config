@@ -4,13 +4,6 @@
 , lib
 , ...
 }: {
-  nixpkgs = {
-    overlays = outputs.nixpkgsOverlays;
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   nix = {
     package = lib.mkForce pkgs.nix;
     settings = {
@@ -25,10 +18,5 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
     };
-    extraOptions = ''
-      !include ${config.sops.secrets.gh-token.path}
-    '';
   };
-
-  sops.secrets.gh-token.sopsFile = ../../../secrets/bintang/gh-token.yaml;
 }

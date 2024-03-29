@@ -11,10 +11,13 @@
     ./entertainment.nix
     ./zathura.nix
     ./dolphin.nix
+    ./entries.nix
+    ./mime.nix
   ];
 
   home.packages = with pkgs; [
     krita
     nomacs
+    cloudflare-warp
   ];
 }
