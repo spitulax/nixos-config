@@ -23,7 +23,6 @@
     "battery",
     "clock",
     "group/buttons",
-    "custom/cloudflare",
     "tray"
   ],
   "hyprland/workspaces": {
@@ -180,11 +179,6 @@
       " ",
       " "
     ]
-  },
-  "custom/cloudflare": {
-    "exec": "~/.config/waybar/scripts/cloudflare.sh",
-    "return-type": "json",
-    "restart-interval": 10
   },
 
   "group/buttons": {

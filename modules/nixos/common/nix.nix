@@ -32,6 +32,8 @@
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = outputs.nixpkgsOverlays;
+    overlays = [
+      inputs.nix-alien.overlays.default
+    ] ++ (builtins.attrValues outputs.overlays);
   };
 }

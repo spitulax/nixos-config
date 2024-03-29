@@ -72,7 +72,6 @@ window#waybar.empty #window {
 #network,
 #pulseaudio,
 #battery,
-#custom-cloudflare,
 #clock {
   padding: 0 2px;
   border-bottom: 1px solid @blue;
@@ -92,7 +91,6 @@ window#waybar.empty #window {
 }
 
 #buttons,
-#custom-cloudflare,
 #tray,
 #power-menu {
   border-radius: 20px;

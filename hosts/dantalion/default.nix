@@ -38,7 +38,7 @@
     config.allowUnfree = true;
     overlays = [
       inputs.nix-on-droid.overlays.default
-    ] ++ outputs.nixpkgsOverlays;
+    ] ++ (builtins.attrValues outputs.overlays);
   };
 
   # State version

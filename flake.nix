@@ -44,9 +44,6 @@
         });
 
       overlays = import ./overlays { inherit inputs outputs; };
-      nixpkgsOverlays = [
-        inputs.nix-alien.overlays.default
-      ] ++ (builtins.attrValues outputs.overlays);
 
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
