@@ -8,16 +8,26 @@
     ./terminal.nix
   ];
 
+  # Packages
+  environment.packages = with pkgs; [
+    git
+    neovim
+    wget
+    curl
+    fish
+  ];
+  user.shell = "${pkgs.fish}/bin/fish";
+
   # nix-on-droid stuff
   environment.motd = null;
   time.timeZone = "Asia/Jakarta";
 
   # Home manager
-  home-manager = {
-    config = ../../users/bintang/dantalion.nix;
-    extraSpecialArgs = { inherit inputs outputs; };
-    useGlobalPkgs = true;
-  };
+  # home-manager = {
+  #   config = ../../users/bintang/dantalion.nix;
+  #   extraSpecialArgs = { inherit inputs outputs; };
+  #   useGlobalPkgs = true;
+  # };
 
   # Nix
   nix = {
@@ -33,12 +43,6 @@
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
     ];
-  };
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      inputs.nix-on-droid.overlays.default
-    ] ++ (builtins.attrValues outputs.overlays);
   };
 
   # State version

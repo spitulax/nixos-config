@@ -16,18 +16,25 @@
       extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${final.inputs.nix-gaming.proton-ge}'";
     };
 
-    # ffmpeg 6 won't work, spotdl will stuck at converting
-    spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
+    spotdl = prev.spotdl.overridePythonAttrs rec {
+      version = "4.2.5";
+      src = final.fetchFromGitHub {
+        owner = "spotDL";
+        repo = "spotify-downloader";
+        rev = "refs/tags/v${version}";
+        hash = "sha256-YU/uOQmCMh5pSfclHVbgw1lodE5qGXXDHCPLQERwCRY=";
+      };
+    };
 
-    keymapper = prev.keymapper.overrideAttrs (newAttrs: _: {
+    keymapper = prev.keymapper.overrideAttrs rec {
       version = "4.0.0";
       src = final.fetchFromGitHub {
         owner = "houmain";
         repo = "keymapper";
-        rev = newAttrs.version;
+        rev = version;
         hash = "sha256-uMK8si0ATrpIesoWv7VavJQECFbB8qsck28VtkH3FY0=";
       };
-    });
+    };
   };
 
   # For every flake input, aliases 'pkgs.inputs.${flake}' to

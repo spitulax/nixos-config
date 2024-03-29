@@ -17,7 +17,6 @@
     sessionVariables = {
       ROOT = "/data/data/com.termux.nix/files/";
     };
-    username = "localhost";
     homeDirectory = "${config.home.sessionVariables.ROOT}/home";
     stateVersion = "23.11";
   };

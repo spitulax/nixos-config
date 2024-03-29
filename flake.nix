@@ -59,7 +59,12 @@
       # Android on termux
       nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
         modules = [ ./hosts/dantalion ];
-        pkgs = pkgsFor.aarch64-linux;
+        pkgs = pkgsFor.aarch64-linux // {
+          config.allowUnfree = true;
+          overlays = [
+            inputs.nix-on-droid.overlays.default
+          ] ++ (builtins.attrValues outputs.overlays);
+        };
         extraSpecialArgs = {
           inherit inputs outputs;
         };

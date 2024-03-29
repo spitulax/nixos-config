@@ -1,17 +1,16 @@
 { pkgs
 , ...
-}: {
-  environment.systemPackages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/data/fonts/nerdfonts/shas.nix
-        "Iosevka"
-      ];
-    })
-  ];
-
+}:
+let
+  nerdfonts = pkgs.nerdfonts.override {
+    fonts = [
+      "Iosevka"
+    ];
+  };
+in
+{
   terminal = {
-    font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/IosevkaNerdFontPropo-Regular.ttf";
+    font = "${nerdfonts}/share/fonts/truetype/NerdFonts/IosevkaNerdFontPropo-Regular.ttf";
     colors = {
       foreground = "#CDD6F4";
       background = "#101020";
