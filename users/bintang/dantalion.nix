@@ -21,6 +21,13 @@
     stateVersion = "23.11";
   };
 
-  systemd.user.startServices = "sd-switch";
+  # Packages
+  home.packages = with pkgs; [
+    wget
+    curl
+    rsync
+    tldr
+  ];
+
   programs.home-manager.enable = true;
 }

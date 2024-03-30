@@ -9,14 +9,6 @@
   ];
 
   # Packages
-  environment.packages = with pkgs; [
-    git
-    wget
-    curl
-    fish
-    rsync
-    openssh
-  ];
   user.shell = "${pkgs.fish}/bin/fish";
 
   # nix-on-droid stuff

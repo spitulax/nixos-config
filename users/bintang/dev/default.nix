@@ -2,7 +2,6 @@
 , ...
 }: {
   imports = [
-    ./godot
     ./python.nix
     ./rust.nix
     ./nix.nix
@@ -10,7 +9,6 @@
 
   home.packages = with pkgs; [
     # Debugger
-    gf
     gdb
     lldb
 

@@ -13,10 +13,12 @@
     ./dolphin.nix
     ./entries.nix
     ./mime.nix
+    ./godot.nix
   ];
 
   home.packages = with pkgs; [
     krita
+    gf
     nomacs
   ];
 }
