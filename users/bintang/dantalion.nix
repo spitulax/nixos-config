@@ -6,16 +6,17 @@
 , ...
 }: {
   imports = [
-    # ./dev
-    # ./misc
-    # ./cli
-    # ./nvim
+    ./dev
+    ./misc
+    ./cli
+    ./nvim
   ];
 
   # User info
   home = {
     sessionVariables = {
-      ROOT = "/data/data/com.termux.nix/files/";
+      ROOT = "/data/data/com.termux.nix/files";
+      STORAGE = "/storage/emulated/0";
     };
     stateVersion = "23.11";
   };

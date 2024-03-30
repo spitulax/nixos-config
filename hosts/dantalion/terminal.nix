@@ -10,7 +10,7 @@ let
 in
 {
   terminal = {
-    font = "${nerdfonts}/share/fonts/truetype/NerdFonts/IosevkaNerdFontPropo-Regular.ttf";
+    font = "${nerdfonts}/share/fonts/truetype/NerdFonts/IosevkaNerdFont-Regular.ttf";
     colors = {
       foreground = "#CDD6F4";
       background = "#101020";

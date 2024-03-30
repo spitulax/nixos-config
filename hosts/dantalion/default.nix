@@ -11,7 +11,6 @@
   # Packages
   environment.packages = with pkgs; [
     git
-    neovim
     wget
     curl
     fish
