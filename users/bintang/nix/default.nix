@@ -19,4 +19,7 @@
       ];
     };
   };
+  nixpkgs = {
+    inherit (outputs.pkgs.nixos) config overlays;
+  };
 }

@@ -15,6 +15,8 @@
     wget
     curl
     fish
+    rsync
+    openssh
   ];
   user.shell = "${pkgs.fish}/bin/fish";
 
@@ -23,11 +25,11 @@
   time.timeZone = "Asia/Jakarta";
 
   # Home manager
-  # home-manager = {
-  #   config = ../../users/bintang/dantalion.nix;
-  #   extraSpecialArgs = { inherit inputs outputs; };
-  #   useGlobalPkgs = true;
-  # };
+  home-manager = {
+    config = ../../users/bintang/dantalion.nix;
+    extraSpecialArgs = { inherit inputs outputs; };
+    useGlobalPkgs = true;
+  };
 
   # Nix
   nix = {

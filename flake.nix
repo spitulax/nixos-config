@@ -13,9 +13,26 @@
       systems = [ "x86_64-linux" "aarch64-linux" ];
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system} system);
       pkgsFor = lib.genAttrs systems (system: nixpkgs.legacyPackages.${system});
+      pkgs = {
+        nixos = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+          overlays = [
+            inputs.nix-alien.overlays.default
+          ] ++ builtins.attrValues outputs.overlays;
+        };
+        android = import nixpkgs {
+          system = "aarch64-linux";
+          config.allowUnfree = true;
+          overlays = [
+            inputs.nix-on-droid.overlays.default
+          ] ++ builtins.attrValues outputs.overlays;
+        };
+      };
     in
     {
       inherit (self) inputs outputs;
+      inherit pkgs;
 
       formatter = forEachSystem (pkgs: _: pkgs.nixpkgs-fmt);
       packages = forEachSystem (pkgs: _: import ./packages { inherit pkgs; });
@@ -59,12 +76,7 @@
       # Android on termux
       nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
         modules = [ ./hosts/dantalion ];
-        pkgs = pkgsFor.aarch64-linux // {
-          config.allowUnfree = true;
-          overlays = [
-            inputs.nix-on-droid.overlays.default
-          ] ++ (builtins.attrValues outputs.overlays);
-        };
+        pkgs = pkgs.android;
         extraSpecialArgs = {
           inherit inputs outputs;
         };

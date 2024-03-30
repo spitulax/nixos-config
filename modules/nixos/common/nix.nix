@@ -29,11 +29,5 @@
       options = "--delete-older-than +3";
     };
   };
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      inputs.nix-alien.overlays.default
-    ] ++ (builtins.attrValues outputs.overlays);
-  };
+  nixpkgs.pkgs = outputs.pkgs.nixos;
 }

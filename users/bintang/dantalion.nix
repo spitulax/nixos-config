@@ -6,10 +6,10 @@
 , ...
 }: {
   imports = [
-    ./dev
-    ./misc
-    ./cli
-    ./nvim
+    # ./dev
+    # ./misc
+    # ./cli
+    # ./nvim
   ];
 
   # User info
@@ -17,7 +17,6 @@
     sessionVariables = {
       ROOT = "/data/data/com.termux.nix/files/";
     };
-    homeDirectory = "${config.home.sessionVariables.ROOT}/home";
     stateVersion = "23.11";
   };
 
