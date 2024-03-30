@@ -16,7 +16,9 @@
       extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${final.inputs.nix-gaming.proton-ge}'";
     };
 
-    spotdl = prev.spotdl.overridePythonAttrs rec {
+    # spotdl is supposed to use ffmpeg 4
+    # https://github.com/spotDL/spotify-downloader/blob/v4.2.5/spotdl/utils/ffmpeg.py#L37
+    spotdl = (prev.spotdl.override { ffmpeg = final.ffmpeg_4; }).overridePythonAttrs rec {
       version = "4.2.5";
       src = final.fetchFromGitHub {
         owner = "spotDL";
