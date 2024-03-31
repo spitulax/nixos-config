@@ -44,7 +44,7 @@
     dmidecode
     parted
   ];
-  programs.nix-ld.enable = true;
+  programs.nix-ld.enable = false;
   programs.fish.enable = true;
   programs.dconf.enable = true;
   environment.variables.EDITOR = "nvim";

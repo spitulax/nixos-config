@@ -9,6 +9,7 @@
       add_newline = false;
       command_timeout = 5000;
       format = lib.concatStrings [
+        "$nix_shell"
         "$cmd_duration"
         "$directory"
         "$git_branch"
@@ -16,6 +17,7 @@
         "$git_state"
         "$git_metrics"
         "$git_status"
+        "$shlvl"
         "$character"
       ];
 
@@ -109,6 +111,20 @@
         staged = " ";
         renamed = " ";
         deleted = " ";
+        disabled = true;
+      };
+
+      nix_shell = {
+        format = "[$symbol$state]($style)";
+        style = "bold blue";
+        symbol = "  ";
+        impure_msg = "";
+        heuristic = false;
+        disabled = false;
+      };
+
+      shlvl = {
+        format = "[$shlvl]($style)";
         disabled = true;
       };
     };
