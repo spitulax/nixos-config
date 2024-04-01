@@ -34,6 +34,7 @@
       inherit (self) inputs outputs;
       inherit pkgs;
 
+      templates = import ./templates;
       formatter = forEachSystem (pkgs: _: pkgs.nixpkgs-fmt);
       packages = forEachSystem (pkgs: _: import ./packages { inherit pkgs; });
       checks = forEachSystem (pkgs: system: {
@@ -98,6 +99,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
+    # FIXME: https://nixpk.gs/pr-tracker.html?pr=300028
+    nixpkgs-staging-next.url = "github:NixOS/nixpkgs/staging-next";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";

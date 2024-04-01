@@ -30,6 +30,5 @@
     chafa
     yt-dlp
     lexurgy
-    exiftool
   ];
 }

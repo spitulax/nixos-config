@@ -14,6 +14,8 @@
     git
     mediainfo
     lsof
+    exiftool
+    nix-tree
 
     # monitoring
     htop
