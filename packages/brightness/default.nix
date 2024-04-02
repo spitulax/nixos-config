@@ -16,7 +16,7 @@ get () {
 }
 
 notify () {
-  notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Brightness" "$(get)"
+  notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Brightness" "$(get)" &
 }
 
 case "$1" in

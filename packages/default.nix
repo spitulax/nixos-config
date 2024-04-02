@@ -13,6 +13,8 @@
     lazyup = callPackage ./lazyup { };
     # Control monitor brightness
     brightness = callPackage ./brightness { };
+    # Control volume
+    volume = callPackage ./volume { };
   };
 
   lexurgy = callPackage ./lexurgy { };
