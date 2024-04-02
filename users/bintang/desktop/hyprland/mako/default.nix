@@ -42,6 +42,19 @@
 
       [mode=do-not-disturb]
       invisible=1
+
+      [app-name=popup]
+      invisible=0
+      width=150
+      height=150
+      anchor=top-center
+      default-timeout=1000
+      text-alignment=center
+      on-button-left=none
+      on-button-middle=none
+      on-button-right=none
+      on-notify=none
+      format=<b>%s\n%b</b>
     '';
   };
 }
