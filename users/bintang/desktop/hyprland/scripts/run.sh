@@ -16,7 +16,8 @@ case "$1" in
   "btop")
     $TERMINAL btop &
     ;;
-  "hyprpicker")
-    hyprpicker -a -f hex &
+  "colorpicker")
+    COLOR=$(hyprpicker -a -f hex)
+    notify-send -a popup -t 5000 "Color copied" "󰏘  $COLOR" &
     ;;
 esac

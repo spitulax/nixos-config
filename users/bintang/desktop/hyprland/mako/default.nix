@@ -54,6 +54,7 @@
       on-button-middle=none
       on-button-right=none
       on-notify=none
+      ignore-timeout=0
       format=<b>%s\n%b</b>
     '';
   };
