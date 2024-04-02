@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+hypridle &
+
 # Display wallpaper
 sleep 1
 wallpaper

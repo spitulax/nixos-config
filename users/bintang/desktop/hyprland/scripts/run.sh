@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
 
 case "$1" in
-  rofi)
+  "rofi")
     rofi -combi-modes window,drun -font "monospace 10" -icon-theme "Papirus-Dark" -show combi -show-icons -terminal $TERMINAL &
     ;;
-  file-manager)
+  "file-manager")
     $FILE_MANAGER &
     ;;
-  browser)
+  "browser")
     $BROWSER &
     ;;
-  terminal)
+  "terminal")
     $TERMINAL &
     ;;
-  btop)
+  "btop")
     $TERMINAL btop &
+    ;;
+  "hyprpicker")
+    hyprpicker -a -f hex &
     ;;
 esac

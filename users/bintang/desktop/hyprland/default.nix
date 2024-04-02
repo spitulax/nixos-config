@@ -7,6 +7,12 @@
     ./mako
   ];
 
+  home.packages = with pkgs; [
+    hyprpicker
+    hypridle
+    hyprlock
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -26,6 +32,8 @@
 
   home.file = {
     ".config/hypr/catppuccin-mocha.conf".source = ./catppuccin-mocha.conf;
+    ".config/hypr/hypridle.conf".source = ./hypridle.conf;
+    ".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
   };
 
   home.file = {

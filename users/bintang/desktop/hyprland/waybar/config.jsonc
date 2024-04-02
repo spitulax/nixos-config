@@ -39,8 +39,8 @@
     "persistent-workspaces": {
       "*": 5
     },
-    "on-scroll-up": "hyprctl dispatch workspace e-1",
-    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
   },
 
   "custom/scratchpad": {
@@ -190,6 +190,7 @@
     "modules": [
       "custom/notification",
       "power-profiles-daemon",
+      "idle_inhibitor",
     ]
   },
   "custom/notification": {
@@ -206,6 +207,13 @@
       "performance": "",
       "balanced": "",
       "power-saver": ""
+    }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
     }
   },
 

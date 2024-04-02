@@ -99,6 +99,7 @@ window#waybar.empty #window {
   padding: 0 0.75em;
 }
 
+#idle_inhibitor,
 #power-profiles-daemon {
   margin-left: 5px;
 }
