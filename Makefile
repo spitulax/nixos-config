@@ -7,16 +7,16 @@ build: nixos
 	git commit -m "build $(shell date '+%F %R')"
 
 nixos:
-	nh os switch
+	nh os switch -- --accept-flake-config
 
 home:
 	nh home switch
 
 boot:
-	nh os boot
+	nh os boot -- --accept-flake-config
 
 update:
-	nix flake update
+	nh os switch -u -- --accept-flake-config
 
 upinput:
 	nix flake lock --update-input $(i)
