@@ -45,6 +45,7 @@
 
       [app-name=popup]
       invisible=0
+      layer=overlay
       width=150
       height=150
       anchor=top-center

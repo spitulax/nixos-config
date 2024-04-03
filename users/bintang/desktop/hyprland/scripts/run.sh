@@ -16,6 +16,12 @@ case "$1" in
   "btop")
     $TERMINAL btop &
     ;;
+  "nvtop")
+    $TERMINAL nvtop &
+    ;;
+  "auto-cpufreq")
+    auto-cpufreq-gtk &
+    ;;
   "colorpicker")
     COLOR=$(hyprpicker -a -f hex)
     notify-send -a popup -t 5000 "Color copied" "󰏘  $COLOR" &
