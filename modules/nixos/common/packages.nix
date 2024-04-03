@@ -45,6 +45,7 @@
     hdparm
     dmidecode
     parted
+    acpi
   ];
   programs.nix-ld.enable = false;
   programs.fish.enable = true;

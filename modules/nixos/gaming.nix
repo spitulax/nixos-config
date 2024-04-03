@@ -10,6 +10,7 @@
   # Gamemode
   programs.gamemode = {
     enable = true;
+    settings.general.renice = 15;
   };
   boot.kernelModules = [ "linux_xanmod" ];
 

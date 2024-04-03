@@ -189,7 +189,6 @@
     },
     "modules": [
       "custom/notification",
-      "power-profiles-daemon",
       "idle_inhibitor",
     ]
   },
@@ -199,15 +198,6 @@
     "interval": "once",
     "on-click": "~/.config/waybar/scripts/mako.sh toggle && pkill -RTMIN+1 waybar",
     "signal": 1
-  },
-  "power-profiles-daemon": {
-    "tooltip-format": "Current profile: {profile}",
-    "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
-    }
   },
   "idle_inhibitor": {
     "format": "{icon}",

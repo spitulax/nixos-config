@@ -51,10 +51,10 @@
       general = {
         igpu_desiredgov = "performance";
         igpu_power_threshold = -1;
-        renice = 15;
       };
     };
   };
+  power.power-profiles-daemon.enable = false;
 
   # State version
   system.stateVersion = "23.11";

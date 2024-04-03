@@ -21,7 +21,7 @@
   system.replaceRuntimeDependencies = [
     {
       original = pkgs.xz;
-      replacement = inputs.nixpkgs-staging-next.legacyPackages.${pkgs.system}.xz;
+      replacement = pkgs.inputs.nixpkgs-unstable-small.xz;
     }
   ];
 
@@ -38,7 +38,9 @@
   };
 
   # Services
-  services.dbus.packages = [ pkgs.gcr ];
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
+  services = {
+    dbus.packages = [ pkgs.gcr ];
+    gvfs.enable = true;
+    udisks2.enable = true;
+  };
 }
