@@ -16,15 +16,6 @@
     ./openssh.nix
   ];
 
-  # FIXME: downgrade backdoored version of xz
-  # temporary fix until #300028 is merged to nixos-unstable
-  system.replaceRuntimeDependencies = [
-    {
-      original = pkgs.xz;
-      replacement = pkgs.inputs.nixpkgs-unstable-small.xz;
-    }
-  ];
-
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

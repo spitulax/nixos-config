@@ -23,8 +23,8 @@
       src = final.fetchFromGitHub {
         owner = "spotDL";
         repo = "spotify-downloader";
-        rev = "refs/tags/v${version}";
-        hash = "sha256-YU/uOQmCMh5pSfclHVbgw1lodE5qGXXDHCPLQERwCRY=";
+        rev = "v${version}";
+        hash = "sha256-vxMhFs2mLbVQndlC2UpeDP+M4pwU9Y4cZHbZ8y3vWbI=";
       };
     };
 
