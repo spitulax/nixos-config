@@ -7,6 +7,7 @@
     nix-output-monitor
     sops
     statix
-    (nh.override { inherit (pkgs) nix-output-monitor; })
+    nvd
+    (nh.override { inherit (pkgs) nix-output-monitor nvd; })
   ];
 }

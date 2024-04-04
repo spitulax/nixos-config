@@ -25,6 +25,9 @@
   # Nix
   nix = {
     registry = (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+    settings = {
+      inherit (outputs) substituters trusted-public-keys;
+    };
     extraOptions = ''
       experimental-features = nix-command flakes
     '';

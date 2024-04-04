@@ -18,7 +18,7 @@
   hardware.steam-hardware.enable = true;
   programs.steam.enable = true;
   programs.steam.extraCompatPackages = [
-    pkgs.inputs.nix-gaming.proton-ge
+    pkgs.proton-ge-bin
   ];
 
   # Pipewire Low Latency

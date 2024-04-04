@@ -32,7 +32,7 @@
           (_: p:
             p.overrideAttrs (finalAttrs: prevAttrs: with pkgs; {
               nativeBuildInputs = [
-
+                hello
               ] ++ (prevAttrs.nativeBuildInputs or [ ]);
             })
           )

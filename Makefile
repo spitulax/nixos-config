@@ -1,4 +1,4 @@
-.PHONY: build nixos home upgrade update upinput repl clean delete check boot
+.PHONY: build nixos home upgrade update upinput repl clean delete check
 
 upgrade: update build
 
@@ -7,16 +7,13 @@ build: nixos
 	git commit -m "build $(shell date '+%F %R')"
 
 nixos:
-	nh os switch -- --accept-flake-config
+	nh os switch
 
 home:
 	nh home switch
 
-boot:
-	nh os boot -- --accept-flake-config
-
 update:
-	nh os switch -u -- --accept-flake-config
+	nix flake update
 
 upinput:
 	nix flake lock --update-input $(i)

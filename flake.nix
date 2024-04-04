@@ -34,6 +34,20 @@
       inherit (self) inputs outputs;
       inherit pkgs;
 
+      # See the bottom comment
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nix-gaming.cachix.org"
+        "https://hyprland.cachix.org"
+        "https://nix-on-droid.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
+      ];
+
       templates = import ./templates;
       formatter = forEachSystem (pkgs: _: pkgs.nixpkgs-fmt);
       packages = forEachSystem (pkgs: _: import ./packages { inherit pkgs; });
@@ -135,16 +149,17 @@
     nvchad.flake = false;
   };
 
-  nixConfig = {
-    extra-substituters = [
-      "https://nix-gaming.cachix.org"
-      "https://hyprland.cachix.org"
-      "https://nix-on-droid.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
-    ];
-  };
+  # You must run the build command as root to use this
+  # nixConfig = {
+  #   extra-substituters = [
+  #     "https://nix-gaming.cachix.org"
+  #     "https://hyprland.cachix.org"
+  #     "https://nix-on-droid.cachix.org"
+  #   ];
+  #   extra-trusted-public-keys = [
+  #     "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+  #     "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+  #     "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
+  #   ];
+  # };
 }

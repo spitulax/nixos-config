@@ -17,6 +17,9 @@
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
+      inherit (outputs) substituters trusted-public-keys;
+    };
+    settings = {
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       warn-dirty = false;

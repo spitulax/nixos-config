@@ -38,7 +38,7 @@
   # Misc programs
   environment.systemPackages = with pkgs; [
     # hardware monitoring
-    nvtop-intel
+    nvtopPackages.intel
     libva-utils
     vdpauinfo
     intel-gpu-tools

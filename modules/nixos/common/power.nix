@@ -14,7 +14,7 @@
 
     services = {
       power-profiles-daemon = {
-        enable = config.power.power-profiles-daemon.enable;
+        inherit (config.power.power-profiles-daemon) enable;
       };
       upower = {
         enable = true;

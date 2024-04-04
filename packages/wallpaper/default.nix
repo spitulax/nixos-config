@@ -15,7 +15,7 @@ usage () {
   echo "Help:   wallpaper --help"
 }
 
-[[ -z "$(pgrep swww-daemon)" ]] && swww init
+[[ -z "$(pgrep swww-daemon)" ]] && swww-daemon &
 
 case $# in
 2)
