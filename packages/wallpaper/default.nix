@@ -15,7 +15,10 @@ usage () {
   echo "Help:   wallpaper --help"
 }
 
-[[ -z "$(pgrep swww-daemon)" ]] && swww-daemon &
+if [[ -z "$(pgrep swww-daemon)" ]]; then
+  rm $XDG_RUNTIME_DIR/swww.socket
+  swww-daemon &
+fi
 
 case $# in
 2)
