@@ -36,8 +36,10 @@
     };
     extraConfig = ''
       bindl = , switch:Lid Switch, exec, pidof hyprlock || hyprlock
-      bindl = , switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1,disable"
-      bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "${config.wayland.windowManager.hyprland.settings.monitor}"
+      # Weird things happen if these lines are added
+      # See `packages/wallpaper/default.nix`
+      #bindl = , switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1,disable"
+      #bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "${config.wayland.windowManager.hyprland.settings.monitor}"
     '';
   };
 }
