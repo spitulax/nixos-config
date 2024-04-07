@@ -118,8 +118,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-on-droid.url = "github:nix-community/nix-on-droid";
-    nix-on-droid.inputs.nixpkgs.follows = "nixpkgs";
-    nix-on-droid.inputs.home-manager.follows = "home-manager";
 
     #############################
 
@@ -129,16 +127,13 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
-    nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-alien.url = "github:thiagokokada/nix-alien";
-    # Do not modify nix-alien's inputs
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland.url = "github:hyprwm/hyprland";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq/v2.2.0";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";

@@ -19,10 +19,10 @@
 
   programs.xwayland.enable = true;
 
-  programs.hyprland = {
+  programs.hyprland = with inputs.hyprland.packages.${pkgs.system}; {
     enable = true;
-    package = pkgs.inputs.hyprland.hyprland;
-    portalPackage = pkgs.inputs.hyprland.xdg-desktop-portal-hyprland;
+    package = hyprland;
+    portalPackage = xdg-desktop-portal-hyprland;
   };
 
   security.pam.services.swaylock = { };

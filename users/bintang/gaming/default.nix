@@ -17,7 +17,7 @@
     gamescope
     # dxvk
     # vkd3d-proton
-  ] ++ (with pkgs.inputs.nix-gaming; [
+  ] ++ (with inputs.nix-gaming.packages.${pkgs.system}; [
     # FAILED: {https://github.com/fufexan/nix-gaming/pull/86}
     # dxvk
     # vkd3d-proton
