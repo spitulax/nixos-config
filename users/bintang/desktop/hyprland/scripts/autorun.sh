@@ -2,10 +2,6 @@
 
 hypridle &
 
-# Display wallpaper
-sleep 1
-wallpaper
-
 # Start waybar
 pkill waybar
 waybar &

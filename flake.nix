@@ -135,7 +135,7 @@
 
     hyprland.url = "github:hyprwm/hyprland";
 
-    auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq/v2.2.0";
+    auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
 
     #############################
@@ -144,7 +144,7 @@
     nvchad.flake = false;
   };
 
-  # You must run the build command as root to use this
+  # You must run the build command as root to utilize this
   # nixConfig = {
   #   extra-substituters = [
   #     "https://nix-gaming.cachix.org"
