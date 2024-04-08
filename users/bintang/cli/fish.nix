@@ -1,7 +1,4 @@
-{ config
-, pkgs
-, ...
-}: {
+{
   programs.zoxide = {
     enable = true;
     options = [ "--cmd cd" ];
@@ -17,6 +14,7 @@
       la = "eza -G -a --no-user --color=always --group-directories-first --icons";
       ll = "eza -G -lH --no-user --color=always --group-directories-first --icons";
       lt = "eza -G -T --no-user --color=always --group-directories-first --icons --long -L";
+      ols = "/usr/bin/env ls";
       # shortcuts
       vim = "nvim";
       ".." = "cd ..";
@@ -25,6 +23,7 @@
       rm = "trash-put";
       orm = "/usr/bin/env rm";
       restore = "trash-restore";
+      make = "make -C (dirname (upfind . -name Makefile))";
       # colorizer
       grep = "grep --color";
       egrep = "egrep --color";
