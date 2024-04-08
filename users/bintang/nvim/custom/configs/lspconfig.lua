@@ -1,10 +1,15 @@
 local M = {}
 
 M.setup = function(lspconfig, on_attach, capabilities)
-  local servers = { "clangd", "rust_analyzer", "gopls", "nil_ls" }
+  local servers = {
+    "clangd",
+    "rust_analyzer",
+    "gopls",
+    "nil_ls",
+    "gdscript",
+  }
 
-  for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
+  for _, lsp in ipairs(servers) do lspconfig[lsp].setup {
       on_attach = on_attach,
       capabilities = capabilities,
     }

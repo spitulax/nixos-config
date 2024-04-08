@@ -34,6 +34,7 @@
               nativeBuildInputs = [
                 hello
               ] ++ (prevAttrs.nativeBuildInputs or [ ]);
+              CPATH = lib.makeSearchPathOutput "dev" "include" finalAttrs.buildInputs;
             })
           )
           self.packages.${system}

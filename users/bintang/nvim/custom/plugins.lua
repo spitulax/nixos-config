@@ -117,18 +117,6 @@ local M = {
   },
 
   {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    lazy = false,
-    init = function()
-      load_mappings("harpoon")
-    end,
-    config = function(_, _)
-      require("harpoon").setup({})
-    end,
-  },
-
-  {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
     lazy = false,
     dependencies = {
@@ -286,6 +274,15 @@ local M = {
       load_mappings("vim_tmux")
     end,
     lazy = false,
+  },
+
+  {
+    'stevearc/conform.nvim',
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    opts = function()
+      return require("custom.configs.conform").opts
+    end,
   },
 }
 

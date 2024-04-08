@@ -2,9 +2,7 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    rustc
-    cargo
-    clippy
-    rustfmt
+    go
+    golangci-lint
   ];
 }

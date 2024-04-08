@@ -1,6 +1,12 @@
 local opt = vim.opt
 local g = vim.g
 
+local indent_four = function()
+  opt.shiftwidth = 4
+  opt.tabstop = 4
+  opt.softtabstop = 4
+end
+
 opt.listchars = {
   space = "·",
   tab = "->",
@@ -28,6 +34,16 @@ opt.sidescroll = 5
 g.c_syntax_for_h  = 1
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(arg)
+    if vim.bo[arg.buf].filetype == "c" then
+      indent_four()
+    elseif vim.bo[arg.buf].filetype == "cpp" then
+      indent_four()
+    end
+  end,
+})
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()

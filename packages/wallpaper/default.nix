@@ -2,14 +2,6 @@
 # TODO: maybe add alternating wallpapers if more than one files are defined in wallpaperrc
 writeShellScriptBin "wallpaper" ''
 
-# FIXME: See `users/bintang/barbatos.nix` for condition
-# - press power button to go to sleep
-# - close the lid
-# - wake up from sleep and greeted with hyprlock
-# - press power button from hyprlock
-# - close the lid
-# - wake up and unlock, wallpaper is not loaded and started from workspace 6
-
 reload () {
   if [[ -r $HOME/.config/wallpaperrc ]]; then
     # Make sure the path in wallpaperrc is absolute

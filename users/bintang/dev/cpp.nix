@@ -2,9 +2,8 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    rustc
-    cargo
-    clippy
-    rustfmt
+    (hiPrio gcc)
+    clang
+    clang-tools
   ];
 }

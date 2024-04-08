@@ -153,7 +153,6 @@ local mappings = {
   "nvimtree",
   "lspconfig",
   "telescope",
-  "harpoon",
   "neogit",
   "icon_picker",
   "nvterm",

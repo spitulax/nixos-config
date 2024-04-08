@@ -5,6 +5,8 @@
     ./python.nix
     ./rust.nix
     ./nix.nix
+    ./go.nix
+    ./cpp.nix
   ];
 
   home.packages = with pkgs; [
@@ -13,11 +15,8 @@
     lldb
 
     # Languages
-    (hiPrio gcc)
-    clang
     luajit
     ruby
-    go
 
     # Misc
     gnumake

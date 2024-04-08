@@ -14,13 +14,12 @@ in
     extraPackages = with pkgs; [
       # LSPs
       lua-language-server
-      clang-tools
       gopls
       nil
       rust-analyzer
+      clang-tools
 
-      # Required
-      luajit # for luarocks.nvim
+      luajit # required for luarocks.nvim
     ];
     extraPython3Packages = ps: with ps; [
       pynvim
