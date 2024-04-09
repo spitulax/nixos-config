@@ -1,13 +1,7 @@
 local M = {}
 
 M.opts = {
-  extensions_list = { "media_files", "neoclip" },
-  extensions = {
-    media_files = {
-      filetypes = { "png", "webp", "jpg", "jpeg", "svg" },
-      find_cmd = "rg"
-    },
-  },
+  extensions_list = { "neoclip" },
 }
 
 M.mappings = {
@@ -34,9 +28,8 @@ M.mappings = {
     ["<leader>gb"]  = { "<cmd> Telescope git_branches <CR>", "Git branches" },
     ["<leader>gs"]  = { "<cmd> Telescope git_stash <CR>", "Git stash" },
     -- extensions
-    ["<leader>fxm"] = { "<cmd> Telescope media_files <CR>", "Preview media" },
-    ["<leader>fl"]  = { "<cmd> Telescope neoclip <CR>", "Preview clipboard" },
-    ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "Project list" },
+    ["<leader>v"]  = { "<cmd> Telescope neoclip <CR>", "Preview clipboard" },
+    ["<leader>p"] = { "<cmd> Telescope projects <CR>", "Project list" },
   },
 }
 
