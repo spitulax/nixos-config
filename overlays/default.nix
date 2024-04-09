@@ -14,15 +14,7 @@
 
     # spotdl is supposed to use ffmpeg 4
     # https://github.com/spotDL/spotify-downloader/blob/v4.2.5/spotdl/utils/ffmpeg.py#L37
-    spotdl = (prev.spotdl.override { ffmpeg = final.ffmpeg_4; }).overridePythonAttrs rec {
-      version = "4.2.5";
-      src = final.fetchFromGitHub {
-        owner = "spotDL";
-        repo = "spotify-downloader";
-        rev = "v${version}";
-        hash = "sha256-vxMhFs2mLbVQndlC2UpeDP+M4pwU9Y4cZHbZ8y3vWbI=";
-      };
-    };
+    spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
 
     keymapper = prev.keymapper.overrideAttrs rec {
       version = "4.0.0";
