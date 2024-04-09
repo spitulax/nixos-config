@@ -1,32 +1,35 @@
 { writeShellScriptBin }:
-# TODO: maybe add alternating wallpapers if more than one files are defined in wallpaperrc
+# TODO: maybe add alternating wallpapers
 writeShellScriptBin "wallpaper" ''
 
-reload () {
-  if [[ -r $HOME/.config/wallpaperrc ]]; then
-    # Make sure the path in wallpaperrc is absolute
-    swww img $(cat $HOME/.config/wallpaperrc)
-  fi
-}
-
 usage () {
-  echo "Change: wallpaper change <wallpaper>"
-  echo "Reload: wallpaper"
-  echo "Help:   wallpaper --help"
+  echo "Change:               wallpaper change <wallpaper>"
+  echo "(Re)start hyprpaper:  wallpaper restart"
+  echo "Help:                 wallpaper --help"
 }
 
-if [[ -z "$(pgrep swww-daemon)" ]]; then
-  rm $XDG_RUNTIME_DIR/swww.socket # sometimes swww will not remove the socket
-  swww-daemon -q &
-fi
+restart () {
+  [[ -n $(pidof hyprpaper) ]] && killall hyprpaper
+  hyprpaper >/dev/null &
+}
+
+change () {
+  WALLPAPER=$(realpath "$1")
+  cat > $HOME/.config/hypr/hyprpaper.conf << EOF
+preload = $WALLPAPER
+wallpaper = ,$WALLPAPER
+splash = false
+ipc = false
+EOF
+  restart
+  echo "Changed current wallpaper to $1"
+}
 
 case $# in
 2)
   case "$1" in
   "change")
-    realpath $2 > $HOME/.config/wallpaperrc
-    reload
-    echo "Changed current wallpaper to $2"
+    change "$2"
   ;;
   *)
     usage
@@ -34,14 +37,17 @@ case $# in
   esac
 ;;
 
-0)
+1)
   case "$1" in
   "--help")
     usage
   ;;
+  "restart")
+    restart
+  ;;
   *)
-    reload
-    echo "Reloaded current wallpaper"
+    usage
+    exit 1
   esac
 ;;
 

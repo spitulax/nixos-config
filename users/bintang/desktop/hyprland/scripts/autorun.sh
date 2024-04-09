@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 hypridle &
+hyprpaper &
 
 # Start waybar
 pkill waybar

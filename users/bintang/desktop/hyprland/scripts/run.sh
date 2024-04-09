@@ -24,6 +24,6 @@ case "$1" in
     ;;
   "colorpicker")
     COLOR=$(hyprpicker -a -f hex)
-    notify-send -a popup -t 5000 "Color copied" "󰏘  $COLOR" &
+    [[ -n "$COLOR" ]] && notify-send -a popup -t 5000 "Color copied" "󰏘  $COLOR" &
     ;;
 esac

@@ -21,9 +21,6 @@
     libsForQt5.polkit-kde-agent
 
     # for Hyprland
-    swaylock
-    swayidle
-    swww
     rofi-wayland
     rofimoji
 

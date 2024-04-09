@@ -11,6 +11,7 @@
     hyprpicker
     hypridle
     hyprlock
+    hyprpaper
   ];
 
   wayland.windowManager.hyprland = {
