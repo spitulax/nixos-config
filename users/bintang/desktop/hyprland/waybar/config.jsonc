@@ -28,12 +28,12 @@
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "69": "",
+      "1": "",
+      "2": "󰊯",
+      "3": "󰖣",
+      "4": "󰝚",
+      "5": "󰓓",
+      "69": "󰍹",
     },
     "on-click": "activate",
     "persistent-workspaces": {
@@ -142,7 +142,6 @@
       ]
     },
     "scroll-step": 1.0,
-    // Commands to execute on events
     "on-click": "amixer set Master toggle",
     "on-click-right": "pavucontrol",
     "smooth-scrolling-threshold": 1,
@@ -159,13 +158,13 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}{capacity}%",
-    "format-discharging-warning": " {capacity}%",
-    "format-discharging-critical": " {capacity}%",
-    "format-charging": "󱐋 {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format": "{icon} {capacity}%",
+    "format-discharging-warning": "󱊡 {capacity}%",
+    "format-discharging-critical": "󱊡 {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
     "format-alt": null,
-    "format-full": " {capacity}%",
+    "format-full": "󰚥 {capacity}%",
     "tooltip-format": "{timeTo}",
     "format-time": "{H}h {M}m",
     "states": {
@@ -173,11 +172,16 @@
       "critical": 10
     },
     "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
+      "󰁹",
+      "󰂂",
+      "󰂁",
+      "󰂀",
+      "󰁿",
+      "󰁾",
+      "󰁽",
+      "󰁼",
+      "󰁻",
+      "󰁺",
     ]
   },
 
