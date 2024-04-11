@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
 case "$1" in
-  "rofi")
+  "runner")
     rofi -combi-modes window,drun -font "monospace 10" -icon-theme "Papirus-Dark" -show combi -show-icons -terminal $TERMINAL &
+    ;;
+  "clipboard")
+    cliphist list | rofi -dmenu | cliphist decode | wl-copy &
     ;;
   "file-manager")
     $FILE_MANAGER &
