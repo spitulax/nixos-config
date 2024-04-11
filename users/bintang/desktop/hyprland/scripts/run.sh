@@ -2,10 +2,13 @@
 
 case "$1" in
   "runner")
-    rofi -combi-modes window,drun -font "monospace 10" -icon-theme "Papirus-Dark" -show combi -show-icons -terminal $TERMINAL &
+    rofi -show drun &
     ;;
   "clipboard")
     cliphist list | rofi -dmenu | cliphist decode | wl-copy &
+    ;;
+  "emoji")
+    rofi -modi emoji -show emoji &
     ;;
   "file-manager")
     $FILE_MANAGER &

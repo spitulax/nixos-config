@@ -15,14 +15,11 @@
   home.packages = with pkgs; [
     # core
     wl-clipboard
+    wtype
     cliphist
     brightnessctl
     gnome.zenity
     libsForQt5.polkit-kde-agent
-
-    # for Hyprland
-    rofi-wayland
-    rofimoji
 
     # screenshot
     grim

@@ -5,6 +5,7 @@
   imports = [
     ./waybar
     ./mako
+    ./rofi
   ];
 
   home.packages = with pkgs; [
