@@ -11,8 +11,8 @@
       on-button-right=dismiss
       on-notify=exec mpv /run/current-system/sw/share/sounds/freedesktop/stereo/message.oga
       font=sans-serif 12
-      background-color=#101020
-      border-color=#7f849c
+      background-color=#313244
+      border-color=#6c7086
       border-radius=12
       progress-color=over #585b70
       format=<i><b>%a</b></i> ⋅ <b>%s</b>\n<small>%b</small>
@@ -25,6 +25,7 @@
 
       [urgency=low]
       text-color=#6c7086
+      background-color=#101020
 
       [urgency=normal]
       text-color=#cdd6f4

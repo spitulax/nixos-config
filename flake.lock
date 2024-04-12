@@ -509,11 +509,11 @@
     },
     "nixpkgs-temp": {
       "locked": {
-        "lastModified": 1712913450,
-        "narHash": "sha256-soK4+zoFE2/fAhh2kPWRi9JiwAoyx8vYThQlJgcuGOI=",
+        "lastModified": 1712932951,
+        "narHash": "sha256-LT6+Ui5E8nw2Q/zi2dVOXVW0WGm+orxR0cA+G7bpWAk=",
         "owner": "spitulax",
         "repo": "nixpkgs",
-        "rev": "88328366a3b85cc15918f5cf2876262c9408941f",
+        "rev": "dd6d24ac8d12a5cf0349efea3bea15fa1bdd14f3",
         "type": "github"
       },
       "original": {

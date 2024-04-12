@@ -1,17 +1,16 @@
 {
   "position": "top",
   "layer": "top",
-  "spacing": 8,
-  "margin-bottom": 5,
-  "height": 35,
+  "spacing": 12,
+  "height": 30,
+  "margin": "6 6",
 
   "modules-left": [
     "group/power-menu",
     "hyprland/workspaces",
     "memory",
+    "custom/separator",
     "cpu",
-    "disk",
-    "custom/scratchpad",
     "custom/layout",
   ],
   "modules-center": [
@@ -23,17 +22,20 @@
     "battery",
     "clock",
     "group/buttons",
+    "custom/separator",
     "tray"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",
+    "show-special": true,
     "format-icons": {
-      "1": "",
-      "2": "󰊯",
-      "3": "󰖣",
-      "4": "󰝚",
-      "5": "󰓓",
+      // "1": "",
+      // "2": "󰊯",
+      // "3": "󰖣",
+      // "4": "󰝚",
+      // "5": "󰓓",
       "69": "󰍹",
+      "special": "󰓶",
     },
     "on-click": "activate",
     "persistent-workspaces": {
@@ -43,38 +45,24 @@
     "on-scroll-down": "hyprctl dispatch workspace e-1",
   },
 
-  "custom/scratchpad": {
-    "restart-interval": 1,
-    "exec": "[[ $(hyprctl activewindow -j | jq -r '.workspace.name') = 'special' ]] && echo '(scratch)'",
-    "tooltip": false,
-  },
-
   "custom/layout": {
-    "restart-interval": 1,
+    "interval": 1,
     "exec": "[[ $(hyprctl getoption general:layout -j | jq -r '.str') = 'master' ]] && echo '(master)'",
     "tooltip": false,
   },
 
   "hyprland/window": {
     "format": "{title}",
-    "max-length": 200,
+    "max-length": 160,
     "separate-outputs": true,
     "on-click-right": "exec hyprctl dispatch killactive",
-    "rewrite": {
-      "(.*) - Brave": " $1",
-      "ZapZap(.*)": " ZapZap$1",
-      "tmux.*": " tmux",
-      "Youtube.*": "󰗃 YouTube",
-      "Twitch.*": " Twitch",
-      "Github.*": " Github",
-    }
   },
 
   "clock": {
     "interval": 1,
-    "tooltip-format": "<span color='#89b4fa'><big><b>{:%Y}</b></big></span>\n<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "<span color='#89b4fa'><big><b> {:%Y}</b></big></span>\n<tt><small>{calendar}</small></tt>",
     "format": "{:%H:%M:%S %Z}",
-    "format-alt": "{:%a %d %b}",
+    "format-alt": "󰃭 {:%a %d %b}",
     "locale": "en_US.UTF-8",
     "calendar": {
       "mode": "year",
@@ -96,20 +84,13 @@
       "Atlantic/Reykjavik"
     ]
   },
-  "disk": {
-    "format": "{used}",
-    "format-alt": "󰗮",
-    "tooltip-format": "Used: {used}/{total} ({percentage_used}%)\nFree: {free} ({percentage_free}%)"
-  },
   "cpu": {
     "format": "{load}",
-    "format-alt": "󰘚",
-    "interval": 1,
+    "interval": 2,
   },
   "memory": {
     "format": "{used}G",
-    "format-alt": "󰍛",
-    "interval": 1,
+    "interval": 2,
     "tooltip-format": "Memory: {used}G/{total}G ({percentage}%)\n        {avail}G available\nSwap  : {swapUsed}G/{swapTotal}G ({swapPercentage}%)\n        {swapAvail}G available"
   },
   "network": {
@@ -243,5 +224,10 @@
     "format": "",
     "tooltip": false,
     "on-double-click-right": "shutdown now"
-  }
+  },
+
+  "custom/separator": {
+    "format": "",
+    "tooltip": false,
+  },
 }
