@@ -7,22 +7,19 @@
 
   # Modify packages from nixpkgs
   modify = final: prev: {
-    brave = prev.brave.override {
-      libvaSupport = true;
-      enableVideoAcceleration = true;
-    };
+    brave = inputs.nixpkgs-temp.legacyPackages.${final.system}.brave;
 
     # spotdl is supposed to use ffmpeg 4
     # https://github.com/spotDL/spotify-downloader/blob/v4.2.5/spotdl/utils/ffmpeg.py#L37
     spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
 
     keymapper = prev.keymapper.overrideAttrs rec {
-      version = "4.0.0";
+      version = "4.0.2";
       src = final.fetchFromGitHub {
         owner = "houmain";
         repo = "keymapper";
         rev = version;
-        hash = "sha256-uMK8si0ATrpIesoWv7VavJQECFbB8qsck28VtkH3FY0=";
+        hash = "sha256-a9CuLchSSfS4w3pZylzdiUr/llMsuU2qDR3mJrAupZk=";
       };
     };
   };
