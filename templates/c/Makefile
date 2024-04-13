@@ -9,7 +9,13 @@ SRCS := $(shell find $(SRC_DIR) -name *.cpp -or -name *.c)
 OBJS := $(SRCS:$(SRC_DIR)/%=$(BUILD_DIR)/%.o)
 
 # Common flags
-CPPFLAGS += -Wall -Wextra -ggdb
+CPPFLAGS += -Wall -Wextra
+
+ifeq ($(DEBUG),1)
+	CPPFLAGS += -ggdb -Og
+else
+	CPPFLAGS += -O3
+endif
 
 # C specific flags
 CFLAGS +=
@@ -22,7 +28,7 @@ LDFLAGS +=
 
 # Executable
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
-	$(CC) $(OBJS) -o $@ $(LDFLAGS)
+	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
 
 # C source
 $(BUILD_DIR)/%.c.o: $(SRC_DIR)/%.c

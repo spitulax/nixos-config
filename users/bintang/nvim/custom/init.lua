@@ -1,15 +1,15 @@
 local opt = vim.opt
 local g = vim.g
 
-local indent_four = function()
-  opt.shiftwidth = 4
-  opt.tabstop = 4
-  opt.softtabstop = 4
+local indent = function(n)
+  opt.shiftwidth = n
+  opt.tabstop = n
+  opt.softtabstop = n
 end
 
 opt.listchars = {
   space = "·",
-  tab = "->",
+  tab = "<->",
   trail = "∼",
   nbsp = "-",
   extends = "→",
@@ -35,12 +35,15 @@ g.c_syntax_for_h  = 1
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
+local indent_four_fts = { "c", "cpp", "rust" }
+
 vim.api.nvim_create_autocmd("FileType", {
   callback = function(arg)
-    if vim.bo[arg.buf].filetype == "c" then
-      indent_four()
-    elseif vim.bo[arg.buf].filetype == "cpp" then
-      indent_four()
+    for _, ft in ipairs(indent_four_fts) do
+      if vim.bo[arg.buf].filetype == ft then
+        indent(4)
+        break
+      end
     end
   end,
 })

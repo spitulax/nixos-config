@@ -1,5 +1,5 @@
 {
-  description = "A C/C++ project";
+  description = "A project";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -25,7 +25,7 @@
         in
         {
           default = self.packages.${system}.foobar;
-          inherit (pkgs) foobar foobar-debug;
+          inherit (pkgs) foobar;
         });
 
       devShells = eachSystem (system:

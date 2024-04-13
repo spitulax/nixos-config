@@ -1,5 +1,5 @@
 {
-  description = "A C/C++ project";
+  description = "A project";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -35,8 +35,9 @@
         {
           default = pkgs.mkShell {
             name = "foobar-shell";
-            inputsFrom = [
-              self.packages.${system}.default
+            nativeBuildInputs = with pkgs; [
+              rustc
+              cargo
             ];
             shellHook = "exec $SHELL";
           };
