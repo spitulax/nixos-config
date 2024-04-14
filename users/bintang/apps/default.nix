@@ -18,7 +18,7 @@
 
   home.packages = with pkgs; [
     krita
-    gf
+    gdbgui
     nomacs
   ];
 }
