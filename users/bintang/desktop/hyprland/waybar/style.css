@@ -21,7 +21,7 @@ window#waybar {
 #workspaces {
   background-color: alpha(@surface2, 0.5);
   border-radius: 20px;
-  margin: 5px 0;
+  margin: 5px 2em;
 }
 #workspaces button {
   font-family: "Font Awesome 6 Free";
@@ -30,6 +30,7 @@ window#waybar {
 }
 #workspaces button * {
   color: @blue;
+  font-size: 11pt;
 }
 #workspaces button.empty * {
   color: @text;
@@ -56,9 +57,11 @@ tooltip label {
 }
 
 #window * {
-  padding: 0 2em;
-  margin: 0 2em;
-  font-size: 10pt;
+  font-size: 11pt;
+  color: @text;
+}
+#window {
+  margin-left: 0.5em;
 }
 window#waybar.empty #window {
   background-color: transparent;
@@ -67,7 +70,6 @@ window#waybar.empty #window {
 }
 
 #memory {
-  margin-left: 0.5em;
   color: @peach;
 }
 
@@ -112,11 +114,11 @@ window#waybar.empty #window {
 
 #buttons,
 #tray,
-#power-menu {
+#menu {
 }
 
 #buttons *,
-#power-menu * {
+#menu * {
   color: @subtext1;
 }
 
@@ -126,8 +128,11 @@ window#waybar.empty #window {
   margin: 5px 0;
   padding: 0 0.5em;
 }
+#buttons * {
+  font-size: 11pt;
+}
 
-#power-menu {
+#menu {
   padding-left: 0.75em;
 }
 
@@ -143,24 +148,31 @@ window#waybar.empty #window {
   margin-right: 5px;
 }
 
-#power-menu {
+#menu {
   margin-left: 5px;
+  margin-right: 0.5em;
 }
+#custom-menu,
 #custom-quit,
 #custom-lock,
 #custom-reboot,
 #custom-power {
-  padding-right: 8px;
   border-radius: 20px;
+  padding-right: 8px;
 }
-#custom-power {
+#custom-menu {
   padding: 0;
+  color: @blue;
 }
 #custom-reboot {
   padding-right: 0;
 }
-#custom-quit {
+#custom-power {
   padding-left: 8px;
+}
+
+#custom-separator * {
+  color: @text;
 }
 
 /* TODO: https://github.com/Alexays/Waybar/issues/2989 */

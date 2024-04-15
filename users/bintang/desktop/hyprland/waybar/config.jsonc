@@ -6,15 +6,14 @@
   "margin": "6 6",
 
   "modules-left": [
-    "group/power-menu",
-    "hyprland/workspaces",
+    "group/menu",
     "memory",
     "custom/separator",
     "cpu",
-    "custom/layout",
+    "hyprland/window",
   ],
   "modules-center": [
-    "hyprland/window",
+    "hyprland/workspaces",
   ],
   "modules-right": [
     "network",
@@ -43,12 +42,6 @@
     },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
-  },
-
-  "custom/layout": {
-    "interval": 1,
-    "exec": "[[ $(hyprctl getoption general:layout -j | jq -r '.str') = 'master' ]] && echo '(master)'",
-    "tooltip": false,
   },
 
   "hyprland/window": {
@@ -100,7 +93,7 @@
     "format-disconnected": "✈ Disconnected",
     "tooltip-format-wifi": " {essid} {signalStrength}% · {ipaddr}",
     "tooltip-format-ethernet": "󰈀 {ipaddr}/{cidr} · {ipaddr}",
-    "tooltip-format-disconnected": "",
+    "tooltip-format-disconnected": "✈ Disconnected",
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -144,7 +137,6 @@
     "format-discharging-critical": "󱊡 {capacity}%",
     "format-charging": "󰂄 {capacity}%",
     "format-plugged": "󰚥 {capacity}%",
-    "format-alt": null,
     "format-full": "󰚥 {capacity}%",
     "tooltip-format": "{timeTo}",
     "format-time": "{H}h {M}m",
@@ -192,38 +184,44 @@
     }
   },
 
-  "group/power-menu": {
+  "group/menu": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 500,
-      "children-class": "power-menu",
+      "children-class": "menu",
     },
     "modules": [
+      "custom/menu",
       "custom/power",
       "custom/quit",
       "custom/lock",
       "custom/reboot",
     ]
   },
+  "custom/menu": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "~/.config/hypr/scripts/run.sh runner",
+  },
   "custom/quit": {
     "format": "󰗼",
     "tooltip": false,
-    "on-double-click-right": "hyprctl dispatch exit"
+    "on-click": "~/.config/waybar/scripts/confirm.sh 'Exit Hyprland?' 'hyprctl dispatch exit'"
   },
   "custom/lock": {
     "format": "󰍁",
     "tooltip": false,
-    "on-double-click-right": "swaylock"
+    "on-click": "~/.config/waybar/scripts/confirm.sh 'Lock screen?' 'hyprlock'"
   },
   "custom/reboot": {
     "format": "󰜉",
     "tooltip": false,
-    "on-double-click-right": "reboot"
+    "on-click": "~/.config/waybar/scripts/confirm.sh 'Reboot?' 'reboot'"
   },
   "custom/power": {
     "format": "",
     "tooltip": false,
-    "on-double-click-right": "shutdown now"
+    "on-click": "~/.config/waybar/scripts/confirm.sh 'Shutdown?' 'shutdown now'"
   },
 
   "custom/separator": {
