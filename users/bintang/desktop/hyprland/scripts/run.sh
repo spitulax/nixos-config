@@ -4,6 +4,9 @@ case "$1" in
   "runner")
     rofi -show drun &
     ;;
+  "windows")
+    rofi -show window &
+    ;;
   "clipboard")
     cliphist list | rofi -dmenu | cliphist decode | wl-copy &
     ;;

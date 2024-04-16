@@ -9,8 +9,7 @@ usage () {
 }
 
 restart () {
-  [[ -n $(pidof hyprpaper) ]] && killall hyprpaper
-  hyprpaper >/dev/null &
+  systemctl --user restart hyprpaper.service
 }
 
 change () {

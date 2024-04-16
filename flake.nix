@@ -114,8 +114,6 @@
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
 
-    nixpkgs-temp.url = "github:spitulax/nixpkgs/brave-fix";
-
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -136,8 +134,6 @@
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland.url = "github:hyprwm/hyprland";
-    hyprlock.url = "github:hyprwm/hyprlock";
-    hyprlock.inputs.nixpkgs.follows = "nixpkgs";
 
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
