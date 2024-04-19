@@ -199,9 +199,8 @@
     ]
   },
   "custom/menu": {
-    "exec": "~/.config/waybar/scripts/menu.sh",
-    "return-type": "json",
-    "interval": 60,
+    "format": "",
+    "tooltip": false,
     "on-click": "~/.config/hypr/scripts/run.sh runner",
   },
   "custom/quit": {

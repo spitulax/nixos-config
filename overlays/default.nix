@@ -20,15 +20,5 @@
         hash = "sha256-a9CuLchSSfS4w3pZylzdiUr/llMsuU2qDR3mJrAupZk=";
       };
     };
-
-    hyprlock = prev.hyprlock.overrideAttrs rec {
-      version = "0.3.0";
-      src = final.fetchFromGitHub {
-        owner = "hyprwm";
-        repo = "hyprlock";
-        rev = "v${version}";
-        hash = "sha256-36qa6MOhCBd39YPC0FgapwGRHZXjstw8BQuKdFzwQ4k=";
-      };
-    };
   };
 }

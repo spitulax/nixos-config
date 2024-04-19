@@ -1,5 +1,6 @@
 { pkgs
 , lib
+, inputs
 , ...
 }: {
   imports = [
@@ -12,7 +13,7 @@
     hyprpicker
     hypridle
     hyprpaper
-    hyprlock
+    inputs.hyprlock.packages.${pkgs.system}.hyprlock
   ];
 
   wayland.windowManager.hyprland = {
