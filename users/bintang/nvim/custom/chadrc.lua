@@ -35,7 +35,8 @@ M.ui = {
       { "  Find File", "Spc o", "Telescope find_files" },
       { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
       { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Toggle NvimTree", "Spc e", "NvimTreeToggle" },
+      { "󰙅  Toggle NvimTree", "Spc e", "NvimTreeToggle" },
+      { "󰗼  Exit Neovim", "Spc Q", ":qa" },
     },
   },
 }
