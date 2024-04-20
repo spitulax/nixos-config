@@ -25,10 +25,17 @@ M.ui = {
   tabufline = require("custom.ui").tabufline,
 
   nvdash = {
-    load_on_startup = false,
+    load_on_startup = true,
 
     header = {
       "        Neovim v" .. (vim.version().major) .. "." .. (vim.version().minor) .. "." .. (vim.version().patch) .. "        ",
+    },
+
+    buttons = {
+      { "  Find File", "Spc o", "Telescope find_files" },
+      { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
+      { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
+      { "  Toggle NvimTree", "Spc e", "NvimTreeToggle" },
     },
   },
 }
