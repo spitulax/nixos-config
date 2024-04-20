@@ -11,10 +11,10 @@
       on-button-right=dismiss
       on-notify=exec mpv /run/current-system/sw/share/sounds/freedesktop/stereo/message.oga
       font=sans-serif 12
-      background-color=#313244
-      border-color=#6c7086
+      background-color=#313244CC
+      border-color=#6c7086CC
       border-radius=12
-      progress-color=over #585b70
+      progress-color=over #585b70CC
       format=<i><b>%a</b></i> ⋅ <b>%s</b>\n<small>%b</small>
       default-timeout=5000
       ignore-timeout=1
@@ -25,7 +25,7 @@
 
       [urgency=low]
       text-color=#6c7086
-      background-color=#101020
+      background-color=#101020CC
 
       [urgency=normal]
       text-color=#cdd6f4
