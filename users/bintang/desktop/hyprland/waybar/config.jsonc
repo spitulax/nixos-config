@@ -3,7 +3,7 @@
   "layer": "top",
   "spacing": 12,
   "height": 30,
-  "margin": "6 6",
+  // "margin": "6 6",
 
   "modules-left": [
     "group/menu",

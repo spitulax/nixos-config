@@ -12,14 +12,14 @@
 
 window#waybar {
   background-color: alpha(@surface0, 0.8);
-  /* border: 2px solid alpha(@overlay0, 0.8); */
+  /* border-bottom: 1px solid alpha(@overlay0, 0.8); */
   transition-property: background-color;
   transition-duration: .5s;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 }
 
 #workspaces {
-  background-color: alpha(@surface2, 0.5);
+  background-color: alpha(@surface2, 0.9);
   border-radius: 20px;
   margin: 5px 2em;
 }
