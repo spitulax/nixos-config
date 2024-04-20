@@ -219,7 +219,7 @@
     "on-click": "~/.config/waybar/scripts/confirm.sh 'Reboot?' 'reboot'"
   },
   "custom/power": {
-    "format": "",
+    "format": "󰤆",
     "tooltip": false,
     "on-click": "~/.config/waybar/scripts/confirm.sh 'Shutdown?' 'shutdown now'"
   },
