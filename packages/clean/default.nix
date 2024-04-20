@@ -16,8 +16,4 @@ printf "\033[0m"
 read
 sudo nix store gc --debug
 
-printf "\033[1;31mRunning nix store optimise...\n"
-printf "\033[0m"
-sudo nix store optimise
-
 ''
