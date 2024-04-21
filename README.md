@@ -4,6 +4,10 @@ This is my [NixOS](https://nixos.org/) configuration for my systems.
 This uses [Nix Flakes](https://nixos.wiki/wiki/Flakes) and if you want to use this for yourself, feel free!
 Make sure you understand what you are going to copy. I do not intend to make this config very portable out of the box, at least outside my personal devices.
 
+## Screenshot
+
+![](./_img/screenshot0.png)
+
 ## Features
 
 - Easily extendable
@@ -57,7 +61,6 @@ Here are some of the programs configured in this repo.
 
 ## To-Do
 
-- [ ] Nix devshells and templates
 - [ ] Set up [impermanence](https://github.com/nix-community/impermanence)
 
 [SDDM]: https://github.com/sddm/sddm
