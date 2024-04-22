@@ -1,11 +1,11 @@
 * {
-    bg-col:  #101020;
-    bg-col-light: #101020;
-    border-col: #101020;
-    selected-col: #313244;
-    blue: #89b4fa;
-    fg-col: #cdd6f4;
-    grey: #6c7086;
+    bg-col: #101020dd;
+    bg-col-opaque: #101020ff;
+    border-col: #6c7086dd;
+    selected-col: #313244dd;
+    fg-col: #cdd6f4ff;
+    prompt-col: #181825dd;
+    blue: #89b4faff;
     width: 1000;
     font: "monospace 12";
 }
@@ -17,18 +17,18 @@ element-text, element-icon, mode-switcher {
 
 window {
     height: 500px;
-    border: 3px;
+    border: 1.5px;
     border-color: @border-col;
     background-color: @bg-col;
 }
 
 mainbox {
-    background-color: @bg-col;
+    background-color: transparent;
 }
 
 inputbar {
-    children: [prompt,entry];
-    background-color: @bg-col;
+    children: [prompt, entry];
+    background-color: transparent;
     border-radius: 5px;
     padding: 2px;
 }
@@ -36,8 +36,8 @@ inputbar {
 prompt {
     background-color: @blue;
     padding: 6px;
-    text-color: @bg-col;
-    border-radius: 3px;
+    text-color: @bg-col-opaque;
+    border-radius: 5px;
     margin: 20px 0px 0px 20px;
 }
 
@@ -48,23 +48,24 @@ textbox-prompt-colon {
 
 entry {
     padding: 6px;
-    margin: 20px 0px 0px 10px;
+    border-radius: 5px;
+    margin: 20px 20px 0px 20px;
     text-color: @fg-col;
-    background-color: @bg-col;
+    background-color: @prompt-col;
 }
 
 listview {
     border: 0px 0px 0px;
-    padding: 6px 0px 0px;
-    margin: 10px 0px 0px 20px;
+    padding: 6px 6px 0px 0px;
+    margin: 10px 10px 0px 20px;
     columns: 2;
     lines: 10;
-    background-color: @bg-col;
+    background-color: transparent;
 }
 
 element {
     padding: 5px;
-    background-color: @bg-col;
+    background-color: transparent;
     text-color: @fg-col;
     border-radius: 5px;
 }
@@ -79,24 +80,25 @@ element selected {
 }
 
 mode-switcher {
+    background-color: @prompt-col;
     spacing: 0;
 }
 
 button {
     padding: 10px;
-    background-color: @bg-col-light;
-    text-color: @grey;
+    background-color: transparent;
+    text-color: @fg-col;
     vertical-align: 0.5; 
     horizontal-align: 0.5;
 }
 
 button selected {
-  background-color: @bg-col;
+  background-color: transparent;
   text-color: @blue;
 }
 
 message {
-    background-color: @bg-col-light;
+    background-color: transparent;
     margin: 2px;
     padding: 2px;
     border-radius: 5px;
@@ -106,5 +108,5 @@ textbox {
     padding: 6px;
     margin: 20px 0px 0px 20px;
     text-color: @blue;
-    background-color: @bg-col-light;
+    background-color: transparent;
 }
