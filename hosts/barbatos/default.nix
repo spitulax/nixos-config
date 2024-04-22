@@ -14,7 +14,6 @@
     keymapper
     gaming
     video-hardware
-    vm
 
     common
     desktop

@@ -5,7 +5,6 @@
   imports = [
     ./nix.nix
     ./bluetooth.nix
-    ./flatpak.nix
     ./home-manager.nix
     ./security.nix
     ./sops.nix

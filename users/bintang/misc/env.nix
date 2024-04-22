@@ -1,5 +1,4 @@
 { config
-, pkgs
 , ...
 }:
 let
@@ -7,7 +6,7 @@ let
 in
 {
   # Environment variables
-  home.sessionVariables = rec {
+  home.sessionVariables = {
     PATH = "$HOME/.cargo/bin:$HOME/.local/bin:$PATH";
     EDITOR = "nvim";
     TERMINAL = "kitty";
@@ -26,7 +25,7 @@ in
     userDirs = rec {
       enable = true;
       createDirectories = true;
-      desktop = "${home}/Desktop";
+      desktop = null;
       documents = "${home}/Documents";
       download = "${home}/Downloads";
       music = "${home}/Music";
@@ -35,12 +34,14 @@ in
       templates = null;
       videos = "${home}/Videos";
       extraConfig = {
-        XDG_REPO_DIR = "${home}/Repos";
-        XDG_SOFTWARE_DIR = "${home}/Software";
+        XDG_BACKUPS_DIR = "${home}/Backups";
+        XDG_GAMES_DIR = "${home}/Games";
+        XDG_IMPORTANT_DIR = "${home}/Important";
+        XDG_NOTES_DIR = "${home}/Notes";
+        XDG_REPOS_DIR = "${home}/Repos";
+        XDG_SYNC_DIR = "${home}/Sync";
         XDG_THIRDPARTY_DIR = "${home}/Thirdparty";
-        XDG_BACKUP_DIR = "${home}/Backups";
         XDG_TEMP_DIR = "${home}/.temp";
-        XDG_GAME_DIR = "${home}/Games";
         XDG_SCREENSHOT_DIR = "${pictures}/Screenshots";
         XDG_CAPTURE_DIR = "${videos}/Captures";
       };

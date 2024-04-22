@@ -136,6 +136,8 @@
     hyprland.url = "github:hyprwm/hyprland";
     hyprlock.url = "github:hyprwm/hyprlock";
     hyprlock.inputs.nixpkgs.follows = "nixpkgs";
+    hypridle.url = "github:hyprwm/hypridle";
+    hypridle.inputs.nixpkgs.follows = "nixpkgs";
 
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";

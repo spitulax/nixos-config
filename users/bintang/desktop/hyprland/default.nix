@@ -11,9 +11,9 @@
 
   home.packages = with pkgs; [
     hyprpicker
-    hypridle
     hyprpaper
     inputs.hyprlock.packages.${pkgs.system}.hyprlock
+    inputs.hypridle.packages.${pkgs.system}.hypridle
   ];
 
   wayland.windowManager.hyprland = {
@@ -63,7 +63,7 @@
       After = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${lib.meta.getExe pkgs.hypridle}";
+      ExecStart = "${lib.meta.getExe inputs.hypridle.packages.${pkgs.system}.hypridle}";
       Restart = "always";
       RestartSec = "10";
     };

@@ -21,7 +21,6 @@
     htop
     iotop
     iftop
-    nmon
     sysbench
     powertop
 
@@ -34,7 +33,6 @@
     # system utils
     inxi
     glxinfo
-    xorg.xdpyinfo
     nix-alien
     cachix
     psmisc
