@@ -5,7 +5,6 @@
   home.file.".config/neofetch/config.conf".text = ''
     print_info() {
       prin " ''${cl0}╭──┄''${cl1}┄╌─⊙─╌┄''${cl2}┄╌─⊙─╌┄''${cl3}┄╌─⊙─╌┄''${cl4}┄╌─⊙─╌┄''${cl5}┄╌─⊙─╌┄''${cl6}┄╌─⊙─╌┄''${cl7}┄┈┈"
-      prin "''${cl0}│"
       info "''${cl0}│''${cl6}  ╭─" distro
       info "''${cl0}│''${cl6}  ├─" kernel
       info "''${cl0}│''${cl6}  ╰─" uptime
@@ -24,7 +23,6 @@
       info "''${cl0}│''${cl3}  ├─󰍹" gpu
       info "''${cl0}│''${cl3}  ├─󰍛" memory
       info "''${cl0}│''${cl3}  ╰─󰋊" disk
-      prin "''${cl0}│"
       # info cols
       prin " ''${cl0}╰──┄''${cl1}┄╌─∗─╌┄''${cl2}┄╌─∗─╌┄''${cl3}┄╌─∗─╌┄''${cl4}┄╌─∗─╌┄''${cl5}┄╌─∗─╌┄''${cl6}┄╌─∗─╌┄''${cl7}┄┈┈"
     }
