@@ -24,9 +24,9 @@ window#waybar {
   margin: 5px 2em;
 }
 #workspaces button {
-  font-family: "Font Awesome 6 Free";
+  /* font-family: "Font Awesome 6 Free"; */
   border-radius: 20px;
-  padding: 0 0.5em;
+  padding: 0 0.4em;
 }
 #workspaces button * {
   color: @blue;
@@ -37,7 +37,6 @@ window#waybar {
 }
 #workspaces button.active * {
   color: @green;
-  font-weight: 900;
 }
 #workspaces button.urgent * {
   color: @red
@@ -60,6 +59,10 @@ tooltip label {
   font-size: 11pt;
   color: @text;
 }
+#window:hover {
+  border-bottom: 1.5px solid alpha(@red, 0.5);
+  font-style: italic;
+}
 #window {
   margin-left: 0.5em;
 }
@@ -80,14 +83,26 @@ window#waybar.empty #window {
 #network {
   color: @lavender;
 }
+#network:hover {
+  border-bottom: 1.5px solid alpha(@lavender, 0.8);
+}
 #pulseaudio {
   color: @sky;
+}
+#pulseaudio:hover {
+  border-bottom: 1.5px solid alpha(@sky, 0.8);
 }
 #pulseaudio.muted {
   color: @subtext0;
 }
+#pulseaudio.muted:hover {
+  border-bottom: 1.5px solid alpha(@subtext0, 0.8);
+}
 #clock {
   color: @mauve;
+}
+#clock:hover {
+  border-bottom: 1.5px solid alpha(@mauve, 0.8);
 }
 
 #network,
@@ -104,12 +119,26 @@ window#waybar.empty #window {
 #battery.full {
   color: @green;
 }
+#battery.charging:hover,
+#battery.charging.warning:hover,
+#battery.charging.critical:hover,
+#battery.plugged:hover,
+#battery.full:hover {
+  border-bottom: 1.5px solid alpha(@green, 0.8);
+}
 #battery.warning,
 #battery.critical {
   color: @red;
 }
+#battery.warning:hover,
+#battery.critical:hover {
+  border-bottom: 1.5px solid alpha(@red, 0.8);
+}
 #battery {
   color: @sapphire;
+}
+#battery:hover {
+  border-bottom: 1.5px solid alpha(@sapphire, 0.8);
 }
 
 #buttons,
@@ -119,6 +148,9 @@ window#waybar.empty #window {
 
 #buttons *,
 #menu * {
+  color: @subtext0;
+}
+#menu *:hover {
   color: @subtext1;
 }
 
@@ -130,6 +162,9 @@ window#waybar.empty #window {
 }
 #buttons * {
   font-size: 11pt;
+}
+#buttons *:hover {
+  color: @subtext1;
 }
 
 #menu {
@@ -163,6 +198,9 @@ window#waybar.empty #window {
 #custom-menu {
   padding: 0;
   color: @blue;
+}
+#custom-menu:hover {
+  color: @sapphire;
 }
 #custom-reboot {
   padding-right: 0;

@@ -7,6 +7,10 @@ NOTE:
 
 [Mako](https://github.com/emersion/mako) is a lightweight Wayland notification daemon.
 
+## Rofi (`./rofi/`)
+
+[Rofi-Wayland](https://github.com/lbonn/rofi) is a window switcher, run dialog with wayland support
+
 ## Scripts (`./scripts/`)
 
 - `autorun.sh`: executed on launch
@@ -19,3 +23,5 @@ NOTE:
 ## TODO
 
 - [ ] Mako on-notify sound is sometimes too low
+- [ ] Add [`hyprspace`](https://github.com/KZDKM/Hyprspace)
+> Also add a module to waybar that displays window count and toggle hyprspace when clicked

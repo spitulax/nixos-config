@@ -33,8 +33,9 @@
       // "3": "󰖣",
       // "4": "󰝚",
       // "5": "󰓓",
-      "69": "󰍹",
-      "special": "󰓶",
+      "special": "󰣕",
+      "active": "⬤",
+      "default": "◯",
     },
     "on-click": "activate",
     "persistent-workspaces": {
@@ -48,7 +49,7 @@
     "format": "{title}",
     "max-length": 160,
     "separate-outputs": true,
-    "on-click-right": "exec hyprctl dispatch killactive",
+    "on-click": "exec hyprctl dispatch killactive",
   },
 
   "clock": {
@@ -84,7 +85,7 @@
   "memory": {
     "format": "{used}G",
     "interval": 2,
-    "tooltip-format": "Memory: {used}G/{total}G ({percentage}%)\n        {avail}G available\nSwap  : {swapUsed}G/{swapTotal}G ({swapPercentage}%)\n        {swapAvail}G available"
+    "tooltip-format": "Memory: {used}G/{total}G ({percentage}%)\n        {avail}G available\nSwap:   {swapUsed}G/{swapTotal}G ({swapPercentage}%)\n        {swapAvail}G available"
   },
   "network": {
     "interval": 2,
@@ -94,6 +95,7 @@
     "tooltip-format-wifi": " {essid} {signalStrength}% · {ipaddr}",
     "tooltip-format-ethernet": "󰈀 {ipaddr}/{cidr} · {ipaddr}",
     "tooltip-format-disconnected": "✈ Disconnected",
+    "on-click-right": "nm-connection-editor"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -155,7 +157,8 @@
       "󰂁",
       "󰂂",
       "󰁹",
-    ]
+    ],
+    "on-click": "auto-cpufreq-gtk"
   },
 
   "group/buttons": {

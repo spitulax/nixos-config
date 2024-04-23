@@ -11,10 +11,10 @@
           "youtube"
       ],
       "lyrics_providers": [
+          "synced",
           "musixmatch",
           "genius",
-          "azlyrics",
-          "synced"
+          "azlyrics"
       ],
       "playlist_numbering": true,
       "output": "{artists} - {title}.{output-ext}",
