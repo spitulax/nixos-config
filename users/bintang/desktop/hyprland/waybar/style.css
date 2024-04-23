@@ -212,5 +212,3 @@ window#waybar.empty #window {
 #custom-separator * {
   color: @text;
 }
-
-/* TODO: https://github.com/Alexays/Waybar/issues/2989 */
