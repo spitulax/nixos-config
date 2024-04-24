@@ -139,6 +139,9 @@
     hypridle.url = "github:hyprwm/hypridle";
     hypridle.inputs.nixpkgs.follows = "nixpkgs";
 
+    waybar.url = "github:alexays/waybar";
+    waybar.inputs.nixpkgs.follows = "nixpkgs";
+
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
 
