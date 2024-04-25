@@ -172,7 +172,7 @@ window#waybar.empty #window {
 }
 
 #tray {
-  padding-right: 0.75em;
+  padding-right: 0.5em;
 }
 
 #idle_inhibitor {
@@ -184,7 +184,7 @@ window#waybar.empty #window {
 }
 
 #menu {
-  margin-left: 5px;
+  margin-left: 0.5em;
   margin-right: 0.5em;
 }
 #custom-menu,
