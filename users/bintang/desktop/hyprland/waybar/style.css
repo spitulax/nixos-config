@@ -175,8 +175,12 @@ window#waybar.empty #window {
   padding-right: 0.5em;
 }
 
+#gamemode,
 #idle_inhibitor {
   margin-left: 5px;
+}
+#gamemode.running {
+  color: @yellow;
 }
 
 #tray {

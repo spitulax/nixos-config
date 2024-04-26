@@ -170,6 +170,7 @@
     "modules": [
       "custom/notification",
       "idle_inhibitor",
+      "gamemode"
     ]
   },
   "custom/notification": {
@@ -184,7 +185,19 @@
     "format-icons": {
       "activated": "",
       "deactivated": ""
-    }
+    },
+    "tooltip-format-activated": "Idle inhibitor is on",
+    "tooltip-format-deactivated": "Idle inhibitor is off"
+  },
+  "gamemode": {
+    "format": "󰊗",
+    "format-alt": "󰊗 {count}",
+    "icon-size": 0,
+    "icon-spacing": 0,
+    "hide-not-running": false,
+    "use-icon": false,
+    "tooltip": true,
+    "tooltip-format": "Games running: {count}"
   },
 
   "group/menu": {
@@ -217,7 +230,7 @@
   "custom/lock": {
     "format": "󰍁",
     "tooltip": false,
-    "on-click": "~/.config/waybar/scripts/confirm.sh 'Lock screen?' 'hyprlock'"
+    "on-click": "hyprlock"
   },
   "custom/reboot": {
     "format": "󰜉",

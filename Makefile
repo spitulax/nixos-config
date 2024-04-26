@@ -1,6 +1,4 @@
-.PHONY: build nixos home upgrade update upinput repl clean delete check
-
-upgrade: update build
+.PHONY: build nixos home update upgrade upinput repl clean delete check
 
 build: nixos
 	git add -A
@@ -14,6 +12,11 @@ home:
 
 update:
 	nix flake update
+
+upgrade:
+	lazyup
+	nix flake update
+	nh os switch
 
 upinput:
 	nix flake lock --update-input $(i)

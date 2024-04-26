@@ -24,5 +24,8 @@
     portalPackage = xdg-desktop-portal-hyprland;
   };
 
-  security.pam.services.swaylock = { };
+  security.pam.services = {
+    swaylock = { };
+    hyprlock = { };
+  };
 }

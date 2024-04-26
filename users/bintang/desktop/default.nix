@@ -33,6 +33,7 @@
     alsa-utils
     networkmanagerapplet
     pavucontrol
+    playerctl
   ];
 
   home.pointerCursor = {
@@ -42,4 +43,6 @@
     name = "Catppuccin-Mocha-Dark-Cursors";
     size = 24;
   };
+
+  services.playerctld.enable = true;
 }
