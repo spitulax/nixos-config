@@ -1,9 +1,11 @@
-{ config
-, pkgs
+{ pkgs
 , ...
 }: {
   imports = [
     ./hyprland
+    ./mako
+    ./rofi
+    ./waybar
     ./kvantum.nix
     ./gtk.nix
     ./qt.nix

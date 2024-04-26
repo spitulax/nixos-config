@@ -1,15 +1,8 @@
 { pkgs
-, config
 , lib
 , inputs
 , ...
 }: {
-  imports = [
-    ./waybar
-    ./mako
-    ./rofi
-  ];
-
   home.packages = with pkgs; [
     hyprpicker
     hyprpaper
