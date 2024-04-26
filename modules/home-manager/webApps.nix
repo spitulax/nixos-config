@@ -101,15 +101,5 @@ in
           };
         })
       cfg.apps);
-
-    # Add the desktop entries to ~/.local/share/applications
-    # home.file = builtins.listToAttrs (builtins.map (app:
-    #   let
-    #     name = "${cfg.defaultBrowserName}-${app.id}-${cfg.defaultProfile}";
-    #   in {
-    #     name = ".local/share/applications/${name}.desktop";
-    #     value.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.nix-profile/share/applications/${name}.desktop";
-    #   }
-    # ) cfg.apps);
   };
 }

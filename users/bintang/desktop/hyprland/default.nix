@@ -20,6 +20,7 @@
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     settings.env = [
       "XCURSOR_SIZE,24"
       "QT_QPA_PLATFORMTHEME,qt5ct"
