@@ -1,5 +1,4 @@
-{ config
-, pkgs
+{ pkgs
 , ...
 }: {
   services.mako = {
@@ -26,6 +25,7 @@
       [urgency=low]
       text-color=#6c7086
       background-color=#101020CC
+      on-notify=none
 
       [urgency=normal]
       text-color=#cdd6f4
@@ -43,6 +43,7 @@
 
       [mode=do-not-disturb]
       invisible=1
+      on-notify=none
 
       [app-name=popup]
       invisible=0
