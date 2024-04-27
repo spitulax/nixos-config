@@ -13,7 +13,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemd.enable = true;
+    systemd = {
+      enable = true;
+      variables = [ "--all" ];
+    };
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     settings.env = [
       "XCURSOR_SIZE,24"

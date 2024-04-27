@@ -1,15 +1,8 @@
 #!/usr/bin/env bash
 
-# Start waybar
-pkill waybar
-waybar &
-sleep 2 # wait waybar to load
-
 # Autostart apps
 $HOME/.nix-profile/libexec/polkit-kde-authentication-agent-1 &
-zapzap &
-blueman-applet &
-nm-applet &
+$HOME/.config/hypr/scripts/waybar.sh
 
 # Cliphist
 wl-paste --type text --watch cliphist store &

@@ -1,5 +1,4 @@
-{ config
-, pkgs
+{ pkgs
 , inputs
 , ...
 }: {
@@ -12,16 +11,20 @@
     ./sddm.nix
   ];
 
-  xdg.portal = {
-    enable = true;
-  };
-
   programs.xwayland.enable = true;
 
   programs.hyprland = with inputs.hyprland.packages.${pkgs.system}; {
     enable = true;
     package = hyprland;
     portalPackage = xdg-desktop-portal-hyprland;
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.Hyprland = {
+      default = [ "gtk" "hyprland" ];
+    };
   };
 
   security.pam.services = {
