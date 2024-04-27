@@ -1,5 +1,4 @@
-{ config
-, pkgs
+{ pkgs
 , inputs
 , ...
 }: {
@@ -9,10 +8,8 @@
 
   home.packages = with pkgs; [
     mangohud
-    # protontricks
-    # winetricks
+    winetricks
 
-    # These packages is needed for lutris
     lutris
     gamescope
     # dxvk
@@ -22,7 +19,6 @@
     # dxvk
     # vkd3d-proton
 
-    # proton-ge
-    # wine-ge
+    wine-ge
   ]);
 }
