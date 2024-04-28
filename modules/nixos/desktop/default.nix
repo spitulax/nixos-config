@@ -7,7 +7,7 @@
     ./sound.nix
     ./opengl.nix
     ./fonts.nix
-    ./sddm.nix
+    ./display-manager.nix
   ];
 
   programs.xwayland.enable = true;
