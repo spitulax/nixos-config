@@ -17,7 +17,7 @@
 
   # Home manager
   home-manager = {
-    config = ../../users/bintang/dantalion.nix;
+    config = ../../users/bintang/hosts/dantalion;
     extraSpecialArgs = { inherit inputs outputs; };
     useGlobalPkgs = true;
   };

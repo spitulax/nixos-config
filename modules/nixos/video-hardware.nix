@@ -2,8 +2,7 @@
 # Currently only works for Intel HD Graphics series Broadwell (2014) or newer.
 # https://wiki.archlinux.org/title/Hardware_video_acceleration
 
-{ config
-, pkgs
+{ pkgs
 , lib
 , ...
 }: {

@@ -6,6 +6,7 @@
   vm = import ./vm.nix;
   plasma = import ./plasma.nix;
   zram = import ./zram.nix;
+  avahi = import ./avahi.nix;
 
   # Global configs
   common = import ./common;

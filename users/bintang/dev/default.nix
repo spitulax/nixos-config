@@ -16,11 +16,9 @@
 
     # Languages
     luajit
-    ruby
 
     # Misc
     gnumake
-    nodejs
     pkg-config
     jq
   ];

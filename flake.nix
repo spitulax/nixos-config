@@ -101,7 +101,7 @@
         # Personal laptop
         "bintang@barbatos" = lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
-          modules = [ ./users/bintang/barbatos.nix ];
+          modules = [ ./users/bintang/hosts/barbatos ];
           extraSpecialArgs = {
             inherit inputs outputs;
           };

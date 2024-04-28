@@ -1,7 +1,6 @@
 { pkgs
 , config
 , inputs
-, outputs
 , ...
 }: {
   imports = [
@@ -31,5 +30,5 @@
     };
   };
 
-  home-manager.users.bintang = import ../../../users/bintang/${config.networking.hostName}.nix;
+  home-manager.users.bintang = import ../../../users/bintang/hosts/${config.networking.hostName};
 }

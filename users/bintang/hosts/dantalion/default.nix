@@ -1,15 +1,11 @@
-{ lib
-, config
-, pkgs
-, inputs
-, outputs
+{ pkgs
 , ...
 }: {
   imports = [
-    ./dev
-    ./misc
-    ./cli
-    ./nvim
+    ../../dev
+    ../../misc
+    ../../cli
+    ../../nvim
   ];
 
   # User info

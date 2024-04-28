@@ -3,7 +3,6 @@
 , ...
 }: {
   imports = [
-    ./imgpreview.nix
     ./input.nix
     ./sound.nix
     ./opengl.nix
@@ -28,7 +27,7 @@
   };
 
   security.pam.services = {
-    swaylock = { };
+    # swaylock = { };
     hyprlock = { };
   };
 }

@@ -1,5 +1,4 @@
 { pkgs
-, inputs
 , ...
 }: {
   imports = [
@@ -9,7 +8,6 @@
     ./security.nix
     ./sops.nix
     ./power.nix
-    ./avahi.nix
     ./packages.nix
     ./locale.nix
     ./openssh.nix

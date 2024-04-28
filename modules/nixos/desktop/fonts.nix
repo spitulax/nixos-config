@@ -16,7 +16,7 @@
 
     packages = with pkgs; [
       # Serifs
-      poly
+      # poly
       source-serif
       source-han-serif
       # noto-fonts-cjk-sans

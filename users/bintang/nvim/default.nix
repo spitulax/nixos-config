@@ -8,9 +8,9 @@ in
 {
   programs.neovim = {
     enable = true;
-    withNodeJs = true;
+    withNodeJs = false;
     withPython3 = true;
-    withRuby = true;
+    withRuby = false;
     extraPackages = with pkgs; [
       # LSPs
       lua-language-server
@@ -42,4 +42,10 @@ in
       source = ./lazy-lock.json;
     };
   };
+
+  home.packages = with pkgs; [
+    # For :TSInstallFromGrammar
+    # tree-sitter
+    # nodePackages.nodejs
+  ];
 }

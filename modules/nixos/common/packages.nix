@@ -21,7 +21,6 @@
     htop
     iotop
     iftop
-    sysbench
     powertop
 
     # archives
@@ -32,7 +31,6 @@
 
     # system utils
     inxi
-    glxinfo
     nix-alien
     cachix
     psmisc

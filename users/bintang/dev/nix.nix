@@ -2,7 +2,6 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    vulnix
     nurl
     nix-output-monitor
     sops
