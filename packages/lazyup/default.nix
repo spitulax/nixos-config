@@ -2,6 +2,7 @@
 writeShellScriptBin "lazyup" ''
 
 LAZYLOCK_PATH=$HOME/.config/nvim/lazy-lock.json
+[[ ! -r $LAZYLOCK_PATH ]] && echo "$LAZYLOCK_PATH does not exist" && exit 1
 
 cd $FLAKE
 unlink $LAZYLOCK_PATH

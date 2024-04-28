@@ -9,8 +9,8 @@
   hardware.opengl.enable = lib.mkForce true;
   hardware.opengl.extraPackages = with pkgs; [
     intel-media-driver
-    libva
-    libvdpau
+    libvdpau-va-gl
+    intel-vaapi-driver
   ];
 
   # explicitly states what driver to use

@@ -2,7 +2,7 @@
   # Optional features
   gaming = import ./gaming.nix;
   keymapper = import ./keymapper.nix;
-  video-hardware = import ./video-hardware.nix;
+  video-hardware-intel = import ./video-hardware-intel.nix;
   vm = import ./vm.nix;
   plasma = import ./plasma.nix;
   zram = import ./zram.nix;

@@ -4,16 +4,17 @@
 , ...
 }: {
   imports = with inputs; [
-    nixos-hardware.nixosModules.common-cpu-intel
-    nixos-hardware.nixosModules.common-gpu-intel
+    ./hardware-configuration.nix
     nixos-hardware.nixosModules.common-pc-laptop
     nixos-hardware.nixosModules.common-pc-laptop-acpi_call
     nixos-hardware.nixosModules.common-pc-laptop-ssd
-    ./hardware-configuration.nix
+    nixos-hardware.nixosModules.common-cpu-intel
+    # FAILED: error: The option `hardware.intelgpu.loadInInitrd' in `/nix/store/gb7384izfb1x5i7vibr6ylazx8bf7bq6-source/hosts/barbatos' is already declared in `/nix/store/0ckkj733ppb5r4lq7m4m0y8g285s160q-source/common/gpu/intel'.
+    # nixos-hardware.nixosModules.common-gpu-intel
   ] ++ (with outputs.nixosModules; [
     keymapper
     gaming
-    video-hardware
+    video-hardware-intel
 
     common
     desktop
@@ -25,6 +26,7 @@
   # Hardware
   hardware.enableRedistributableFirmware = true;
   boot.kernelModules = [ "synaptics_usb" ];
+  boot.initrd.kernelModules = [ "i915" ];
   services.thermald.enable = true;
   boot.extraModprobeConfig = ''
     options kvm_intel nested=1
