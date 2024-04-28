@@ -5,6 +5,8 @@
     font.size = 12.0;
     font.name = "monospace";
     settings = {
+      # Scrollback
+      scrollback_indicator_opacity = 0;
       # Mouse
       mouse_hide_wait = -1;
       url_style = "straight";

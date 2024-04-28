@@ -176,6 +176,7 @@ window#waybar.empty #window {
 }
 
 #gamemode,
+#custom-brightness,
 #idle_inhibitor {
   margin-left: 5px;
 }

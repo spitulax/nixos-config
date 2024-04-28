@@ -54,6 +54,8 @@ M.general = {
     ["<leader>Q"] = { "<cmd>qa<cr>", "Close Neovim" },
     ["("] = { "zh", "Scroll to left" },
     [")"] = { "zl", "Scroll to right" },
+    ["H"] = { "zH", "Half screen to left" },
+    ["L"] = { "zL", "Half screen to right" },
 
     -- buffer management
     ["<M-.>"] = { "<cmd>bn<cr>", "Goto next buffer" },

@@ -24,4 +24,4 @@ TOOLTIP=$(printf "Uptime: %s\\\\nLinux: %s\\\\nNixOS: %s\\\\nHyprland: %s\\\\nWa
   "$(readlink -f $(which waybar) | sed 's/^.*waybar-\(.*\)\/bin\/.*/\1/')" \
   "$DISK_USED : $DISK_AVAIL ($DISK_AVAIL_P)" \
   )
-echo '{"text":"","tooltip":'"\"$TOOLTIP\"}"
+printf '{"text":"","tooltip":"%s"}' "$TOOLTIP"

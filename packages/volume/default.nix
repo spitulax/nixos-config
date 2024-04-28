@@ -4,11 +4,11 @@ writeShellScriptBin "volume" ''
 get-volume () {
   VOLUME=$((10#$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ print $2 }' | sed 's/\.//')))
   STATUS=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ print $3 }')
-  if [[ $VOLUME == 0 || $STATUS == "[MUTED]" ]]; then
+  if [[ $VOLUME -eq 0 || $STATUS == "[MUTED]" ]]; then
     printf "󰝟"
-  elif [[ $VOLUME < 33 ]]; then
+  elif [[ $VOLUME -lt 33 ]]; then
     printf "󰕿"
-  elif [[ $VOLUME < 66 ]]; then
+  elif [[ $VOLUME -lt 66 ]]; then
     printf "󰖀"
   else
     printf "󰕾"
