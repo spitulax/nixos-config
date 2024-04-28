@@ -22,7 +22,7 @@ Here are some of the programs configured in this repo.
 
 #### Desktop
 
-- **Display Manager**: [SDDM][SDDM]
+- **Display Manager**: [GDM][GDM]
 - **Window Manager (Wayland)**: [Hyprland][Hyprland]
 
 #### CLI Tools
@@ -87,3 +87,4 @@ Here are some of the programs configured in this repo.
 [Krita]: https://krita.org/
 [Nomacs]: https://nomacs.org/
 [Zathura]: https://git.pwmt.org/pwmt/zathura
+[GDM]: https://wiki.gnome.org/Projects/GDM
