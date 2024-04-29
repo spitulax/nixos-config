@@ -4,6 +4,7 @@
   wayland.windowManager.hyprland = {
     settings = {
       monitor = "eDP-1,preferred,auto,1";
+      bind = "CTRL ALT, Escape, exec, hyprctl reload && hyprctl keyword monitor eDP-1,preferred,auto,1";
     };
     extraConfig = ''
       bindl = , switch:Lid Switch, exec, pidof hyprlock || hyprlock

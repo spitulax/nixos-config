@@ -10,10 +10,8 @@
     "memory",
     "custom/separator",
     "cpu",
-    "hyprland/window",
-  ],
-  "modules-center": [
     "hyprland/workspaces",
+    "hyprland/window",
   ],
   "modules-right": [
     "network",
@@ -33,9 +31,9 @@
       // "3": "󰖣",
       // "4": "󰝚",
       // "5": "󰓓",
-      "special": "󰣕",
-      "active": "⬤",
-      "default": "◯",
+      "10": "",
+      "special": "",
+      "default": "",
     },
     "on-click": "activate",
     "persistent-workspaces": {
@@ -47,7 +45,7 @@
 
   "hyprland/window": {
     "format": "{title}",
-    "max-length": 160,
+    "max-length": 200,
     "separate-outputs": true,
     "on-click": "exec hyprctl dispatch killactive",
   },

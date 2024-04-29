@@ -65,7 +65,7 @@ local statusline_modules = {
   end,
 
   cursor_position = function()
-    return vim.o.columns > 140 and "%#StText# %l:%c:%P  " or ""
+    return "%#StText# %l:%c:%P  "
   end,
 
   filetype = function()
@@ -77,7 +77,7 @@ local statusline_modules = {
     if rawget(vim, "lsp") then
       for _, client in ipairs(vim.lsp.get_active_clients()) do
         if client.attached_buffers[stbufnr()] and client.name ~= "null-ls" then
-          return (vim.o.columns > 100 and " " .. client.name .. " ") or "   "
+          return " " .. client.name .. " "
         end
       end
       return ""

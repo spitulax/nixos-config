@@ -15,13 +15,13 @@
       # Window layout
       remember_window_size = "yes";
       enabled_layouts = "*";
-      hide_window_decorations = "no";
+      hide_window_decorations = "yes";
       # Tab bar
       tab_bar_min_tabs = 2;
       tab_bar_edge = "top";
       tab_bar_style = "powerline";
       # Color scheme
-      background_opacity = "0.9";
+      background_opacity = "0.8";
     };
     extraConfig = ''
       include ./theme.conf
