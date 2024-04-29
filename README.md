@@ -6,7 +6,7 @@ Make sure you understand what you are going to copy. I do not intend to make thi
 
 ## Screenshot
 
-![](./_img/screenshot1.png)
+![](./_img/screenshot_neofetch.png)
 
 ## Features
 
