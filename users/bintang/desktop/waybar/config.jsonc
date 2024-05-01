@@ -168,8 +168,8 @@
     "modules": [
       "custom/notification",
       "idle_inhibitor",
-      "gamemode",
       "custom/brightness",
+      "gamemode",
     ]
   },
   "custom/notification": {
