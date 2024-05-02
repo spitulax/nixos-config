@@ -32,12 +32,12 @@ $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
 
 # C source
 $(BUILD_DIR)/%.c.o: $(SRC_DIR)/%.c
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 # C++ source
 $(BUILD_DIR)/%.cpp.o: $(SRC_DIR)/%.cpp
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: all run install clean
