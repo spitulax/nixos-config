@@ -14,12 +14,7 @@ restart () {
 
 change () {
   WALLPAPER=$(realpath "$1")
-  cat > $HOME/.config/hypr/hyprpaper.conf << EOF
-preload = $WALLPAPER
-wallpaper = ,$WALLPAPER
-splash = false
-ipc = false
-EOF
+  echo "$WALLPAPER" > $XDG_DATA_HOME/wallpaperrc
   restart
   echo "Changed current wallpaper to $1"
 }

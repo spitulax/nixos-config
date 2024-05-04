@@ -11,7 +11,5 @@
     # otherwise downloading large albums will make it stuck
     # https://github.com/spotDL/spotify-downloader/blob/v4.2.5/spotdl/utils/ffmpeg.py#L37
     spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
-
-    inherit (inputs.waybar.packages.${final.system}) waybar;
   };
 }

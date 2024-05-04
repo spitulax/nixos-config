@@ -139,7 +139,7 @@
     hypridle.url = "github:hyprwm/hypridle";
     hypridle.inputs.nixpkgs.follows = "nixpkgs";
 
-    waybar.url = "github:alexays/waybar";
+    waybar.url = "github:spitulax/Waybar/fix-overlay"; # https://github.com/Alexays/Waybar/pull/3208
     waybar.inputs.nixpkgs.follows = "nixpkgs";
 
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";

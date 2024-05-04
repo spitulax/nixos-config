@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-FILE_MANAGER=dolphin
-BROWSER=brave
-TERMINAL=kitty
-
 case "$1" in
   "runner")
     rofi -show drun &

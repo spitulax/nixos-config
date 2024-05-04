@@ -1,9 +1,10 @@
 { pkgs
+, inputs
 , ...
 }: {
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar;
+    package = inputs.waybar.packages.${pkgs.system}.waybar;
   };
 
   home.file = {
