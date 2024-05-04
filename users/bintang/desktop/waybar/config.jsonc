@@ -7,13 +7,15 @@
 
   "modules-left": [
     "group/menu",
-    "memory",
     "custom/separator",
-    "cpu",
     "hyprland/workspaces",
+    "custom/separator",
     "hyprland/window",
   ],
   "modules-right": [
+    "memory",
+    "custom/separator",
+    "cpu",
     "network",
     "pulseaudio",
     "battery",
@@ -79,11 +81,13 @@
   "cpu": {
     "format": "{load}",
     "interval": 2,
+    "on-click": "kitty btop"
   },
   "memory": {
     "format": "{used}G",
     "interval": 2,
-    "tooltip-format": "Memory: {used}G/{total}G ({percentage}%)\n        {avail}G available\nSwap:   {swapUsed}G/{swapTotal}G ({swapPercentage}%)\n        {swapAvail}G available"
+    "tooltip-format": "Memory: {used}G/{total}G ({percentage}%)\n        {avail}G available\nSwap:   {swapUsed}G/{swapTotal}G ({swapPercentage}%)\n        {swapAvail}G available",
+    "on-click": "kitty btop"
   },
   "network": {
     "interval": 2,

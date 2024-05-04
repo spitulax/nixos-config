@@ -20,14 +20,13 @@ window#waybar {
 #workspaces {
   /* background-color: alpha(@surface2, 0.5); */
   background-color: transparent;
-  margin: 0 0.5em;
 }
 #workspaces button {
-  /* font-family: "Font Awesome 6 Free"; */
-  padding: 0 0.1em;
+  padding: 0 0.25em;
 }
 #workspaces button * {
   color: @blue;
+  font-family: "Font Awesome 6 Free";
 }
 #workspaces button.empty * {
   color: @subtext0;
@@ -38,8 +37,9 @@ window#waybar {
 #workspaces button.urgent * {
   color: @red
 }
-#workspaces button:hover {
-  background-color: alpha(@overlay0, 0.5);
+#workspaces button:hover * {
+  background-color: transparent; /* BUG: not actually transparent */
+  font-size: 15pt;
 }
 
 tooltip {
@@ -56,12 +56,12 @@ tooltip label {
   font-size: 11pt;
   color: @text;
 }
-#window:hover {
-  border-bottom: 1.5px solid alpha(@red, 0.5);
+#window:hover * {
+  color: @maroon;
   font-style: italic;
 }
 #window {
-  margin-left: 0;
+  margin-left: 0.5em;
 }
 window#waybar.empty #window {
   background-color: transparent;
@@ -79,6 +79,7 @@ window#waybar.empty #window {
 }
 #cpu {
   color: @teal;
+  margin-right: 0.5em;
 }
 
 #network {
@@ -106,6 +107,8 @@ window#waybar.empty #window {
   border-bottom: 1.5px solid alpha(@mauve, 0.8);
 }
 
+#memory,
+#cpu,
 #network,
 #pulseaudio,
 #battery,
@@ -140,11 +143,6 @@ window#waybar.empty #window {
 }
 #battery:hover {
   border-bottom: 1.5px solid alpha(@sapphire, 0.8);
-}
-
-#buttons,
-#tray,
-#menu {
 }
 
 #buttons *,
@@ -186,7 +184,7 @@ window#waybar.empty #window {
 }
 
 #tray {
-  margin-right: 5px;
+  margin-right: 0.5em;
 }
 
 #menu {
