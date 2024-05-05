@@ -23,7 +23,7 @@ in
       Description = "Keymapper";
     };
     Service = {
-      ExecStart = "${pkgs.keymapper}/bin/keymapper -v -c ${config.xdg.configHome + "/keymapper/keymapper.conf"}";
+      ExecStart = "${pkgs.keymapper}/bin/keymapper --no-tray -v -c ${config.xdg.configHome + "/keymapper/keymapper.conf"}";
       Restart = "always";
       RestartSec = "5";
     };
