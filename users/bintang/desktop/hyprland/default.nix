@@ -8,7 +8,7 @@
     hyprpicker
     hyprpaper
     inputs.hyprlock.packages.${pkgs.system}.hyprlock
-    inputs.hypridle.packages.${pkgs.system}.hypridle
+    # inputs.hypridle.packages.${pkgs.system}.hypridle
   ];
 
   wayland.windowManager.hyprland = {
@@ -37,7 +37,7 @@
 
   home.file = {
     ".config/hypr/catppuccin-mocha.conf".source = ./catppuccin-mocha.conf;
-    ".config/hypr/hypridle.conf".source = ./hypridle.conf;
+    # ".config/hypr/hypridle.conf".source = ./hypridle.conf;
     ".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
   };
 
@@ -60,16 +60,16 @@
     Install.WantedBy = [ "hyprland-session.target" ];
   };
 
-  systemd.user.services.hypridle = {
-    Unit = {
-      Description = "Hypridle";
-      After = [ "graphical-session.target" ];
-    };
-    Service = {
-      ExecStart = "${lib.meta.getExe inputs.hypridle.packages.${pkgs.system}.hypridle}";
-      Restart = "always";
-      RestartSec = "10";
-    };
-    Install.WantedBy = [ "default.target" ];
-  };
+  # systemd.user.services.hypridle = {
+  #   Unit = {
+  #     Description = "Hypridle";
+  #     After = [ "graphical-session.target" ];
+  #   };
+  #   Service = {
+  #     ExecStart = "${lib.meta.getExe inputs.hypridle.packages.${pkgs.system}.hypridle}";
+  #     Restart = "always";
+  #     RestartSec = "10";
+  #   };
+  #   Install.WantedBy = [ "default.target" ];
+  # };
 }
