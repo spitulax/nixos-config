@@ -21,9 +21,6 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.Hyprland = {
-      default = [ "gtk" "hyprland" ];
-    };
   };
 
   security.pam.services = {

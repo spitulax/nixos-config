@@ -4,6 +4,7 @@
 }: {
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
+    inputs.nix-gaming.nixosModules.platformOptimizations
   ];
 
   # Gamemode
@@ -11,7 +12,6 @@
     enable = true;
     settings.general.renice = 15;
   };
-  boot.kernelModules = [ "linux_xanmod" ];
 
   # Steam
   hardware.steam-hardware.enable = true;
@@ -19,6 +19,14 @@
   programs.steam.extraCompatPackages = [
     pkgs.proton-ge-bin
   ];
+
+  # Gaming Kernel
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  # environment.systemPackages = [ pkgs.scx ];
+
+  # Misc
+  programs.steam.platformOptimizations.enable = true;
 
   # Pipewire Low Latency
   # FAILED: {https://github.com/fufexan/nix-gaming/issues/161}

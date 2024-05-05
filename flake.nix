@@ -119,6 +119,8 @@
 
     nix-on-droid.url = "github:nix-community/nix-on-droid";
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     #############################
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
