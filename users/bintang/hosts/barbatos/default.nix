@@ -6,7 +6,7 @@
     inputs.sops-nix.homeManagerModules.sops
     ../../dev
     ../../apps
-    ../../misc
+    ../../env
     ../../cli
     ../../desktop
     ../../service

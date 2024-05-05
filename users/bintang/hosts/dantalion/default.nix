@@ -3,7 +3,7 @@
 }: {
   imports = [
     ../../dev
-    ../../misc
+    ../../env
     ../../cli
     ../../nvim
   ];

@@ -28,5 +28,6 @@
     chafa
     yt-dlp
     lexurgy
+    ffmpeg
   ];
 }
