@@ -25,5 +25,10 @@
         libappindicator
       ]);
     });
+
+    waybar = prev.waybar.override {
+      inherit (inputs.hyprland.packages.${final.system}) hyprland;
+      swaySupport = false;
+    };
   };
 }

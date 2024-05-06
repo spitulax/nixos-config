@@ -135,7 +135,7 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "github:hyprwm/hyprland";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # https://github.com/hyprwm/Hyprland/issues/5891
     hyprlock.url = "github:hyprwm/hyprlock";
     hyprlock.inputs.nixpkgs.follows = "nixpkgs";
     hypridle.url = "github:hyprwm/hypridle";
