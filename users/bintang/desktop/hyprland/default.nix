@@ -7,7 +7,7 @@
   home.packages = with pkgs; [
     hyprpicker
     hyprpaper
-    inputs.hyprlock.packages.${pkgs.system}.hyprlock
+    mypkgs.hyprlock
     # inputs.hypridle.packages.${pkgs.system}.hypridle
   ];
 

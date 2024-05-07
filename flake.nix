@@ -115,14 +115,7 @@
 
     nix-alien.url = "github:thiagokokada/nix-alien";
 
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
-
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # https://github.com/hyprwm/Hyprland/issues/5891
-    hyprlock.url = "github:hyprwm/hyprlock";
-    hyprlock.inputs.nixpkgs.follows = "nixpkgs";
-    hypridle.url = "github:hyprwm/hypridle";
-    hypridle.inputs.nixpkgs.follows = "nixpkgs";
 
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
