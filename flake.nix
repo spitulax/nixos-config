@@ -11,7 +11,7 @@
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
       systems = [ "x86_64-linux" "aarch64-linux" ];
-      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system} system);
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
       pkgsFor = lib.genAttrs systems (system: nixpkgs.legacyPackages.${system});
       pkgs = {
         nixos = import nixpkgs {
@@ -53,31 +53,8 @@
       ];
 
       templates = import ./templates;
-      formatter = forEachSystem (pkgs: _: pkgs.nixpkgs-fmt);
-      packages = forEachSystem (pkgs: _: import ./packages { inherit pkgs; });
-      checks = forEachSystem (pkgs: system: {
-        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            nixpkgs-fmt.enable = true;
-          };
-        };
-      });
-      devShells = forEachSystem (pkgs: system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
-              bashInteractive
-              gcc
-            ];
-            shellHook = ''
-              ${self.checks.${system}.pre-commit-check.shellHook}
-            '';
-          };
-        });
+      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+      packages = forEachSystem (pkgs: import ./packages { inherit pkgs; });
 
       overlays = import ./overlays { inherit inputs outputs; };
 
