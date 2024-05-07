@@ -1,4 +1,5 @@
 { pkgs
+, inputs
 , ...
 }: {
   home.packages = with pkgs; [
@@ -9,5 +10,7 @@
     nvd
     nixpkgs-fmt
     (nh.override { inherit (pkgs) nix-output-monitor nvd; })
+    nix-update
+    inputs.nixpkgs-update.packages.${pkgs.system}.nixpkgs-update
   ];
 }

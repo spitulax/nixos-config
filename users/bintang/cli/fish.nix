@@ -17,6 +17,9 @@
       ols = "/usr/bin/env ls";
       # shortcuts
       vim = "nvim";
+      repl = "nix repl -f flake:nixpkgs";
+      pkgs-user = "nix-store -qR $HOME/.nix-profile";
+      pkgs-sys = "nix-store -qR /run/current-system/sw";
       ".." = "cd ..";
       "..." = "cd ../..";
       q = "exit";
