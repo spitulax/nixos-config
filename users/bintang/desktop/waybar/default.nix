@@ -1,12 +1,9 @@
 { pkgs
-, inputs
 , ...
 }: {
   programs.waybar = {
     enable = true;
-    package = inputs.waybar.packages.${pkgs.system}.waybar.override {
-      inherit pkgs;
-    };
+    package = pkgs.mypkgs.waybar;
   };
 
   home.file = {

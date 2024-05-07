@@ -41,6 +41,7 @@
         "https://hyprland.cachix.org"
         "https://nix-on-droid.cachix.org"
         "https://nix-community.cachix.org"
+        "https://spitulax.cachix.org"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -48,6 +49,7 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "spitulax.cachix.org-1:GQRdtUgc9vwHTkfukneFHFXLPOo0G/2lj2nRw66ENmU="
       ];
 
       templates = import ./templates;
@@ -123,6 +125,8 @@
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    mypkgs.url = "github:spitulax/mypkgs";
+
     #############################
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -142,9 +146,6 @@
     hyprlock.inputs.nixpkgs.follows = "nixpkgs";
     hypridle.url = "github:hyprwm/hypridle";
     hypridle.inputs.nixpkgs.follows = "nixpkgs";
-
-    waybar.url = "github:Alexays/Waybar";
-    waybar.inputs.nixpkgs.follows = "nixpkgs";
 
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";

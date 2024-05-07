@@ -26,9 +26,6 @@
       ]);
     });
 
-    waybar = prev.waybar.override {
-      inherit (inputs.hyprland.packages.${final.system}) hyprland;
-      swaySupport = false;
-    };
+    mypkgs = builtins.removeAttrs inputs.mypkgs.packages.${final.system} [ "all" ];
   };
 }

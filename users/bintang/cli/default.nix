@@ -27,7 +27,7 @@
     dust
     chafa
     yt-dlp
-    lexurgy
     ffmpeg
+    mypkgs.lexurgy
   ];
 }
