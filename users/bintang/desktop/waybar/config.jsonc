@@ -130,19 +130,17 @@
   },
   "battery": {
     "bat": "BAT0",
-    "adapter": "ADP0",
+    "adapter": "AC",
     "interval": 1,
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
-    "format-discharging-warning": "󱊡 {capacity}%",
-    "format-discharging-critical": "󱊡 {capacity}%",
+    "format-discharging": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
     "format-plugged": "󰚥 {capacity}%",
     "format-full": "󰚥 {capacity}%",
-    "tooltip-format": "{timeTo}",
+    "tooltip-format": "{timeTo}\nHealth: {health}%\nCycles: {cycles}\nPower: {power}W",
     "format-time": "{H}h {M}m",
     "states": {
       "warning": 20,
