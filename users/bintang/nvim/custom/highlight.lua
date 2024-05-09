@@ -6,6 +6,7 @@ M.override = {
   Visual = { reverse = true },
   NvimTreeRootFolder = { fg = "green" },
   Comment = { fg = "light_grey", italic = true },
+  ["@comment"] = { link = "Comment" },
   Conditional = { bold = true },
   Keyword = { bold = true },
   Type = { bold = true },
@@ -20,6 +21,8 @@ M.add = {
   Search = { fg = "black", bg = "yellow" },
   CursorLine = { bg = "one_bg" },
   GitSignsCurrentLineBlame = { link = "Comment" },
+  NeogitDiffDelete = { fg = "grey", bg = "black" },
+  NeogitDiffDeleteHighlight = { fg = "grey", bg = "black" },
 }
 
 return M

@@ -17,6 +17,7 @@
       "--enable-wayland-ime"
       "--gtk-version=4"
       "--force-device-scale-factor=1.0" # without this sometimes tab bar gets unusually big at least on KDE Plasma Wayland
+      "-enable-features=UseOzonePlatform"
     ];
     extensions = [
       { id = "kfhgpagdjjoieckminnmigmpeclkdmjm"; } # Automatic Twitch
