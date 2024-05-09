@@ -1,7 +1,6 @@
 # https://github.com/Lillecarl/nixos/blob/master/modules/nixos/keymapper.nix
 
 { pkgs
-, lib
 , config
 , ...
 }: {
@@ -52,7 +51,7 @@
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.keymapper}/bin/keymapperd -v";
+        ExecStart = "${pkgs.mypkgs.keymapper}/bin/keymapperd -v";
         Restart = "always";
         RestartSec = "5";
       };

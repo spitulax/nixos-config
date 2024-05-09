@@ -12,20 +12,6 @@
     # https://github.com/spotDL/spotify-downloader/blob/v4.2.5/spotdl/utils/ffmpeg.py#L37
     spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
 
-    keymapper = prev.keymapper.overrideAttrs (newAttrs: oldAttrs: {
-      version = "4.1.3";
-      src = final.fetchFromGitHub {
-        owner = "houmain";
-        repo = "keymapper";
-        rev = newAttrs.version;
-        hash = "sha256-hzqZ8rr1qK++oUL+ZOiYLLmrN79SDcUYBFaepOUMu4s=";
-      };
-      nativeBuildInputs = oldAttrs.nativeBuildInputs ++ (with final; [
-        gtk3
-        libappindicator
-      ]);
-    });
-
     mypkgs = builtins.removeAttrs inputs.mypkgs.packages.${final.system} [ "all" ];
   };
 }

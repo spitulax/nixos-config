@@ -13,7 +13,7 @@ let
 in
 {
   home.packages = [
-    pkgs.keymapper
+    pkgs.mypkgs.keymapper
   ];
 
   systemd.user.services.keymapper = {
@@ -23,7 +23,7 @@ in
       Description = "Keymapper";
     };
     Service = {
-      ExecStart = "${pkgs.keymapper}/bin/keymapper --no-tray -v -c ${config.xdg.configHome + "/keymapper/keymapper.conf"}";
+      ExecStart = "${pkgs.mypkgs.keymapper}/bin/keymapper --no-tray -v -c ${config.xdg.configHome + "/keymapper/keymapper.conf"}";
       Restart = "always";
       RestartSec = "5";
     };
