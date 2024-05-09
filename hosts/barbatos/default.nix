@@ -4,8 +4,6 @@
 , ...
 }: {
   imports = with inputs; [
-    inputs.chaotic.nixosModules.default
-
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.common-pc-laptop
     nixos-hardware.nixosModules.common-pc-laptop-acpi_call

@@ -100,8 +100,6 @@
 
     nix-on-droid.url = "github:nix-community/nix-on-droid";
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
     mypkgs.url = "github:spitulax/mypkgs";
 
     #############################

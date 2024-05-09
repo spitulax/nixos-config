@@ -21,8 +21,7 @@
   ];
 
   # Gaming Kernel
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # environment.systemPackages = [ pkgs.scx ];
 
   # Misc
