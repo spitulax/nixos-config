@@ -6,6 +6,7 @@
     ./mako
     ./rofi
     ./waybar
+    ./gammastep
     ./kvantum.nix
     ./gtk.nix
     ./qt.nix
