@@ -12,9 +12,9 @@
     # FAILED: error: The option `hardware.intelgpu.loadInInitrd' in `/nix/store/gb7384izfb1x5i7vibr6ylazx8bf7bq6-source/hosts/barbatos' is already declared in `/nix/store/0ckkj733ppb5r4lq7m4m0y8g285s160q-source/common/gpu/intel'.
     # nixos-hardware.nixosModules.common-gpu-intel
   ] ++ (with outputs.nixosModules; [
-    keymapper
-    gaming
-    video-hardware-intel
+    features.keymapper
+    features.gaming
+    features.video-hardware-intel
 
     common
     desktop

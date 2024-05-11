@@ -1,21 +1,13 @@
-{
+{ lib }: {
   # Optional features
-  gaming = import ./gaming.nix;
-  keymapper = import ./keymapper.nix;
-  video-hardware-intel = import ./video-hardware-intel.nix;
-  vm = import ./vm.nix;
-  plasma = import ./plasma.nix;
-  zram = import ./zram.nix;
-  avahi = import ./avahi.nix;
+  features = lib.genAttrsEachFilesExt ./features "nix" (n: import ./features/${n});
 
   # Global configs
   common = import ./common;
   desktop = import ./desktop;
   server = import ./server;
-  laptop = import ./laptop.nix;
+  laptop = import ./laptop;
 
   # Users
-  users = {
-    bintang = import ./users/bintang.nix;
-  };
+  users = lib.genAttrsEachFilesExt ./users "nix" (n: import ./users/${n});
 }

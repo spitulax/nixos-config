@@ -7,12 +7,12 @@ in
 {
   # Environment variables
   home.sessionVariables = {
-    PATH = "$HOME/.cargo/bin:$HOME/.local/bin:$PATH";
+    PATH = "${home}/.cargo/bin:${home}/.local/bin:$PATH";
     EDITOR = "nvim";
     TERMINAL = "kitty";
     BROWSER = "brave";
     FILE_MANAGER = "dolphin";
-    FLAKE = "$HOME/Config";
+    FLAKE = "${home}/Config";
     GPG_TTY = "$(tty)";
     WINEPREFIX = "${config.xdg.dataHome}/wine";
   };

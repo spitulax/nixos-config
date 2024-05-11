@@ -9,7 +9,8 @@
     } @ inputs:
     let
       inherit (self) outputs;
-      lib = nixpkgs.lib // home-manager.lib;
+      myLib = import ./lib { inherit (nixpkgs) lib; };
+      lib = myLib // nixpkgs.lib // home-manager.lib;
       systems = [ "x86_64-linux" "aarch64-linux" ];
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
       pkgsFor = lib.genAttrs systems (system: nixpkgs.legacyPackages.${system});
@@ -32,7 +33,7 @@
     in
     {
       inherit (self) inputs outputs;
-      inherit pkgs;
+      inherit pkgs lib;
 
       # See the bottom comment
       substituters = [
@@ -52,14 +53,14 @@
         "spitulax.cachix.org-1:GQRdtUgc9vwHTkfukneFHFXLPOo0G/2lj2nRw66ENmU="
       ];
 
-      templates = import ./templates;
+      templates = import ./templates { inherit lib; };
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
-      packages = forEachSystem (pkgs: import ./packages { inherit pkgs; });
+      packages = forEachSystem (pkgs: import ./packages { inherit pkgs lib; });
 
-      overlays = import ./overlays { inherit inputs outputs; };
+      overlays = import ./overlays { inherit inputs lib; };
 
-      nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
+      nixosModules = import ./modules/nixos { inherit lib; };
+      homeManagerModules = import ./modules/home-manager { inherit lib; };
 
       nixosConfigurations = {
         # Personal laptop

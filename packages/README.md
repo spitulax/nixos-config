@@ -1,6 +1,19 @@
 # Packages
 
-Some packages that are available in this flake and overlaid to pkgs.
+Some packages that are available in this flake and overlaid to pkgs within `custom` attrset.
+
 Build using `nix build .#<name>`
 
-More information for custom scripts are available in [`default.nix`](./default.nix).
+## List
+
+- `scripts`: Symlink join of many simple bash scripts to make my life easier
+> Contains multiple scripts:
+> - `brightness`: Control monitor brightness
+> - `clean`: Wrapper to `nix store gc` that also deletes old profiles
+> - `lazyup`: A hacky (stupid) way to update/install lazy.nvim plugins
+> - `reminder`: Simple (scuffed) reminder with notify-send
+> - `screenshot`: Wrapper script to grim (wayland screenshot)
+> - `tmuxs`: Tmux that search for .tmux socket
+> - `upfind`: Find files up the directory tree
+> - `volume`: Control volume
+> - `wallpaper`: Control wallpaper with swww

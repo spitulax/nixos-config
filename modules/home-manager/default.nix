@@ -1,3 +1,4 @@
-{
-  webApps = import ./webApps.nix;
-}
+{ lib }:
+builtins.removeAttrs
+  (lib.genAttrsEachFilesExt ./. "nix" (n: import ./${n}))
+  [ "default" ]
