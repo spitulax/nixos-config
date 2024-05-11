@@ -19,7 +19,6 @@
     knownHosts = builtins.mapAttrs
       (name: _: {
         publicKeyFile = ../../../hosts/${name}/ssh_host_rsa_key.pub;
-        extraHostNames = [ "localhost" ];
       })
       outputs.nixosConfigurations;
   };

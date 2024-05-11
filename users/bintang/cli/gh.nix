@@ -1,4 +1,5 @@
 { pkgs
+, config
 , ...
 }: {
   programs.gh = {
@@ -13,5 +14,10 @@
       git_protocol = "ssh";
       editor = "nvim";
     };
+  };
+
+  sops.secrets.gh-hosts = {
+    sopsFile = ../../../secrets/bintang/gh.yaml;
+    path = "${config.xdg.configHome}/gh/hosts.yml";
   };
 }
