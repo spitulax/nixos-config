@@ -1,5 +1,5 @@
 { pkgs
 , ...
 }: {
-  home.packages = builtins.attrValues pkgs.custom.scripts;
+  home.packages = [ pkgs.custom.scripts ];
 }

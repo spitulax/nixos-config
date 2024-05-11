@@ -3,7 +3,9 @@
 }: {
   # Add custom packages
   # This is where packages from ../packages are added to pkgs
-  add = final: _: import ../packages { pkgs = final; };
+  add = final: _: {
+    custom = import ../packages { pkgs = final; };
+  };
 
   # Modify packages from nixpkgs
   modify = final: prev: {
