@@ -34,7 +34,7 @@
         in
         {
           default = pkgs.mkShell {
-            name = "foobar-shell";
+            name = self.packages.${system}.default + "-shell";
             nativeBuildInputs = with pkgs; [
               rustc
               cargo

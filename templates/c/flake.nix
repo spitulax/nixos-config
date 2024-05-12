@@ -34,7 +34,7 @@
         in
         {
           default = pkgs.mkShell {
-            name = "foobar-shell";
+            name = self.packages.${system}.default + "-shell";
             inputsFrom = [
               self.packages.${system}.default
             ];
