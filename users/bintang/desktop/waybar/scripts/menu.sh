@@ -1,23 +1,32 @@
 #!/usr/bin/env bash
 
+# My little neofetch on the bar :)
+
+time_since_fmt () {
+  TIME=$(($(date +%s) - $1))
+  TIME_Y=$((10#$(date "+%Y" -d "@$TIME") - 1970))
+  TIME_M=$((10#$(date "+%m" -d "@$TIME") - 1))
+  TIME_D=$((10#$(date "+%d" -d "@$TIME") - 1))
+  TIME_H=$((10#$(date "+%H" -d "@$TIME")))
+  TIME_MI=$((10#$(date "+%M" -d "@$TIME")))
+  TIME_FULL=$(printf "%sh %smin" "$TIME_H" "$TIME_MI")
+  [[ $TIME_D > 0 ]] && TIME_FULL=$(printf "%sd %s" "$TIME_D" "$TIME_FULL")
+  [[ $TIME_M > 0 ]] && TIME_FULL=$(printf "%smo %s" "$TIME_M" "$TIME_FULL")
+  [[ $TIME_Y > 0 ]] && TIME_FULL=$(printf "%sy %s" "$TIME_Y" "$TIME_FULL")
+  echo "$TIME_FULL"
+}
+
 export TZ='Etc/UTC'
-UPTIME=$(echo $(($(date +%s) - $(cat /proc/stat | grep btime | awk '{print $2}'))))
-UPTIME_Y=$((10#$(date "+%Y" -d "@$UPTIME") - 1970))
-UPTIME_M=$((10#$(date "+%m" -d "@$UPTIME") - 1))
-UPTIME_D=$((10#$(date "+%d" -d "@$UPTIME") - 1))
-UPTIME_H=$((10#$(date "+%H" -d "@$UPTIME")))
-UPTIME_MI=$((10#$(date "+%M" -d "@$UPTIME")))
-UPTIME_FULL=$(printf "%sh %smin" "$UPTIME_H" "$UPTIME_MI")
-[[ $UPTIME_D > 0 ]] && UPTIME_FULL=$(printf "%sd %s" "$UPTIME_D" "$UPTIME_FULL")
-[[ $UPTIME_M > 0 ]] && UPTIME_FULL=$(printf "%smo %s" "$UPTIME_M" "$UPTIME_FULL")
-[[ $UPTIME_Y > 0 ]] && UPTIME_FULL=$(printf "%sy %s" "$UPTIME_Y" "$UPTIME_FULL")
+UPTIME=$(time_since_fmt $(cat /proc/stat | grep btime | awk '{print $2}'))
+AGE=$(time_since_fmt $(stat -c %W /))
 
 DISK_USED=$(df -h --total | tail -1 | awk '{print $3}')
 DISK_AVAIL=$(df -h --total | tail -1 | awk '{print $4}')
 DISK_AVAIL_P=$(df -h --total | tail -1 | awk '{print $5}')
 
-TOOLTIP=$(printf "Uptime: %s\\\\nLinux: %s\\\\nNixOS: %s\\\\nHyprland: %s\\\\nWaybar: %s\\\\nDisk: %s" \
-  "$UPTIME_FULL" \
+TOOLTIP=$(printf "Uptime: %s\\\\nAge: %s\\\\nLinux: %s\\\\nNixOS: %s\\\\nHyprland: %s\\\\nWaybar: %s\\\\nDisk: %s" \
+  "$UPTIME" \
+  "$AGE" \
   "$(uname -r)" \
   "$(nixos-version)" \
   "$(readlink -f $(which Hyprland) | sed 's/^.*hyprland-\(.*\)\/bin\/.*/\1/')" \
