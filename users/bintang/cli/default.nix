@@ -25,6 +25,7 @@
     trash-cli
     bat
     dust
+    ncdu
     chafa
     yt-dlp
     ffmpeg

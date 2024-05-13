@@ -34,7 +34,7 @@
         in
         {
           default = pkgs.mkShell {
-            name = self.packages.${system}.default + "-shell";
+            name = lib.getName self.packages.${system}.default + "-shell";
             nativeBuildInputs = with pkgs; [
               rustc
               cargo
