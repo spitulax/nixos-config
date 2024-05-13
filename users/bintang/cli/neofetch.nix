@@ -6,23 +6,24 @@
     print_info() {
       prin " ''${cl0}╭──┄''${cl1}┄╌─⊙─╌┄''${cl2}┄╌─⊙─╌┄''${cl3}┄╌─⊙─╌┄''${cl4}┄╌─⊙─╌┄''${cl5}┄╌─⊙─╌┄''${cl6}┄╌─⊙─╌┄''${cl7}┄┈┈"
       info "''${cl0}│''${cl6}  ╭─" distro
-      info "''${cl0}│''${cl6}  ├─" kernel
-      info "''${cl0}│''${cl6}  ╰─" uptime
+      info "''${cl0}│''${cl6}  ├─" kernel
+      info "''${cl0}│''${cl6}  ├─" uptime
+      prin "''${cl0}│''${cl6}  ╰─" "$(timeinfo age)"
       prin "''${cl0}│"
       info "''${cl0}│''${cl4}  ╭─" users
-      info "''${cl0}│''${cl4}  ├─" shell
+      prin "''${cl0}│''${cl4}  ├─" "$(hostname)"
+      info "''${cl0}│''${cl4}  ├─" shell
       info "''${cl0}│''${cl4}  ╰─󰏗" packages
       prin "''${cl0}│"
-      info "''${cl0}│''${cl5}  ╭─" de
+      info "''${cl0}│''${cl5}  ╭─" de
       info "''${cl0}│''${cl5}  ├─" term
       info "''${cl0}│''${cl5}  ├─" theme
       info "''${cl0}│''${cl5}  ╰─󰜡" icons
       prin "''${cl0}│"
-      info "''${cl0}│''${cl3}  ╭─" model
-      info "''${cl0}│''${cl3}  ├─" cpu
+      info "''${cl0}│''${cl3}  ╭─" cpu
       info "''${cl0}│''${cl3}  ├─󰍹" gpu
       info "''${cl0}│''${cl3}  ├─󰍛" memory
-      info "''${cl0}│''${cl3}  ╰─󰋊" disk
+      info "''${cl0}│''${cl3}  ╰─" disk
       # info cols
       prin " ''${cl0}╰──┄''${cl1}┄╌─∗─╌┄''${cl2}┄╌─∗─╌┄''${cl3}┄╌─∗─╌┄''${cl4}┄╌─∗─╌┄''${cl5}┄╌─∗─╌┄''${cl6}┄╌─∗─╌┄''${cl7}┄┈┈"
     }

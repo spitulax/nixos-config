@@ -13,6 +13,7 @@ Build using `nix build .#<name>`
 > - `lazyup`: A hacky (stupid) way to update/install lazy.nvim plugins
 > - `reminder`: Simple (scuffed) reminder with notify-send
 > - `screenshot`: Wrapper script to grim (wayland screenshot)
+> - `timeinfo`: Print system uptime or system installation age
 > - `tmuxs`: Tmux that search for .tmux socket
 > - `upfind`: Find files up the directory tree
 > - `volume`: Control volume
