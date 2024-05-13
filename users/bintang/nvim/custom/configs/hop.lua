@@ -5,13 +5,12 @@ M.opts = {
 }
 
 local mapping = {
-  ["<C-m>"]      = { "<cmd>HopWord<cr>", "Hop word" },
-  ["<C-m>m"] = { "<cmd>HopWord<cr>", "Hop word" },
-  ["<C-m>c"] = { "<cmd>HopChar1<cr>", "Hop one char" },
-  ["<C-m>C"]     = { "<cmd>HopChar2<cr>", "Hop two chars" },
-  ["<C-m>/"] = { "<cmd>HopPattern<cr>", "Hop search pattern" },
-  ["<C-m>l"] = { "<cmd>HopLineStart<cr>", "Hop line start" },
-  ["<C-m>L"]     = { "<cmd>HopLine<cr>", "Hop line" },
+  ["<C-f>f"] = { "<cmd>HopWord<cr>", "Hop word" },
+  ["<C-f>c"] = { "<cmd>HopChar1<cr>", "Hop one char" },
+  ["<C-f>C"] = { "<cmd>HopChar2<cr>", "Hop two chars" },
+  ["<C-f>/"] = { "<cmd>HopPattern<cr>", "Hop search pattern" },
+  ["<C-f>l"] = { "<cmd>HopLineStart<cr>", "Hop line start" },
+  ["<C-f>L"] = { "<cmd>HopLine<cr>", "Hop line" },
 }
 
 M.mappings = { n = mapping, v = mapping }
