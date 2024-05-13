@@ -17,19 +17,12 @@ in
   ];
 
   systemd.user.services.keymapper = {
-    Unit = {
-      X-SwitchMethod = "restart";
-      X-ConfigHash = builtins.hashString "md5" extraConfig;
-      Description = "Keymapper";
-    };
+    Unit.Description = "Keymapper";
     Service = {
       ExecStart = "${pkgs.mypkgs.keymapper}/bin/keymapper --no-tray -v -c ${config.xdg.configHome + "/keymapper/keymapper.conf"}";
-      Restart = "always";
-      RestartSec = "5";
+      Restart = "on-failure";
     };
-    Install = {
-      WantedBy = [ "hyprland-session.target" "graphical-session.target" ];
-    };
+    Install.WantedBy = [ "hyprland-session.target" "graphical-session.target" ];
   };
 
   xdg.configFile."keymapper/keymapper.conf".text = extraConfig;

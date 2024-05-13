@@ -7,6 +7,7 @@
     ./rofi
     ./waybar
     ./gammastep
+    ./cliphist.nix
     ./kvantum.nix
     ./gtk.nix
     ./qt.nix
@@ -19,7 +20,6 @@
     # core
     wl-clipboard
     wtype
-    cliphist
     brightnessctl
     gnome.zenity
     libsForQt5.polkit-kde-agent
