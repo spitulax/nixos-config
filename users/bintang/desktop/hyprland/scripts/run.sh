@@ -8,7 +8,8 @@ case "$1" in
     rofi -show window &
     ;;
   "clipboard")
-    cliphist list | rofi -dmenu | cliphist decode | wl-copy &
+    # cliphist list | rofi -dmenu | cliphist decode | wl-copy &
+    rofi -modi "clipboard:$XDG_CONFIG_HOME/rofi/modes/clipboard.sh" -show clipboard &
     ;;
   "emoji")
     rofi -modi emoji -show emoji &

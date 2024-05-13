@@ -23,9 +23,14 @@
       display-run = " 󰌧  Run ";
       display-window = " 󰖲  Window";
       display-emoji = "   Emoji";
+      display-clipboard = " 󰅇  Clipboard";
       sidebar-mode = true;
     };
   };
 
   xdg.dataFile."rofi/themes/catppuccin-mocha.rasi".source = ./catppuccin-mocha.rasi;
+  xdg.configFile."rofi/modes" = {
+    source = ./modes;
+    recursive = true;
+  };
 }
