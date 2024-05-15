@@ -1,17 +1,7 @@
 { pkgs
+, myLib
 , ...
-}: {
-  imports = [
-    ./nix.nix
-    ./bluetooth.nix
-    ./home-manager.nix
-    ./security.nix
-    ./sops.nix
-    ./power.nix
-    ./packages.nix
-    ./locale.nix
-    ./openssh.nix
-  ];
+}: myLib.importIn ./. // {
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;

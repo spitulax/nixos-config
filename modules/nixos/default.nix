@@ -1,6 +1,6 @@
-{ lib }: {
+{ myLib }: {
   # Optional features
-  features = lib.genAttrsEachFilesExt ./features "nix" (n: import ./features/${n});
+  features = myLib.genAttrsEachFilesExt ./features "nix" (n: import ./features/${n});
 
   # Global configs
   common = import ./common;
@@ -9,5 +9,5 @@
   laptop = import ./laptop;
 
   # Users
-  users = lib.genAttrsEachFilesExt ./users "nix" (n: import ./users/${n});
+  users = myLib.genAttrsEachFilesExt ./users "nix" (n: import ./users/${n});
 }

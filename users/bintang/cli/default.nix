@@ -1,20 +1,7 @@
 { pkgs
+, myLib
 , ...
-}: {
-  imports = [
-    ./fish.nix
-    ./starship.nix
-    ./git.nix
-    ./gh.nix
-    ./gpg.nix
-    ./ssh.nix
-    ./btop.nix
-    ./neofetch.nix
-    ./spotdl.nix
-    ./tmux.nix
-    ./scripts.nix
-    ./cava.nix
-  ];
+}: myLib.importIn ./. // {
 
   home.packages = with pkgs; [
     eza

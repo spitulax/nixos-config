@@ -1,19 +1,7 @@
 { pkgs
+, myLib
 , ...
-}: {
-  imports = [
-    ./kitty.nix
-    ./browser.nix
-    ./zapzap.nix
-    ./obs.nix
-    ./mpv.nix
-    ./entertainment.nix
-    ./zathura.nix
-    ./dolphin.nix
-    ./entries.nix
-    ./mime.nix
-    ./godot.nix
-  ];
+}: myLib.importIn ./. // {
 
   home.packages = with pkgs; [
     nomacs

@@ -1,2 +1,2 @@
-{ lib }:
-lib.genAttrsEachDirs ./. (n: { path = ./${n}; description = n; })
+{ myLib }:
+myLib.genAttrsEachDirs ./. (n: { path = ./${n}; description = n; })

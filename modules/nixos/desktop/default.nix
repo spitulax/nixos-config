@@ -1,14 +1,8 @@
 { pkgs
 , inputs
+, myLib
 , ...
-}: {
-  imports = [
-    ./input.nix
-    ./sound.nix
-    ./opengl.nix
-    ./fonts.nix
-    ./display-manager.nix
-  ];
+}: myLib.importIn ./. // {
 
   programs.xwayland.enable = true;
 

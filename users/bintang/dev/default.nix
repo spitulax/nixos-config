@@ -1,13 +1,7 @@
 { pkgs
+, myLib
 , ...
-}: {
-  imports = [
-    ./python.nix
-    ./rust.nix
-    ./nix.nix
-    ./go.nix
-    ./cpp.nix
-  ];
+}: myLib.importIn ./. // {
 
   home.packages = with pkgs; [
     # Debugger

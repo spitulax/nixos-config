@@ -1,18 +1,7 @@
 { pkgs
+, myLib
 , ...
-}: {
-  imports = [
-    ./hyprland
-    ./mako
-    ./rofi
-    ./waybar
-    ./gammastep
-    ./cliphist.nix
-    ./kvantum.nix
-    ./gtk.nix
-    ./qt.nix
-    ./keymapper.nix
-  ];
+}: myLib.importIn ./. // {
 
   fonts.fontconfig.enable = true;
 

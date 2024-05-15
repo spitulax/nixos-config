@@ -1,10 +1,8 @@
 { pkgs
 , inputs
+, myLib
 , ...
-}: {
-  imports = [
-    ./games.nix
-  ];
+}: myLib.importIn ./. // {
 
   home.packages = with pkgs; [
     mangohud

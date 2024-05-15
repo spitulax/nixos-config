@@ -11,7 +11,7 @@
       inherit (self) outputs;
 
       myLib = import ./lib { inherit (nixpkgs) lib; };
-      lib = myLib // nixpkgs.lib // home-manager.lib;
+      lib = nixpkgs.lib // home-manager.lib;
 
       systems = [ "x86_64-linux" "aarch64-linux" ];
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
@@ -38,24 +38,24 @@
     {
       # Expose these to output for easier access
       inherit (self) inputs outputs;
-      inherit pkgs lib;
+      inherit pkgs myLib lib;
 
       # Standard flake output
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
-      templates = import ./templates { inherit lib; };
-      packages = forEachSystem (pkgs: import ./packages { inherit pkgs lib; });
-      overlays = import ./overlays { inherit inputs lib; };
+      templates = import ./templates { inherit myLib; };
+      packages = forEachSystem (pkgs: import ./packages { inherit pkgs lib myLib; });
+      overlays = import ./overlays { inherit inputs lib outputs; };
 
       # Modules
-      nixosModules = import ./modules/nixos { inherit lib; };
-      homeManagerModules = import ./modules/home-manager { inherit lib; };
+      nixosModules = import ./modules/nixos { inherit myLib; };
+      homeManagerModules = import ./modules/home-manager { inherit myLib; };
 
       # NixOS configs
       nixosConfigurations = {
         # Personal laptop
         "barbatos" = lib.nixosSystem {
           modules = [ ./hosts/barbatos ];
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs myLib; };
         };
       };
 
@@ -64,7 +64,7 @@
         modules = [ ./hosts/dantalion ];
         pkgs = pkgs.android;
         extraSpecialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs myLib;
         };
       };
 
@@ -75,7 +75,7 @@
           pkgs = pkgsFor.x86_64-linux;
           modules = [ ./users/bintang/hosts/barbatos ];
           extraSpecialArgs = {
-            inherit inputs outputs;
+            inherit inputs outputs myLib;
           };
         };
       };

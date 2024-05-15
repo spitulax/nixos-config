@@ -1,10 +1,11 @@
 { inputs
 , lib
+, outputs
 }: {
   # Add custom packages
   # This is where packages from ../packages are added to pkgs
   add = final: _: {
-    custom = import ../packages { inherit lib; pkgs = final; };
+    custom = outputs.packages.${final.system};
   };
 
   # Modify packages from nixpkgs

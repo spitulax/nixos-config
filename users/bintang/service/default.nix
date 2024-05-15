@@ -1,6 +1,3 @@
-{
-  imports = [
-    ./syncthing
-    ./udiskie.nix
-  ];
-}
+{ myLib
+, ...
+}: myLib.importIn ./.
