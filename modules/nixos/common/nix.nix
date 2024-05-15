@@ -32,5 +32,5 @@
       options = "--delete-older-than +3";
     };
   };
-  nixpkgs.pkgs = outputs.pkgs.nixos;
+  nixpkgs.pkgs = outputs.pkgsFor.x86_64-linux;
 }

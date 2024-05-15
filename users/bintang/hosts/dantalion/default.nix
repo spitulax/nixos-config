@@ -1,4 +1,5 @@
 { pkgs
+, outputs
 , ...
 }: {
   imports = [
@@ -15,6 +16,10 @@
       STORAGE = "/storage/emulated/0";
     };
     stateVersion = "23.11";
+  };
+
+  nixpkgs = {
+    inherit (outputs.pkgsFor.aarch64-linux) config overlays;
   };
 
   # Packages

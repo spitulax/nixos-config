@@ -13,33 +13,22 @@
       myLib = import ./lib { inherit (nixpkgs) lib; };
       lib = nixpkgs.lib // home-manager.lib;
 
-      systems = [ "x86_64-linux" "aarch64-linux" ];
-      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs systems (system: nixpkgs.legacyPackages.${system});
-
       # Nixpkgs instances per architecture
-      pkgs = {
-        nixos = import nixpkgs {
-          system = "x86_64-linux";
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+      pkgsFor = lib.genAttrs systems (system:
+        import nixpkgs {
+          inherit system;
           config.allowUnfree = true;
           overlays = [
             inputs.nix-alien.overlays.default
           ] ++ builtins.attrValues outputs.overlays;
-        };
-        android = import nixpkgs {
-          system = "aarch64-linux";
-          config.allowUnfree = true;
-          overlays = [
-            inputs.nix-on-droid.overlays.default
-          ] ++ builtins.attrValues outputs.overlays;
-        };
-      };
+        }
+      );
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+
+      specialArgs = { inherit inputs outputs myLib; };
     in
     {
-      # Expose these to output for easier access
-      inherit (self) inputs outputs;
-      inherit pkgs myLib lib;
-
       # Standard flake output
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
       templates = import ./templates { inherit myLib; };
@@ -55,17 +44,19 @@
         # Personal laptop
         "barbatos" = lib.nixosSystem {
           modules = [ ./hosts/barbatos ];
-          specialArgs = { inherit inputs outputs myLib; };
+          inherit specialArgs;
         };
       };
 
       # Android on termux
       nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
         modules = [ ./hosts/dantalion ];
-        pkgs = pkgs.android;
-        extraSpecialArgs = {
-          inherit inputs outputs myLib;
+        pkgs = lib.mergeAttrsConcatenateValues pkgsFor.aarch64-linux {
+          overlays = [
+            inputs.nix-on-droid.overlays.default
+          ];
         };
+        extraSpecialArgs = specialArgs;
       };
 
       # Home configs
@@ -74,11 +65,14 @@
         "bintang@barbatos" = lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [ ./users/bintang/hosts/barbatos ];
-          extraSpecialArgs = {
-            inherit inputs outputs myLib;
-          };
+          extraSpecialArgs = specialArgs;
         };
       };
+
+      # Expose these to output for easier access
+      inherit (self) inputs outputs;
+      inherit pkgsFor myLib lib;
+      inherit specialArgs;
 
       # Binary cache substituters
       substituters = [
@@ -97,7 +91,6 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "spitulax.cachix.org-1:GQRdtUgc9vwHTkfukneFHFXLPOo0G/2lj2nRw66ENmU="
       ];
-
     };
 
   inputs = {

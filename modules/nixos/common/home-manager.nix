@@ -1,6 +1,5 @@
 { inputs
 , outputs
-, myLib
 , ...
 }: {
   imports = [
@@ -8,6 +7,6 @@
   ];
   home-manager = {
     useGlobalPkgs = false;
-    extraSpecialArgs = { inherit inputs outputs myLib; };
+    extraSpecialArgs = outputs.specialArgs;
   };
 }
