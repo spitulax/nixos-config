@@ -81,18 +81,22 @@
     Example:
       Given these files in `./.`: [ "README.md" "flake.nix" "flake.lock" "default.nix" ]
       ```
-      genAttrsEachFilesExt ./. "nix" (n: n)
+      genAttrsEachFilesExt ./. "nix" lib.id
         => { flake = "flake.nix"; default = "default.nix"; }
       ```
 
     Type: Path -> String -> (String -> Any) -> AttrSet
   */
   genAttrsEachFilesExt = dir: ext: f:
-    (lib.mapAttrs'
-      (n: v: lib.nameValuePair (builtins.head (builtins.split "\\.${ext}$" n)) v)
-      (lib.filterAttrs
-        (n: _: lib.last (builtins.split "\\.${ext}$" n) == "")
-        (genAttrsEachFiles dir f)));
+    let
+      filterExt =
+        lib.filterAttrs
+          (n: _: lib.last (builtins.split "\\.${ext}$" n) == "");
+      truncateExt =
+        lib.mapAttrs'
+          (n: lib.nameValuePair (builtins.head (builtins.split "\\.${ext}$" n)));
+    in
+    truncateExt (filterExt (genAttrsEachFiles dir f));
 
 
   /*
@@ -124,9 +128,11 @@
   importIn = dir:
     {
       imports =
+        let
+          files = listFilesExt dir "nix" ++ listDirs dir;
+        in
         builtins.map
           (lib.path.append dir)
-          (builtins.filter (v: v != "default.nix") (listFilesExt dir "nix")
-            ++ listDirs dir);
+          (builtins.filter (v: v != "default.nix") files);
     };
 }
