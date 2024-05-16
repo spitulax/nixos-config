@@ -11,6 +11,7 @@
       mouse_hide_wait = -1;
       url_style = "straight";
       # Terminal bell
+      enable_audio_bell = "no";
       bell_on_tab = "󰂚 ";
       # Window layout
       remember_window_size = "yes";

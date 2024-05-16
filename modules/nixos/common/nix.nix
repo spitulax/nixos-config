@@ -5,8 +5,7 @@
 , outputs
 , ...
 }: {
-  nix.registry = (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-  nix.nixPath = [ "/etc/nix/path" ];
+  # Put symlink to nix flake registries to /etc/nix/path
   environment.etc =
     lib.mapAttrs'
       (name: value: {
@@ -14,17 +13,32 @@
         value.source = value.flake;
       })
       config.nix.registry;
+
+  # Put this flake (as self) and its inputs in the nix registry
+  nix.registry =
+    lib.mapAttrs
+      (_: flake: { inherit flake; })
+      (lib.filterAttrs
+        (_: lib.isType "flake")
+        inputs);
+
+  # Put the flakes in the registry to NIX_PATH so they can be accessed with angular brackets (<>) like channels
+  # nix.nixPath just sets the NIX_PATH environment variable but it doesn't work due to a pesky bug https://github.com/NixOS/nix/issues/9574
+  nix.nixPath =
+    map
+      (x: "${x}=/etc/nix/path/${x}")
+      (builtins.attrNames config.nix.registry);
+
   nix = {
     package = lib.mkDefault pkgs.nix;
+    channel.enable = false; # Channels in 2024??? KEKW
     settings = {
       inherit (outputs) substituters trusted-public-keys;
-    };
-    settings = {
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       warn-dirty = false;
       trusted-users = [ "root" "@wheel" ];
-      nix-path = "nixpkgs=/etc/nix/path/nixpkgs"; # https://github.com/NixOS/nix/issues/9574
+      nix-path = config.nix.nixPath; # This is a working alternative to nix.nixPath
     };
     gc = {
       automatic = true;
@@ -32,5 +46,6 @@
       options = "--delete-older-than +3";
     };
   };
+
   nixpkgs.pkgs = outputs.pkgsFor.x86_64-linux;
 }
