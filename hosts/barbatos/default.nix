@@ -40,8 +40,6 @@
   environment.systemPackages = with pkgs; [
     # hardware monitoring
     nvtopPackages.intel
-    libva-utils
-    vdpauinfo
     intel-gpu-tools
   ];
 

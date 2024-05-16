@@ -1,7 +1,7 @@
 # Hyprland Configuration
 
 NOTE:
-- Monitor configuration is defined for each hosts in `/users/<user>/<host>.nix`.
+- Monitor configuration is defined for each hosts in `/users/<user>/hosts/<host>/hyprland.nix`.
 
 ## Scripts (`./scripts/`)
 
