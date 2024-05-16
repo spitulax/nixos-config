@@ -19,9 +19,7 @@
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = [
-            inputs.nix-alien.overlays.default
-          ] ++ builtins.attrValues outputs.overlays;
+          overlays = builtins.attrValues outputs.overlays;
         }
       );
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
@@ -114,14 +112,10 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    nix-alien.url = "github:thiagokokada/nix-alien";
-
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # https://github.com/hyprwm/Hyprland/issues/5891
 
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
-
-    nixpkgs-update.url = "github:nix-community/nixpkgs-update";
 
     #############################
 

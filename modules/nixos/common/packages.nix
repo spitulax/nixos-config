@@ -31,7 +31,6 @@
 
     # system utils
     inxi
-    nix-alien
     cachix
     psmisc
     lm_sensors
