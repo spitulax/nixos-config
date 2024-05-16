@@ -29,3 +29,4 @@ delete:
 
 check:
 	statix check .
+	nix flake check

@@ -12,57 +12,40 @@ in
     enable = mkEnableOption "web apps";
 
     apps = mkOption {
-      type = with types; listOf (submodule {
+      type = with types; attrsOf (submodule {
         options = {
-          name = mkOption {
-            type = str;
-            description = "The display name of the app.";
-          };
-
           id = mkOption {
             type = strMatching "[a-zA-Z]{32}";
-            description = "The extension ID of the app. You can get it from chrome://app-service-internals/";
+            description = "The extension ID of the app. You can get it from chrome://app-service-internals";
           };
 
           actions = mkOption {
-            type = attrsOf (submodule ({ name, ... }: {
-              options = {
-                name = mkOption {
-                  type = str;
-                  description = "The name of the action";
-                };
-                launchUrl = mkOption {
-                  type = nullOr str;
-                  default = null;
-                  description = "Url to open for this action.";
-                };
-              };
-            }));
+            type = attrsOf str;
             default = { };
-            description = "The set of actions made available to application launchers.";
+            description = "The set of actions made available to application launchers and the URL to open.";
           };
         };
       });
-      default = [ ];
+      default = { };
       example = literalExpression ''
-        [
-          {
-            name = "GitHub";
-            id = "mjoklplbddabcmpepnokjaffbmgbkkgg";
-          }
-
-          {
-            name = "YouTube";
+        {
+          GitHub.id = "mjoklplbddabcmpepnokjaffbmgbkkgg";
+          YouTube = {
             id = "agimnkijcaahngcdmfeangaknmldooml";
             actions = {
-              "Subscriptions" = {
-                launchUrl = [ "https://www.youtube.com/feed/subscriptions?feature=app_shortcuts" ];
-              };
+              Subscriptions = "https://www.youtube.com/feed/subscriptions?feature=app_shortcuts";
             };
-          }
-        ];
+          };
+        }
       '';
-      description = "The extension ID of the app.";
+      description = "The list of apps.";
+    };
+
+    package = mkOption {
+      type = types.package;
+      default = pkgs.brave;
+      description = "The brave package";
+      example = "config.programs.brave.package";
     };
 
     commandLineArgs = mkOption {
@@ -74,32 +57,29 @@ in
   };
 
   config = mkIf cfg.enable {
-    xdg.desktopEntries = builtins.listToAttrs (builtins.map
-      (app:
-        let
-          exec = "${pkgs.brave}/bin/brave --app-id=${app.id} " + (lib.strings.concatStringsSep " " cfg.commandLineArgs);
-          name = "brave-${app.id}-Default";
-        in
-        {
-          inherit name;
-          value = {
-            inherit exec;
+    xdg.desktopEntries =
+      mapAttrs'
+        (name: app: {
+          name = "brave-${name}";
+          value = rec {
+            inherit name;
+            exec = "${getExe cfg.package} --app-id=${app.id} " + (lib.strings.concatStringsSep " " cfg.commandLineArgs);
             type = "Application";
             icon = "brave-${app.id}-Default";
-            name = "${app.name}";
             startupNotify = true;
             terminal = false;
             settings = {
               StartupWMClass = "crx_${app.id}";
             };
-            actions = builtins.mapAttrs
-              (name: action: {
-                inherit name;
-                exec = "${exec} \"--app-launch-url-for-shortcuts-menu-item=${action.launchUrl}\"";
-              })
-              app.actions;
+            actions =
+              mapAttrs
+                (name: url: {
+                  inherit name;
+                  exec = "${exec} \"--app-launch-url-for-shortcuts-menu-item=${url}\"";
+                })
+                app.actions;
           };
         })
-      cfg.apps);
+        cfg.apps;
   };
 }

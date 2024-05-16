@@ -30,45 +30,23 @@
 
   programs.brave.webApps = {
     enable = true;
-    inherit (config.programs.brave) commandLineArgs;
+    inherit (config.programs.brave) commandLineArgs package;
     # You must install it in your profile first and I don't know how to automate that
     # I suppose I can use the --app switch instead but it's kinda meh
-    apps = [
-      {
-        name = "GitHub";
-        id = "mjoklplbddabcmpepnokjaffbmgbkkgg";
-      }
-      {
-        name = "YouTube";
+    apps = {
+      YouTube = {
         id = "agimnkijcaahngcdmfeangaknmldooml";
         actions = {
-          "Subscriptions".launchUrl = "https://www.youtube.com/feed/subscriptions?feature=app_shortcuts";
+          Subscriptions = "https://www.youtube.com/feed/subscriptions?feature=app_shortcuts";
         };
-      }
-      {
-        name = "Spotify";
-        id = "pjibgclleladliembfgfagdaldikeohf";
-      }
-      {
-        name = "Twitch";
-        id = "comkdlimbkhemidbbpchhepidbmjpnhh";
-      }
-      {
-        name = "Discord";
-        id = "pliiebkcmokkgndfalahlmimanmbjlab";
-      }
-      {
-        name = "Syncthing";
-        id = "mfinobjnbcnohnemakjeccbjljpebmlm"; # on port 8384
-      }
-      {
-        name = "Anilist";
-        id = "nhpkhfhppiampjblenncchhnipmeafgd";
-      }
-      {
-        name = "Bitwarden";
-        id = "hophjnbpmamkldmdaeggjlnpfechpkfl";
-      }
-    ];
+      };
+      GitHub.id = "mjoklplbddabcmpepnokjaffbmgbkkgg";
+      Spotify.id = "pjibgclleladliembfgfagdaldikeohf";
+      Twitch.id = "comkdlimbkhemidbbpchhepidbmjpnhh";
+      Discord.id = "pliiebkcmokkgndfalahlmimanmbjlab";
+      Syncthing.id = "mfinobjnbcnohnemakjeccbjljpebmlm"; # on port 8384
+      Anilist.id = "nhpkhfhppiampjblenncchhnipmeafgd";
+      Bitwarden.id = "hophjnbpmamkldmdaeggjlnpfechpkfl";
+    };
   };
 }
