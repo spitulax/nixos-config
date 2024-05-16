@@ -55,7 +55,10 @@
       };
     };
   };
-  power.power-profiles-daemon.enable = false;
+  power.power-manager = {
+    enable = true;
+    program = "auto-cpufreq";
+  };
 
   # State version
   system.stateVersion = "23.11";
