@@ -7,6 +7,9 @@ case "$1" in
   "windows")
     rofi -show window &
     ;;
+  "command")
+    rofi -show run &
+    ;;
   "clipboard")
     # cliphist list | rofi -dmenu | cliphist decode | wl-copy &
     rofi -modi "clipboard:$XDG_CONFIG_HOME/rofi/modes/clipboard.sh" -show clipboard &
