@@ -11,5 +11,5 @@ stdenv.mkDerivation {
 
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ] ++ lib.optionals debug [ "DEBUG=1" ];
+  makeFlags = [ "PREFIX=$(out)" ] ++ lib.optionals (!debug) [ "RELEASE=1" ];
 }

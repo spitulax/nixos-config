@@ -11,17 +11,17 @@ OBJS := $(SRCS:$(SRC_DIR)/%=$(BUILD_DIR)/%.o)
 # Common flags
 CPPFLAGS += -Wall -Wextra
 
-ifeq ($(DEBUG),1)
-	CPPFLAGS += -ggdb -Og
-else
+ifeq ($(RELEASE),1)
 	CPPFLAGS += -O3
+else
+	CPPFLAGS += -ggdb -Og
 endif
 
 # C specific flags
 CFLAGS +=
 
 # C++ specific flags
-CXXFLAGS +=
+CXXFLAGS += -Wshadow -Wnon-virtual-dtor
 
 # Linker flags
 LDFLAGS +=
@@ -31,12 +31,12 @@ $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
 	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
 
 # C source
-$(BUILD_DIR)/%.c.o: $(SRC_DIR)/%.c
+$(BUILD_DIR)/%.c.o: $(SRC_DIR)/%.c $(SRC_DIR)/%.h
 	@mkdir -p $(dir $@)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 # C++ source
-$(BUILD_DIR)/%.cpp.o: $(SRC_DIR)/%.cpp
+$(BUILD_DIR)/%.cpp.o: $(SRC_DIR)/%.cpp $(SRC_DIR)/%.hpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
