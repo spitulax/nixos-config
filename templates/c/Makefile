@@ -31,14 +31,16 @@ $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
 	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
 
 # C source
-$(BUILD_DIR)/%.c.o: $(SRC_DIR)/%.c $(SRC_DIR)/%.h
+$(BUILD_DIR)/%.c.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+$(SRC_DIR)/%.c: $SRC_DIR/%.h
 
 # C++ source
-$(BUILD_DIR)/%.cpp.o: $(SRC_DIR)/%.cpp $(SRC_DIR)/%.hpp
+$(BUILD_DIR)/%.cpp.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+$(SRC_DIR)/%.cpp: $SRC_DIR/%.hpp
 
 .PHONY: all run install clean
 

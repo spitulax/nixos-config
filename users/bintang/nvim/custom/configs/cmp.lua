@@ -15,7 +15,7 @@ M.setup = function()
     },
     mapping = {
       ["<M-x>"] = cmp.mapping.close(),
-      ["<M-Space>"] = function()
+      ["<M-s>"] = function()
         if cmp.visible() then cmp.close()
         else cmp.complete() end
       end,

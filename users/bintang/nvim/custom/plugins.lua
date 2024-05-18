@@ -99,9 +99,10 @@ local M = {
     config = function()
       require("plugins.configs.lspconfig")
       local lspconfig = require("lspconfig")
+      local on_init = require("plugins.configs.lspconfig").on_init
       local on_attach = require("plugins.configs.lspconfig").on_attach
       local capabilities = require("plugins.configs.lspconfig").capabilities
-      require("custom.configs.lspconfig").setup(lspconfig, on_attach, capabilities)
+      require("custom.configs.lspconfig").setup(lspconfig, on_init, on_attach, capabilities)
     end,
   },
 

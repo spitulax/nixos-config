@@ -20,6 +20,27 @@
         "type": "github"
       }
     },
+    "crt": {
+      "inputs": {
+        "nixpkgs": [
+          "mypkgs",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1715994586,
+        "narHash": "sha256-5MNzldm6lolsAgsB0yIQMvlsjQR9r4Ibxm2sbR9qvbM=",
+        "owner": "spitulax",
+        "repo": "crt",
+        "rev": "e197c98cf410a9b0c818625549d0a755d41630d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "spitulax",
+        "repo": "crt",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -274,16 +295,17 @@
     },
     "mypkgs": {
       "inputs": {
+        "crt": "crt",
         "hyprlock": "hyprlock",
         "nixpkgs": "nixpkgs_2",
         "waybar": "waybar"
       },
       "locked": {
-        "lastModified": 1715859568,
-        "narHash": "sha256-UO2+MlcWNuU5PDq9ulR2ZzVMzqlYX3nBob8gXS1yT/Q=",
+        "lastModified": 1715995809,
+        "narHash": "sha256-54VUvwA/hwu0cFNzy54TGL2ivruostxQE92yoUTvtp4=",
         "owner": "spitulax",
         "repo": "mypkgs",
-        "rev": "af0bad57a0a632d7178ec0628e912089dd46a158",
+        "rev": "0dba57ff06f297fb0a30b68ae5651a986b9efee8",
         "type": "github"
       },
       "original": {

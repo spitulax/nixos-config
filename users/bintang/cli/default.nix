@@ -17,5 +17,6 @@
     yt-dlp
     ffmpeg
     mypkgs.lexurgy
+    mypkgs.crt
   ];
 }

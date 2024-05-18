@@ -47,6 +47,7 @@
       Syncthing.id = "mfinobjnbcnohnemakjeccbjljpebmlm"; # on port 8384
       Anilist.id = "nhpkhfhppiampjblenncchhnipmeafgd";
       Bitwarden.id = "hophjnbpmamkldmdaeggjlnpfechpkfl";
+      "Telegram Web".id = "majiogicmcnmdhhlgmkahaleckhjbmlk";
     };
   };
 }

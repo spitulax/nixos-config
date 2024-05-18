@@ -4,7 +4,7 @@
   home.sessionVariables = {
     STCONFDIR = "$XDG_CONFIG_HOME/syncthing";
     STDATADIR = "$XDG_DATA_HOME/syncthing";
-    STNODEFAULTFOLDER = "";
+    STNODEFAULTFOLDER = 1;
   };
 
   services.syncthing = {

@@ -60,7 +60,7 @@ in
     xdg.desktopEntries =
       mapAttrs'
         (name: app: {
-          name = "brave-${name}";
+          name = "brave-${replaceStrings [ " " ] [ "-" ] name}";
           value = rec {
             inherit name;
             exec = "${getExe cfg.package} --app-id=${app.id} " + (lib.strings.concatStringsSep " " cfg.commandLineArgs);
