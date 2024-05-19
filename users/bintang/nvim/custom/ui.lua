@@ -75,7 +75,7 @@ local statusline_modules = {
 
   lsp_status = function()
     if rawget(vim, "lsp") then
-      for _, client in ipairs(vim.lsp.get_active_clients()) do
+      for _, client in ipairs(vim.lsp.get_clients()) do
         if client.attached_buffers[stbufnr()] and client.name ~= "null-ls" then
           return " " .. client.name .. " "
         end
@@ -102,7 +102,7 @@ local tabufline_modules = {
     local name
     if bufname:find(vim.fn.getcwd(), 1, true) ~= nil then
       name = vim.fn.fnamemodify(bufname, ":.")
-    elseif bufname:find(vim.loop.os_homedir(), 1, true) ~= nil then
+    elseif bufname:find(vim.luv.os_homedir(), 1, true) ~= nil then
       name = vim.fn.fnamemodify(bufname, ":~")
     elseif bufname:sub(1, #("term://")) == "term://" then
       name = "Terminal"
