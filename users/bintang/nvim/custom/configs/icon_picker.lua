@@ -5,7 +5,7 @@ M.mappings = {
     ["<leader>i"] = { "<cmd>IconPickerYank<cr>", "Open icon picker" },
   },
   i = {
-    ["<C-a>"] = { "<cmd>IconPickerInsert<cr>", "Insert an icon" },
+    ["<M-i>"] = { "<cmd>IconPickerInsert<cr>", "Insert an icon" },
   },
 }
 

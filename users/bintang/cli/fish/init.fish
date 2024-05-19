@@ -1,4 +1,4 @@
-### FISH INIT ##
+### FISH INIT ###
 
 # Remove fish intro
 function fish_greeting
@@ -45,5 +45,22 @@ else
   bind ! __history_previous_command
   bind '$' __history_previous_command_arguments
 end
+
+######
+
+### KEYBINDINGS ###
+
+bind \ca 'cdi; commandline -f repaint'
+bind -Minsert \ca 'cdi; commandline -f repaint'
+bind \cs 'echo; cdh; commandline -f repaint'
+bind -Minsert \cs 'echo; cdh; commandline -f repaint'
+bind \cz 'cd -; commandline -f repaint'
+bind -Minsert \cz 'cd -; commandline -f repaint'
+bind \cx 'cd ..; commandline -f repaint'
+bind -Minsert \cx 'cd ..; commandline -f repaint'
+bind \cq 'exit'
+bind -Minsert \cq 'exit'
+bind \cc kill-whole-line repaint
+bind -Minsert \cc kill-whole-line repaint
 
 ######

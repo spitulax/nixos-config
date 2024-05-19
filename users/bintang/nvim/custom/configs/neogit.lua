@@ -34,7 +34,7 @@ M.opts = {
 
 M.mappings = {
   n = {
-    ["<leader>g"] = { "<cmd>Neogit<cr>", "Open Neogit" },
+    ["<leader>G"] = { "<cmd>Neogit<cr>", "Open Neogit" },
   },
 }
 

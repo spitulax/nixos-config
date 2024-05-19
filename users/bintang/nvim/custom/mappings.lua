@@ -30,16 +30,19 @@ M.disabled = {
 
 M.general = {
   i = {
-    -- navigate within insert mode
-    ["<C-h>"] = { "<Left>", "Move left" },
-    ["<C-l>"] = { "<Right>", "Move right" },
-    ["<C-j>"] = { "<Down>", "Move down" },
-    ["<C-k>"] = { "<Up>", "Move up" },
-    ["<C-b>"] = { "<Esc>^i", "Go to start of the line" },
+    -- evil mode (yikes)
+    ["<C-b>"] = { "<Left>", "Move left" },
+    ["<C-f>"] = { "<Right>", "Move right" },
+    ["<C-n>"] = { "<Down>", "Move down" },
+    ["<C-p>"] = { "<Up>", "Move up" },
+    ["<C-h>"] = { "<BS>", "Backspace" },
+    ["<C-d>"] = { "<kDel>", "Delete" },
+    ["<M-d>"] = { "<Esc>ldei", "Delete next word" },
+    ["<C-k>"] = { "<Esc>lDa", "Delete from cursor to end of line" },
+    ["<C-a>"] = { "<Esc>^i", "Go to start of the line" },
     ["<C-e>"] = { "<End>", "Go to end of the line" },
-    ["<M-n>"] = { "<Esc>ea", "Go to end of the word" },
-    ["<M-p>"] = { "<Esc>gea", "Go to end of the previous word" },
-    ["<M-b>"] = { "<Esc>bi", "Go to beginning of the word" },
+    ["<M-b>"] = { "<Esc>bi", "Go to previous word" },
+    ["<M-f>"] = { "<Esc>lea", "Go to next word" },
   },
 
   n = {
@@ -56,6 +59,8 @@ M.general = {
     [")"] = { "zl", "Scroll to right" },
     ["H"] = { "zH", "Half screen to left" },
     ["L"] = { "zL", "Half screen to right" },
+    ["<A-<>"] = { "gg", "Move to beginning of buffer" },
+    ["<A->>"] = { "G", "Move to end of buffer" },
 
     -- buffer management
     ["<M-.>"] = { "<cmd>bn<cr>", "Goto next buffer" },
