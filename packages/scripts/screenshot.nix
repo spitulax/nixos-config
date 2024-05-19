@@ -5,7 +5,7 @@ usage () {
   echo "screenshot <full|region|last-region|active-window|--help>"
 }
 
-NAME="$XDG_SCREENSHOT_DIR/Screenshot_$(date '+%Y%m%d_%H%M%S').png"
+NAME="$SCREENSHOT_DIR/Screenshot_$(date '+%Y%m%d_%H%M%S').png"
 LAST_REGION_FILE="$XDG_CACHE_HOME/slurp-last"
 
 if [[ ! -w $LAST_REGION_FILE ]]; then

@@ -13,10 +13,9 @@
     "hyprland/window",
   ],
   "modules-right": [
-    "memory",
-    "custom/separator",
-    "cpu",
     "network",
+    "memory",
+    "cpu",
     "pulseaudio",
     "battery",
     "clock",
@@ -79,12 +78,12 @@
     ]
   },
   "cpu": {
-    "format": "{load}",
+    "format": "󰘚 {load}",
     "interval": 2,
     "on-click": "kitty btop"
   },
   "memory": {
-    "format": "{used}G",
+    "format": "󰍛 {used}G",
     "interval": 2,
     "tooltip-format": "Memory: {used}G/{total}G ({percentage}%)\n        {avail}G available\nSwap:   {swapUsed}G/{swapTotal}G ({swapPercentage}%)\n        {swapAvail}G available",
     "on-click": "kitty btop"
@@ -165,13 +164,13 @@
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 500,
+      "transition-left-to-right": false,
       "children-class": "buttons",
     },
     "modules": [
       "custom/notification",
-      "idle_inhibitor",
-      "custom/brightness",
       "gamemode",
+      "custom/brightness",
     ]
   },
   "custom/notification": {

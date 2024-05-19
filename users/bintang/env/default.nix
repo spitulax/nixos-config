@@ -34,16 +34,16 @@ in
       templates = null;
       videos = "${home}/Videos";
       extraConfig = {
-        XDG_BACKUPS_DIR = "${home}/Backups";
-        XDG_GAMES_DIR = "${home}/Games";
-        XDG_IMPORTANT_DIR = "${home}/Important";
-        XDG_NOTES_DIR = "${home}/Notes";
-        XDG_REPOS_DIR = "${home}/Repos";
-        XDG_SYNC_DIR = "${home}/Sync";
-        XDG_THIRDPARTY_DIR = "${home}/Thirdparty";
-        XDG_TEMP_DIR = "${home}/.temp";
-        XDG_SCREENSHOT_DIR = "${pictures}/Screenshots";
-        XDG_CAPTURE_DIR = "${videos}/Captures";
+        BACKUPS_DIR = "${home}/Backups";
+        GAMES_DIR = "${home}/Games";
+        IMPORTANT_DIR = "${home}/Important";
+        NOTES_DIR = "${home}/Notes";
+        REPOS_DIR = "${home}/Repos";
+        SYNC_DIR = "${home}/Sync";
+        THIRDPARTY_DIR = "${home}/Thirdparty";
+        TEMP_DIR = "${home}/.temp";
+        SCREENSHOT_DIR = "${pictures}/Screenshots";
+        CAPTURE_DIR = "${videos}/Captures";
       };
     };
   };

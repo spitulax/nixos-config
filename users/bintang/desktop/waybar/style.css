@@ -3,7 +3,7 @@
 * {
   color: @text;
   font-family: "Iosevka Nerd Font Propo";
-  font-size: 12pt;
+  font-size: 11pt;
   min-height: 0;
   font-weight: bold;
   transition-property: background-color;
@@ -11,7 +11,7 @@
 }
 
 window#waybar {
-  background-color: alpha(@surface0, 0.5);
+  background-color: alpha(@base, 0.7);
   /* border-bottom: 1px solid alpha(@overlay0, 0.8); */
   transition-property: background-color;
   transition-duration: .5s;
@@ -27,6 +27,7 @@ window#waybar {
 #workspaces button * {
   color: @blue;
   font-family: "Font Awesome 6 Free";
+  font-size: 12pt;
 }
 #workspaces button.empty * {
   color: @subtext0;
@@ -49,11 +50,11 @@ tooltip {
 }
 tooltip label {
   color: @text;
+  font-size: 12pt;
   margin: 0.5em;
 }
 
 #window * {
-  font-size: 11pt;
   color: @text;
 }
 #window:hover * {
@@ -69,19 +70,18 @@ window#waybar.empty #window {
   padding: 0;
 }
 
-#memory,
-#cpu {
-  font-size: 11pt;
-}
-
 #memory {
   color: @peach;
 }
+#memory:hover {
+  border-bottom: 1.5px solid alpha(@peach, 0.8);
+}
 #cpu {
   color: @teal;
-  margin-right: 0.5em;
 }
-
+#cpu:hover {
+  border-bottom: 1.5px solid alpha(@teal, 0.8);
+}
 #network {
   color: @lavender;
 }
@@ -154,29 +154,22 @@ window#waybar.empty #window {
 }
 
 #buttons {
-  background-color: alpha(@surface2, 0.6);
-  border-radius: 20px;
-  margin: 5px 0;
-  padding: 0 0.5em;
+  /* background-color: alpha(@surface2, 0.6); */
+  /* border-radius: 20px; */
+  margin: 0 0.2em;
 }
-#buttons * {
-  font-size: 11pt;
+#buttons > * {
+  padding: 0 5px;
 }
 #buttons *:hover {
   color: @subtext1;
-}
-
-#menu {
-  padding-left: 0.75em;
 }
 
 #tray {
   padding-right: 0.5em;
 }
 
-#gamemode,
-#custom-brightness,
-#idle_inhibitor {
+#custom-brightness {
   margin-left: 5px;
 }
 #gamemode.running {
@@ -188,8 +181,10 @@ window#waybar.empty #window {
 }
 
 #menu {
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+  margin-left: 1em;
+}
+#menu > * {
+  margin: 0 0.5em;
 }
 #custom-menu,
 #custom-quit,

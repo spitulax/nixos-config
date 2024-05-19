@@ -1,10 +1,10 @@
 * {
-    bg-col: #101020dd;
+    bg-col: #101020cc;
     bg-col-opaque: #101020ff;
-    border-col: #6c7086dd;
-    selected-col: #313244dd;
+    border-col: #6c7086cc;
+    selected-col: #313244cc;
     fg-col: #cdd6f4ff;
-    prompt-col: #181825dd;
+    prompt-col: #181825cc;
     blue: #89b4faff;
     width: 1000;
     font: "monospace 12";
