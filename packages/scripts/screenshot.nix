@@ -26,7 +26,7 @@ case "$1" in
     jq -r '.[] | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | \
     slurp "$@")
   [[ $? != 0 ]] && exit 1
-  grim -c -g "$REGION" - | wl-copy
+  grim -g "$REGION" - | wl-copy
   wl-paste > "$NAME"
   echo "$REGION" > "$LAST_REGION_FILE"
 ;;
@@ -34,7 +34,7 @@ case "$1" in
 "last-region")
   REGION=$(cat $LAST_REGION_FILE)
   [[ -z "$REGION" ]] && echo "$LAST_REGION_FILE is empty" && exit 1
-  grim -c -g "$REGION" - | wl-copy
+  grim -g "$REGION" - | wl-copy
   wl-paste > "$NAME"
 ;;
 
