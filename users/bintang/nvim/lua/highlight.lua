@@ -1,4 +1,4 @@
--- https://github.com/NvChad/base46/blob/v2.0/lua/base46/themes/catppuccin.lua
+-- https://github.com/NvChad/base46/blob/v2.5/lua/base46/themes/catppuccin.lua
 
 local M = {}
 
@@ -13,6 +13,12 @@ M.override = {
   Keyword = { bold = true },
   Type = { bold = true },
   Typedef = { bold = true },
+  TbTabOn = { fg = "blue" },
+  St_cwd = { fg = "blue" },
+  St_lspHints = { link = "StText" },
+  St_lspError = { link = "StText" },
+  St_lspWarning = { link = "StText" },
+  St_lspInfo = { link = "StText" },
 }
 
 ---@type Base46HLGroupsList
@@ -38,3 +44,4 @@ M.add = {
 }
 
 return M
+

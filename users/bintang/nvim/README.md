@@ -1,69 +1,80 @@
 # Neovim
 
-My [Neovim](https://github.com/neovim/neovim) config uses [NvChad](https://github.com/NvChad/NvChad) for the "base" config.
-NvChad sets up [lazy.nvim](https://github.com/folke/lazy.nvim) which is the plugin manager, and also enabling sensible options out of the box.
-It's also very simple and costumizable. It's basically just a regular Neovim config.
+My [Neovim](https://github.com/neovim/neovim) config uses [NvChad](https://github.com/NvChad/NvChad/tree/v2.5) for the "base" config.
+NvChad also sets up [lazy.nvim](https://github.com/folke/lazy.nvim) for the plugin manager.
 
 ## Configuration
 
-All configurations should be done from [./custom](./custom).
+### Configuring key mappings
+
+- Define your mappings in [`mappings.lua`](./lua/mappings.lua) to the appropriate section.
 
 ### Adding plugins
 
-Add a new table to the `M` table in [`plugins.lua`](./custom/plugins.lua).
+Add a new table to [`plugins.lua`](./lua/plugins/init.lua) containing the plugin definition with the [Lazy spec](https://github.com/folke/lazy.nvim?tab=readme-ov-file#-plugin-spec).
 By default, plugins are lazy loaded. Don't forget to add the load condition or add this for the default load condition!
 ```lua
-init = function()
-    lazy_load("<plugin name>")
-end,
+{
+  -- ...
+  event = "User FilePost",
+  -- ...
+}
 ```
 
 ### Config location
 
-- Neovim-specific configs are located in [`init.lua`](./custom/init.lua).
-- NvChad-specific configs are located in [`chadrc.lua`](./custom/chadrc.lua).
-- General mappings are configured in [`mappings.lua`](./custom/mappings.lua).
-- Highlights are configured in [`highlight.lua`](./custom/highlight.lua).
-- [`plugins.lua`](./custom/plugins.lua) see above.
-- [`ui.lua`](./custom/ui.lua) is used to modify NvChad builtin tabline and statusline.
+- Neovim-specific configs are located in [`init.lua`](./lua/init.lua).
+- NvChad-specific configs are located in [`chadrc.lua`](./lua/chadrc.lua) defined in [`nvconfig.lua`](https://github.com/NvChad/NvChad/blob/v2.5/lua/nvconfig.lua).
+- Mappings are configured in [`mappings.lua`](./lua/mappings.lua).
+- Highlights are configured in [`highlight.lua`](./lua/highlight.lua).
+- [`plugins.lua`](./lua/plugins/init.lua) see above.
+- [`statusline.lua`](./lua/statusline.lua) is used to modify NvChad builtin statusline.
+- [`tabufline.lua`](./lua/tabufline.lua) is used to modify NvChad builtin tabline.
 
 ### Configuring plugins
 
-Plugin-specific configs are located in separate files for each plugins in [`configs/`](./custom/configs/) directory.
+Plugin-specific configs are located in separate files for each plugins in [`configs/`](./lua/configs) directory.
 Each file should return a table that optionally contains:
-- `setup`: a function that will be called when the plugin is loaded.
-- `opts`: a table that will override the plugin's default settings.
-- `mappings`: a table that contains mappings that will be loaded alongside the plugin [(details)](#configuring-mappings).
+- `config`: a function that should be called when the plugin is loaded.
+- `opts`: a function that returns a table that will override the plugin's default settings.
 
-You must explicitly state in [`plugins.lua`](./custom/plugins.lua) that the plugin will use any of these tables.
-- **To use `setup`:**
+You must explicitly state in [`plugins.lua`](./lua/plugins/init.lua) that the plugin will use any of these tables.
+
+- **To use `config`:**
+
 ```lua
-config = function(_, opts)
-    -- the parameter `opts` is the `opts` table if passed
-    -- <module> should be located in ./custom/configs
-    -- you can add any parameters in the config file as you want and pass the argumants here if needed
-    require("<module>").setup(...)
-end,
+{
+  -- ...
+  -- the function should accept arguments defined in the Lazy spec
+  -- <module> should be located in ./lua/configs so the module name is prepended with `configs.`
+  config = require("<module>").config,
+  -- ...
+}
 ```
+
+or alternatively,
+
+```lua
+{
+  -- ...
+  -- you can add as many parameters to the module as you want and pass the arguments here if needed
+  config = function(_, opts)
+    local something = 42
+    require("<module>").config(something, opts)
+  end,
+  -- ...
+}
+```
+
 - **To use `opts`:**
-```lua
-opts = function()
-    return require("<module>").opts
-end,
-```
-- **To use `mappings`:**
-See [here](#configuring-mappings).
 
-### Configuring mappings
-
-- Define your mappings in a file in [`configs/`](./custom/configs/) directory.
-- Add this to the plugin table in [`plugins.lua`](./custom/plugins.lua)
 ```lua
-init = function()
-    load_mappings("<config filename without .lua>")
-end,
+{
+  -- ...
+  opts = require("<module>").opts,
+  -- ...
+}
 ```
-- In [`mappings.lua`](./custom/mappings.lua) go to bottom and find `mappings` table. Add the same string as the `load_mappings` argument to the table.
 
 ## TODO
 

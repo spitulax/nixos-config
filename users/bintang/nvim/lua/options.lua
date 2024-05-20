@@ -1,7 +1,9 @@
-require("custom.autocmds")
+require("nvchad.options")
+require("autocmds")
 
 local opt = vim.opt
 local g = vim.g
+local o = vim.o
 
 opt.listchars = {
   space = "·",
@@ -12,7 +14,6 @@ opt.listchars = {
   precedes = "←",
 }
 opt.list = true
-
 opt.wrap = false
 opt.shiftwidth = 2
 opt.tabstop = 2
@@ -27,6 +28,6 @@ opt.scrolloff = 5
 opt.sidescrolloff = 10
 opt.sidescroll = 10
 
-g.c_syntax_for_h  = 1
+o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+g.c_syntax_for_h  = 1

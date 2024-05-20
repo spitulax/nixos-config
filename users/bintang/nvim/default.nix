@@ -27,16 +27,12 @@ in
   };
 
   home.file = {
-    ".config/nvim/lua/custom" = {
-      source = ./custom;
-      recursive = true;
-    };
     ".config/nvim/lua" = {
-      source = "${nvchad}/lua";
+      source = ./lua;
       recursive = true;
     };
     ".config/nvim/init.lua" = {
-      source = "${nvchad}/init.lua";
+      source = ./init.lua;
     };
     ".config/nvim/lazy-lock.json" = {
       source = ./lazy-lock.json;

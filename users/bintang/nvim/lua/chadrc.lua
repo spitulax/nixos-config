@@ -1,28 +1,27 @@
+---@diagnostic disable: assign-type-mismatch
 ---@type ChadrcConfig
 local M = {}
 
-local highlight = require("custom.highlight")
-
-M.plugins = "custom.plugins"
+local highlight = require("highlight")
 
 M.ui = {
   theme = "catppuccin",
   transparency = true,
-  lsp_semantic_tokens = true,
-
   hl_override = highlight.override,
   hl_add = highlight.add,
   extended_integrations = { "hop", "todo", "dap", "trouble" },
 
   cmp = {
-    selected_item_bg = "simple",
+    style = "default",
   },
 
-  telescope = { style = "bordered" },
+  telescope = {
+    style = "bordered"
+  },
 
-  statusline = require("custom.ui").statusline,
+  statusline = require("statusline"),
 
-  tabufline = require("custom.ui").tabufline,
+  tabufline = require("tabufline"),
 
   nvdash = {
     load_on_startup = true,
@@ -39,8 +38,30 @@ M.ui = {
       { "󰗼  Exit Neovim", "Spc Q", ":qa" },
     },
   },
+
+  lsp = {
+    signature = true
+  },
+
+  term = {
+    hl = "Normal:term,WinSeparator:WinSeparator",
+    sizes = { sp = 0.3, vsp = 0.2 },
+    float = {
+      relative = "editor",
+      row = 0.3,
+      col = 0.25,
+      width = 0.5,
+      height = 0.4,
+      border = "single",
+    },
+  },
 }
 
-M.mappings = require("custom.mappings")
+M.base46 = {
+  integrations = {
+    "hop",
+    "todo",
+  },
+}
 
 return M

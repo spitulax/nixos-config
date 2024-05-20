@@ -13,7 +13,7 @@
     notes = {
       name = "Notes";
       comment = "Open notes";
-      exec = "nvim ${config.xdg.userDirs.extraConfig.NOTES_DIR}";
+      exec = "notes";
       terminal = true;
       icon = "folder-notes";
       categories = [ "Utility" ];

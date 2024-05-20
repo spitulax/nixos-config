@@ -118,8 +118,5 @@
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
 
     #############################
-
-    nvchad.url = "github:NvChad/NvChad/v2.0";
-    nvchad.flake = false;
   };
 }
