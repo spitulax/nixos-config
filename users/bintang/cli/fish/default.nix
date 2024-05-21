@@ -1,4 +1,6 @@
-{
+{ pkgs
+, ...
+}: {
   programs.zoxide = {
     enable = true;
     options = [ "--cmd cd" ];
@@ -24,10 +26,11 @@
       ".." = "cd ..";
       "..." = "cd ../..";
       q = "exit";
-      rm = "trash-put";
+      rm = "trash-put -v";
       orm = "/usr/bin/env rm";
       restore = "trash-restore";
       make = "make -C (dirname (upfind . -name Makefile))";
+      cat = "_fzf_preview_file";
       # colorizer
       grep = "grep --color";
       egrep = "egrep --color";
@@ -35,8 +38,23 @@
       # misc
       # this will wipe the scoll buffer instead of just zt-ing the current prompt
       clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
+      # cofirm before overwriting files
+      cp = "cp -i";
+      mv = "mv -i";
     };
 
     interactiveShellInit = builtins.readFile ./init.fish;
+
+    plugins = [
+      {
+        name = "fzf.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "PatrickF1";
+          repo = "fzf.fish";
+          rev = "v10.3";
+          hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
+        };
+      }
+    ];
   };
 }

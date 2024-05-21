@@ -25,7 +25,13 @@ return {
 
   {
     "nvim-tree/nvim-tree.lua",
-    opts = utils.override("nvchad.configs.nvimtree", require("configs.nvimtree").opts()),
+    opts = function()
+      return vim.tbl_deep_extend(
+        "force",
+        require("nvchad.configs.nvimtree"),
+        require("configs.nvimtree").opts()
+      )
+    end,
   },
 
   {
@@ -33,7 +39,13 @@ return {
     -- init = function()
     --   utils.load_on_git("gitsigns.nvim")
     -- end,
-    opts = utils.override("nvchad.configs.gitsigns", require("configs.gitsigns").opts()),
+    opts = function()
+      return vim.tbl_deep_extend(
+        "force",
+        require("nvchad.configs.gitsigns"),
+        require("configs.gitsigns").opts()
+      )
+    end,
   },
 
   {

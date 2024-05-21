@@ -7,7 +7,7 @@ M.override = {
   CursorLineNr = { bold = true },
   Visual = { reverse = true },
   NvimTreeRootFolder = { fg = "green" },
-  Comment = { fg = "light_grey", italic = true },
+  Comment = { fg = "white", italic = true },
   ["@comment"] = { link = "Comment" },
   Conditional = { bold = true },
   Keyword = { bold = true },

@@ -18,14 +18,6 @@ M = {
     })
   end,
 
-  ---@param base string
-  ---@param override table
-  override = function(base, override)
-    return function()
-      return vim.tbl_deep_extend("force", override, require(base))
-    end
-  end,
-
   ---@param prompt string
   ---@param completion string
   ---@param callback function

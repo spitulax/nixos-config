@@ -50,17 +50,60 @@ end
 
 ### KEYBINDINGS ###
 
-bind \ca 'cdi; commandline -f repaint'
-bind -Minsert \ca 'cdi; commandline -f repaint'
-bind \cs 'echo; cdh; commandline -f repaint'
-bind -Minsert \cs 'echo; cdh; commandline -f repaint'
-bind \cz 'cd -; commandline -f repaint'
-bind -Minsert \cz 'cd -; commandline -f repaint'
-bind \cx 'cd ..; commandline -f repaint'
-bind -Minsert \cx 'cd ..; commandline -f repaint'
-bind \cq 'exit'
-bind -Minsert \cq 'exit'
-bind \cc kill-whole-line repaint
-bind -Minsert \cc kill-whole-line repaint
+for mode in default insert
+  bind --mode $mode \ca 'cdi; commandline -f repaint'
+  bind --mode $mode \cs 'echo; cdh; commandline -f repaint'
+  bind --mode $mode \cz 'cd -; commandline -f repaint'
+  bind --mode $mode \cx 'cd ..; commandline -f repaint'
+  bind --mode $mode \cq 'exit'
+  bind --mode $mode \cc kill-whole-line repaint
+
+  # fzf.fish
+  bind --mode $mode \eh '_fzf_search_history'
+  # ctrl-alt-f - files
+  # ctrl-alt-l - git log
+  # ctrl-alt-s - git status
+  # ctrl-alt-p - processes
+  # ctrl-v     - variable
+end
+
+######
+
+### HELPER FUNCTIONS ###
+
+function extract
+  for archive in $argv
+    if test -f $archive
+      switch $archive
+      case '*.tar.bz2'
+        tar xvjf $archive
+      case '*.tar.gz'
+        tar xvzf $archive
+      case '*.bz2'
+        bunzip2 $archive
+      case '*.rar'
+        rar x $archive
+      case '*.gz'
+        gunzip $archive
+      case '*.tar'
+        tar xvf $archive
+      case '*.tbz2'
+        tar xvjf $archive
+      case '*.tgz'
+        tar xvzf $archive
+      case '*.zip'
+        unzip $archive
+      case '*.Z'
+        uncompress $archive
+      case '*.7z'
+        7z x $archive
+      case '*'
+        echo "Could not extract $archive"
+      end
+    else
+      echo "Could not extract $archive"
+    end
+  end
+end
 
 ######

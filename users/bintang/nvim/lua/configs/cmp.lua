@@ -38,8 +38,8 @@ local function config_cmp()
       end),
 
       -- Scroll docs
-      ["M-["] = cmp.mapping.scroll_docs(-4),
-      ["M-]"] = cmp.mapping.scroll_docs(4),
+      ["<M-[>"] = cmp.mapping.scroll_docs(-4),
+      ["<M-]>"] = cmp.mapping.scroll_docs(4),
 
       -- Confirm
       ["<Tab>"] = cmp.mapping.confirm({
