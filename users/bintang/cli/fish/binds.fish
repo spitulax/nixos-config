@@ -22,17 +22,25 @@ end
 
 # Runs tldr of the command under the cursor
 function __tldr_currentline
-  commandline -C 0
-  commandline -i "tldr "
-  commandline -f execute
+  if test -n (commandline -b)
+    commandline -C 0
+    commandline -i "tldr "
+    commandline -f execute
+  else
+    commandline -f repaint
+  end
 end
 
 # Search a file and view/edit it in $EDITOR
 function __fzf_edit_file
   _fzf_search_directory
-  commandline -C 0
-  commandline -i "$EDITOR "
-  commandline -f execute
+  if test -n (commandline -b)
+    commandline -C 0
+    commandline -i "$EDITOR "
+    commandline -f execute
+  else
+    commandline -f repaint
+  end
 end
 
 ######
