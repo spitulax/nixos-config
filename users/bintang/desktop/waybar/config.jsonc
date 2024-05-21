@@ -10,7 +10,7 @@
     "custom/separator",
     "hyprland/workspaces",
     "custom/separator",
-    "hyprland/window",
+    "hyprland/window"
   ],
   "modules-right": [
     "network",
@@ -34,21 +34,21 @@
       // "5": "󰓓",
       "10": "",
       "special": "",
-      "default": "",
+      "default": ""
     },
     "on-click": "activate",
     "persistent-workspaces": {
       "*": 5
     },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
 
   "hyprland/window": {
     "format": "{title}",
     "max-length": 200,
     "separate-outputs": true,
-    "on-click": "exec hyprctl dispatch killactive",
+    "on-click": "exec hyprctl dispatch killactive"
   },
 
   "clock": {
@@ -70,7 +70,7 @@
     "actions": {
       "on-click-right": "tz_up",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
+      "on-scroll-down": "shift_down"
     },
     "timezones": [
       "Asia/Jakarta",
@@ -121,7 +121,7 @@
     "scroll-step": 1.0,
     "on-click": "amixer set Master toggle",
     "on-click-right": "pavucontrol",
-    "smooth-scrolling-threshold": 1,
+    "smooth-scrolling-threshold": 1
   },
   "tray": {
     "icon-size": 15,
@@ -155,7 +155,7 @@
       "󰂀",
       "󰂁",
       "󰂂",
-      "󰁹",
+      "󰁹"
     ],
     "on-click": "auto-cpufreq-gtk"
   },
@@ -165,12 +165,13 @@
     "drawer": {
       "transition-duration": 500,
       "transition-left-to-right": false,
-      "children-class": "buttons",
+      "children-class": "buttons"
     },
     "modules": [
       "custom/notification",
       "gamemode",
-      "custom/brightness",
+      "custom/warp",
+      "custom/brightness"
     ]
   },
   "custom/notification": {
@@ -205,21 +206,28 @@
     "interval": "once",
     "signal": 2,
     "on-scroll-up": "brightnessctl set 1%+ && pkill -RTMIN+2 waybar",
-    "on-scroll-down": "brightnessctl set 1%- && pkill -RTMIN+2 waybar",
+    "on-scroll-down": "brightnessctl set 1%- && pkill -RTMIN+2 waybar"
+  },
+  "custom/warp": {
+    "exec": "~/.config/waybar/scripts/warp.sh status",
+    "return-type": "json",
+    "interval": 10,
+    "signal": 3,
+    "on-click": "~/.config/waybar/scripts/warp.sh toggle && pkill -RTMIN+3 waybar"
   },
 
   "group/menu": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 500,
-      "children-class": "menu",
+      "children-class": "menu"
     },
     "modules": [
       "custom/menu",
       "custom/power",
       "custom/quit",
       "custom/lock",
-      "custom/reboot",
+      "custom/reboot"
     ]
   },
   "custom/menu": {
@@ -228,7 +236,7 @@
     "exec": "~/.config/waybar/scripts/menu.sh",
     "return-type": "json",
     "interval": 60,
-    "on-click": "~/.config/hypr/scripts/run.sh runner",
+    "on-click": "~/.config/hypr/scripts/run.sh runner"
   },
   "custom/quit": {
     "format": "󰗼",
@@ -253,6 +261,6 @@
 
   "custom/separator": {
     "format": "",
-    "tooltip": false,
-  },
+    "tooltip": false
+  }
 }

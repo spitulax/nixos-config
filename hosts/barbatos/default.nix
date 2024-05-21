@@ -15,6 +15,8 @@
     features.keymapper
     features.gaming
     features.video-hardware-intel
+    features.warp
+    features.vm
 
     common
     desktop
@@ -56,6 +58,10 @@
   power.power-manager = {
     enable = true;
     program = "auto-cpufreq";
+  };
+  vm = {
+    waydroid = false;
+    qemuAllArch = false;
   };
 
   # State version

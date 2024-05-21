@@ -16,12 +16,16 @@ in
   config = {
     boot.kernelModules = [ "vfio-pci" ];
     virtualisation = {
-      libvirtd.enable = true;
+      libvirtd = {
+        enable = true;
+        qemu = {
+          package = if cfg.qemuAllArch then pkgs.qemu else pkgs.qemu_kvm;
+        };
+      };
       waydroid.enable = cfg.waydroid;
     };
     environment.systemPackages = with pkgs; [
       virt-manager
-      (if cfg.qemuAllArch then qemu else qemu_kvm)
     ];
   };
 }

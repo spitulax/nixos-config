@@ -94,6 +94,8 @@ map("n", "<M-e>", "<C-w>=", { desc = "Uniform window size" })
 map("n", "<M-t>", "<cmd>tabnew<cr>", { desc = "Create new tab" })
 map("n", "<M-q>", "<cmd>tabclose<cr>", { desc = "Close current tab" })
 map("n", "<M-a>", "<cmd>tabonly<cr>", { desc = "Close all other tabs" })
+map("n", "<M-f>", "gt", { desc = "Go to next tab" })
+map("n", "<M-b>", "gT", { desc = "Go to previous tab" })
 
 -- Toggles
 map("n", "<leader>tw",
@@ -158,7 +160,7 @@ map("n", "<leader>fe",
   end,
   { desc = "Telescope find files in specified directory" })
 map("n", "<leader>o", "<cmd>Telescope find_files<cr>", { desc = "Telescope find files" })
-map("n", "<M-b>", "<cmd>Telescope buffers<cr>", { desc = "Telescope find buffers" })
+map("n", "<C-b>", "<cmd>Telescope buffers<cr>", { desc = "Telescope find buffers" })
 map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Telescope find keybindings" })
 map("n", "<leader>ft", "<cmd>Telescope builtin<cr>", { desc = "Telescope builtin commands" })
 map("n", "<leader>fc", "<cmd>Telescope highlights<cr>", { desc = "Telescope builtin commands" })

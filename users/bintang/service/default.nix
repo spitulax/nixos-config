@@ -1,3 +1,8 @@
 { myLib
+, pkgs
 , ...
-}: myLib.importIn ./.
+}: myLib.importIn ./. // {
+  home.packages = with pkgs; [
+    cloudflare-warp
+  ];
+}

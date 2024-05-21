@@ -30,9 +30,9 @@ return {
 
   {
     "lewis6991/gitsigns.nvim",
-    init = function()
-      utils.load_on_git("gitsigns.nvim")
-    end,
+    -- init = function()
+    --   utils.load_on_git("gitsigns.nvim")
+    -- end,
     opts = utils.override("nvchad.configs.gitsigns", require("configs.gitsigns").opts()),
   },
 

@@ -169,6 +169,7 @@ window#waybar.empty #window {
   padding-right: 0.5em;
 }
 
+#custom-warp,
 #custom-brightness {
   margin-left: 5px;
 }
