@@ -29,7 +29,7 @@ Here are some of the programs configured in this repo.
 
 - **Terminal Emulator**: [Kitty][Kitty]
 - **Terminal Multiplexer**: [Tmux][Tmux]
-- **Shell**: [Fish][Fish]
+- **Shell**: [Fish][Fish] [(details)](./users/bintang/cli/fish)
 - **Shell Prompt**: [Starship][Starship]
 - **Resource Monitoring**: [Btop][Btop]
 

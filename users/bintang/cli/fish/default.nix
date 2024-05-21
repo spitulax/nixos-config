@@ -43,7 +43,8 @@
       mv = "mv -i";
     };
 
-    interactiveShellInit = builtins.readFile ./init.fish;
+    interactiveShellInit =
+      (builtins.readFile ./init.fish) + (builtins.readFile ./binds.fish);
 
     plugins = [
       {
