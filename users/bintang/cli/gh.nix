@@ -11,7 +11,7 @@
     };
     settings = {
       prompt = "enabled";
-      git_protocol = "ssh";
+      git_protocol = "https";
       editor = "nvim";
     };
   };
