@@ -19,10 +19,11 @@ in
   systemd.user.services.keymapper = {
     Unit.Description = "Keymapper";
     Service = {
+      Type = "exec";
       ExecStart = "${pkgs.mypkgs.keymapper}/bin/keymapper --no-tray -v -c ${config.xdg.configHome + "/keymapper/keymapper.conf"}";
-      Restart = "on-failure";
+      Restart = "always";
     };
-    Install.WantedBy = [ "hyprland-session.target" "graphical-session.target" ];
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 
   xdg.configFile."keymapper/keymapper.conf".text = extraConfig;
