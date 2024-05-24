@@ -15,8 +15,8 @@ fi
 [[ $# != 1 ]] && usage && exit 1
 case "$1" in
 "full")
-  grim -c - | wl-copy
-  wl-paste > "$NAME"
+  grim -c - > "$NAME"
+  wl-copy < "$NAME"
 ;;
 
 "region")
@@ -26,23 +26,23 @@ case "$1" in
     jq -r '.[] | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | \
     slurp "$@")
   [[ $? != 0 ]] && exit 1
-  grim -g "$REGION" - | wl-copy
-  wl-paste > "$NAME"
+  grim -g "$REGION" - > "$NAME"
+  wl-copy < "$NAME"
   echo "$REGION" > "$LAST_REGION_FILE"
 ;;
 
 "last-region")
   REGION=$(cat $LAST_REGION_FILE)
   [[ -z "$REGION" ]] && echo "$LAST_REGION_FILE is empty" && exit 1
-  grim -g "$REGION" - | wl-copy
-  wl-paste > "$NAME"
+  grim -g "$REGION" - > "$NAME"
+  wl-copy < "$NAME"
 ;;
 
 "active-window")
   REGION=$(hyprctl activewindow -j | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')
   [[ $? != 0 ]] && exit 1
-  grim -c -g "$REGION" - | wl-copy
-  wl-paste > "$NAME"
+  grim -c -g "$REGION" - > "$NAME"
+  wl-copy < "$NAME"
   echo "$REGION" > "$LAST_REGION_FILE"
 ;;
 

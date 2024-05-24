@@ -1,30 +1,28 @@
-{ config
+{ outputs
 , pkgs
 , ...
-}:
-let
-  extraConfig = ''
-    Shift   >> Shift
-    Control >> Control
-    AltLeft >> AltLeft
-    CapsLock >> Escape
-    ContextMenu >> PrintScreen
-  '';
-in
-{
-  home.packages = [
-    pkgs.mypkgs.keymapper
+}: {
+  imports = [
+    outputs.homeManagerModules.keymapper
   ];
 
-  systemd.user.services.keymapper = {
-    Unit.Description = "Keymapper";
-    Service = {
-      Type = "exec";
-      ExecStart = "${pkgs.mypkgs.keymapper}/bin/keymapper --no-tray -v -c ${config.xdg.configHome + "/keymapper/keymapper.conf"}";
-      Restart = "always";
+  services.keymapper = {
+    enable = true;
+    package = pkgs.mypkgs.keymapper;
+    contexts = [
+      {
+        mappings = {
+          "Shift" = "Shift";
+          "Control" = "Control";
+          "AltLeft" = "AltLeft";
+          "CapsLock" = "Escape";
+          "ContextMenu" = "PrintScreen";
+        };
+      }
+    ];
+    systemd = {
+      enable = true;
+      tray = false;
     };
-    Install.WantedBy = [ "graphical-session.target" ];
   };
-
-  xdg.configFile."keymapper/keymapper.conf".text = extraConfig;
 }
