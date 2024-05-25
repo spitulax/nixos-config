@@ -14,6 +14,7 @@
         (_: v: types == [ ] || builtins.elem v types)
         (builtins.readDir dir)));
 
+
   /*
     Wrappers to `listFilesAll` that only include either regular files or directories.
     
@@ -47,7 +48,7 @@
     Inputs:
       - `dir`: The directory that contains the files
       - `types`: A list of included file types or pass [] if no files should be filtered. The possible values are "regular", "directory", "symlink" and "unknown"
-      - `f`: Function that takes the file name that generates the attrset's value
+      - `f`: Function that takes the file name that generates the attribute's value
 
     Type: Path -> [String] -> (String -> Any) -> AttrSet
   */
@@ -62,21 +63,41 @@
     
     Inputs:
       - `dir`: The directory that contains the files
-      - `f`: Function that takes the file name that generates the attrset's value
+      - `f`: Function that takes the file name that generates the attribute's value
 
     Type: Path -> (String -> Any) -> AttrSet
   */
   genAttrsEachFiles = dir: f: genAttrsEachFilesAll dir [ "regular" ] f;
   genAttrsEachDirs = dir: f: genAttrsEachFilesAll dir [ "directory" ] f;
 
+  /*
+    This function is similar to `genAttrsEachFiles` but it also includes files from subdirectories recursively.
+    Directories are turned into an attrset of subdirectories or regular files.
+    Regular files are turned into a string that represent a path relative to `dir`.
+    
+    Inputs:
+      - `dir`: The topmost/starting directory
+      - `f`: Function that takes the file path (relative to `dir`) that generates the attribute's value
+
+    Type: Path -> (String -> Any) -> AttrSet
+  */
+  genAttrsEachFilesRec = dir: f:
+    let
+      gen = dir: dirFunc: fileFunc:
+        genAttrsEachDirs dir dirFunc
+        // genAttrsEachFiles dir fileFunc;
+      f' = prevn: n: f (prevn + "/" + n);
+    in
+    gen dir (n: genAttrsEachFilesRec (lib.path.append dir n) (f' n)) f;
+
 
   /*
-    A wrapper to `genAttrsEachFiles` that only includes files that have given extension and remove the file extension in the attrset's name.
+    A wrapper to `genAttrsEachFiles` that only includes files that have given extension and remove the file extension in the attribute's name.
 
     Inputs:
       - `dir`: The directory that contains the files 
       - `ext`: The file extension (without leading period)
-      - `f`: Function that takes the file name that generates the attrset's value
+      - `f`: Function that takes the file name that generates the attribute's value
 
     Example:
       Given these files in `./.`: [ "README.md" "flake.nix" "flake.lock" "default.nix" ]
@@ -97,6 +118,26 @@
           (n: lib.nameValuePair (builtins.head (builtins.split "\\.${ext}$" n)));
     in
     truncateExt (filterExt (genAttrsEachFiles dir f));
+
+
+  /*
+    Same as `genAttrsEachFilesRec` but only includes regular files that have given extension and remove the file extension in the attribute's name.
+
+    Inputs:
+      - `dir`: The topmost/starting directory
+      - `ext`: The file extension (without leading period)
+      - `f`: Function that takes the file path (relative to `dir`) that generates the attribute's value
+
+    Type: Path -> String -> (String -> Any) -> AttrSet
+  */
+  genAttrsEachFilesExtRec = dir: ext: f:
+    let
+      gen = dir: dirFunc: fileFunc:
+        genAttrsEachDirs dir dirFunc
+        // genAttrsEachFilesExt dir ext fileFunc;
+      f' = prevn: n: f (prevn + "/" + n);
+    in
+    gen dir (n: genAttrsEachFilesExtRec (lib.path.append dir n) ext (f' n)) f;
 
 
   /*
