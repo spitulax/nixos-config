@@ -1,5 +1,9 @@
 local map = vim.keymap.set
+local unmap = vim.keymap.del
 local utils = require("utils")
+
+-- Unmaps
+unmap("n", "'");
 
 -- General
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "General Clear highlights" })
