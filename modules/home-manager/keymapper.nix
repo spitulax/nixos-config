@@ -140,6 +140,27 @@ in
     contexts = mkOption {
       type = types.listOf contextModule;
       default = [ ];
+      example = literalExpression ''
+        [
+          {
+            mappings = {
+              "CapsLock" = "Backspace";
+              "Z" = "Y";
+              "Y" = "Z";
+              "Control{Q}" = "Alt{F4}";
+            };
+          }
+          {
+            system = "Linux";
+            class = "Thunar";
+            mappings = {
+              "cursor_home" = "Backspace";
+              "cursor_end" = "Enter";
+              "open_terminal" = "!Win (Shift Control){C}";
+            };
+          }
+        ]
+      '';
       description = ''
         Enable mappings only in specific contexts or if only {option}`mappings`
         is specified then it is enabled unconditionally.
@@ -199,7 +220,7 @@ in
       Unit.Description = "Keymapper";
       Service = {
         Type = "exec";
-        ExecStart = "${cfg.package}/bin/keymapper -v -c ${config.xdg.configHome + "/keymapper.conf"}" + optionalString (!cfg.systemd.tray) " --no-tray";
+        ExecStart = "${cfg.package}/bin/keymapper -v -u -c ${config.xdg.configHome + "/keymapper.conf"}" + optionalString (!cfg.systemd.tray) " --no-tray";
         Restart = "always";
       };
       Install.WantedBy = cfg.systemd.wantedBy;

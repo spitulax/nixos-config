@@ -30,7 +30,7 @@
     ];
     extraConfig = ''
       set -sg escape-time 10
-      set -g default-terminal "xterm-256color"
+      set -g default-terminal "tmux-256color"
       set-option -sa terminal-overrides ",xterm*:Tc"
       set -g renumber-windows on
       set -g status-interval 1
