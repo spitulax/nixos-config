@@ -6,7 +6,7 @@
   nix = {
     package = lib.mkForce pkgs.nix;
     settings = {
-      inherit (outputs) substituters trusted-public-keys;
+      inherit (outputs.vars) substituters trusted-public-keys;
     };
   };
 }

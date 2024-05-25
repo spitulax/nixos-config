@@ -33,7 +33,7 @@
     package = lib.mkDefault pkgs.nix;
     channel.enable = false; # Channels in 2024??? KEKW
     settings = {
-      inherit (outputs) substituters trusted-public-keys;
+      inherit (outputs.vars) substituters trusted-public-keys;
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       warn-dirty = false;
