@@ -2,9 +2,6 @@ local map = vim.keymap.set
 local unmap = vim.keymap.del
 local utils = require("utils")
 
--- Unmaps
-unmap("n", "'");
-
 -- General
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "General Clear highlights" })
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "General Save file" })
@@ -19,15 +16,14 @@ map({"n", "v"}, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "N
 map({"n", "v"}, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Navigation Move up", expr = true })
 map({"n", "v"}, "(", "zh", { desc = "Navigation Scroll left" })
 map({"n", "v"}, ")", "zl", { desc = "Navigation Scroll right" })
-map({"n", "v"}, "'", "<C-y>", { desc = "Navigation Scroll down" })
-map({"n", "v"}, ";", "<C-e>", { desc = "Navigation Scroll up" })
+map({"n", "v"}, "<C-->", "<C-y>", { desc = "Navigation Scroll down" })
+map({"n", "v"}, "<C-=>", "<C-e>", { desc = "Navigation Scroll up" })
 map({"n", "v"}, "H", "zH", { desc = "Navigation Half screen to left" })
 map({"n", "v"}, "L", "zL", { desc = "Navigation Half screen to right" })
 map({"n", "v"}, "<M-<>", "gg", { desc = "Navigation Move to beginning of buffer" })
 map({"n", "v"}, "<M->>", "G", { desc = "Navigation Move to end of buffer" })
 map({"n", "v"}, "gt", "<C-]>", { desc = "Navigation Jump to tag definition under cursor" })
 map({"n", "v"}, "<M-g>t", "<C-W>]", { desc = "Navigation Jump to tag definition under (split window)" })
-map({"n", "v"}, "<M-g>d", "<C-w>d", { desc = "Navigation Jump to definition (split window)" })
 
 -- Terminal
 map("t", "<C-\\>", "<C-\\><C-n>", { desc = "Terminal Leave terminal mode", silent = true, nowait = true })
@@ -115,10 +111,7 @@ map("n", "<leader>tw",
   { desc = "Toggle Line wrap" })
 
 -- LSP
-map("n", "<leader>dq",
-  function()
-    vim.diagnostic.setloclist()
-  end, { desc = "LSP Diagnostic loclist" })
+map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "LSP Diagnostic loclist" })
 map("n", "<leader>dt",
   function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
