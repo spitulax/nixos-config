@@ -74,7 +74,7 @@ KeepEmptyLinesAtTheStartOfBlocks: false
 LambdaBodyIndentation: Signature
 Language: Cpp
 LineEnding: LF
-MaxEmptyLinesToKeep: 1
+MaxEmptyLinesToKeep: 2
 NamespaceIndentation: None
 PPIndentWidth: -1
 PackConstructorInitializers: Never
@@ -87,12 +87,12 @@ RequiresExpressionIndentation: OuterScope
 SeparateDefinitionBlocks: Always
 SortIncludes: CaseSensitive
 SortUsingDeclarations: LexicographicNumeric
-SpaceAfterCStyleCast: false
+SpaceAfterCStyleCast: true
 SpaceAfterLogicalNot: false
 SpaceAfterTemplateKeyword: false
 SpaceAroundPointerQualifiers: Default
 SpaceBeforeAssignmentOperators: true
-SpaceBeforeCaseColon: true
+SpaceBeforeCaseColon: false
 SpaceBeforeCtorInitializerColon: true
 SpaceBeforeInheritanceColon: true
 SpaceBeforeParens: ControlStatements

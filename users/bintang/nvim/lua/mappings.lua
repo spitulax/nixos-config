@@ -16,8 +16,8 @@ map({"n", "v"}, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "N
 map({"n", "v"}, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Navigation Move up", expr = true })
 map({"n", "v"}, "(", "zh", { desc = "Navigation Scroll left" })
 map({"n", "v"}, ")", "zl", { desc = "Navigation Scroll right" })
-map({"n", "v"}, "<C-->", "<C-y>", { desc = "Navigation Scroll down" })
-map({"n", "v"}, "<C-=>", "<C-e>", { desc = "Navigation Scroll up" })
+map({"n", "v"}, "<M-m>", "<C-y>", { desc = "Navigation Scroll down" })
+map({"n", "v"}, "<M-n>", "<C-e>", { desc = "Navigation Scroll up" })
 map({"n", "v"}, "H", "zH", { desc = "Navigation Half screen to left" })
 map({"n", "v"}, "L", "zL", { desc = "Navigation Half screen to right" })
 map({"n", "v"}, "<M-<>", "gg", { desc = "Navigation Move to beginning of buffer" })
@@ -103,6 +103,14 @@ map("n", "<M-a>", "<cmd>tabonly<cr>", { desc = "Tab Close all other tabs" })
 map("n", "<M-f>", "gt", { desc = "Tab Go to next tab" })
 map("n", "<M-b>", "gT", { desc = "Tab Go to previous tab" })
 
+-- Shortcuts
+map("n", "<leader>y",
+  function()
+    local line = vim.api.nvim_win_get_cursor(0)[1]
+    local fname = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.fn.bufnr("%")), ":.")
+    vim.fn.setreg("+", fname .. ":" .. line)
+  end, { desc = "Shortcuts Copy current file path and line position" })
+
 -- Toggles
 map("n", "<leader>tw",
   function()
@@ -152,6 +160,8 @@ map("n", "<leader>E", "<cmd>NvimTreeFocus<CR>", { desc = "Nvimtree Focus nvimtre
 -- Gitsigns
 map("n", "<leader>B", "<cmd>Gitsigns blame_line<CR>", { desc = "Gitsigns Blame line" })
 map("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Gitsigns Toggle current line blame" })
+map({"n", "v"}, "<leader>[c", "<cmd>Gitsigns prev_hunk", { desc = "Gitsigns Go to previous hunk" })
+map({"n", "v"}, "<leader>]c", "<cmd>Gitsigns next_hunk", { desc = "Gitsigns Go to next hunk" })
 
 -- Telescope
 map("n", "<leader>ff", "<cmd>Telescope resume <CR>", { desc = "Telescope Resume" })

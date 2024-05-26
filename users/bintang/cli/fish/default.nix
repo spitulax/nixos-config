@@ -29,6 +29,7 @@
       rm = "trash-put -v";
       orm = "/usr/bin/env rm";
       restore = "trash-restore";
+      omake = "/usr/bin/env make";
       make = "make -C (dirname (upfind . -name Makefile))";
       cat = "_fzf_preview_file";
       # colorizer

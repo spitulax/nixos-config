@@ -43,7 +43,7 @@ local function config_cmp()
 
       -- Confirm
       ["<Tab>"] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Insert,
+        behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       }),
 

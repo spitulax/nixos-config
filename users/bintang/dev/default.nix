@@ -7,6 +7,7 @@
     # Debugger
     gdb
     lldb
+    valgrind
 
     # Languages
     luajit

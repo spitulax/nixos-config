@@ -2,7 +2,7 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    godot_4
-    gdtoolkit
+    # godot_4
+    # gdtoolkit
   ];
 }

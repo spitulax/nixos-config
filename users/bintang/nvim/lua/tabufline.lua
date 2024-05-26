@@ -26,7 +26,7 @@ local modules = {
       name = ""
     end
     name = (name:find("NvimTree", 1, true) ~= nil) and "NvimTree" or name
-    return txt(name, "StatusLine")
+    return txt(name, "Bufname")
   end,
 }
 

@@ -2,6 +2,6 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    pcsx2
+    # pcsx2
   ];
 }

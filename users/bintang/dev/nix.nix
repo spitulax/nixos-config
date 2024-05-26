@@ -9,6 +9,5 @@
     nvd
     nixpkgs-fmt
     (nh.override { inherit (pkgs) nix-output-monitor nvd; })
-    nix-update
   ];
 }
