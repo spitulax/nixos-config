@@ -82,7 +82,7 @@
       nixosModules = import ./modules/nixos { inherit myLib; };
       homeManagerModules = import ./modules/home-manager { inherit myLib; };
 
-      test = import ./test.nix { inherit lib myLib; };
+      # test = import ./test.nix { inherit lib myLib; };
 
       # Configs
       inherit (configs)

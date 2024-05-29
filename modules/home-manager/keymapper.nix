@@ -26,9 +26,9 @@ let
         ] + "]";
 
       genMappingDefinition = mappings:
-        optionalString (mappings != { })
+        optionalString (mappings != [ ])
           (concatStringsSep "\n"
-            (mapAttrsToList (n: v: "${n} >> ${v}") mappings));
+            (map (v: "${v.input} >> ${v.output}") mappings));
 
       contextDefinitions = map (x: genContextDefinition (removeAttrs x [ "mappings" ])) settings;
       mappingDefinitions = map (x: genMappingDefinition x.mappings) settings;
@@ -58,13 +58,25 @@ let
       };
     };
 
+  mappingModule = types.submodule {
+    options = {
+      input = mkOption {
+        type = types.str;
+        description = "Input expression of a mapping";
+      };
+      output = mkOption {
+        type = types.str;
+        description = "Output expression of a mapping";
+      };
+    };
+  };
+
   contextModule = types.submodule {
     options = (foldAttrs mergeAttrs { } [
       (mkContextOption
         "system" # option name
         "Linux" # example
-        "The system" # description
-      )
+        "The system") # description
       (mkContextOption
         "title"
         "Chromium"
@@ -91,19 +103,18 @@ let
         "State of one or more keys")
     ]) // {
       mappings = mkOption {
-        type = types.attrsOf types.str;
-        default = { };
+        type = types.listOf mappingModule;
+        default = [ ];
         example = literalExpression ''
-          {
-            "CapsLock" = "Backspace";
-            "Z" = "Y";
-            "Y" = "Z";
-            "Control{Q}" = "Alt{F4}";
-          }
+          [
+            { input = "CapsLock"; output = "Backspace"; }
+            { input = "Z"; output = "Y"; }
+            { input = "Y"; output = "Z"; }
+            { input = "Control{Q}"; output = "Alt{F4}"; }
+          ]
         '';
         description = ''
-          Declaration of mappings with the attribute name as the input expression
-          and the attribute value as the output expression.
+          Declaration of mappings. The order of the list is reflected in the config file.
         '';
       };
     };
@@ -143,21 +154,20 @@ in
       example = literalExpression ''
         [
           {
-            mappings = {
-              "CapsLock" = "Backspace";
-              "Z" = "Y";
-              "Y" = "Z";
-              "Control{Q}" = "Alt{F4}";
-            };
+            mappings = [
+              { input = "CapsLock"; output = "Backspace"; }
+              { input = "Z"; output = "Y"; }
+              { input = "Y"; output = "Z"; }
+              { input = "Control{Q}"; output = "Alt{F4}"; }
+            ];
           }
           {
             system = "Linux";
-            class = "Thunar";
-            mappings = {
-              "cursor_home" = "Backspace";
-              "cursor_end" = "Enter";
-              "open_terminal" = "!Win (Shift Control){C}";
-            };
+            noclass = "Thunar";
+            mappings = [
+              { input = "Control{H}"; output = "Backspace"; }
+              { input = "Control{M}"; output = "Enter"; }
+            ];
           }
         ]
       '';
@@ -220,7 +230,7 @@ in
       Unit.Description = "Keymapper";
       Service = {
         Type = "exec";
-        ExecStart = "${cfg.package}/bin/keymapper -v -u -c ${config.xdg.configHome + "/keymapper.conf"}" + optionalString (!cfg.systemd.tray) " --no-tray";
+        ExecStart = "${cfg.package}/bin/keymapper -u -v -c ${config.xdg.configHome + "/keymapper.conf"}" + optionalString (!cfg.systemd.tray) " --no-tray";
         Restart = "always";
       };
       Install.WantedBy = cfg.systemd.wantedBy;

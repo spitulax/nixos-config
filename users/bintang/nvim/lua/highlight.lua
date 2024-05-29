@@ -28,7 +28,7 @@ M.add = {
   NvimTreeModifiedFile = { fg = "orange" },
   CurSearch = { fg = "black", bg = "red" },
   IncSearch = { fg = "black", bg = "red" },
-  Search = { fg = "black", bg = "yellow" },
+  Search = { fg = "black", bg = "blue" },
   CursorLine = { bg = "none" },
   GitSignsCurrentLineBlame = { link = "Comment" },
   TbBufname = { link = "StText" },
