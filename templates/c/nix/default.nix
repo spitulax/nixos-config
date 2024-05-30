@@ -1,15 +1,36 @@
 { stdenv
 , lib
+, meson
+, ninja
+, pkg-config
+
 , debug ? false
 }:
+let
+  version = with lib; elemAt
+    (pipe (readFile ../src/main.c) [
+      (splitString "\n")
+      (filter (hasPrefix "#define PROG_VERSION"))
+      head
+      (splitString " ")
+      last
+      (splitString "\"")
+    ]) 1;
+in
 stdenv.mkDerivation {
   pname = "foobar";
-  version = "0.1.0";
+  inherit version;
   src = lib.cleanSource ./..;
+
+  nativeBuildInputs = [
+    meson
+    ninja
+    pkg-config
+  ];
 
   buildInputs = [
 
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ] ++ lib.optionals (!debug) [ "RELEASE=1" ];
+  mesonBuildType = if debug then "debug" else "release";
 }

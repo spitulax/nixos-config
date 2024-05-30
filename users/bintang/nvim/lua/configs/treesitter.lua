@@ -18,6 +18,7 @@ return {
         "make",
         "nix",
         "go",
+        "meson",
       },
 
       highlight = {
