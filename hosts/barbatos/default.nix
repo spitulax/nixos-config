@@ -60,6 +60,7 @@
     program = "auto-cpufreq";
   };
   vm = {
+    enable = false;
     waydroid = false;
     qemuAllArch = false;
   };

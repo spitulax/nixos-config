@@ -9,11 +9,12 @@ let
 in
 {
   options.vm = {
+    enable = mkEnableOption "virtualization";
     waydroid = mkEnableOption "waydroid";
     qemuAllArch = mkEnableOption "QEMU for other architectures";
   };
 
-  config = {
+  config = mkIf cfg.enable {
     boot.kernelModules = [ "vfio-pci" ];
     virtualisation = {
       libvirtd = {

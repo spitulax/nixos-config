@@ -8,7 +8,9 @@
     mangohud
     winetricks
 
-    lutris
+    (lutris.override {
+      steamSupport = false;
+    })
     gamescope
     # dxvk
     # vkd3d-proton

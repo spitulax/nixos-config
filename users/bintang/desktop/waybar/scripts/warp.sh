@@ -6,9 +6,11 @@ case "$1" in
     case "$STATUS" in
       "Connected")
         warp-cli disconnect
+        sleep 1
       ;;
       *)
         warp-cli connect
+        sleep 1
       ;;
     esac
   ;;
