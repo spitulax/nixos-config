@@ -7,11 +7,11 @@
       ani-cli
       default
       fish
-      gh
+      # gh
       git
-      gpg
+      # gpg
       neofetch
-      ssh
+      # ssh
       tmux
     ])
     ++
@@ -26,7 +26,7 @@
       env
       nix
       nvim
-      sops
+      # sops
     ];
 
   # User info
