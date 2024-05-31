@@ -42,9 +42,8 @@
       (x: "${x}=/etc/nix/path/${x}")
       (builtins.attrNames config.nix.registry);
   nix = {
-    settings = {
-      inherit (outputs.vars) substituters trusted-public-keys;
-    };
+    inherit (outputs.vars) substituters;
+    trustedPublicKeys = outputs.vars.trusted-public-keys;
     extraOptions = ''
       experimental-features = nix-command flakes repl-flake
     '';

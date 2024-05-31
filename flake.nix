@@ -90,6 +90,7 @@
       inherit (configs)
         nixosConfigurations
         nixOnDroidConfigurations
+        nixOnDroidHomeConfigurations
         homeConfigurations;
 
       # Expose these to output for easier access
