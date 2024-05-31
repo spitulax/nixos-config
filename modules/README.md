@@ -1,14 +1,21 @@
 # Modules
 
+## Home Modules
+
+Home modules are used to costumize user configuration.
+Use it as shown [here](../users/bintang_barbatos/default.nix).
+
 ## Home Manager Modules
 
-These modules are optional features that can be manually enabled per host.
+These modules are optional features that can be manually enabled per user/host.
 Enable it by adding `outputs.homeManagerModules.<name>` to `imports` in user config.
 
 - `keymapper`: Enable keymapper user config and service
 - `webApps`: Add browser apps to desktop entry declaratively
 
 ## NixOS Modules
+
+NixOS modules are used to costumize host systems.
 
 These modules are used inside hosts declaration:
 - `common/`: Common config for all hosts

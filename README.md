@@ -29,7 +29,7 @@ Here are some of the programs configured in this repo.
 
 - **Terminal Emulator**: [Kitty][Kitty]
 - **Terminal Multiplexer**: [Tmux][Tmux]
-- **Shell**: [Fish][Fish] [(details)](./users/bintang/cli/fish)
+- **Shell**: [Fish][Fish] [(details)](./modules/home/bintang/cli/fish)
 - **Shell Prompt**: [Starship][Starship]
 - **Resource Monitoring**: [Btop][Btop]
 
@@ -48,7 +48,7 @@ Here are some of the programs configured in this repo.
 
 #### Development
 
-- **Text Editor**: [Neovim][Neovim] [(details)](./users/bintang/nvim)
+- **Text Editor**: [Neovim][Neovim] [(details)](./modules/home/bintang/nvim)
 - **Game Engine**: [Godot Engine][Godot Engine]
 
 #### Misc
@@ -57,7 +57,6 @@ Here are some of the programs configured in this repo.
 - **Font**: [Iosevka][Iosevka] with [Nerd Fonts][Nerd Fonts]
 - **File Syncing**: [Syncthing][Syncthing]
 - **Key Remapper**: [Keymapper][Keymapper]
-- **IPA (International Phonetic Alphabet) Compose Key Rules** (incomplete)
 
 ## To-Do
 

@@ -22,13 +22,14 @@
     };
     extraSpecialArgs = specialArgs;
   };
+  nixOnDroidHomeConfigurations.default = ../users/bintang_dantalion;
 
   # Home configs
   homeConfigurations = {
     # Personal laptop
     "bintang@barbatos" = lib.homeManagerConfiguration {
       pkgs = pkgsFor.x86_64-linux;
-      modules = [ ../users/bintang/hosts/barbatos ];
+      modules = [ ../users/bintang_barbatos ];
       extraSpecialArgs = specialArgs;
     };
   };

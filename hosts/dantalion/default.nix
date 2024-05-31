@@ -17,7 +17,7 @@
 
   # Home manager
   home-manager = {
-    config = ../../users/bintang/hosts/dantalion;
+    config = outputs.nixOnDroidHomeConfigurations.default;
     extraSpecialArgs = { inherit inputs outputs; };
     useGlobalPkgs = true;
   };

@@ -19,7 +19,7 @@
     ];
     shell = pkgs.fish;
     packages = with pkgs; [ home-manager ];
-    openssh.authorizedKeys.keyFiles = [ ../../../users/bintang/keys/ssh-rsa.pub ../../../users/bintang/keys/ssh-ed25519.pub ];
+    openssh.authorizedKeys.keyFiles = [ ../../home/bintang/keys/ssh-rsa.pub ../../home/bintang/keys/ssh-ed25519.pub ];
     hashedPasswordFile = config.sops.secrets.password-bintang.path;
   };
 
@@ -30,5 +30,5 @@
     };
   };
 
-  home-manager.users.bintang = import ../../../users/bintang/hosts/${config.networking.hostName};
+  home-manager.users.bintang = import ../../../users/bintang_${config.networking.hostName};
 }

@@ -52,7 +52,10 @@
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = builtins.attrValues outputs.overlays;
+          overlays = with outputs.overlays; [
+            add
+            modify
+          ];
         }
       );
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
@@ -81,6 +84,7 @@
       # Modules
       nixosModules = import ./modules/nixos { inherit myLib; };
       homeManagerModules = import ./modules/home-manager { inherit myLib; };
+      homeModules = myLib.genAttrsEachDirs ./modules/home (n: import ./modules/home/${n} { inherit myLib; });
 
       # Configs
       inherit (configs)
