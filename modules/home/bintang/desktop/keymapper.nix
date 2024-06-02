@@ -25,7 +25,6 @@
           { input = "AltGr"; output = "Alt"; }
           { input = "ScrollLock"; output = "CapsLock"; }
           { input = "CapsLock"; output = "Escape"; }
-          { input = "ContextMenu"; output = "PrintScreen"; }
 
           { input = "Ext"; output = "Tab"; }
           { input = "Ext{I}"; output = "Tab"; }
@@ -64,7 +63,15 @@
         ];
       }
       {
-        class = "/brave-browser|com.rtosta.zapzap/";
+        class = "/brave-browser|com.rtosta.zapzap|org.kde.dolphin/";
+        mappings = [
+          { input = "zoom_in"; output = "Control{Shift{Equal}}"; }
+          { input = "zoom_out"; output = "Control{Minus}"; }
+          { input = "zoom_reset"; output = "Control{0}"; }
+        ];
+      }
+      {
+        class = "org.https://nomacs.";
         mappings = [
           { input = "zoom_in"; output = "Control{Shift{Equal}}"; }
           { input = "zoom_out"; output = "Control{Minus}"; }

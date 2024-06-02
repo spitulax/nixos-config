@@ -122,6 +122,7 @@
 
   /*
     Same as `genAttrsEachFilesRec` but only includes regular files that have given extension and remove the file extension in the attribute's name.
+    If there is a regular file that has the same name as a directory after the extension has been stripped, the regular file takes precedence over the directory.
 
     Inputs:
       - `dir`: The topmost/starting directory

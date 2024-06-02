@@ -110,6 +110,8 @@ map("n", "<leader>y",
     local fname = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.fn.bufnr("%")), ":.")
     vim.fn.setreg("+", fname .. ":" .. line)
   end, { desc = "Shortcuts Copy current file path and line position" })
+map("n", "<leader>/", "gcc", { desc = "Shortcuts Toggle comment line" })
+map("v", "<leader>/", "gc", { desc = "Shortcuts Toggle comment" })
 
 -- Toggles
 map("n", "<leader>tw",
@@ -139,16 +141,6 @@ map("n", "<leader>]d",
     vim.diagnostic.goto_next({ float = { border = "rounded" } })
   end,
   { desc = "LSP Next diagnostic" })
-
--- Comment
-map("n", "<leader>/",
-  function()
-    require("Comment.api").toggle.linewise.current()
-  end,
-  { desc = "Comment Toggle comment" })
-map("v", "<leader>/",
-  "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-  { desc = "Comment Toggle comment" })
 
 -- Neorg
 map("n", "<M-g>O", "<cmd>Neorg toc<cr>", { desc = "Neorg Toggle table of contents" })

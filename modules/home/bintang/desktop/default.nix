@@ -16,6 +16,7 @@
     # screenshot
     grim
     slurp
+    mypkgs.gripper
 
     # notification
     mako

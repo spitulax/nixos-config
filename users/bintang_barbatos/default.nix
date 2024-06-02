@@ -67,6 +67,10 @@
       nvim
       sops
       xcompose
+    ]
+    ++
+    [
+      ./hyprland.nix
     ];
 
   # User info
