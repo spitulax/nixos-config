@@ -47,4 +47,13 @@
         }
       );
     };
+
+  nixConfig = {
+    extra-substituters = [
+      "spitulax.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "spitulax.cachix.org-1:GQRdtUgc9vwHTkfukneFHFXLPOo0G/2lj2nRw66ENmU="
+    ];
+  };
 }

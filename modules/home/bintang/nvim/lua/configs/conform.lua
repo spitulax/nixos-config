@@ -6,7 +6,7 @@ return {
       formatters = {
         odinfmt = {
           command = "odinfmt",
-          args = { "$FILENAME" },
+          args = { "-stdin" },
         },
       },
 
