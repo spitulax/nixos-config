@@ -3,6 +3,13 @@ local slow_format_filetypes = {}
 return {
   opts = function()
     return {
+      formatters = {
+        odinfmt = {
+          command = "odinfmt",
+          args = { "$FILENAME" },
+        },
+      },
+
       formatters_by_ft = {
         go = { "gofmt" },
         rust = { "rustfmt" },
@@ -10,6 +17,7 @@ return {
         gdscript = { "gdformat" },
         c = { "clang-format" },
         cpp = { "clang-format" },
+        odin = { "odinfmt" },
       },
 
       format_on_save = function(bufnr)

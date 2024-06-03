@@ -44,6 +44,7 @@
       go
       lua
       nix
+      odin
       python
       rust
       tools

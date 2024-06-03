@@ -13,7 +13,7 @@
       la = "eza -G -a --no-user --color=always --group-directories-first --icons";
       ll = "eza -G -lH --no-user --color=always --group-directories-first --icons";
       lt = "eza -G -T --no-user --color=always --group-directories-first --icons --long -L";
-      ols = "/usr/bin/env ls";
+      oldls = "/usr/bin/env ls";
       # shortcuts
       vim = "nvim";
       repl = "nix repl .";
@@ -24,9 +24,9 @@
       "..." = "cd ../..";
       q = "exit";
       rm = "trash-put -v";
-      orm = "/usr/bin/env rm";
+      oldrm = "/usr/bin/env rm";
       restore = "trash-restore";
-      omake = "/usr/bin/env make";
+      oldmake = "/usr/bin/env make";
       make = "make -C (dirname (upfind . -name Makefile))";
       cat = "_fzf_preview_file";
       # colorizer

@@ -320,14 +320,16 @@
         "gripper": "gripper",
         "hyprlock": "hyprlock",
         "nixpkgs": "nixpkgs_2",
+        "odin": "odin",
+        "ols": "ols",
         "waybar": "waybar"
       },
       "locked": {
-        "lastModified": 1717349888,
-        "narHash": "sha256-HBR74JdIQt+LfU9Kl9fTWYgif1JkY86msNydSznEyPg=",
+        "lastModified": 1717406602,
+        "narHash": "sha256-6z9YC+mj+heFNearCqSw9PbnL5sK1Hy+c969R7JT4AM=",
         "owner": "spitulax",
         "repo": "mypkgs",
-        "rev": "3ec3e2ea7d9f5b89ce99b372bb310707b97d13e8",
+        "rev": "04c5ef2b1a5ef367371592ff50d0d4c537169146",
         "type": "github"
       },
       "original": {
@@ -607,6 +609,38 @@
         "owner": "rycee",
         "repo": "nmt",
         "type": "gitlab"
+      }
+    },
+    "odin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717363336,
+        "narHash": "sha256-ZjDMRUON9vRlTrFulqEsFmY4zp8gLTfVRgxBRNvySy4=",
+        "owner": "odin-lang",
+        "repo": "Odin",
+        "rev": "10d354aea812bfe50cc5e7822f4957d6384ab736",
+        "type": "github"
+      },
+      "original": {
+        "owner": "odin-lang",
+        "repo": "Odin",
+        "type": "github"
+      }
+    },
+    "ols": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717315818,
+        "narHash": "sha256-ryQejdtxSLksosQUln06JBXQgxcceIsx2otnkDixUbE=",
+        "owner": "DanielGavin",
+        "repo": "ols",
+        "rev": "b3ed829bd3623748a34b9031e27e8c693a226232",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DanielGavin",
+        "repo": "ols",
+        "type": "github"
       }
     },
     "root": {

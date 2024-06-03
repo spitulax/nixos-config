@@ -16,6 +16,8 @@ if get_option('buildtype').startswith('debug')
   add_project_arguments(['-Og', '-DDEBUG'], language: ['c', 'cpp'])
 endif
 
+add_project_arguments('-DPROG_NAME="' + meson.project_name() + '"', language: ['c', 'cpp'])
+add_project_arguments('-DPROG_VERSION="' + meson.project_version() + '"', language: ['c', 'cpp'])
 add_project_arguments('-Wshadow -Wnon-virtual-dtor', language: 'cpp')
 
 subdir('src')

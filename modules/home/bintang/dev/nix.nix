@@ -2,6 +2,7 @@
 , ...
 }: {
   home.packages = with pkgs; [
+    nil
     nurl
     nix-output-monitor
     sops

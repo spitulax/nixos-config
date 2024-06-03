@@ -7,13 +7,6 @@
     withPython3 = true;
     withRuby = false;
     extraPackages = with pkgs; [
-      # LSPs
-      lua-language-server
-      gopls
-      nil
-      rust-analyzer
-      clang-tools
-
       luajit # required for luarocks.nvim
     ];
     # extraPython3Packages = ps: with ps; [

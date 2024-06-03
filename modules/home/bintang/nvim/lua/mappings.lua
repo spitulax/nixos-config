@@ -106,12 +106,17 @@ map("n", "<M-b>", "gT", { desc = "Tab Go to previous tab" })
 -- Shortcuts
 map("n", "<leader>y",
   function()
+    local fname = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.fn.bufnr("%")), ":.")
+    vim.fn.setreg("+", fname)
+  end, { desc = "Shortcuts Copy current file path" })
+map("n", "<leader>Y",
+  function()
     local line = vim.api.nvim_win_get_cursor(0)[1]
     local fname = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.fn.bufnr("%")), ":.")
     vim.fn.setreg("+", fname .. ":" .. line)
   end, { desc = "Shortcuts Copy current file path and line position" })
-map("n", "<leader>/", "gcc", { desc = "Shortcuts Toggle comment line" })
-map("v", "<leader>/", "gc", { desc = "Shortcuts Toggle comment" })
+map("n", "<leader>/", "gcc", { desc = "Shortcuts Toggle comment line", remap = true })
+map("v", "<leader>/", "gc", { desc = "Shortcuts Toggle comment", remap = true })
 
 -- Toggles
 map("n", "<leader>tw",

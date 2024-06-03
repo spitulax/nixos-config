@@ -9,6 +9,7 @@ local servers = {
   ["gopls"] = {},
   ["nil_ls"] = {},
   ["gdscript"] = {},
+  ["ols"] = {},
   ["lua_ls"] = {
     settings = {
       Lua = {
