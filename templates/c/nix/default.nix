@@ -8,13 +8,13 @@
 }:
 let
   version = with lib; elemAt
-    (pipe (readFile ../src/main.c) [
+    (pipe (readFile ../meson.build) [
       (splitString "\n")
-      (filter (hasPrefix "#define PROG_VERSION"))
+      (filter (hasPrefix "  version : "))
       head
-      (splitString " ")
+      (splitString " : ")
       last
-      (splitString "\"")
+      (splitString "'")
     ]) 1;
 in
 stdenv.mkDerivation {
