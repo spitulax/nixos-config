@@ -11,7 +11,7 @@
       mime
       mpv
       nomacs
-      obs
+      # obs
       zapzap
       zathura
     ])
