@@ -26,8 +26,6 @@
       rm = "trash-put -v";
       oldrm = "/usr/bin/env rm";
       restore = "trash-restore";
-      oldmake = "/usr/bin/env make";
-      make = "make -C (dirname (upfind . -name Makefile))";
       cat = "_fzf_preview_file";
       # colorizer
       grep = "grep --color";
