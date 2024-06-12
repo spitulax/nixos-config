@@ -29,7 +29,7 @@
         {
           default = pkgs.mkShell {
             name = "foobar" + "-shell";
-            inputsFrom = with pkgs; [
+            nativeBuildInputs = with pkgs; [
               odin
             ];
             shellHook = "exec $SHELL";

@@ -4,6 +4,7 @@
 }: {
   imports = with outputs.homeModules.bintang;
     (with apps; [
+      bottles
       browser
       dolphin
       entries
@@ -51,7 +52,7 @@
     ])
     ++
     (with gaming; [
-      lutris
+      # lutris
       misc
       wine
     ])
