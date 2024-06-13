@@ -1,5 +1,6 @@
 { config
 , outputs
+, lib
 , ...
 }: {
   imports = [
@@ -8,17 +9,25 @@
 
   programs.brave = {
     enable = true;
-    commandLineArgs = [
-      "--enable-features=VaapiVideoDecodeLinuxGL" # NB: hardware video encoding is not available on Linux
-      "--password-store=gnome"
-      "--profile-directory=Default"
-      "--ozone-platform=wayland"
-      # "--ignore-gpu-blocklist"
-      "--enable-wayland-ime"
-      "--gtk-version=4"
-      "--force-device-scale-factor=1.0" # without this sometimes tab bar gets unusually big at least on KDE Plasma Wayland
-      "-enable-features=UseOzonePlatform"
-    ];
+    commandLineArgs =
+      let
+        # PLEASE, IF YOU ONLY INCLUDE VaapiVideoDecodeLinuxGL THE VIDEO DECODING WORKS FINE UNTIL YOU ADD MORE ONTO THIS FLAG
+        enabledFeatures = [
+          "VaapiVideoDecodeLinuxGL"
+          # "VaapiIgnoreDriverChecks"
+          # "UseOzonePlatform"
+        ];
+      in
+      [
+        "--enable-features=${lib.concatStringsSep "," enabledFeatures}"
+        "--password-store=gnome"
+        "--profile-directory=Default"
+        "--ozone-platform=wayland"
+        # "--ignore-gpu-blocklist"
+        "--enable-wayland-ime"
+        "--gtk-version=4"
+        "--force-device-scale-factor=1.0" # without this sometimes tab bar gets unusually big at least on KDE Plasma Wayland
+      ];
     extensions = [
       { id = "kfhgpagdjjoieckminnmigmpeclkdmjm"; } # Automatic Twitch
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark Reader

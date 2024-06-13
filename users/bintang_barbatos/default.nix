@@ -43,6 +43,7 @@
       cpp
       debugger
       go
+      godot
       lua
       nix
       odin

@@ -13,13 +13,6 @@
     settings.general.renice = 15;
   };
 
-  # Steam
-  hardware.steam-hardware.enable = true;
-  programs.steam.enable = true;
-  programs.steam.extraCompatPackages = [
-    pkgs.proton-ge-bin
-  ];
-
   # Gaming Kernel
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # environment.systemPackages = [ pkgs.scx ];
