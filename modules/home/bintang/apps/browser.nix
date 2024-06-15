@@ -57,6 +57,7 @@
       Anilist.id = "nhpkhfhppiampjblenncchhnipmeafgd";
       Bitwarden.id = "hophjnbpmamkldmdaeggjlnpfechpkfl";
       "Telegram Web".id = "majiogicmcnmdhhlgmkahaleckhjbmlk";
+      "Proton Mail".id = "jnpecgipniidlgicjocehkhajgdnjekh";
     };
   };
 }

@@ -11,6 +11,8 @@ ARGS += -collection:src=$(SRC_DIR)
 ARGS += -out:$(BUILD_DIR)/$(PROG_NAME)
 ARGS += -build-mode:exe
 ARGS += -vet
+ARGS += -disallow-do
+ARGS += -warnings-as-errors
 ARGS += -use-separate-modules
 ARGS += -define:PROG_NAME=$(PROG_NAME)
 ARGS += -define:PROG_VERSION=$(PROG_VERSION)

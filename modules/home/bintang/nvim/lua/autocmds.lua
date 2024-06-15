@@ -8,6 +8,7 @@ local indent_four_fts = {
   "c",
   "cpp",
   "rust",
+  "odin",
 }
 
 vim.api.nvim_create_autocmd("FileType", {
