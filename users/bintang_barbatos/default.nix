@@ -9,6 +9,7 @@
       dolphin
       entries
       kitty
+      kooha
       mime
       mpv
       nomacs
