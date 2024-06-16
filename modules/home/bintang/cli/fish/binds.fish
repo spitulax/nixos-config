@@ -59,13 +59,16 @@ for mode in default insert
   bind --mode $mode \cc kill-whole-line repaint
 
   # fzf.fish
-  bind --mode $mode \er _fzf_search_history
   bind --mode $mode \e\ce __fzf_edit_file
   # ctrl-alt-f - files
   # ctrl-alt-l - git log
   # ctrl-alt-s - git status
   # ctrl-alt-p - processes
   # ctrl-v     - variable
+
+  # atuin
+  bind --mode $mode \cr _atuin_search
+  bind --mode $mode \er _atuin_bind_up
 end
 
 ######

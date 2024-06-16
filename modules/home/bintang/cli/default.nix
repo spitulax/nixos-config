@@ -15,6 +15,7 @@
     yt-dlp
     ffmpeg
     spotdl
+    hexedit
     custom.scripts
     mypkgs.lexurgy
     mypkgs.crt

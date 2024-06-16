@@ -30,10 +30,14 @@ _NOTE: these keybindings are applied for both normal/default and insert mode_
 
 ### [fzf.fish](https://github.com/PatrickF1/fzf.fish)
 
-- alt-r      - search history
 - ctrl-alt-f - search files
 - ctrl-alt-l - fzf git log
 - ctrl-alt-s - fzf git status
 - ctrl-alt-p - search processes
 - ctrl-v     - search variables
 - ctrl-alt-e - search a file and view/edit it in $EDITOR
+
+## [atuin](https://github.com/atuinsh/atuin)
+
+- ctrl-r - search all history
+- alt-r  - search current session's history
