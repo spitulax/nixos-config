@@ -1,5 +1,6 @@
 { pkgs
 , config
+, outputs
 , ...
 }: {
   programs.gh = {
@@ -17,7 +18,7 @@
   };
 
   sops.secrets.gh-hosts = {
-    sopsFile = ../../../../secrets/bintang/gh.yaml;
+    sopsFile = "${outputs.vars.usersSecretsPath}/bintang/gh-hosts.yaml";
     path = "${config.xdg.configHome}/gh/hosts.yml";
   };
 }

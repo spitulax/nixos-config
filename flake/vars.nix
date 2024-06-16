@@ -17,4 +17,8 @@
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     "spitulax.cachix.org-1:GQRdtUgc9vwHTkfukneFHFXLPOo0G/2lj2nRw66ENmU="
   ];
+
+  globalSecretsPath = ../secrets/global;
+  hostsSecretsPath = ../secrets/hosts;
+  usersSecretsPath = ../secrets/users;
 }

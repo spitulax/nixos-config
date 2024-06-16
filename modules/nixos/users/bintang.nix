@@ -1,6 +1,7 @@
 { pkgs
 , config
 , inputs
+, outputs
 , ...
 }: {
   imports = [
@@ -19,14 +20,17 @@
     ];
     shell = pkgs.fish;
     packages = with pkgs; [ home-manager ];
-    openssh.authorizedKeys.keyFiles = [ ../../home/bintang/keys/ssh-rsa.pub ../../home/bintang/keys/ssh-ed25519.pub ];
+    openssh.authorizedKeys.keyFiles = [
+      ../../home/bintang/keys/ssh-rsa.pub # NOTE: add password to the rsa key
+      ../../home/bintang/keys/ssh-ed25519.pub
+    ];
     hashedPasswordFile = config.sops.secrets.password-bintang.path;
   };
 
   sops.secrets = {
     password-bintang = {
       neededForUsers = true;
-      sopsFile = ../../../secrets/global/secrets.yaml;
+      sopsFile = "${outputs.vars.globalSecretsPath}/password.yaml";
     };
   };
 

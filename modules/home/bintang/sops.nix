@@ -1,4 +1,6 @@
 { inputs
+, config
+, outputs
 , ...
 }: {
   imports = [
@@ -6,8 +8,13 @@
   ];
 
   sops = {
-    age.sshKeyPaths = [ /home/bintang/.ssh/id_ed25519 ];
-    defaultSopsFile = ../../../secrets/bintang/secrets.yaml;
+    defaultSopsFile = "${outputs.vars.usersSecretsPath}/bintang/secrets.yaml";
+    age = {
+      keyFile = config.xdg.dataHome + "/age/user.txt";
+      # sshKeyPaths = [ (config.home.homeDirectory + "/.ssh/id_ed25519") ];
+      sshKeyPaths = [ ];
+    };
   };
+
   systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
 }

@@ -10,8 +10,11 @@ creation_rules:
       - age:
         - *bintang
         - *barbatos
-  - path_regex: secrets/bintang/.*$
+  - path_regex: secrets/hosts/barbatos/.*$
+    key_groups:
+      - age:
+        - *barbatos
+  - path_regex: secrets/users/bintang/.*$
     key_groups:
       - age:
         - *bintang
-        - *barbatos

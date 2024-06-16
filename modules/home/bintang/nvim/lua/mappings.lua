@@ -157,8 +157,8 @@ map("n", "<leader>E", "<cmd>NvimTreeFocus<CR>", { desc = "Nvimtree Focus nvimtre
 -- Gitsigns
 map("n", "<leader>B", "<cmd>Gitsigns blame_line<CR>", { desc = "Gitsigns Blame line" })
 map("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Gitsigns Toggle current line blame" })
-map({"n", "v"}, "<leader>[c", "<cmd>Gitsigns prev_hunk", { desc = "Gitsigns Go to previous hunk" })
-map({"n", "v"}, "<leader>]c", "<cmd>Gitsigns next_hunk", { desc = "Gitsigns Go to next hunk" })
+map({"n", "v"}, "[c", "<cmd>Gitsigns prev_hunk<CR>", { desc = "Gitsigns Go to previous hunk" })
+map({"n", "v"}, "]c", "<cmd>Gitsigns next_hunk<CR>", { desc = "Gitsigns Go to next hunk" })
 
 -- Telescope
 map("n", "<leader>ff", "<cmd>Telescope resume <CR>", { desc = "Telescope Resume" })

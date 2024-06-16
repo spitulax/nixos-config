@@ -1,0 +1,31 @@
+# How the secrets are managed
+
+Setting up sops was an unbearable pain. I wrote this so I wouldn't need to experience it again.
+
+The secret .yaml files are located in [./secrets] and categorized by the user of the secrets.
+
+## .sops.yaml
+
+All hosts and users must have their age key fingerprint listed in [.sops.yaml].
+When adding a directory to [./secrets] also update [.sops.yaml].
+
+## NixOS module config
+
+NixOS sops config is located [here](../modules/nixos/common/sops.nix).
+Each host expects a default sops file which is `../secrets/hosts/<hostname>/secrets.yaml`, create it for each host.
+
+The age key is located in `/etc/age/host.txt` with ownership of `root:wheel` so `@wheel` users can access it without `sudo` (important for `nh`).
+The age key should be generated with `ssh-to-age -private-key -i /etc/ssh/ssh_host_ed25519_key > /etc/age/host.txt` and make sure the ssh key is not password protected.
+`config.sops.age.sshKeyPaths` and `config.sops.gnupg.sshKeyPaths` should be empty.
+
+## Home manager config
+
+Home manager sops config is located in `../modules/home/<username>/sops.nix`.
+Each user also expects a default sops file which is `../secrets/users/<username>/secrets.yaml`, create it for each user.
+
+The age key is located in `$XDG_DATA_HOME/age/user.txt`.
+The age key should be generated with `ssh-to-age -private-key -i ~/.ssh/id_ed25519 > $XDG_DATA_HOME/age/user.txt` and also make sure the ssh key is not password protected.
+`config.sops.age.sshKeyPaths` should be empty.
+
+[./secrets]: ../secrets
+[.sops.yaml]: ../.sops.yaml
