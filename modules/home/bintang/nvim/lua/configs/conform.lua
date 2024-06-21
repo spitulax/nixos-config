@@ -1,13 +1,43 @@
 local slow_format_filetypes = {}
 
+local deno_fmt = function()
+  local extensions = {
+    javascript = "js",
+    json = "json",
+    jsonc = "jsonc",
+    markdown = "md",
+    typescript = "ts",
+  }
+
+  return {
+    command = "deno",
+    args = function(_, ctx)
+      return {
+        "fmt",
+        "-",
+        "--line-width",
+        "100",
+        "--no-semicolons",
+        "--ext",
+        extensions[vim.bo[ctx.buf].filetype],
+      }
+    end,
+  }
+end
+
+local odinfmt = function()
+  return {
+    command = "odinfmt",
+    args = { "-stdin" },
+  }
+end
+
 return {
   opts = function()
     return {
       formatters = {
-        odinfmt = {
-          command = "odinfmt",
-          args = { "-stdin" },
-        },
+        deno_fmt = deno_fmt(),
+        odinfmt = odinfmt(),
       },
 
       formatters_by_ft = {
@@ -18,10 +48,11 @@ return {
         c = { "clang-format" },
         cpp = { "clang-format" },
         odin = { "odinfmt" },
-        javascript = { "denofmt" },
-        typescript = { "denofmt" },
-        json = { "denofmt" },
-        markdown = { "denofmt" },
+        javascript = { "deno_fmt" },
+        typescript = { "deno_fmt" },
+        json = { "deno_fmt" },
+        jsonc = { "deno_fmt" },
+        markdown = { "deno_fmt" },
         lua = { "stylua" },
       },
 

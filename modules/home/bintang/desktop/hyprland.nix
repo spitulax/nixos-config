@@ -5,7 +5,6 @@
 , ...
 }: {
   imports = [
-    ./hyprland/ags
     ./hyprland/mako
     ./hyprland/rofi
     ./hyprland/waybar
