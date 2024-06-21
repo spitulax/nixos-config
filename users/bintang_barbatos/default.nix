@@ -55,7 +55,7 @@
     ++
     (with gaming; [
       # lutris
-      misc
+      # misc
       wine
     ])
     ++

@@ -8,6 +8,7 @@ local indent_four_fts = {
   "c",
   "cpp",
   "rust",
+  "sh",
   "odin",
 }
 

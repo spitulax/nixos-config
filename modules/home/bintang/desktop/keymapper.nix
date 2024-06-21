@@ -13,7 +13,7 @@
       "Alt" = "AltLeft";
       "AltGr" = "AltRight";
       "Super" = "Meta";
-      "Ext" = "Tab";
+      "Ext" = "Backquote";
     };
     contexts = [
       {
@@ -26,8 +26,8 @@
           { input = "ScrollLock"; output = "CapsLock"; }
           { input = "CapsLock"; output = "Escape"; }
 
-          { input = "Ext"; output = "Tab"; }
-          { input = "Ext{I}"; output = "Tab"; }
+          { input = "Ext"; output = "Backquote"; }
+          { input = "Ext{Q}"; output = "Backquote"; }
           { input = "Ext{K}"; output = "ArrowUp"; }
           { input = "Ext{J}"; output = "ArrowDown"; }
           { input = "Ext{H}"; output = "ArrowLeft"; }

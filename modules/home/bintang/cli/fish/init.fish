@@ -2,9 +2,9 @@
 
 # Remove fish intro
 function fish_greeting
-  printf '\033[1;34m-*-   Welcome back! -*-\n'
-  #crt fish --verbose
-  printf '\033[0m\n'
+  echo -e '\033[1;34m-*-   Welcome back! -*-'
+  crt atuin --verbose
+  echo -e '\033[0m'
 end
 
 # Vi mode

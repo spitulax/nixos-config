@@ -1,20 +1,13 @@
 { pkgs
 , ...
 }: {
-  home.packages = [
-    (pkgs.catppuccin-kvantum.override {
-      accent = "Blue";
-      variant = "Mocha";
-    })
-  ];
-
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".text = ''
       [General]
-      theme=Catppuccin-Mocha-Blue
+      theme=MateriaDark
     '';
-    "Kvantum/Catppuccin-Mocha-Blue" = {
-      source = "${pkgs.catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Blue";
+    "Kvantum/MateriaDark" = {
+      source = "${pkgs.materia-kde-theme}/share/Kvantum/MateriaDark";
       recursive = true;
     };
   };

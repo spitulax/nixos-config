@@ -27,6 +27,7 @@
       oldrm = "/usr/bin/env rm";
       restore = "trash-restore";
       cat = "_fzf_preview_file";
+      oldcat = "/usr/bin/env cat";
       # colorizer
       grep = "grep --color";
       egrep = "egrep --color";

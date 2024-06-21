@@ -16,12 +16,11 @@ in
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ];
-        tweaks = [ "rimless" ];
-        variant = "mocha";
+      package = pkgs.fluent-gtk-theme.override {
+        tweaks = [ "round" ];
+        colorVariants = [ "dark" ];
       };
-      name = "Catppuccin-Mocha-Standard-Blue-Dark";
+      name = "Fluent-round-Dark";
     };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
