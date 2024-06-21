@@ -19,6 +19,10 @@ return {
         "odin",
         "rust",
         "vimdoc",
+        "javascript",
+        "typescript",
+        "css",
+        "html",
         "zig",
       },
 

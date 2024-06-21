@@ -18,6 +18,11 @@ return {
         c = { "clang-format" },
         cpp = { "clang-format" },
         odin = { "odinfmt" },
+        javascript = { "denofmt" },
+        typescript = { "denofmt" },
+        json = { "denofmt" },
+        markdown = { "denofmt" },
+        lua = { "stylua" },
       },
 
       format_on_save = function(bufnr)

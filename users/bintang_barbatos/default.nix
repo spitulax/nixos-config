@@ -45,6 +45,7 @@
       debugger
       go
       godot
+      javascript
       lua
       nix
       odin
