@@ -16,8 +16,11 @@ in
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.pop-gtk-theme;
-      name = "Pop-dark";
+      package = pkgs.fluent-gtk-theme.override {
+        tweaks = [ "round" ];
+        colorVariants = [ "dark" ];
+      };
+      name = "Fluent-round-Dark";
     };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
