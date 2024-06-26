@@ -5,7 +5,7 @@
 let
   extraConfig = {
     gtk-application-prefer-dark-theme = true;
-    gtk-decoration-layout = "close,minimize,maximize:menu";
+    gtk-decoration-layout = "close:menu";
   };
 in
 {

@@ -7,7 +7,9 @@
     withPython3 = true;
     withRuby = false;
     extraPackages = with pkgs; [
-      luajit # required for luarocks.nvim
+      # required for luarocks.nvim
+      lua51Packages.lua
+      lua51Packages.luarocks-nix
     ];
     # extraPython3Packages = ps: with ps; [
     #   pynvim

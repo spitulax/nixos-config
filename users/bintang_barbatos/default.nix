@@ -9,11 +9,11 @@
       dolphin
       entries
       kitty
-      kooha
+      # kooha
       mime
       mpv
       nomacs
-      # obs
+      obs
       zapzap
       zathura
     ])

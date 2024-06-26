@@ -1,13 +1,18 @@
 { writeShellScriptBin }:
 writeShellScriptBin "lazyup" ''
 
-LAZYLOCK_PATH=$HOME/.config/nvim/lazy-lock.json
-cd $FLAKE
-[[ -r $LAZYLOCK_PATH ]] && unlink $LAZYLOCK_PATH
+cd $XDG_CONFIG_HOME/nvim
 
-nvim . # run lazy.nvim commands
-cp $LAZYLOCK_PATH modules/home/bintang/nvim/lazy-lock.json
-rm $LAZYLOCK_PATH
+if [ -r lazy-lock.json ]; then
+  mv lazy-lock.json lazy-lock.json.bak
+  cp lazy-lock.json.bak lazy-lock.json
+  chmod 644 lazy-lock.json
+  unlink lazy-lock.json.bak
+fi
+
+nvim < /dev/null # run lazy.nvim commands
+cp lazy-lock.json $FLAKE/modules/home/bintang/nvim/lazy-lock.json
+rm lazy-lock.json
 echo "You can build your system now to place the lock file back."
 
 ''
