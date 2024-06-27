@@ -27,6 +27,8 @@
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
 
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+
     #############################
   };
 
@@ -55,6 +57,7 @@
           overlays = with outputs.overlays; [
             add
             modify
+            overlay
           ];
         }
       );

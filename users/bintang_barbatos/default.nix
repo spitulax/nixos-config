@@ -7,6 +7,7 @@
       bottles
       browser
       dolphin
+      emacs
       entries
       kitty
       # kooha
