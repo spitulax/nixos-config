@@ -1,12 +1,13 @@
 <h1 align="center">spitulax's NixOS Config</h1>
 
-This is my [NixOS](https://nixos.org/) configuration for my systems.
-This uses [Nix Flakes](https://nixos.wiki/wiki/Flakes) and if you want to use this for yourself, feel free!
-Make sure you understand what you are going to copy. I do not intend to make this config very portable out of the box, at least outside my personal devices.
+This is my [NixOS](https://nixos.org/) configuration for my systems. This uses
+[Nix Flakes](https://nixos.wiki/wiki/Flakes) and if you want to use this for yourself, feel free!
+Make sure you understand what you are going to copy. I do not intend to make this config very
+portable out of the box, at least outside my personal devices.
 
 ## Screenshot
 
-![](./_img/screenshot_neofetch.png)
+![](./assets/screenshot.png)
 
 ## Features
 
