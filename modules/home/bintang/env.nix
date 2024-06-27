@@ -6,8 +6,10 @@ let
 in
 {
   # Environment variables
+  home.sessionPath = [
+    "${home}/.local/bin"
+  ];
   home.sessionVariables = {
-    PATH = "${home}/.cargo/bin:${home}/.local/bin:$PATH";
     EDITOR = "nvim";
     TERMINAL = "kitty";
     BROWSER = "brave";

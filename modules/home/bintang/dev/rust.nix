@@ -1,4 +1,5 @@
 { pkgs
+, config
 , ...
 }: {
   home.packages = with pkgs; [
@@ -7,5 +8,9 @@
     clippy
     rustfmt
     rust-analyzer
+  ];
+
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.cargo/bin"
   ];
 }

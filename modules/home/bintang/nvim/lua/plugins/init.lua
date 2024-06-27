@@ -71,7 +71,7 @@ return {
   },
 
   {
-    'nvim-telescope/telescope.nvim',
+    "nvim-telescope/telescope.nvim",
     lazy = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -83,7 +83,7 @@ return {
   },
 
   {
-    'echasnovski/mini.nvim',
+    "echasnovski/mini.nvim",
     version = false,
     lazy = false,
     config = require("configs.mini").config,
@@ -100,7 +100,7 @@ return {
   },
 
   {
-    'sindrets/diffview.nvim',
+    "sindrets/diffview.nvim",
     config = true,
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   },
@@ -112,17 +112,17 @@ return {
   },
 
   {
-    'stevearc/dressing.nvim',
+    "stevearc/dressing.nvim",
     event = "BufEnter",
     opts = require("configs.dressing").opts,
   },
 
   {
     "ziontee113/icon-picker.nvim",
-    event = "User FilePost",
+    cmd = { "IconPickerYank", "IconPickerInsert" },
     config = function()
       require("icon-picker").setup({ disable_legacy_commands = true })
-    end
+    end,
   },
 
   {
@@ -136,7 +136,7 @@ return {
   },
 
   {
-    'akinsho/git-conflict.nvim',
+    "akinsho/git-conflict.nvim",
     init = function()
       utils.load_on_git("git-conflict.nvim")
     end,
@@ -162,7 +162,7 @@ return {
 
   {
     "nvim-pack/nvim-spectre",
-    event = "User FilePost",
+    cmd = "Spectre",
     opts = {
       is_insert_mode = true,
     },
@@ -183,6 +183,13 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
+    ---@diagnostic disable-next-line: different-requires
     opts = require("configs.conform").opts,
+  },
+
+  {
+    "ggandor/leap.nvim",
+    event = "User FilePost",
+    config = require("configs.leap").config,
   },
 }
