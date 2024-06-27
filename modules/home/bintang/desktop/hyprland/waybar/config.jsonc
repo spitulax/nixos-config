@@ -61,10 +61,10 @@
       "mode": "year",
       "mode-mon-col": 3,
       "format": {
-        "months":     "<span color='#89b4fa'><b>{}</b></span>",
-        "days":       "<span color='#cdd6f4'>{}</span>",
-        "weekdays":   "<span color='#fab387' overline='single' overline_color='#6c7086'><b>{}</b></span>",
-        "today":      "<span color='#89b4fa'><b><u>{}</u></b></span>"
+        "months": "<span color='#89b4fa'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'>{}</span>",
+        "weekdays": "<span color='#fab387' overline='single' overline_color='#6c7086'><b>{}</b></span>",
+        "today": "<span color='#89b4fa'><b><u>{}</u></b></span>"
       }
     },
     "actions": {
@@ -131,10 +131,6 @@
     "bat": "BAT0",
     "adapter": "AC",
     "interval": 1,
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
     "format-discharging": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
     "format-plugged": "󰚥 {capacity}%",

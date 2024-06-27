@@ -63,6 +63,7 @@
     (with service; [
       syncthing
       udiskie
+      warn-low-battery
       warp
     ])
     ++
