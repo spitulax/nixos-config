@@ -1,14 +1,13 @@
+---@type PluginConfig
 return {
-  opts = function()
-    return {
-      default_register = { '"', '+', '*' },
-      keys = {
-        telescope = {
-          i = {
-            paste = '<c-v>',
-          },
+  opts = {
+    default_register = { '"', "+", "*" },
+    keys = {
+      telescope = {
+        i = {
+          paste = "<c-v>",
         },
       },
-    }
-  end,
+    },
+  },
 }

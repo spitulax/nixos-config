@@ -1,17 +1,28 @@
+---@type PluginConfig
 return {
-  opts = function()
-    return {
-      load = {
-        ["core.defaults"] = {},
-        ["core.concealer"] = {},
-        ["core.dirman"] = {
-          config = {
-            workspaces = {
-              notes = "~/Notes",
-            },
+  opts = {
+    load = {
+      ["core.defaults"] = {},
+      ["core.concealer"] = {},
+      ["core.dirman"] = {
+        config = {
+          workspaces = {
+            notes = "~/Notes",
           },
         },
       },
-    }
-  end,
+    },
+  },
+
+  mappings = {
+    Neorg = {
+      n = {
+        {
+          desc = "Toggle table of contents",
+          lhs = "<M-g>O",
+          rhs = "<cmd>Neorg toc<cr>",
+        },
+      },
+    },
+  },
 }

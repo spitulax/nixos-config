@@ -1,5 +1,5 @@
-local cmp = require("cmp")
 local base = require("nvchad.configs.cmp")
+local cmp = require("cmp")
 
 local function config_cmp()
   local opts = {
@@ -87,15 +87,15 @@ local function config_cmdline()
   }
 
   -- Search (forward)
-  cmp.setup.cmdline('/', {
+  cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(cmdline_mapping),
     sources = {
-      { name = 'buffer' },
+      { name = "buffer" },
     },
   })
 
   -- Command mode
-  cmp.setup.cmdline(':', {
+  cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(cmdline_mapping),
     sources = {
       { name = "path" },
@@ -104,8 +104,9 @@ local function config_cmdline()
   })
 end
 
+---@type PluginConfig
 return {
-  config = function()
+  config = function(_, _)
     config_cmp()
     config_cmdline()
   end,

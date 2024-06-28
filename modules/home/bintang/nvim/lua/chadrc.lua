@@ -9,14 +9,13 @@ M.ui = {
   transparency = true,
   hl_override = highlight.override,
   hl_add = highlight.add,
-  extended_integrations = { "hop", "todo", "dap", "trouble" },
 
   cmp = {
     style = "default",
   },
 
   telescope = {
-    style = "bordered"
+    style = "bordered",
   },
 
   statusline = require("statusline"),
@@ -27,7 +26,13 @@ M.ui = {
     load_on_startup = true,
 
     header = {
-      "        Neovim v" .. (vim.version().major) .. "." .. (vim.version().minor) .. "." .. (vim.version().patch) .. "        ",
+      "        Neovim v"
+        .. vim.version().major
+        .. "."
+        .. vim.version().minor
+        .. "."
+        .. vim.version().patch
+        .. "        ",
     },
 
     buttons = {
@@ -40,7 +45,7 @@ M.ui = {
   },
 
   lsp = {
-    signature = true
+    signature = true,
   },
 
   term = {
@@ -61,6 +66,8 @@ M.base46 = {
   integrations = {
     "hop",
     "todo",
+    "dap",
+    "trouble",
   },
 }
 

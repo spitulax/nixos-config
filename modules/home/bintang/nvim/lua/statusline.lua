@@ -25,18 +25,31 @@ local modules = {
     return ""
   end,
   cwd = function()
+    ---@diagnostic disable-next-line: undefined-field
     local name = vim.uv.cwd()
-    name = "%#st_mode# 󰉖 " .. (name:match "([^/\\]+)[/\\]*$" or name) .. " "
+    name = "%#st_mode# 󰉖 " .. (name:match("([^/\\]+)[/\\]*$") or name) .. " "
     return name
   end,
   diagnostics_enabled = function()
     return vim.diagnostic.is_enabled() and " 󰗠  " or ""
-  end
+  end,
 }
 
-return  {
+return {
   theme = "vscode",
   separator_style = "block",
-  order = { "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "diagnostics_enabled", "cursor_position", "filetype", "lsp_status", "cwd" },
+  order = {
+    "file",
+    "git",
+    "%=",
+    "lsp_msg",
+    "%=",
+    "diagnostics",
+    "diagnostics_enabled",
+    "cursor_position",
+    "filetype",
+    "lsp_status",
+    "cwd",
+  },
   modules = modules,
 }
