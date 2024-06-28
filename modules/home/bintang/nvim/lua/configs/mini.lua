@@ -1,5 +1,6 @@
+---@type PluginConfig
 return {
-  config = function()
+  config = function(_, _)
     require("mini.align").setup()
     require("mini.bufremove").setup()
     require("mini.surround").setup({

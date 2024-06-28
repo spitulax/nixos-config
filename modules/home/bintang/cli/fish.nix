@@ -40,6 +40,10 @@
       mv = "mv -i";
     };
 
+    shellAbbrs = {
+      upmake = "make -C (dirname (upfind . -name Makefile))";
+    };
+
     interactiveShellInit =
       (builtins.readFile ./fish/init.fish) + (builtins.readFile ./fish/binds.fish);
 

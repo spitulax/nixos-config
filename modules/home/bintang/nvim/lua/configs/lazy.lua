@@ -1,3 +1,4 @@
+---@type LazyConfig
 return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },

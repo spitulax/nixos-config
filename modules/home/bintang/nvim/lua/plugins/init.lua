@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 return {
   "nvim-lua/popup.nvim",
 
@@ -13,7 +11,7 @@ return {
     "nvim-neorg/neorg",
     ft = "norg",
     dependencies = { "luarocks.nvim" },
-    -- build = ":Neorg sync-parsers", -- neorg provides it's own build script
+    -- build = ":Neorg sync-parsers", -- neorg provides its own build script
     cmd = "Neorg",
     opts = require("configs.neorg").opts,
   },
@@ -29,7 +27,7 @@ return {
       return vim.tbl_deep_extend(
         "force",
         require("nvchad.configs.nvimtree"),
-        require("configs.nvimtree").opts()
+        require("configs.nvimtree").opts
       )
     end,
   },
@@ -43,7 +41,7 @@ return {
       return vim.tbl_deep_extend(
         "force",
         require("nvchad.configs.gitsigns"),
-        require("configs.gitsigns").opts()
+        require("configs.gitsigns").opts
       )
     end,
   },
@@ -120,29 +118,19 @@ return {
   {
     "ziontee113/icon-picker.nvim",
     cmd = { "IconPickerYank", "IconPickerInsert" },
-    config = function()
-      require("icon-picker").setup({ disable_legacy_commands = true })
+    opts = require("configs.icon-pick").opts,
+    config = function(_, opts)
+      require("icon-picker").setup(opts)
     end,
   },
 
   {
     "smjonas/live-command.nvim",
     event = "User FilePost",
-    opts = require("configs.live-command").opts,
+    opts = require("configs.live-cmd").opts,
     config = function(_, opts)
-      ---@diagnostic disable-next-line: different-requires
       require("live-command").setup(opts) -- lazy.nvim default config function didn't work
     end,
-  },
-
-  {
-    "akinsho/git-conflict.nvim",
-    init = function()
-      utils.load_on_git("git-conflict.nvim")
-    end,
-    opts = {
-      default_mappings = false,
-    },
   },
 
   {
@@ -183,7 +171,6 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
-    ---@diagnostic disable-next-line: different-requires
     opts = require("configs.conform").opts,
   },
 

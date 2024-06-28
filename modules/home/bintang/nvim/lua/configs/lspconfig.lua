@@ -35,6 +35,7 @@ local servers = {
   },
 }
 
+---@type PluginConfig
 return {
   config = function()
     vim.diagnostic.config({

@@ -3,7 +3,7 @@ local btn = require("nvchad.tabufline.utils").btn
 
 local modules = {
   tablist = function()
-    local result, tabs = "", vim.fn.tabpagenr "$"
+    local result, tabs = "", vim.fn.tabpagenr("$")
 
     for nr = 1, tabs, 1 do
       local tab_hl = "TabO" .. (nr == vim.fn.tabpagenr() and "n" or "ff")
@@ -18,9 +18,10 @@ local modules = {
     local name = ""
     if bufname:find(vim.fn.getcwd(), 1, true) ~= nil then
       name = vim.fn.fnamemodify(bufname, ":.")
+    ---@diagnostic disable-next-line: undefined-field
     elseif bufname:find(vim.uv.os_homedir(), 1, true) ~= nil then
       name = vim.fn.fnamemodify(bufname, ":~")
-    elseif bufname:sub(1, #("term://")) == "term://" then
+    elseif bufname:sub(1, #"term://") == "term://" then
       name = "Terminal"
     else
       name = ""
