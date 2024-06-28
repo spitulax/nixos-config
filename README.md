@@ -1,21 +1,11 @@
 <h1 align="center">spitulax's NixOS Config</h1>
 
-This is my [NixOS](https://nixos.org/) configuration for my systems. This uses
-[Nix Flakes](https://nixos.wiki/wiki/Flakes) and if you want to use this for yourself, feel free!
-Make sure you understand what you are going to copy. I do not intend to make this config very
-portable out of the box, at least outside my personal devices.
+This is my [NixOS](https://nixos.org/) configuration for my systems with
+[Nix Flake](https://nixos.wiki/wiki/Flakes). If you want to grab something from here, feel free!
 
 ## Screenshot
 
 ![](./assets/screenshot.png)
-
-## Features
-
-- Easily extendable
-- Utilizes Nix Flake
-- Hardware-specific configuration [(details)](./hosts).
-- Configurations for programs that I use [(details)](#components).
-- Secret management with [sops.nix](https://github.com/Mic92/sops-nix)
 
 ## Components
 
@@ -23,41 +13,57 @@ Here are some of the programs configured in this repo.
 
 #### Desktop
 
-- **Display Manager**: [GDM][GDM]
-- **Window Manager (Wayland)**: [Hyprland][Hyprland]
+- **Display Manager**: [GDM]
+- **Window Manager (Wayland)**: [Hyprland]
 
 #### CLI Tools
 
-- **Terminal Emulator**: [Kitty][Kitty]
-- **Terminal Multiplexer**: [Tmux][Tmux]
-- **Shell**: [Fish][Fish] [(details)](./modules/home/bintang/cli/fish)
-- **Shell Prompt**: [Starship][Starship]
-- **Resource Monitoring**: [Btop][Btop]
+- **Terminal Emulator**: [Kitty]
+- **Terminal Multiplexer**: [Tmux]
+- **Shell**: [Fish] [(details)](./modules/home/bintang/cli/fish)
+- **Shell Prompt**: [Starship]
+- **Resource Monitoring**: [Btop]
 
 #### GUI Apps
 
-- **Browser**: [Brave][Brave]
-- **Screen Recording**: [OBS][OBS]
-- **WhatsApp Client**: [ZapZap][ZapZap]
-- **Password Manager**: [Bitwarden][Bitwarden]
-- **File Manager**: [Dolphin][Dolphin]
-- **Screenshot**: [Grim][Grim]
-- **Media Player**: [Mpv][Mpv]
-- **Painting**: [Krita][Krita]
-- **Image Viewer**: [Nomacs][Nomacs]
-- **PDF Viewer**: [Zathura][Zathura]
+- **Browser**: [Brave]
+- **Screen Recording**: [OBS]
+- **WhatsApp Client**: [ZapZap]
+- **Password Manager**: [Bitwarden]
+- **File Manager**: [Dolphin]
+- **Screenshot**: [Gripper]
+- **Media Player**: [Mpv]
+- **Painting**: [Krita]
+- **Image Viewer**: [Nomacs]
+- **PDF Viewer**: [Zathura]
 
 #### Development
 
-- **Text Editor**: [Neovim][Neovim] [(details)](./modules/home/bintang/nvim)
-- **Game Engine**: [Godot Engine][Godot Engine]
+- **Text Editor**: [Neovim] [(details)](./modules/home/bintang/nvim)
+- **Some toolings**: [(details)](./modules/home/bintang/dev)
 
 #### Misc
 
-- **Colorschemes**: [Catppuccin][Catppuccin]
-- **Font**: [Iosevka][Iosevka] with [Nerd Fonts][Nerd Fonts]
-- **File Syncing**: [Syncthing][Syncthing]
-- **Key Remapper**: [Keymapper][Keymapper]
+- **Terminal Colorschemes**: [Catppuccin]
+- **GTK Theme**: [Fluent GTK Theme]
+- **Qt Theme**: [Materia KDE]
+- **Font**: [Iosevka] with [Nerd Fonts]
+- **File Syncing**: [Syncthing]
+- **Key Remapper**: [Keymapper]
+- **Secret Management**: [sops.nix]
+
+#### And More!
+
+## Cool Dotfiles
+
+Dotfiles by other people that massively helped my nix journey.
+
+- <https://github.com/librephoenix/nixos-config>
+- <https://github.com/jakehamilton/config>
+- <https://github.com/Misterio77/nix-config>
+- <https://github.com/ryan4yin/nix-config>
+- <https://github.com/hlissner/dotfiles>
+- <https://github.com/fufexan/dotfiles>
 
 ## To-Do
 
@@ -82,9 +88,12 @@ Here are some of the programs configured in this repo.
 [Hyprland]: https://github.com/hyprwm/Hyprland
 [Tmux]: https://github.com/tmux/tmux
 [Dolphin]: https://apps.kde.org/dolphin
-[Grim]: https://sr.ht/~emersion/grim
+[Gripper]: https://github.com/spitulax/gripper
 [Mpv]: https://mpv.io/
 [Krita]: https://krita.org/
 [Nomacs]: https://nomacs.org/
 [Zathura]: https://git.pwmt.org/pwmt/zathura
 [GDM]: https://wiki.gnome.org/Projects/GDM
+[Fluent GTK Theme]: https://github.com/vinceliuice/Fluent-gtk-theme
+[Materia KDE]: https://github.com/PapirusDevelopmentTeam/materia-kde
+[sops.nix]: https://github.com/Mic92/sops-nix
