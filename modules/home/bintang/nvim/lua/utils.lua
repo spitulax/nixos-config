@@ -39,7 +39,7 @@ end
 M.mymap = function(mode, m)
   local opts = m.opts or {}
   if m.desc then
-    opts = vim.tbl_extend("force", opts, { desc = m.desc })
+    opts = vim.tbl_extend("error", opts, { desc = m.desc })
   end
   vim.keymap.set(mode, m.lhs, m.rhs, opts)
 end
@@ -50,7 +50,7 @@ M.apply_mappings = function(tbl, plugins)
   ---@type MappingTable
   local mappings = tbl
   for _, v in ipairs(plugins) do
-    mappings = vim.tbl_deep_extend("force", mappings, require(v).mappings)
+    mappings = vim.tbl_deep_extend("error", mappings, require(v).mappings)
   end
 
   for section_name, section in pairs(mappings) do

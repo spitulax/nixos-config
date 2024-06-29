@@ -8,7 +8,7 @@ return {
         {
           desc = "Preview clipboard",
           lhs = "<leader>v",
-          rhs = "<cmd>telescope neoclip<cr>",
+          rhs = "<cmd>Telescope neoclip<cr>",
         },
       },
       n = {

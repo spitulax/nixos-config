@@ -14,7 +14,7 @@ return {
   },
 
   mappings = {
-    Navigation = {
+    Blankline = {
       a = {
         {
           desc = "Jump to current context",

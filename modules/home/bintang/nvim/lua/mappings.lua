@@ -62,6 +62,15 @@ local mappings = {
         lhs = "<leader>Q",
         rhs = "<cmd>qa<cr>",
       },
+      {
+        desc = "Edit file",
+        lhs = "<leader>n",
+        rhs = function()
+          utils.prompt_callback("Edit file", "file", function(input)
+            vim.cmd("edit " .. input)
+          end)
+        end,
+      },
     },
   },
 
@@ -255,6 +264,11 @@ local mappings = {
           end
         end,
       },
+      {
+        desc = "Reload buffer",
+        lhs = "<leader>br",
+        rhs = "<cmd>edit!<cr>",
+      },
     },
   },
 
@@ -291,57 +305,57 @@ local mappings = {
         rhs = "<C-w>o",
       },
       {
-        desc = "Window Increase window height",
+        desc = "Increase window height",
         lhs = "<M-=>",
         rhs = "5<C-w>+",
       },
       {
-        desc = "Window Decrease window height",
+        desc = "Decrease window height",
         lhs = "<M-->",
         rhs = "5<C-w>-",
       },
       {
-        desc = "Window Increase window width",
+        desc = "Increase window width",
         lhs = "<M-]>",
         rhs = "10<C-w>>",
       },
       {
-        desc = "Window Decrease window width",
+        desc = "Decrease window width",
         lhs = "<M-[>",
         rhs = "10<C-w><",
       },
       {
-        desc = "Window Uniform window size",
+        desc = "Uniform window size",
         lhs = "<M-w>u",
         rhs = "<C-w>=",
       },
       {
-        desc = "Window Go to previous window",
+        desc = "Go to previous window",
         lhs = "<M-o>",
         rhs = "<C-w>p",
       },
       {
-        desc = "Tab Create new tab",
+        desc = "Create new tab",
         lhs = "<M-t>n",
         rhs = "<cmd>tabnew<cr>",
       },
       {
-        desc = "Tab Close current tab",
+        desc = "Close current tab",
         lhs = "<M-q>",
         rhs = "<cmd>tabclose<cr>",
       },
       {
-        desc = "Tab Close all other tabs",
+        desc = "Close all other tabs",
         lhs = "<M-t>o",
         rhs = "<cmd>tabonly<cr>",
       },
       {
-        desc = "Tab Go to next tab",
+        desc = "Go to next tab",
         lhs = "<M-f>",
         rhs = "gt",
       },
       {
-        desc = "Tab Go to previous tab",
+        desc = "Go to previous tab",
         lhs = "<M-b>",
         rhs = "gT",
       },
