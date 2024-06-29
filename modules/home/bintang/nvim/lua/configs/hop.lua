@@ -6,12 +6,8 @@ return {
         {
           desc = "Word",
           lhs = "<C-f>",
-          rhs = "",
-        },
-        {
-          desc = "Word",
-          lhs = "<C-f>",
           rhs = "<cmd>HopWord<cr>",
+          opts = { remap = true },
         },
         {
           desc = "Word",
