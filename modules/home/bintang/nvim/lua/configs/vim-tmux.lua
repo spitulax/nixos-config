@@ -1,7 +1,7 @@
 ---@type PluginConfig
 return {
   mappings = {
-    Navigation = {
+    TmuxNavigation = {
       n = {
         {
           desc = "Window left",
