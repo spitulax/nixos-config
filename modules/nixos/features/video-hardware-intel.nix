@@ -6,8 +6,8 @@
 , lib
 , ...
 }: {
-  hardware.opengl.enable = lib.mkForce true;
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.enable = lib.mkForce true;
+  hardware.graphics.extraPackages = with pkgs; [
     intel-media-driver
     libvdpau-va-gl
   ];

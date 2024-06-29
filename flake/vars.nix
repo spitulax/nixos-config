@@ -1,4 +1,3 @@
-# Variables that are shared with configs, modules, etc. so they are declared in flake
 {
   # Binary cache substituters
   substituters = [
