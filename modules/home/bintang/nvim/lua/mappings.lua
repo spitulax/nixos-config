@@ -27,7 +27,7 @@ local mappings = {
         desc = "Enter shell command mode",
         lhs = "!",
         rhs = ":!",
-        opts = { nowait = true },
+        opts = { nowait = true, remap = true },
       },
       {
         desc = "Execute normal mode commands",
@@ -91,21 +91,21 @@ local mappings = {
       {
         desc = "Scroll left",
         lhs = "(",
-        rhs = "zh",
+        rhs = "z<Left>",
       },
       {
         desc = "Scroll right",
         lhs = ")",
-        rhs = "zh",
+        rhs = "z<Right>",
       },
       {
         desc = "Scroll down",
-        lhs = "<M-m>",
-        rhs = "<C-y>",
+        lhs = "<M-n>",
+        rhs = "<C-e>",
       },
       {
         desc = "Scroll up",
-        lhs = "<M-n>",
+        lhs = "<M-m>",
         rhs = "<C-y>",
       },
       {
@@ -236,6 +236,9 @@ local mappings = {
         desc = "Close all other buffers",
         lhs = "<leader>bo",
         rhs = function()
+          local key = vim.api.nvim_replace_termcodes("<C-w>o", true, false, true)
+          vim.api.nvim_feedkeys(key, "n", false)
+          vim.cmd("")
           for i = 1, vim.fn.bufnr("$") do
             if vim.fn.bufexists(i) == 1 and i ~= vim.fn.bufnr("%") then
               MiniBufremove.delete(i)
@@ -247,6 +250,8 @@ local mappings = {
         desc = "Close all buffers",
         lhs = "<leader>bx",
         rhs = function()
+          local key = vim.api.nvim_replace_termcodes("<C-w>o", true, false, true)
+          vim.api.nvim_feedkeys(key, "n", false)
           for i = 1, vim.fn.bufnr("$") do
             if vim.fn.bufexists(i) == 1 then
               MiniBufremove.delete(i)
