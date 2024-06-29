@@ -7,6 +7,41 @@ This is my [NixOS](https://nixos.org/) configuration for my systems with
 
 ![](./assets/screenshot.png)
 
+## Structure
+
+This is my first attempt at centralizing NixOS configuration. This repo starts out humbly before
+gradually turning into a mess. The current structure emerged slowly from me trying to refactor parts
+of the config one at a time and from old structure that's stuck from the dawn of this repo, so there
+was no planned structuring but I'm happy with this (for now).
+
+- [`assets/`](./assets): Useless pictures
+- [`flake/`](./flake): Stuff to be imported by [`flake.nix`](./flake.nix)
+  - [`configs.nix`](./flake/configs.nix): Declaration of configs
+  - [`vars.nix`](./flake/vars.nix): Variables that are shared with configs, modules, etc. so they
+    are declared in flake
+- [`hosts/`](./hosts): Host-specific configs
+- [`lib/`](./lib): Helper functions (imported as `myLib` to flake)
+- [`modules/`](./modules): See [here](./modules/README.md)
+- [`overlays/`](./overlays): Nix overlays (imported to flake)
+- [`packages/`](./packages): Nix packages and scripts I won't bother to move into separate repo
+- [`secrets/`](./secrets): See [here](./secrets/README.md)
+- [`templates/`](./templates): Template for projects that I can just pull into a blank directory
+  with `nix flake init -t self#<name>` and it's just SO nice.
+- [`users/`](./users): See [here](./users/README.md)
+- [`flake.nix`](./flake.nix): The root of this entire repo
+- [`default.nix`](./default.nix): Mostly there so I can use `lib/` from REPL
+- [`Makefile`](./Makefile): Command shortener, e.g. `make nixos` for building NixOS configs,
+  `make home` for building Home Manager configs, etc.
+
+## REPL Tricks
+
+Adding something to the flake's output means that it will be easily accessible from Nix REPL. The
+idea is that the REPL is the best place to just quickly test the configs. So I've added some things
+to the flake's output for easy access and also I've made so that if you load this flake in Nix REPL,
+configurations declared in `./flake/configs.nix` are easily accessible by using `nixos-<hostname>`
+for NixOS configs or `home-<username>-<hostname>` for Home Manager configs. This makes searching for
+options and debugging much more convenient.
+
 ## Components
 
 Here are some of the programs configured in this repo.
@@ -56,7 +91,7 @@ Here are some of the programs configured in this repo.
 
 ## Cool Dotfiles
 
-Dotfiles by other people that massively helped my nix journey.
+Dotfiles by other people that massively helped my Nix journey.
 
 - <https://github.com/librephoenix/nixos-config>
 - <https://github.com/jakehamilton/config>

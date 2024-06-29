@@ -20,9 +20,9 @@ with `ssh-to-age -private-key -i /etc/ssh/ssh_host_ed25519_key > /etc/age/host.t
 the ssh key is not password protected. `config.sops.age.sshKeyPaths` and
 `config.sops.gnupg.sshKeyPaths` should be empty.
 
-## Home manager config
+## Home Manager config
 
-Home manager sops config is located in `../modules/home/<username>/sops.nix`. Each user also expects
+Home Manager sops config is located in `../modules/home/<username>/sops.nix`. Each user also expects
 a default sops file which is `../secrets/users/<username>/secrets.yaml`, create it for each user.
 
 The age key is located in `$XDG_DATA_HOME/age/user.txt` with `600` permission. The age key should be

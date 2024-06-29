@@ -16,7 +16,7 @@
           inherit system;
           overlays = [
             (final: prev: {
-              odin = mypkgs.packages.${final.system}.odin;
+              inherit (mypkgs.packages.${final.system}) odin;
             })
           ];
         });
@@ -24,7 +24,7 @@
     {
       devShells = eachSystem (system:
         let
-          pkgs = pkgsFor.${system};
+          pkgs = pkgsFor.${ system};
         in
         {
           default = pkgs.mkShell {
