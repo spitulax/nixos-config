@@ -5,6 +5,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
+    nixpkgs-temp.url = "github:nixos/nixpkgs/2893f56de08021cffd9b6b6dfc70fd9ccd51eb60";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -44,21 +45,30 @@
 
       myLib = import ./lib { inherit (nixpkgs) lib; };
       lib = nixpkgs.lib // home-manager.lib;
-      specialArgs = { inherit inputs outputs myLib; };
+      specialArgs = { inherit inputs outputs myLib tempPkgsFor; };
 
       # Nixpkgs instances per architecture
       systems = [ "x86_64-linux" "aarch64-linux" ];
-      pkgsFor = lib.genAttrs systems (system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-          overlays = with outputs.overlays; [
-            add
-            modify
-          ];
-        }
-      );
+      genNixpkgs = input: overlay:
+        lib.genAttrs systems (system:
+          import input {
+            inherit system;
+            config.allowUnfree = true;
+            overlays = lib.optionals overlay (with outputs.overlays; [
+              add
+              modify
+            ]);
+          }
+        );
+
+      # Main nixpkgs
+      pkgsFor = genNixpkgs nixpkgs true;
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+
+      # Temporary nixpkgs
+      tempPkgsFor = {
+        spotdl = genNixpkgs inputs.nixpkgs-temp false;
+      };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
       replConfigShortcuts =
@@ -94,7 +104,7 @@
 
       # Expose these to output for easier access
       inherit (self) inputs outputs;
-      inherit pkgsFor myLib lib;
+      inherit pkgsFor tempPkgsFor myLib lib;
       inherit specialArgs;
       inherit vars;
     }

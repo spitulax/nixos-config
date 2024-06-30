@@ -71,7 +71,7 @@
         ];
       }
       {
-        class = "/brave-browser|com.rtosta.zapzap|org.kde.dolphin/";
+        class = "/brave-.*|org\\.kde\\.dolphin/";
         mappings = [
           { input = "nav_previous"; output = "Control{Shift{Tab}}"; }
           { input = "nav_next"; output = "Control{Tab}"; }

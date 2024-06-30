@@ -17,9 +17,10 @@ vim.api.nvim_create_autocmd("FileType", {
     for _, ft in ipairs(indent_four_fts) do
       if vim.bo[arg.buf].filetype == ft then
         indent(4)
-        break
+        return
       end
     end
+    indent(2)
   end,
 })
 

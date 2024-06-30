@@ -33,7 +33,6 @@
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark Reader
       { id = "gebbhagfogifgggkldgodflihgfeippi"; } # Return YouTube Dislike
       { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # SponsorBlock for YouTube
-      { id = "pachckjkecffpdphbpmfolblodfkgbhl"; } # vidIQ Vision for YouTube
     ];
   };
 
@@ -58,6 +57,7 @@
       Bitwarden.id = "hophjnbpmamkldmdaeggjlnpfechpkfl";
       "Telegram Web".id = "majiogicmcnmdhhlgmkahaleckhjbmlk";
       "Proton Mail".id = "jnpecgipniidlgicjocehkhajgdnjekh";
+      "WhatsApp Web".id = "hnpfjngllnobngcgfapefoaidbinmjnm";
     };
   };
 }

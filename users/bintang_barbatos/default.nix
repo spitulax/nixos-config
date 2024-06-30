@@ -14,7 +14,6 @@
       mpv
       nomacs
       obs
-      zapzap
       zathura
     ])
     ++

@@ -63,7 +63,6 @@ Here are some of the programs configured in this repo.
 
 - **Browser**: [Brave]
 - **Screen Recording**: [OBS]
-- **WhatsApp Client**: [ZapZap]
 - **Password Manager**: [Bitwarden]
 - **File Manager**: [Dolphin]
 - **Screenshot**: [Gripper]
@@ -111,7 +110,6 @@ Dotfiles by other people that massively helped my Nix journey.
 [Btop]: https://github.com/aristocratos/btop
 [Brave]: https://brave.com/
 [OBS]: https://obsproject.com/
-[ZapZap]: https://github.com/zapzap-linux/zapzap
 [Bitwarden]: https://bitwarden.com/
 [Neovim]: https://github.com/neovim/neovim
 [Godot Engine]: https://github.com/godotengine/godot

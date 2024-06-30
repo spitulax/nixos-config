@@ -148,6 +148,8 @@ window#waybar.empty #window {
 #buttons *,
 #menu * {
   color: @subtext0;
+  background-color: transparent;
+  border: 0;
 }
 #menu *:hover {
   color: @subtext1;

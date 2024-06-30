@@ -14,6 +14,10 @@
     # spotdl is supposed to use ffmpeg 4
     # otherwise downloading large albums will make it stuck
     # https://github.com/spotDL/spotify-downloader/blob/v4.2.5/spotdl/utils/ffmpeg.py#L37
-    spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
+    spotdl =
+      let
+        pkgs = outputs.tempPkgsFor.spotdl.${final.system};
+      in
+      pkgs.spotdl.override { ffmpeg = pkgs.ffmpeg_4; };
   };
 }

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Start tray icons
-killall .zapzap-wrapped; zapzap &
 killall .blueman-applet; blueman-applet &
 killall .nm-applet-wrap; nm-applet &
 
