@@ -1,31 +1,14 @@
-local function indent(n)
-  vim.opt.shiftwidth = n
-  vim.opt.tabstop = n
-  vim.opt.softtabstop = n
-end
+require("internals.languages").autocmds()
 
-local indent_four_fts = {
-  "c",
-  "cpp",
-  "rust",
-  "sh",
-  "odin",
-}
-
-vim.api.nvim_create_autocmd("FileType", {
-  callback = function(arg)
-    for _, ft in ipairs(indent_four_fts) do
-      if vim.bo[arg.buf].filetype == ft then
-        indent(4)
-        return
-      end
-    end
-    indent(2)
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    require("base46").load_all_highlights()
   end,
 })
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    require("base46").load_all_highlights()
+    vim.cmd("TSEnable highlight")
+    vim.cmd("TSEnable indent")
   end,
 })

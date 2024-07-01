@@ -3,75 +3,40 @@
 My [Neovim] config uses [NvChad] for the "base" config. NvChad also sets up [lazy.nvim] for the
 plugin manager.
 
+## Structure
+
+- [`internals/`]: Turns sort of declarative configs into something neovim can use.
+  - [`classes.lua`](./lua/internals/classes.lua): Class definition, documentation for objects.
+  - [`for_lazy.lua`](./lua/internals/for_lazy.lua): Importing plugin specs to Lazy (kind of hacky).
+  - [`languages.lua`](./lua/internals/languages.lua): Parses `LanguageConfig` objects defined in
+    [`languages/`].
+  - [`mappings.lua`](./lua/internals/mappings.lua): Parses [`mappings.lua`] and also `mappings`
+    field of `PluginConfig` objects defined in [`plugins/`].
+  - [`plugins.lua`](./lua/internals/plugins.lua): Parses `PluginConfig` objects defined in
+    [`plugins/`].
+- [`languages/`]: Language options, e.g. LSPs, Formatters, Autocommands. Each file is named
+  `<filetype>.lua` and returns `LanguageConfig` object.
+- [`plugins/`]: Plugin spec definitions. Each file returns `PluginConfig` object. Also contains a
+  short description of the plugin.
+- [`ui/`]: Highlights, statusline, and tabufline config. Used only in [`chadrc.lua`].
+- [`autocmds.lua`]: User defined autocommands
+- [`chadrc.lua`]: NvChad config
+- [`mappings.lua`]: General mapping definitions.
+- [`options.lua`]: User defined `init.lua`.
+- [`utils.lua`]: Utility functions.
+
 ## Configuration
 
 ### Configuring key mappings
 
-A mapping should be defined in [`mappings.lua`] if it's a general mapping, for plugin mapping it
-should be defined in the plugin's config file. For more information see [here](#mappings).
+A mapping should be defined in [`mappings.lua`] if it's a general mapping, for plugin mapping Define
+`mappings` in `PluginConfig` object.
 
 ### Adding plugins
 
-Add a new table to [`plugins.lua`] containing the plugin definition with the
-[Lazy spec](https://github.com/folke/lazy.nvim?tab=readme-ov-file#-plugin-spec). By default, plugins
-are lazy loaded. Don't forget to add the load condition or add this for the default load condition!
-
-```lua
-{
-  -- ...
-  event = "User FilePost",
-  -- ...
-}
-```
-
-### Config location
-
-- Neovim-specific configs are located in [`options.lua`].
-- NvChad-specific configs are located in [`chadrc.lua`].
-- Mappings are configured in [`mappings.lua`].
-- Highlights are configured in [`highlight.lua`].
-- Autocommands are configured in [`autocmds.lua`].
-- For a detail about [`plugins.lua`] see above.
-- [`statusline.lua`] is used to modify NvChad builtin statusline.
-- [`tabufline.lua`] is used to modify NvChad builtin tabline.
-- [`utils.lua`] contains helper functions for the neovim config and [`classes.lua`] contains some
-  types for documentation purpose.
-
-### Configuring plugins
-
-Plugin-specific configs are located in separate files for each plugins in
-[`configs/`](./lua/configs) directory. Each file should return a table of type `PluginConfig`, see
-[`classes.lua`].
-
-You must explicitly state in [`plugins/init.lua`] that the plugin will use a field of
-`PluginConfig`.
-
-#### `config`
-
-```lua
-{
-  -- ...
-  -- the function should accept arguments defined in the Lazy spec
-  -- <module> should be located in ./lua/configs/ so the module name is prepended with `configs.`
-  config = require("<module>").config,
-  -- ...
-}
-```
-
-#### `opts`
-
-```lua
-{
-  -- ...
-  opts = require("<module>").opts,
-  -- ...
-}
-```
-
-#### `mappings`
-
-Once you define `mappings` in plugin config. This will not be referenced in [`plugins/init.lua`],
-instead you must add the module name of the config to the `plugins` table in [`mappings.lua`].
+Add a new file into [`plugins/`] that returns `PluginConfig` object. By default, plugins are lazy
+loaded. Don't forget to add the load condition or change `PluginConfig.spec.event` to
+`"User FilePost"` for the default load condition!
 
 ## `lazy-lock.json`
 
@@ -82,21 +47,18 @@ the lock file in `~/.config/nvim` and then updating the lock file in this repo.
 
 ## TODO
 
-- [ ] List the plugins that are installed for documentation and future reference
 - [ ] vim-visual-multi keybinding isn't configured. I remember it was broken or it didn't play well
       with other keybindings. I may replace it with another plugin
 
 [Neovim]: https://github.com/neovim/neovim
 [NvChad]: https://github.com/NvChad/NvChad/tree/v2.5
 [lazy.nvim]: https://github.com/folke/lazy.nvim
-[`mappings.lua`]: ./lua/mappings.lua
-[`plugins.lua`]: ./lua/plugins/init.lua
-[`options.lua`]: ./lua/options.lua
-[`chadrc.lua`]: ./lua/chadrc.lua
-[`highlight.lua`]: ./lua/highlight.lua
+[`internals/`]: ./lua/internals
+[`languages/`]: ./lua/languages
+[`plugins/`]: ./lua/plugins
+[`ui/`]: ./lua/ui
 [`autocmds.lua`]: ./lua/autocmds.lua
-[`statusline.lua`]: ./lua/statusline.lua
-[`tabufline.lua`]: ./lua/tabufline.lua
+[`chadrc.lua`]: ./lua/chadrc.lua
+[`mappings.lua`]: ./lua/mappings.lua
+[`options.lua`]: ./lua/options.lua
 [`utils.lua`]: ./lua/utils.lua
-[`classes.lua`]: ./lua/classes.lua
-[`plugins/init.lua`]: ./lua/plugins/init.lua

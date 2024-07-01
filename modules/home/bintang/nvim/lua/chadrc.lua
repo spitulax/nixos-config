@@ -1,8 +1,7 @@
----@diagnostic disable: assign-type-mismatch
 ---@type ChadrcConfig
 local M = {}
 
-local highlight = require("highlight")
+local highlight = require("ui.highlight")
 
 M.ui = {
   theme = "catppuccin",
@@ -18,9 +17,9 @@ M.ui = {
     style = "bordered",
   },
 
-  statusline = require("statusline"),
+  statusline = require("ui.statusline"),
 
-  tabufline = require("tabufline"),
+  tabufline = require("ui.tabufline"),
 
   nvdash = {
     load_on_startup = true,

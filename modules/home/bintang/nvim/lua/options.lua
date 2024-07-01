@@ -28,6 +28,9 @@ opt.scrolloff = 5
 opt.sidescrolloff = 10
 opt.sidescroll = 10
 
-o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
-g.c_syntax_for_h  = 1
+g.c_syntax_for_h = 1
+g.tmux_navigator_disable_when_zoomed = 1
+g.tmux_navigator_no_mappings = 1
+g.default_indent = 2

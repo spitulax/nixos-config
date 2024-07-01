@@ -44,13 +44,11 @@ M.mymap = function(mode, m)
   vim.keymap.set(mode, m.lhs, m.rhs, opts)
 end
 
----@param tbl MappingTable
----@param plugins string[]
-M.apply_mappings = function(tbl, plugins)
-  ---@type MappingTable
-  local mappings = tbl
-  for _, v in ipairs(plugins) do
-    mappings = vim.tbl_deep_extend("error", mappings, require(v).mappings)
+---@param tbls MappingTable[]
+M.apply_mappings = function(tbls)
+  local mappings = {}
+  for _, v in ipairs(tbls) do
+    mappings = vim.tbl_deep_extend("error", mappings, v)
   end
 
   for section_name, section in pairs(mappings) do
@@ -65,6 +63,31 @@ M.apply_mappings = function(tbl, plugins)
       end
     end
   end
+end
+
+-- HACK:
+---@type string
+---@diagnostic disable-next-line: assign-type-mismatch
+M.config_path = vim.fn.stdpath("config")
+assert(type(M.config_path) == "string")
+
+---@type string
+M.plugin_config_path = vim.fs.joinpath(M.config_path, "lua/plugins")
+
+---@type string
+M.language_config_path = vim.fs.joinpath(M.config_path, "lua/languages")
+
+---@param name string
+---@param opts table
+M.setup = function(name, opts)
+  require(name).setup(opts)
+end
+
+---@param n number
+M.indent = function(n)
+  vim.opt.shiftwidth = n
+  vim.opt.tabstop = n
+  vim.opt.softtabstop = n
 end
 
 return M

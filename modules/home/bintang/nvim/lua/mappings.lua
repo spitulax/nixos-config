@@ -1,26 +1,7 @@
 local utils = require("utils")
 
--- Plugins
-local plugins = {
-  "configs.blankline",
-  "configs.conform",
-  "configs.diffview",
-  "configs.gitsigns",
-  "configs.hop",
-  "configs.icon-pick",
-  "configs.leap",
-  "configs.neogit",
-  "configs.neorg",
-  "configs.nvimtree",
-  "configs.spectre",
-  "configs.telescope",
-  "configs.todo",
-  "configs.vim-tmux",
-  "configs.whichkey",
-}
-
 ---@type MappingTable
-local mappings = {
+return {
   General = {
     a = {
       {
@@ -32,7 +13,7 @@ local mappings = {
       {
         desc = "Execute normal mode commands",
         lhs = "<C-n>",
-        rhs = ":norm ",
+        rhs = ":Norm ",
         opts = { nowait = true },
       },
     },
@@ -454,5 +435,3 @@ local mappings = {
     },
   },
 }
-
-utils.apply_mappings(mappings, plugins)

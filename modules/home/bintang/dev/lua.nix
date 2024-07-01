@@ -2,7 +2,7 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    luajit
+    luajitPackages.lua
     stylua
     lua-language-server
   ];

@@ -1,4 +1,5 @@
 { pkgs
+, lib
 , ...
 }: {
   programs.neovim = {
@@ -6,11 +7,18 @@
     withNodeJs = false;
     withPython3 = true;
     withRuby = false;
-    extraPackages = with pkgs; [
-      # required for luarocks.nvim
-      lua51Packages.lua
-      lua51Packages.luarocks-nix
+    extraWrapperArgs = [
+      "--prefix"
+      "PATH"
+      ":"
+      "${lib.makeBinPath (with pkgs; [
+        lua51Packages.lua
+        lua51Packages.luarocks-nix
+      ])}"
     ];
+    # extraPackages = with pkgs; [
+    #
+    # ];
     # extraPython3Packages = ps: with ps; [
     #   pynvim
     # ];
