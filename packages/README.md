@@ -7,11 +7,14 @@ Build using `nix build .#<name>`
 ## List
 
 - `scripts`: Symlink join of many simple bash scripts to make my life easier
+
 > Contains multiple scripts:
+>
 > - `brightness`: Control monitor brightness
 > - `clean`: Wrapper to `nix store gc` that also deletes old profiles
 > - `lazyup`: A hacky (stupid) way to update/install lazy.nvim plugins
 > - `notes`: Open $NOTES_DIR in Neovim
+> - `remind`: Wrap a command to send notification when completed
 > - `reminder`: Simple (scuffed) reminder with notify-send
 > - `screenshot`: Wrapper script to grim (wayland screenshot)
 > - `timeinfo`: Print system uptime or system installation age
