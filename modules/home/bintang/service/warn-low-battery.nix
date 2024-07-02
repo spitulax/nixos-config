@@ -9,7 +9,7 @@ let
       ${text}
     '';
 
-  # TODO: BAT0 is harcoded
+  # NOTREALLYIMPORTANT: BAT0 is harcoded
   script = ''
     HAS_SENT=0
     while :; do

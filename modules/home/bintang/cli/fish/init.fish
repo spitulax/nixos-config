@@ -58,4 +58,12 @@ function extract
   end
 end
 
+function where -a prog -w which
+  realpath (which $prog)
+end
+
+function upmake -a target -w make
+  make -C (dirname (upfind . -name Makefile)) $target
+end
+
 ######

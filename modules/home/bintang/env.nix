@@ -17,6 +17,9 @@ in
     FLAKE = "${home}/Config";
     GPG_TTY = "$(tty)";
     WINEPREFIX = "${config.xdg.dataHome}/wine";
+    NIXOS_PROFILE = "/nix/var/nix/profiles/system";
+    HM_PROFILE = "${config.xdg.stateHome}/nix/profiles/home-manager";
+    USER_PROFILE = "${config.xdg.stateHome}/nix/profiles/profile"; # aka ~/.nix-profile
   };
   xdg = {
     enable = true;

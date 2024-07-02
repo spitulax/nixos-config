@@ -39,7 +39,7 @@ window#waybar {
   color: @red
 }
 #workspaces button:hover * {
-  background-color: transparent; /* BUG: not actually transparent */
+  background-color: transparent;
   font-size: 15pt;
 }
 

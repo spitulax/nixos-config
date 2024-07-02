@@ -7,6 +7,19 @@ return {
     event = "User FilePost",
   },
 
+  opts = function()
+    return {
+      keywords = {
+        MAYBEFIXED = { icon = "", color = "hint", alt = { "OLDBUG", "OLDISSUE" } },
+        MAYBE = {
+          icon = "✓",
+          color = "info",
+          alt = { "LOWTODO", "NOTREALLYIMPORTANT", "NOTIMPORTANT" },
+        },
+      },
+    }
+  end,
+
   mappings = function()
     return {
       Todo = {

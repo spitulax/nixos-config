@@ -4,6 +4,12 @@
 , config
 , ...
 }: {
+  home.packages = with pkgs; [
+    nix-output-monitor
+    nvd
+    (nh.override { inherit (pkgs) nix-output-monitor nvd; })
+  ];
+
   nix = {
     package = lib.mkForce pkgs.nix;
     settings = {

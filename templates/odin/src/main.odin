@@ -2,13 +2,20 @@ package main
 
 import "core:fmt"
 import "core:mem"
+import "core:os"
+_ :: mem
 
 PROG_NAME :: #config(PROG_NAME, "")
 PROG_VERSION :: #config(PROG_VERSION, "")
 
-_ :: mem
+start :: proc() -> (ok: bool) {
+    fmt.printfln("Hello, ODIN! %s version %s", PROG_NAME, PROG_VERSION)
+    return true
+}
 
 main :: proc() {
+    ok: bool
+    defer os.exit(!ok)
     defer free_all(context.temp_allocator)
     when ODIN_DEBUG {
         mem_track: mem.Tracking_Allocator
@@ -33,6 +40,6 @@ main :: proc() {
         }
     }
 
-    fmt.printfln("Hello, ODIN! %s version %s", PROG_NAME, PROG_VERSION)
+    ok = start()
 }
 

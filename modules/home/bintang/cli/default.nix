@@ -19,6 +19,7 @@
     custom.scripts
     mypkgs.lexurgy
     mypkgs.crt
+    jq
   ];
 
   home.file.".local/share/spotdl/config.json".text = ''
