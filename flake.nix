@@ -28,6 +28,8 @@
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
 
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+
     #############################
   };
 
@@ -49,14 +51,15 @@
 
       # Nixpkgs instances per architecture
       systems = [ "x86_64-linux" "aarch64-linux" ];
-      genNixpkgs = input: overlay:
+      genNixpkgs = input: applyOverlay:
         lib.genAttrs systems (system:
           import input {
             inherit system;
             config.allowUnfree = true;
-            overlays = lib.optionals overlay (with outputs.overlays; [
+            overlays = lib.optionals applyOverlay (with outputs.overlays; [
               add
               modify
+              overlay
             ]);
           }
         );

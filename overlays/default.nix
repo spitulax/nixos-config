@@ -20,4 +20,13 @@
       in
       pkgs.spotdl.override { ffmpeg = pkgs.ffmpeg_4; };
   };
+
+  # Compose existing overlays
+  overlay =
+    let
+      overlays = with inputs; [
+        emacs-overlay.overlays.default
+      ];
+    in
+    final: prev: prev.lib.composeManyExtensions overlays final prev;
 }
