@@ -20,7 +20,7 @@
       };
       user = {
         name = "Bintang";
-        email = "bintangadiputrapratama@gmail.com";
+        email = "bintangadiputra@proton.me";
         signingkey = "929ED6C40414D3F5";
       };
       commit.gpgSign = true;
