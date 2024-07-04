@@ -1,6 +1,4 @@
 { pkgs
-, config
-, outputs
 , ...
 }: {
   programs.gh = {
@@ -17,8 +15,11 @@
     };
   };
 
-  sops.secrets.gh-hosts = {
-    sopsFile = "${outputs.vars.usersSecretsPath}/bintang/gh-hosts.yaml";
-    path = "${config.xdg.configHome}/gh/hosts.yml";
-  };
+  xdg.configFile."gh/hosts.yml".text = ''
+    github.com:
+        git_protocol: ssh
+        users:
+            spitulax:
+        user: spitulax
+  '';
 }

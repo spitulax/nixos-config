@@ -19,7 +19,7 @@
         defaultBranch = "main";
       };
       user = {
-        name = "Bintang";
+        name = "Bintang Adiputra Pratama";
         email = "bintangadiputra@proton.me";
         signingkey = "929ED6C40414D3F5";
       };
