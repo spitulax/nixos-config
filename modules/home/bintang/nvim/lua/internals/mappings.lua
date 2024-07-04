@@ -1,14 +1,23 @@
 local general_mapping = require("mappings")
-local plugins = require("internals.plugins")
 local utils = require("utils")
 
----@type MappingTable[]
-local mappings = {}
-table.insert(mappings, general_mapping)
-for _, v in pairs(plugins.configs) do
-  ---@type PluginConfig
+local mappings = general_mapping
+for _, v in pairs(utils.plugin_configs()) do
   if vim.is_callable(v.mappings) then
-    table.insert(mappings, v.mappings())
+    mappings = vim.tbl_deep_extend("error", mappings, v.mappings())
   end
 end
-utils.apply_mappings(mappings)
+
+for section_name, section in pairs(mappings) do
+  for mode, maps in pairs(section) do
+    assert(vim.isarray(maps), "Mode mapping is not an array at section " .. section_name)
+    for _, map in ipairs(maps) do
+      local actual_mode = { mode }
+      if actual_mode[1] == "a" then
+        actual_mode = { "n", "v", "x" }
+      end
+      map.desc = section_name .. " " .. map.desc
+      utils.mymap(actual_mode, map)
+    end
+  end
+end

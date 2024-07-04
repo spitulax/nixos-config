@@ -5,10 +5,6 @@ return {
   spec = {
     "ziontee113/icon-picker.nvim",
     cmd = { "IconPickerYank", "IconPickerInsert" },
-    -- opts = require("plugins.icon-pick").opts,
-    -- config = function(_, opts)
-    --   require("icon-picker").setup(opts)
-    -- end,
   },
 
   opts = function()

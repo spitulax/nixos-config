@@ -44,27 +44,6 @@ M.mymap = function(mode, m)
   vim.keymap.set(mode, m.lhs, m.rhs, opts)
 end
 
----@param tbls MappingTable[]
-M.apply_mappings = function(tbls)
-  local mappings = {}
-  for _, v in ipairs(tbls) do
-    mappings = vim.tbl_deep_extend("error", mappings, v)
-  end
-
-  for section_name, section in pairs(mappings) do
-    for mode, maps in pairs(section) do
-      assert(vim.isarray(maps), "Mode mapping is not an array at section " .. section_name)
-      for _, map in ipairs(maps) do
-        if mode == "a" then
-          mode = { "n", "v", "x" }
-        end
-        map.desc = section_name .. " " .. map.desc
-        M.mymap(mode, map)
-      end
-    end
-  end
-end
-
 -- HACK:
 ---@type string
 ---@diagnostic disable-next-line: assign-type-mismatch
@@ -88,6 +67,16 @@ M.indent = function(n)
   vim.opt.shiftwidth = n
   vim.opt.tabstop = n
   vim.opt.softtabstop = n
+end
+
+---@return table<string, PluginConfig>
+M.plugin_configs = function()
+  local configs = {}
+  for name, _ in vim.fs.dir(M.plugin_config_path) do
+    local module_name = "plugins." .. name:gsub(".lua", "", 1)
+    configs[module_name] = require(module_name)
+  end
+  return configs
 end
 
 return M

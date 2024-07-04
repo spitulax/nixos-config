@@ -23,7 +23,7 @@ require("lazy").setup({
     end,
   },
 
-  { import = "internals.for_lazy" },
+  { import = "internals.plugins" },
 }, {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
