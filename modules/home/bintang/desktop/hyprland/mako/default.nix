@@ -30,10 +30,15 @@
       [urgency=normal]
       text-color=#cdd6f4
 
-      [urgency=high]
+      [urgency=critical]
       text-color=#f38ba8
       layer=overlay
       default-timeout=0
+
+      [urgency=critical body~="^www\.youtube\.com"]
+      text-color=#cdd6f4
+      layer=top
+      default-timeout=5000
 
       [grouped]
       format=(%g) <i><b>%a</b></i> ⋅ <b>%s</b>\n<small>%b</small>
@@ -44,6 +49,9 @@
       [mode=do-not-disturb]
       invisible=1
       on-notify=none
+
+      [mode=do-not-disturb urgency=critical]
+      invisible=0
 
       [app-name=popup]
       invisible=0

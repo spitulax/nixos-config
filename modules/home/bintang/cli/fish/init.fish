@@ -66,4 +66,10 @@ function upmake -a target -w make
   make -C (dirname (upfind . -name Makefile)) $target
 end
 
+function gethash -a url
+  set -f out (nix store prefetch-file --json --hash-type sha256 "$url")
+  test $status -ne 0 && return 1
+  echo "$out" | jq -r .hash
+end
+
 ######
