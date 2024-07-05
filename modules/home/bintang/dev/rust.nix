@@ -3,11 +3,8 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    rustc
-    cargo
-    clippy
-    rustfmt
     rust-analyzer
+    rust-bin.stable.latest.default
   ];
 
   home.sessionPath = [

@@ -6,8 +6,10 @@
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-on-droid.url = "github:nix-community/nix-on-droid";
 
@@ -17,15 +19,24 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # https://github.com/hyprwm/Hyprland/issues/5891
 
-    auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
-    auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     #############################
   };
@@ -48,14 +59,15 @@
 
       # Nixpkgs instances per architecture
       systems = [ "x86_64-linux" "aarch64-linux" ];
-      genNixpkgs = input: overlay:
+      genNixpkgs = input: applyOverlays:
         lib.genAttrs systems (system:
           import input {
             inherit system;
             config.allowUnfree = true;
-            overlays = lib.optionals overlay (with outputs.overlays; [
+            overlays = lib.optionals applyOverlays (with outputs.overlays; [
               add
               modify
+              overlay
             ]);
           }
         );

@@ -16,4 +16,13 @@
     # https://github.com/spotDL/spotify-downloader/blob/v4.2.5/spotdl/utils/ffmpeg.py#L37
     spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
   };
+
+  # Compose existing overlays
+  overlay =
+    let
+      overlays = with inputs; [
+        rust-overlay.overlays.default
+      ];
+    in
+    final: prev: prev.lib.composeManyExtensions overlays final prev;
 }

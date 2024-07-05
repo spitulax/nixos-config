@@ -10,7 +10,7 @@
     wl-clipboard
     wtype
     brightnessctl
-    gnome.zenity
+    zenity
     libsForQt5.polkit-kde-agent
 
     # screenshot
