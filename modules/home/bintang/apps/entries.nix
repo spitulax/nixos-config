@@ -8,6 +8,7 @@
       exec = "xdg-open ${config.xdg.userDirs.extraConfig.SCREENSHOT_DIR}";
       icon = "folder";
       categories = [ "System" ];
+      terminal = true;
       type = "Application";
     };
     notes = {
