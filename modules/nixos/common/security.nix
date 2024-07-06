@@ -8,7 +8,11 @@ in
 {
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  environment.systemPackages = with pkgs; [ gcr ];
+  environment.systemPackages = with pkgs; [
+    gcr
+    libsecret
+  ];
+  programs.seahorse.enable = true;
   programs.gnupg.agent = {
     enable = true;
     pinentryPackage = lib.mkForce pkgs.pinentry-gnome3;

@@ -64,7 +64,8 @@ Here are some of the programs configured in this repo.
 - **Browser**: [Brave]
 - **Screen Recording**: [OBS]
 - **Password Manager**: [Bitwarden]
-- **File Manager**: [Dolphin]
+- **TUI File Manager**: [Yazi] [(details)](./modules/home/bintang/cli/yazi)
+- **GUI File Manager**: [Dolphin]
 - **Screenshot**: [Gripper]
 - **Media Player**: [Mpv]
 - **Painting**: [Krita]
@@ -130,3 +131,4 @@ Dotfiles by other people that massively helped my Nix journey.
 [Fluent GTK Theme]: https://github.com/vinceliuice/Fluent-gtk-theme
 [Materia KDE]: https://github.com/PapirusDevelopmentTeam/materia-kde
 [sops.nix]: https://github.com/Mic92/sops-nix
+[Yazi]: https://github.com/sxyazi/yazi
