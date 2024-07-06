@@ -23,7 +23,7 @@
       rm = "trash-put -v";
       oldrm = "/usr/bin/env rm";
       restore = "trash-restore";
-      cat = "_fzf_preview_file";
+      cat = "bat --style numbers";
       oldcat = "/usr/bin/env cat";
       # colorizer
       grep = "grep --color";

@@ -43,6 +43,12 @@ function __fzf_edit_file
   end
 end
 
+# Run typed command paged
+function __run_page
+  commandline -i " &| less"
+  commandline -f execute
+end
+
 ######
 
 ### KEYBINDINGS ###
@@ -57,6 +63,7 @@ for mode in default insert
   bind --mode $mode \eh __tldr_currentline
   bind --mode $mode \cq exit
   bind --mode $mode \cc kill-whole-line repaint
+  bind --mode $mode \cp __run_page
 
   # fzf.fish
   bind --mode $mode \e\ce __fzf_edit_file

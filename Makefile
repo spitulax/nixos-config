@@ -1,4 +1,4 @@
-.PHONY: build nixos home update upgrade upinput clean delete check
+.PHONY: build nixos home update upgrade upinput clean delete check exam
 
 build: nixos
 	git add -A
@@ -30,3 +30,6 @@ delete:
 check:
 	statix check .
 	nix flake check
+
+exam:
+	nh os switch -- --show-trace -L -v

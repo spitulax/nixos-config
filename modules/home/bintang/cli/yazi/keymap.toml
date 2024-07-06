@@ -1,0 +1,54 @@
+[manager]
+
+prepend_keymap = [
+  { on = [ "<C-s>" ], run = 'shell "$SHELL" --block --confirm', desc = "Open shell here" },
+  { on = [ "l" ], run = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
+  { on = [ "<C-p>" ], run = "plugin --sync smart-paste", desc = "Paste into the hovered directory or CWD" },
+  { on = [ "c", "m" ], run = "plugin chmod", desc = "Chmod on selected files" },
+  { on = [ "T" ], run = "plugin --sync max-preview", desc = "Maximize or restore preview" },
+  { on = [ "<C-v>" ], run = "plugin --sync hide-preview", desc = "Hide or show preview" },
+  { on  = [ "<C-n>" ], run = "shell --confirm 'dragon -x -i -T \"$1\"'", desc = "Drag-and-drop" },
+  { on  = [ "<C-y>" ], run = '''
+    shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
+  ''', desc = "Yank to system clipboard"},
+  { on = [ "<C-f>" ], run = "filter --smart", desc = "Filter the files" },
+  { on = [ "F" ], run = "plugin smart-filter", desc = "Smart filter" },
+  { on = [ "f" ], run = "plugin jump-to-char", desc = "Jump to char" },
+  { on = [ "<A-d>" ], run = "plugin diff", desc = "Diff the selected with the hovered file" },
+  { on = [ "k" ], run = "plugin --sync arrow --args=-1", desc = "Move cursor up" },
+  { on = [ "j" ], run = "plugin --sync arrow --args=1", desc = "Move cursor down" },
+  { on = [ "<A-k>" ], run = "plugin --sync parent-arrow --args=-1", desc = "Move parent directory up" },
+  { on = [ "<A-j>" ], run = "plugin --sync parent-arrow --args=1", desc = "Move parent directory down" },
+
+  # Linemode
+  { on = [ "M", "s" ], run = "linemode size", desc = "Set linemode to size" },
+  { on = [ "M", "p" ], run = "linemode permissions", desc = "Set linemode to permissions" },
+  { on = [ "M", "m" ], run = "linemode mtime", desc = "Set linemode to mtime" },
+  { on = [ "M", "o" ], run = "linemode owner", desc = "Set linemode to owner" },
+  { on = [ "M", "n" ], run = "linemode none", desc = "Set linemode to none" },
+
+  # Shortcuts
+  { on = [ "g", "h" ], run = "cd ~", desc = "Go to home directory" },
+  { on = [ "g", "c" ], run = "cd $FLAKE", desc = "Go to config flake directory" },
+  { on = [ "g", "d" ], run = "cd $XDG_DOWNLOAD_DIR", desc = "Go to download directory" },
+  { on = [ "g", "t" ], run = "cd $TEMP_DIR", desc = "Go to user temp directory" },
+  { on = [ "g", "S" ], run = "cd $SYNC_DIR", desc = "Go to sync directory" },
+  { on = [ "g", "s" ], run = "cd $SCREENSHOT_DIR", desc = "Go to screenshots directory" },
+  { on = [ "g", "C" ], run = "cd $CAPTURE_DIR", desc = "Go to screen captures directory" },
+  { on = [ "g", "D" ], run = "cd $XDG_DOCUMENTS_DIR", desc = "Go to documents directory" },
+  { on = [ "g", "p" ], run = "cd $XDG_PICTURES_DIR", desc = "Go to pictures directory" },
+  { on = [ "g", "v" ], run = "cd $XDG_VIDEOS_DIR", desc = "Go to videos directory" },
+
+  # bookmarks.yazi
+  { on = [ "m" ], run = "plugin bookmarks --args=save", desc = "Bookmark current directory" },
+  { on = [ "'" ], run = "plugin bookmarks --args=jump", desc = "Jump to a bookmark" },
+  { on = [ "b", "d" ], run = "plugin bookmarks --args=delete", desc = "Delete a bookmark" },
+  { on = [ "b", "D" ], run = "plugin bookmarks --args=delete_all", desc = "Delete all bookmark" },
+]
+
+
+[input]
+
+prepend_keymap = [
+  { on = [ "<Esc>" ], run = "close", desc = "Cancel input" },
+]

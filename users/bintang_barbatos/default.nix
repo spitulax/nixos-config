@@ -6,7 +6,7 @@
     (with apps; [
       bottles
       browser
-      dolphin
+      # dolphin
       entries
       kitty
       # kooha
@@ -19,16 +19,19 @@
     ++
     (with cli; [
       ani-cli
+      bat
       btop
       cava
       default
       fish
       gh
       git
+      glow
       gpg
       neofetch
       ssh
       tmux
+      yazi
     ])
     ++
     (with desktop; [

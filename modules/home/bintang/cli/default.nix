@@ -8,18 +8,19 @@
     cloc
     fontpreview
     trash-cli
-    bat
     dust
     ncdu
     chafa
     yt-dlp
     ffmpeg
     spotdl
-    hexedit
+    hexyl
     custom.scripts
     mypkgs.lexurgy
     mypkgs.crt
     jq
+    ouch
+    poppler_utils
   ];
 
   home.file.".local/share/spotdl/config.json".text = ''

@@ -1,0 +1,40 @@
+[manager]
+sort_translit  = true
+linemode       = "size"
+show_hidden    = true
+scrolloff      = 5
+mouse_events   = [ "click", "scroll", "touch", "move", "drag" ]
+
+[opener]
+edit = [
+  { run = '${EDITOR} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+]
+open = [
+  { run = 'xdg-open "$@"', desc = "Open", for = "linux" },
+]
+reveal = [
+  { run = 'xdg-open "$(dirname "$0")"', desc = "Reveal", for = "linux" },
+  { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
+]
+extract = [
+  { run = 'ouch decompress "$1"', desc = "Extract here", for = "unix" },
+]
+play = [
+  { run = 'mpv "$@"', orphan = true, for = "unix" },
+  { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+]
+
+[plugin]
+append_previewers = [
+  { name = "*", run = "hexyl" },
+]
+prepend_previewers = [
+  { name = "*.md", run = "glow" },
+  { mime = "audio/*", run = "exifaudio"},
+	{ mime = "application/*zip", run = "ouch" },
+	{ mime = "application/x-tar", run = "ouch" },
+	{ mime = "application/x-bzip2", run = "ouch" },
+ 	{ mime = "application/x-7z-compressed", run = "ouch" },
+	{ mime = "application/x-rar", run = "ouch" },
+	{ mime = "application/x-xz", run = "ouch" },
+]

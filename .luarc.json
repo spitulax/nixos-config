@@ -1,6 +1,7 @@
 {
-    "diagnostics.globals": [
-        "vim",
-        "MiniBufremove"
-    ]
+  "diagnostics.globals": [
+    "vim",
+    "MiniBufremove"
+  ]
 }
+

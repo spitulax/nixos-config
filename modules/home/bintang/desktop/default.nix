@@ -27,6 +27,7 @@
     networkmanagerapplet
     pavucontrol
     playerctl
+    xdragon
   ];
 
   home.pointerCursor = {
