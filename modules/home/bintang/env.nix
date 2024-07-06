@@ -13,7 +13,8 @@ in
     EDITOR = "nvim";
     TERMINAL = "kitty";
     BROWSER = "brave";
-    FILE_MANAGER = "dolphin";
+    TUI_FILE_MANAGER = "yazi";
+    GUI_FILE_MANAGER = "dolphin";
     FLAKE = "${home}/Config";
     GPG_TTY = "$(tty)";
     WINEPREFIX = "${config.xdg.dataHome}/wine";

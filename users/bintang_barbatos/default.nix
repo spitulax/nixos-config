@@ -6,7 +6,7 @@
     (with apps; [
       bottles
       browser
-      # dolphin
+      dolphin
       entries
       kitty
       # kooha

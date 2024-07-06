@@ -17,8 +17,11 @@ case "$1" in
   "emoji")
     rofi -modi emoji -show emoji &
     ;;
-  "file-manager")
-    $FILE_MANAGER &
+  "gui-file-manager")
+    $GUI_FILE_MANAGER &
+    ;;
+  "tui-file-manager")
+    $TERMINAL $TUI_FILE_MANAGER &
     ;;
   "browser")
     $BROWSER &
