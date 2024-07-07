@@ -45,7 +45,7 @@ end
 
 # Run typed command paged
 function __run_page
-  commandline -i " &| less"
+  commandline -i " | less"
   commandline -f execute
 end
 
