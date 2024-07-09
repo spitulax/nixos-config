@@ -31,7 +31,10 @@ local modules = {
     return name
   end,
   diagnostics_enabled = function()
-    return vim.diagnostic.is_enabled() and " 󰗠  " or ""
+    return vim.diagnostic.is_enabled() and "" or " 󰩂󰍶  "
+  end,
+  autoformat_enabled = function()
+    return vim.g.disable_autoformat and " 󰉼󰍶  " or ""
   end,
 }
 
@@ -46,6 +49,7 @@ return {
     "%=",
     "diagnostics",
     "diagnostics_enabled",
+    "autoformat_enabled",
     "cursor_position",
     "filetype",
     "lsp_status",

@@ -54,7 +54,7 @@ return {
       formatters_by_ft = languages.formatters_by_ft(),
 
       format_on_save = function(bufnr)
-        if slow_format_filetypes[vim.bo[bufnr].filetype] then
+        if slow_format_filetypes[vim.bo[bufnr].filetype] or vim.g.disable_autoformat then
           return
         end
         local function on_format(err)

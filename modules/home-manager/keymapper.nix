@@ -13,17 +13,22 @@ let
   generateConfig = settings:
     let
       genContextDefinition = context:
-        "[" + pipe context [
-          (mapAttrsToList
-            (n: v:
-              if hasPrefix "no" n && v != null
-              then ''${removePrefix "no" n}!="${v}"''
-              else if v != null
-              then ''${n}="${v}"''
-              else null))
-          (filter (x: x != null))
-          (concatStringsSep " ")
-        ] + "]";
+        let
+          contextBody = pipe (removeAttrs context [ "stage" ]) [
+            (mapAttrsToList
+              (n: v:
+                if hasPrefix "no" n && v != null
+                then ''${removePrefix "no" n}!="${v}"''
+                else if v != null
+                then ''${n}="${v}"''
+                else null))
+            (filter (x: x != null))
+            (concatStringsSep " ")
+          ];
+        in
+        (optionalString context.stage "[stage]") +
+        (optionalString (context.stage && contextBody != "") "\n\n") +
+        (optionalString (contextBody != "") "[${contextBody}]");
 
       genMappingDefinition = mappings:
         optionalString (mappings != [ ])
@@ -37,7 +42,7 @@ let
       (concatStringsSep "\n\n"
         (zipListsWith
           (a: b:
-            if a == "[]" then b
+            if a == "" then b
             else if b == "" then a
             else a + "\n" + b)
           contextDefinitions
@@ -62,11 +67,11 @@ let
     options = {
       input = mkOption {
         type = types.str;
-        description = "Input expression of a mapping";
+        description = "Input expression of a mapping.";
       };
       output = mkOption {
         type = types.str;
-        description = "Output expression of a mapping";
+        description = "Output expression of a mapping.";
       };
     };
   };
@@ -102,6 +107,12 @@ let
         "Virtual1 !Virtual2"
         "State of one or more keys")
     ]) // {
+      stage = mkEnableOption null // {
+        description = ''
+          Whether to split the configuration into stages.
+          This option is equivalent to adding `[stage]` to the {file}`keymapper.conf`.";
+        '';
+      };
       mappings = mkOption {
         type = types.listOf mappingModule;
         default = [ ];
@@ -161,6 +172,7 @@ in
               { input = "Control{Q}"; output = "Alt{F4}"; }
             ];
           }
+          { stage = true; }
           {
             system = "Linux";
             noclass = "Thunar";

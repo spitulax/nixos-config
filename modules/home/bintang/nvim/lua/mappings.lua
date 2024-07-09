@@ -395,6 +395,15 @@ return {
         end,
       },
     },
+    n = {
+      {
+        desc = "Toggle autoformat on save",
+        lhs = "<leader>tf",
+        rhs = function()
+          vim.g.disable_autoformat = not vim.g.disable_autoformat
+        end,
+      },
+    },
   },
 
   LSP = {

@@ -33,4 +33,7 @@ o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,term
 g.c_syntax_for_h = 1
 g.tmux_navigator_disable_when_zoomed = 1
 g.tmux_navigator_no_mappings = 1
+
+-- Custom options
 g.default_indent = 2
+g.disable_autoformat = false

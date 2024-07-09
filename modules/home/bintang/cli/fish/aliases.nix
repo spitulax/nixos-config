@@ -15,6 +15,7 @@
       pkgs-sys = "nix-store -qR /run/current-system/sw";
       gcroots = "nix-store --gc --print-roots | less";
       profile-hist = "nix profile history --profile";
+      upinput = "nix flake lock --update-input";
       # misc. shortcuts
       vim = "nvim";
       ".." = "cd ..";

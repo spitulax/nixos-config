@@ -5,5 +5,7 @@
     nil
     statix
     nixpkgs-fmt
+    nixfmt-rfc-style
+    nurl
   ];
 }
