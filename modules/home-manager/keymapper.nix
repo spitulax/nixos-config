@@ -236,7 +236,7 @@ in
             cfg.extraConfig
             (generateConfig cfg.contexts)
           ]
-        ));
+        )) + "\n";
 
     systemd.user.services.keymapper = mkIf cfg.systemd.enable {
       Unit.Description = "Keymapper";
