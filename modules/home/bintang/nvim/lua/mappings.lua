@@ -415,7 +415,7 @@ return {
       },
       {
         desc = "Toggle diagnostic",
-        lhs = "<leader>dt",
+        lhs = "<leader>td",
         rhs = function()
           vim.diagnostic.enable(not vim.diagnostic.is_enabled())
         end,
