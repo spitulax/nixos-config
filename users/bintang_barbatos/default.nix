@@ -57,6 +57,7 @@
     ])
     ++
     (with gaming; [
+      games
       # lutris
       # misc
       wine

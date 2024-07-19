@@ -5,6 +5,7 @@
       accelProfile = "flat";
       accelSpeed = "0.4";
       tapping = false;
+      middleEmulation = true;
     };
     touchpad = {
       accelProfile = "adaptive";
