@@ -79,4 +79,13 @@ M.plugin_configs = function()
   return configs
 end
 
+---@param factor? number
+---@return string
+M.global_multiplier = function(factor)
+  if factor == nil then
+    factor = 1
+  end
+  return tostring(vim.g.global_multiplier * factor)
+end
+
 return M

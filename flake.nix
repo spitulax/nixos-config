@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    # TEMP:
+    nixpkgs-temp.url = "github:nixos/nixpkgs/feb2849fdeb70028c70d73b848214b00d324a497";
     nixpkgs.follows = "nixpkgs-unstable";
 
     home-manager = {
@@ -30,7 +32,7 @@
 
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-temp";
     };
 
     rust-overlay = {

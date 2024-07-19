@@ -37,3 +37,4 @@ g.tmux_navigator_no_mappings = 1
 -- Custom options
 g.default_indent = 2
 g.disable_autoformat = false
+g.global_multiplier = 10

@@ -16,6 +16,7 @@ return {
           color = "info",
           alt = { "LOWTODO", "NOTREALLYIMPORTANT", "NOTIMPORTANT" },
         },
+        TEMP = { icon = "󰅐", color = "error" },
       },
     }
   end,

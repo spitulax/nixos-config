@@ -72,12 +72,12 @@ return {
       {
         desc = "Scroll left",
         lhs = "(",
-        rhs = "z<Left>",
+        rhs = utils.global_multiplier() .. "z<Left>",
       },
       {
         desc = "Scroll right",
         lhs = ")",
-        rhs = "z<Right>",
+        rhs = utils.global_multiplier() .. "z<Right>",
       },
       {
         desc = "Scroll down",
@@ -108,6 +108,28 @@ return {
         desc = "Jump to tag definition under (split window)",
         lhs = "<M-g>t",
         rhs = "<C-W>]",
+      },
+      {
+        desc = "Move to end of line",
+        lhs = "<M-l>",
+        rhs = "g_",
+      },
+      {
+        desc = "Move to beginning of line",
+        lhs = "<M-h>",
+        rhs = "^",
+      },
+      {
+        desc = "Move up a few lines",
+        lhs = "<M-j>",
+        rhs = utils.global_multiplier() .. "j",
+        opts = { remap = true },
+      },
+      {
+        desc = "Move down few lines",
+        lhs = "<M-k>",
+        rhs = utils.global_multiplier() .. "k",
+        opts = { remap = true },
       },
     },
   },
@@ -293,22 +315,22 @@ return {
       {
         desc = "Increase window height",
         lhs = "<M-=>",
-        rhs = "5<C-w>+",
+        rhs = utils.global_multiplier(0.5) .. "<C-w>+",
       },
       {
         desc = "Decrease window height",
         lhs = "<M-->",
-        rhs = "5<C-w>-",
+        rhs = utils.global_multiplier(0.5) .. "<C-w>-",
       },
       {
         desc = "Increase window width",
         lhs = "<M-]>",
-        rhs = "10<C-w>>",
+        rhs = utils.global_multiplier() .. "<C-w>>",
       },
       {
         desc = "Decrease window width",
         lhs = "<M-[>",
-        rhs = "10<C-w><",
+        rhs = utils.global_multiplier() .. "<C-w><",
       },
       {
         desc = "Uniform window size",
