@@ -6,8 +6,8 @@ in
   (fetchFromGitHub {
     owner = "dedukun";
     repo = "bookmarks.yazi";
-    rev = "08b3f85c5d52656157a55e10410050b042f5b314";
-    hash = "sha256-t3MKmmNABMMphnfpIOQiSfn34HwNo8RkWr7+jeD7xfI=";
+    rev = "748efed3b985ae4107439c7e868e1fbf6a90c3a3";
+    hash = "sha256-AiRd8wUHDrvjI3Gct9Q90RE9I43JEolYOd1kh1bAWSE=";
   })
 
   (fetchFromGitHub {
@@ -27,8 +27,8 @@ in
   (fetchFromGitHub {
     owner = "ndtoan96";
     repo = "ouch.yazi";
-    rev = "694d149be5f96eaa0af68d677c17d11d2017c976";
-    hash = "sha256-J3vR9q4xHjJt56nlfd+c8FrmMVvLO78GiwSNcLkM4OU=";
+    rev = "251da6930ca8b7ee0384810086c3bf644caede3e";
+    hash = "sha256-yLt9aY6hUIOdBI5bMdCs7VYFJGyD3WIkmPxvWKNCskA=";
   })
 
   (fetchFromGitHub {
@@ -36,12 +36,5 @@ in
     repo = "exifaudio.yazi";
     rev = "92366cf0b024a05cb80c9e245408026dcabe94f2";
     hash = "sha256-QAIUwArdMvTxSRTXDg72rk1E2JresC4KzADqIPXnKLE=";
-  })
-
-  (fetchFromGitHub {
-    owner = "DreamMaoMao";
-    repo = "git-status.yazi";
-    rev = "4488bd23ab1f33ef136abcf22cfdbc32fea621d0";
-    hash = "sha256-KlnhOuluyHron8JvfxzeFQK4Pma7bOvGaMbynhyq3ZU=";
   })
 ]

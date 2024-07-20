@@ -11,7 +11,7 @@ return {
       plugins = {
         marks = false,
       },
-      window = {
+      win = {
         padding = { 0, 0, 0, 0 },
       },
       layout = {

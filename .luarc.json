@@ -2,6 +2,6 @@
   "diagnostics.globals": [
     "vim",
     "MiniBufremove"
-  ]
+  ],
+  "runtime.version": "LuaJIT"
 }
-

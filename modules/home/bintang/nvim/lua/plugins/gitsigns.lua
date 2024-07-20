@@ -23,12 +23,12 @@ return {
         a = {
           {
             desc = "Go to previous hunk",
-            lhs = "<leader>[c",
+            lhs = "[c",
             rhs = "<cmd>Gitsigns prev_hunk<cr>",
           },
           {
             desc = "Go to next hunk",
-            lhs = "<leader>]c",
+            lhs = "]c",
             rhs = "<cmd>Gitsigns next_hunk<cr>",
           },
         },
