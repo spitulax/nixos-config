@@ -5,6 +5,5 @@
     nodePackages.nodejs
     typescript
     deno
-    nodePackages.typescript-language-server
   ];
 }

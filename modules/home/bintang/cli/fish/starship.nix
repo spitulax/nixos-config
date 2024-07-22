@@ -8,6 +8,7 @@
       command_timeout = 5000;
       format = lib.concatStrings [
         "$nix_shell"
+        "$jobs"
         "$cmd_duration"
         "$directory"
         "$git_branch"
@@ -124,6 +125,12 @@
       shlvl = {
         format = "[$shlvl]($style)";
         disabled = true;
+      };
+
+      jobs = {
+        symbol = "󰜎";
+        format = "[$symbol]($style) ";
+        disabled = false;
       };
     };
   };

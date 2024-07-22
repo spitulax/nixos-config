@@ -26,6 +26,9 @@
       restore = "trash-restore";
       cat = "bat --style numbers";
       oldcat = "/usr/bin/env cat";
+      old = "command";
+      j = "jobs";
+      f = "fg";
       # colorizer
       grep = "grep --color";
       egrep = "egrep --color";
