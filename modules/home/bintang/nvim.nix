@@ -41,5 +41,6 @@
     # For :TSInstallFromGrammar
     # tree-sitter
     # nodePackages.nodejs
+    wakatime-cli
   ];
 }
