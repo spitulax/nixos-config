@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    # TEMP:
-    nixpkgs-temp.url = "github:nixos/nixpkgs/feb2849fdeb70028c70d73b848214b00d324a497";
     nixpkgs.follows = "nixpkgs-unstable";
 
     home-manager = {
@@ -31,8 +29,8 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # https://github.com/hyprwm/Hyprland/issues/5891
 
     auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs-temp";
+      url = "github:AdnanHodzic/auto-cpufreq/34ebd04df0fd605c6c741f834f7b2d9205999f30";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rust-overlay = {
