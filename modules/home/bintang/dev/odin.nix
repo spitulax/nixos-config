@@ -2,7 +2,7 @@
 , ...
 }: {
   home.packages = with pkgs.mypkgs; [
-    odin
+    odin-nightly
     ols
   ];
 }

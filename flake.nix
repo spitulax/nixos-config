@@ -29,8 +29,8 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # https://github.com/hyprwm/Hyprland/issues/5891
 
     auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq/34ebd04df0fd605c6c741f834f7b2d9205999f30";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rust-overlay = {
@@ -38,7 +38,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    yazi.url = "github:sxyazi/yazi";
+    # TEMP:
+    yazi.url = "github:sxyazi/yazi/af0fb5955b51fb88de589db6b1b8d6a5f1fc860b";
 
     #############################
 
