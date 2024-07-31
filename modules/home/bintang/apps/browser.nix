@@ -58,6 +58,7 @@
       "Telegram Web".id = "majiogicmcnmdhhlgmkahaleckhjbmlk";
       "Proton Mail".id = "jnpecgipniidlgicjocehkhajgdnjekh";
       "WhatsApp Web".id = "hnpfjngllnobngcgfapefoaidbinmjnm";
+      Gmail.id = "fmgjjmmmlfnkbppncabfkddbjimcfncm";
     };
   };
 }

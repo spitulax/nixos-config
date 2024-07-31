@@ -17,6 +17,8 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
+  services.speechd.enable = false;
+
   security.pam.services = {
     # swaylock = { };
     hyprlock = { };

@@ -31,7 +31,6 @@
 
   nix = {
     package = lib.mkDefault pkgs.nix;
-    channel.enable = false; # Channels in 2024??? KEKW
     settings = {
       inherit (outputs.vars) substituters trusted-public-keys;
       auto-optimise-store = true;

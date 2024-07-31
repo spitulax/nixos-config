@@ -4,6 +4,7 @@
 }: {
   imports = with outputs.homeModules.bintang;
     (with apps; [
+      art
       bottles
       browser
       dolphin
@@ -46,8 +47,8 @@
       cpp
       debugger
       go
-      godot
-      javascript
+      # godot
+      # javascript
       lua
       nix
       odin
