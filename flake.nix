@@ -38,8 +38,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TEMP:
-    yazi.url = "github:sxyazi/yazi/af0fb5955b51fb88de589db6b1b8d6a5f1fc860b";
+    yazi.url = "github:sxyazi/yazi";
 
     #############################
 
