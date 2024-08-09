@@ -61,7 +61,7 @@
     (with gaming; [
       games
       lutris
-      # misc
+      misc
       wine
     ])
     ++
