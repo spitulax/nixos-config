@@ -491,11 +491,11 @@
         "waybar": "waybar"
       },
       "locked": {
-        "lastModified": 1723223751,
-        "narHash": "sha256-0uKB5/FSeUNI5g3BQJRH3g3S2iBd/aO/5l2AhvBy+Bk=",
+        "lastModified": 1723233393,
+        "narHash": "sha256-TeNNMpWN+4sItDzvarBv4M2KWn67jUphdWX4qOn62d0=",
         "owner": "spitulax",
         "repo": "mypkgs",
-        "rev": "3f1e7088188ef1b77d9f46796664fed77bd10857",
+        "rev": "64aaaa943c1c1d8b7ac242c5b416697e6c82f348",
         "type": "github"
       },
       "original": {

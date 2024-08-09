@@ -15,6 +15,7 @@
       mpv
       nomacs
       obs
+      office
       zathura
     ])
     ++
