@@ -1,7 +1,6 @@
 { pkgs
 , config
 , lib
-, inputs
 , ...
 }: {
   imports = [
@@ -14,7 +13,7 @@
     hyprpicker
     hyprpaper
     mypkgs.hyprlock
-    # inputs.hypridle.packages.${pkgs.system}.hypridle
+    # hypridle
   ];
 
   wayland.windowManager.hyprland = {
@@ -24,7 +23,7 @@
       enable = true;
       variables = [ "--all" ];
     };
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = pkgs.inputs.hyprland.hyprland;
     settings.env = lib.mapAttrsToList (n: v: n + "," + (toString v)) config.home.sessionVariables ++ [
       "XCURSOR_SIZE,24"
       "QT_QPA_PLATFORMTHEME,qt5ct"
@@ -68,7 +67,7 @@
   #     After = [ "graphical-session.target" ];
   #   };
   #   Service = {
-  #     ExecStart = "${lib.meta.getExe inputs.hypridle.packages.${pkgs.system}.hypridle}";
+  #     ExecStart = "${lib.meta.getExe pkgs.hypridle}";
   #     Restart = "always";
   #     RestartSec = "10";
   #   };

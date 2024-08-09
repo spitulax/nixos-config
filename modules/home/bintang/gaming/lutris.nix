@@ -7,7 +7,7 @@
     })
     # dxvk
     # vkd3d-proton
-  ] ++ (with inputs.nix-gaming.packages.${pkgs.system}; [
+  ] ++ (with pkgs.inputs.nix-gaming; [
     # FAILED: {https://github.com/fufexan/nix-gaming/pull/86}
     # dxvk
     # vkd3d-proton

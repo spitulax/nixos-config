@@ -46,14 +46,14 @@
     (with dev; [
       cpp
       debugger
-      go
+      # go
       # godot
-      # javascript
+      javascript
       lua
       nix
       odin
       python
-      rust
+      # rust
       tools
     ])
     ++

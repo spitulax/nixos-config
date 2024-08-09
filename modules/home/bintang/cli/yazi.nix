@@ -33,16 +33,8 @@ in
 {
   programs.yazi = {
     enable = true;
-    package = inputs.yazi.packages.${pkgs.system}.yazi.override {
-      withFile = false;
-      withJq = false;
-      withPoppler = false;
-      withUnar = false;
-      withFfmpegthumbnailer = false;
-      withFd = false;
-      withRipgrep = false;
-      withFzf = false;
-      withZoxide = false;
+    package = pkgs.inputs.yazi.yazi.override {
+      optionalDeps = [ ];
     };
     enableFishIntegration = false;
     plugins =

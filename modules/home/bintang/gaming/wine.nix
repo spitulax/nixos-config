@@ -1,10 +1,9 @@
-{ inputs
-, pkgs
+{ pkgs
 , ...
 }: {
   home.packages = with pkgs; [
     winetricks
-  ] ++ (with inputs.nix-gaming.packages.${pkgs.system}; [
+  ] ++ (with pkgs.inputs.nix-gaming; [
     wine-ge
   ]);
 }

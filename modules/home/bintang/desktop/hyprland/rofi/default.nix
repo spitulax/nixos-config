@@ -5,9 +5,7 @@
     enable = true;
     package = pkgs.rofi-wayland;
     plugins = with pkgs; [
-      (rofi-emoji.override {
-        rofi-unwrapped = rofi-wayland-unwrapped;
-      })
+      rofi-emoji-wayland
     ];
     terminal = "${pkgs.kitty}/bin/kitty";
     theme = "catppuccin-mocha";

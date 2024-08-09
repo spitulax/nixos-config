@@ -1,12 +1,11 @@
 { pkgs
-, inputs
 , myLib
 , ...
 }: myLib.importIn ./. // {
 
   programs.xwayland.enable = true;
 
-  programs.hyprland = with inputs.hyprland.packages.${pkgs.system}; {
+  programs.hyprland = with pkgs.inputs.hyprland; {
     enable = true;
     package = hyprland;
     portalPackage = xdg-desktop-portal-hyprland;

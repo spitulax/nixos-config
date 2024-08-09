@@ -7,6 +7,20 @@
   add = final: _: {
     custom = outputs.packages.${final.system};
     mypkgs = builtins.removeAttrs inputs.mypkgs.packages.${final.system} [ "all" ];
+    # inputs.<flake>.packages|legacyPackages.<pkgs.system> -> pkgs.inputs.<flake>
+    inputs =
+      builtins.mapAttrs
+        (
+          _: flake:
+            let
+              legacyPackages = (flake.legacyPackages or { }).${final.system} or { };
+              packages = (flake.packages or { }).${final.system} or { };
+            in
+            if legacyPackages != { }
+            then legacyPackages
+            else packages
+        )
+        inputs;
   };
 
   # Modify packages from nixpkgs
