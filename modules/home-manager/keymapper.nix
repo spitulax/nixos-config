@@ -3,8 +3,29 @@
 , pkgs
 , ...
 }:
-with lib;
 let
+  inherit (lib)
+    concatStringsSep
+    filter
+    foldAttrs
+    foldl
+    hasPrefix
+    literalExpression
+    mapAttrsToList
+    mergeAttrs
+    mkEnableOption
+    mkIf
+    mkOption
+    mkPackageOption
+    optional
+    optionalString
+    pipe
+    removeAttrs
+    removePrefix
+    types
+    zipListsWith
+    ;
+
   cfg = config.services.keymapper;
 
   generateAliases = aliases:
@@ -249,5 +270,5 @@ in
     };
   };
 
-  meta.maintainers = with maintainers; [ spitulax ];
+  meta.maintainers = with lib.maintainers; [ spitulax ];
 }

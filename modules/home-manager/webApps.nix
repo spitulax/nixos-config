@@ -3,8 +3,19 @@
 , lib
 , ...
 }:
-with lib;
 let
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    types
+    literalExpression
+    mkIf
+    mapAttrs'
+    replaceStrings
+    getExe
+    mapAttrs
+    ;
+
   cfg = config.programs.brave.webApps;
 in
 {

@@ -4,9 +4,16 @@
 , ...
 }:
 let
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
+
   cfg = config.power.power-manager;
 in
-with lib; {
+{
   imports = [
     inputs.auto-cpufreq.nixosModules.default
   ];
