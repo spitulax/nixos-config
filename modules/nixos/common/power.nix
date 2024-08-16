@@ -19,7 +19,9 @@ in
   ];
 
   options.power.power-manager = {
-    enable = mkEnableOption "Power usage management";
+    enable = mkEnableOption "Power usage management" // {
+      default = true;
+    };
 
     program = mkOption {
       type = types.nullOr (types.enum [

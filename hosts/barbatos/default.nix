@@ -12,11 +12,12 @@
     # FAILED: error: The option `hardware.intelgpu.loadInInitrd' in `/nix/store/gb7384izfb1x5i7vibr6ylazx8bf7bq6-source/hosts/barbatos' is already declared in `/nix/store/0ckkj733ppb5r4lq7m4m0y8g285s160q-source/common/gpu/intel'.
     # nixos-hardware.nixosModules.common-gpu-intel
   ] ++ (with outputs.nixosModules; [
-    features.keymapper
     features.gaming
+    features.keymapper
+    # features.steam
     features.video-hardware-intel
-    features.warp
     features.vm
+    features.warp
 
     common
     desktop
@@ -60,7 +61,7 @@
     program = "auto-cpufreq";
   };
   vm = {
-    enable = false;
+    enable = true;
     waydroid = false;
     qemuAllArch = false;
   };
