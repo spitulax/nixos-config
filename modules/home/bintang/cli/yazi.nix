@@ -34,7 +34,7 @@ in
   programs.yazi = {
     enable = true;
     package = pkgs.inputs.yazi.yazi.override {
-      optionalDeps = [ ];
+      runtimeDeps = _: [ ];
     };
     enableFishIntegration = false;
     plugins =

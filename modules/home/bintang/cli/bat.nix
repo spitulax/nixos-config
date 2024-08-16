@@ -24,6 +24,14 @@
     batgrep
     batman
     batwatch
-    batdiff
+    # FAILED: https://github.com/NixOS/nixpkgs/issues/332957
+    # batdiff
   ];
+
+  programs.fish.shellAliases = {
+    man = "batman";
+    bgrep = "batgrep";
+    bwatch = "batwatch";
+    bdiff = "batdiff";
+  };
 }
