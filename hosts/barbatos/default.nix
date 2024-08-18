@@ -15,7 +15,6 @@
     features.gaming
     features.keymapper
     # features.steam
-    features.tablet
     features.video-hardware-intel
     features.vm
     features.warp
