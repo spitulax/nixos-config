@@ -7,7 +7,6 @@
       la = "eza -G -a --no-user --color=always --group-directories-first --icons";
       ll = "eza -G -lH --no-user --color=always --group-directories-first --icons";
       lt = "eza -G -T --no-user --color=always --group-directories-first --icons --long -L";
-      oldls = "/usr/bin/env ls";
       # nix shortcuts
       repl = "nix repl .";
       nrepl = "nix repl -f flake:nixpkgs";
@@ -22,13 +21,12 @@
       "..." = "cd ../..";
       q = "exit";
       rm = "trash-put -v";
-      oldrm = "/usr/bin/env rm";
       restore = "trash-restore";
       cat = "bat --style numbers";
-      oldcat = "/usr/bin/env cat";
       old = "command";
       j = "jobs";
       f = "fg";
+      r = "realpath";
       # colorizer
       grep = "grep --color";
       egrep = "egrep --color";
