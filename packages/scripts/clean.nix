@@ -13,22 +13,18 @@ for i in $(find $HOME -name 'result' -type l); do
   echo "Deleting $i"
   unlink $i
 done
-for i in $(sudo find /tmp -name 'result' -type l); do
-  echo "Deleting $i"
-  sudo unlink $i
-done
 echo
 
 printf "\033[1;31mPress ENTER to delete home-manager profiles...\n"
 printf "\033[0m"
 read
-nix profile wipe-history --debug --older-than 3d --profile $XDG_STATE_HOME/nix/profiles/profile
+nix profile wipe-history --debug --older-than 3d --profile $XDG_STATE_HOME/nix/profiles/home-manager
 echo
 
 printf "\033[1;31mPress ENTER to delete user profiles...\n"
 printf "\033[0m"
 read
-nix profile wipe-history --debug --older-than 3d --profile $XDG_STATE_HOME/nix/profiles/home-manager
+nix profile wipe-history --debug --older-than 3d --profile $XDG_STATE_HOME/nix/profiles/profile
 echo
 
 printf "\033[1;31mPress ENTER to delete system profiles...\n"
