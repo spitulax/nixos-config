@@ -116,7 +116,7 @@
       nixosConfigModule = ./config/nixos;
       nixosModules = import ./modules/nixos { inherit myLib; };
       homeManagerModules = import ./modules/home-manager { inherit myLib; };
-      homeModules = myLib.genAttrsEachDirs ./modules/home (n: import ./modules/home/${n} { inherit myLib; });
+      homeModules = myLib.genAttrsEachDir ./modules/home (n: import ./modules/home/${n} { inherit myLib; });
 
       # Configs
       inherit (configs)
