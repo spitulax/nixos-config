@@ -9,9 +9,9 @@ time_since_fmt () {
   TIME_H=$((10#$(date "+%H" -d "@$TIME")))
   TIME_MI=$((10#$(date "+%M" -d "@$TIME")))
   TIME_FULL=$(printf "%sh %smin" "$TIME_H" "$TIME_MI")
-  [[ $TIME_D > 0 ]] && TIME_FULL=$(printf "%sd %s" "$TIME_D" "$TIME_FULL")
-  [[ $TIME_M > 0 ]] && TIME_FULL=$(printf "%smo %s" "$TIME_M" "$TIME_FULL")
-  [[ $TIME_Y > 0 ]] && TIME_FULL=$(printf "%sy %s" "$TIME_Y" "$TIME_FULL")
+  [ $TIME_D -gt 0 ] && TIME_FULL=$(printf "%sd %s" "$TIME_D" "$TIME_FULL")
+  [ $TIME_M -gt 0 ] && TIME_FULL=$(printf "%smo %s" "$TIME_M" "$TIME_FULL")
+  [ $TIME_Y -gt 0 ] && TIME_FULL=$(printf "%sy %s" "$TIME_Y" "$TIME_FULL")
   echo "$TIME_FULL"
 }
 

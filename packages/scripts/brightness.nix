@@ -3,11 +3,11 @@ writeShellScriptBin "brightness" ''
 
 get () {
   BRIGHTNESS=$(brightnessctl info | awk 'NR==2 { print $4 }' | sed -r 's/\((.*)%\)/\1/')
-  if [[ $BRIGHTNESS -lt 25 ]]; then
+  if [ $BRIGHTNESS -lt 25 ]; then
     printf "󰃞"
-  elif [[ $BRIGHTNESS -lt 50 ]]; then
+  elif [ $BRIGHTNESS -lt 50 ]; then
     printf "󰃟"
-  elif [[ $BRIGHTNESS -lt 75 ]]; then
+  elif [ $BRIGHTNESS -lt 75 ]; then
     printf "󰃝"
   else
     printf "󰃠"
