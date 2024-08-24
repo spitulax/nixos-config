@@ -22,4 +22,6 @@
   globalSecretsPath = ../secrets/global;
   hostsSecretsPath = ../secrets/hosts;
   usersSecretsPath = ../secrets/users;
+
+  nixosConfigModule = ../config/nixos;
 }

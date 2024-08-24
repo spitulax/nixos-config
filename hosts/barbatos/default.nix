@@ -10,22 +10,30 @@
     nixos-hardware.nixosModules.common-pc-laptop-ssd
     nixos-hardware.nixosModules.common-cpu-intel
     # FAILED: error: The option `hardware.intelgpu.loadInInitrd' in `/nix/store/gb7384izfb1x5i7vibr6ylazx8bf7bq6-source/hosts/barbatos' is already declared in `/nix/store/0ckkj733ppb5r4lq7m4m0y8g285s160q-source/common/gpu/intel'.
-    # nixos-hardware.nixosModules.common-gpu-intel
-  ] ++ (with outputs.nixosModules; [
-    features.gaming
-    features.keymapper
-    # features.steam
-    features.tablet
-    features.video-hardware-intel
-    features.vm
-    features.warp
+    nixos-hardware.nixosModules.common-gpu-intel
+    outputs.vars.nixosConfigModule
+  ];
 
-    common
-    desktop
-    laptop
+  # Config modules
+  configs = {
+    desktop.enable = true;
+    laptop.enable = true;
+    gaming.enable = true;
+    keymapper.enable = true;
+    steam.enable = false;
+    tablet.enable = true;
+    videoHardwareIntel.enable = true;
+    vm = {
+      enable = true;
+      waydroid = false;
+      qemuAllArch = false;
+    };
+    warp.enable = true;
 
-    users.bintang
-  ]);
+    users = [
+      "bintang"
+    ];
+  };
 
   # Hardware
   hardware.enableRedistributableFirmware = true;
@@ -60,11 +68,6 @@
   power.power-manager = {
     enable = true;
     program = "auto-cpufreq";
-  };
-  vm = {
-    enable = true;
-    waydroid = false;
-    qemuAllArch = false;
   };
 
   # State version

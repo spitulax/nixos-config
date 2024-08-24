@@ -1,7 +1,8 @@
 { pkgs
 , myLib
 , ...
-}: myLib.importIn ./fish // {
+}: {
+  imports = myLib.importIn ./fish;
 
   programs.fish = {
     enable = true;

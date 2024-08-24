@@ -1,24 +1,19 @@
-{ pkgs
+{ config
+, pkgs
 , lib
-, config
 , ...
 }:
 let
-  inherit (lib)
-    mkEnableOption
-    mkIf
-    ;
-
-  cfg = config.vm;
+  cfg = config.configs.vm;
 in
 {
-  options.vm = {
-    enable = mkEnableOption "virtualization";
-    waydroid = mkEnableOption "waydroid";
-    qemuAllArch = mkEnableOption "QEMU for other architectures";
+  options.configs.vm = {
+    enable = lib.mkEnableOption "virtualization tools";
+    waydroid = lib.mkEnableOption "waydroid";
+    qemuAllArch = lib.mkEnableOption "QEMU for other architectures";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     boot.kernelModules = [ "vfio-pci" ];
     virtualisation = {
       libvirtd = {

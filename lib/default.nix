@@ -43,7 +43,22 @@
 
 
   /*
-    Generates an attribute set with each files in given directory as its name.
+    Same as `listFilesExt` but with each file's extension removed.
+
+    Inputs:
+    - `dir`: The directory that contains the files 
+    - `ext`: The file extension (without leading period)
+
+    Type: Path -> String -> [String]
+  */
+  listFilesExtTruncate = dir: ext:
+    builtins.map
+      (x: builtins.head (builtins.split "\\.${ext}$" x))
+      (listFilesExt dir ext);
+
+
+  /*
+    Generates an attribute set with each file in given directory as its name.
 
     Inputs:
       - `dir`: The directory that contains the files
@@ -69,6 +84,7 @@
   */
   genAttrsEachFiles = dir: f: genAttrsEachFilesAll dir [ "regular" ] f;
   genAttrsEachDirs = dir: f: genAttrsEachFilesAll dir [ "directory" ] f;
+
 
   /*
     This function is similar to `genAttrsEachFiles` but it also includes files from subdirectories recursively.
@@ -142,11 +158,11 @@
 
 
   /*
-    Returns an attribute set that can be used to simplify imports.
+    Returns a list of paths that can be used to simplify module imports.
     Use this inside a `default.nix` file to import all nix files or directories containing nix files.
 
     Inputs:
-      `dir`: The directory that contains the files/directories to be imported.
+      - `dir`: The directory that contains the files/directories to be imported
 
     Example:
       Given `./.`:
@@ -156,25 +172,44 @@
         | other.nix
       ```
       importIn ./.
-        => {
-          imports = [
-            ./mod1
-            ./mod2
-            other.nix
-          ];
-        }
+        => [ ./mod1 ./mod2 other.nix ]
       ```
 
-    Type: Path -> AttrSet
+    Type: Path -> [Path]
   */
   importIn = dir:
-    {
-      imports =
-        let
-          files = listFilesExt dir "nix" ++ listDirs dir;
-        in
-        builtins.map
-          (lib.path.append dir)
-          (builtins.filter (v: v != "default.nix") files);
-    };
+    let
+      files = listFilesExt dir "nix" ++ listDirs dir;
+    in
+    builtins.map
+      (lib.path.append dir)
+      (builtins.filter (v: v != "default.nix") files);
+
+
+  /*
+        Generates an attribute set containing boolean module options.
+        The description by default is "Whether to enable ${name}.".
+
+        Inputs:
+      - `names`: List of the options' name
+
+        Type: [String] -> AttrSet
+      */
+  mkEnableOptions = names:
+    mkEnableOptions' names (n: "Whether to enable ${n}.");
+
+
+  /*
+    Same as `mkEnableOptions` but the function for generating descriptions is specifiable.
+
+    Inputs:
+      - `names`: List of the options' name
+      - `desc`: Function that takes an option's name and returns the description for it
+
+    Type: [String] -> (String -> String) -> AttrSet
+  */
+  mkEnableOptions' = names: desc:
+    lib.genAttrs
+      names
+      (n: lib.mkEnableOption "" // { description = desc n; });
 }

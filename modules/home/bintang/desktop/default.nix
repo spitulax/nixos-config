@@ -1,7 +1,8 @@
 { pkgs
 , myLib
 , ...
-}: myLib.importIn ./default // {
+}: {
+  imports = myLib.importIn ./default;
 
   fonts.fontconfig.enable = true;
 
