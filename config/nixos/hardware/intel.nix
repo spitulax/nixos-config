@@ -1,20 +1,20 @@
-# Fixes the problem with hardware video acceleration not working in my laptop.
-# Currently only works for Intel HD Graphics series Broadwell (2014) or newer.
-# https://wiki.archlinux.org/title/Hardware_video_acceleration
 { config
 , lib
 , pkgs
 , ...
-}: {
-  options.configs.videoHardwareIntel.enable = lib.mkEnableOption "hardware video acceleration for Intel integrated GPUs";
+}:
+{
+  options.configs.hardware.intel.enable = lib.mkEnableOption "module for Intel CPUs and integrated GPUs";
 
-  config = lib.mkIf config.configs.videoHardwareIntel.enable {
+  config = lib.mkIf config.configs.hardware.intel.enable {
     hardware.graphics.enable = lib.mkForce true;
     hardware.graphics.extraPackages = with pkgs; [
       intel-media-driver
       libvdpau-va-gl
     ];
     environment.systemPackages = with pkgs; [
+      nvtopPackages.intel
+      intel-gpu-tools
       libva-utils
       vdpauinfo
     ];

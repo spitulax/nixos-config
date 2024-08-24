@@ -1,6 +1,8 @@
-{ pkgs
+{ config
+, pkgs
 , ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     # shell utils
     neovim
@@ -41,7 +43,7 @@
     dmidecode
     parted
     acpi
-  ];
+  ] ++ config.configs.extraPackages;
   programs.nix-ld.enable = false;
   programs.fish.enable = true;
   programs.dconf.enable = true;

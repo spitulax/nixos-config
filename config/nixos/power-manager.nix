@@ -11,14 +11,14 @@ let
     types
     ;
 
-  cfg = config.power.power-manager;
+  cfg = config.configs.powerManager;
 in
 {
   imports = [
     inputs.auto-cpufreq.nixosModules.default
   ];
 
-  options.power.power-manager = {
+  options.configs.powerManager = {
     enable = mkEnableOption "Power usage management" // {
       default = true;
     };

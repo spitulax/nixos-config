@@ -1,5 +1,4 @@
-{ pkgs
-, outputs
+{ outputs
 , inputs
 , ...
 }: {
@@ -9,26 +8,31 @@
     nixos-hardware.nixosModules.common-pc-laptop-acpi_call
     nixos-hardware.nixosModules.common-pc-laptop-ssd
     nixos-hardware.nixosModules.common-cpu-intel
-    # FAILED: error: The option `hardware.intelgpu.loadInInitrd' in `/nix/store/gb7384izfb1x5i7vibr6ylazx8bf7bq6-source/hosts/barbatos' is already declared in `/nix/store/0ckkj733ppb5r4lq7m4m0y8g285s160q-source/common/gpu/intel'.
     nixos-hardware.nixosModules.common-gpu-intel
-    outputs.vars.nixosConfigModule
+    outputs.nixosConfigModule
   ];
 
   # Config modules
   configs = {
-    desktop.enable = true;
+    hostName = "barbatos";
+
+    desktop = {
+      enable = true;
+      environments.hyprland = true;
+      defaultSession = "hyprland";
+    };
     laptop.enable = true;
     gaming.enable = true;
     keymapper.enable = true;
     steam.enable = false;
     tablet.enable = true;
-    videoHardwareIntel.enable = true;
-    vm = {
-      enable = true;
-      waydroid = false;
-      qemuAllArch = false;
-    };
+    vm.enable = true;
     warp.enable = true;
+    powerManager = {
+      enable = true;
+      program = "auto-cpufreq";
+    };
+    hardware.intel.enable = true;
 
     users = [
       "bintang"
@@ -45,18 +49,7 @@
     options rfkill master_switch_mode=2
   '';
 
-  # Networking
-  networking.hostName = "barbatos";
-
-  # Misc programs
-  environment.systemPackages = with pkgs; [
-    # hardware monitoring
-    nvtopPackages.intel
-    intel-gpu-tools
-  ];
-
   # Misc services
-  services.printing.enable = false;
   programs.gamemode = {
     settings = {
       general = {
@@ -65,11 +58,4 @@
       };
     };
   };
-  power.power-manager = {
-    enable = true;
-    program = "auto-cpufreq";
-  };
-
-  # State version
-  system.stateVersion = "23.11";
 }

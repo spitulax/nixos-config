@@ -2,10 +2,9 @@
 , lib
 , pkgs
 , ...
-}: {
-  options.configs.plasma.enable = lib.mkEnableOption "KDE Plasma";
-
-  config = lib.mkIf config.configs.plasma.enable {
+}:
+{
+  config = lib.mkIf config.configs.desktop.environments.plasma {
     # FAILED: upgrading to plasma 6 makes plasma appear as just black screen with cursor
     # nothing is loaded or interactable except mako
     # sddm theme is also not loaded
