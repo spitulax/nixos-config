@@ -26,6 +26,12 @@ in
       description = "The system's host name.";
     };
 
+    requiredFiles = mkOption {
+      type = with types; attrsOf (oneOf [ path (listOf path) (attrsOf path) ]);
+      default = { };
+      description = "List of files in this config required for the system to build.";
+    };
+
     stateVersion = mkOption {
       type = types.str;
       default = "23.11";

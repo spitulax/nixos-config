@@ -1,35 +1,57 @@
-{ outputs
+{ config
+, outputs
 , lib
 , ...
-}: {
-  programs.ssh.startAgent = true;
-  services.openssh = {
-    enable = lib.mkDefault true;
-    settings = {
-      PasswordAuthentication = false;
+}:
+let
+  cfg = config.configs.openssh;
+in
+{
+  options.configs.openssh = {
+    addHostKeys = lib.mkOption {
+      type = lib.types.bool;
+      description = "Generate rsa and ed25519 key for this host. Reminder to password protect the rsa key.";
     };
-    hostKeys = [
-      {
-        path = "/etc/ssh/ssh_host_ed25519_key";
-        type = "ed25519";
-      }
-      {
-        # NOTE: add password to the rsa key
-        bits = 4096;
-        path = "/etc/ssh/ssh_host_rsa_key";
-        type = "rsa";
-      }
-    ];
+
+    passwordAuthentication = lib.mkEnableOption "password authentication (not recommended)";
   };
-  programs.ssh = {
-    hostKeyAlgorithms = [
-      "ssh-rsa"
-      "ssh-ed25519"
-    ];
-    knownHosts = builtins.mapAttrs
-      (name: _: {
-        publicKeyFile = ../../../hosts/${name}/ssh_host_rsa_key.pub;
-      })
-      outputs.nixosConfigurations;
+
+  config = {
+    services.openssh = {
+      enable = lib.mkDefault true;
+      settings = {
+        PasswordAuthentication = cfg.passwordAuthentication;
+      };
+      hostKeys = lib.optionals cfg.addHostKeys [
+        {
+          path = "/etc/ssh/ssh_host_ed25519_key";
+          type = "ed25519";
+        }
+        {
+          bits = 4096;
+          path = "/etc/ssh/ssh_host_rsa_key";
+          type = "rsa";
+        }
+      ];
+    };
+
+    programs.ssh = {
+      startAgent = true;
+      hostKeyAlgorithms = [
+        "ssh-rsa"
+        "ssh-ed25519"
+      ];
+      knownHosts = lib.mapAttrs
+        (_: v: {
+          publicKeyFile = v;
+        })
+        config.configs.requiredFiles.hostPublicKeys;
+    };
+
+    configs.requiredFiles = lib.optionalAttrs cfg.addHostKeys {
+      hostPublicKeys = lib.mapAttrs
+        (k: _: ../../../hosts/${k}/ssh_host_rsa_key.pub)
+        outputs.nixosConfigurations;
+    };
   };
 }

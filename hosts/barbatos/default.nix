@@ -15,6 +15,7 @@
   # Config modules
   configs = {
     hostName = "barbatos";
+    nix.arch = "x86_64-linux";
 
     desktop = {
       enable = true;
@@ -22,6 +23,8 @@
       defaultSession = "hyprland";
     };
     laptop.enable = true;
+    openssh.addHostKeys = true;
+    sops.enable = true;
     gaming.enable = true;
     keymapper.enable = true;
     steam.enable = false;
