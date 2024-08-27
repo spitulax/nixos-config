@@ -26,13 +26,12 @@
     programs.steam.platformOptimizations.enable = true;
 
     # Pipewire Low Latency
-    # FAILED: {https://github.com/fufexan/nix-gaming/issues/161}
-    # services.pipewire = {
-    #   lowLatency = {
-    #     enable = true;
-    #     quantum = 64;
-    #     rate = 48000;
-    #   };
-    # };
+    services.pipewire = {
+      lowLatency = {
+        enable = true;
+        quantum = 64;
+        rate = 48000;
+      };
+    };
   };
 }
