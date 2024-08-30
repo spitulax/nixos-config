@@ -122,6 +122,7 @@
       },
       "original": {
         "owner": "chaotic-cx",
+        "ref": "nyxpkgs-unstable",
         "repo": "nyx",
         "type": "github"
       }

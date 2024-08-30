@@ -7,6 +7,7 @@
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.nix-gaming.nixosModules.platformOptimizations
+    inputs.chaotic.nixosModules.default
   ];
 
   options.configs.gaming.enable = lib.mkEnableOption "gaming improvements";
@@ -19,8 +20,8 @@
     };
 
     # Gaming Kernel
-    boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    # environment.systemPackages = [ pkgs.scx ];
+    boot.kernelPackages = pkgs.linuxPackages_cachyos;
+    environment.systemPackages = [ pkgs.scx ];
 
     # Misc
     programs.steam.platformOptimizations.enable = true;

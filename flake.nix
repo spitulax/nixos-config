@@ -15,7 +15,7 @@
 
     mypkgs.url = "github:spitulax/mypkgs";
 
-    chaotic.url = "github:chaotic-cx/nyx";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     #############################
 
