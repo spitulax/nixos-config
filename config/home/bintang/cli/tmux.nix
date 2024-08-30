@@ -10,7 +10,7 @@
   config = lib.mkIf config.configs.cli.tmux.enable {
     programs.tmux = {
       enable = true;
-      keyMode = "emacs";
+      keyMode = "vi";
       mouse = true;
       clock24 = true;
       sensibleOnTop = true;
