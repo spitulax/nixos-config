@@ -1,14 +1,16 @@
 { lib
+, myLib
 , inputs
 , pkgsFor
 , specialArgs
+, users
 }: {
   # NixOS configs
   nixosConfigurations = {
     # Personal laptop
-    "barbatos" = lib.nixosSystem {
-      modules = [ ../hosts/barbatos ];
-      inherit specialArgs;
+    "barbatos" = myLib.nixosConfig {
+      config = ../hosts/barbatos;
+      users = with users; [ bintang ];
     };
   };
 
@@ -27,10 +29,9 @@
   # Home configs
   homeConfigurations = {
     # Personal laptop
-    "bintang@barbatos" = lib.homeManagerConfiguration {
+    "bintang@barbatos" = myLib.homeManagerConfig {
+      config = ../users/bintang_barbatos;
       pkgs = pkgsFor.x86_64-linux;
-      modules = [ ../users/bintang_barbatos ];
-      extraSpecialArgs = specialArgs;
     };
   };
 }

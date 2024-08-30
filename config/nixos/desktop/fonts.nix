@@ -1,50 +1,111 @@
-{ pkgs
+{ config
+, pkgs
+, lib
 , ...
-}: {
-  fonts = {
-    fontDir.enable = true;
+}:
+let
+  inherit (lib)
+    mkOption
+    types
+    mapAttrs
+    attrValues
+    flatten
+    optionals
+    mkEnableOption
+    ;
 
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-        serif = [ "Source Serif 3" ];
-        sansSerif = [ "Fira Sans" ];
-        monospace = [ "Iosevka Nerd Font" ];
-        emoji = [ "Noto Color Emoji" ];
-      };
+  cfg = config.configs.desktop.fonts;
+in
+{
+  options.configs.desktop.fonts = {
+    cjkFonts = mkEnableOption "CJK fonts support";
+    nerdFonts = mkEnableOption "Nerd Fonts";
+
+    defaultFonts =
+      let
+        option = type: default: {
+          ${type} = mkOption {
+            type = types.listOf (types.submodule {
+              options = {
+                name = mkOption {
+                  type = types.str;
+                  description = "The font name.";
+                };
+                package = mkOption {
+                  type = types.package;
+                  description = "The package that provides the font.";
+                };
+                cjkPackage = mkOption {
+                  type = types.nullOr types.package;
+                  default = null;
+                  description = "The package that provides CJK variant of the font.";
+                };
+              };
+            });
+            default = [ default ];
+            description = "The default ${type} font names.";
+          };
+        };
+      in
+      option "serif"
+        {
+          name = "Source Serif 3";
+          package = pkgs.source-serif;
+          cjkPackage = pkgs.source-han-serif;
+        }
+      // option "sansSerif"
+        {
+          name = "Source Sans 3";
+          package = pkgs.source-sans;
+          cjkPackage = pkgs.source-han-sans;
+        }
+      // option "monospace" (
+        if cfg.nerdFonts
+        then {
+          name = "Iosevka Nerd Font";
+          package = pkgs.iosevka-nerdfont;
+        }
+        else {
+          name = "Iosevka";
+          package = pkgs.iosevka;
+        }
+      )
+      // option "emoji"
+        {
+          name = "Noto Color Emoji";
+          package = pkgs.noto-fonts-color-emoji;
+        };
+
+    extraFonts = mkOption {
+      type = types.listOf types.package;
+      default = [ ];
+      description = "List of font packages to install.";
     };
+  };
 
-    packages = with pkgs; [
-      # Serifs
-      # poly
-      source-serif
-      source-han-serif
-      # noto-fonts-cjk-sans
+  config = {
+    fonts = {
+      fontDir.enable = true;
 
-      # Sans serifs
-      fira
-      source-sans
-      source-han-sans
-      # noto-fonts-cjk-serif
+      fontconfig = {
+        enable = true;
+        defaultFonts =
+          mapAttrs
+            (_: v: map (x: x.name) v)
+            cfg.defaultFonts;
+      };
 
-      # Emoji
-      noto-fonts-color-emoji
-
-      # Icons
-      font-awesome
-
-      # Misc/All
-      noto-fonts
-      noto-fonts-lgc-plus
-
-      # Nerdfonts
-      (nerdfonts.override {
-        fonts = [
-          # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/data/fonts/nerdfonts/shas.nix
-          "NerdFontsSymbolsOnly"
-          "Iosevka"
-        ];
-      })
-    ];
+      packages =
+        flatten
+          (map
+            (x: map (y: [ y.package ] ++ optionals (cfg.cjkFonts && y.cjkPackage != null) [ y.cjkPackage ]) x)
+            (attrValues
+              cfg.defaultFonts))
+        ++ cfg.extraFonts
+        ++ optionals cfg.nerdFonts (with pkgs; [
+          font-awesome
+          nerdfonts-symbols-only
+        ]);
+    };
   };
 }

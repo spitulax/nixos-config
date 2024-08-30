@@ -62,12 +62,13 @@
     let
       inherit (self) outputs;
 
-      configs = import ./flake/configs.nix { inherit lib specialArgs pkgsFor inputs; };
+      configs = import ./flake/configs.nix { inherit myLib lib specialArgs pkgsFor inputs users; };
       vars = import ./flake/vars.nix;
+      users = import ./flake/users.nix { inherit myLib; };
+      specialArgs = { inherit inputs outputs myLib tempPkgsFor users; };
 
-      myLib = import ./lib { inherit (nixpkgs) lib; };
+      myLib = import ./lib { inherit specialArgs lib; };
       lib = nixpkgs.lib // home-manager.lib;
-      specialArgs = { inherit inputs outputs myLib tempPkgsFor; };
 
       # Nixpkgs instances per architecture
       systems = [ "x86_64-linux" "aarch64-linux" ];
@@ -116,7 +117,6 @@
       nixosConfigModule = ./config/nixos;
       nixosModules = import ./modules/nixos { inherit myLib; };
       homeManagerModules = import ./modules/home-manager { inherit myLib; };
-      homeModules = myLib.genAttrsEachDir ./modules/home (n: import ./modules/home/${n} { inherit myLib; });
 
       # Configs
       inherit (configs)

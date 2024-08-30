@@ -1,15 +1,17 @@
 { outputs
 , inputs
+, pkgs
 , ...
 }: {
   imports = with inputs; [
+    outputs.nixosConfigModule
+
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.common-pc-laptop
     nixos-hardware.nixosModules.common-pc-laptop-acpi_call
     nixos-hardware.nixosModules.common-pc-laptop-ssd
     nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-gpu-intel
-    outputs.nixosConfigModule
   ];
 
   # Config modules
@@ -21,10 +23,21 @@
       enable = true;
       environments.hyprland = true;
       defaultSession = "hyprland";
+      fonts = {
+        cjkFonts = true;
+        nerdFonts = true;
+        defaultFonts.sansSerif = [{
+          name = "Fira Sans";
+          package = pkgs.fira;
+        }];
+        extraFonts = with pkgs; [
+          noto-fonts
+          noto-fonts-lgc-plus
+        ];
+      };
     };
     laptop.enable = true;
     openssh.addHostKeys = true;
-    sops.enable = true;
     gaming.enable = true;
     keymapper.enable = true;
     steam.enable = false;
@@ -36,10 +49,7 @@
       program = "auto-cpufreq";
     };
     hardware.intel.enable = true;
-
-    users = [
-      "bintang"
-    ];
+    sops.enable = true;
   };
 
   # Hardware

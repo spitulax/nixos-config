@@ -1,0 +1,27 @@
+{ config
+, lib
+, ...
+}: {
+  options.configs.cli.cava.enable = lib.mkEnableOption "cava";
+
+  config = lib.mkIf config.configs.cli.cava.enable {
+    programs.cava = {
+      enable = true;
+      settings = {
+        # TODO: global theming
+        color = {
+          gradient = 1;
+          gradient_count = 8;
+          gradient_color_8 = "'#fab387'";
+          gradient_color_7 = "'#f9e2af'";
+          gradient_color_6 = "'#a6e3a1'";
+          gradient_color_5 = "'#94e2d5'";
+          gradient_color_4 = "'#89dceb'";
+          gradient_color_3 = "'#74c7ec'";
+          gradient_color_2 = "'#89b4fa'";
+          gradient_color_1 = "'#b4befe'";
+        };
+      };
+    };
+  };
+}

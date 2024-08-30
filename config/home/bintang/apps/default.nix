@@ -1,0 +1,5 @@
+{ myLib
+, ...
+}: {
+  imports = myLib.importIn ./.;
+}

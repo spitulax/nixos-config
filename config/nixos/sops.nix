@@ -9,7 +9,10 @@
     inputs.sops-nix.nixosModules.sops
   ];
 
-  options.configs.sops.enable = lib.mkEnableOption "sops";
+  options.configs.sops.enable = lib.mkEnableOption ''
+    sops.
+    Requires an age key in `/etc/age/host.txt`
+  '';
 
   config = lib.mkIf config.configs.sops.enable {
     sops = {

@@ -1,4 +1,8 @@
-{ lib }: rec {
+{ lib # To use `homeManagerConfig` this must contain Home Manager's lib
+
+  # For this flake only
+, specialArgs ? { }
+}: rec {
   /*
     Returns a list of files in given directory.
 
@@ -212,4 +216,177 @@
     lib.genAttrs
       names
       (n: lib.mkEnableOption "" // { description = desc n; });
+
+
+  /*
+    Takes an attribute set and remove the attribute that is null.
+
+    Inputs:
+    - `attrs`: Attribute set to be stripped
+
+    Type: AttrSet -> AttrSet
+  */
+  stripAttrs = attrs:
+    lib.filterAttrs (_: v: v != null) attrs;
+
+
+  nixosConfig =
+    { config
+    , users ? [ ]
+    , extraModules ? [ ]
+    }:
+    lib.nixosSystem {
+      modules = [ config ] ++ (map (x: x.nixosModule) users) ++ extraModules;
+      inherit specialArgs;
+    };
+
+  homeManagerConfig =
+    { config
+    , pkgs
+    , extraModules ? [ ]
+    }: lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [ config ] ++ extraModules;
+      extraSpecialArgs = specialArgs;
+    };
+
+
+  mkUser =
+    { name
+    , username
+    , homeManager ? true
+    , extraGroups ? [ ]
+    , addSshKeys ? true # The user has both ed25519 and rsa keys. The rsa key sould be password protected.
+    , addPassword ? true # The user has their password in the ${globalSecretsPath}/password.yaml
+    , fishShell ? true
+    }: rec {
+      sshKeys = lib.optionals addSshKeys [
+        ../keys/users/${username}/ssh-rsa.pub
+        ../keys/users/${username}/ssh-ed25519.pub
+      ];
+
+      homeManagerConfigModule = ../config/home/${username};
+
+      homeManagerModule =
+        { config
+        , myLib
+        , lib
+        , outputs
+        , pkgs
+        , ...
+        }:
+        let
+          inherit (lib)
+            mkOption
+            types
+            ;
+
+          cfg = config.configs;
+        in
+        {
+          imports = [ homeManagerConfigModule ];
+
+          options.configs = {
+            extraPackages = mkOption {
+              type = types.listOf types.package;
+              default = [ ];
+              description = "Extra packages to be included with user profile.";
+            };
+
+            requiredFiles = mkOption {
+              type = with types; attrsOf (oneOf [ path (listOf path) (attrsOf path) ]);
+              default = { };
+              description = "List of files in this config required for the profile to build.";
+            };
+
+            defaultShell = mkOption {
+              readOnly = true;
+              type = types.package;
+              default = if fishShell then pkgs.fish else pkgs.bash;
+              description = "The user's default shell. Do not change this in home manager config.";
+            };
+
+            stateVersion = mkOption {
+              type = types.str;
+              default = "23.11";
+              description = "Configuration state version.";
+            };
+          };
+
+          config = {
+            home = {
+              inherit username;
+              inherit (cfg) stateVersion;
+              homeDirectory = "/home/${config.home.username}";
+              packages = cfg.extraPackages;
+            };
+
+            nixpkgs = {
+              inherit (outputs.pkgsFor.x86_64-linux) config overlays;
+            };
+
+            systemd.user.startServices = "sd-switch";
+            programs.home-manager.enable = true;
+          };
+        };
+
+      nixosModule =
+        { config
+        , pkgs
+        , inputs
+        , lib
+        , outputs
+        , ...
+        }: {
+          imports = lib.optionals homeManager [
+            inputs.home-manager.nixosModules.default
+          ];
+
+          users.users.${username} = {
+            isNormalUser = true;
+            description = name;
+            inherit extraGroups;
+            shell = if fishShell then pkgs.fish else pkgs.bash;
+            packages = lib.optionals homeManager [ pkgs.home-manager ];
+            openssh.authorizedKeys.keyFiles = sshKeys;
+            hashedPasswordFile = if addPassword then config.sops.secrets."password-${username}".path else null;
+          };
+
+          home-manager.users.${username} = lib.optionalAttrs homeManager (import ../users/${username}_${config.networking.hostName});
+        } // lib.optionalAttrs addPassword {
+          sops.secrets."password-${username}" = {
+            neededForUsers = true;
+            sopsFile = "${outputs.vars.globalSecretsPath}/password.yaml";
+          };
+        };
+    };
+
+
+  mkAliasOptions =
+    { desc
+    , shells ? [ "fish" "bash" ]
+    }:
+    let
+      option = name: {
+        ${name} = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Whether to alias ${desc} in ${name}.";
+        };
+      };
+    in
+    lib.mergeAttrsList (map option shells);
+
+  mkAliasConfig =
+    { config
+    , aliases
+    , extraAliases ? { }
+    }:
+    lib.mergeAttrsList
+      (lib.mapAttrsToList
+        (k: v: {
+          ${k}.shellAliases = lib.optionalAttrs v (aliases // extraAliases);
+        })
+        config);
+
 }

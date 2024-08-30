@@ -50,7 +50,7 @@ in
 
     configs.requiredFiles = lib.optionalAttrs cfg.addHostKeys {
       hostPublicKeys = lib.mapAttrs
-        (k: _: ../../../hosts/${k}/ssh_host_rsa_key.pub)
+        (k: _: ../../../keys/hosts/${k}/ssh_host_rsa_key.pub)
         outputs.nixosConfigurations;
     };
   };

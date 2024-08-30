@@ -21,6 +21,10 @@
             else packages
         )
         inputs;
+
+    # Nerdfonts
+    iosevka-nerdfont = final.nerdfonts.override { fonts = [ "Iosevka" ]; };
+    nerdfonts-symbols-only = final.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; };
   };
 
   # Modify packages from nixpkgs
