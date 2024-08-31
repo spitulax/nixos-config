@@ -15,8 +15,6 @@
 
     mypkgs.url = "github:spitulax/mypkgs";
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
     #############################
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
