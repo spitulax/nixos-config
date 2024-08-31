@@ -6,6 +6,10 @@
   options.configs.warp.enable = lib.mkEnableOption "Cloudflare Warp daemon";
 
   config = lib.mkIf config.configs.warp.enable {
+    environment.systemPackages = with pkgs; [
+      cloudflare-warp
+    ];
+
     systemd.services.warp = {
       enable = true;
       description = "Cloudflare Warp";
