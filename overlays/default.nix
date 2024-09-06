@@ -33,6 +33,15 @@
     # otherwise downloading large albums will make it stuck
     # https://github.com/spotDL/spotify-downloader/blob/v4.2.5/spotdl/utils/ffmpeg.py#L37
     spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
+
+    lutris = prev.lutris.override {
+      steamSupport = false;
+      extraPkgs = p: with p; [
+        gamescope
+        mangohud
+        winetricks
+      ];
+    };
   };
 
   # Compose existing overlays

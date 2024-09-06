@@ -111,6 +111,7 @@
     <Multi_key> <backslash> <at> <i> <b>	           : "̯"	  U032F	  # NON SYLLABIC
     <Multi_key> <backslash> <2> <at> <U>             : "͜"   U035C   # TIE BAR BELOW
     <Multi_key> <backslash> <at> <0>	               : "̥"	  U0325	  # VOICELESS
+    <Multi_key> <asciicircum> <x>                    : "̽"   U033D   # MID-CENTRALIZED
     # Nasals
     <Multi_key> <m> <comma>		    : "ɱ"   U0273     # VOICED LABIODENTAL NASAL
     <Multi_key> <n> <comma>		    : "ɳ"   U0273     # VOICED RETROFLEX NASAL
@@ -146,6 +147,7 @@
     <Multi_key> <question> <braceleft>	: "ʢ"	  U02A2		# VOICED EPIGLOTTAL TRILL
     # Approximants
     <Multi_key> <r> <r>           : "ɹ"   U0279     # VOICED ALVEOLAR APPROXIMANT
+    <Multi_key> <r> <comma>	      : "ɻ"   U026D     # VOICED RETROFLEX APPROXIMANT
     <Multi_key> <l> <comma>		    : "ɭ"   U026D     # VOICED RETROFLEX LATERAL APPROXIMANT
     <Multi_key> <y> <y>			      : "ʎ"	  U028E		  # VOICED PALATAL LATERAL APPROXIMANT
     <Multi_key> <h> <h>			      : "ɥ"	  U0265		  # VOICED LABIOPALATAL APPROXIMANT
@@ -153,6 +155,7 @@
     <Multi_key> <i> <i>			                : "ɨ"	U026F		        # HIGH CENTRAL UNROUNDED VOWEL
     <Multi_key> <u> <i>			                : "ɯ"	U026F		        # HIGH BACK UNROUNDED VOWEL
     <Multi_key> <i> <h>                     : "ɪ"	U026A		        # NEAR HIGH FRONT UNROUNDED VOWEL
+    <Multi_key> <y> <h>                     : "ʏ"	U026A		        # NEAR HIGH FRONT ROUNDED VOWEL
     <Multi_key> <u> <h>			                : "ʊ"	U028A		        # NEAR HIGH BACK ROUNDED VOWEL
     <Multi_key> <o> <g> <h>	      	        : "ɤ" U0264           # MID HIGH BACK UNROUNDED VOWEL
     <Multi_key> <e> <r>			                : "ɚ"	U025A		        # COLOURED MID CENTRAL VOWEL
