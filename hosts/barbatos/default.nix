@@ -40,7 +40,7 @@
     openssh.addHostKeys = true;
     gaming.enable = true;
     keymapper.enable = true;
-    steam.enable = false;
+    steam.enable = true;
     tablet.enable = true;
     vm.enable = true;
     warp.enable = true;
