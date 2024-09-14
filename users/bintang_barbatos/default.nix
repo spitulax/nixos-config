@@ -19,6 +19,7 @@
     };
 
     apps = {
+      anki.enable = true;
       art.enable = true;
       browser.brave = true;
       dolphin.enable = true;
