@@ -491,11 +491,11 @@
         "waybar": "waybar"
       },
       "locked": {
-        "lastModified": 1726275270,
-        "narHash": "sha256-ejl89sNV2ETANiHCSqq9YUhtynloX4FBtF7GExL5X9s=",
+        "lastModified": 1726280106,
+        "narHash": "sha256-uKDrDPpGNnD2FX8gN5O+FccfCIIkwe5RoQEi0LXRT/o=",
         "owner": "spitulax",
         "repo": "mypkgs",
-        "rev": "40753db3e6fffd780d7129be37e782056ae1b2d6",
+        "rev": "c00f7142d5e84784e04db7cda595e7a5dd5f2cd2",
         "type": "github"
       },
       "original": {
@@ -955,16 +955,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1726213995,
-        "narHash": "sha256-JlN9FLUuxwXlIACBW+NO4OiqVQ1pUNOxzksl2azoWi4=",
+        "lastModified": 1724670643,
+        "narHash": "sha256-XHE2Ix3JQ625Le1H8klJidhlOM9trJImlVJ8qkqH7SA=",
         "owner": "Alexays",
         "repo": "Waybar",
-        "rev": "d177969f51b3435308a520c9c0385ae80579b255",
+        "rev": "5d184f74d8f99b834ea19ce353a68786c8602a15",
         "type": "github"
       },
       "original": {
         "owner": "Alexays",
         "repo": "Waybar",
+        "rev": "5d184f74d8f99b834ea19ce353a68786c8602a15",
         "type": "github"
       }
     },
