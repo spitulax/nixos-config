@@ -48,9 +48,11 @@ in
       ];
       settings = {
         inherit (cfg) monitor;
-        bind = "CTRL ALT, Escape, exec, hyprctl reload && hyprctl keyword monitor ${cfg.monitor}";
       };
       extraConfig = builtins.readFile ./hyprland.conf;
+      plugins = [
+        pkgs.inputs.hyprspace.Hyprspace
+      ];
     };
 
     home.file = {

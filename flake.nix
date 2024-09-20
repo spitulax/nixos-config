@@ -26,7 +26,14 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # https://github.com/hyprwm/Hyprland/issues/5891
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      submodules = true;
+    };
+
+    hyprspace.url = "github:KZDKM/Hyprspace";
+    hyprspace.inputs.hyprland.follows = "hyprland";
 
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";

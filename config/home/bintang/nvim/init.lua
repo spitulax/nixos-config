@@ -19,6 +19,9 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
     config = function()
+      require("nvchad.options")
+      require("autocmds")
+      require("internals.languages").autocmds()
       require("options")
     end,
   },

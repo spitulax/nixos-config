@@ -404,6 +404,26 @@
         "type": "github"
       }
     },
+    "hyprspace": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726437584,
+        "narHash": "sha256-lMIFDORuyMYHtUPrRWU5WjGcS+ZMrR4/wBSO+sgUVSY=",
+        "owner": "KZDKM",
+        "repo": "Hyprspace",
+        "rev": "8f14fa2e10d24742d713f04c278bc7651037b74b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "KZDKM",
+        "repo": "Hyprspace",
+        "type": "github"
+      }
+    },
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
@@ -805,6 +825,7 @@
         "catppuccin-zathura": "catppuccin-zathura",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprspace": "hyprspace",
         "mypkgs": "mypkgs",
         "nix-gaming": "nix-gaming",
         "nix-on-droid": "nix-on-droid",
