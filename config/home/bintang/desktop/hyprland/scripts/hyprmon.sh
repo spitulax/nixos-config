@@ -27,7 +27,7 @@ case "$(echo -e "Auto\nUp\nDown\nRight\nLeft\nMirror" | rofi -dmenu -p "Choose M
         [ "$MIRROR" = "Auto" ] && MIRROR="auto"
         ;;
 esac
-[ -z "$POS" ] && exit 1
+[ -z "$POS" ] && [ -z "$MIRROR" ] && exit 1
 
 if [ -n "$MIRROR" ]; then
     hyprmon -n "$MONITOR" -m "$MIRROR"
