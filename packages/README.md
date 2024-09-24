@@ -12,6 +12,7 @@ Build using `nix build .#<name>`
 >
 > - `brightness`: Control monitor brightness
 > - `clean`: Wrapper to `nix store gc` that also deletes old profiles
+> - `hyprmon`: Quickly configure monitors for Hyprland
 > - `lazyup`: A hacky (stupid) way to update/install lazy.nvim plugins
 > - `notes`: Open $NOTES_DIR in Neovim
 > - `remind`: Wrap a command to send notification when completed
@@ -21,4 +22,4 @@ Build using `nix build .#<name>`
 > - `tmuxs`: Tmux that search for .tmux socket
 > - `upfind`: Find files up the directory tree
 > - `volume`: Control volume
-> - `wallpaper`: Control wallpaper with swww
+> - `wallpaper`: Control wallpaper with hyprpaper
