@@ -9,6 +9,8 @@ let
     mkOption
     mkIf
     types
+    mkMerge
+    mkForce
     ;
 
   cfg = config.configs.powerManager;
@@ -32,15 +34,23 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
-    services.upower = {
-      enable = true;
-      percentageLow = 20;
-      percentageCritical = 10;
-      percentageAction = 5;
-    };
+  config = mkMerge [
+    (mkIf cfg.enable {
+      services.upower = {
+        enable = true;
+        percentageLow = 20;
+        percentageCritical = 10;
+        percentageAction = 5;
+      };
+    })
 
-    programs.auto-cpufreq.enable = cfg.program == "auto-cpufreq";
-    services.power-profiles-daemon.enable = cfg.program == "power-profiles-daemon";
-  };
+    (mkIf (cfg.enable && cfg.program == "auto-cpufreq") {
+      programs.auto-cpufreq.enable = true;
+      services.tlp.enable = mkForce false;
+    })
+
+    (mkIf (cfg.enable && cfg.program == "power-profiles-daemon") {
+      services.power-profiles-daemon.enable = true;
+    })
+  ];
 }
