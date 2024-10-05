@@ -230,6 +230,9 @@
     lib.filterAttrs (_: v: v != null) attrs;
 
 
+  # TODO: need docs
+
+
   nixosConfig =
     { config
     , users ? [ ]

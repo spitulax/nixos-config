@@ -20,11 +20,10 @@ in
       enable = true;
       commandLineArgs =
         let
-          # PLEASE, IF YOU ONLY INCLUDE VaapiVideoDecodeLinuxGL THE VIDEO DECODING WORKS FINE UNTIL YOU ADD MORE ONTO THIS FLAG
           enabledFeatures = [
             "VaapiVideoDecodeLinuxGL"
-            # "VaapiIgnoreDriverChecks"
-            # "UseOzonePlatform"
+            "VaapiIgnoreDriverChecks"
+            "UseOzonePlatform"
           ];
         in
         [
@@ -57,17 +56,17 @@ in
             Subscriptions = "https://www.youtube.com/feed/subscriptions?feature=app_shortcuts";
           };
         };
-        GitHub.id = "mjoklplbddabcmpepnokjaffbmgbkkgg";
-        Spotify.id = "pjibgclleladliembfgfagdaldikeohf";
-        Twitch.id = "comkdlimbkhemidbbpchhepidbmjpnhh";
-        Discord.id = "pliiebkcmokkgndfalahlmimanmbjlab";
-        Syncthing.id = "mfinobjnbcnohnemakjeccbjljpebmlm"; # on port 8384
-        Anilist.id = "nhpkhfhppiampjblenncchhnipmeafgd";
-        Bitwarden.id = "hophjnbpmamkldmdaeggjlnpfechpkfl";
-        "Telegram Web".id = "majiogicmcnmdhhlgmkahaleckhjbmlk";
-        "Proton Mail".id = "jnpecgipniidlgicjocehkhajgdnjekh";
-        "WhatsApp Web".id = "hnpfjngllnobngcgfapefoaidbinmjnm";
-        Gmail.id = "fmgjjmmmlfnkbppncabfkddbjimcfncm";
+        GitHub = "mjoklplbddabcmpepnokjaffbmgbkkgg";
+        Spotify = "pjibgclleladliembfgfagdaldikeohf";
+        Twitch = "comkdlimbkhemidbbpchhepidbmjpnhh";
+        Discord = "pliiebkcmokkgndfalahlmimanmbjlab";
+        Syncthing = "mfinobjnbcnohnemakjeccbjljpebmlm"; # on port 8384
+        Anilist = "nhpkhfhppiampjblenncchhnipmeafgd";
+        Bitwarden = "hophjnbpmamkldmdaeggjlnpfechpkfl";
+        "Telegram Web" = "majiogicmcnmdhhlgmkahaleckhjbmlk";
+        "Proton Mail" = "jnpecgipniidlgicjocehkhajgdnjekh";
+        "WhatsApp Web" = "hnpfjngllnobngcgfapefoaidbinmjnm";
+        Gmail = "fmgjjmmmlfnkbppncabfkddbjimcfncm";
       };
     };
   };

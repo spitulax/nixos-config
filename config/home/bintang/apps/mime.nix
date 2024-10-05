@@ -11,6 +11,7 @@ let
     mapAttrs
     attrValues
     genAttrs
+    mapAttrsToList
     ;
   inherit (myLib)
     stripAttrs
@@ -100,11 +101,28 @@ in
 {
   options.configs.apps.mime =
     mapAttrs
-      (k: v: mkOption {
-        type = types.nullOr types.str;
-        default = null;
-        description = "Desktop entry to open ${k} files";
-      })
+      (k: v:
+        mkOption {
+          type = types.nullOr (types.oneOf [
+            types.str
+            (types.submodule {
+              options = {
+                entry = mkOption {
+                  type = types.nullOr types.str;
+                  default = null;
+                  description = "Desktop entry to open ${k} files.";
+                };
+                packages = mkOption {
+                  type = types.listOf types.package;
+                  default = [ ];
+                  description = "Extra packages to install to be able to open with `entry`.";
+                };
+              };
+            })
+          ]);
+          default = null;
+          description = "Desktop entry to open ${k} files.";
+        })
       mimeGroup;
 
   config = {
@@ -115,8 +133,16 @@ in
           (attrValues
             (mapAttrs
               (k: v: genAttrs mimeGroup.${k} (_: v))
-              (stripAttrs cfg)))
+              (mapAttrs
+                (_: v: if builtins.isAttrs v then v.entry else v)
+                (stripAttrs cfg))))
       ;
     };
+
+    home.packages =
+      builtins.concatLists
+        (mapAttrsToList
+          (_: v: if builtins.isAttrs v then v.packages else [ ])
+          cfg);
   };
 }

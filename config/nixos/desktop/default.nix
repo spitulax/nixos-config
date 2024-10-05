@@ -24,6 +24,7 @@ in
     };
     defaultSession = mkOption {
       type = types.nullOr (types.enum (builtins.attrNames cfg.environments));
+      default = null;
       description = "The default desktop environment to log into.";
     };
   };

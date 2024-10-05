@@ -23,20 +23,24 @@ in
     enable = mkEnableOption "web apps";
 
     apps = mkOption {
-      type = with types; attrsOf (submodule {
-        options = {
-          id = mkOption {
-            type = strMatching "[a-zA-Z]{32}";
-            description = "The extension ID of the app. You can get it from chrome://app-service-internals";
-          };
-
-          actions = mkOption {
-            type = attrsOf str;
-            default = { };
-            description = "The set of actions made available to application launchers and the URL to open.";
-          };
-        };
-      });
+      type = with types;
+        attrsOf
+          (oneOf [
+            str
+            (submodule {
+              options = {
+                id = mkOption {
+                  type = strMatching "[a-zA-Z]{32}";
+                  description = "The extension ID of the app. You can get it from chrome://app-service-internals";
+                };
+                actions = mkOption {
+                  type = attrsOf str;
+                  default = { };
+                  description = "The set of actions made available to application launchers and the URL to open.";
+                };
+              };
+            })
+          ]);
       default = { };
       example = literalExpression ''
         {
@@ -70,27 +74,32 @@ in
   config = mkIf cfg.enable {
     xdg.desktopEntries =
       mapAttrs'
-        (name: app: {
-          name = "brave-${replaceStrings [ " " ] [ "-" ] name}";
-          value = rec {
-            inherit name;
-            exec = "${getExe cfg.package} --app-id=${app.id} " + (lib.strings.concatStringsSep " " cfg.commandLineArgs);
-            type = "Application";
-            icon = "brave-${app.id}-Default";
-            startupNotify = true;
-            terminal = false;
-            settings = {
-              StartupWMClass = "crx_${app.id}";
+        (name: app:
+          let
+            id = if builtins.isAttrs app then app.id else app;
+            acts = if builtins.isAttrs app then app.actions else { };
+          in
+          {
+            name = "brave-${replaceStrings [ " " ] [ "-" ] name}";
+            value = rec {
+              inherit name;
+              exec = "${getExe cfg.package} --app-id=${id} " + (lib.strings.concatStringsSep " " cfg.commandLineArgs);
+              type = "Application";
+              icon = "brave-${id}-Default";
+              startupNotify = true;
+              terminal = false;
+              settings = {
+                StartupWMClass = "crx_${id}";
+              };
+              actions =
+                mapAttrs
+                  (name: url: {
+                    inherit name;
+                    exec = "${exec} \"--app-launch-url-for-shortcuts-menu-item=${url}\"";
+                  })
+                  acts;
             };
-            actions =
-              mapAttrs
-                (name: url: {
-                  inherit name;
-                  exec = "${exec} \"--app-launch-url-for-shortcuts-menu-item=${url}\"";
-                })
-                app.actions;
-          };
-        })
+          })
         cfg.apps;
   };
 }

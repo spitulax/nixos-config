@@ -72,6 +72,7 @@ in
       mapAttrs
         (_: v: mkOption {
           type = types.nullOr types.str;
+          default = null;
           description = "The ${v} variable.";
         })
         defaultProgramOptions;

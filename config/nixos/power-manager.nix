@@ -30,6 +30,7 @@ in
         "auto-cpufreq"
         "power-profiles-daemon"
       ]);
+      default = null;
       description = "Which program manages the power usage";
     };
   };

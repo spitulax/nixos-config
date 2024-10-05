@@ -1,4 +1,5 @@
 { users
+, pkgs
 , ...
 }: {
   imports = [
@@ -25,22 +26,25 @@
       dolphin.enable = true;
       entries.enable = true;
       kitty.enable = true;
+      mpv.enable = true;
       mime = {
         text = "nvim.desktop";
         audio = "mpv.desktop";
         video = "mpv.desktop";
-        image = "org.nomacs.ImageLounge.desktop";
-        pdf = "brave-browser.desktop";
+        image = {
+          entry = "org.nomacs.ImageLounge.desktop";
+          packages = [ pkgs.nomacs ];
+        };
+        pdf = {
+          entry = "io.github.JakubMelka.Pdf4qt.Pdf4QtViewer.desktop";
+          packages = [ pkgs.pdf4qt ];
+        };
         vector = "brave-browser.desktop";
         web = "brave-browser.desktop";
         directory = "yazi.desktop";
         wordDoc = "writer.desktop";
         slideshowDoc = "impress.desktop";
         spreadsheetDoc = "calc.desktop";
-      };
-      media = {
-        mpv = true;
-        nomacs = true;
       };
       obs.enable = true;
       office = {
