@@ -1,1 +1,1 @@
-return require("internals.plugins").specs()
+return require("internals.plugins")

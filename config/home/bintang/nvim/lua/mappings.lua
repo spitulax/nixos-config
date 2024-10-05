@@ -214,52 +214,36 @@ return {
       {
         desc = "Go to next buffer",
         lhs = "<M-.>",
-        rhs = "<cmd>bn<cr>",
+        rhs = function()
+          require("nvchad.tabufline").next()
+        end,
       },
       {
         desc = "Go to previous buffer",
         lhs = "<M-,>",
-        rhs = "<cmd>bp<cr>",
+        rhs = function()
+          require("nvchad.tabufline").prev()
+        end,
       },
       {
         desc = "Close current buffer",
         lhs = "<leader>x",
         rhs = function()
-          MiniBufremove.delete(0)
-        end,
-      },
-      {
-        desc = "Close previous buffer",
-        lhs = "<leader>X",
-        rhs = function()
-          MiniBufremove.delete(vim.fn.bufnr("#"))
+          require("nvchad.tabufline").close_buffer()
         end,
       },
       {
         desc = "Close all other buffers",
         lhs = "<leader>bo",
         rhs = function()
-          local key = vim.api.nvim_replace_termcodes("<C-w>o", true, false, true)
-          vim.api.nvim_feedkeys(key, "n", false)
-          vim.cmd("")
-          for i = 1, vim.fn.bufnr("$") do
-            if vim.fn.bufexists(i) == 1 and i ~= vim.fn.bufnr("%") then
-              MiniBufremove.delete(i)
-            end
-          end
+          require("nvchad.tabufline").closeAllBufs(false)
         end,
       },
       {
         desc = "Close all buffers",
         lhs = "<leader>bx",
         rhs = function()
-          local key = vim.api.nvim_replace_termcodes("<C-w>o", true, false, true)
-          vim.api.nvim_feedkeys(key, "n", false)
-          for i = 1, vim.fn.bufnr("$") do
-            if vim.fn.bufexists(i) == 1 then
-              MiniBufremove.delete(i)
-            end
-          end
+          require("nvchad.tabufline").closeAllBufs(true)
         end,
       },
       {
