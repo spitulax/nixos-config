@@ -6,6 +6,6 @@ pkgs.symlinkJoin {
   name = "scripts";
   paths =
     map
-      (x: pkgs.callPackage ./${x} { })
-      (lib.remove "default.nix" (myLib.listFiles ./.));
+      (x: pkgs.writeScriptBin (myLib.truncateExt "sh" x) (builtins.readFile ./${x}))
+      (lib.remove "default.nix" (myLib.listFilesExt ./. "sh"));
 }

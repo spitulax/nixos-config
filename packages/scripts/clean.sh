@@ -1,5 +1,4 @@
-{ writeShellScriptBin }:
-writeShellScriptBin "clean" ''
+#!/usr/bin/env bash
 
 set -e
 
@@ -10,8 +9,8 @@ printf "\033[1;31mPress ENTER to delete \`result\` links...\n"
 printf "\033[0m"
 read
 for i in $(find $HOME -name 'result' -type l); do
-  echo "Deleting $i"
-  unlink $i
+    echo "Deleting $i"
+    unlink $i
 done
 echo
 
@@ -38,5 +37,3 @@ printf "\033[0m"
 read
 sudo nix store gc --debug
 echo
-
-''

@@ -4,11 +4,37 @@
 , specialArgs ? { }
 }: rec {
   /*
+    Returns true if the given file has the given extension.
+
+    Inputs:
+      - `ext`: The extension to check for
+      - `file`: The file's name
+
+    Type: Path/String -> Bool
+  */
+  checkExt = ext: file:
+    lib.last (builtins.split "\\.${ext}$" (builtins.toString file)) == "";
+
+  /*
+    Truncate the last extension in the given file name.
+
+    Inputs:
+      - `ext`: The extension to truncate
+      - `file`: The file's name
+
+    Type: Path/String -> Bool
+  */
+  truncateExt = ext: file:
+    if checkExt ext file
+    then builtins.head (builtins.split "\\.${ext}$" (builtins.toString file))
+    else file;
+
+  /*
     Returns a list of files in given directory.
 
     Inputs:
-      - `dir`: The directory that contains the files
-      - `types`: A list of included file types or pass [] if no files should be filtered. The possible values are "regular", "directory", "symlink" and "unknown"
+    - `dir`: The directory that contains the files
+    - `types`: A list of included file types or pass [] if no files should be filtered. The possible values are "regular", "directory", "symlink" and "unknown"
 
     Type: Path -> [String] -> [String]
   */
@@ -21,7 +47,7 @@
 
   /*
     Wrappers to `listFilesAll` that only include either regular files or directories.
-    
+
     Inputs:
       - `dir`: The directory that contains the files
 
@@ -35,14 +61,14 @@
      Returns a list of regular files in given directory that have given extension.
 
     Inputs:
-    - `dir`: The directory that contains the files 
-    - `ext`: The file extension (without leading period)
+      - `dir`: The directory that contains the files
+      - `ext`: The file extension (without leading period)
 
     Type: Path -> String -> [String]
   */
   listFilesExt = dir: ext:
     (builtins.filter
-      (v: lib.last (builtins.split "\\.${ext}$" v) == "")
+      (checkExt ext)
       (listFiles dir));
 
 
@@ -50,14 +76,14 @@
     Same as `listFilesExt` but with each file's extension removed.
 
     Inputs:
-    - `dir`: The directory that contains the files 
-    - `ext`: The file extension (without leading period)
+      - `dir`: The directory that contains the files
+      - `ext`: The file extension (without leading period)
 
     Type: Path -> String -> [String]
   */
   listFilesExtTruncate = dir: ext:
     builtins.map
-      (x: builtins.head (builtins.split "\\.${ext}$" x))
+      (truncateExt ext)
       (listFilesExt dir ext);
 
 
@@ -79,7 +105,7 @@
 
   /*
     Wrappers to `genAttrsEachFile` that only include either regular files or directories.
-    
+
     Inputs:
       - `dir`: The directory that contains the files
       - `f`: Function that takes the file name that generates the attribute's value
@@ -94,7 +120,7 @@
     This function is similar to `genAttrsEachFile` but it also includes files from subdirectories recursively.
     Directories are turned into an attrset of subdirectories or regular files.
     Regular files are turned into a string that represent a path relative to `dir`.
-    
+
     Inputs:
       - `dir`: The topmost/starting directory
       - `f`: Function that takes the file path (relative to `dir`) that generates the attribute's value
@@ -132,12 +158,12 @@
     let
       filterExt =
         lib.filterAttrs
-          (n: _: lib.last (builtins.split "\\.${ext}$" n) == "");
-      truncateExt =
+          (n: _: checkExt ext n);
+      truncateExt' =
         lib.mapAttrs'
-          (n: lib.nameValuePair (builtins.head (builtins.split "\\.${ext}$" n)));
+          (n: lib.nameValuePair (truncateExt ext n));
     in
-    truncateExt (filterExt (genAttrsEachFile dir f));
+    truncateExt' (filterExt (genAttrsEachFile dir f));
 
 
   /*
