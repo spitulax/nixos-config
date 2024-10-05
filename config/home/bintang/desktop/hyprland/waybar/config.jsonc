@@ -166,7 +166,8 @@
       "custom/notification",
       "gamemode",
       "custom/warp",
-      "custom/brightness"
+      "custom/brightness",
+      "custom/governor"
     ]
   },
   "custom/notification": {
@@ -209,6 +210,11 @@
     "interval": 10,
     "signal": 3,
     "on-click": "~/.config/waybar/scripts/warp.sh toggle && pkill -RTMIN+3 waybar"
+  },
+  "custom/governor": {
+    "format": "󰾅",
+    "tooltip": false,
+    "on-click": "governor"
   },
 
   "group/menu": {

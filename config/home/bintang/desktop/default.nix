@@ -24,6 +24,7 @@ in
       brightnessctl
       zenity # GUI from shell scripts
       libsForQt5.polkit-kde-agent # password prompt
+      libsForQt5.kde-cli-tools # kdesu
 
       # screenshot
       grim
