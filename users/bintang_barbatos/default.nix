@@ -99,7 +99,7 @@
       games = {
         osu = true;
       };
-      lutris.enable = true;
+      lutris.enable = false;
       misc.enable = true;
     };
 
