@@ -1,70 +1,69 @@
 --- Completion engine.
 
-local base = require("nvchad.configs.cmp")
-local cmp = require("cmp")
+local mappings = function(cmp)
+  return {
+    -- Close
+    ["<M-x>"] = cmp.mapping.close(),
 
-local mappings = {
-  -- Close
-  ["<M-x>"] = cmp.mapping.close(),
+    -- Toggle
+    ["<M-s>"] = cmp.mapping(function(_)
+      if cmp.visible() then
+        cmp.close()
+      else
+        cmp.complete()
+      end
+    end),
 
-  -- Toggle
-  ["<M-s>"] = cmp.mapping(function(_)
-    if cmp.visible() then
-      cmp.close()
-    else
-      cmp.complete()
-    end
-  end),
+    -- Abort
+    ["<M-z>"] = cmp.mapping.abort(),
 
-  -- Abort
-  ["<M-z>"] = cmp.mapping.abort(),
+    -- Docs
+    ["<M-h>"] = cmp.mapping(function(_)
+      if cmp.visible_docs() then
+        cmp.close_docs()
+      else
+        cmp.open_docs()
+      end
+    end),
 
-  -- Docs
-  ["<M-h>"] = cmp.mapping(function(_)
-    if cmp.visible_docs() then
-      cmp.close_docs()
-    else
-      cmp.open_docs()
-    end
-  end),
+    -- Scroll docs
+    ["<M-[>"] = cmp.mapping.scroll_docs(-4),
+    ["<M-]>"] = cmp.mapping.scroll_docs(4),
 
-  -- Scroll docs
-  ["<M-[>"] = cmp.mapping.scroll_docs(-4),
-  ["<M-]>"] = cmp.mapping.scroll_docs(4),
+    -- Confirm
+    ["<Tab>"] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    }),
+    ["<M-l>"] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    }),
 
-  -- Confirm
-  ["<Tab>"] = cmp.mapping.confirm({
-    behavior = cmp.ConfirmBehavior.Replace,
-    select = true,
-  }),
-  ["<M-l>"] = cmp.mapping.confirm({
-    behavior = cmp.ConfirmBehavior.Insert,
-    select = true,
-  }),
+    -- Selection
+    ["<M-n>"] = cmp.mapping.select_next_item(),
+    ["<M-p>"] = cmp.mapping.select_prev_item(),
 
-  -- Selection
-  ["<M-n>"] = cmp.mapping.select_next_item(),
-  ["<M-p>"] = cmp.mapping.select_prev_item(),
+    -- Disabled
+    ["<CR>"] = vim.NIL,
+    ["<C-n>"] = vim.NIL,
+    ["<C-p>"] = vim.NIL,
+    ["<C-Space>"] = vim.NIL,
+    ["<C-e>"] = vim.NIL,
+    ["<C-d>"] = vim.NIL,
+    ["<C-f>"] = vim.NIL,
+  }
+end
 
-  -- Disabled
-  ["<CR>"] = vim.NIL,
-  ["<C-n>"] = vim.NIL,
-  ["<C-p>"] = vim.NIL,
-  ["<C-Space>"] = vim.NIL,
-  ["<C-e>"] = vim.NIL,
-  ["<C-d>"] = vim.NIL,
-  ["<C-f>"] = vim.NIL,
-}
-
-local cmdline_mappings = (function()
+local cmdline_mappings = function(cmp, mapping)
   local result = {}
-  for k, v in pairs(mappings) do
+  for k, v in pairs(mapping) do
     result[k] = { c = v }
   end
   return cmp.mapping.preset.cmdline(result)
-end)()
+end
 
-local function config_cmp()
+local function config_cmp(cmp, mapping, base)
   local opts = {
     preselect = cmp.PreselectMode.None,
     completion = {
@@ -75,7 +74,7 @@ local function config_cmp()
         auto_open = false,
       },
     },
-    mapping = mappings,
+    mapping = mapping,
 
     sources = {
       { name = "nvim_lsp" },
@@ -89,10 +88,10 @@ local function config_cmp()
   cmp.setup(vim.tbl_deep_extend("force", base, opts))
 end
 
-local function config_cmdline()
+local function config_cmdline(cmp, cmdline_mapping)
   -- Search (forward)
   cmp.setup.cmdline("/", {
-    mapping = cmdline_mappings,
+    mapping = cmdline_mapping,
     sources = {
       { name = "buffer" },
     },
@@ -100,7 +99,7 @@ local function config_cmdline()
 
   -- Command mode
   cmp.setup.cmdline(":", {
-    mapping = cmdline_mappings,
+    mapping = cmdline_mapping,
     sources = {
       { name = "path" },
       { name = "cmdline" },
@@ -119,7 +118,12 @@ return {
   },
 
   config = function(_, _)
-    config_cmp()
-    config_cmdline()
+    local cmp = require("cmp")
+    local mapping = mappings(cmp)
+    local cmdline_mapping = cmdline_mappings(cmp, mapping)
+    local base = require("nvchad.configs.cmp")
+
+    config_cmp(cmp, mapping, base)
+    config_cmdline(cmp, cmdline_mapping)
   end,
 }

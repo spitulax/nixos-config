@@ -56,8 +56,21 @@ M.nvdash = {
     { txt = "  Find File", keys = "Spc o", cmd = "Telescope find_files" },
     { txt = "󰈚  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
     { txt = "󰈭  Find Word", keys = "Spc f w", cmd = "Telescope live_grep" },
-    { txt = "󰙅  Toggle NvimTree", keys = "Spc e", cmd = "NvimTreeToggle" },
+    { txt = "󰙅  Toggle File Explorer", keys = "Spc e", cmd = "NvimTreeToggle" },
+    { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
     { txt = "󰗼  Exit Neovim", keys = "Spc Q", cmd = ":qa" },
+
+    { txt = "─", hl = "NvDashLazy", no_gap = true, rep = true },
+    {
+      txt = function()
+        local stats = require("lazy").stats()
+        local ms = math.floor(stats.startuptime) .. " ms"
+        return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
+      end,
+      hl = "NvDashLazy",
+      no_gap = true,
+    },
+    { txt = "─", hl = "NvDashLazy", no_gap = true, rep = true },
   },
 }
 

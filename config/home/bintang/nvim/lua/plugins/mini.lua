@@ -5,7 +5,7 @@ return {
   spec = {
     "echasnovski/mini.nvim",
     version = false,
-    lazy = false,
+    event = "User FilePost",
   },
 
   config = function(_, _)

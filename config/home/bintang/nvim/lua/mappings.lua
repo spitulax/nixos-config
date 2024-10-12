@@ -449,4 +449,14 @@ return {
       },
     },
   },
+
+  Lazy = {
+    n = {
+      {
+        desc = "Open menu",
+        lhs = "<leader>L",
+        rhs = "<cmd>Lazy<cr>",
+      },
+    },
+  },
 }

@@ -6,7 +6,6 @@ local utils = require("utils")
 return {
   spec = {
     "nvim-telescope/telescope.nvim",
-    lazy = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "AckslD/nvim-neoclip.lua",

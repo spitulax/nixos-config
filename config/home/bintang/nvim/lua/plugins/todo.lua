@@ -5,6 +5,7 @@ return {
   spec = {
     "folke/todo-comments.nvim",
     event = "User FilePost",
+    cmd = "TodoTelescope",
   },
 
   opts = function()
@@ -30,12 +31,16 @@ return {
           {
             desc = "Todo Jump to previous todo comment",
             lhs = "[t",
-            rhs = require("todo-comments").jump_prev,
+            rhs = function()
+              require("todo-comments").jump_prev()
+            end,
           },
           {
             desc = "Todo Jump to next todo comment",
             lhs = "]t",
-            rhs = require("todo-comments").jump_next,
+            rhs = function()
+              require("todo-comments").jump_next()
+            end,
           },
           {
             desc = "Search all todo comments",

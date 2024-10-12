@@ -1,16 +1,16 @@
 --- LSPs.
 
-local languages = require("internals.languages")
-local lspconfig = require("lspconfig")
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
-
 ---@type PluginConfig
 return {
   spec = { "neovim/nvim-lspconfig" },
 
   config = function()
+    local languages = require("internals.languages")
+    local lspconfig = require("lspconfig")
+    local on_attach = require("nvchad.configs.lspconfig").on_attach
+    local on_init = require("nvchad.configs.lspconfig").on_init
+    local capabilities = require("nvchad.configs.lspconfig").capabilities
+
     vim.diagnostic.config({
       virtual_text = false,
     })

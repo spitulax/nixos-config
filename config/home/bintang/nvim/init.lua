@@ -20,7 +20,6 @@ require("lazy").setup({
     import = "nvchad.plugins",
     config = function()
       require("nvchad.options")
-      require("autocmds")
       require("internals.languages").autocmds()
       require("options")
     end,
@@ -80,6 +79,7 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 require("nvchad.autocmds")
+require("autocmds")
 
 vim.schedule(function()
   require("internals.mappings")
