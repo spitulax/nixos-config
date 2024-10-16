@@ -1,3 +1,4 @@
+local menu = require("ui.menu")
 local utils = require("utils")
 
 ---@type MappingTable
@@ -379,6 +380,16 @@ return {
         rhs = "gcc",
         opts = { remap = true },
       },
+      {
+        desc = "Open color picker",
+        lhs = "<leader>cp",
+        rhs = "<cmd>Huefy<cr>",
+      },
+      {
+        desc = "Open shades picker",
+        lhs = "<leader>cs",
+        rhs = "<cmd>Shades<cr>",
+      },
     },
 
     v = {
@@ -407,6 +418,7 @@ return {
         lhs = "<leader>tf",
         rhs = function()
           vim.g.disable_autoformat = not vim.g.disable_autoformat
+          vim.cmd("redrawstatus")
         end,
       },
     },
@@ -414,6 +426,85 @@ return {
 
   LSP = {
     n = {
+      {
+        desc = "Show references",
+        lhs = "gr",
+        rhs = "<cmd>Telescope lsp_references<cr>",
+      },
+      {
+        desc = "Show incoming calls",
+        lhs = "gI",
+        rhs = "<cmd>Telescope lsp_incoming_calls<cr>",
+      },
+      {
+        desc = "Show outgoing calls",
+        lhs = "gO",
+        rhs = "<cmd>Telescope lsp_outgoing_calls<cr>",
+      },
+      {
+        desc = "Goto definition",
+        lhs = "gd",
+        rhs = "<cmd>Telescope lsp_definitions<cr>",
+      },
+      {
+        desc = "Goto type definition",
+        lhs = "D",
+        rhs = "<cmd>Telescope lsp_type_definitions<cr>",
+      },
+      {
+        desc = "Goto implementation",
+        lhs = "gi",
+        rhs = "<cmd>Telescope lsp_implementations<cr>",
+      },
+      {
+        desc = "Show document symbols",
+        lhs = "<leader>ls",
+        rhs = "<cmd>Telescope lsp_document_symbols<cr>",
+      },
+      {
+        desc = "Show workspace symbols",
+        lhs = "<leader>lx",
+        rhs = "<cmd>Telescope lsp_workspace_symbols<cr>",
+      },
+      {
+        desc = "Show dynamic workspace symbols",
+        lhs = "<leader>lX",
+        rhs = "<cmd>Telescope lsp_implementations<cr>",
+      },
+      {
+        desc = "Show diagnostics",
+        lhs = "<leader>da",
+        rhs = "<cmd>Telescope diagnostics<cr>",
+      },
+      {
+        desc = "Show signature help",
+        lhs = "<leader>sh",
+        rhs = vim.lsp.buf.signature_help,
+      },
+      {
+        desc = "Add workspace folder",
+        lhs = "<leader>wa",
+        rhs = vim.lsp.buf.add_workspace_folder,
+      },
+      {
+        desc = "Remove workspace folder",
+        lhs = "<leader>wr",
+        rhs = vim.lsp.buf.remove_workspace_folder,
+      },
+      {
+        desc = "List workspace folders",
+        lhs = "<leader>lf",
+        rhs = function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end,
+      },
+      {
+        desc = "NvRenamer",
+        lhs = "<leader>ra",
+        rhs = require("nvchad.lsp.renamer"),
+      },
+
+      -- Diagnostics
       {
         desc = "Diagnostic loclist",
         lhs = "<leader>dq",
@@ -424,6 +515,7 @@ return {
         lhs = "<leader>td",
         rhs = function()
           vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+          vim.cmd("redrawstatus")
         end,
       },
       {
@@ -448,6 +540,14 @@ return {
         end,
       },
     },
+
+    v = {
+      {
+        desc = "Code action",
+        lhs = "<leader>ca",
+        rhs = vim.lsp.buf.code_action,
+      },
+    },
   },
 
   Lazy = {
@@ -456,6 +556,20 @@ return {
         desc = "Open menu",
         lhs = "<leader>L",
         rhs = "<cmd>Lazy<cr>",
+      },
+    },
+  },
+
+  Menu = {
+    n = {
+      {
+        desc = "Right-click",
+        lhs = "<RightMouse>",
+        rhs = function()
+          vim.cmd.exec('"normal! \\<RightMouse>"')
+          local options = vim.bo.ft == "NvimTree" and "nvimtree" or menu.default
+          require("menu").open(options, { mouse = true })
+        end,
       },
     },
   },

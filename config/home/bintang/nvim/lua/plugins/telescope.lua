@@ -107,57 +107,6 @@ return {
             lhs = "<leader>fa",
             rhs = "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>",
           },
-
-          {
-            desc = "LSP references",
-            lhs = "<leader>lr",
-            rhs = "<cmd>Telescope lsp_references<cr>",
-          },
-          {
-            desc = "LSP incoming calls",
-            lhs = "<leader>li",
-            rhs = "<cmd>Telescope lsp_incoming_calls<cr>",
-          },
-          {
-            desc = "LSP outgoing calls",
-            lhs = "<leader>lo",
-            rhs = "<cmd>Telescope lsp_outgoing_calls<cr>",
-          },
-          {
-            desc = "LSP go to definition",
-            lhs = "<leader>ld",
-            rhs = "<cmd>Telescope lsp_definitions<cr>",
-          },
-          {
-            desc = "LSP go to type definition",
-            lhs = "<leader>lt",
-            rhs = "<cmd>Telescope lsp_type_definitions<cr>",
-          },
-          {
-            desc = "LSP go to implementation",
-            lhs = "<leader>lD",
-            rhs = "<cmd>Telescope lsp_implementations<cr>",
-          },
-          {
-            desc = "LSP document symbols",
-            lhs = "<leader>ls",
-            rhs = "<cmd>Telescope lsp_document_symbols<cr>",
-          },
-          {
-            desc = "LSP workspace symbols",
-            lhs = "<leader>lx",
-            rhs = "<cmd>Telescope lsp_workspace_symbols<cr>",
-          },
-          {
-            desc = "LSP dynamic workspace symbols",
-            lhs = "<leader>lX",
-            rhs = "<cmd>Telescope lsp_implementations<cr>",
-          },
-          {
-            desc = "LSP diagnostics",
-            lhs = "<leader>da",
-            rhs = "<cmd>Telescope diagnostics<cr>",
-          },
         },
       },
     }
