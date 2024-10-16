@@ -8,11 +8,12 @@ let
   plugins = import ./plugins.nix { inherit pkgs; };
   pluginCollection =
     let
+      # https://github.com/yazi-rs/plugins
       extraPlugins = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
         repo = "plugins";
-        rev = "06e5fe1c7a2a4009c483b28b298700590e7b6784";
-        hash = "sha256-jg8+GDsHOSIh8QPYxCvMde1c1D9M78El0PljSerkLQc=";
+        rev = "7458b6c791923d519298df6fef67728f4d19e560";
+        hash = "sha256-TO6omlE92wO4bTKWWjsXBxTc1aeh6jreYI1xudF9/wo=";
       };
     in
     pkgs.stdenvNoCC.mkDerivation {

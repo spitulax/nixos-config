@@ -3,6 +3,7 @@ let
   inherit (pkgs) fetchFromGitHub;
 in
 [
+  # https://github.com/dedukun/bookmarks.yazi
   (fetchFromGitHub {
     owner = "dedukun";
     repo = "bookmarks.yazi";
@@ -10,13 +11,15 @@ in
     hash = "sha256-pNRRxS4IQO8y8/WSK9s8mNZHEdl1u1cuPfdULxikl7k=";
   })
 
+  # https://github.com/Reledia/glow.yazi
   (fetchFromGitHub {
     owner = "Reledia";
     repo = "glow.yazi";
-    rev = "4e016fa2357e5e7e9b1a4881e1492d73a0a2f2cc";
-    hash = "sha256-d73C8s8p85c0xfq8Nfzlnp83JUakMPbviQDFCX0G+qE=";
+    rev = "d8b36ff0113e73a400891726dc2eca8b3c049dea";
+    hash = "sha256-fKJ5ld5xc6HsM/h5j73GABB5i3nmcwWCs+QSdDPA9cU=";
   })
 
+  # https://github.com/Reledia/hexyl.yazi
   (fetchFromGitHub {
     owner = "Reledia";
     repo = "hexyl.yazi";
@@ -24,6 +27,7 @@ in
     hash = "sha256-Ggkns5gEnciyRBKM4+5l51DVP2GhVm86cb6JOige1XM=";
   })
 
+  # https://github.com/ndtoan96/ouch.yazi
   (fetchFromGitHub {
     owner = "ndtoan96";
     repo = "ouch.yazi";
@@ -31,10 +35,11 @@ in
     hash = "sha256-yLt9aY6hUIOdBI5bMdCs7VYFJGyD3WIkmPxvWKNCskA=";
   })
 
+  # https://github.com/Sonico98/exifaudio.yazi
   (fetchFromGitHub {
     owner = "Sonico98";
     repo = "exifaudio.yazi";
-    rev = "6205460405fa39c017d0eef12997c1180658e695";
-    hash = "sha256-mYvq7xnd4gI0KoG5G+ygDxqCWdpZbMn3Im1EiW3eSyI=";
+    rev = "d75db468e89ab379992c21cb745ca7920d5f409f";
+    hash = "sha256-ECo0rTDF+oqRtRsqrhBuVdZtEpJShRk/XXhPwEy4cfE=";
   })
 ]

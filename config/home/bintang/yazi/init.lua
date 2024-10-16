@@ -48,7 +48,7 @@ Status:children_add(function()
     return ui.Line({})
   end
 
-  local time = (h.cha.modified or 0) // 1
+  local time = (h.cha.mtime or 0) // 1
   return ui.Line({
     ui.Span(" " .. THEME.status.separator_open):fg(THEME.status.separator_style.fg),
     ui.Span(" " .. (time ~= 0 and os.date("%d/%m/%Y %H:%M", time) or "") .. " ")
@@ -71,11 +71,11 @@ local function linemode_time(t)
 end
 
 function Linemode:ctime()
-  return linemode_time(self._file.cha.created)
+  return linemode_time(self._file.cha.btime)
 end
 
 function Linemode:mtime()
-  return linemode_time(self._file.cha.modified)
+  return linemode_time(self._file.cha.mtime)
 end
 
 ----------
