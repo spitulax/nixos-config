@@ -48,7 +48,7 @@ in
       settings = {
         inherit (outputs.vars) substituters trusted-public-keys;
         auto-optimise-store = true;
-        experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+        experimental-features = [ "nix-command" "flakes" ];
         warn-dirty = false;
         trusted-users = [ "root" "@wheel" ];
         nix-path = config.nix.nixPath; # This is a working alternative to nix.nixPath

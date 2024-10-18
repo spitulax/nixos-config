@@ -29,12 +29,13 @@ in
       chafa # image visualizer
       ffmpeg
       hexyl # hex editor
-      custom.scripts
-      mypkgs.lexurgy
-      mypkgs.crt
       jq # JSON parser
       ouch # archiving tool
       poppler_utils # PDF
+      mypkgs.lexurgy
+      mypkgs.crt
+      mypkgs.pasteme
+      custom.scripts
     ];
 
     xdg.configFile = {

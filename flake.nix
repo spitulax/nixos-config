@@ -6,6 +6,9 @@
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
 
+    # TEMP: https://github.com/NixOS/nixpkgs/issues/348845
+    nixpkgs-temp.url = "github:nixos/nixpkgs/bc947f541ae55e999ffdb4013441347d83b00feb";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -97,7 +100,9 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 
       # Temporary nixpkgs
-      tempPkgsFor = { };
+      tempPkgsFor = {
+        anki = genNixpkgs inputs.nixpkgs-temp false;
+      };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
       replConfigShortcuts =
