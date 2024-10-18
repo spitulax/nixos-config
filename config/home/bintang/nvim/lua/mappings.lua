@@ -448,7 +448,7 @@ return {
       },
       {
         desc = "Goto type definition",
-        lhs = "D",
+        lhs = "gD",
         rhs = "<cmd>Telescope lsp_type_definitions<cr>",
       },
       {

@@ -10,7 +10,7 @@ M.lsp = {
   {
     name = "Goto Type Definition",
     cmd = "Telescope lsp_type_definitions",
-    rtxt = "D",
+    rtxt = "gD",
   },
 
   {
