@@ -23,8 +23,8 @@ in
   (fetchFromGitHub {
     owner = "Reledia";
     repo = "hexyl.yazi";
-    rev = "f845ea5e198f6b63545534e644527e1d120d8ee8";
-    hash = "sha256-Ggkns5gEnciyRBKM4+5l51DVP2GhVm86cb6JOige1XM=";
+    rev = "ccc0a4a959bea14dbe8f2b243793aacd697e34e2";
+    hash = "sha256-9rPJcgMYtSY5lYnFQp3bAhaOBdNUkBaN1uMrjen6Z8g=";
   })
 
   # https://github.com/ndtoan96/ouch.yazi
