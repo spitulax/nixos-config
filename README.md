@@ -25,8 +25,6 @@ was no planned structuring but I'm happy with this (for now).
 - [`overlays/`](./overlays): Nix overlays (imported to flake)
 - [`packages/`](./packages): Nix packages and scripts I won't bother to move into separate repo
 - [`secrets/`](./secrets): See [here](./secrets/README.md)
-- [`templates/`](./templates): Template for projects that I can just pull into a blank directory
-  with `nix flake init -t self#<name>` and it's just SO nice.
 - [`users/`](./users): See [here](./users/README.md)
 - [`flake.nix`](./flake.nix): The root of this entire repo
 - [`default.nix`](./default.nix): Mostly there so I can use `lib/` from REPL

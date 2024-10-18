@@ -116,7 +116,6 @@
     {
       # Standard flake output
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
-      templates = import ./templates { inherit myLib; };
       packages = forEachSystem (pkgs: import ./packages { inherit pkgs lib myLib; });
       overlays = import ./overlays { inherit inputs lib outputs; };
 
