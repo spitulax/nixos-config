@@ -4,7 +4,13 @@
 return {
   spec = {
     "christoomey/vim-tmux-navigator",
-    lazy = false,
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
   },
 
   mappings = function()
@@ -33,7 +39,7 @@ return {
           },
           {
             desc = "Window previous",
-            lhs = "<C-Space>;",
+            lhs = "<C-\\>",
             rhs = "<cmd>TmuxNavigatePrevious<cr>",
           },
         },
