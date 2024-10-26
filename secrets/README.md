@@ -14,10 +14,10 @@ directory to [./secrets] also update [.sops.yaml].
 NixOS sops config is located [here](../modules/nixos/common/sops.nix). Each host expects a default
 sops file which is `../secrets/hosts/<hostname>/secrets.yaml`, create it for each host.
 
-The age key is located in `/etc/age/host.txt` with ownership of `root:wheel` and `640` permission so
-`@wheel` users can access it without `sudo` (important for `nh`). The age key should be generated
-with `ssh-to-age -private-key -i /etc/ssh/ssh_host_ed25519_key > /etc/age/host.txt` and make sure
-the ssh key is not password protected. `config.sops.age.sshKeyPaths` and
+The age key is located in `/var/lib/age/host.txt` with ownership of `root:wheel` and `640`
+permission so `@wheel` users can access it without `sudo` (important for `nh`). The age key should
+be generated with `ssh-to-age -private-key -i /etc/ssh/ssh_host_ed25519_key > /var/lib/age/host.txt`
+and make sure the ssh key is not password protected. `config.sops.age.sshKeyPaths` and
 `config.sops.gnupg.sshKeyPaths` should be empty.
 
 ## Home Manager config

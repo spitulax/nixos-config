@@ -91,7 +91,7 @@
       nix = true;
       odin = true;
       python = true;
-      # rust = true;
+      rust = true;
       tools = true;
     };
 

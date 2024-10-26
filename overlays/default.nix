@@ -61,7 +61,9 @@
   # Compose existing overlays
   overlay =
     let
-      overlays = with inputs; [ ];
+      overlays = with inputs; [
+        rust-overlay.overlays.default
+      ];
     in
     final: prev: prev.lib.composeManyExtensions overlays final prev;
 }

@@ -45,6 +45,11 @@
 
     yazi.url = "github:sxyazi/yazi";
 
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #############################
 
     catppuccin-yazi = {
