@@ -1,4 +1,4 @@
-.PHONY: build nixos home update upgrade upinput clean delete check exam
+.PHONY: build nixos home update upgrade clean delete check exam
 
 build: nixos
 	git add -A
@@ -11,15 +11,12 @@ home:
 	nh home switch
 
 update:
-	nix flake update
+	nix flake update $(i)
 
 upgrade:
 	lazyup
 	nix flake update
 	nh os switch
-
-upinput:
-	nix flake lock --update-input $(i)
 
 clean:
 	nh clean user

@@ -6,9 +6,6 @@
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
 
-    # TEMP: https://github.com/NixOS/nixpkgs/issues/348845
-    nixpkgs-temp.url = "github:nixos/nixpkgs/bc947f541ae55e999ffdb4013441347d83b00feb";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,13 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    # TEMP: https://github.com/fufexan/nix-gaming/issues/212
+    nix-gaming.url = "github:fufexan/nix-gaming/d5baae772ce87682c624233c7a9265b387caa818";
 
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
-    };
+    hyprland.url = "github:hyprwm/Hyprland";
 
     hyprspace.url = "github:KZDKM/Hyprspace";
     hyprspace.inputs.hyprland.follows = "hyprland";
@@ -105,9 +99,7 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 
       # Temporary nixpkgs
-      tempPkgsFor = {
-        anki = genNixpkgs inputs.nixpkgs-temp false;
-      };
+      tempPkgsFor = { };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
       replConfigShortcuts =
