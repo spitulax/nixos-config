@@ -16,17 +16,13 @@
 
   config = lib.mkIf config.configs.sops.enable {
     sops = {
-      inherit (config.configs.requiredFiles) defaultSopsFile;
+      defaultSopsFile = /${outputs.vars.hostsSecretsPath}/${config.networking.hostName}/secrets.yaml;
       age = {
         keyFile = "/var/lib/age/host.txt";
         # sshKeyPaths = map (x: x.path) (lib.filter (x: x.type == "ed25519") config.services.openssh.hostKeys);
         sshKeyPaths = [ ];
       };
       gnupg.sshKeyPaths = [ ];
-    };
-
-    configs.requiredFiles = {
-      defaultSopsFile = /${outputs.vars.hostsSecretsPath}/${config.networking.hostName}/secrets.yaml;
     };
   };
 }

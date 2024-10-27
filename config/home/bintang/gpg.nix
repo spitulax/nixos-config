@@ -9,12 +9,10 @@
       enable = true;
       publicKeys = [
         {
-          source = config.configs.requiredFiles.userGpgKey;
+          source = ../../../keys/users/bintang/gpg1.asc;
           trust = 5;
         }
       ];
     };
-
-    configs.requiredFiles.userGpgKey = ../../../keys/users/bintang/gpg1.asc;
   };
 }

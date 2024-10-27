@@ -322,12 +322,6 @@
               description = "Extra packages to be included with user profile.";
             };
 
-            requiredFiles = mkOption {
-              type = with types; attrsOf (oneOf [ path (listOf path) (attrsOf path) ]);
-              default = { };
-              description = "List of files in this config required for the profile to build.";
-            };
-
             defaultShell = mkOption {
               readOnly = true;
               type = types.package;

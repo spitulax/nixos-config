@@ -5,6 +5,13 @@
 }:
 let
   cfg = config.configs.openssh;
+
+  hostPublicKeys =
+    lib.optionalAttrs
+      cfg.addHostKeys
+      (lib.mapAttrs
+        (k: _: ../../../keys/hosts/${k}/ssh_host_rsa_key.pub)
+        outputs.nixosConfigurations);
 in
 {
   options.configs.openssh = {
@@ -41,17 +48,10 @@ in
         "ssh-rsa"
         "ssh-ed25519"
       ];
-      knownHosts = lib.mapAttrs
-        (_: v: {
-          publicKeyFile = v;
-        })
-        config.configs.requiredFiles.hostPublicKeys;
-    };
-
-    configs.requiredFiles = lib.optionalAttrs cfg.addHostKeys {
-      hostPublicKeys = lib.mapAttrs
-        (k: _: ../../../keys/hosts/${k}/ssh_host_rsa_key.pub)
-        outputs.nixosConfigurations;
+      knownHosts =
+        lib.mapAttrs
+          (_: v: { publicKeyFile = v; })
+          hostPublicKeys;
     };
   };
 }

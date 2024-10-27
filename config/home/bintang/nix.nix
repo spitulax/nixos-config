@@ -34,10 +34,8 @@ in
 
     (lib.mkIf cfg.useAccessToken {
       sops.secrets.nix-access-tokens = {
-        sopsFile = config.configs.requiredFiles.nixAccessToken;
+        sopsFile = /${outputs.vars.usersSecretsPath}/bintang/nix-access-tokens.yaml;
       };
-
-      configs.requiredFiles.nixAccessToken = /${outputs.vars.usersSecretsPath}/bintang/nix-access-tokens.yaml;
     })
   ];
 }
