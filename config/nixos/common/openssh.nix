@@ -10,7 +10,7 @@ let
     lib.optionalAttrs
       cfg.addHostKeys
       (lib.mapAttrs
-        (k: _: ../../../keys/hosts/${k}/ssh_host_rsa_key.pub)
+        (k: _: ../../../keys/hosts/${k}/ssh-rsa.pub)
         outputs.nixosConfigurations);
 in
 {
@@ -31,12 +31,12 @@ in
       };
       hostKeys = lib.optionals cfg.addHostKeys [
         {
-          path = "/etc/ssh/ssh_host_ed25519_key";
+          path = "/etc/ssh/ssh-ed25519";
           type = "ed25519";
         }
         {
           bits = 4096;
-          path = "/etc/ssh/ssh_host_rsa_key";
+          path = "/etc/ssh/ssh-rsa";
           type = "rsa";
         }
       ];

@@ -2,7 +2,7 @@
 
 Setting up sops was an unbearable pain. I wrote this so I wouldn't need to experience it again.
 
-The secret .yaml files are located in [./secrets] and categorized by the user of the secrets.
+The secret .yaml files are located in [./secrets] and categorised by the user of the secrets.
 
 ## .sops.yaml
 
@@ -16,8 +16,8 @@ sops file which is `../secrets/hosts/<hostname>/secrets.yaml`, create it for eac
 
 The age key is located in `/var/lib/age/host.txt` with ownership of `root:wheel` and `640`
 permission so `@wheel` users can access it without `sudo` (important for `nh`). The age key should
-be generated with `ssh-to-age -private-key -i /etc/ssh/ssh_host_ed25519_key > /var/lib/age/host.txt`
-and make sure the ssh key is not password protected. `config.sops.age.sshKeyPaths` and
+be generated with `ssh-to-age -private-key -i /etc/ssh/ssh-ed25519 > /var/lib/age/host.txt` and make
+sure the ssh key is not password protected. `config.sops.age.sshKeyPaths` and
 `config.sops.gnupg.sshKeyPaths` should be empty.
 
 ## Home Manager config
