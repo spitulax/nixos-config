@@ -75,7 +75,9 @@ let
 
     python = [
       (python3.withPackages (ps: with ps; [
-        # Some python packages
+        python-lsp-server
+        flake8
+        black
       ]))
     ];
 
