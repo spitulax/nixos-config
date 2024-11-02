@@ -27,7 +27,7 @@
     # TEMP: https://github.com/fufexan/nix-gaming/issues/212
     nix-gaming.url = "github:fufexan/nix-gaming/d5baae772ce87682c624233c7a9265b387caa818";
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/3852418d2446555509738bf1486940042107afe7";
 
     hyprspace.url = "github:KZDKM/Hyprspace";
     hyprspace.inputs.hyprland.follows = "hyprland";
