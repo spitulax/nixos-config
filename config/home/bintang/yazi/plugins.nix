@@ -15,7 +15,7 @@ in
   (fetchFromGitHub {
     owner = "Reledia";
     repo = "glow.yazi";
-    rev = "d8b36ff0113e73a400891726dc2eca8b3c049dea";
+    rev = "388e847dca6497cf5903f26ca3b87485b2de4680";
     hash = "sha256-fKJ5ld5xc6HsM/h5j73GABB5i3nmcwWCs+QSdDPA9cU=";
   })
 
@@ -31,15 +31,15 @@ in
   (fetchFromGitHub {
     owner = "ndtoan96";
     repo = "ouch.yazi";
-    rev = "251da6930ca8b7ee0384810086c3bf644caede3e";
-    hash = "sha256-yLt9aY6hUIOdBI5bMdCs7VYFJGyD3WIkmPxvWKNCskA=";
+    rev = "d13f7c08cdebcfaadf38c3eb9999639ddd89201c";
+    hash = "sha256-Ii0gowsx6fegFNaOtThAbKaKa2WF1uavgzeONRPaQGU=";
   })
 
   # https://github.com/Sonico98/exifaudio.yazi
   (fetchFromGitHub {
     owner = "Sonico98";
     repo = "exifaudio.yazi";
-    rev = "d75db468e89ab379992c21cb745ca7920d5f409f";
-    hash = "sha256-ECo0rTDF+oqRtRsqrhBuVdZtEpJShRk/XXhPwEy4cfE=";
+    rev = "855ff055c11fb8f268b4c006a8bd59dd9bcf17a7";
+    hash = "sha256-8f1iG9RTLrso4S9mHYcm3dLKWXd/WyRzZn6KNckmiCc=";
   })
 ]

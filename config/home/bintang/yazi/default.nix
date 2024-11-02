@@ -12,8 +12,8 @@ let
       extraPlugins = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
         repo = "plugins";
-        rev = "4f1d0ae0862f464e08f208f1807fcafcd8778e16";
-        hash = "sha256-+d7D6nq/oOzcsvvH0MHmLUDkxAtand+IXKQ730m4Ifs=";
+        rev = "ad52adf917d6dd679dbc2dcefa3a9384654bd1c7";
+        hash = "sha256-UOSH8RM+6VkQqi14bwUdFUNm8CgbDRlNial9VevjYuU=";
       };
     in
     pkgs.stdenvNoCC.mkDerivation {
