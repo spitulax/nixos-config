@@ -28,6 +28,9 @@ let
 
   cfg = config.services.keymapper;
 
+  generateDirectives =
+    "@forward-modifiers " + (concatStringsSep " " cfg.forwardModifiers);
+
   generateAliases = aliases:
     concatStringsSep "\n" (mapAttrsToList (n: v: n + " = " + v) aliases);
 
@@ -100,9 +103,9 @@ let
   contextModule = types.submodule {
     options = (foldAttrs mergeAttrs { } [
       (mkContextOption
-        "system" # option name
-        "Linux" # example
-        "The system") # description
+        "system"
+        "Linux"
+        "The system")
       (mkContextOption
         "title"
         "Chromium"
@@ -219,6 +222,14 @@ in
       '';
     };
 
+    forwardModifiers = mkOption {
+      type = types.listOf types.str;
+      default = [ "Shift" "Control" "Alt" ];
+      description = ''
+        Allows to set a list of keys which should never be [held back](https://github.com/houmain/keymapper?tab=readme-ov-file#order-of-mappings).
+      '';
+    };
+
     extraConfig = mkOption {
       type = types.lines;
       default = "";
@@ -248,11 +259,13 @@ in
         (foldl (acc: x: acc ++ (optional (x != "") x)) [ ] (
           if !cfg.extraConfigFirst
           then [
+            generateDirectives
             (generateAliases cfg.aliases)
             (generateConfig cfg.contexts)
             cfg.extraConfig
           ]
           else [
+            generateDirectives
             (generateAliases cfg.aliases)
             cfg.extraConfig
             (generateConfig cfg.contexts)
