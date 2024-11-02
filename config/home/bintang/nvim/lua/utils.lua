@@ -64,9 +64,9 @@ end
 
 ---@param n number
 M.indent = function(n)
-  vim.opt.shiftwidth = n
-  vim.opt.tabstop = n
-  vim.opt.softtabstop = n
+  vim.bo.shiftwidth = n
+  vim.bo.tabstop = n
+  vim.bo.softtabstop = n
 end
 
 ---@return table<string, PluginConfig>
