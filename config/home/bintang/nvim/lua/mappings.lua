@@ -425,6 +425,14 @@ return {
   },
 
   LSP = {
+    a = {
+      {
+        desc = "Code action",
+        lhs = "<leader>ca",
+        rhs = vim.lsp.buf.code_action,
+      },
+    },
+
     n = {
       {
         desc = "Show references",
@@ -538,14 +546,6 @@ return {
         rhs = function()
           vim.diagnostic.goto_next({ float = { border = "rounded" } })
         end,
-      },
-    },
-
-    v = {
-      {
-        desc = "Code action",
-        lhs = "<leader>ca",
-        rhs = vim.lsp.buf.code_action,
       },
     },
   },
