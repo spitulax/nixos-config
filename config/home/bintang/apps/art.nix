@@ -8,6 +8,7 @@
   config = lib.mkIf config.configs.apps.art.enable {
     home.packages = with pkgs; [
       krita
+      lorien
     ];
   };
 }
