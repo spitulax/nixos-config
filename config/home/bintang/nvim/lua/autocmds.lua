@@ -14,16 +14,6 @@ autocmd({ "BufNewFile", "BufReadPost" }, {
   end,
 })
 
--- Most of the time I want to commit using Neogit the COMMIT_EDITMSG buffer is unmodifiable
--- and I don't know why that happens but this fixes it
-autocmd("FileType", {
-  callback = function(arg)
-    if vim.bo[arg.buf].filetype == "NeogitCommitMessage" then
-      vim.bo[arg.buf].modifiable = true
-    end
-  end,
-})
-
 usercmd("Indent", function(arg)
   local n = tonumber(arg.args)
   if n ~= nil then
