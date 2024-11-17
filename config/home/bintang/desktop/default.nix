@@ -8,7 +8,7 @@ let
   cfg = config.configs.desktop;
 in
 {
-  imports = myLib.importIn ./.;
+  imports = lib.remove ./services (myLib.importIn ./.);
 
   options.configs.desktop = {
     enable = lib.mkEnableOption "desktop";
@@ -23,7 +23,6 @@ in
       wtype # wayland xdotool
       brightnessctl
       zenity # GUI from shell scripts
-      libsForQt5.polkit-kde-agent # password prompt
       libsForQt5.kde-cli-tools # kdesu
 
       # screenshot
@@ -52,5 +51,7 @@ in
     };
 
     services.playerctld.enable = true;
+
+    systemd.user.services = import ./services { inherit pkgs lib myLib; };
   };
 }

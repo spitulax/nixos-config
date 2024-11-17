@@ -51,6 +51,7 @@
         enable = true;
         installSpellingDicts = true;
       };
+      obsidian.enable = true;
     };
 
     cli = {
@@ -99,7 +100,7 @@
       games = {
         osu = true;
       };
-      lutris.enable = true;
+      lutris.enable = false;
       misc.enable = true;
     };
 

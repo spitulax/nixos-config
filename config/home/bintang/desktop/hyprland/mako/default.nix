@@ -56,6 +56,9 @@
         [mode=do-not-disturb urgency=critical]
         invisible=0
 
+        [mode=do-not-disturb urgency=critical body~="^www\.youtube\.com"]
+        invisible=1
+
         [app-name=popup]
         invisible=0
         layer=overlay

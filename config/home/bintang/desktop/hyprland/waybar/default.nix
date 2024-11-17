@@ -6,7 +6,7 @@
   config = lib.mkIf config.configs.desktop.hyprland.enable {
     programs.waybar = {
       enable = true;
-      package = pkgs.mypkgs.waybar;
+      package = pkgs.waybar;
     };
 
     xdg.configFile = {

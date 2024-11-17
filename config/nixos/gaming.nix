@@ -28,7 +28,7 @@
     services.pipewire = {
       lowLatency = {
         enable = true;
-        quantum = 64;
+        quantum = 512;
         rate = 48000;
       };
     };

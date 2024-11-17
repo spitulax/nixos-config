@@ -3,12 +3,6 @@
 , ...
 }:
 let
-  makeUnitScript = name: text:
-    pkgs.writeShellScriptBin "unit-script-${name}" ''
-      set -e
-      ${text}
-    '';
-
   # NOTREALLYIMPORTANT: BAT0 is harcoded
   script = ''
     HAS_SENT=0
@@ -24,16 +18,17 @@ let
     done
   '';
 
-  unitScript = makeUnitScript "warn-low-battery" script;
+  unitScript = pkgs.makeUnitScript "warn-low-battery" script;
 in
 {
   Unit = {
     Description = "Warns user when the battery reaches `services.upower.percentageLow` with `notify-send`";
-    PartOf = [ "graphical-session.target" ];
+    After = "graphical-session.target";
   };
   Service = {
+    Type = "exec";
     ExecStart = "${lib.meta.getExe unitScript}";
     Restart = "always";
+    Slice = "background-graphical.slice";
   };
-  Install.WantedBy = [ "graphical-session.target" ];
 }

@@ -5,6 +5,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
+    # TEMP: https://nixpk.gs/pr-tracker.html?pr=355948
+    nixpkgs-temp-cava.url = "github:nixos/nixpkgs/f67841950fe8e33ae6597cc2dac1bc179c3c2627";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -24,11 +26,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TEMP: https://github.com/fufexan/nix-gaming/issues/212
-    nix-gaming.url = "github:fufexan/nix-gaming/d5baae772ce87682c624233c7a9265b387caa818";
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
-    # TEMP: https://github.com/hyprwm/Hyprland/issues/8325
-    hyprland.url = "github:hyprwm/Hyprland/3852418d2446555509738bf1486940042107afe7";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     hyprspace.url = "github:KZDKM/Hyprspace";
     hyprspace.inputs.hyprland.follows = "hyprland";
@@ -100,7 +100,9 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 
       # Temporary nixpkgs
-      tempPkgsFor = { };
+      tempPkgsFor = {
+        cava = genNixpkgs inputs.nixpkgs-temp-cava false;
+      };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
       replConfigShortcuts =
@@ -120,7 +122,7 @@
       # Standard flake output
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
       packages = forEachSystem (pkgs: import ./packages { inherit pkgs lib myLib; });
-      overlays = import ./overlays { inherit inputs lib outputs; };
+      overlays = import ./overlays { inherit inputs lib outputs tempPkgsFor; };
 
       # Modules
       nixosConfigModule = ./config/nixos;

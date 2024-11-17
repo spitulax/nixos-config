@@ -22,7 +22,6 @@
     desktop = {
       enable = true;
       environments.hyprland = true;
-      defaultSession = "hyprland";
       fonts = {
         cjkFonts = true;
         nerdFonts = true;

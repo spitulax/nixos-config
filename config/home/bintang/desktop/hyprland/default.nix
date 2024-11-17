@@ -25,15 +25,15 @@ in
     home.packages = with pkgs; [
       hyprpicker
       hyprpaper
-      mypkgs.hyprlock
-      # hypridle
+      hyprlock
+      hyprpolkitagent
     ];
 
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
       systemd = {
-        enable = true;
+        enable = false;
         variables = [ "--all" ];
       };
       package = pkgs.inputs.hyprland.hyprland;
@@ -57,7 +57,6 @@ in
 
     home.file = {
       ".config/hypr/catppuccin-mocha.conf".source = ./catppuccin-mocha.conf;
-      # ".config/hypr/hypridle.conf".source = ./hypridle.conf;
       ".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
     };
 
@@ -67,34 +66,5 @@ in
         recursive = true;
       };
     };
-
-    systemd.user.services = {
-      hyprpaper = {
-        Unit = {
-          Description = "Hyprland wallpaper daemon";
-          PartOf = [ "graphical-session.target" ];
-        };
-        Service = {
-          ExecStart = "${lib.meta.getExe pkgs.hyprpaper}";
-          Restart = "on-failure";
-        };
-        Install.WantedBy = [ "hyprland-session.target" ];
-      };
-
-      warn-low-battery = import ./warn-low-battery.nix { inherit pkgs lib; };
-    };
-
-    # systemd.user.services.hypridle = {
-    #   Unit = {
-    #     Description = "Hypridle";
-    #     After = [ "graphical-session.target" ];
-    #   };
-    #   Service = {
-    #     ExecStart = "${lib.meta.getExe pkgs.hypridle}";
-    #     Restart = "always";
-    #     RestartSec = "10";
-    #   };
-    #   Install.WantedBy = [ "default.target" ];
-    # };
   };
 }

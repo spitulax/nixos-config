@@ -1,6 +1,7 @@
 { inputs
 , lib
 , outputs
+, tempPkgsFor
 }: {
   # Add custom packages
   # This is where packages from ../packages are added to pkgs
@@ -25,6 +26,13 @@
     # Nerdfonts
     iosevka-nerdfont = final.nerdfonts.override { fonts = [ "Iosevka" ]; };
     nerdfonts-symbols-only = final.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; };
+
+    # Helper functions
+    makeUnitScript = name: text:
+      final.writeShellScriptBin "unit-script-${name}" ''
+        set -e
+        ${text}
+      '';
   };
 
   # Modify packages from nixpkgs
@@ -42,14 +50,19 @@
         winetricks
       ];
     };
+
+    inherit (final.mypkgs) hyprlock hyprpaper hyprpicker hyprpolkitagent waybar;
+
+    inherit (tempPkgsFor.cava.${final.system}) cava;
   };
 
   # Compose existing overlays
   overlay =
     let
-      overlays = with inputs; [
-        rust-overlay.overlays.default
-      ];
+      overlays = with inputs;
+        [
+          rust-overlay.overlays.default
+        ];
     in
     final: prev: prev.lib.composeManyExtensions overlays final prev;
 }
