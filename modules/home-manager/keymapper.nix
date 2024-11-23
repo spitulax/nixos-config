@@ -276,7 +276,7 @@ in
       Unit.Description = "Keymapper";
       Service = {
         Type = "exec";
-        ExecStart = "${cfg.package}/bin/keymapper -u -v -c ${config.xdg.configHome + "/keymapper.conf"}" + optionalString (!cfg.systemd.tray) " --no-tray";
+        ExecStart = "${cfg.package}/bin/keymapper -u -c ${config.xdg.configHome + "/keymapper.conf"}" + optionalString (!cfg.systemd.tray) " --no-tray";
         Restart = "always";
       };
       Install.WantedBy = cfg.systemd.wantedBy;

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Autostart services
+systemctl --user restart keymapper.service
 systemctl --user start hyprpaper.service
 systemctl --user start hyprpolkitagent.service
 systemctl --user start warn-low-battery.service

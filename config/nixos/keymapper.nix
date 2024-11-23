@@ -12,7 +12,7 @@
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "exec";
-        ExecStart = "${pkgs.mypkgs.keymapper}/bin/keymapperd -v";
+        ExecStart = "${pkgs.mypkgs.keymapper}/bin/keymapperd";
         Restart = "always";
       };
     };
