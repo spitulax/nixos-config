@@ -21,7 +21,7 @@ in
     ] ++ lib.optionals cfg.installSpellingDicts [
       mypkgs.hunspell-id
     ] ++ (with pkgs.hunspellDicts; lib.optionals cfg.installSpellingDicts [
-      en-gb-ize
+      en-gb-ise
       en-us
     ]);
   };

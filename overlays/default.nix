@@ -54,6 +54,15 @@
     inherit (final.mypkgs) hyprlock hyprpaper hyprpicker hyprpolkitagent waybar;
 
     inherit (tempPkgsFor.cava.${final.system}) cava;
+    inherit (tempPkgsFor.libreoffice.${final.system}) libreoffice-fresh;
+
+    inputs = prev.inputs // {
+      hyprspace.Hyprspace = prev.inputs.hyprspace.Hyprspace.overrideAttrs {
+        patches = [
+          ./hyprspace.patch
+        ];
+      };
+    };
   };
 
   # Compose existing overlays

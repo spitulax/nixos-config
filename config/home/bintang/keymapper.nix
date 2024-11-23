@@ -29,9 +29,6 @@ in
       contexts = [
         {
           mappings = [
-            { input = "Shift"; output = "Shift"; }
-            { input = "Control"; output = "Control"; }
-            { input = "Alt"; output = "Alt"; }
             { input = "Ext{AltGr}"; output = "AltGr"; }
             { input = "AltGr"; output = "Alt"; }
             { input = "ScrollLock"; output = "CapsLock"; }

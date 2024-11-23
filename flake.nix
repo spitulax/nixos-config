@@ -7,6 +7,9 @@
     nixpkgs.follows = "nixpkgs-unstable";
     # TEMP: https://nixpk.gs/pr-tracker.html?pr=355948
     nixpkgs-temp-cava.url = "github:nixos/nixpkgs/f67841950fe8e33ae6597cc2dac1bc179c3c2627";
+    # TEMP: `libreoffice-fresh` (65jhx6mv3214rdjyg9g2298yl678pkgj) is not in the cache as I write this
+    # `curl -L 'https://cache.nixos.org/65jhx6mv3214rdjyg9g2298yl678pkgj.narinfo'`
+    nixpkgs-temp-libreoffice.url = "github:nixos/nixpkgs/5e4fbfb6b3de1aa2872b76d49fafc942626e2add";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -26,10 +29,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    # TEMP: https://github.com/fufexan/nix-gaming/issues/222
+    nix-gaming.url = "github:fufexan/nix-gaming/d89390fd1c6e070e03b9e19d48d884612132a14f";
 
     hyprland.url = "github:hyprwm/Hyprland";
 
+    # TEMP: check https://github.com/KZDKM/Hyprspace/commits/main
     hyprspace.url = "github:KZDKM/Hyprspace";
     hyprspace.inputs.hyprland.follows = "hyprland";
 
@@ -102,6 +107,7 @@
       # Temporary nixpkgs
       tempPkgsFor = {
         cava = genNixpkgs inputs.nixpkgs-temp-cava false;
+        libreoffice = genNixpkgs inputs.nixpkgs-temp-libreoffice false;
       };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
