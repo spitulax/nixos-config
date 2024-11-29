@@ -41,7 +41,7 @@
         };
         vector = "brave-browser.desktop";
         web = "brave-browser.desktop";
-        directory = "yazi.desktop";
+        directory = "org.kde.dolphin.desktop";
         wordDoc = "writer.desktop";
         slideshowDoc = "impress.desktop";
         spreadsheetDoc = "calc.desktop";
@@ -111,7 +111,7 @@
     gpg.enable = true;
     sops.enable = true;
     neovim.enable = true;
-    yazi.enable = true;
+    yazi.enable = false;
     keymapper.enable = true;
     wine.enable = true;
     nix.useAccessToken = true;
