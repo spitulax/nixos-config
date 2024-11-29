@@ -20,6 +20,7 @@ in
     services.keymapper = {
       enable = true;
       package = pkgs.mypkgs.keymapper;
+      forwardModifiers = [ "Shift" "Control" ];
       aliases = {
         "Alt" = "AltLeft";
         "AltGr" = "AltRight";
@@ -29,12 +30,11 @@ in
       contexts = [
         {
           mappings = [
-            { input = "Ext{AltGr}"; output = "AltGr"; }
-            { input = "AltGr"; output = "Alt"; }
+            { input = "AltGr"; output = "AltLeft"; }
             { input = "ScrollLock"; output = "CapsLock"; }
             { input = "CapsLock"; output = "Escape"; }
 
-            { input = "Ext"; output = "Backspace"; }
+            { input = "Ext{AltGr}"; output = "AltGr"; }
             { input = "Ext{K}"; output = "ArrowUp"; }
             { input = "Ext{J}"; output = "ArrowDown"; }
             { input = "Ext{H}"; output = "ArrowLeft"; }
@@ -60,6 +60,7 @@ in
             { input = "Ext{Period}"; output = "nav_next"; }
             { input = "Ext{Q}"; output = "nav_close"; }
 
+            { input = "Ext"; output = ""; }
             { input = "Ext{Any}"; output = ""; }
 
             { input = "select_all"; output = "Control{A}"; }
