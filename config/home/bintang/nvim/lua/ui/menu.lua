@@ -142,14 +142,10 @@ M.default = {
   { name = "separator" },
 
   {
-    name = "Format Buffer",
-    cmd = function()
-      require("conform").format({ lsp_fallback = true })
-    end,
-    rtxt = "<leader>fm",
+    name = "Toggle nvim-tree",
+    cmd = "NvimTreeToggle",
+    rtxt = "<leader>e",
   },
-
-  { name = "separator" },
 
   {
     name = "Open Icon Picker",
@@ -177,6 +173,16 @@ M.default = {
     name = "Open Spectre",
     cmd = "Spectre",
     rtxt = "<leader>sp",
+  },
+
+  { name = "separator" },
+
+  {
+    name = "Format Buffer",
+    cmd = function()
+      require("conform").format({ lsp_fallback = true })
+    end,
+    rtxt = "<leader>fm",
   },
 
   { name = "separator" },

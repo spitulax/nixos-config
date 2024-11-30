@@ -6,4 +6,6 @@ return {
     "williamboman/mason.nvim",
     enabled = false,
   },
+
+  { "nvim-neorg/neorg", enabled = false },
 }

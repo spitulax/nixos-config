@@ -54,13 +54,13 @@ return {
       NvimTree = {
         n = {
           {
-            desc = "Toggle nvimtree",
+            desc = "Toggle nvim-tree",
             lhs = "<leader>e",
             rhs = "<cmd>NvimTreeToggle<CR>",
             opts = { nowait = true },
           },
           {
-            desc = "Focus nvimtree",
+            desc = "Focus nvim-tree",
             lhs = "<leader>E",
             rhs = "<cmd>NvimTreeFocus<CR>",
             opts = { nowait = true },
