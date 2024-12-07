@@ -63,7 +63,7 @@ in
         if cfg.nerdFonts
         then {
           name = "Iosevka Nerd Font";
-          package = pkgs.iosevka-nerdfont;
+          package = pkgs.nerd-fonts.iosevka;
         }
         else {
           name = "Iosevka";
@@ -103,8 +103,7 @@ in
               cfg.defaultFonts))
         ++ cfg.extraFonts
         ++ optionals cfg.nerdFonts (with pkgs; [
-          font-awesome
-          nerdfonts-symbols-only
+          nerd-fonts.symbols-only
         ]);
     };
   };

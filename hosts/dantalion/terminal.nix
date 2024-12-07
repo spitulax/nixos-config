@@ -2,11 +2,7 @@
 , ...
 }:
 let
-  nerdfonts = pkgs.nerdfonts.override {
-    fonts = [
-      "Iosevka"
-    ];
-  };
+  nerdfonts = pkgs.nerd-fonts.iosevka;
 in
 {
   terminal = {

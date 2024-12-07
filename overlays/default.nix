@@ -23,10 +23,6 @@
         )
         inputs;
 
-    # Nerdfonts
-    iosevka-nerdfont = final.nerdfonts.override { fonts = [ "Iosevka" ]; };
-    nerdfonts-symbols-only = final.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; };
-
     # Helper functions
     makeUnitScript = name: text:
       final.writeShellScriptBin "unit-script-${name}" ''
