@@ -22,7 +22,7 @@ in
       glow # Markdown reader
       ripgrep # faster grep
       imagemagick # image manipulation
-      cloc # code line counter
+      tokei # code line counter
       fontpreview
       dust # disk usage visualizer
       ncdu # disk usage file browser
