@@ -98,6 +98,13 @@ in
             { input = "zoom_reset"; output = "Control{0}"; }
           ];
         }
+        {
+          title = "PDF4QT Viewer";
+          mappings = [
+            { input = "zoom_in"; output = "Control{Shift{Equal}}"; }
+            { input = "zoom_out"; output = "Control{Minus}"; }
+          ];
+        }
       ];
       systemd = {
         enable = true;
