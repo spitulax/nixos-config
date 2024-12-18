@@ -5,8 +5,6 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
-    # TEMP: https://nixpk.gs/pr-tracker.html?pr=355948
-    nixpkgs-temp-cava.url = "github:nixos/nixpkgs/f67841950fe8e33ae6597cc2dac1bc179c3c2627";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -100,9 +98,7 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 
       # Temporary nixpkgs
-      tempPkgsFor = {
-        cava = genNixpkgs inputs.nixpkgs-temp-cava false;
-      };
+      tempPkgsFor = { };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
       replConfigShortcuts =

@@ -74,6 +74,10 @@ function upmake -a target -w make
   make -C (dirname (upfind . -name Makefile)) $target
 end
 
+function nix -w nix
+  command nix --accept-flake-config $argv
+end
+
 if [ (command -v yazi) ]
   function yy
     set tmp (mktemp -t "yazi-cwd.XXXXX")

@@ -11,6 +11,9 @@ local deno_fmt = function()
     jsonc = "jsonc",
     markdown = "md",
     typescript = "ts",
+    html = "html",
+    css = "css",
+    yaml = "yaml",
   }
 
   return {
@@ -21,7 +24,6 @@ local deno_fmt = function()
         "-",
         "--line-width",
         "100",
-        "--no-semicolons",
         "--ext",
         extensions[vim.bo[ctx.buf].filetype],
       }

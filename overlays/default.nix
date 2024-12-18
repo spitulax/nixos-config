@@ -48,8 +48,6 @@
     };
 
     inherit (final.mypkgs) hyprlock hyprpaper hyprpicker hyprpolkitagent waybar;
-
-    inherit (tempPkgsFor.cava.${final.system}) cava;
   };
 
   # Compose existing overlays
