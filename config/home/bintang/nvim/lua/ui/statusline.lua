@@ -10,6 +10,9 @@ local modules = {
   cursor_position = function()
     return "%#StText# %l:%c (%P)  "
   end,
+  eol_type = function()
+    return vim.bo[utils.stbufnr()].ff .. "  "
+  end,
   filetype = function()
     local ft = vim.bo[utils.stbufnr()].ft
     return ft == "" and "plain text  " or ft .. "  "
@@ -51,6 +54,7 @@ return {
     "diagnostics_enabled",
     "autoformat_enabled",
     "cursor_position",
+    "eol_type",
     "filetype",
     "lsp_status",
     "cwd",
