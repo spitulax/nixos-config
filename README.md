@@ -112,7 +112,7 @@ Here are some of the programs configured in this repo.
 
 - **Terminal Emulator**: [Kitty]
 - **Terminal Multiplexer**: [Tmux]
-- **Shell**: [Fish] [(details)](./modules/home/bintang/cli/fish)
+- **Shell**: [Fish] [(details)](./config/home/bintang/cli/fish/README.md)
 - **Shell Prompt**: [Starship]
 - **Resource Monitoring**: [Btop]
 
@@ -121,7 +121,7 @@ Here are some of the programs configured in this repo.
 - **Browser**: [Brave]
 - **Screen Recording**: [OBS]
 - **Password Manager**: [Bitwarden]
-- **TUI File Manager**: [Yazi] [(details)](./modules/home/bintang/cli/yazi)
+- **TUI File Manager**: [Yazi] [(details)](./config/home/bintang/yazi/README.md)
 - **GUI File Manager**: [Dolphin]
 - **Screenshot**: [Gripper]
 - **Media Player**: [Mpv]
@@ -131,8 +131,8 @@ Here are some of the programs configured in this repo.
 
 #### Development
 
-- **Text Editor**: [Neovim] [(details)](./modules/home/bintang/nvim)
-- **Some toolings**: [(details)](./modules/home/bintang/dev)
+- **Text Editor**: [Neovim] [(details)](./config/home/bintang/nvim/README.md)
+- **Some toolings**: [(details)](./config/home/bintang/dev.nix)
 
 #### Misc
 

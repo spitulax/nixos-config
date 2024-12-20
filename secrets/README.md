@@ -2,17 +2,17 @@
 
 Setting up sops was an unbearable pain. I wrote this so I wouldn't need to experience it again.
 
-The secret .yaml files are located in [./secrets] and categorised by the user of the secrets.
+The secret .yaml files are located [here] and categorised by the user of the secrets.
 
 ## .sops.yaml
 
 All hosts and users must have their age key fingerprint listed in [.sops.yaml]. When adding a
-directory to [./secrets] also update [.sops.yaml].
+directory to [here] also update [.sops.yaml].
 
 ## NixOS module config
 
-NixOS sops config is located [here](../modules/nixos/common/sops.nix). Each host expects a default
-sops file which is `../secrets/hosts/<hostname>/secrets.yaml`, create it for each host.
+NixOS sops config is located [here](../config/nixos/sops.nix). Each host expects a default sops file
+which is `../secrets/hosts/<hostname>/secrets.yaml`, create it for each host.
 
 The age key is located in `/var/lib/age/host.txt` with ownership of `root:wheel` and `640`
 permission so `@wheel` users can access it without `sudo` (important for `nh`). The age key should
@@ -29,5 +29,5 @@ The age key is located in `$XDG_DATA_HOME/age/user.txt` with `600` permission. T
 generated with `ssh-to-age -private-key -i ~/.ssh/id_ed25519 > $XDG_DATA_HOME/age/user.txt` and also
 make sure the ssh key is not password protected. `config.sops.age.sshKeyPaths` should be empty.
 
-[./secrets]: ../secrets
+[here]: ../secrets
 [.sops.yaml]: ../.sops.yaml

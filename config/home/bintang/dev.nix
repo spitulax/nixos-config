@@ -71,6 +71,7 @@ let
     odin = with mypkgs; [
       odin-nightly
       ols
+      odin-doc
     ];
 
     python = [

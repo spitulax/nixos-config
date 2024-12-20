@@ -16,7 +16,7 @@ let
 
   games = with pkgs; {
     osu = [
-      inputs.nix-gaming.osu-lazer-bin
+      inputs.mypkgs.osu-lazer
     ];
   };
 in
