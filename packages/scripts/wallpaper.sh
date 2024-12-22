@@ -17,10 +17,10 @@ change () {
     echo "$WALLPAPER" > $XDG_DATA_HOME/wallpaperrc
     # Hyprpaper
     cat > $HOME/.config/hypr/hyprpaper.conf << EOF
-    preload = $WALLPAPER
-    wallpaper = ,$WALLPAPER
-    splash = false
-    ipc = false
+preload = $WALLPAPER
+wallpaper = ,$WALLPAPER
+splash = false
+ipc = false
 EOF
     restart
     echo "Changed current wallpaper to $1"
