@@ -3,9 +3,13 @@ local utils = require("utils")
 
 local mappings = general_mapping
 for _, v in pairs(utils.plugin_configs()) do
+  if v.disable then
+    goto continue
+  end
   if vim.is_callable(v.mappings) then
     mappings = vim.tbl_deep_extend("error", mappings, v.mappings())
   end
+  ::continue::
 end
 
 for section_name, section in pairs(mappings) do

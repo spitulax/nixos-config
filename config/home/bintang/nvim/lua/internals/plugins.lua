@@ -4,6 +4,10 @@ local utils = require("utils")
 local specs = require("extra_plugins")
 
 for k, v in pairs(utils.plugin_configs()) do
+  if v.disable then
+    goto continue
+  end
+
   local plug_opts = {}
   if vim.is_callable(v.opts) then
     plug_opts = v.opts()
@@ -44,6 +48,8 @@ for k, v in pairs(utils.plugin_configs()) do
   spec = vim.tbl_extend("force", spec, override)
 
   table.insert(specs, spec)
+
+  ::continue::
 end
 
 return specs

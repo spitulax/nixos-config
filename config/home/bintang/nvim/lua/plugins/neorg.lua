@@ -2,6 +2,8 @@
 
 ---@type PluginConfig
 return {
+  disable = true,
+
   spec = {
     "nvim-neorg/neorg",
     ft = "norg",
