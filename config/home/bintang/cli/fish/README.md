@@ -23,13 +23,15 @@ These are keybinds built into fish that I find useful.
 _NOTE: these keybindings are applied for both normal/default and insert mode_
 
 - ctrl-a - runs zoxide's `zi/cdi` to interactively cd into a directory
-- ctrl-s - quickly navigate to the directories you have visited before
-- ctrl-z - cd into previous directory (`cd -`)
-- ctrl-q - exit fish
 - ctrl-c - deletes the current line
+- ctrl-f - resumes latest background job
+- ctrl-j - lists background jobs
 - ctrl-p - run a command and page its output
-- alt-h - runs tldr of the command under the cursor
+- ctrl-q - exit fish
+- ctrl-s - quickly navigate to the directories you have visited before
 - ctrl-y - runs yazi
+- ctrl-z - cd into previous directory (`cd -`)
+- alt-h - runs tldr of the command under the cursor
 
 ### [fzf.fish](https://github.com/PatrickF1/fzf.fish)
 

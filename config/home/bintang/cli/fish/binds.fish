@@ -53,13 +53,22 @@ end
 
 ### KEYBINDINGS ###
 
+function __run_cmdline
+  for cmd in $argv
+    eval $cmd
+  end
+  commandline -f repaint
+end
+
 for mode in default insert
   bind --mode $mode ! __history_previous_command
   bind --mode $mode '$' __history_previous_command_arguments
-  bind --mode $mode \ca 'cdi && commandline -f repaint'
-  bind --mode $mode \cs 'echo && cdh && commandline -f repaint'
-  bind --mode $mode \cz 'cd - && commandline -f repaint'
-  bind --mode $mode \cx 'cd .. && commandline -f repaint'
+  bind --mode $mode \ca "__run_cmdline cdi"
+  bind --mode $mode \cs "__run_cmdline echo cdh"
+  bind --mode $mode \cz "__run_cmdline 'cd -'"
+  bind --mode $mode \cx "__run_cmdline 'cd ..'"
+  bind --mode $mode \cf "__run_cmdline echo fg"
+  bind --mode $mode \cj "__run_cmdline echo jobs"
   bind --mode $mode \cq exit
   bind --mode $mode \cc kill-whole-line repaint
   bind --mode $mode \cp __run_page

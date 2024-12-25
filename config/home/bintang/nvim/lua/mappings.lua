@@ -561,7 +561,7 @@ return {
   },
 
   Menu = {
-    n = {
+    a = {
       {
         desc = "Right-click",
         lhs = "<RightMouse>",
