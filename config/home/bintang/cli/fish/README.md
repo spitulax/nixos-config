@@ -14,7 +14,6 @@ These are keybinds built into fish that I find useful.
   case I aliased `ls` to `eza`
 - alt-s - prepends current or last comand with `sudo`
 - f1 - opens man page for current command
-- alt-p - appends `&| less;`. The output of the command will be paged
 - alt-e - opens the current command line in $EDITOR
 - alt-w - prints a short description of the command under the cursor
 
@@ -26,12 +25,13 @@ _NOTE: these keybindings are applied for both normal/default and insert mode_
 - ctrl-c - deletes the current line
 - ctrl-f - resumes latest background job
 - ctrl-j - lists background jobs
-- ctrl-p - run a command and page its output
-- ctrl-q - exit fish
+- ctrl-p - runs a command and page its output
+- ctrl-q - quits fish
 - ctrl-s - quickly navigate to the directories you have visited before
 - ctrl-y - runs yazi
 - ctrl-z - cd into previous directory (`cd -`)
-- alt-h - runs tldr of the command under the cursor
+- alt-h - runs tldr for the command under the cursor
+- alt-t - runs type for the command under the cursor
 
 ### [fzf.fish](https://github.com/PatrickF1/fzf.fish)
 

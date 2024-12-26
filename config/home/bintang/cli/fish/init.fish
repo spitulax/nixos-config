@@ -31,51 +31,14 @@ end
 
 ### HELPER FUNCTIONS ###
 
-function extract
-  for archive in $argv
-    if test -f $archive
-      switch $archive
-      case '*.tar.bz2'
-        tar xvjf $archive
-      case '*.tar.gz'
-        tar xvzf $archive
-      case '*.bz2'
-        bunzip2 $archive
-      case '*.rar'
-        rar x $archive
-      case '*.gz'
-        gunzip $archive
-      case '*.tar'
-        tar xvf $archive
-      case '*.tbz2'
-        tar xvjf $archive
-      case '*.tgz'
-        tar xvzf $archive
-      case '*.zip'
-        unzip $archive
-      case '*.Z'
-        uncompress $archive
-      case '*.7z'
-        7z x $archive
-      case '*'
-        echo "Could not extract $archive"
-      end
-    else
-      echo "Could not extract $archive"
-    end
-  end
-end
-
-function where -a prog -w which
+function where -a prog -w which \
+-d "print the exact location of a program"
   realpath (which $prog)
 end
 
-function upmake -a target -w make
+function upmake -a target -w make \
+-d "`make` that searches for Makefile in parent directories"
   make -C (dirname (upfind . -name Makefile)) $target
-end
-
-function nix -w nix
-  command nix --accept-flake-config $argv
 end
 
 if [ (command -v yazi) ]

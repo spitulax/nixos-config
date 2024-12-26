@@ -18,6 +18,7 @@ let
 
   commonAliases = {
     # nix shortcuts
+    nix = "nix --accept-flake-config";
     repl = "nix repl .";
     nrepl = "nix repl -f flake:nixpkgs";
     pkgs-user = "nix-store -qR $HOME/.nix-profile";
