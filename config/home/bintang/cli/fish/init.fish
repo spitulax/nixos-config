@@ -2,15 +2,17 @@
 
 # Change fish intro
 function fish_greeting
-  echo -e '\033[1;34m-*-   Welcome back! -*-'
-  if [ (command -v crt) ]
-    if [ (command -v atuin) ]
+  set_color -o blue
+  echo '-*-   Welcome back! -*-'
+  if command -q crt
+    if command -q atuin
       crt atuin --verbose
     else
       crt fish --verbose
     end
   end
-  echo -e '\033[0m'
+  set_color normal
+  echo
 end
 
 # Vi mode
@@ -24,7 +26,7 @@ set fish_cursor_visual      block
 set -g fish_vi_force_cursor 1 # Set this to force cursor shape in tmux
 
 # Atuin
-if [ (command -v atuin) ]
+if command -q atuin
   set -gx ATUIN_NOBIND "true"
   atuin init fish | source
 end
@@ -41,7 +43,7 @@ function upmake -a target -w make \
   make -C (dirname (upfind . -name Makefile)) $target
 end
 
-if [ (command -v yazi) ]
+if command -q yazi
   function yy
     set tmp (mktemp -t "yazi-cwd.XXXXX")
     yazi $argv --cwd-file="$tmp"

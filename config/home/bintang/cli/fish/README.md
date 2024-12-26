@@ -30,8 +30,10 @@ _NOTE: these keybindings are applied for both normal/default and insert mode_
 - ctrl-s - quickly navigate to the directories you have visited before
 - ctrl-y - runs yazi
 - ctrl-z - cd into previous directory (`cd -`)
+- alt-a - writes the previous command to the prompt
 - alt-h - runs tldr for the command under the cursor
 - alt-t - runs type for the command under the cursor
+- alt-q - gets the help for the command under the cursor by running it with --help or -h
 
 ### [fzf.fish](https://github.com/PatrickF1/fzf.fish)
 
