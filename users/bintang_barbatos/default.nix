@@ -84,7 +84,6 @@
 
     dev = {
       cpp = true;
-      debugger = true;
       # go = true;
       # godot = true;
       javascript = true;
@@ -93,7 +92,8 @@
       odin = true;
       python = true;
       rust = true;
-      tools = true;
+      debugger = true;
+      misc = true;
     };
 
     gaming = {

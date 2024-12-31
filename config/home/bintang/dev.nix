@@ -1,7 +1,6 @@
 { config
 , lib
 , pkgs
-, myLib
 , ...
 }:
 let
@@ -11,15 +10,15 @@ let
     mapAttrsToList
     filterAttrs
     flatten
-    ;
-
-  inherit (myLib)
-    importIn
+    mkMerge
+    mkIf
     ;
 
   cfg = config.configs.dev;
 
   modules = with pkgs; {
+    # Languages #
+
     cpp = [
       man-pages
       (hiPrio gcc)
@@ -28,12 +27,6 @@ let
       meson
       ninja
       pkg-config
-    ];
-
-    debugger = [
-      gdb
-      lldb
-      valgrind
     ];
 
     go = [
@@ -84,10 +77,18 @@ let
 
     rust = [
       rust-analyzer
-      rust-bin.stable.latest.default
+      rust-bin.beta.latest.default
     ];
 
-    tools = [
+    # Tools #
+
+    debugger = [
+      gdb
+      lldb
+      valgrind
+    ];
+
+    misc = [
       gnumake
     ];
   };
@@ -98,13 +99,26 @@ in
       (k: _: mkEnableOption "development utility: ${k}")
       modules;
 
-  config = {
-    home.packages =
-      flatten
-        (mapAttrsToList
-          (k: _: modules.${k})
-          (filterAttrs
-            (_: v: v)
-            cfg));
-  };
+  config = mkMerge [
+    {
+      home.packages =
+        flatten
+          (mapAttrsToList
+            (k: _: modules.${k})
+            (filterAttrs
+              (_: v: v)
+              cfg));
+    }
+
+    (mkIf cfg.rust {
+      home.file.".cargo/config.toml".text = ''
+        [build]
+        target-dir = "${config.home.homeDirectory}/.cargo/target"
+
+        [profile.benchmark]
+        inherits = "release"
+        debug = "line-tables-only"
+      '';
+    })
+  ];
 }
