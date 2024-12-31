@@ -28,5 +28,8 @@
       gvfs.enable = true;
       udisks2.enable = true;
     };
+
+    # Misc.
+    users.mutableUsers = false;
   };
 }
