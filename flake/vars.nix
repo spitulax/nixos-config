@@ -52,7 +52,7 @@
     p7zip
 
     # system utils
-    inxi
+    inetutils
     cachix
     psmisc
     lm_sensors
