@@ -444,11 +444,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1735402601,
-        "narHash": "sha256-BOtT3APlqNsPtyJ/sJ0SpPq06Nkb/Q2cf65camMTT2c=",
+        "lastModified": 1735750456,
+        "narHash": "sha256-7IiM3Tm2sELeLo7tzRAVuvxbUImBp8QdC4pq8OrK/ew=",
         "owner": "spitulax",
         "repo": "mypkgs",
-        "rev": "dc05c17732219369bcebd6e17333b729ac9204a4",
+        "rev": "09a80c9d733bbc01942dbe79ca5fa638cd109624",
         "type": "github"
       },
       "original": {
