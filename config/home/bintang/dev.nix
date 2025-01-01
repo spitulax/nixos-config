@@ -88,6 +88,13 @@ let
       valgrind
     ];
 
+    # NOTE: Needs {NixOS Config}`configs.perf.enable`
+    benchmark = [
+      hyperfine
+      cargo-flamegraph
+      inferno
+    ];
+
     misc = [
       gnumake
     ];

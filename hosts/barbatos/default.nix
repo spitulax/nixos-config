@@ -49,6 +49,7 @@
     hardware.intel.enable = true;
     sops.enable = true;
     wireshark.enable = true;
+    perf.enable = true;
   };
 
   # Hardware

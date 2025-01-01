@@ -93,6 +93,7 @@
       python = true;
       rust = true;
       debugger = true;
+      benchmark = true;
       misc = true;
     };
 
