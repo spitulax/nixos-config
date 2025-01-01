@@ -52,6 +52,7 @@
         installSpellingDicts = true;
       };
       obsidian.enable = true;
+      distrobox.enable = true;
     };
 
     cli = {

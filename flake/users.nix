@@ -9,6 +9,7 @@
       "gamemode"
       "libvirtd"
       "wireshark"
+      "docker"
     ];
   };
 }

@@ -50,6 +50,7 @@
     sops.enable = true;
     wireshark.enable = true;
     perf.enable = true;
+    docker.enable = true;
   };
 
   # Hardware
