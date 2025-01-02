@@ -11,6 +11,7 @@ in
     ./mako
     ./rofi
     ./waybar
+    ./hyprswitch
   ];
 
   options.configs.desktop.hyprland = {

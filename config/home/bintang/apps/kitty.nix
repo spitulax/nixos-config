@@ -46,6 +46,7 @@ in
     };
 
     # My custom Catppuccin-Mocha theme
+    # I modified "Base" to #101020 from #1e1e2e
     home.file.".config/kitty/theme.conf".text = ''
       foreground              #CDD6F4
       background              #101020

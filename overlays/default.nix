@@ -47,7 +47,14 @@
       ];
     };
 
-    inherit (final.mypkgs) hyprlock hyprpaper hyprpicker hyprpolkitagent waybar;
+    inherit (final.mypkgs)
+      hyprlock
+      hyprpaper
+      hyprpicker
+      hyprpolkitagent
+      hyprswitch
+      waybar
+      ;
   };
 
   # Compose existing overlays

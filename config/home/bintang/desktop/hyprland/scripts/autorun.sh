@@ -14,5 +14,8 @@ killall .nm-applet-wrap; nm-applet &
 # Waybar
 systemctl --user start waybar.service
 
+# Hyprswitch
+hyprswitch init --show-title --size-factor 5 --workspaces-per-row 5 --custom-css $XDG_CONFIG_HOME/hyprswitch/style.css &
+
 # Cliphist
 systemctl --user start cliphist.service
