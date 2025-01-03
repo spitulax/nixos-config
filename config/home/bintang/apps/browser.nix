@@ -19,22 +19,12 @@ in
     programs.brave = {
       enable = true;
       commandLineArgs =
-        let
-          enabledFeatures = [
-            "VaapiVideoDecodeLinuxGL"
-            "VaapiIgnoreDriverChecks"
-            "UseOzonePlatform"
-          ];
-        in
         [
-          "--enable-features=${lib.concatStringsSep "," enabledFeatures}"
           "--password-store=gnome"
           "--profile-directory=Default"
-          "--ozone-platform=wayland"
           # "--ignore-gpu-blocklist"
-          "--enable-wayland-ime"
           # "--gtk-version=4"
-          "--force-device-scale-factor=1.0" # without this sometimes tab bar gets unusually big at least on KDE Plasma Wayland
+          # "--force-device-scale-factor=1.0" # without this sometimes tab bar gets unusually big at least on KDE Plasma Wayland
         ];
       extensions = [
         { id = "kfhgpagdjjoieckminnmigmpeclkdmjm"; } # Automatic Twitch
