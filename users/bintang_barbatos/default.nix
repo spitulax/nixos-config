@@ -115,7 +115,7 @@
     neovim.enable = true;
     yazi.enable = false;
     keymapper.enable = true;
-    wine.enable = true;
+    wine.enable = false;
     nix.useAccessToken = true;
   };
 }
