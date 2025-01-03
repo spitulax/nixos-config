@@ -3,7 +3,7 @@
 , pkgs
 , myLib
 , ...
-}:
+}@inputs:
 let
   cfg = config.configs.desktop;
 in
@@ -52,6 +52,6 @@ in
 
     services.playerctld.enable = true;
 
-    systemd.user.services = import ./services { inherit pkgs lib myLib; };
+    systemd.user.services = import ./services inputs;
   };
 }

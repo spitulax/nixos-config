@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Autostart services
+# Autostart background services
 systemctl --user restart keymapper.service
 systemctl --user start hyprpaper.service
 systemctl --user start hyprpolkitagent.service
@@ -15,7 +15,7 @@ killall .nm-applet-wrap; nm-applet &
 systemctl --user start waybar.service
 
 # Hyprswitch
-hyprswitch init --show-title --size-factor 5 --workspaces-per-row 5 --custom-css $XDG_CONFIG_HOME/hyprswitch/style.css &
+systemctl --user start hyprswitch.service
 
 # Cliphist
 systemctl --user start cliphist.service
