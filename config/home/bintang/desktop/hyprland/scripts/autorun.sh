@@ -2,7 +2,6 @@
 
 # Autostart background services
 systemctl --user restart keymapper.service
-systemctl --user start hyprpaper.service
 systemctl --user start hyprpolkitagent.service
 systemctl --user start warn-low-battery.service
 
@@ -16,6 +15,9 @@ systemctl --user start waybar.service
 
 # Hyprswitch
 systemctl --user start hyprswitch.service
+
+# Hyprpaper
+systemctl --user start hyprpaper.service
 
 # Cliphist
 systemctl --user start cliphist.service
