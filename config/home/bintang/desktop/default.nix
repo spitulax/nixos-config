@@ -20,7 +20,7 @@ in
     home.packages = with pkgs; [
       # core
       wl-clipboard # wayland clipboard
-      wtype # wayland xdotool
+      # wtype # wayland xdotool
       brightnessctl
       zenity # GUI from shell scripts
       libsForQt5.kde-cli-tools # kdesu
