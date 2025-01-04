@@ -24,9 +24,11 @@ end
 ---@return table<string, string[]>
 M.formatters_by_ft = function()
   local formatters = {}
-  for ft, config in pairs(configs) do
+  for f, config in pairs(configs) do
     if config.formatter ~= nil then
-      formatters[ft] = { config.formatter } or {}
+      for _, ft in ipairs(config.extra_fts or { f }) do
+        formatters[ft] = { config.formatter }
+      end
     end
   end
   return formatters
@@ -35,10 +37,14 @@ end
 M.autocmds = function()
   vim.api.nvim_create_autocmd("FileType", {
     callback = function(arg)
-      for ft, config in pairs(configs) do
-        if config.indent ~= nil and vim.bo[arg.buf].filetype == ft then
-          utils.indent(config.indent)
-          return
+      for f, config in pairs(configs) do
+        if config.indent ~= nil then
+          for _, ft in ipairs(config.extra_fts or { f }) do
+            if vim.bo[arg.buf].filetype == ft then
+              utils.indent(config.indent)
+              return
+            end
+          end
         end
       end
       utils.indent(vim.g.default_indent)

@@ -16,9 +16,9 @@
         "PATH"
         ":"
         "${lib.makeBinPath (with pkgs; [
-        lua51Packages.lua
-        lua51Packages.luarocks-nix
-      ])}"
+          lua51Packages.lua
+          lua51Packages.luarocks-nix
+        ])}"
       ];
       # extraPackages = with pkgs; [
       #

@@ -30,3 +30,4 @@
 ---@field formatter? string   -- formatter from conform.nvim
 ---@field autocmd? fun()      -- TODO: autocmd: unimplemented
 ---@field indent? number
+---@field extra_fts? string[]  -- filetypes to apply (file name not included)
