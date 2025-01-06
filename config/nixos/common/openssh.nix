@@ -17,7 +17,7 @@ in
   options.configs.openssh = {
     addHostKeys = lib.mkOption {
       type = lib.types.bool;
-      description = "Generate rsa and ed25519 key for this host. Reminder to password protect the rsa key.";
+      description = "Generate rsa and ed25519 key for this host.";
     };
 
     passwordAuthentication = lib.mkEnableOption "password authentication (not recommended)";

@@ -285,7 +285,7 @@
     , username
     , homeManager ? true
     , extraGroups ? [ ]
-    , addSshKeys ? true # The user has both ed25519 and rsa keys. The rsa key sould be password protected.
+    , addSshKeys ? true # The user has both ed25519 and rsa keys. None sould be password protected.
     , addPassword ? true # The user has their password in the ${globalSecretsPath}/password.yaml
     , fishShell ? true
     }: rec {

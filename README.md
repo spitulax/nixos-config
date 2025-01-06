@@ -54,7 +54,8 @@ directory. You can add a user for the host from the `users` attribute set. See
 #### SSH Keys
 
 A pair of SSH public keys are needed for a host if `config.configs.openssh.addHostKeys` is `true`.
-`ssh-rsa.pub` and `ssh-ed25519.pub` will be searched from `keys/users/<username>`.
+`ssh-rsa.pub` and `ssh-ed25519.pub` will be searched from `keys/users/<username>`. Host keys should
+not be password protected.
 
 ### Host config module
 
