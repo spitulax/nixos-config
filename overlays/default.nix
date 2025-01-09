@@ -55,6 +55,8 @@
       hyprswitch
       waybar
       ;
+
+    whitesur-cursors = final.callPackage ./whitesur-cursors { inherit (prev) whitesur-cursors; };
   };
 
   # Compose existing overlays
