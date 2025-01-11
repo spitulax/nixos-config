@@ -66,9 +66,8 @@
       hyprpolkitagent
       hyprswitch
       waybar
+      whitesur-cursors
       ;
-
-    whitesur-cursors = final.callPackage ./whitesur-cursors { inherit (prev) whitesur-cursors; };
   };
 
   # Compose existing overlays
