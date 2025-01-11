@@ -1,7 +1,7 @@
 { whitesur-cursors
 , makeWrapper
 , inkscape
-, xorg
+, xcursorgen
 , stdenvNoCC
 }:
 stdenvNoCC.mkDerivation {
@@ -10,19 +10,15 @@ stdenvNoCC.mkDerivation {
   nativeBuildInputs = [
     makeWrapper
     inkscape
-    xorg.xcursorgen
+    xcursorgen
   ];
 
   patches = [
-    ./size.patch
+    ./patch.patch
   ];
 
-  patchPhase = ''
-    runHook prePatch
-
+  postPatch = ''
     patchShebangs ./build.sh
-
-    runHook postPatch
   '';
 
   buildPhase = ''
