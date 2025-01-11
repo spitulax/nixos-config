@@ -1,5 +1,4 @@
 { config
-, myLib
 , lib
 , ...
 }:
@@ -12,7 +11,27 @@ let
   cfg = config.configs;
 in
 {
-  imports = myLib.importIn ./.;
+  imports = [
+    ./common
+    ./desktop
+    ./hardware
+    ./laptop
+    ./server
+    ./avahi.nix
+    ./docker.nix
+    ./gaming.nix
+    ./keymapper.nix
+    ./perf.nix
+    ./power-manager.nix
+    ./printing.nix
+    ./sops.nix
+    ./steam.nix
+    ./tablet.nix
+    ./vm.nix
+    ./warp.nix
+    ./wireshark.nix
+    ./zram.nix
+  ];
 
   options.configs = {
     extraPackages = mkOption {

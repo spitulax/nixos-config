@@ -1,5 +1,5 @@
-{ myLib
-, ...
-}: {
-  imports = myLib.importIn ./.;
+{
+  imports = [
+    ./intel.nix
+  ];
 }

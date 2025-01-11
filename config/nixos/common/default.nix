@@ -1,11 +1,17 @@
 { config
 , pkgs
-, myLib
 , lib
 , ...
 }:
 {
-  imports = myLib.importIn ./.;
+  imports = [
+    ./home-manager.nix
+    ./locale.nix
+    ./nix.nix
+    ./openssh.nix
+    ./packages.nix
+    ./security.nix
+  ];
 
   options.configs.common.enable = lib.mkEnableOption "common modules" // { default = true; };
 

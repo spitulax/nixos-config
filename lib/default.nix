@@ -1,4 +1,4 @@
-{ lib # To use `homeManagerConfig` this must contain Home Manager's lib
+{ lib
 
   # For this flake only
 , specialArgs ? { }
@@ -188,35 +188,6 @@
 
 
   /*
-    Returns a list of paths that can be used to simplify module imports.
-    Use this inside a `default.nix` file to import all nix files or directories containing nix files.
-
-    Inputs:
-      - `dir`: The directory that contains the files/directories to be imported
-
-    Example:
-      Given `./.`:
-        | mod1/
-        | mod2/
-        | default.nix (current file)
-        | other.nix
-      ```
-      importIn ./.
-        => [ ./mod1 ./mod2 other.nix ]
-      ```
-
-    Type: Path -> [Path]
-  */
-  importIn = dir:
-    let
-      files = listFilesExt dir "nix" ++ listDirs dir;
-    in
-    builtins.map
-      (lib.path.append dir)
-      (builtins.filter (v: v != "default.nix") files);
-
-
-  /*
         Generates an attribute set containing boolean module options.
         The description by default is "Whether to enable ${name}.".
 
@@ -269,6 +240,7 @@
       inherit specialArgs;
     };
 
+  # To use this, argument `lib` must contain home-manager's lib
   homeManagerConfig =
     { config
     , pkgs

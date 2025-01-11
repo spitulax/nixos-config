@@ -1,5 +1,20 @@
-{ myLib
-, ...
-}: {
-  imports = myLib.importIn ./.;
+{
+  imports = [
+    ./anki.nix
+    ./art.nix
+    ./bottles.nix
+    ./browser.nix
+    ./distrobox.nix
+    ./dolphin.nix
+    ./electrum.nix
+    ./entries.nix
+    ./kitty.nix
+    ./kooha.nix
+    ./mime.nix
+    ./mpv.nix
+    ./obs.nix
+    ./obsidian.nix
+    ./office.nix
+    ./zathura.nix
+  ];
 }

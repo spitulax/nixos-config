@@ -1,5 +1,19 @@
-{ myLib
-, ...
-}: {
-  imports = myLib.importIn ./.;
+{
+  imports = [
+    ./apps
+    ./cli
+    ./desktop
+    ./gaming
+    ./nvim
+    ./services
+    ./yazi
+    ./dev.nix
+    ./env.nix
+    ./gpg.nix
+    ./keymapper.nix
+    ./nix.nix
+    ./sops.nix
+    ./wine.nix
+    ./xcompose.nix
+  ];
 }

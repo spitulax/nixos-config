@@ -1,6 +1,5 @@
 { config
 , lib
-, myLib
 , pkgs
 , ...
 }:
@@ -8,7 +7,20 @@ let
   cfg = config.configs.cli;
 in
 {
-  imports = myLib.importIn ./.;
+  imports = [
+    ./fish
+    ./aliases.nix
+    ./ani-cli.nix
+    ./bat.nix
+    ./btop.nix
+    ./cava.nix
+    ./downloader.nix
+    ./eza.nix
+    ./git.nix
+    ./openssh.nix
+    ./tmux.nix
+    ./trash.nix
+  ];
 
   options.configs.cli = {
     commonPackages = lib.mkEnableOption "common CLI packages" // {

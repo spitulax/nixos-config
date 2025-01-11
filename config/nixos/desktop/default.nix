@@ -1,6 +1,5 @@
 { config
 , pkgs
-, myLib
 , lib
 , ...
 }:
@@ -14,7 +13,16 @@ let
   cfg = config.configs.desktop;
 in
 {
-  imports = myLib.importIn ./.;
+  imports = [
+    ./bluetooth.nix
+    ./display-manager.nix
+    ./fonts.nix
+    ./hyprland.nix
+    ./input.nix
+    ./opengl.nix
+    ./plasma.nix
+    ./sound.nix
+  ];
 
   options.configs.desktop = {
     enable = mkEnableOption "desktop specific modules";

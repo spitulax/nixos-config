@@ -1,14 +1,20 @@
 { config
 , lib
 , pkgs
-, myLib
 , ...
 }@inputs:
 let
   cfg = config.configs.desktop;
 in
 {
-  imports = lib.remove ./services (myLib.importIn ./.);
+  imports = [
+    ./hyprland
+    ./cliphist.nix
+    ./gammastep.nix
+    ./gtk.nix
+    ./kvantum.nix
+    ./qt.nix
+  ];
 
   options.configs.desktop = {
     enable = lib.mkEnableOption "desktop";
