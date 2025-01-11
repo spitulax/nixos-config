@@ -39,7 +39,7 @@ in
       };
       package = pkgs.inputs.hyprland.hyprland;
       settings.env = lib.mapAttrsToList (n: v: n + "," + (toString v)) config.home.sessionVariables ++ [
-        "XCURSOR_SIZE,${builtins.toString(config.home.pointerCursor.size)}"
+        "XCURSOR_SIZE,${builtins.toString config.home.pointerCursor.size}"
         "QT_QPA_PLATFORMTHEME,qt5ct"
         "NIXOS_OZONE_WL,1"
         "_JAVA_AWT_WM_NONREPARENTING,1"

@@ -63,7 +63,9 @@ let
 
     odin = with mypkgs; [
       odin-nightly
-      ols
+      (ols.override {
+        odinRoot = "${odin-nightly}/share";
+      })
       odin-doc
     ];
 

@@ -53,7 +53,7 @@ in
       x11.enable = true;
       package = pkgs.whitesur-cursors;
       name = "WhiteSur-cursors";
-      size = 24;
+      size = 36;
     };
 
     services.playerctld.enable = true;
