@@ -28,8 +28,9 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    hyprspace.url = "github:KZDKM/Hyprspace";
-    hyprspace.inputs.hyprland.follows = "hyprland";
+    # TODO: https://github.com/KZDKM/Hyprspace/issues/132
+    # hyprspace.url = "github:KZDKM/Hyprspace";
+    # hyprspace.inputs.hyprland.follows = "hyprland";
 
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
