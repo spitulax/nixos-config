@@ -1,13 +1,25 @@
 { inputs
 , lib
-, outputs
+, myLib
 , tempPkgsFor
+, outputs
 }: {
   # Add custom packages
   # This is where packages from ../packages are added to pkgs
   add = final: _: {
+    # Custom `callPackage`
+    myCallPackage =
+      (lib.makeScope lib.callPackageWith
+        (self: {
+          pkgs = final;
+          inherit myLib lib;
+          inherit (self) callPackage;
+          inherit (final) system;
+        } // final)).callPackage;
+
     custom = outputs.packages.${final.system};
     mypkgs = builtins.removeAttrs inputs.mypkgs.packages.${final.system} [ "all" ];
+
     # inputs.<flake>.packages|legacyPackages.<pkgs.system> -> pkgs.inputs.<flake>
     inputs =
       builtins.mapAttrs

@@ -1,11 +1,12 @@
-{ pkgs
+{ symlinkJoin
+, writeScriptBin
 , myLib
 , lib
 }:
-pkgs.symlinkJoin {
+symlinkJoin {
   name = "scripts";
   paths =
     map
-      (x: pkgs.writeScriptBin (myLib.truncateExt "sh" x) (builtins.readFile ./${x}))
+      (x: writeScriptBin (myLib.truncateExt "sh" x) (builtins.readFile ./${x}))
       (lib.remove "default.nix" (myLib.listFilesExt ./. "sh"));
 }

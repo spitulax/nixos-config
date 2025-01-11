@@ -1,7 +1,5 @@
-{ pkgs
-, lib
-, myLib
+{ myCallPackage
 }: {
   # Simple scripts
-  scripts = import ./scripts { inherit pkgs lib myLib; };
+  scripts = myCallPackage ./scripts { };
 }

@@ -117,8 +117,8 @@
     {
       # Standard flake output
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
-      packages = forEachSystem (pkgs: import ./packages { inherit pkgs lib myLib; });
-      overlays = import ./overlays { inherit inputs lib outputs tempPkgsFor; };
+      packages = forEachSystem (pkgs: pkgs.myCallPackage ./packages { });
+      overlays = import ./overlays { inherit inputs lib myLib outputs tempPkgsFor; };
 
       # Modules
       nixosConfigModule = ./config/nixos;
