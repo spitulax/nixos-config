@@ -24,14 +24,11 @@
       fonts = {
         cjkFonts = true;
         nerdFonts = true;
+        notoFonts = true;
         defaultFonts.sansSerif = [{
           name = "Fira Sans";
           package = pkgs.fira;
         }];
-        extraFonts = with pkgs; [
-          noto-fonts
-          noto-fonts-lgc-plus
-        ];
       };
     };
     laptop.enable = true;
