@@ -81,6 +81,7 @@
       };
       cliphist.enable = true;
       gammastep.enable = true;
+      easyeffects.enable = true;
     };
 
     dev = {

@@ -10,6 +10,7 @@ in
   imports = [
     ./hyprland
     ./cliphist.nix
+    ./easyeffects.nix
     ./gammastep.nix
     ./gtk.nix
     ./kvantum.nix
