@@ -119,7 +119,7 @@
     },
     "scroll-step": 1.0,
     "on-click": "amixer set Master toggle",
-    "on-click-right": "pavucontrol",
+    "on-click-right": "pwvucontrol",
     "smooth-scrolling-threshold": 1
   },
   "tray": {

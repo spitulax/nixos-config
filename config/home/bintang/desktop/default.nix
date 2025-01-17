@@ -43,7 +43,7 @@ in
       # misc
       alsa-utils
       networkmanagerapplet
-      pavucontrol
+      pwvucontrol
       playerctl
       xdragon # drag and drop
     ];
