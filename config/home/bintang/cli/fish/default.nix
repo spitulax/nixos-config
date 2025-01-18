@@ -83,6 +83,7 @@ in
           add_newline = false;
           command_timeout = 5000;
           format = concatStrings [
+            "\${env_var.DISTROBOX_ENTER_PATH}"
             "$nix_shell"
             "$jobs"
             "$cmd_duration"
@@ -207,6 +208,12 @@ in
             symbol = "󰜎";
             format = "[$symbol]($style) ";
             disabled = false;
+          };
+
+          env_var.DISTROBOX_ENTER_PATH = {
+            symbol = "  ";
+            format = "[$symbol]($style)";
+            style = "bold blue";
           };
         };
       };
