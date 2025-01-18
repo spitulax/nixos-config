@@ -6,9 +6,16 @@
 let
   cfg = config.configs.apps.distrobox;
 
+  inherit (pkgs) distrobox;
+
   # Fix distrobox environment with `exec distrobox-env {container-name}`
   distrobox-env = pkgs.writeShellScriptBin "distrobox-env" ''
+    set -euo pipefail
+
+    [ $# -lt 2 ] && echo "<name> <shell> must be supplied" 1>&2 && exit 1
+
     PROFILE=''${1:-default}
+    SH=''${2:-sh}
 
     if [ -d "$HOME/.local/bin/distrobox/$PROFILE" ]; then
       PATH="$HOME/.local/bin/distrobox/$PROFILE:$PATH"
@@ -25,16 +32,25 @@ let
     # Odin
     export ODIN_ROOT=$HOME/.local/share/distrobox/''${PROFILE}/odin
 
-    exec $SHELL
+    exec $SH
+  '';
+
+  distrobox-enter = pkgs.writeShellScriptBin "distrobox-enter" ''
+    set -euo pipefail
+
+    [ $# -lt 1 ] && echo "<name> must be supplied" 1>&2 && exit 1
+    NAME=$1
+    shift
+    ${distrobox}/bin/distrobox-enter --name "$NAME" $@ -- ${lib.getExe distrobox-env} "$NAME" "$(${pkgs.coreutils}/bin/basename "$SHELL")"
   '';
 in
 {
   options.configs.apps.distrobox.enable = lib.mkEnableOption "Distrobox.\nNeeds {option}`nixos.docker.enable`";
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
+    home.packages = [
       distrobox
-      boxbuddy
+      (pkgs.hiPrio distrobox-enter)
       distrobox-env
     ];
   };
