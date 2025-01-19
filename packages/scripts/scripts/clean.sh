@@ -9,13 +9,17 @@ else
     FLAGS="--older-than $OLDER_THAN"
 fi
 
+findResult () {
+    fd -t l --hidden --no-ignore --case-sensitive '^result(-.+)?$' $@
+}
+
 echo "Run this script after rebooting for the best result."
 sudo echo
 
 printf "\033[1;31mPress ENTER to delete \`result\` links...\n"
 printf "\033[0m"
 read
-for i in $(fd -t l '^result$' $HOME && fd -t l '^result$' /tmp/nh-*); do
+for i in $(findResult "$HOME" && findResult /tmp/nh-*); do
     echo "Deleting $i"
     sudo unlink $i
 done
