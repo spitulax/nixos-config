@@ -52,6 +52,7 @@
     p7zip
 
     # system utils
+    patchelf
     inetutils
     cachix
     psmisc
