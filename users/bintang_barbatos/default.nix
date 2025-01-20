@@ -86,7 +86,7 @@
 
     dev = {
       cpp = true;
-      # go = true;
+      go = true;
       # godot = true;
       javascript = true;
       lua = true;
