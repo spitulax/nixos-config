@@ -62,9 +62,9 @@ let
     ];
 
     odin = with mypkgs; [
-      odin-nightly
+      odin-git
       (ols.override {
-        odinRoot = "${odin-nightly}/share";
+        odinRoot = "${odin-git}/share";
       })
       odin-doc
     ];
