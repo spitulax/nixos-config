@@ -34,7 +34,7 @@ return {
 
       lspconfig[name].setup({
         on_init = on_init,
-        on_attach = on_attach,
+        -- on_attach = on_attach,
         capabilities = capabilities,
         settings = settings,
       })
