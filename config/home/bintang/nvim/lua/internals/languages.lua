@@ -25,13 +25,26 @@ end
 M.formatters_by_ft = function()
   local formatters = {}
   for f, config in pairs(configs) do
-    if config.formatter ~= nil then
+    if config.formatter ~= nil and config.formatter ~= "lsp" then
       for _, ft in ipairs(config.extra_fts or { f }) do
         formatters[ft] = { config.formatter }
       end
     end
   end
   return formatters
+end
+
+---@return string[]
+M.fts_format_with_lsp = function()
+  local fts = {}
+  for f, config in pairs(configs) do
+    if config.formatter == "lsp" then
+      for _, ft in ipairs(config.extra_fts or { f }) do
+        table.insert(fts, ft)
+      end
+    end
+  end
+  return fts
 end
 
 M.autocmds = function()

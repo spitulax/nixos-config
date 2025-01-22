@@ -2,6 +2,8 @@
 
 local languages = require("internals.languages")
 
+local lsp_fts = languages.fts_format_with_lsp()
+
 local slow_format_filetypes = {}
 
 local deno_fmt = function()
@@ -67,14 +69,31 @@ return {
           end
         end
 
-        return { timeout_ms = 200, lsp_fallback = false }, on_format
+        local lsp_fallback = false
+        for _, ft in ipairs(lsp_fts) do
+          if ft == vim.bo[bufnr].filetype then
+            lsp_fallback = true
+            break
+          end
+        end
+
+        return { timeout_ms = 200, lsp_fallback = lsp_fallback }, on_format
       end,
 
       format_after_save = function(bufnr)
-        if not slow_format_filetypes[vim.bo[bufnr].filetype] then
+        if not slow_format_filetypes[vim.bo[bufnr].filetype] or vim.g.disable_autoformat then
           return
         end
-        return { lsp_fallback = false }
+
+        local lsp_fallback = false
+        for _, ft in ipairs(lsp_fts) do
+          if ft == vim.bo[bufnr].filetype then
+            lsp_fallback = true
+            break
+          end
+        end
+
+        return { lsp_fallback = lsp_fallback }
       end,
 
       log_level = vim.log.levels.OFF,
