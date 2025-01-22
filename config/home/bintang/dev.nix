@@ -82,6 +82,11 @@ let
       rust-bin.beta.latest.default
     ];
 
+    typst = [
+      typst
+      tinymist
+    ];
+
     # Tools #
 
     debugger = [
@@ -97,9 +102,8 @@ let
       inferno
     ];
 
-    misc = [
-      gnumake
-    ];
+    make = [ gnumake ];
+    websocat = [ websocat ];
   };
 in
 {

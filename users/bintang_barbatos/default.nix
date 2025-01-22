@@ -94,9 +94,11 @@
       odin = true;
       python = true;
       rust = true;
+      typst = true;
       debugger = true;
       benchmark = true;
-      misc = true;
+      make = true;
+      websocat = true;
     };
 
     gaming = {
