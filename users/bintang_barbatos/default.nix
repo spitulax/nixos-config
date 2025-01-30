@@ -1,5 +1,6 @@
 { users
 , pkgs
+, config
 , ...
 }: {
   imports = [
@@ -36,8 +37,8 @@
           packages = [ pkgs.nomacs ];
         };
         pdf = {
-          entry = "io.github.JakubMelka.Pdf4qt.Pdf4QtViewer.desktop";
-          packages = [ pkgs.pdf4qt ];
+          entry = "org.kde.okular.desktop";
+          packages = [ pkgs.kdePackages.okular ];
         };
         vector = "brave-browser.desktop";
         web = "brave-browser.desktop";
@@ -64,7 +65,7 @@
       };
       eza.alias.fish = true;
       cava.enable = true;
-      downloader.enable = true;
+      downloader.enable = false;
       fish = {
         atuin = true;
       };
@@ -87,25 +88,25 @@
     dev = {
       cpp = true;
       go = true;
-      # godot = true;
+      godot = false;
       javascript = true;
       lua = true;
       nix = true;
       odin = true;
       python = true;
       rust = true;
-      typst = true;
+      typst = false;
       debugger = true;
       benchmark = true;
       make = true;
-      websocat = true;
+      websocat = config.configs.dev.typst;
     };
 
     gaming = {
       games = {
-        osu = true;
+        osu = false;
       };
-      lutris.enable = false;
+      lutris.enable = true;
       misc.enable = true;
     };
 
@@ -118,7 +119,7 @@
     neovim.enable = true;
     yazi.enable = false;
     keymapper.enable = true;
-    wine.enable = false;
+    wine.enable = true;
     nix.useAccessToken = true;
   };
 }
