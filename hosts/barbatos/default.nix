@@ -33,7 +33,10 @@
     };
     laptop.enable = true;
     openssh.addHostKeys = true;
-    gaming.enable = true;
+    gaming = {
+      enable = true;
+      pipewire.quantum = 384;
+    };
     keymapper.enable = true;
     steam.enable = true;
     tablet.enable = true;
