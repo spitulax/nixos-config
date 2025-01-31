@@ -24,3 +24,4 @@ Build using `nix build .#<name>`
 > - `upfind`: Find files up the directory tree
 > - `volume`: Control volume
 > - `wallpaper`: Control wallpaper with hyprpaper
+> - `winekill`: Kill all running Wine process
