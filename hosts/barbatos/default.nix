@@ -35,7 +35,7 @@
     openssh.addHostKeys = true;
     gaming = {
       enable = true;
-      pipewire.quantum = 384;
+      pipewire.quantum = 512;
     };
     keymapper.enable = true;
     steam.enable = true;

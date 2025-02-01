@@ -34,7 +34,7 @@ in
     # Gamemode
     programs.gamemode = {
       enable = true;
-      settings.general.renice = 15;
+      settings.general.renice = 10;
     };
 
     # Gaming Kernel
