@@ -38,7 +38,7 @@
       pipewire.quantum = 512;
     };
     keymapper.enable = true;
-    steam.enable = true;
+    steam.enable = false;
     tablet.enable = true;
     vm.enable = true;
     warp.enable = true;
