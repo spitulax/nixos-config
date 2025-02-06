@@ -1,6 +1,7 @@
 { config
 , pkgs
 , lib
+, outputs
 , ...
 }:
 let
@@ -60,6 +61,7 @@ in
     home.file = {
       ".config/hypr/catppuccin-mocha.conf".source = ./catppuccin-mocha.conf;
       ".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
+      ".config/hypr/hyprlock.png".source = "${outputs.vars.assetsPath}/wallpapers/hyprland.png";
     };
 
     home.file = {

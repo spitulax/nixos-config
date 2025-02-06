@@ -22,6 +22,7 @@
   globalSecretsPath = ../secrets/global;
   hostsSecretsPath = ../secrets/hosts;
   usersSecretsPath = ../secrets/users;
+  assetsPath = ../assets;
 
   commonPackage = pkgs: with pkgs; [
     # shell utils
