@@ -15,6 +15,7 @@ in
       nwg-look
     ];
 
+    # TODO: global theming (gtk)
     gtk = {
       enable = true;
       theme = {
