@@ -39,6 +39,11 @@ in
 
     # Gaming Kernel
     boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    services.scx = {
+      enable = true;
+      scheduler = "scx_bpfland";
+      package = pkgs.scx.rustscheds;
+    };
 
     # Misc
     programs.steam.platformOptimizations.enable = true;
