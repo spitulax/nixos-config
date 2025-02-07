@@ -10,7 +10,10 @@
       displayManager = {
         defaultSession = config.configs.desktop.defaultSession;
       };
-      greetd.enable = true;
+      greetd = {
+        enable = true;
+        vt = 2;
+      };
     };
 
     programs.regreet = {
