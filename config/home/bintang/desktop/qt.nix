@@ -5,8 +5,8 @@
 }: {
   config = lib.mkIf config.configs.desktop.enable {
     home.packages = with pkgs; [
-      libsForQt5.qt5ct
-      libsForQt5.qtstyleplugin-kvantum
+      kde.qt5ct
+      kde.qtstyleplugin-kvantum
     ];
 
     qt = {

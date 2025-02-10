@@ -2,7 +2,11 @@
 , pkgs
 , config
 , ...
-}: {
+}:
+let
+  cfg = config.configs;
+in
+{
   imports = [
     users.bintang.homeManagerModule
   ];
@@ -15,8 +19,7 @@
         editor = "nvim";
         terminal = "kitty";
         browser = "brave";
-        tuiFileManager = "yazi";
-        guiFileManager = "dolphin";
+        fileManager = "dolphin";
       };
     };
 
@@ -33,12 +36,12 @@
         audio = "mpv.desktop";
         video = "mpv.desktop";
         image = {
-          entry = "org.nomacs.ImageLounge.desktop";
-          packages = [ pkgs.nomacs ];
+          entry = "org.kde.gwenview.desktop";
+          packages = [ pkgs.kde.gwenview ];
         };
         pdf = {
           entry = "org.kde.okular.desktop";
-          packages = [ pkgs.kdePackages.okular ];
+          packages = [ pkgs.kde.okular ];
         };
         vector = "brave-browser.desktop";
         web = "brave-browser.desktop";
@@ -99,7 +102,7 @@
       debugger = true;
       benchmark = true;
       make = true;
-      websocat = config.configs.dev.typst;
+      websocat = cfg.dev.typst;
     };
 
     gaming = {
@@ -120,6 +123,6 @@
     yazi.enable = false;
     keymapper.enable = true;
     wine.enable = true;
-    nix.useAccessToken = true;
+    nix.useAccessToken = cfg.sops.enable;
   };
 }

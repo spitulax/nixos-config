@@ -41,6 +41,9 @@
         set -e
         ${text}
       '';
+
+    # KDE "channel"
+    kde = final.libsForQt5;
   };
 
   # Modify packages from nixpkgs

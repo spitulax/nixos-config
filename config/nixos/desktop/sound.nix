@@ -3,7 +3,6 @@
 , ...
 }: {
   config = lib.mkIf config.configs.desktop.enable {
-    xdg.sounds.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;

@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-# Autostart background services
-systemctl --user restart keymapper.service
-systemctl --user start hyprpolkitagent.service
-systemctl --user start warn-low-battery.service
-
 # Tray icons
 systemctl --user disable --now warp-taskbar.service
 killall .blueman-applet; blueman-applet &
@@ -19,5 +14,11 @@ systemctl --user start hyprswitch.service
 # Hyprpaper
 systemctl --user start hyprpaper.service
 
-# Cliphist
+# Autostart background services
+# BUG: keymapper has to be double started
+systemctl --user start keymapper.service
+systemctl --user restart keymapper.service
+systemctl --user start hyprpolkitagent.service
+systemctl --user start warn-low-battery.service
 systemctl --user start cliphist.service
+

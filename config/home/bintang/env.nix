@@ -25,8 +25,7 @@ let
     editor = "EDITOR";
     terminal = "TERMINAL";
     browser = "BROWSER";
-    tuiFileManager = "TUI_FILE_MANAGER";
-    guiFileManager = "GUI_FILE_MANAGER";
+    fileManager = "FILE_MANAGER";
   };
 in
 {

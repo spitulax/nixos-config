@@ -122,12 +122,11 @@ Here are some of the programs configured in this repo.
 - **Browser**: [Brave]
 - **Screen Recording**: [OBS]
 - **Password Manager**: [Bitwarden]
-- **TUI File Manager**: [Yazi] [(details)](./config/home/bintang/yazi/README.md)
-- **GUI File Manager**: [Dolphin]
+- **File Manager**: [Dolphin]
 - **Screenshot**: [Gripper]
 - **Media Player**: [Mpv]
 - **Painting**: [Krita]
-- **Image Viewer**: [Nomacs]
+- **Image Viewer**: [Gwenview]
 - **PDF Viewer**: [Zathura]
 
 #### Development
@@ -185,12 +184,11 @@ Dotfiles by other people that massively helped my Nix journey.
 [Gripper]: https://github.com/spitulax/gripper
 [Mpv]: https://mpv.io/
 [Krita]: https://krita.org/
-[Nomacs]: https://nomacs.org/
+[Gwenview]: https://apps.kde.org/gwenview
 [Zathura]: https://git.pwmt.org/pwmt/zathura
 [GDM]: https://wiki.gnome.org/Projects/GDM
 [Fluent GTK Theme]: https://github.com/vinceliuice/Fluent-gtk-theme
 [Materia KDE]: https://github.com/PapirusDevelopmentTeam/materia-kde
 [sops.nix]: https://github.com/Mic92/sops-nix
-[Yazi]: https://github.com/sxyazi/yazi
 [`flake/configs.nix`]: ./flake/configs.nix
 [`flake/users.nix`]: ./flake/users.nix

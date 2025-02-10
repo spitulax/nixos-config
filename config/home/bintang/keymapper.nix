@@ -80,7 +80,7 @@ in
           ];
         }
         {
-          class = "/brave-.*|org\\.kde\\.dolphin/";
+          class = "/brave-.*|org\\.kde\\.dolphin|org\\.kde\\.gwenview|org\\.kde\\.okular/";
           mappings = [
             { input = "nav_previous"; output = "Control{Shift{Tab}}"; }
             { input = "nav_next"; output = "Control{Tab}"; }
@@ -90,25 +90,11 @@ in
             { input = "zoom_reset"; output = "Control{0}"; }
           ];
         }
-        {
-          class = "org.https://nomacs.";
-          mappings = [
-            { input = "zoom_in"; output = "Control{Shift{Equal}}"; }
-            { input = "zoom_out"; output = "Control{Minus}"; }
-            { input = "zoom_reset"; output = "Control{0}"; }
-          ];
-        }
-        {
-          title = "PDF4QT Viewer";
-          mappings = [
-            { input = "zoom_in"; output = "Control{Shift{Equal}}"; }
-            { input = "zoom_out"; output = "Control{Minus}"; }
-          ];
-        }
       ];
       systemd = {
         enable = true;
         tray = false;
+        wantedBy = [ ];
       };
     };
   };

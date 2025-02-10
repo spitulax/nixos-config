@@ -1,5 +1,4 @@
 { config
-, pkgs
 , lib
 , ...
 }:
@@ -39,11 +38,6 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.xwayland.enable = true;
-
-    xdg.portal = {
-      enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    };
 
     services.speechd.enable = false;
   };

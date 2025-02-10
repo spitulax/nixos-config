@@ -9,14 +9,15 @@
         enable = true;
         package = hyprland;
         portalPackage = xdg-desktop-portal-hyprland;
+        withUWSM = true;
       };
-      uwsm = {
-        enable = true;
-        waylandCompositors.hyprland = {
-          binPath = "/run/current-system/sw/bin/Hyprland";
-          prettyName = "Hyprland";
-          comment = "Hyprland managed by UWSM";
-        };
+    };
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.kde.xdg-desktop-portal-kde ];
+      config.hyprland = {
+        default = [ "hyprland" "kde" ];
       };
     };
 
