@@ -10,7 +10,6 @@ Build using `nix build .#<name>`
 
 > Contains multiple scripts:
 >
-> - `governor`: Changing auto-cpufreq governor
 > - `brightness`: Control monitor brightness
 > - `clean`: Wrapper to `nix store gc` that also deletes old profiles
 > - `hyprmon`: Quickly configure monitors for Hyprland

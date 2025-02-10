@@ -30,7 +30,6 @@ in
       # wtype # wayland xdotool
       brightnessctl
       zenity # GUI from shell scripts
-      libsForQt5.kde-cli-tools # kdesu
 
       # screenshot
       grim
