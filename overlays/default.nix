@@ -71,6 +71,15 @@
       waybar
       whitesur-cursors
       ;
+
+    cloudflare-warp = prev.cloudflare-warp.overrideAttrs (_: prevAttrs: {
+      dontCopyDesktopItems = true;
+      postInstall = ''
+        ${prevAttrs.postInstall}
+        rm -r $out/lib
+        rm -r $out/share/applications
+      '';
+    });
   };
 
   # Compose existing overlays

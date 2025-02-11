@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Tray icons
-systemctl --user disable --now warp-taskbar.service
 killall .blueman-applet; blueman-applet &
 killall .nm-applet-wrap; nm-applet &
 
