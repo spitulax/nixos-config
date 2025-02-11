@@ -18,7 +18,6 @@
         } // final)).callPackage;
 
     custom = outputs.packages.${final.system};
-    mypkgs = builtins.removeAttrs inputs.mypkgs.packages.${final.system} [ "all" ];
 
     # inputs.<flake>.packages|legacyPackages.<pkgs.system> -> pkgs.inputs.<flake>
     inputs =
@@ -87,6 +86,7 @@
     let
       overlays = with inputs;
         [
+          mypkgs.overlays.default
           rust-overlay.overlays.default
         ];
     in
