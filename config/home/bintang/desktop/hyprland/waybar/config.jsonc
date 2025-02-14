@@ -246,12 +246,12 @@
   "custom/reboot": {
     "format": "󰜉",
     "tooltip": false,
-    "on-click": "~/.config/waybar/scripts/confirm.sh 'Reboot?' 'reboot'"
+    "on-click": "~/.config/waybar/scripts/confirm.sh 'Reboot?' 'systemctl reboot'"
   },
   "custom/power": {
     "format": "󰤆",
     "tooltip": false,
-    "on-click": "~/.config/waybar/scripts/confirm.sh 'Shutdown?' 'shutdown now'"
+    "on-click": "~/.config/waybar/scripts/confirm.sh 'Shutdown?' 'systemctl poweroff'"
   },
 
   "custom/separator": {
