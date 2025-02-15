@@ -229,6 +229,16 @@
 
   # TODO: need docs
 
+  mkDate = longDate: (lib.concatStringsSep "-" [
+    (builtins.substring 0 4 longDate)
+    (builtins.substring 4 2 longDate)
+    (builtins.substring 6 2 longDate)
+  ]);
+
+  mkFlakeVersion = flake:
+    mkDate (flake.lastModifiedDate or "19700101")
+    + "_" + (flake.shortRev or "dirty");
+
 
   nixosConfig =
     { config
