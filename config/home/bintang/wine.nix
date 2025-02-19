@@ -8,7 +8,8 @@
   config = lib.mkIf config.configs.wine.enable {
     home.packages = with pkgs; [
       winetricks
-    ] ++ (with pkgs.inputs.nix-gaming; [
+      # TEMP:
+    ] ++ (with pkgs.inputs.nix-gaming-temp; [
       wine-ge
     ]);
   };
