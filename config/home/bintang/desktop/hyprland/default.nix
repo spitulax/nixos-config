@@ -53,8 +53,7 @@ in
       };
       extraConfig = builtins.readFile ./hyprland.conf;
       plugins = [
-        # TODO: https://github.com/KZDKM/Hyprspace/issues/132
-        # pkgs.inputs.hyprspace.Hyprspace
+        pkgs.inputs.hyprspace.Hyprspace
       ];
     };
 
