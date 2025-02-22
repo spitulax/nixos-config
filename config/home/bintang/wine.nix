@@ -9,8 +9,8 @@
     home.packages = with pkgs; [
       winetricks
       # TEMP: wine
-    ] ++ (with pkgs.inputs.nix-gaming-temp; [
-      wine-ge
-    ]);
+    ] ++ [
+      pkgs.inputs.nix-gaming.wine-ge
+    ];
   };
 }

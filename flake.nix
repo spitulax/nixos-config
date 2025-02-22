@@ -90,11 +90,9 @@
           import input {
             inherit system;
             config.allowUnfree = true;
-            overlays = lib.optionals applyOverlays (with outputs.overlays; [
-              add
-              modify
-              overlay
-            ]);
+            overlays = lib.optionals applyOverlays [
+              outputs.overlays.default
+            ];
           }
         );
 

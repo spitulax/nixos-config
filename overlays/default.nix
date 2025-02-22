@@ -3,95 +3,38 @@
 , myLib
 , tempPkgsFor
 , outputs
-}: {
-  # Add custom packages
-  # This is where packages from ../packages are added to pkgs
-  add = final: _: {
-    # Custom `callPackage`
-    myCallPackage =
-      (lib.makeScope lib.callPackageWith
-        (self: {
-          pkgs = final;
-          inherit myLib lib;
-          inherit (self) callPackage;
-          inherit (final) system;
-        } // final)).callPackage;
-
-    custom = outputs.packages.${final.system};
-
-    # inputs.<flake>.packages|legacyPackages.<pkgs.system> -> pkgs.inputs.<flake>
-    inputs =
-      builtins.mapAttrs
-        (
-          _: flake:
-            let
-              legacyPackages = (flake.legacyPackages or { }).${final.system} or { };
-              packages = (flake.packages or { }).${final.system} or { };
-            in
-            if legacyPackages != { }
-            then legacyPackages
-            else packages
-        )
-        inputs;
-
-    # Helper functions
-    makeUnitScript = name: text:
-      final.writeShellScriptBin "unit-script-${name}" ''
-        set -e
-        ${text}
-      '';
-
-    # KDE "channel"
-    kde = final.libsForQt5;
-  };
-
-  # Modify packages from nixpkgs
-  modify = final: prev: {
-    # spotdl is supposed to use ffmpeg 4
-    # otherwise downloading large albums will make it stuck
-    # https://github.com/spotDL/spotify-downloader/blob/v4.2.5/spotdl/utils/ffmpeg.py#L37
-    spotdl = prev.spotdl.override { ffmpeg = final.ffmpeg_4; };
-
-    lutris = prev.lutris.override {
-      steamSupport = false;
-      extraPkgs = p: with p; [
-        gamescope
-        mangohud
-        winetricks
-      ];
-    };
-
-    inherit (final.mypkgs)
-      hyprlock
-      hyprpaper
-      hyprpicker
-      hyprpolkitagent
-      hyprswitch
-      waybar
-      whitesur-cursors
-      ;
-
-    cloudflare-warp = prev.cloudflare-warp.overrideAttrs (_: prevAttrs: {
-      dontCopyDesktopItems = true;
-      postInstall = ''
-        ${prevAttrs.postInstall}
-        rm -r $out/lib
-        rm -r $out/share/applications
-      '';
-    });
-
-    # TEMP: kernel
-    inherit (tempPkgsFor.kernel.${final.system}) linuxPackages_xanmod_latest;
-  };
-
+}@input:
+let
   # Compose existing overlays
-  overlay =
+  compose = [
+    inputs.mypkgs.overlays.default
+    inputs.rust-overlay.overlays.default
+  ];
+in
+{
+  default =
     let
-      overlays = with inputs;
+      addPhases =
+        let
+          phases = import ./add.nix input;
+        in
         [
-          mypkgs.overlays.default
-          rust-overlay.overlays.default
+          phases.preAdd
+          phases.addPhase
+          phases.postAdd
         ];
+
+      modifyPhases =
+        let
+          phases = import ./modify.nix input;
+        in
+        [
+          phases.preModify
+          phases.modifyPhase
+          phases.postModify
+        ];
+
+      overlays = addPhases ++ modifyPhases ++ compose;
     in
-    final: prev: prev.lib.composeManyExtensions overlays final prev;
+    lib.composeManyExtensions overlays;
 }

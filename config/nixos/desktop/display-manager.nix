@@ -8,7 +8,7 @@
     services = {
       xserver.enable = true;
       displayManager = {
-        defaultSession = config.configs.desktop.defaultSession;
+        inherit (config.configs.desktop) defaultSession;
       };
       greetd = {
         enable = true;
