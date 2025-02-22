@@ -2,10 +2,11 @@
 , ...
 }: {
   preModify = final: prev: {
-    # TEMP: kernel
-    inherit (tempPkgsFor.kernel.${final.system}) linuxPackages_xanmod_latest lutris gamescope;
-  } // {
-    prev.inputs.nix-gaming.wine-ge = prev.inputs.nix-gaming-temp.wine-ge;
+    inputs = prev.inputs // {
+      nix-gaming = prev.inputs.nix-gaming // {
+        inherit (prev.inputs.nix-gaming-temp) wine-ge;
+      };
+    };
   };
 
   # Modify packages from nixpkgs
