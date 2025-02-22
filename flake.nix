@@ -6,6 +6,9 @@
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
 
+    # TEMP: kernel
+    nixpkgs-temp.url = "github:nixos/nixpkgs/2ff53fe";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +28,7 @@
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
-    # TEMP:
+    # TEMP: wine
     nix-gaming-temp.url = "github:fufexan/nix-gaming/3030553";
 
     hyprland.url = "github:hyprwm/Hyprland";
@@ -100,7 +103,10 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 
       # Temporary nixpkgs
-      tempPkgsFor = { };
+      tempPkgsFor = {
+        # TEMP: kernel
+        kernel = genNixpkgs inputs.nixpkgs-temp false;
+      };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
       replConfigShortcuts =

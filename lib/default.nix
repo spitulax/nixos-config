@@ -237,7 +237,7 @@
 
   mkFlakeVersion = flake:
     mkDate (flake.lastModifiedDate or "19700101")
-    + "_" + (flake.shortRev or "dirty");
+    + "_" + (flake.rev or "dirty");
 
 
   nixosConfig =

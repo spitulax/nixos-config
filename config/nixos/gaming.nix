@@ -24,6 +24,7 @@ in
     };
 
     # Gaming Kernel
+    # TEMP: kernel
     boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
     # Misc

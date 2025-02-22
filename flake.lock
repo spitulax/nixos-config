@@ -689,6 +689,22 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/072a6db25e947df2f31aab9eccd0ab75d5b2da11.tar.gz"
       }
     },
+    "nixpkgs-temp": {
+      "locked": {
+        "lastModified": 1739446958,
+        "narHash": "sha256-+/bYK3DbPxMIvSL4zArkMX0LQvS7rzBKXnDXLfKyRVc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "2ff53fe64443980e139eaa286017f53f88336dd0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "2ff53fe",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1739866667,
@@ -846,6 +862,7 @@
         "nixpkgs": [
           "nixpkgs-unstable"
         ],
+        "nixpkgs-temp": "nixpkgs-temp",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "rust-overlay": "rust-overlay",
         "sops-nix": "sops-nix"

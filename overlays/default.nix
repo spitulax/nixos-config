@@ -79,6 +79,9 @@
         rm -r $out/share/applications
       '';
     });
+
+    # TEMP: kernel
+    inherit (tempPkgsFor.kernel.${final.system}) linuxPackages_xanmod_latest;
   };
 
   # Compose existing overlays
