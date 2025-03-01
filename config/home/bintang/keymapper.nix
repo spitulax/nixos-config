@@ -6,6 +6,34 @@
 }:
 let
   cfg = config.configs.keymapper;
+
+  key = input: output: { inherit input output; };
+
+  numpadLayout = [
+    { input = "M"; output = "0"; }
+    { input = "J"; output = "1"; }
+    { input = "K"; output = "2"; }
+    { input = "L"; output = "3"; }
+    { input = "U"; output = "4"; }
+    { input = "I"; output = "5"; }
+    { input = "O"; output = "6"; }
+  ];
+
+  # Numpad layout but registers as number row keys
+  numpadMappings =
+    lib.flatten
+      (map
+        (x: [
+          {
+            input = "Ext{ControlRight{${x.input}}}";
+            output = "${x.output}";
+          }
+          {
+            input = "Ext{ControlRight{Shift{${x.input}}}}";
+            output = "Shift{${x.output}}";
+          }
+        ])
+        numpadLayout);
 in
 {
   imports = [
@@ -30,64 +58,67 @@ in
       contexts = [
         {
           mappings = [
-            { input = "AltGr"; output = "AltLeft"; }
-            { input = "ScrollLock"; output = "CapsLock"; }
-            { input = "CapsLock"; output = "Escape"; }
+            (key "AltGr" "AltLeft")
+            (key "ScrollLock" "CapsLock")
+            (key "CapsLock" "Escape")
+          ]
+          ++ numpadMappings
+          ++ [
+            (key "Ext{Shift{N}}" "Control{Backspace}")
+            (key "Ext{Shift{B}}" "Control{Delete}")
+            (key "Ext{AltGr}" "AltGr")
+            (key "Ext{K}" "ArrowUp")
+            (key "Ext{J}" "ArrowDown")
+            (key "Ext{H}" "ArrowLeft")
+            (key "Ext{L}" "ArrowRight")
+            (key "Ext{A}" "Home")
+            (key "Ext{E}" "End")
+            (key "Ext{U}" "PageUp")
+            (key "Ext{D}" "PageDown")
+            (key "Ext{M}" "Enter")
+            (key "Ext{N}" "Backspace")
+            (key "Ext{B}" "Delete")
+            (key "Ext{T}" "Tab")
 
-            { input = "Ext{AltGr}"; output = "AltGr"; }
-            { input = "Ext{K}"; output = "ArrowUp"; }
-            { input = "Ext{J}"; output = "ArrowDown"; }
-            { input = "Ext{H}"; output = "ArrowLeft"; }
-            { input = "Ext{L}"; output = "ArrowRight"; }
-            { input = "Ext{A}"; output = "Home"; }
-            { input = "Ext{E}"; output = "End"; }
-            { input = "Ext{U}"; output = "PageUp"; }
-            { input = "Ext{D}"; output = "PageDown"; }
-            { input = "Ext{M}"; output = "Enter"; }
-            { input = "Ext{N}"; output = "Backspace"; }
-            { input = "Ext{Shift{N}}"; output = "Control{Backspace}"; }
-            { input = "Ext{B}"; output = "Delete"; }
-            { input = "Ext{Shift{B}}"; output = "Control{Delete}"; }
+            (key "Ext{G}" "select_all")
+            (key "Ext{C}" "edit_copy")
+            (key "Ext{V}" "edit_paste")
+            (key "Ext{X}" "edit_cut")
+            (key "Ext{Minus}" "zoom_out")
+            (key "Ext{Equal}" "zoom_in")
+            (key "Ext{Backspace}" "zoom_reset")
+            (key "Ext{Comma}" "nav_previous")
+            (key "Ext{Period}" "nav_next")
+            (key "Ext{Q}" "nav_close")
 
-            { input = "Ext{V}"; output = "select_all"; }
-            { input = "Ext{Y}"; output = "edit_copy"; }
-            { input = "Ext{P}"; output = "edit_paste"; }
-            { input = "Ext{X}"; output = "edit_cut"; }
-            { input = "Ext{Minus}"; output = "zoom_out"; }
-            { input = "Ext{Equal}"; output = "zoom_in"; }
-            { input = "Ext{Backspace}"; output = "zoom_reset"; }
-            { input = "Ext{Comma}"; output = "nav_previous"; }
-            { input = "Ext{Period}"; output = "nav_next"; }
-            { input = "Ext{Q}"; output = "nav_close"; }
+            (key "Ext" "")
+            (key "Ext{Any}" "")
 
-            { input = "Ext"; output = ""; }
-            { input = "Ext{Any}"; output = ""; }
-
-            { input = "select_all"; output = "Control{A}"; }
-            { input = "edit_copy"; output = "Control{C}"; }
-            { input = "edit_paste"; output = "Control{V}"; }
-            { input = "edit_cut"; output = "Control{X}"; }
+            (key "select_all" "Control{A}")
+            (key "edit_copy" "Control{C}")
+            (key "edit_paste" "Control{V}")
+            (key "edit_cut" "Control{X}")
           ];
         }
         {
           class = "kitty";
           mappings = [
-            { input = "edit_copy"; output = "Control{Shift{C}}"; }
-            { input = "edit_paste"; output = "Control{Shift{V}}"; }
-            { input = "zoom_in"; output = "Control{Shift{Equal}}"; }
-            { input = "zoom_out"; output = "Control{Shift{Minus}}"; }
-            { input = "zoom_reset"; output = "Control{Shift{Backspace}}"; }
+            (key "edit_copy" "Control{Shift{C}}")
+            (key "edit_paste" "Control{Shift{V}}")
+            (key "zoom_in" "Control{Shift{Equal}}")
+            (key "zoom_out" "Control{Shift{Minus}}")
+            (key "zoom_reset" "Control{Shift{Backspace}}")
           ];
         }
         {
           class = "/brave-.*|org\\.kde\\.dolphin|org\\.kde\\.gwenview|org\\.kde\\.okular/";
           mappings = [
-            { input = "nav_previous"; output = "Control{Shift{Tab}}"; }
-            { input = "nav_next"; output = "Control{Tab}"; }
-            { input = "nav_close"; output = "Control{W}"; }
-            { input = "zoom_in"; output = "Control{Shift{Equal}}"; }
-            { input = "zoom_out"; output = "Control{Minus}"; }
-            { input = "zoom_reset"; output = "Control{0}"; }
+            (key "nav_previous" "Control{Shift{Tab}}")
+            (key "nav_next" "Control{Tab}")
+            (key "nav_close" "Control{W}")
+            (key "zoom_in" "Control{Shift{Equal}}")
+            (key "zoom_out" "Control{Minus}")
+            (key "zoom_reset" "Control{0}")
           ];
         }
       ];
