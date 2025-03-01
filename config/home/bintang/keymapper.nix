@@ -17,23 +17,42 @@ let
     { input = "U"; output = "4"; }
     { input = "I"; output = "5"; }
     { input = "O"; output = "6"; }
+    { input = "7"; output = "7"; }
+    { input = "8"; output = "8"; }
+    { input = "9"; output = "9"; }
+    { input = "Period"; output = "Decimal"; }
+    { input = "Slash"; output = "Add"; }
+    { input = "Semicolon"; output = "Subtract"; }
+    { input = "P"; output = "Multiply"; }
+    { input = "0"; output = "Divide"; }
   ];
 
-  # Numpad layout but registers as number row keys
   numpadMappings =
     lib.flatten
-      (map
-        (x: [
-          {
-            input = "Ext{ControlRight{${x.input}}}";
-            output = "${x.output}";
-          }
-          {
-            input = "Ext{ControlRight{Shift{${x.input}}}}";
-            output = "Shift{${x.output}}";
-          }
-        ])
-        numpadLayout);
+      (
+        # Numpad layout but registers as number row keys
+        map
+          (x: [
+            {
+              input = "Ext{AltRight{${x.input}}}";
+              output = "${x.output}";
+            }
+            {
+              input = "Ext{AltRight{Shift{${x.input}}}}";
+              output = "Shift{${x.output}}";
+            }
+          ])
+          (lib.take 7 numpadLayout)
+        # Actual numpad buttons (don't work)
+        ++ map
+          (x: [
+            {
+              input = "Ext{ControlRight{${x.input}}}";
+              output = "Numpad${x.output}";
+            }
+          ])
+          numpadLayout
+      );
 in
 {
   imports = [
@@ -48,7 +67,7 @@ in
     services.keymapper = {
       enable = true;
       package = pkgs.mypkgs.keymapper;
-      forwardModifiers = [ "Shift" "Control" ];
+      forwardModifiers = [ "ShiftLeft" "ShiftRight" "ControlLeft" "ControlRight" "AltLeft" "AltRight" ];
       aliases = {
         "Alt" = "AltLeft";
         "AltGr" = "AltRight";
