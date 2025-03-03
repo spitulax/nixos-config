@@ -501,11 +501,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1740141674,
-        "narHash": "sha256-KucsVMAzK3W3omF5dLIuD2O8LmLDVPMcA4mmTSuoQlE=",
+        "lastModified": 1741029103,
+        "narHash": "sha256-gvq4k7rOVmjegFrroUrz/bt5O/HfdupE1WfezDMimVg=",
         "owner": "spitulax",
         "repo": "mypkgs",
-        "rev": "b0707e11a50ee4290fe27beeac56ae92d4dd4013",
+        "rev": "0574b8c4a76ddb747a962da9298358ee28f25af6",
         "type": "github"
       },
       "original": {

@@ -57,6 +57,7 @@ in
       };
       obsidian.enable = true;
       distrobox.enable = true;
+      gplates.enable = true;
     };
 
     cli = {
