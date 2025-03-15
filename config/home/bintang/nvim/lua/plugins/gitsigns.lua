@@ -2,7 +2,10 @@
 
 ---@type PluginConfig
 return {
-  spec = { "lewis6991/gitsigns.nvim" },
+  spec = {
+    "lewis6991/gitsigns.nvim",
+    lazy = false,
+  },
 
   opts = function()
     return {
