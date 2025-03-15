@@ -30,9 +30,9 @@
     };
 
     xdg.dataFile."rofi/themes/catppuccin-mocha.rasi".source = ./catppuccin-mocha.rasi;
-    xdg.configFile."rofi/modes" = {
-      source = ./modes;
-      recursive = true;
-    };
+    # xdg.configFile."rofi/modes" = {
+    #   source = ./modes;
+    #   recursive = true;
+    # };
   };
 }
