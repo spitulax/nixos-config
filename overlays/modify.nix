@@ -1,11 +1,10 @@
 { tempPkgsFor
+, lib
 , ...
 }: {
   preModify = final: prev: {
-    inputs = prev.inputs // {
-      nix-gaming = prev.inputs.nix-gaming // {
-        inherit (prev.inputs.nix-gaming-temp) wine-ge;
-      };
+    inputs = lib.recursiveUpdate prev.inputs {
+      nix-gaming.wine-ge = prev.inputs.nix-gaming-temp.wine-ge;
     };
   };
 
