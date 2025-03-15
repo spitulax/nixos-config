@@ -322,20 +322,20 @@ in
           "$mainMod CTRL, P, exec, ${runner.colourPicker}"
         ] ++ [
           # Screenshot
-          "       Print, exec, ${runner.gripper "full -c"}"
+          ",      Print, exec, ${runner.gripper "full -c"}"
           "SUPER, Print, exec, ${runner.gripper "region"}"
           "SHIFT, Print, exec, ${runner.gripper "last-region"}"
           "CTRL , Print, exec, ${runner.gripper "active-window -c"}"
-          "       Pause, exec, ${runner.gripper "full -c --copy"}"
+          ",      Pause, exec, ${runner.gripper "full -c --copy"}"
           "SUPER, Pause, exec, ${runner.gripper "region --copy"}"
           "SHIFT, Pause, exec, ${runner.gripper "last-region --copy"}"
           "CTRL , Pause, exec, ${runner.gripper "active-window -c --copy"}"
         ] ++ [
           # Keyboard fn keys
-          "XF86Display, exec, ${runner.hyprmon "-m auto"}"
+          ",      XF86Display, exec, ${runner.hyprmon "-m auto"}"
           "SUPER, XF86Display, exec, ${runner.hyprmon "-i"}"
-          "XF86AudioMute, exec, volume toggle"
-          "XF86AudioMicMute, exec, volume toggle-mic"
+          ",      XF86AudioMute, exec, volume toggle"
+          ",      XF86AudioMicMute, exec, volume toggle-mic"
         ] ++ [
           # Global keybinds
           "SUPER, F12, pass, class:com\\.obsproject\\.Studio"
@@ -360,10 +360,10 @@ in
 
         binde = [
           # Keyboard fn keys
-          "XF86AudioRaiseVolume, exec, volume inc"
-          "XF86AudioLowerVolume, exec, volume dec"
-          "XF86MonBrightnessUp, exec, brightness inc"
-          "XF86MonBrightnessDown, exec, brightness dec"
+          ", XF86AudioRaiseVolume, exec, volume inc"
+          ", XF86AudioLowerVolume, exec, volume dec"
+          ", XF86MonBrightnessUp, exec, brightness inc"
+          ", XF86MonBrightnessDown, exec, brightness dec"
         ];
 
         bindm = [
