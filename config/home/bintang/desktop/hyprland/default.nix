@@ -263,9 +263,9 @@ in
           "$mainMod, mouse_up, workspace, e-1"
           "$mainMod, mouse_down, workspace, e+1"
         ]
-        ++ map (x: "$mainMod, ${toString x}, workspace, ${toString x}") (lists.range 1 10)
-        ++ map (x: "$mainMod SHIFT, ${toString x}, movetoworkspace, ${toString x}") (lists.range 1 10)
-        ++ map (x: "$mainMod CTRL, ${toString x}, movetoworkspacesilent, ${toString x}") (lists.range 1 10)
+        ++ map (x: "$mainMod, ${toString x}, workspace, ${toString x}") (lists.range 1 9)
+        ++ map (x: "$mainMod SHIFT, ${toString x}, movetoworkspace, ${toString x}") (lists.range 1 9)
+        ++ map (x: "$mainMod CTRL, ${toString x}, movetoworkspacesilent, ${toString x}") (lists.range 1 9)
         ++ [
           # Monitors
           "$mainMod CTRL, comma, movecurrentworkspacetomonitor, l"
