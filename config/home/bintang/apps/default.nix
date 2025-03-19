@@ -8,7 +8,6 @@
     ./dolphin.nix
     ./electrum.nix
     ./entries.nix
-    ./gplates.nix
     ./kitty.nix
     ./kooha.nix
     ./mime.nix

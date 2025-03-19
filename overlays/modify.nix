@@ -2,11 +2,7 @@
 , lib
 , ...
 }: {
-  preModify = final: prev: {
-    inputs = lib.recursiveUpdate prev.inputs {
-      nix-gaming.wine-ge = prev.inputs.nix-gaming-temp.wine-ge;
-    };
-  };
+  preModify = final: prev: { };
 
   # Modify packages from nixpkgs
   modifyPhase = final: prev: {
@@ -32,7 +28,6 @@
       hyprswitch
       waybar
       whitesur-cursors
-      gplates
       ;
 
     cloudflare-warp = prev.cloudflare-warp.overrideAttrs (_: prevAttrs: {
