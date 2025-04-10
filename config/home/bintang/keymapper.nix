@@ -20,11 +20,6 @@ let
     { input = "7"; output = "7"; }
     { input = "8"; output = "8"; }
     { input = "9"; output = "9"; }
-    { input = "Period"; output = "Decimal"; }
-    { input = "Slash"; output = "Add"; }
-    { input = "Semicolon"; output = "Subtract"; }
-    { input = "P"; output = "Multiply"; }
-    { input = "0"; output = "Divide"; }
   ];
 
   numpadMappings =
@@ -34,21 +29,12 @@ let
         map
           (x: [
             {
-              input = "Ext{AltRight{${x.input}}}";
+              input = "Ext{ControlRight{${x.input}}}";
               output = "${x.output}";
             }
             {
-              input = "Ext{AltRight{Shift{${x.input}}}}";
+              input = "Ext{ControlRight{Shift{${x.input}}}}";
               output = "Shift{${x.output}}";
-            }
-          ])
-          (lib.take 7 numpadLayout)
-        # Actual numpad buttons (don't work)
-        ++ map
-          (x: [
-            {
-              input = "Ext{ControlRight{${x.input}}}";
-              output = "Numpad${x.output}";
             }
           ])
           numpadLayout
@@ -67,17 +53,15 @@ in
     services.keymapper = {
       enable = true;
       package = pkgs.mypkgs.keymapper;
-      forwardModifiers = [ "ShiftLeft" "ShiftRight" "ControlLeft" "ControlRight" "AltLeft" "AltRight" ];
+      forwardModifiers = [ "ShiftLeft" "ShiftRight" "ControlLeft" "ControlRight" "AltLeft" ];
       aliases = {
-        "Alt" = "AltLeft";
-        "AltGr" = "AltRight";
         "Super" = "Meta";
         "Ext" = "ContextMenu";
       };
       contexts = [
         {
           mappings = [
-            (key "AltGr" "AltLeft")
+            (key "AltRight" "AltLeft")
             (key "ScrollLock" "CapsLock")
             (key "CapsLock" "Escape")
           ]
@@ -85,7 +69,7 @@ in
           ++ [
             (key "Ext{Shift{N}}" "Control{Backspace}")
             (key "Ext{Shift{B}}" "Control{Delete}")
-            (key "Ext{AltGr}" "AltGr")
+            (key "Ext{AltRight}" "AltRight")
             (key "Ext{K}" "ArrowUp")
             (key "Ext{J}" "ArrowDown")
             (key "Ext{H}" "ArrowLeft")
