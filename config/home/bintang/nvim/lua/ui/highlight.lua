@@ -21,6 +21,7 @@ M.override = {
   St_lspError = { link = "StText" },
   St_lspWarning = { link = "StText" },
   St_lspInfo = { link = "StText" },
+  TbFill = { fg = "NONE", bg = "NONE" },
 }
 
 ---@type Base46HLGroupsList
@@ -32,6 +33,7 @@ M.add = {
   CursorLine = { bg = "none" },
   GitSignsCurrentLineBlame = { link = "Comment" },
   TbBufname = { link = "StText" },
+  TabLineFill = { link = "TbFill" },
 
   NeogitDiffContext = { bg = "black2" },
   NeogitDiffContextCursor = { bg = "black2" },
@@ -47,4 +49,3 @@ M.add = {
 }
 
 return M
-

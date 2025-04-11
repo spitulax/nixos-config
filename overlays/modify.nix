@@ -33,6 +33,7 @@
       hyprswitch
       waybar
       whitesur-cursors
+      gplates
       ;
 
     cloudflare-warp = prev.cloudflare-warp.overrideAttrs (_: prevAttrs: {
