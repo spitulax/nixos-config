@@ -58,6 +58,7 @@ in
       obsidian.enable = true;
       distrobox.enable = true;
       gplates.enable = true;
+      qgis.enable = true;
     };
 
     cli = {

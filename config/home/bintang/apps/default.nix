@@ -16,6 +16,7 @@
     ./obs.nix
     ./obsidian.nix
     ./office.nix
+    ./qgis.nix
     ./zathura.nix
   ];
 }
