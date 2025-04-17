@@ -17,17 +17,17 @@ return {
         rhs = ":Norm ",
         opts = { nowait = true },
       },
+      {
+        desc = "Save file",
+        lhs = "<C-s>",
+        rhs = "<cmd>w<CR>",
+      },
     },
     n = {
       {
         desc = "Clear highlights",
         lhs = "<Esc>",
         rhs = "<cmd>noh<CR>",
-      },
-      {
-        desc = "Save file",
-        lhs = "<C-s>",
-        rhs = "<cmd>w<CR>",
       },
       {
         desc = "Toggle nvcheatsheet",
@@ -537,14 +537,14 @@ return {
         desc = "Previous diagnostic",
         lhs = "[d",
         rhs = function()
-          vim.diagnostic.goto_prev({ float = { border = "rounded" } })
+          vim.diagnostic.jump({ count = -1, float = { border = "rounded" } })
         end,
       },
       {
         desc = "Next diagnostic",
         lhs = "]d",
         rhs = function()
-          vim.diagnostic.goto_next({ float = { border = "rounded" } })
+          vim.diagnostic.jump({ count = 1, float = { border = "rounded" } })
         end,
       },
     },

@@ -19,6 +19,6 @@ usercmd("Indent", function(arg)
   if n ~= nil then
     require("utils").indent(n)
   else
-    vim.api.nvim_err_writeln("`" .. arg.args .. "` is not a valid number")
+    vim.api.nvim_echo({ { "`" .. arg.args .. "` is not a valid number" } }, true, { err = true })
   end
 end, { desc = "Set default indentation for the current buffer", nargs = 1 })
