@@ -84,7 +84,6 @@ in
     ] ++ cfg.extraPath;
 
     home.sessionVariables = {
-      FLAKE = "${home}/Config";
       GPG_TTY = "$(tty)";
       WINEPREFIX = "${config.xdg.dataHome}/wine";
       NIXOS_PROFILE = "/nix/var/nix/profiles/system";

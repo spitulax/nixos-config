@@ -17,7 +17,6 @@ in
       home.packages = with pkgs; [
         nix-output-monitor
         nvd
-        (nh.override { inherit (pkgs) nix-output-monitor nvd; })
       ];
 
       nix = {
@@ -30,6 +29,11 @@ in
         '';
       };
 
+      programs.nh = {
+        enable = true;
+        package = pkgs.nh.override { inherit (pkgs) nix-output-monitor nvd; };
+        flake = "${config.home.homeDirectory}/Config";
+      };
     }
 
     (lib.mkIf cfg.useAccessToken {
