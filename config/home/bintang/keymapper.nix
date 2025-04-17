@@ -39,6 +39,14 @@ let
           ])
           numpadLayout
       );
+
+  extraFKeysMappings =
+    map
+      (x: {
+        input = "Ext{F${builtins.toString x}}";
+        output = "F${builtins.toString (x + 12)}";
+      })
+      (lib.range 1 12);
 in
 {
   imports = [
@@ -66,6 +74,7 @@ in
             (key "CapsLock" "Escape")
           ]
           ++ numpadMappings
+          ++ extraFKeysMappings
           ++ [
             (key "Ext{Shift{N}}" "Control{Backspace}")
             (key "Ext{Shift{B}}" "Control{Delete}")
