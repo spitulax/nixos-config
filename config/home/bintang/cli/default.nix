@@ -18,6 +18,7 @@ in
     ./eza.nix
     ./git.nix
     ./openssh.nix
+    ./shell.nix
     ./tmux.nix
     ./trash.nix
   ];

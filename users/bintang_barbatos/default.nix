@@ -63,6 +63,7 @@ in
 
     cli = {
       aliases.enable.fish = true;
+      shellIntegrations = [ "Fish" ];
       ani-cli.enable = true;
       bat = {
         enable = true;
