@@ -23,15 +23,50 @@
         {
           plugin = catppuccin;
           extraConfig = ''
-            set -g @catppuccin_flavour "mocha"
-            set -g @catppuccin_status_left_separator "█"
-            set -g @catppuccin_window_default_fill "all"
-            set -g @catppuccin_window_current_fill "all"
-            set -g @catppuccin_window_middle_separator ":"
-            set -g @catppuccin_window_status_enable "yes"
-            set -g @catppuccin_window_status_icon_enable "no"
-            set -g @catppuccin_status_modules "date_time session"
-            set -g @catppuccin_date_time_text "%d/%m/%Y %H:%M"
+            set -g @catppuccin_flavor "mocha"
+
+            set -g @catppuccin_window_number_position "left"
+            set -g @catppuccin_window_status_style "custom"
+            set -g @catppuccin_window_left_separator " "
+            set -g @catppuccin_window_middle_separator ""
+            set -g @catppuccin_window_right_separator " "
+
+            set -g @catppuccin_window_current_number_color "#{@thm_surface_1}"
+            set -g @catppuccin_window_current_text_color "#{@thm_blue}"
+            set -g @catppuccin_window_current_number "#[fg=#{@thm_blue},bg=#{@thm_surface_1}]#I "
+            set -g @catppuccin_window_current_text "#[fg=#{@thm_surface_1},bg=#{@thm_blue}] #{?#{!=:#{window_name},},#W,[Empty]}"
+
+            set -g @catppuccin_window_number_color "#{@thm_surface_0}"
+            set -g @catppuccin_window_text_color "#{@thm_surface_1}"
+            set -g @catppuccin_window_number "#[fg=#{@thm_overlay_2},bg=#{@thm_surface_0}]#I "
+            set -g @catppuccin_window_text "#[fg=#{@thm_overlay_2},bg=#{@thm_surface_1}] #{?#{!=:#{window_name},},#W,[Empty]}"
+            set -g @catppuccin_window_flags "icon"
+
+            set -g @catppuccin_pane_status_enabled "yes"
+            set -g @catppuccin_pane_border_status "yes"
+            set -g @catppuccin_pane_active_border_style "##{?pane_in_mode,fg=#{@thm_blue},##{?pane_synchronized,fg=#{@thm_teal},fg=#{@thm_blue}}}"
+            set -g @catppuccin_pane_color "#{@thm_blue}"
+
+            set -g @catppuccin_status_background "none"
+            set -g @catppuccin_status_connect_separator "yes"
+            set -g @catppuccin_status_left_separator ""
+            set -g @catppuccin_status_right_separator ""
+
+            set -g @catppuccin_date_time_text "#[fg=#{@thm_fg},bg=#{@thm_surface_1}] %d/%m/%y %H:%M:%S "
+            set -g @catppuccin_date_time_color ""
+            set -g @catppuccin_date_time_icon ""
+            set -g @catppuccin_session_text "#[fg=#{@thm_surface_1},bg=#{@thm_blue}] #S "
+            set -g @catppuccin_session_color ""
+            set -g @catppuccin_session_icon ""
+
+            # Left status
+            set -g status-left ""
+
+            # Right status
+            set -g status-right-length 100
+            set -g status-right ""
+            set -ag status-right "#{E:@catppuccin_status_date_time}"
+            set -ag status-right "#{E:@catppuccin_status_session}"
           '';
         }
       ];
