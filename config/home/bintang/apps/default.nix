@@ -16,6 +16,7 @@
     ./obs.nix
     ./obsidian.nix
     ./office.nix
+    ./qbittorrent.nix
     ./qgis.nix
     ./zathura.nix
   ];

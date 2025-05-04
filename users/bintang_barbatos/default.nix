@@ -50,7 +50,7 @@ in
         slideshowDoc = "impress.desktop";
         spreadsheetDoc = "calc.desktop";
       };
-      obs.enable = true;
+      obs.enable = false;
       office = {
         enable = true;
         installSpellingDicts = true;
