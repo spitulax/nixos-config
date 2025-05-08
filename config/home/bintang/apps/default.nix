@@ -18,6 +18,7 @@
     ./office.nix
     ./qbittorrent.nix
     ./qgis.nix
+    ./spotify.nix
     ./zathura.nix
   ];
 }

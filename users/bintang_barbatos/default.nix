@@ -59,6 +59,7 @@ in
       distrobox.enable = true;
       gplates.enable = true;
       qgis.enable = true;
+      spotify.enable = true;
     };
 
     cli = {
