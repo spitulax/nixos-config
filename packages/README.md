@@ -17,7 +17,6 @@ Build using `nix build .#<name>`
 > - `notes`: Open $NOTES_DIR in Neovim
 > - `remind`: Wrap a command to send notification when completed
 > - `reminder`: Simple (scuffed) reminder with notify-send
-> - `screenshot`: Wrapper script to grim (wayland screenshot)
 > - `timeinfo`: Print system uptime or system installation age
 > - `tmuxs`: Tmux that search for .tmux socket
 > - `upfind`: Find files up the directory tree
