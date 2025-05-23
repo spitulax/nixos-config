@@ -129,6 +129,7 @@ in
           SYNC_DIR = "${home}/Sync";
           SCREENSHOT_DIR = "${pictures}/Screenshots";
           CAPTURE_DIR = "${videos}/Captures";
+          FLAKE_DIR = "${home}/Config";
         }
         // cfg.extraXdgDirs;
       };
