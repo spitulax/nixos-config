@@ -25,6 +25,8 @@
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
+    # TEMP: wine
+    nix-gaming-temp.url = "github:fufexan/nix-gaming/abc089ceb741aa5e05f6064a2246a46a2b4c01a5";
 
     hyprland.url = "github:hyprwm/Hyprland";
 
