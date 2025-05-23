@@ -20,4 +20,5 @@ systemctl --user restart keymapper.service
 systemctl --user start hyprpolkitagent.service
 systemctl --user start warn-low-battery.service
 systemctl --user start cliphist.service
+systemctl --user start udiskie.service
 

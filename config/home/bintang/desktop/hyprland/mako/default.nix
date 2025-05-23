@@ -25,43 +25,50 @@
         max-icon-size = 32;
         width = 400;
         height = 200;
-      };
 
-      criteria = {
         "urgency=low" = {
           text-color = "#6c7086";
           background-color = "#101020CC";
           on-notify = "none";
         };
+
         "urgency=normal" = {
           text-color = "#cdd6f4";
         };
+
         "urgency=critical" = {
           text-color = "#f38ba8";
           layer = "overlay";
           default-timeout = 0;
         };
+
         "urgency=critical body~=\"^www\\.youtube\\.com\"" = {
           text-color = "#cdd6f4";
           layer = "top";
           default-timeout = 5000;
         };
+
         "grouped" = {
           format = "(%g) <i><b>%a</b></i> ⋅ <b>%s</b>\\n<small>%b</small>";
         };
+
         "hidden" = {
           format = "%h notification(s) hidden";
         };
+
         "mode=do-not-disturb" = {
           invisible = 1;
           on-notify = "none";
         };
+
         "mode=do-not-disturb urgency=critical" = {
           invisible = 0;
         };
+
         "mode=do-not-disturb urgency=critical body~=\"^www\\.youtube\\.com\"" = {
           invisible = 1;
         };
+
         "app-name=popup" = {
           invisible = 0;
           layer = "overlay";
