@@ -1,6 +1,12 @@
 { myLib
 , ...
-} @ inputs:
-builtins.removeAttrs
-  (myLib.genAttrsEachFileExtRec ./. "nix" (n: import ./${n} inputs))
-  [ "default" ]
+}@inputs:
+myLib.genAttrsEachFileExtManual ./. "nix"
+  [
+    "hyprpaper"
+    "hyprswitch"
+    "udiskie"
+    "warn-low-battery"
+    "waybar"
+  ]
+  (p: _: import p inputs)

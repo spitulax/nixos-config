@@ -1,4 +1,7 @@
 { myLib }:
-builtins.removeAttrs
-  (myLib.genAttrsEachFileExtRec ./. "nix" (n: import ./${n}))
-  [ "default" ]
+myLib.genAttrsEachFileExtManual ./. "nix"
+  [
+    "keymapper"
+    "webApps"
+  ]
+  (p: _: import p)

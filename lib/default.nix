@@ -93,14 +93,30 @@
     Inputs:
       - `dir`: The directory that contains the files
       - `types`: A list of included file types or pass [] if no files should be filtered. The possible values are "regular", "directory", "symlink" and "unknown"
-      - `f`: Function that takes the file name that generates the attribute's value
+      - `f`: Function that takes the file path and name that generates the attribute's value
 
-    Type: Path -> [String] -> (String -> Any) -> AttrSet
+    Type: Path -> [String] -> (Path -> String -> Any) -> AttrSet
   */
   genAttrsEachFileAll = dir: types: f:
     lib.genAttrs
       (listFilesAll dir types)
-      f;
+      (n: f /${dir}/${n} n);
+
+
+  /*
+    Generates an attribute set from specified files in given directory.
+
+    Inputs:
+      - `dir`: The directory that contains the files
+      - `names`: The name of the files relative to `dir`
+      - `f`: Function that takes the file path and name that generates the attribute's value
+
+    Type: Path -> [String] -> (Path -> String -> Any) -> AttrSet
+  */
+  genAttrsEachFileManual = dir: names: f:
+    lib.genAttrs
+      names
+      (n: f /${dir}/${n} n);
 
 
   /*
@@ -108,9 +124,9 @@
 
     Inputs:
       - `dir`: The directory that contains the files
-      - `f`: Function that takes the file name that generates the attribute's value
+      - `f`: Function that takes the file path and name that generates the attribute's value
 
-    Type: Path -> (String -> Any) -> AttrSet
+    Type: Path -> (Path -> String -> Any) -> AttrSet
   */
   genAttrsEachFile = dir: f: genAttrsEachFileAll dir [ "regular" ] f;
   genAttrsEachDir = dir: f: genAttrsEachFileAll dir [ "directory" ] f;
@@ -123,36 +139,37 @@
 
     Inputs:
       - `dir`: The topmost/starting directory
-      - `f`: Function that takes the file path (relative to `dir`) that generates the attribute's value
+      - `f`: Function that takes the file path and name (relative to `dir`) that generates the attribute's value
 
-    Type: Path -> (String -> Any) -> AttrSet
+    Type: Path -> (Path -> String -> Any) -> AttrSet
   */
   genAttrsEachFileRec = dir: f:
     let
       gen = dir: dirFunc: fileFunc:
         genAttrsEachDir dir dirFunc
         // genAttrsEachFile dir fileFunc;
-      f' = prevn: n: f (prevn + "/" + n);
+      f' = prevn: p: n:
+        f /${p} (prevn + "/" + n);
     in
-    gen dir (n: genAttrsEachFileRec (lib.path.append dir n) (f' n)) f;
+    gen dir (p: n: genAttrsEachFileRec (lib.path.append dir n) (f' n)) f;
 
 
   /*
     A wrapper to `genAttrsEachFile` that only includes files that have given extension and remove the file extension in the attribute's name.
 
     Inputs:
-      - `dir`: The directory that contains the files 
+      - `dir`: The directory that contains the files
       - `ext`: The file extension (without leading period)
-      - `f`: Function that takes the file name that generates the attribute's value
+      - `f`: Function that takes the file path and name that generates the attribute's value
 
     Example:
       Given these files in `./.`: [ "README.md" "flake.nix" "flake.lock" "default.nix" ]
       ```
-      genAttrsEachFileExt ./. "nix" lib.id
-        => { flake = "flake.nix"; default = "default.nix"; }
+      genAttrsEachFileExt ./. "nix" (p: n: "${p} ${n}")
+        => { flake = "/nix/store/...-flake.nix flake.nix"; default = "/nix/store/...-default.nix default.nix"; }
       ```
 
-    Type: Path -> String -> (String -> Any) -> AttrSet
+    Type: Path -> String -> (Path -> String -> Any) -> AttrSet
   */
   genAttrsEachFileExt = dir: ext: f:
     let
@@ -167,35 +184,60 @@
 
 
   /*
+    A wrapper to `genAttrsEachFileManual` that only includes files that have given extension and remove the file extension in the attribute's name.
+
+    Inputs:
+      - `dir`: The directory that contains the files
+      - `ext`: The file extension (without leading period)
+      - `names`: The name of the files relative to `dir`
+      - `f`: Function that takes the file path and name that generates the attribute's value
+
+    Example:
+      Given these files in `./.`: [ "README.md" "flake.nix" "flake.lock" "default.nix" ]
+      ```
+      genAttrsEachFileExt ./. "nix" [ "flake" "default" ] (p: n: "${p} ${n}")
+        => { flake = "/nix/store/...-flake.nix flake.nix"; default = "/nix/store/...-default.nix default.nix"; }
+      ```
+
+    Type: Path -> String -> (Path -> String -> Any) -> AttrSet
+  */
+  genAttrsEachFileExtManual = dir: ext: names: f:
+    lib.genAttrs
+      names
+      (n: f /${dir}/${n}.${ext} n);
+
+
+  /*
     Same as `genAttrsEachFileRec` but only includes regular files that have given extension and remove the file extension in the attribute's name.
     If there is a regular file that has the same name as a directory after the extension has been stripped, the regular file takes precedence over the directory.
 
     Inputs:
       - `dir`: The topmost/starting directory
       - `ext`: The file extension (without leading period)
-      - `f`: Function that takes the file path (relative to `dir`) that generates the attribute's value
+      - `f`: Function that takes the file path and name (relative to `dir`) that generates the attribute's value
 
-    Type: Path -> String -> (String -> Any) -> AttrSet
+    Type: Path -> String -> (Path -> String -> Any) -> AttrSet
   */
   genAttrsEachFileExtRec = dir: ext: f:
     let
       gen = dir: dirFunc: fileFunc:
         genAttrsEachDir dir dirFunc
         // genAttrsEachFileExt dir ext fileFunc;
-      f' = prevn: n: f (prevn + "/" + n);
+      f' = prevn: p: n:
+        f /${p} (prevn + "/" + n);
     in
-    gen dir (n: genAttrsEachFileExtRec (lib.path.append dir n) ext (f' n)) f;
+    gen dir (p: n: genAttrsEachFileExtRec (lib.path.append dir n) ext (f' n)) f;
 
 
   /*
-        Generates an attribute set containing boolean module options.
-        The description by default is "Whether to enable ${name}.".
+    Generates an attribute set containing boolean module options.
+    The description by default is "Whether to enable ${name}.".
 
-        Inputs:
+    Inputs:
       - `names`: List of the options' name
 
-        Type: [String] -> AttrSet
-      */
+    Type: [String] -> AttrSet
+  */
   mkEnableOptions = names:
     mkEnableOptions' names (n: "Whether to enable ${n}.");
 
