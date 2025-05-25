@@ -2,8 +2,16 @@
 , lib
 , pkgs
 , ...
-}: {
-  config = lib.mkIf config.configs.desktop.hyprland.enable {
+}:
+let
+  cfg = config.configs.desktop.waybar;
+in
+{
+  options.configs.desktop.waybar = {
+    enable = lib.mkEnableOption "Waybar";
+  };
+
+  config = lib.mkIf cfg.enable {
     programs.waybar = {
       enable = true;
       package = pkgs.waybar;

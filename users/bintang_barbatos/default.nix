@@ -87,9 +87,6 @@ in
         enable = true;
         monitor = "eDP-1,1920x1080@60,0x0,1";
       };
-      cliphist.enable = true;
-      gammastep.enable = true;
-      easyeffects.enable = true;
     };
 
     dev = {

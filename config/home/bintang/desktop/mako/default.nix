@@ -2,8 +2,16 @@
 , lib
 , pkgs
 , ...
-}: {
-  config = lib.mkIf config.configs.desktop.hyprland.enable {
+}:
+let
+  cfg = config.configs.desktop.mako;
+in
+{
+  options.configs.desktop.mako = {
+    enable = lib.mkEnableOption "Mako notification daemon";
+  };
+
+  config = lib.mkIf cfg.enable {
     services.mako = {
       enable = true;
 

@@ -13,6 +13,7 @@ let
     mapAttrsToList
     types
     lists
+    mkDefault
     ;
 
   inherit (config.configs.env) defaultPrograms;
@@ -24,7 +25,7 @@ let
     autoCpufreq = run "auto-cpufreq-gtk";
     browser = run defaultPrograms.browser;
     btop = runTerm "btop";
-    clipboard = run "rofi -modi \"clipboard:${./rofi/modes/clipboard.sh}\" -show clipboard";
+    clipboard = run "rofi -modi \"clipboard:${../rofi/modes/clipboard.sh}\" -show clipboard";
     colourPicker = "${./scripts/colourpicker.sh}";
     command = run "rofi -show run";
     emoji = run "rofi -modi emoji -show emoji";
@@ -38,14 +39,6 @@ let
   };
 in
 {
-  imports = [
-    ./hyprlock
-    ./hyprswitch
-    ./mako
-    ./rofi
-    ./waybar
-  ];
-
   options.configs.desktop.hyprland = {
     enable = mkEnableOption "Hyprland Wayland compositor";
     monitor = mkOption {
@@ -55,6 +48,18 @@ in
   };
 
   config = mkIf cfg.enable {
+    configs.desktop = {
+      waybar.enable = mkDefault true;
+      mako.enable = mkDefault true;
+      rofi.enable = mkDefault true;
+      hyprlock.enable = mkDefault true;
+      hyprswitch.enable = mkDefault true;
+      cliphist.enable = mkDefault true;
+      gammastep.enable = mkDefault true;
+      easyeffects.enable = mkDefault true;
+      screenshot.enable = mkDefault true;
+    };
+
     home.packages = with pkgs; [
       hyprpicker
       hyprpaper

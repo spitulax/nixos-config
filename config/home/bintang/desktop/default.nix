@@ -9,12 +9,18 @@ in
 {
   imports = [
     ./hyprland
+    ./hyprlock
+    ./hyprswitch
+    ./mako
+    ./rofi
+    ./waybar
     ./cliphist.nix
     ./easyeffects.nix
     ./gammastep.nix
     ./gtk.nix
     ./kvantum.nix
     ./qt.nix
+    ./screenshot.nix
   ];
 
   options.configs.desktop = {
@@ -31,13 +37,7 @@ in
       brightnessctl
       zenity # GUI from shell scripts
 
-      # screenshot
-      grim
-      slurp
-      mypkgs.gripper
-
       # notification
-      mako
       libnotify
 
       # misc
