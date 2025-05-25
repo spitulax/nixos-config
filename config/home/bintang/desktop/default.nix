@@ -2,7 +2,7 @@
 , lib
 , pkgs
 , ...
-}@inputs:
+}:
 let
   cfg = config.configs.desktop;
 in
@@ -21,6 +21,8 @@ in
     ./kvantum.nix
     ./qt.nix
     ./screenshot.nix
+    ./udiskie.nix
+    ./warn-low-battery.nix
   ];
 
   options.configs.desktop = {
@@ -57,7 +59,5 @@ in
     };
 
     services.playerctld.enable = true;
-
-    systemd.user.services = import ./services inputs;
   };
 }

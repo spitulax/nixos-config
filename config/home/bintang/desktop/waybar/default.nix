@@ -5,8 +5,14 @@
 }:
 let
   cfg = config.configs.desktop.waybar;
+
+  package = pkgs.waybar;
 in
 {
+  imports = [
+    ./trays.nix
+  ];
+
   options.configs.desktop.waybar = {
     enable = lib.mkEnableOption "Waybar";
   };
@@ -14,7 +20,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.waybar = {
       enable = true;
-      package = pkgs.waybar;
+      inherit package;
     };
 
     xdg.configFile = {
@@ -25,6 +31,21 @@ in
         source = ./scripts;
         recursive = true;
       };
+    };
+
+    systemd.user.services.waybar = {
+      Unit = {
+        Description = "Wayland status bar";
+        After = "graphical-session.target";
+      };
+      Service = {
+        Type = "exec";
+        ExecStart = "${lib.meta.getExe package}";
+        ExecReload = "${pkgs.util-linux}/bin/kill -SIGUSR2 $MAINPID";
+        Restart = "on-failure";
+        Slice = "app-graphical.slice";
+      };
+      Install.WantedBy = [ "graphical-session.target" ];
     };
   };
 }

@@ -137,7 +137,7 @@ in
       systemd = {
         enable = true;
         tray = false;
-        wantedBy = [ ];
+        wantedBy = [ "graphical-session.target" ];
       };
     };
   };

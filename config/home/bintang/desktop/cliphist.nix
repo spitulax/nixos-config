@@ -2,11 +2,17 @@
 , pkgs
 , lib
 , ...
-}: {
+}:
+let
+  cfg = config.configs.desktop.cliphist;
+
+  package = pkgs.cliphist;
+in
+{
   options.configs.desktop.cliphist.enable = lib.mkEnableOption "cliphist";
 
-  config = lib.mkIf config.configs.desktop.cliphist.enable {
-    home.packages = [ pkgs.cliphist ];
+  config = lib.mkIf cfg.enable {
+    home.packages = [ package ];
     systemd.user = {
       services = {
         cliphist = {
@@ -18,16 +24,17 @@
           };
           Service = {
             Type = "exec";
-            ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store";
+            ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe package} store";
             Restart = "on-failure";
             Slice = "app-graphical.slice";
           };
+          Install.WantedBy = [ "graphical-session.target" ];
         };
         wipe-cliphist = {
           Unit.Description = "Wipe cliphist database";
           Service = {
             Type = "simple";
-            ExecStart = "${lib.getExe pkgs.cliphist} wipe";
+            ExecStart = "${lib.getExe package} wipe";
           };
         };
       };
