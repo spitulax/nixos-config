@@ -34,7 +34,7 @@
     laptop.enable = true;
     openssh.addHostKeys = true;
     gaming.enable = true;
-    keymapper.enable = true;
+    keymapper.enable = false;
     steam.enable = true;
     tablet.enable = true;
     vm.enable = true;
@@ -46,7 +46,8 @@
     hardware.intel.enable = true;
     sops.enable = true;
     perf.enable = true;
-    docker.enable = true;
+    docker.enable = false;
+    keyd.enable = true;
   };
 
   # Hardware

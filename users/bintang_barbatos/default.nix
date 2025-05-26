@@ -56,7 +56,7 @@ in
         installSpellingDicts = true;
       };
       obsidian.enable = true;
-      distrobox.enable = true;
+      distrobox.enable = false;
       gplates.enable = true;
       qgis.enable = true;
       spotify.enable = true;
@@ -122,7 +122,7 @@ in
     sops.enable = true;
     neovim.enable = true;
     yazi.enable = false;
-    keymapper.enable = true;
+    keymapper.enable = false;
     wine.enable = true;
     nix.useAccessToken = cfg.sops.enable;
   };
