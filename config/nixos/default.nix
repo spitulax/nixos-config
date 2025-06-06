@@ -15,12 +15,12 @@ in
     ./common
     ./desktop
     ./hardware
+    ./keyd
     ./laptop
     ./server
     ./avahi.nix
     ./docker.nix
     ./gaming.nix
-    ./keyd.nix
     ./keymapper.nix
     ./perf.nix
     ./power-manager.nix

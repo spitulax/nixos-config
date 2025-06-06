@@ -24,7 +24,8 @@ in
               capslock = "overload(ext, esc)";
               scrolllock = "capslock";
               rightalt = "leftalt";
-              menu = "rightalt";
+              # FIXME: menu key no worky
+              compose = "rightalt";
             };
 
             ext = {
@@ -52,6 +53,13 @@ in
               s = "pagedown";
               z = "C-delete";
               x = "C-backspace";
+            };
+          }
+          // import ./ipa.nix
+          // {
+            alt = {
+              f1 = "setlayout(main)";
+              f2 = "setlayout(my_ipa)";
             };
           };
         };

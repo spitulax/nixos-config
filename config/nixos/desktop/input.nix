@@ -24,7 +24,7 @@
     services.xserver.xkb = {
       layout = "us";
       variant = "";
-      options = "terminate:ctrl_alt_bksp,compose:ralt";
+      options = "terminate:ctrl_alt_bksp";
     };
   };
 }

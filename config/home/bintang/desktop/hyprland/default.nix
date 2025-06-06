@@ -149,7 +149,6 @@ in
 
         input = {
           kb_layout = "us";
-          kb_options = "compose:ralt";
           sensitivity = 0.4;
           scroll_method = "2fg";
           follow_mouse = 1;
