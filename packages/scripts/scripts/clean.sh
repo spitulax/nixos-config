@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 OLDER_THAN=${1:-3d}
 if [ "$OLDER_THAN" == "all" ]; then
@@ -19,7 +19,7 @@ sudo echo
 printf "\033[1;31mPress ENTER to delete \`result\` links...\n"
 printf "\033[0m"
 read
-for i in $(findResult "$HOME" && findResult /tmp/nh-*); do
+for i in $(findResult "$HOME" && findResult $(fd -t d '^nh-.*$' /tmp)); do
     echo "Deleting $i"
     sudo unlink $i
 done
