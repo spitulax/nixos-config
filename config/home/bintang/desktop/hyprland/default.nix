@@ -57,7 +57,8 @@ in
       mako.enable = mkDefault true;
       rofi.enable = mkDefault true;
       hyprlock.enable = mkDefault true;
-      hyprswitch.enable = mkDefault true;
+      # TODO: https://github.com/H3rmt/hyprswitch/tree/hyprshell
+      hyprswitch.enable = mkDefault false;
       cliphist.enable = mkDefault true;
       gammastep.enable = mkDefault true;
       easyeffects.enable = mkDefault true;

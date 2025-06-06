@@ -91,12 +91,12 @@ in
 
     dev = {
       cpp = true;
-      go = true;
+      go = false;
       godot = false;
       javascript = true;
       lua = true;
       nix = true;
-      odin = true;
+      odin = false;
       python = true;
       rust = true;
       typst = false;
