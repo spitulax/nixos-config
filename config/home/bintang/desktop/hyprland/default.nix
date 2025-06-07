@@ -22,7 +22,6 @@ let
   runTerm = cmd: run "${defaultPrograms.terminal} ${cmd}";
   runner = {
     inherit (defaultPrograms) fileManager;
-    autoCpufreq = run "auto-cpufreq-gtk";
     browser = run defaultPrograms.browser;
     btop = runTerm "btop";
     clipboard = run "rofi -modi \"clipboard:${../rofi/modes/clipboard.sh}\" -show clipboard";
@@ -57,8 +56,7 @@ in
       mako.enable = mkDefault true;
       rofi.enable = mkDefault true;
       hyprlock.enable = mkDefault true;
-      # TODO: https://github.com/H3rmt/hyprswitch/tree/hyprshell
-      hyprswitch.enable = mkDefault false;
+      hyprshell.enable = mkDefault true;
       cliphist.enable = mkDefault true;
       gammastep.enable = mkDefault true;
       easyeffects.enable = mkDefault true;
@@ -223,7 +221,8 @@ in
         layerrule = [
           "blur, waybar"
           "blur, rofi"
-          "blur, hyprswitch"
+          "blur, hyprshell_overview"
+          "blur, hyprshell_launcher"
           # TODO: Could not get `btop` to float <https://wiki.hyprland.org/Configuring/Window-Rules/#rules>
           # This is because I can only filter btop by title but float is a static rule
         ];
@@ -239,7 +238,6 @@ in
 
         # KEYBINDINGS
 
-        # TODO: Purge rarely used keybindings
         bind = [
           # Layouts
           "$mainMod CTRL, H, layoutmsg, preselect l"
@@ -327,7 +325,6 @@ in
           "$mainMod, Q, exec, ${runner.command}"
           "$mainMod, Escape, exec, ${runner.btop}"
           "$mainMod SHIFT, Escape, exec, ${runner.nvtop}"
-          "$mainMod CTRL, Escape, exec, ${runner.autoCpufreq}"
           "$mainMod CTRL, P, exec, ${runner.colourPicker}"
         ] ++ [
           # Screenshot

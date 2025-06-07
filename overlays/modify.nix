@@ -30,7 +30,7 @@
       hyprpaper
       hyprpicker
       hyprpolkitagent
-      hyprswitch
+      hyprshell
       waybar
       whitesur-cursors
       gplates

@@ -269,7 +269,7 @@
     lib.filterAttrs (_: v: v != null) attrs;
 
 
-  # TODO: need docs
+  # DOCS: need docs
 
   mkDate = longDate: (lib.concatStringsSep "-" [
     (builtins.substring 0 4 longDate)

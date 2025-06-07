@@ -18,6 +18,7 @@ in
     ./easyeffects.nix
     ./gammastep.nix
     ./gtk.nix
+    ./hyprshell.nix
     ./kvantum.nix
     ./qt.nix
     ./screenshot.nix

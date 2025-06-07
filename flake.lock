@@ -425,6 +425,27 @@
         "type": "github"
       }
     },
+    "hyprshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1749104492,
+        "narHash": "sha256-G4rO3i1GQAytNAD0cPD8Psh72daNaf5VCa+8Snr1JBs=",
+        "owner": "H3rmt",
+        "repo": "hyprswitch",
+        "rev": "8ebb333cd0dad0ff919ea1790136c8e6120d4560",
+        "type": "github"
+      },
+      "original": {
+        "owner": "H3rmt",
+        "ref": "hyprshell",
+        "repo": "hyprswitch",
+        "type": "github"
+      }
+    },
     "hyprspace": {
       "inputs": {
         "hyprland": [
@@ -843,6 +864,7 @@
         "catppuccin-zathura": "catppuccin-zathura",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprshell": "hyprshell",
         "hyprspace": "hyprspace",
         "mypkgs": "mypkgs",
         "nix-gaming": "nix-gaming",
