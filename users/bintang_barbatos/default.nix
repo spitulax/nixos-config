@@ -110,7 +110,7 @@ in
       games = {
         osu = false;
       };
-      lutris.enable = true;
+      lutris.enable = false;
       misc.enable = true;
     };
 
