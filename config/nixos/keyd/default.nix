@@ -24,7 +24,6 @@ in
               capslock = "overload(ext, esc)";
               scrolllock = "capslock";
               rightalt = "leftalt";
-              # FIXME: menu key no worky
               compose = "rightalt";
             };
 
@@ -56,10 +55,14 @@ in
             };
           }
           // import ./ipa.nix
+          // import ./belichian.nix
           // {
-            alt = {
+            control = {
               f1 = "setlayout(main)";
               f2 = "setlayout(my_ipa)";
+              # TODO: Alphabet layout
+              # f3 = "setlayout(my_alp)";
+              f4 = "setlayout(my_bel)";
             };
           };
         };
