@@ -27,7 +27,7 @@ let
     clipboard = run "rofi -modi \"clipboard:${../rofi/modes/clipboard.sh}\" -show clipboard";
     colourPicker = "${./scripts/colourpicker.sh}";
     command = run "rofi -show run";
-    emoji = run "rofi -modi emoji -show emoji";
+    emoji = run "rofi -modi emoji -show emoji -emoji-mode copy";
     gripper = args: "gripper ${args}";
     hyprmon = args: "hyprmon ${args}";
     nvtop = runTerm "nvtop";
@@ -56,7 +56,6 @@ in
       mako.enable = mkDefault true;
       rofi.enable = mkDefault true;
       hyprlock.enable = mkDefault true;
-      hyprshell.enable = mkDefault true;
       cliphist.enable = mkDefault true;
       gammastep.enable = mkDefault true;
       easyeffects.enable = mkDefault true;
@@ -350,19 +349,7 @@ in
           # Hyprspace
           "$mainMod, O, overview:toggle"
           "$mainMod SHIFT, O, overview:toggle, all"
-        ] ++ (
-          # Hyprswitch
-          let
-            cmdAlt = "hyprswitch gui --mod-key alt --key tab --close mod-key-release --reverse-key mod=shift --sort-recent -w && hyprswitch dispatch";
-            cmdSuper = "hyprswitch gui --mod-key super --key tab --close mod-key-release --reverse-key mod=shift --sort-recent -m && hyprswitch dispatch";
-          in
-          [
-            "ALT, tab, exec, ${cmdAlt}"
-            "ALT SHIFT, tab, exec, ${cmdAlt} -r"
-            "SUPER, tab, exec, ${cmdSuper}"
-            "SUPER SHIFT, tab, exec, ${cmdSuper} -r"
-          ]
-        );
+        ];
 
         binde = [
           # Keyboard fn keys
