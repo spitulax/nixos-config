@@ -90,7 +90,7 @@
 
     # TODO: global theming
     # https://github.com/catppuccin/btop/blob/main/themes/catppuccin_mocha.theme
-    xdg.configFile."btop/catppuccin-mocha.theme".text = ''
+    xdg.configFile."btop/themes/catppuccin-mocha.theme".text = ''
       # Main background, empty for terminal default, need to be empty if you want transparent background
       theme[main_bg]="#1E1E2E"
 
