@@ -78,7 +78,7 @@ in
       };
       package = pkgs.inputs.hyprland.hyprland;
       plugins = [
-        pkgs.inputs.hyprspace.Hyprspace
+        # pkgs.inputs.hyprspace.Hyprspace
       ];
 
       settings = {
@@ -133,7 +133,7 @@ in
         };
 
         animations = {
-          enabled = true;
+          enabled = false;
           bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
           animation = [
             "windows, 1, 7, myBezier"
@@ -220,8 +220,6 @@ in
         layerrule = [
           "blur, waybar"
           "blur, rofi"
-          "blur, hyprshell_overview"
-          "blur, hyprshell_launcher"
           # TODO: Could not get `btop` to float <https://wiki.hyprland.org/Configuring/Window-Rules/#rules>
           # This is because I can only filter btop by title but float is a static rule
         ];
@@ -347,8 +345,8 @@ in
           "SUPER SHIFT, F12, pass, class:com\\.obsproject\\.Studio"
         ] ++ [
           # Hyprspace
-          "$mainMod, O, overview:toggle"
-          "$mainMod SHIFT, O, overview:toggle, all"
+          # "$mainMod, O, overview:toggle"
+          # "$mainMod SHIFT, O, overview:toggle, all"
         ];
 
         binde = [

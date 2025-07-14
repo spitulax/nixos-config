@@ -37,7 +37,7 @@
     keymapper.enable = false;
     steam.enable = true;
     tablet.enable = true;
-    vm.enable = false;
+    vm.enable = true;
     warp.enable = true;
     powerManager = {
       enable = true;

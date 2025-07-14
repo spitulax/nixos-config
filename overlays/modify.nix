@@ -2,12 +2,7 @@
 , lib
 , ...
 }: {
-  preModify = final: prev: {
-    # TEMP: wine
-    inputs = lib.recursiveUpdate prev.inputs {
-      nix-gaming.wine-ge = prev.inputs.nix-gaming-temp.wine-ge;
-    };
-  };
+  preModify = final: prev: { };
 
   # Modify packages from nixpkgs
   modifyPhase = final: prev: {
@@ -30,7 +25,6 @@
       hyprpaper
       hyprpicker
       hyprpolkitagent
-      hyprshell
       waybar
       whitesur-cursors
       gplates
