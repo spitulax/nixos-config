@@ -79,7 +79,7 @@ let
 
     rust = [
       rust-analyzer
-      rust-bin.beta.latest.default
+      rust-bin.stable.latest.default
     ];
 
     typst = [

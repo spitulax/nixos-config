@@ -90,16 +90,9 @@ in
     };
 
     dev = {
-      cpp = true;
-      go = false;
-      godot = false;
-      javascript = true;
+      python = true;
       lua = true;
       nix = true;
-      odin = false;
-      python = true;
-      rust = true;
-      typst = false;
       debugger = true;
       benchmark = true;
       make = true;
