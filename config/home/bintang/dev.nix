@@ -112,19 +112,16 @@ in
       (k: _: mkEnableOption "development utility: ${k}")
       modules;
 
-  config = mkMerge [
-    {
-      home.packages =
-        flatten
-          (mapAttrsToList
-            (k: _: modules.${k})
-            (filterAttrs
-              (_: v: v)
-              cfg));
-    }
+  config = {
+    home = {
+      packages = flatten
+        (mapAttrsToList
+          (k: _: modules.${k})
+          (filterAttrs
+            (_: v: v)
+            cfg));
 
-    (mkIf cfg.rust {
-      home.file.".cargo/config.toml".text = ''
+      file.".cargo/config.toml".text = ''
         [build]
         target-dir = "${config.home.homeDirectory}/.cargo/target"
 
@@ -132,6 +129,6 @@ in
         inherits = "release"
         debug = "line-tables-only"
       '';
-    })
-  ];
+    };
+  };
 }
