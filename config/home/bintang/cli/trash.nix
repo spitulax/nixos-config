@@ -13,7 +13,7 @@
     ];
 
     configs.cli.aliases.extraAliases = {
-      rm = "trash-put -v";
+      rm = "trash-put -iv";
       restore = "trash-restore";
     };
   };
