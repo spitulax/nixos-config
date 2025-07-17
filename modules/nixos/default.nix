@@ -1,4 +1,4 @@
 { myLib }:
-myLib.genAttrsEachFileManual ./. "nix"
+myLib.genAttrsEachFileExtManual ./. "nix"
   [ ]
   (p: _: import p)
