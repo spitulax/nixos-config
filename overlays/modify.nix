@@ -20,16 +20,6 @@
       ];
     };
 
-    inherit (final.mypkgs)
-      hyprlock
-      hyprpaper
-      hyprpicker
-      hyprpolkitagent
-      waybar
-      whitesur-cursors
-      gplates
-      ;
-
     cloudflare-warp = prev.cloudflare-warp.overrideAttrs (_: prevAttrs: {
       dontCopyDesktopItems = true;
       postInstall = ''

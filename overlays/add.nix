@@ -45,6 +45,16 @@
 
     # KDE "channel"
     kde = final.libsForQt5;
+
+    inherit (final.mypkgs)
+      hyprlock
+      hyprpaper
+      hyprpicker
+      hyprpolkitagent
+      waybar
+      whitesur-cursors
+      gplates
+      ;
   };
 
   postAdd = final: prev: { };
