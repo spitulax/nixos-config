@@ -10,6 +10,6 @@ if [ -r lazy-lock.json ]; then
 fi
 
 nvim < /dev/null # run lazy.nvim commands
-cp lazy-lock.json ${FLAKE_DIR}/config/home/${USER}/nvim/lazy-lock.json
+cp lazy-lock.json ${FLAKE_DIR}/config/home/${1}/nvim/lazy-lock.json
 rm lazy-lock.json
 echo "You can build your system now to place the lock file back."
