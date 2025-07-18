@@ -46,14 +46,12 @@ in
         vector = "brave-browser.desktop";
         web = "brave-browser.desktop";
         directory = "org.kde.dolphin.desktop";
-        wordDoc = "writer.desktop";
-        slideshowDoc = "impress.desktop";
-        spreadsheetDoc = "calc.desktop";
       };
       obs.enable = false;
       office = {
         enable = true;
         installSpellingDicts = true;
+        configureMime = true;
       };
       obsidian.enable = true;
       distrobox.enable = false;
@@ -79,6 +77,17 @@ in
       git = {
         gh = true;
       };
+      fastfetch.enable = true;
+      imagemagick.enable = true;
+      fontpreview.enable = true;
+      diskVisualizers.enable = true;
+      chafa.enable = true;
+      ffmpeg.enable = true;
+      hexyl.enable = true;
+      jq.enable = true;
+      poppler-utils.enable = true;
+      lexurgy.enable = true;
+      pasteme.enable = true;
     };
 
     desktop = {
@@ -87,21 +96,23 @@ in
         enable = true;
         monitor = "eDP-1,1920x1080@60,0x0,1";
       };
+      warn-low-battery.enable = true;
     };
 
     dev = {
-      python = true;
-      lua = true;
-      nix = true;
-      debugger = true;
-      benchmark = true;
-      make = true;
-      websocat = cfg.dev.typst;
+      python.enable = true;
+      lua.enable = true;
+      nix.enable = true;
+      debugger.enable = true;
+      benchmark.enable = true;
+      make.enable = true;
+      text.enable = true;
+      misc.enable = true;
     };
 
     gaming = {
       games = {
-        osu = false;
+        osu.enable = false;
       };
       lutris.enable = false;
       misc.enable = true;

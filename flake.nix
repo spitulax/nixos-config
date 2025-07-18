@@ -71,17 +71,24 @@
     } @ inputs:
     let
       inherit (self) outputs;
+      commonArgs = {
+        inherit (self) inputs outputs;
+        inherit pkgsFor tempPkgsFor myLib lib;
+        inherit configs specialArgs vars users;
+      };
 
-      configs = import ./flake/configs.nix { inherit myLib lib specialArgs pkgsFor inputs users; };
+      configs = import ./flake/configs.nix commonArgs;
       vars = import ./flake/vars.nix;
-      users = import ./flake/users.nix { inherit myLib; };
+      users = import ./flake/users.nix commonArgs;
       specialArgs = { inherit inputs outputs myLib tempPkgsFor users; };
 
-      myLib = import ./lib { inherit specialArgs lib; };
-      lib = nixpkgs.lib // home-manager.lib;
+      myLibBase = import ./lib { inherit lib; };
+      myLibExtra = import ./lib/extra.nix commonArgs;
+      myLib = myLibBase // myLibExtra;
+      inherit (nixpkgs) lib;
 
       # Nixpkgs instances per architecture
-      systems = [ "x86_64-linux" "aarch64-linux" ];
+      systems = [ "x86_64-linux" ];
       genNixpkgs = input: applyOverlays:
         lib.genAttrs systems (system:
           import input {
@@ -104,15 +111,15 @@
       replConfigShortcuts =
         (lib.mapAttrs'
           (n: lib.nameValuePair ("nixos-" + n))
-          (lib.genAttrs
-            (builtins.attrNames configs.nixosConfigurations)
-            (name: configs.nixosConfigurations.${name}.config)))
+          (lib.mapAttrs
+            (k: v: configs.nixosConfigurations.${k}.config)
+            configs.nixosConfigurations))
         //
         (lib.mapAttrs'
           (n: lib.nameValuePair ("home-" + lib.concatStringsSep "-" (lib.splitString "@" n)))
-          (lib.genAttrs
-            (builtins.attrNames configs.homeConfigurations)
-            (name: configs.homeConfigurations.${name}.config)));
+          (lib.mapAttrs
+            (k: v: configs.homeConfigurations.${k}.config)
+            configs.homeConfigurations));
     in
     {
       # Standard flake output
@@ -131,11 +138,8 @@
         nixOnDroidConfigurations
         homeConfigurations;
 
-      # Expose these to output for easier access
-      inherit (self) inputs outputs;
-      inherit pkgsFor tempPkgsFor myLib lib;
-      inherit specialArgs;
-      inherit vars;
     }
+    # Expose these to output for easier access
+    // commonArgs
     // replConfigShortcuts;
 }

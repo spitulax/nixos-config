@@ -18,7 +18,8 @@ The age key is located in `/var/lib/age/host.txt` with ownership of `root:wheel`
 permission so `@wheel` users can access it without `sudo` (important for `nh`). The age key should
 be generated with `ssh-to-age -private-key -i /etc/ssh/ssh-ed25519 > /var/lib/age/host.txt` and make
 sure the ssh key is not password protected. `config.sops.age.sshKeyPaths` and
-`config.sops.gnupg.sshKeyPaths` should be empty.
+`config.sops.gnupg.sshKeyPaths` should be empty. These steps are only needed for building configs
+using sops or editing secret files.
 
 ## Home Manager config
 
@@ -28,6 +29,7 @@ a default sops file which is `../secrets/users/<username>/secrets.yaml`, create 
 The age key is located in `$XDG_DATA_HOME/age/user.txt` with `600` permission. The age key should be
 generated with `ssh-to-age -private-key -i ~/.ssh/id_ed25519 > $XDG_DATA_HOME/age/user.txt` and also
 make sure the ssh key is not password protected. `config.sops.age.sshKeyPaths` should be empty.
+These steps are only needed for building configs using sops or editing secret files.
 
 [here]: ../secrets
 [.sops.yaml]: ../.sops.yaml

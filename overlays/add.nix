@@ -54,6 +54,7 @@
       waybar
       whitesur-cursors
       gplates
+      osu-lazer
       ;
   };
 

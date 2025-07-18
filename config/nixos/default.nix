@@ -1,5 +1,6 @@
 { config
 , lib
+, hostName
 , ...
 }:
 let
@@ -43,6 +44,8 @@ in
 
     hostName = mkOption {
       type = types.str;
+      default = hostName;
+      readOnly = true;
       description = "The system's host name.";
     };
 

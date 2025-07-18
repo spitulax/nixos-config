@@ -15,9 +15,6 @@
 
   # Config modules
   configs = {
-    hostName = "barbatos";
-    nix.arch = "x86_64-linux";
-
     desktop = {
       enable = true;
       environments.hyprland = true;

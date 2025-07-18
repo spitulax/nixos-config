@@ -1,4 +1,6 @@
-{ myLib }: {
+{ myLib
+, ...
+}: {
   bintang = myLib.mkUser {
     name = "Bintang";
     username = "bintang";

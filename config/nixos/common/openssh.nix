@@ -9,9 +9,15 @@ let
   hostPublicKeys =
     lib.optionalAttrs
       cfg.addHostKeys
-      (lib.mapAttrs
-        (k: _: ../../../keys/hosts/${k}/ssh-rsa.pub)
-        outputs.nixosConfigurations);
+      (lib.filterAttrs
+        (_: v: v != null)
+        (lib.mapAttrs
+          (k: _:
+            let
+              path = ../../../keys/hosts/${k}/ssh-rsa.pub;
+            in
+            if builtins.pathExists path then path else null)
+          outputs.nixosConfigurations));
 in
 {
   options.configs.openssh = {

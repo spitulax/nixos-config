@@ -4,20 +4,7 @@
 , lib
 , outputs
 , ...
-}:
-let
-  inherit (lib)
-    mkOption
-    types
-    platforms
-    ;
-in
-{
-  options.configs.nix.arch = mkOption {
-    type = types.enum platforms.all;
-    description = "Nixpkgs architecture.";
-  };
-
+}: {
   config = {
     # Put this flake (as self) and its inputs in the nix registry
     nix.registry =
@@ -59,7 +46,5 @@ in
         options = "--delete-older-than +3";
       };
     };
-
-    nixpkgs.pkgs = outputs.pkgsFor.${config.configs.nix.arch};
   };
 }

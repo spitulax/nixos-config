@@ -4,13 +4,16 @@
 , pkgsFor
 , specialArgs
 , users
+, ...
 }: {
   # NixOS configs
   nixosConfigurations = {
     # Personal laptop
     "barbatos" = myLib.nixosConfig {
+      hostName = "barbatos";
       config = ../hosts/barbatos;
       users = with users; [ bintang ];
+      pkgs = pkgsFor.x86_64-linux;
     };
   };
 
