@@ -12,6 +12,7 @@ let
   cfg = config.configs.apps;
 
   modules = with pkgs; {
+    # TODO: `programs.anki`
     anki = {
       desc = "Anki";
       pkgs = [ anki ];

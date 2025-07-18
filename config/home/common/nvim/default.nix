@@ -1,6 +1,7 @@
 { config
 , pkgs
 , lib
+, inputs
 , ...
 }: {
   options.configs.neovim.enable = lib.mkEnableOption "neovim";
@@ -49,5 +50,19 @@
     ];
 
     configs.cli.aliases.extraAliases.vim = "nvim";
+
+    home.activation = {
+      nvimRemoveConfigCache = inputs.home-manager.lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        if [[ -v XDG_CACHE_HOME ]]; then
+          CACHE="$XDG_CACHE_HOME"
+        else
+          CACHE="$HOME/.cache"
+        fi
+        NVIM_CACHE="$CACHE/nvim/luac"
+        if [[ -d "$NVIM_CACHE" ]]; then
+          run rm -r "$NVIM_CACHE"
+        fi
+      '';
+    };
   };
 }

@@ -3,6 +3,7 @@
 , pkgs
 , ...
 }: {
+  # TODO: `programs.lutris`
   options.configs.gaming.lutris.enable = lib.mkEnableOption "Lutris";
 
   config = lib.mkIf config.configs.gaming.lutris.enable {

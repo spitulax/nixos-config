@@ -51,7 +51,6 @@ let
         nodePackages.nodejs
         typescript
         typescript-language-server
-        deno
       ];
     };
 
@@ -108,7 +107,7 @@ let
     text = {
       desc = "Text";
       pkgs = [
-        prettier
+        deno
       ];
     };
 

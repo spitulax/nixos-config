@@ -96,8 +96,6 @@ return {
 
         return { lsp_fallback = lsp_fallback }
       end,
-
-      log_level = vim.log.levels.OFF,
     }
   end,
 
