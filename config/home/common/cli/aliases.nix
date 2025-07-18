@@ -10,8 +10,7 @@ let
     ;
 
   inherit (myLib.hmHelper)
-    mkAliasOptions
-    mkAliasConfig
+    alias
     ;
 
   cfg = config.configs.cli.aliases;
@@ -48,7 +47,7 @@ let
 in
 {
   options.configs.cli.aliases = {
-    enable = mkAliasOptions { desc = "common aliases"; };
+    enable = alias.mkOptions { desc = "common aliases"; };
     extraAliases = mkOption {
       type = types.attrsOf types.str;
       default = { };
@@ -57,7 +56,7 @@ in
   };
 
   config = {
-    programs = mkAliasConfig {
+    programs = alias.mkConfig {
       config = cfg.enable;
       aliases = commonAliases;
       inherit (cfg) extraAliases;

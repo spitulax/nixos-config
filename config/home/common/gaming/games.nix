@@ -5,8 +5,7 @@
 }:
 let
   inherit (myLib.hmHelper)
-    mkPkgsOptions
-    mkPkgsConfig
+    packages
     ;
 
   cfg = config.configs.gaming.games;
@@ -21,9 +20,9 @@ let
   };
 in
 {
-  options.configs.gaming.games = mkPkgsOptions { inherit modules; };
+  options.configs.gaming.games = packages.mkOptions { inherit modules; };
 
   config = {
-    home.packages = mkPkgsConfig { inherit modules cfg; };
+    home.packages = packages.mkConfig { inherit modules cfg; };
   };
 }

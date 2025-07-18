@@ -42,7 +42,7 @@
       };
       settings = {
         background.path = "/etc/greetd/regreet.png";
-        appearance.greeting_msg = "Welcome to ${config.networking.hostName}!";
+        appearance.greeting_msg = "Welcome to ${config.configs.hostname}!";
         widget.clock = {
           format = "%H:%M";
           timezone = config.time.timeZone;

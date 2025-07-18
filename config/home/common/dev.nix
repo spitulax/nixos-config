@@ -6,8 +6,7 @@
 }:
 let
   inherit (myLib.hmHelper)
-    mkPkgsOptions
-    mkPkgsConfig
+    packages
     ;
 
   cfg = config.configs.dev;
@@ -148,7 +147,7 @@ let
   };
 in
 {
-  options.configs.dev = mkPkgsOptions {
+  options.configs.dev = packages.mkOptions {
     desc = n: "development utility: ${n}";
     inherit modules;
   };
@@ -156,7 +155,7 @@ in
   config = lib.mkMerge [
     {
       home = {
-        packages = mkPkgsConfig { inherit modules cfg; };
+        packages = packages.mkConfig { inherit modules cfg; };
       };
     }
 

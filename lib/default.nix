@@ -265,8 +265,14 @@
     lib.filterAttrs (_: v: v != null) attrs;
 
 
-  # DOCS: need docs
+  /*
+    Separates the elements from a date with format "YYYYMMDD" to "YYYY-MM-DD".
 
+    Inputs:
+    - `longDate`: The unseparated date
+
+    Type: String -> String
+  */
   mkDate = longDate: (lib.concatStringsSep "-" [
     (builtins.substring 0 4 longDate)
     (builtins.substring 4 2 longDate)
@@ -274,6 +280,14 @@
   ]);
 
 
+  /*
+    Takes a flake object and returns a string indicating its version with format "YYYY-MM-DD_REV".
+
+    Inputs:
+    - `flake`: The flake object
+
+    Type: AttrSet -> String
+  */
   mkFlakeVersion = flake:
     mkDate (flake.lastModifiedDate or "19700101")
     + "_" + (flake.rev or "dirty");

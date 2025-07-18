@@ -5,8 +5,7 @@
 }:
 let
   inherit (myLib.hmHelper)
-    mkPkgsOptions
-    mkPkgsConfig
+    packages
     ;
 
   cfg = config.configs.apps;
@@ -85,9 +84,9 @@ in
     ./zathura.nix
   ];
 
-  options.configs.apps = mkPkgsOptions { inherit modules; };
+  options.configs.apps = packages.mkOptions { inherit modules; };
 
   config = {
-    home.packages = mkPkgsConfig { inherit modules cfg; };
+    home.packages = packages.mkConfig { inherit modules cfg; };
   };
 }

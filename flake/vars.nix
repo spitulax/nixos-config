@@ -19,6 +19,7 @@
     # "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
   ];
 
+  # DO NOT CHANGE THESE
   globalSecretsPath = ../secrets/global;
   hostsSecretsPath = ../secrets/hosts;
   usersSecretsPath = ../secrets/users;

@@ -2,7 +2,10 @@
 , lib
 , ...
 }: {
-  options.configs.gpg.enable = lib.mkEnableOption "GnuPG";
+  options.configs.gpg.enable = lib.mkEnableOption ''
+    GnuPG.
+    Put the public key at `/keys/users/${config.home.username}/gpg1.asc`
+  '';
 
   config = lib.mkIf config.configs.gpg.enable {
     programs.gpg = {

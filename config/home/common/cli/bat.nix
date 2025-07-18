@@ -13,8 +13,7 @@ let
     ;
 
   inherit (myLib.hmHelper)
-    mkAliasOptions
-    mkAliasConfig
+    alias
     ;
 
   cfg = config.configs.cli.bat;
@@ -30,7 +29,7 @@ in
 {
   options.configs.cli.bat = {
     enable = mkEnableOption "bat";
-    alias = mkAliasOptions { desc = "some `bat` programs"; };
+    alias = alias.mkOptions { desc = "some `bat` programs"; };
   };
 
   config = mkMerge [
@@ -65,7 +64,7 @@ in
     })
 
     (mkIf cfg.enable {
-      programs = mkAliasConfig {
+      programs = alias.mkConfig {
         config = cfg.alias;
         inherit aliases;
       };

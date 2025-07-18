@@ -11,8 +11,7 @@ let
     ;
 
   inherit (myLib.hmHelper)
-    mkAliasOptions
-    mkAliasConfig
+    alias
     ;
 
   cfg = config.configs.cli.eza;
@@ -30,7 +29,7 @@ in
     enable = mkEnableOption "eza" // {
       default = true;
     };
-    alias = mkAliasOptions { desc = "aliasing `eza` to `ls`"; };
+    alias = alias.mkOptions { desc = "aliasing `eza` to `ls`"; };
   };
 
   config = mkIf cfg.enable {
@@ -38,7 +37,7 @@ in
       eza
     ];
 
-    programs = mkAliasConfig {
+    programs = alias.mkConfig {
       config = cfg.alias;
       aliases = shellAlias;
     };

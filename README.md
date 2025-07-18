@@ -3,10 +3,6 @@
 This is my [NixOS] configuration for my systems with [Nix Flake]. If you want to grab something from
 here, feel free!
 
-## Screenshot
-
-![](./assets/screenshot.png)
-
 ## Structure
 
 This is my first attempt at centralizing NixOS configuration. This repo starts out humbly before
@@ -14,18 +10,15 @@ gradually turning into a mess. The current structure emerged slowly from me tryi
 of the config one at a time and from old structure that's stuck from the dawn of this repo, so there
 was no planned structuring but I'm happy with this (for now).
 
-- [`assets/`](./assets): Useless pictures
+- [`assets/`](./assets): Images needed for the config
 - [`config/`](./config): See [here](./config/README.md)
-- [`flake/`](./flake): Stuff to be imported by [`flake.nix`](./flake.nix)
-  - [`configs.nix`](./flake/configs.nix): Declaration of configs
-  - [`users.nix`](./flake/users.nix): Declaration of home-manager configs/users
-  - [`vars.nix`](./flake/vars.nix): Variables that are shared with configs, modules, etc. so they
-    are declared in flake
+- [`flake/`](./flake): See [here](./flake/README.md)
 - [`hosts/`](./hosts): Host-specific configs
+- [`keys/`](./keys): See [here](./keys/README.md)
 - [`lib/`](./lib): Helper functions (imported as `myLib` to flake)
 - [`modules/`](./modules): See [here](./modules/README.md)
 - [`overlays/`](./overlays): Nix overlays (imported to flake)
-- [`packages/`](./packages): Nix packages and scripts I won't bother moving into separate repo
+- [`packages/`](./packages): Nix packages and scripts
 - [`secrets/`](./secrets): See [here](./secrets/README.md)
 - [`users/`](./users): See [here](./users/README.md)
 - [`flake.nix`](./flake.nix): The root of this entire repo
@@ -46,59 +39,61 @@ options and debugging much more convenient.
 
 ### Adding host config
 
-In [`flake/configs.nix`], add an attribute to `nixosConfigurations` using `myLib.nixosConfig`. The
-attribute name is the hostname and the config module for the host is located in `hosts/<hostname>`
-directory. You can add a user for the host from the `users` attribute set. See
+In [`/flake/configs.nix`](./flake/configs.nix), add an attribute to `nixosConfigurations` using
+`myLib.nixosConfig`. The attribute name is the hostname and the config module for the host is
+located in `hosts/<hostname>` directory. Also see the function documentation
+[here](./lib/extra.nix). You can add a user for the host from the `users` attribute set. See
 [here](./hosts/barbatos/default.nix) for an example of host config module.
 
 #### SSH Keys
 
-A pair of SSH public keys are needed for a host if `config.configs.openssh.addHostKeys` is `true`.
-`ssh-rsa.pub` and `ssh-ed25519.pub` will be searched from `keys/users/<username>`. Host keys should
-not be password protected.
+Add a pair of SSH public keys (rsa and ed25519) if `config.configs.openssh.addHostKeys` is `true`.
+The rsa key should be password protected, the ed25519 key should not. Put the public keys at
+`/keys/hosts/<hostname>/ssh-rsa.pub` and `/keys/hosts/<hostname>/ssh-ed25519.pub`.
 
 ### Host config module
 
-The config module is just like any regular NixOS module. Importing `nixosConfigModule` from the
-flake's output makes the config easily customisable with pre-defined options. If something needs to
-be adjusted for a single host put the module inside the `hosts/<hostname>` directory and adjust the
-needed options like usual.
+You can use the module in [`/hosts/`](./hosts) by importing `outputs.nixosConfigModule`. It makes
+the config easily customisable with pre-defined options. If something needs to be adjusted for a
+single host put the module inside the `hosts/<hostname>` directory and adjust the needed options
+like usual.
 
 ### Adding `nixosConfigModule` options
 
-See [here](./config/README.md).
+See [here](./config/README.md#adding-an-option).
 
 ## Home Manager Config
 
 ### Adding a user
 
-A user also means a home-manager config/profile. One home-manager user/config can be used for
-multiple hosts. To add it, add an attribute to [`flake/users.nix`] using `myLib.mkUser`.
-`config/home/<username>/` is automatically looked into for the config modules.
+A user also means a Home Manager config/profile. One Home Manager user/config can be used for
+multiple hosts. To add it, add an attribute to [`/flake/users.nix`](./flake/users.nix) using
+`myLib.mkUser`. Also see the function documentation [here](./lib/extra.nix).
 
 #### SSH Keys
 
-By default a pair of SSH public keys are needed for a user, an ed25519 key and an rsa key that
-should be password protected. `ssh-rsa.pub` and `ssh-ed25519.pub` will be searched from
-`keys/users/<username>`.
+Add a pair of SSH public keys (rsa and ed25519). The rsa key should be password protected, the
+ed25519 key should not. Put the public keys at `/keys/users/<username>/ssh-rsa.pub` and
+`/keys/users/<username>/ssh-ed25519.pub`. This is mandatory.
 
 ### Adding a user to a host
 
-In [`flake/configs.nix`], add an attribute to `homeConfigurations` using `myLib.homeManagerConfig`.
-The name of the attribute should be `<username>@<hostname>`. The module for each declared
-combination of user and host is located in `users/<username>_<hostname>` directory. See
-[here](./users/bintang_barbatos/default.nix) for an example of user config module.
+In [`/flake/configs.nix`](./flake/configs.nix), add an attribute to `homeConfigurations` using
+`myLib.homeManagerConfig` (see the function documentation [here](./lib/extra.nix)). The name of the
+attribute should be `<username>@<hostname>`. The module for each declared combination of user and
+host is located in `users/<username>_<hostname>` directory. See [here](./users/README.md) for
+details.
 
 ### User config module
 
 Just like [NixOS config module](#nixos-config), user config module is just like any regular
-home-manager module. But the `users` attribute set provides a home-manager module to simplify
+home-manager module. But the `users` attribute set provides a Home Manager module to simplify
 customisation just like what `nixosConfigModule` does. To use it, import
 `users.<username>.homeManagerModule`.
 
 ### Adding `homeManagerModule` options
 
-See [here](./config/README.md).
+See [here](./config/README.md#adding-an-option).
 
 ## Components
 
@@ -106,7 +101,7 @@ Here are some of the programs configured in this repo.
 
 #### Desktop
 
-- **Display Manager**: [GDM]
+- **Display Manager**: [ReGreet]
 - **Window Manager (Wayland)**: [Hyprland]
 
 #### CLI Tools
@@ -127,7 +122,7 @@ Here are some of the programs configured in this repo.
 - **Media Player**: [Mpv]
 - **Painting**: [Krita]
 - **Image Viewer**: [Gwenview]
-- **PDF Viewer**: [Zathura]
+- **PDF Viewer**: [Okular]
 
 #### Development
 
@@ -163,7 +158,6 @@ Dotfiles by other people that massively helped my Nix journey.
 
 [NixOS]: https://nixos.org/
 [Nix Flake]: https://nixos.wiki/wiki/Flakes
-[SDDM]: https://github.com/sddm/sddm
 [Kitty]: https://github.com/kovidgoyal/kitty
 [Fish]: https://github.com/fish-shell/fish-shell
 [Starship]: https://github.com/starship/starship
@@ -172,7 +166,6 @@ Dotfiles by other people that massively helped my Nix journey.
 [OBS]: https://obsproject.com/
 [Bitwarden]: https://bitwarden.com/
 [Neovim]: https://github.com/neovim/neovim
-[Godot Engine]: https://github.com/godotengine/godot
 [Catppuccin]: https://github.com/catppuccin/catppuccin
 [Iosevka]: https://github.com/be5invis/Iosevka
 [Nerd Fonts]: https://github.com/ryanoasis/nerd-fonts
@@ -185,10 +178,8 @@ Dotfiles by other people that massively helped my Nix journey.
 [Mpv]: https://mpv.io/
 [Krita]: https://krita.org/
 [Gwenview]: https://apps.kde.org/gwenview
-[Zathura]: https://git.pwmt.org/pwmt/zathura
-[GDM]: https://wiki.gnome.org/Projects/GDM
+[Okular]: https://invent.kde.org/graphics/okular
+[ReGreet]: https://github.com/rharish101/ReGreet
 [Fluent GTK Theme]: https://github.com/vinceliuice/Fluent-gtk-theme
 [Materia KDE]: https://github.com/PapirusDevelopmentTeam/materia-kde
 [sops.nix]: https://github.com/Mic92/sops-nix
-[`flake/configs.nix`]: ./flake/configs.nix
-[`flake/users.nix`]: ./flake/users.nix

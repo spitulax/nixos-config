@@ -17,7 +17,7 @@
 
   config = lib.mkIf config.configs.sops.enable {
     sops = {
-      defaultSopsFile = /${outputs.vars.hostsSecretsPath}/${config.networking.hostName}/secrets.yaml;
+      defaultSopsFile = /${outputs.vars.hostsSecretsPath}/${config.configs.hostname}/secrets.yaml;
       age = {
         keyFile = "/var/lib/age/host.txt";
         # sshKeyPaths = map (x: x.path) (lib.filter (x: x.type == "ed25519") config.services.openssh.hostKeys);

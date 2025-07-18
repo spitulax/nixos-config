@@ -10,8 +10,7 @@
   nixosConfigurations = {
     # Personal laptop
     "barbatos" = myLib.nixosConfig {
-      hostName = "barbatos";
-      config = ../hosts/barbatos;
+      hostname = "barbatos";
       users = with users; [ bintang ];
       pkgs = pkgsFor.x86_64-linux;
     };
@@ -33,7 +32,8 @@
   homeConfigurations = {
     # Personal laptop
     "bintang@barbatos" = myLib.homeManagerConfig {
-      config = ../users/bintang_barbatos;
+      username = "bintang";
+      hostname = "barbatos";
       pkgs = pkgsFor.x86_64-linux;
     };
   };

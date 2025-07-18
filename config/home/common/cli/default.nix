@@ -5,8 +5,7 @@
 }:
 let
   inherit (myLib.hmHelper)
-    mkPkgsOptions
-    mkPkgsConfig
+    packages
     ;
 
   cfg = config.configs.cli;
@@ -110,9 +109,9 @@ in
     ./trash.nix
   ];
 
-  options.configs.cli = mkPkgsOptions { inherit modules; };
+  options.configs.cli = packages.mkOptions { inherit modules; };
 
   config = {
-    home.packages = mkPkgsConfig { inherit modules cfg; };
+    home.packages = packages.mkConfig { inherit modules cfg; };
   };
 }

@@ -1,6 +1,6 @@
 { config
 , lib
-, hostName
+, hostname
 , ...
 }:
 let
@@ -42,9 +42,9 @@ in
       description = "Extra packages to be included with system packages.";
     };
 
-    hostName = mkOption {
+    hostname = mkOption {
       type = types.str;
-      default = hostName;
+      default = hostname;
       readOnly = true;
       description = "The system's host name.";
     };
@@ -57,7 +57,7 @@ in
   };
 
   config = {
-    networking.hostName = cfg.hostName;
+    networking.hostName = cfg.hostname;
     system.stateVersion = cfg.stateVersion;
   };
 }
