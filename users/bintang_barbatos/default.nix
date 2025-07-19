@@ -88,6 +88,7 @@ in
       poppler-utils.enable = true;
       lexurgy.enable = true;
       pasteme.enable = true;
+      newsboat.enable = true;
     };
 
     desktop = {

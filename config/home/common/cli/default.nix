@@ -10,6 +10,24 @@ let
 
   cfg = config.configs.cli;
 
+  imports = [
+    ./fish
+    ./aliases.nix
+    ./bat.nix
+    ./btop.nix
+    ./cava.nix
+    ./downloader.nix
+    ./eza.nix
+    ./fastfetch.nix
+    ./git.nix
+    ./glow.nix
+    ./newsboat.nix
+    ./openssh.nix
+    ./shell.nix
+    ./tmux.nix
+    ./trash.nix
+  ];
+
   modules = with pkgs; {
     ani-cli = {
       desc = "ani-cli";
@@ -92,22 +110,7 @@ let
   };
 in
 {
-  imports = [
-    ./fish
-    ./aliases.nix
-    ./bat.nix
-    ./btop.nix
-    ./cava.nix
-    ./downloader.nix
-    ./eza.nix
-    ./fastfetch.nix
-    ./git.nix
-    ./glow.nix
-    ./openssh.nix
-    ./shell.nix
-    ./tmux.nix
-    ./trash.nix
-  ];
+  inherit imports;
 
   options.configs.cli = packages.mkOptions { inherit modules; };
 
