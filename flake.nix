@@ -11,8 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-on-droid.url = "github:nix-community/nix-on-droid";
-
     mypkgs.url = "github:spitulax/mypkgs";
 
     #############################
@@ -135,7 +133,6 @@
       # Configs
       inherit (configs)
         nixosConfigurations
-        nixOnDroidConfigurations
         homeConfigurations;
 
     }
