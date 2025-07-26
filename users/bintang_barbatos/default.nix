@@ -101,6 +101,7 @@ in
     };
 
     dev = {
+      cpp.enable = true;
       python.enable = true;
       lua.enable = true;
       nix.enable = true;

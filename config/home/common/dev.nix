@@ -15,7 +15,7 @@ let
     # Languages #
 
     cpp = {
-      desc = "C++";
+      desc = "C/C++";
       pkgs = [
         man-pages
         (hiPrio gcc)
