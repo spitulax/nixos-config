@@ -5,7 +5,6 @@
 }:
 let
   extraConfig = {
-    gtk-application-prefer-dark-theme = true;
     gtk-decoration-layout = ":menu";
   };
 in
