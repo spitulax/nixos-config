@@ -182,7 +182,7 @@
         , ...
         }:
         let
-          hostname = config.configs.hostname;
+          inherit (config.configs) hostname;
         in
         {
           imports = [

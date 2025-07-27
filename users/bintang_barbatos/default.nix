@@ -130,6 +130,7 @@ in
     yazi.enable = false;
     keymapper.enable = false;
     wine.enable = true;
+    fcitx5.enable = true;
     nix.useAccessToken = cfg.sops.enable;
   };
 }

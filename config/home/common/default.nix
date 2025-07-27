@@ -9,6 +9,7 @@
     ./yazi
     ./dev.nix
     ./env.nix
+    ./fcitx5.nix
     ./gpg.nix
     ./keymapper.nix
     ./nix.nix
