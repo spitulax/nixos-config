@@ -30,9 +30,9 @@
               legacyPackages = (flake.legacyPackages or { }).${final.system} or { };
               packages = (flake.packages or { }).${final.system} or { };
             in
-            if legacyPackages != { }
-            then legacyPackages
-            else packages
+            if packages != { }
+            then packages
+            else legacyPackages
         )
         inputs;
 

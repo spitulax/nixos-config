@@ -12,7 +12,6 @@
       };
       greetd = {
         enable = true;
-        vt = 2;
       };
     };
 
