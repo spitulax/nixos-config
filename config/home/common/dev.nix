@@ -104,6 +104,15 @@ let
       ];
     };
 
+    php = {
+      desc = "PHP";
+      pkgs = [
+        php
+        phpactor
+        mago
+      ];
+    };
+
     text = {
       desc = "Text";
       pkgs = [

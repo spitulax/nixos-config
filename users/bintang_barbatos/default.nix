@@ -108,6 +108,7 @@ in
       debugger.enable = true;
       benchmark.enable = true;
       make.enable = true;
+      php.enable = true;
       text.enable = true;
       misc.enable = true;
     };
