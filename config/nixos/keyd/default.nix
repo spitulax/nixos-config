@@ -5,6 +5,10 @@
 }:
 let
   cfg = config.configs.keyd;
+
+  inherit (builtins)
+    readFile
+    ;
 in
 {
   options.configs.keyd.enable = lib.mkEnableOption "keyd";
@@ -14,59 +18,18 @@ in
       keyd
     ];
 
-    services.keyd = {
-      enable = true;
-      keyboards = {
-        default = {
-          ids = [ "*" ];
-          settings = {
-            main = {
-              capslock = "overload(ext, esc)";
-              scrolllock = "capslock";
-              rightalt = "leftalt";
-              compose = "rightalt";
-            };
+    environment.etc."keyd/default.conf".text = ''
+      ${readFile ./default.conf}
 
-            ext = {
-              space = "esc";
-              tab = "enter";
-              f = "enter";
-              k = "up";
-              j = "down";
-              h = "left";
-              l = "right";
-              w = "up";
-              s = "down";
-              a = "left";
-              d = "right";
-              q = "home";
-              e = "end";
-              z = "delete";
-              x = "backspace";
-            };
+      [control:C]
+      f1=setlayout(main)
+      f2=setlayout(my_ipa)
+      f4=setlayout(my_bel)
 
-            "ext+shift" = {
-              k = "pageup";
-              j = "pagedown";
-              w = "pageup";
-              s = "pagedown";
-              z = "C-delete";
-              x = "C-backspace";
-            };
-          }
-          // import ./ipa.nix
-          // import ./belichian.nix
-          // {
-            control = {
-              f1 = "setlayout(main)";
-              f2 = "setlayout(my_ipa)";
-              # TODO: Alphabet layout
-              # f3 = "setlayout(my_alp)";
-              f4 = "setlayout(my_bel)";
-            };
-          };
-        };
-      };
-    };
+      ${readFile ./belichian.conf}
+      ${readFile ./ipa.conf}
+    '';
+
+    services.keyd.enable = true;
   };
 }
