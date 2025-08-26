@@ -5,16 +5,21 @@
 , ...
 }:
 let
-  cfg = config.configs.mysql;
+  cfg = config.configs.sql;
 in
 {
   imports = [
     outputs.nixosModules.mysql
   ];
 
-  options.configs.mysql.enable = lib.mkEnableOption "MySQL";
+  options.configs.sql.enable = lib.mkEnableOption "SQL stuff";
 
   config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      sqlite
+      sqlitebrowser
+    ];
+
     services.mysqlNoAutostart = {
       enable = true;
       package = pkgs.mariadb;

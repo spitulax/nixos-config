@@ -23,11 +23,11 @@ in
     ./docker.nix
     ./gaming.nix
     ./keymapper.nix
-    ./mysql.nix
     ./perf.nix
     ./power-manager.nix
     ./printing.nix
     ./sops.nix
+    ./sql.nix
     ./steam.nix
     ./tablet.nix
     ./vm.nix

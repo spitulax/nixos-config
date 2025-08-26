@@ -45,7 +45,7 @@
     perf.enable = true;
     docker.enable = false;
     keyd.enable = true;
-    mysql.enable = true;
+    sql.enable = true;
   };
 
   # Hardware

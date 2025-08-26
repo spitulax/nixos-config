@@ -12,6 +12,7 @@
       "libvirtd"
       "wireshark"
       "docker"
+      "mysql"
     ];
   };
 }
