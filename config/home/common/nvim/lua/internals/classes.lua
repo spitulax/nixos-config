@@ -22,12 +22,13 @@
 ---@field config? fun(self: LazyPlugin, opts: table)
 ---@field mappings? fun(): MappingTable
 ---@field disable? boolean
+---@field base46? string|string[] -- base46 cache name
 --- NOTE: `opts` and `mappings` must be functions if they call `require` to a plugin module, because the `PluginConfig` is first evaluated before loading the plugin
 
 ---@class LanguageConfig
 ---@field lsp_name? string    -- require("lspconfig").<lsp_name>.setup(<lsp_config>)
 ---@field lsp_config? table
 ---@field formatter? string   -- formatter from conform.nvim. If "lsp", falls back to LSP formatter
----@field autocmd? fun()      -- TODO: autocmd: unimplemented
+---@field autocmd? fun()
 ---@field indent? number
----@field extra_fts? string[]  -- filetypes to apply (file name not included)
+---@field fts? string[]  -- filetypes to apply (file name not included)

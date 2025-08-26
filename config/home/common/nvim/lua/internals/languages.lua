@@ -10,6 +10,27 @@ for name, _ in vim.fs.dir(utils.language_config_path) do
   configs[ft] = config
 end
 
+---@param config LanguageConfig
+---@param filename string
+---@param callback fun(ft: string)
+local function each_ft(config, filename, callback)
+  for _, ft in ipairs(config.fts or { filename }) do
+    callback(ft)
+  end
+end
+
+---@param cond fun(config: LanguageConfig): boolean
+---@param callback fun(config: LanguageConfig, ft: string)
+local function each_config(cond, callback)
+  for f, config in pairs(configs) do
+    if cond(config) then
+      each_ft(config, f, function(ft)
+        callback(config, ft)
+      end)
+    end
+  end
+end
+
 ---@return table<string, table>
 M.lsp_servers = function()
   local servers = {}
@@ -24,45 +45,42 @@ end
 ---@return table<string, string[]>
 M.formatters_by_ft = function()
   local formatters = {}
-  for f, config in pairs(configs) do
-    if config.formatter ~= nil and config.formatter ~= "lsp" then
-      for _, ft in ipairs(config.extra_fts or { f }) do
-        formatters[ft] = { config.formatter }
-      end
-    end
-  end
+  each_config(function(config)
+    return config.formatter ~= nil and config.formatter ~= "lsp"
+  end, function(config, ft)
+    formatters[ft] = { config.formatter }
+  end)
   return formatters
 end
 
 ---@return string[]
 M.fts_format_with_lsp = function()
   local fts = {}
-  for f, config in pairs(configs) do
-    if config.formatter == "lsp" then
-      for _, ft in ipairs(config.extra_fts or { f }) do
-        table.insert(fts, ft)
-      end
-    end
-  end
+  each_config(function(config)
+    return config.formatter == "lsp"
+  end, function(_, ft)
+    table.insert(fts, ft)
+  end)
   return fts
 end
 
 M.autocmds = function()
-  vim.api.nvim_create_autocmd("FileType", {
-    callback = function(arg)
-      for f, config in pairs(configs) do
-        if config.indent ~= nil then
-          for _, ft in ipairs(config.extra_fts or { f }) do
-            if vim.bo[arg.buf].filetype == ft then
-              utils.indent(config.indent)
-              return
-            end
-          end
+  each_config(function(config)
+    return config.autocmd ~= nil or config.indent ~= nil
+  end, function(config, ft)
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = ft,
+      callback = function()
+        if config.autocmd ~= nil then
+          config.autocmd()
         end
-      end
-      utils.indent(vim.g.default_indent)
-    end,
-  })
+
+        if config.indent ~= nil then
+          utils.indent(config.indent)
+        end
+      end,
+    })
+  end)
 end
 
 return M

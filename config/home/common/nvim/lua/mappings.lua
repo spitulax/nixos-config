@@ -6,18 +6,6 @@ return {
   General = {
     a = {
       {
-        desc = "Enter shell command mode",
-        lhs = "!",
-        rhs = ":!",
-        opts = { nowait = true, remap = true },
-      },
-      {
-        desc = "Execute normal mode commands",
-        lhs = "<C-n>",
-        rhs = ":Norm ",
-        opts = { nowait = true },
-      },
-      {
         desc = "Save file",
         lhs = "<C-s>",
         rhs = "<cmd>w<CR>",
@@ -30,11 +18,6 @@ return {
         rhs = "<cmd>noh<CR>",
       },
       {
-        desc = "Toggle nvcheatsheet",
-        lhs = "<leader>ch",
-        rhs = "<cmd>NvCheatsheet<CR>",
-      },
-      {
         desc = "Reload highlights",
         lhs = "<leader>rt",
         rhs = require("base46").load_all_highlights,
@@ -43,15 +26,6 @@ return {
         desc = "Close Neovim",
         lhs = "<leader>Q",
         rhs = "<cmd>qa<cr>",
-      },
-      {
-        desc = "Edit file",
-        lhs = "<leader>n",
-        rhs = function()
-          utils.prompt_callback("Edit file", "file", function(input)
-            vim.cmd("edit " .. input)
-          end)
-        end,
       },
     },
   },
@@ -213,41 +187,6 @@ return {
   Buffer = {
     n = {
       {
-        desc = "Go to next buffer",
-        lhs = "<M-.>",
-        rhs = function()
-          require("nvchad.tabufline").next()
-        end,
-      },
-      {
-        desc = "Go to previous buffer",
-        lhs = "<M-,>",
-        rhs = function()
-          require("nvchad.tabufline").prev()
-        end,
-      },
-      {
-        desc = "Close current buffer",
-        lhs = "<leader>x",
-        rhs = function()
-          require("nvchad.tabufline").close_buffer()
-        end,
-      },
-      {
-        desc = "Close all other buffers",
-        lhs = "<leader>bo",
-        rhs = function()
-          require("nvchad.tabufline").closeAllBufs(false)
-        end,
-      },
-      {
-        desc = "Close all buffers",
-        lhs = "<leader>bx",
-        rhs = function()
-          require("nvchad.tabufline").closeAllBufs(true)
-        end,
-      },
-      {
         desc = "Create a scratch buffer",
         lhs = "<leader>S",
         rhs = function()
@@ -267,6 +206,26 @@ return {
 
   Window = {
     n = {
+      {
+        desc = "Switch left",
+        lhs = "<C-h>",
+        rhs = "<C-w>h",
+      },
+      {
+        desc = "Switch right",
+        lhs = "<C-l>",
+        rhs = "<C-w>l",
+      },
+      {
+        desc = "Switch up",
+        lhs = "<C-k>",
+        rhs = "<C-w>k",
+      },
+      {
+        desc = "Switch down",
+        lhs = "<C-j>",
+        rhs = "<C-w>j",
+      },
       {
         desc = "Horizontal split",
         lhs = "<M-s>h",
@@ -344,12 +303,12 @@ return {
       },
       {
         desc = "Go to next tab",
-        lhs = "<M-f>",
+        lhs = "<M-.>",
         rhs = "gt",
       },
       {
         desc = "Go to previous tab",
-        lhs = "<M-b>",
+        lhs = "<M-,>",
         rhs = "gT",
       },
     },
@@ -379,16 +338,6 @@ return {
         lhs = "<leader>/",
         rhs = "gcc",
         opts = { remap = true },
-      },
-      {
-        desc = "Open color picker",
-        lhs = "<leader>cp",
-        rhs = "<cmd>Huefy<cr>",
-      },
-      {
-        desc = "Open shades picker",
-        lhs = "<leader>cs",
-        rhs = "<cmd>Shades<cr>",
       },
     },
 

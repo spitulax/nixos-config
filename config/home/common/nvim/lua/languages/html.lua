@@ -1,10 +1,10 @@
 ---@type LanguageConfig
 return {
   fts = {
-    "markdown",
-    "yaml",
-    "json",
-    "jsonc",
+    "css",
+    "scss",
+    "html",
   },
   formatter = "deno_fmt",
+  indent = 4,
 }

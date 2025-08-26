@@ -154,22 +154,6 @@ M.default = {
   },
 
   {
-    name = "Open Color Picker",
-    cmd = function()
-      require("minty.huefy").open()
-    end,
-    rtxt = "<leader>cp",
-  },
-
-  {
-    name = "Open Shades Picker",
-    cmd = function()
-      require("minty.shades").open()
-    end,
-    rtxt = "<leader>cs",
-  },
-
-  {
     name = "Open Spectre",
     cmd = "Spectre",
     rtxt = "<leader>sp",

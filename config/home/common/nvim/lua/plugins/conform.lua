@@ -53,7 +53,6 @@ return {
   opts = function()
     return {
       formatters = {
-        -- FIXME: change formatter to prettier?
         deno_fmt = deno_fmt(),
         odinfmt = odinfmt(),
       },

@@ -4,7 +4,11 @@ local utils = require("utils")
 
 ---@type PluginConfig
 return {
-  spec = { "folke/which-key.nvim" },
+  spec = {
+    "folke/which-key.nvim",
+    keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
+    cmd = "WhichKey",
+  },
 
   opts = function()
     return {
@@ -42,4 +46,6 @@ return {
       },
     }
   end,
+
+  base46 = "whichkey",
 }

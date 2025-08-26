@@ -15,7 +15,6 @@ return {
         MAYBE = {
           icon = "✓",
           color = "info",
-          alt = { "LOWTODO", "NOTREALLYIMPORTANT", "NOTIMPORTANT" },
         },
         TEMP = { icon = "󰅐", color = "error" },
         REFACTOR = { icon = "󰹈", color = "error" },
@@ -51,4 +50,6 @@ return {
       },
     }
   end,
+
+  base46 = "todo",
 }

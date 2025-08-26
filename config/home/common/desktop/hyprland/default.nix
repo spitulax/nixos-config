@@ -85,11 +85,11 @@ in
           "${./catppuccin-mocha.conf}"
         ];
 
-        exec-once = [
-          "[workspace special:dock silent] ${run "brave --app-id=hnpfjngllnobngcgfapefoaidbinmjnm"}"
-          # Autostart this slow app so I won't have to wait for it to load when I want it to open quickly.
-          "[workspace special:dock silent] ${run "dolphin"}"
-        ];
+        # exec-once = [
+        #   "[workspace special:dock silent] ${run "brave --app-id=hnpfjngllnobngcgfapefoaidbinmjnm"}"
+        #   # Autostart this slow app so I won't have to wait for it to load when I want it to open quickly.
+        #   "[workspace special:dock silent] ${run "dolphin"}"
+        # ];
 
         # GENERAL
 

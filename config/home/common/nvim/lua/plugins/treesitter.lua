@@ -2,12 +2,15 @@
 
 ---@type PluginConfig
 return {
-  spec = { "nvim-treesitter/nvim-treesitter" },
+  spec = {
+    "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate",
+  },
 
   opts = function()
     return {
-      ensure_installed = { "all" },
-
       highlight = {
         enable = true,
         use_languagetree = true,
@@ -18,4 +21,10 @@ return {
       },
     }
   end,
+
+  config = function(_, opts)
+    require("utils").setup("nvim-treesitter.configs", opts)
+  end,
+
+  base46 = { "syntax", "treesitter" },
 }

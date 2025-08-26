@@ -1,7 +1,5 @@
 --- Adds indentation guide.
 
-local utils = require("utils")
-
 ---@type PluginConfig
 return {
   spec = { "lukas-reineke/indent-blankline.nvim" },
@@ -22,7 +20,7 @@ return {
   end,
 
   config = function(_, opts)
-    utils.setup("ibl", opts)
+    require("utils").setup("ibl", opts)
   end,
 
   mappings = function()

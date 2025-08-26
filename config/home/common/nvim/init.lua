@@ -14,21 +14,31 @@ vim.opt.rtp:prepend(lazypath)
 -- load plugins
 require("lazy").setup({
   {
-    "NvChad/NvChad",
+    "nvchad/ui",
     lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-    config = function()
-      require("nvchad.options")
-      require("internals.languages").autocmds()
-      require("options")
+    dependencies = {
+      "nvzone/volt",
+      "nvzone/menu",
+      "nvim-lua/plenary.nvim",
+      "nvim-lua/popup.nvim",
+      {
+        "nvchad/base46",
+        build = function()
+          require("base46").load_all_highlights()
+        end,
+      },
+    },
+
+    config = function(_, _)
+      require("nvchad")
     end,
   },
 
   { import = "internals.plugins" },
 }, {
-  defaults = { lazy = true },
-  install = { colorscheme = { "nvchad" } },
+  defaults = {
+    lazy = true,
+  },
 
   ui = {
     icons = {
@@ -78,8 +88,9 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
-require("nvchad.autocmds")
+require("options")
 require("autocmds")
+require("internals.languages").autocmds()
 
 vim.schedule(function()
   require("internals.mappings")

@@ -4,6 +4,7 @@
 return {
   spec = {
     "lewis6991/gitsigns.nvim",
+    -- Important for showing branch name anytime.
     lazy = false,
   },
 
@@ -50,4 +51,6 @@ return {
       },
     }
   end,
+
+  base46 = "git",
 }

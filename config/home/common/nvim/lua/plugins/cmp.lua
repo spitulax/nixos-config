@@ -63,11 +63,17 @@ local cmdline_mappings = function(cmp, mapping)
   return cmp.mapping.preset.cmdline(result)
 end
 
-local function config_cmp(cmp, mapping, base)
+local function config_cmp(cmp, mapping)
   local opts = {
     preselect = cmp.PreselectMode.None,
     completion = {
       keyword_length = 2,
+      completeopt = "menu,menuone",
+    },
+    snippet = {
+      expand = function(args)
+        require("luasnip").lsp_expand(args.body)
+      end,
     },
     view = {
       docs = {
@@ -79,13 +85,13 @@ local function config_cmp(cmp, mapping, base)
     sources = {
       { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = "path" },
+      { name = "async_path" },
       { name = "buffer" },
       { name = "nvim_lua" },
     },
   }
 
-  cmp.setup(vim.tbl_deep_extend("force", base, opts))
+  cmp.setup(vim.tbl_deep_extend("force", opts, require("nvchad.cmp")))
 end
 
 local function config_cmdline(cmp, cmdline_mapping)
@@ -101,7 +107,7 @@ local function config_cmdline(cmp, cmdline_mapping)
   cmp.setup.cmdline(":", {
     mapping = cmdline_mapping,
     sources = {
-      { name = "path" },
+      { name = "async_path" },
       { name = "cmdline" },
     },
   })
@@ -114,6 +120,13 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-cmdline",
+      "L3MON4D3/LuaSnip",
+      "windwp/nvim-autopairs",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "https://codeberg.org/FelipeLema/cmp-async-path.git",
     },
   },
 
@@ -121,9 +134,10 @@ return {
     local cmp = require("cmp")
     local mapping = mappings(cmp)
     local cmdline_mapping = cmdline_mappings(cmp, mapping)
-    local base = require("nvchad.configs.cmp")
 
-    config_cmp(cmp, mapping, base)
+    config_cmp(cmp, mapping)
     config_cmdline(cmp, cmdline_mapping)
   end,
+
+  base46 = "cmp",
 }

@@ -1,5 +1,7 @@
 --- Many utilities in a single plugin.
 
+local utils = require("utils")
+
 ---@type PluginConfig
 return {
   spec = {
@@ -9,8 +11,8 @@ return {
   },
 
   config = function(_, _)
-    require("mini.align").setup()
-    require("mini.surround").setup({
+    utils.setup("mini.align")
+    utils.setup("mini.surround", {
       mappings = {
         add = "gsa",
         delete = "gsd",

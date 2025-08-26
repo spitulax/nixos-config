@@ -8,13 +8,6 @@ for k, v in pairs(utils.plugin_configs()) do
     goto continue
   end
 
-  local plug_opts = {}
-  if vim.is_callable(v.opts) then
-    plug_opts = v.opts()
-  else
-    plug_opts = nil
-  end
-
   ---@type LazyPluginSpec
   local spec = {}
   assert(v.spec ~= nil, k .. ": Incomplete config")
@@ -25,27 +18,22 @@ for k, v in pairs(utils.plugin_configs()) do
   spec = vim.tbl_extend("force", v.spec, {
     config = v.config or true,
     opts = function(_, _)
-      return plug_opts
+      ---@diagnostic disable-next-line
+      if vim.islist(v.base46) then
+        for _, x in ipairs(v.base46) do
+          dofile(vim.g.base46_cache .. x)
+        end
+      elseif v.base46 ~= nil then
+        dofile(vim.g.base46_cache .. v.base46)
+      end
+
+      if vim.is_callable(v.opts) then
+        return v.opts()
+      else
+        return nil
+      end
     end,
   })
-
-  ---@type LazyPluginSpec
-  local override = {}
-  if k == "plugins.nvimtree" then
-    override.opts = function(_, _)
-      return vim.tbl_deep_extend("keep", plug_opts, require("nvchad.configs.nvimtree"))
-    end
-  elseif k == "plugins.gitsigns" then
-    override.opts = function()
-      return vim.tbl_deep_extend("keep", plug_opts, require("nvchad.configs.gitsigns"))
-    end
-  elseif k == "plugins.lspconfig" then
-    override.config = function(this, opts)
-      require("nvchad.configs.lspconfig").defaults()
-      v.config(this, opts)
-    end
-  end
-  spec = vim.tbl_extend("force", spec, override)
 
   table.insert(specs, spec)
 

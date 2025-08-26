@@ -57,9 +57,13 @@ M.plugin_config_path = vim.fs.joinpath(M.config_path, "lua/plugins")
 M.language_config_path = vim.fs.joinpath(M.config_path, "lua/languages")
 
 ---@param name string
----@param opts table
+---@param opts table?
 M.setup = function(name, opts)
-  require(name).setup(opts)
+  if opts ~= nil then
+    require(name).setup(opts)
+  else
+    require(name).setup()
+  end
 end
 
 ---@param n number

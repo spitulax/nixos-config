@@ -1,7 +1,6 @@
 # Neovim
 
-My [Neovim] config uses [NvChad] for the "base" config. NvChad also sets up [lazy.nvim] for the
-plugin manager.
+My huge [Neovim] config. Uses [lazy.nvim] package manager and [NvChad] for UI stuff.
 
 ## Structure
 
@@ -20,7 +19,7 @@ plugin manager.
   short description of the plugin.
 - [`ui/`]: Highlights, statusline, and tabufline config. Used only in [`chadrc.lua`].
 - [`autocmds.lua`]: User defined autocommands
-- [`chadrc.lua`]: NvChad config
+- [`chadrc.lua`]: NvChad UI config
 - [`mappings.lua`]: General mapping definitions.
 - [`options.lua`]: User defined `init.lua`.
 - [`utils.lua`]: Utility functions.
@@ -51,7 +50,7 @@ the lock file in `~/.config/nvim` and then updating the lock file in this repo.
       with other keybindings. I may replace it with another plugin
 
 [Neovim]: https://github.com/neovim/neovim
-[NvChad]: https://github.com/NvChad/NvChad/tree/v2.5
+[NvChad]: https://github.com/NvChad/ui
 [lazy.nvim]: https://github.com/folke/lazy.nvim
 [`internals/`]: ./lua/internals
 [`languages/`]: ./lua/languages
