@@ -5,9 +5,8 @@
 }:
 let
   theme = {
-    # This theme does not support qt6 yet
-    package = pkgs.materia-kde-theme;
-    name = "MateriaDark";
+    package = pkgs.rose-pine-kvantum;
+    name = "rose-pine-iris";
   };
 in
 {
@@ -17,8 +16,8 @@ in
         [General]
         theme=${theme.name}
       '';
-      "Kvantum/MateriaDark" = {
-        source = "${theme.package}/share/Kvantum/${theme.name}";
+      "Kvantum/${theme.name}" = {
+        source = "${theme.package}/share/Kvantum/themes/${theme.name}";
         recursive = true;
       };
     };

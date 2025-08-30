@@ -45,16 +45,12 @@
 
     #############################
 
-    catppuccin-yazi = {
-      url = "github:catppuccin/yazi";
+    rose-pine-kitty = {
+      url = "github:rose-pine/kitty";
       flake = false;
     };
-    catppuccin-zathura = {
-      url = "github:catppuccin/zathura";
-      flake = false;
-    };
-    catppuccin-bat = {
-      url = "github:catppuccin/bat";
+    rose-pine-btop = {
+      url = "github:rose-pine/btop";
       flake = false;
     };
 

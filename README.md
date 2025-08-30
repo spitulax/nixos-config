@@ -131,7 +131,7 @@ Here are some of the programs configured in this repo.
 
 #### Misc
 
-- **Terminal Colorschemes**: [Catppuccin]
+- **Terminal Colorschemes**: [Rosé Pine]
 - **GTK Theme**: [Fluent GTK Theme]
 - **Qt Theme**: [Materia KDE]
 - **Font**: [Iosevka] with [Nerd Fonts]
@@ -166,7 +166,7 @@ Dotfiles by other people that massively helped my Nix journey.
 [OBS]: https://obsproject.com/
 [Bitwarden]: https://bitwarden.com/
 [Neovim]: https://github.com/neovim/neovim
-[Catppuccin]: https://github.com/catppuccin/catppuccin
+[Rosé Pine]: https://rosepinetheme.com/
 [Iosevka]: https://github.com/be5invis/Iosevka
 [Nerd Fonts]: https://github.com/ryanoasis/nerd-fonts
 [Syncthing]: https://github.com/syncthing/syncthing

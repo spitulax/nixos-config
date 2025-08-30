@@ -4,10 +4,14 @@ local M = {}
 local highlight = require("ui.highlight")
 
 M.base46 = {
-  theme = "catppuccin",
+  theme = "rosepine",
   transparency = true,
   hl_override = highlight.override,
   hl_add = highlight.add,
+  integrations = {
+    "todo",
+    "hop",
+  },
 }
 
 M.ui = {

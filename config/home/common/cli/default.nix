@@ -13,7 +13,7 @@ let
   imports = [
     ./fish
     ./aliases.nix
-    ./bat.nix
+    # ./bat.nix
     ./btop.nix
     ./cava.nix
     ./downloader.nix

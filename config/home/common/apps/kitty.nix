@@ -1,5 +1,6 @@
 { config
 , lib
+, inputs
 , ...
 }:
 let
@@ -14,7 +15,6 @@ in
   config = lib.mkIf cfg.enable {
     programs.kitty = {
       enable = true;
-      # theme = "Catppuccin-Mocha";
       font.size = 12.0;
       font.name = "monospace";
       settings = {
@@ -45,48 +45,6 @@ in
       '';
     };
 
-    # My custom Catppuccin-Mocha theme
-    # I modified "Base" to #101020 from #1e1e2e
-    home.file.".config/kitty/theme.conf".text = ''
-      foreground              #CDD6F4
-      background              #101020
-      selection_foreground    #101020
-      selection_background    #F5E0DC
-      cursor                  #F9E2AF
-      cursor_text_color       #101020
-      url_color               #F5E0DC
-      active_border_color     #B4BEFE
-      inactive_border_color   #6C7086
-      bell_border_color       #F9E2AF
-      wayland_titlebar_color system
-      macos_titlebar_color system
-      active_tab_foreground   #101020
-      active_tab_background   #74C7EC
-      inactive_tab_foreground #CDD6F4
-      inactive_tab_background #181825
-      tab_bar_background      #101020
-      mark1_foreground #101020
-      mark1_background #B4BEFE
-      mark2_foreground #101020
-      mark2_background #CBA6F7
-      mark3_foreground #101020
-      mark3_background #74C7EC
-      color0 #45475A
-      color8 #585B70
-      color1 #F38BA8
-      color9 #F38BA8
-      color2  #A6E3A1
-      color10 #A6E3A1
-      color3  #F9E2AF
-      color11 #F9E2AF
-      color4  #89B4FA
-      color12 #89B4FA
-      color5  #F5C2E7
-      color13 #F5C2E7
-      color6  #94E2D5
-      color14 #94E2D5
-      color7  #BAC2DE
-      color15 #A6ADC8
-    '';
+    home.file.".config/kitty/theme.conf".source = inputs.rose-pine-kitty + "/dist/rose-pine.conf";
   };
 }

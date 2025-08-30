@@ -44,7 +44,7 @@
       '';
 
     # KDE "channel"
-    kde = final.libsForQt5;
+    kde = final.kdePackages;
 
     inherit (final.mypkgs)
       hyprlock
@@ -55,6 +55,7 @@
       whitesur-cursors
       gplates
       osu-lazer
+      rose-pine-tmux
       ;
   };
 

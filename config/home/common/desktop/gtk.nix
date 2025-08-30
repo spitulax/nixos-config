@@ -18,11 +18,8 @@ in
     gtk = {
       enable = true;
       theme = {
-        package = pkgs.fluent-gtk-theme.override {
-          tweaks = [ "round" ];
-          colorVariants = [ "dark" ];
-        };
-        name = "Fluent-round-Dark";
+        package = pkgs.rose-pine-gtk-theme;
+        name = "rose-pine";
       };
       iconTheme = {
         package = pkgs.papirus-icon-theme;

@@ -57,17 +57,12 @@ in
       distrobox.enable = false;
       gplates.enable = true;
       qgis.enable = true;
-      spotify.enable = true;
     };
 
     cli = {
       aliases.enable.fish = true;
       shellIntegrations = [ "Fish" ];
       ani-cli.enable = true;
-      bat = {
-        enable = true;
-        alias.fish = true;
-      };
       eza.alias.fish = true;
       cava.enable = true;
       downloader.enable = false;
@@ -128,7 +123,6 @@ in
     gpg.enable = true;
     sops.enable = true;
     neovim.enable = true;
-    yazi.enable = false;
     keymapper.enable = false;
     wine.enable = true;
     fcitx5.enable = true;

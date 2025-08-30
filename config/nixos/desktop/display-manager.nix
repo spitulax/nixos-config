@@ -17,7 +17,6 @@
 
     programs.regreet = {
       enable = true;
-      # Matches config/home/bintang/desktop/gtk.nix
       # TODO: global theming (gtk)
       # NOT PRETTY :(
       theme = {

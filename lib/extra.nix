@@ -164,7 +164,6 @@
               inherit (outputs.pkgsFor.x86_64-linux) config overlays;
             };
 
-            systemd.user.startServices = "sd-switch";
             programs.home-manager.enable = true;
           };
         };

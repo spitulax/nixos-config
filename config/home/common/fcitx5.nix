@@ -25,6 +25,7 @@ in
         addons = with pkgs; [
           fcitx5-gtk
           kde.fcitx5-qt
+          fcitx5-rose-pine
           fcitx5-mozc
           fcitx5-chinese-addons
         ];
@@ -41,8 +42,8 @@ in
               "TogglePreedit" = "";
               "ModifierOnlyKeyTimeout" = 250;
             };
-            "Hotkey/TriggerKeys" = numbered [ "Alt+Super+Alt_R" ];
-            "Hotkey/AltTriggerKeys" = numbered [ "Alt+Alt_R" ];
+            "Hotkey/TriggerKeys" = numbered [ "Super+space" ];
+            "Hotkey/AltTriggerKeys" = numbered [ "Alt_R" ];
             "Hotkey/EnumerateForwardKeys" = numbered [ "Alt+Down" ];
             "Hotkey/EnumerateBackwardKeys" = numbered [ "Alt+Up" ];
             "Hotkey/PrevPage" = numbered [ "Alt+Left" ];
@@ -67,11 +68,12 @@ in
               "ShowPreeditForPassword" = false;
               "AutoSavePeriod" = 30;
             };
-            "Behavior/DisabledAddons" = {
-              "0" = "clipboard";
-              "1" = "imselector";
-              "2" = "quickphrase";
-            };
+            "Behavior/DisabledAddons" = numbered [
+              "clipboard"
+              "imselector"
+              "quickphrase"
+              "cloudpinyin"
+            ];
           };
           inputMethod = {
             "GroupOrder" = numbered [ "Default" ];
@@ -106,8 +108,8 @@ in
                 "PreferTextIcon" = false;
                 "ShowLayoutNameInIcon" = true;
                 "UseInputMethodLanguageToDisplayText" = true;
-                "Theme" = "plasma";
-                "DarkTheme" = "plasma";
+                "Theme" = "rose-pine";
+                "DarkTheme" = "rose-pine";
                 "UseDarkTheme" = true;
                 "UseAccentColor" = true;
                 "PerScreenDPI" = true;

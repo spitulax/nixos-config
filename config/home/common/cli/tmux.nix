@@ -21,52 +21,21 @@
       plugins = with pkgs.tmuxPlugins; [
         yank
         {
-          plugin = catppuccin;
+          plugin = pkgs.rose-pine-tmux;
           extraConfig = ''
-            set -g @catppuccin_flavor "mocha"
-
-            set -g @catppuccin_window_number_position "left"
-            set -g @catppuccin_window_status_style "custom"
-            set -g @catppuccin_window_left_separator " "
-            set -g @catppuccin_window_middle_separator ""
-            set -g @catppuccin_window_right_separator " "
-
-            set -g @catppuccin_window_current_number_color "#{@thm_surface_1}"
-            set -g @catppuccin_window_current_text_color "#{@thm_blue}"
-            set -g @catppuccin_window_current_number "#[fg=#{@thm_blue},bg=#{@thm_surface_1}]#I "
-            set -g @catppuccin_window_current_text "#[fg=#{@thm_surface_1},bg=#{@thm_blue}] #{?#{!=:#{window_name},},#W,[Empty]}"
-
-            set -g @catppuccin_window_number_color "#{@thm_surface_0}"
-            set -g @catppuccin_window_text_color "#{@thm_surface_1}"
-            set -g @catppuccin_window_number "#[fg=#{@thm_overlay_2},bg=#{@thm_surface_0}]#I "
-            set -g @catppuccin_window_text "#[fg=#{@thm_overlay_2},bg=#{@thm_surface_1}] #{?#{!=:#{window_name},},#W,[Empty]}"
-            set -g @catppuccin_window_flags "icon"
-
-            set -g @catppuccin_pane_status_enabled "yes"
-            set -g @catppuccin_pane_border_status "yes"
-            set -g @catppuccin_pane_active_border_style "##{?pane_in_mode,fg=#{@thm_blue},##{?pane_synchronized,fg=#{@thm_teal},fg=#{@thm_blue}}}"
-            set -g @catppuccin_pane_color "#{@thm_blue}"
-
-            set -g @catppuccin_status_background "none"
-            set -g @catppuccin_status_connect_separator "yes"
-            set -g @catppuccin_status_left_separator ""
-            set -g @catppuccin_status_right_separator ""
-
-            set -g @catppuccin_date_time_text "#[fg=#{@thm_fg},bg=#{@thm_surface_1}] %d/%m/%y %H:%M:%S "
-            set -g @catppuccin_date_time_color ""
-            set -g @catppuccin_date_time_icon ""
-            set -g @catppuccin_session_text "#[fg=#{@thm_surface_1},bg=#{@thm_blue}] #S "
-            set -g @catppuccin_session_color ""
-            set -g @catppuccin_session_icon ""
-
-            # Left status
-            set -g status-left ""
-
-            # Right status
-            set -g status-right-length 100
-            set -g status-right ""
-            set -ag status-right "#{E:@catppuccin_status_date_time}"
-            set -ag status-right "#{E:@catppuccin_status_session}"
+            set -g @rose_pine_variant "main"
+            set -g @rose_pine_date_time "%d/%m/%y %H:%M:%S"
+            set -g @rose_pine_bar_bg_disable "on"
+            set -g @rose_pine_disable_active_window_menu "on"
+            set -g @rose_pine_directory "on"
+            set -g @rose_pine_left_separator " "
+            set -g @rose_pine_right_separator " "
+            set -g @rose_pine_field_separator " "
+            set -g @rose_pine_window_separator "  "
+            set -g @rose_pine_session_icon "󰖯"
+            set -g @rose_pine_folder_icon "󰉖"
+            set -g @rose_pine_date_time_icon ""
+            set -g @rose_pine_window_status_separator " "
           '';
         }
       ];

@@ -82,7 +82,7 @@ in
 
       settings = {
         source = [
-          "${./catppuccin-mocha.conf}"
+          "${./rose-pine.conf}"
         ];
 
         # exec-once = [
@@ -97,7 +97,7 @@ in
 
         env = mapAttrsToList (n: v: n + "," + (toString v)) config.home.sessionVariables ++ [
           "XCURSOR_SIZE,${builtins.toString config.home.pointerCursor.size}"
-          "QT_QPA_PLATFORMTHEME,qt5ct"
+          "QT_QPA_PLATFORMTHEME,qt6ct"
           "NIXOS_OZONE_WL,1"
           "_JAVA_AWT_WM_NONREPARENTING,1"
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
@@ -111,10 +111,10 @@ in
           gaps_in = 3;
           gaps_out = 8;
           border_size = 2;
-          "col.active_border" = "0xdd$blueAlpha 0xdd$redAlpha 45deg";
-          "col.inactive_border" = "0x80$surface2Alpha";
-          "col.nogroup_border" = "0xdd$lavenderAlpha 0xdd$textAlpha 45deg";
-          "col.nogroup_border_active" = "0x80$surface0Alpha";
+          "col.active_border" = "0xdd$loveAlpha";
+          "col.inactive_border" = "0x80$mutedAlpha";
+          "col.nogroup_border" = "0xdd$irisAlpha";
+          "col.nogroup_border_active" = "0x80$subtleAlpha";
           layout = "dwindle";
           allow_tearing = "false";
         };
@@ -168,18 +168,18 @@ in
         };
 
         group = {
-          "col.border_active" = "0xdd$blueAlpha 0xdd$redAlpha 45deg";
-          "col.border_inactive" = "0x80$surface2Alpha";
-          "col.border_locked_active" = "0xdd$redAlpha 0xdd$blueAlpha 45deg";
-          "col.border_locked_inactive" = "0x80$surface0Alpha";
+          "col.border_active" = "0xdd$loveAlpha";
+          "col.border_inactive" = "0x80$mutedAlpha";
+          "col.border_locked_active" = "0xdd$loveAlpha";
+          "col.border_locked_inactive" = "0x80$subtleAlpha";
           groupbar = {
             font_family = "monospace";
             font_size = 10;
             text_color = "$base";
-            "col.active" = "0xdd$blueAlpha";
-            "col.inactive" = "0x80$overlay2Alpha";
-            "col.locked_active" = "0xdd$redAlpha";
-            "col.locked_inactive" = "0x80$overlay0Alpha";
+            "col.active" = "0xdd$pineAlpha";
+            "col.inactive" = "0x80$subtleAlpha";
+            "col.locked_active" = "0xdd$loveAlpha";
+            "col.locked_inactive" = "0x80$mutedAlpha";
           };
         };
 
@@ -223,14 +223,14 @@ in
           # This is because I can only filter btop by title but float is a static rule
         ];
 
-        # HYPRSPACE
-
-        "plugin:overview" = {
-          workspaceActiveBorder = "0xdd$blueAlpha";
-          panelHeight = 120;
-          overrideGaps = false;
-          switchOnDrop = true;
-        };
+        # # HYPRSPACE
+        #
+        # "plugin:overview" = {
+        #   workspaceActiveBorder = "0xdd$roseAlpha";
+        #   panelHeight = 120;
+        #   overrideGaps = false;
+        #   switchOnDrop = true;
+        # };
 
         # KEYBINDINGS
 
@@ -267,8 +267,12 @@ in
           "$mainMod, mouse_down, workspace, e+1"
         ]
         ++ map (x: "$mainMod, ${toString x}, workspace, ${toString x}") (lists.range 1 9)
-        ++ map (x: "$mainMod SHIFT, ${toString x}, movetoworkspace, ${toString x}") (lists.range 1 9)
-        ++ map (x: "$mainMod CTRL, ${toString x}, movetoworkspacesilent, ${toString x}") (lists.range 1 9)
+        ++ map
+          (x: "$mainMod SHIFT, ${toString x}, movetoworkspace, ${toString x}")
+          (lists.range 1 9)
+        ++ map
+          (x: "$mainMod CTRL, ${toString x}, movetoworkspacesilent, ${toString x}")
+          (lists.range 1 9)
         ++ [
           # Monitors
           "$mainMod CTRL, comma, movecurrentworkspacetomonitor, l"
@@ -365,13 +369,5 @@ in
         ];
       };
     };
-
-    # home.file = {
-    # ".config/hypr/scripts" = {
-    #   source = ./scripts;
-    #   recursive = true;
-    # };
-    # ".config/hypr/catppuccin-mocha.conf".source = ./catppuccin-mocha.conf;
-    # };
   };
 }

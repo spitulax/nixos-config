@@ -1,3 +1,4 @@
+# NOTE: RETIRED
 { config
 , inputs
 , pkgs

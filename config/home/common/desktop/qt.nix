@@ -5,8 +5,9 @@
 }: {
   config = lib.mkIf config.configs.desktop.enable {
     home.packages = with pkgs; [
-      kde.qt5ct
+      kde.qt6ct
       kde.qtstyleplugin-kvantum
+      papirus-icon-theme
     ];
 
     qt = {

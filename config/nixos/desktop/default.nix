@@ -19,7 +19,6 @@ in
     ./hyprland.nix
     ./input.nix
     ./opengl.nix
-    ./plasma.nix
     ./sound.nix
   ];
 
@@ -27,7 +26,6 @@ in
     enable = mkEnableOption "desktop specific modules";
     environments = {
       hyprland = mkEnableOption "Hyprland";
-      plasma = mkEnableOption "KDE Plasma";
     };
     defaultSession = mkOption {
       type = types.nullOr (types.enum (builtins.attrNames cfg.environments));

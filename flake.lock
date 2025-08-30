@@ -53,54 +53,6 @@
         "type": "github"
       }
     },
-    "catppuccin-bat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1751237777,
-        "narHash": "sha256-lJapSgRVENTrbmpVyn+UQabC9fpV1G1e+CdlJ090uvg=",
-        "owner": "catppuccin",
-        "repo": "bat",
-        "rev": "6810349b28055dce54076712fc05fc68da4b8ec0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "bat",
-        "type": "github"
-      }
-    },
-    "catppuccin-yazi": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1754506012,
-        "narHash": "sha256-zkL46h1+U9ThD4xXkv1uuddrlQviEQD3wNZFRgv7M8Y=",
-        "owner": "catppuccin",
-        "repo": "yazi",
-        "rev": "043ffae14e7f7fcc136636d5f2c617b5bc2f5e31",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "yazi",
-        "type": "github"
-      }
-    },
-    "catppuccin-zathura": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1754177571,
-        "narHash": "sha256-upyfc4OSx9xKUoM/JdRfuXiw38ffoSB/Utm2jpyXgy8=",
-        "owner": "catppuccin",
-        "repo": "zathura",
-        "rev": "9f29c2c1622c70436f0e0b98fea9735863596c1e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "zathura",
-        "type": "github"
-      }
-    },
     "crane": {
       "locked": {
         "lastModified": 1751562746,
@@ -522,11 +474,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1755473084,
-        "narHash": "sha256-+tuhlLn/j+KHbf0it4woRDHc6QQoN2WQxy++/ylX9kw=",
+        "lastModified": 1756568041,
+        "narHash": "sha256-CqBVNZa1aSUcxR1MwWaHzwBP1zkk54oqROkeOzz0+Ac=",
         "owner": "spitulax",
         "repo": "mypkgs",
-        "rev": "fce7c658db14b0259bcf787b488ec8dc2301e94d",
+        "rev": "fec6bd83379c2f340183858185c999b9fd46738e",
         "type": "github"
       },
       "original": {
@@ -618,11 +570,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1755186698,
-        "narHash": "sha256-wNO3+Ks2jZJ4nTHMuks+cxAiVBGNuEBXsT29Bz6HASo=",
+        "lastModified": 1756266583,
+        "narHash": "sha256-cr748nSmpfvnhqSXPiCfUPxRz2FJnvf/RjJGvFfaCsM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "fbcf476f790d8a217c3eab4e12033dc4a0f6d23c",
+        "rev": "8a6d5427d99ec71c64f0b93d45778c889005d9c2",
         "type": "github"
       },
       "original": {
@@ -674,9 +626,6 @@
     "root": {
       "inputs": {
         "auto-cpufreq": "auto-cpufreq",
-        "catppuccin-bat": "catppuccin-bat",
-        "catppuccin-yazi": "catppuccin-yazi",
-        "catppuccin-zathura": "catppuccin-zathura",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprshell": "hyprshell",
@@ -687,8 +636,42 @@
           "nixpkgs-unstable"
         ],
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "rose-pine-btop": "rose-pine-btop",
+        "rose-pine-kitty": "rose-pine-kitty",
         "rust-overlay": "rust-overlay",
         "sops-nix": "sops-nix"
+      }
+    },
+    "rose-pine-btop": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1689701146,
+        "narHash": "sha256-sShQYfsyR5mq/e+pjeIsFzVZv3tCpQEdGC9bnTKlQ5c=",
+        "owner": "rose-pine",
+        "repo": "btop",
+        "rev": "6d6abdc0a8c8bcd3b056d9fe3256cfbe7e359312",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rose-pine",
+        "repo": "btop",
+        "type": "github"
+      }
+    },
+    "rose-pine-kitty": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1693615686,
+        "narHash": "sha256-AcMVkliLGuabZVGkfQPLhfspkaTZxPG5GyuJdzA4uSg=",
+        "owner": "rose-pine",
+        "repo": "kitty",
+        "rev": "788bf1bf1a688dff9bbacbd9e516d83ac7dbd216",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rose-pine",
+        "repo": "kitty",
+        "type": "github"
       }
     },
     "rust-overlay": {

@@ -1,3 +1,4 @@
+# NOTE: RETIRED
 { config
 , lib
 , inputs

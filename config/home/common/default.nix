@@ -6,7 +6,7 @@
     ./gaming
     ./nvim
     ./services
-    ./yazi
+    # ./yazi
     ./dev.nix
     ./env.nix
     ./fcitx5.nix

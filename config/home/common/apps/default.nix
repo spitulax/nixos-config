@@ -80,8 +80,8 @@ in
     ./mpv.nix
     ./obs.nix
     ./office.nix
-    ./spotify.nix
-    ./zathura.nix
+    # ./spotify.nix
+    # ./zathura.nix
   ];
 
   options.configs.apps = packages.mkOptions { inherit modules; };

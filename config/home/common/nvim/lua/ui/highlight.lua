@@ -1,5 +1,4 @@
--- https://github.com/NvChad/base46/blob/v2.5/lua/base46/themes/catppuccin.lua
-
+-- https://github.com/NvChad/base46/blob/v2.5/lua/base46/themes/rosepine.lua
 local M = {}
 
 ---@type Base46HLGroupsList
@@ -8,8 +7,7 @@ M.override = {
   Visual = { reverse = true },
   NvimTreeRootFolder = { fg = "green" },
   NvimTreeCursorLine = { link = "CursorLine" },
-  -- Comment = { fg = "light_grey", italic = true },
-  Comment = { fg = "#737184", italic = true },
+  Comment = { fg = "teal", italic = true },
   ["@comment"] = { link = "Comment" },
   Conditional = { bold = true },
   Keyword = { bold = true },
@@ -22,9 +20,16 @@ M.override = {
   St_lspWarning = { link = "StText" },
   St_lspInfo = { link = "StText" },
   TbFill = { fg = "NONE", bg = "NONE" },
+  NonText = { fg = "line" },
+  String = { fg = "blue" },
+  ["@string"] = { link = "String" },
+  SpecialChar = { link = "Special" },
+  Delimiter = { fg = "light_grey" },
+  ["@punctuation.bracket"] = { link = "Delimiter" },
+  ["@punctuation.delimiter"] = { link = "Delimiter" },
 }
 
----@type Base46HLGroupsList
+---@type HLTable
 M.add = {
   NvimTreeModifiedFile = { fg = "orange" },
   CurSearch = { fg = "black", bg = "red" },
@@ -34,6 +39,7 @@ M.add = {
   GitSignsCurrentLineBlame = { link = "Comment" },
   TbBufname = { link = "StText" },
   TabLineFill = { link = "TbFill" },
+  SpecialChar = { link = "Special" },
 
   NeogitDiffContext = { bg = "black2" },
   NeogitDiffContextCursor = { bg = "black2" },
