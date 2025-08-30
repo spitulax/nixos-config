@@ -10,7 +10,7 @@ in
   imports = [
     ./hyprland
     ./hyprlock
-    ./hyprswitch
+    # ./hyprswitch
     ./mako
     ./rofi
     ./waybar

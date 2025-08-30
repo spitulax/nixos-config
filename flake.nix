@@ -38,11 +38,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprshell = {
-      url = "github:H3rmt/hyprswitch?ref=hyprshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     #############################
 
     rose-pine-kitty = {
