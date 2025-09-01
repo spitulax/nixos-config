@@ -206,26 +206,27 @@ return {
 
   Window = {
     n = {
-      {
-        desc = "Switch left",
-        lhs = "<C-h>",
-        rhs = "<C-w>h",
-      },
-      {
-        desc = "Switch right",
-        lhs = "<C-l>",
-        rhs = "<C-w>l",
-      },
-      {
-        desc = "Switch up",
-        lhs = "<C-k>",
-        rhs = "<C-w>k",
-      },
-      {
-        desc = "Switch down",
-        lhs = "<C-j>",
-        rhs = "<C-w>j",
-      },
+      -- NOTE: Already defined in `plugins/vim_tmux.lua`
+      -- {
+      --   desc = "Switch left",
+      --   lhs = "<C-h>",
+      --   rhs = "<C-w>h",
+      -- },
+      -- {
+      --   desc = "Switch right",
+      --   lhs = "<C-l>",
+      --   rhs = "<C-w>l",
+      -- },
+      -- {
+      --   desc = "Switch up",
+      --   lhs = "<C-k>",
+      --   rhs = "<C-w>k",
+      -- },
+      -- {
+      --   desc = "Switch down",
+      --   lhs = "<C-j>",
+      --   rhs = "<C-w>j",
+      -- },
       {
         desc = "Horizontal split",
         lhs = "<M-s>h",
