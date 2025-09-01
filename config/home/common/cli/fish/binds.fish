@@ -2,7 +2,7 @@
 
 # Enable !! and !$ command
 function __history_previous_command
-  # FIXME: broken on multiline prompt
+  # BUG: broken on multiline prompt
   switch (commandline -t)
   case "!"
     commandline -t $history[1]
@@ -12,7 +12,7 @@ function __history_previous_command
   end
 end
 function __history_previous_command_arguments
-  # FIXME: broken on multiline prompt
+  # BUG: broken on multiline prompt
   switch (commandline -t)
   case "!"
     commandline -t ""
