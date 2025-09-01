@@ -30,15 +30,6 @@ let
       pkgs = [ bottles ];
     };
 
-    dolphin = {
-      desc = "Dolphin file manager";
-      pkgs = with kde; [
-        dolphin
-        ffmpegthumbs
-        kio-extras
-      ];
-    };
-
     electrum = {
       desc = "Electrum Bitcoin wallet";
       pkgs = [ electrum ];
@@ -74,6 +65,7 @@ in
   imports = [
     ./browser.nix
     ./distrobox.nix
+    ./dolphin.nix
     ./entries.nix
     ./kitty.nix
     ./mime.nix
