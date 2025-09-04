@@ -24,7 +24,7 @@
           plugin = pkgs.rose-pine-tmux;
           extraConfig = ''
             set -g @rose_pine_variant "main"
-            set -g @rose_pine_date_time "%d/%m/%y %H:%M:%S"
+            set -g @rose_pine_date_time "%d/%m/%y %H:%M"
             set -g @rose_pine_bar_bg_disable "on"
             set -g @rose_pine_disable_active_window_menu "on"
             set -g @rose_pine_directory "on"
