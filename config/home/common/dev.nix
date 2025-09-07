@@ -110,6 +110,7 @@ let
         php
         phpactor
         mago
+        phpPackages.composer
       ];
     };
 
