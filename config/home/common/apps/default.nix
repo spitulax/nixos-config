@@ -11,10 +11,11 @@ let
   cfg = config.configs.apps;
 
   modules = with pkgs; {
-    # TODO: `programs.anki`
+    # TODO: Use `programs.anki`
+    # TEMP: https://github.com/NixOS/nixpkgs/pull/438958
     anki = {
       desc = "Anki";
-      pkgs = [ anki ];
+      pkgs = [ tempPkgs.anki.anki ];
     };
 
     art = {

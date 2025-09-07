@@ -111,6 +111,7 @@ let
         phpactor
         mago
         phpPackages.composer
+        laravel
       ];
     };
 

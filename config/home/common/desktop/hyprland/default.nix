@@ -161,12 +161,9 @@ in
           };
         };
 
-        gestures = {
-          # FIXME: Removed, see https://github.com/hyprwm/Hyprland/pull/11490
-          workspace_swipe = true;
-          workspace_swipe_distance = 200;
-          workspace_swipe_use_r = true;
-        };
+        gesture = [
+          "3, horizontal, workspace"
+        ];
 
         group = {
           "col.border_active" = "0xdd$loveAlpha";

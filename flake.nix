@@ -6,6 +6,9 @@
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
 
+    # TEMP: https://github.com/NixOS/nixpkgs/pull/438958
+    nixpkgs-anki-fix.url = "github:nixos/nixpkgs/fbcf476f790d8a217c3eab4e12033dc4a0f6d23c";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,7 +31,8 @@
 
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # TEMP: urwid<3.0.0,>=2.6.16 not satisfied by version 3.0.2
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # yazi.url = "github:sxyazi/yazi";
@@ -47,6 +51,30 @@
     rose-pine-btop = {
       url = "github:rose-pine/btop";
       flake = false;
+    };
+
+    #############################
+
+    # TEMP: These are here until I can override flakes in mypkgs
+
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprpolkitagent = {
+      url = "github:hyprwm/hyprpolkitagent";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #############################
@@ -94,7 +122,9 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 
       # Temporary nixpkgs
-      tempPkgsFor = { };
+      tempPkgsFor = {
+        anki = genNixpkgs inputs.nixpkgs-anki-fix false;
+      };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
       replConfigShortcuts =
