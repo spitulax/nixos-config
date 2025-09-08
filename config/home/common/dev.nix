@@ -112,6 +112,7 @@ let
         mago
         phpPackages.composer
         laravel
+        nodePackages.nodejs
       ];
     };
 
