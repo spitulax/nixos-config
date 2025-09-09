@@ -35,6 +35,7 @@ let
     terminal = run defaultPrograms.terminal;
     volume = run "pwvucontrol";
     windows = run "rofi -show window";
+    obsidian = run "obsidian";
   };
 in
 {
@@ -324,6 +325,7 @@ in
           "$mainMod, Escape, exec, ${runner.btop}"
           "$mainMod SHIFT, Escape, exec, ${runner.nvtop}"
           "$mainMod CTRL, P, exec, ${runner.colourPicker}"
+          "$mainMod, O, exec, ${runner.obsidian}"
         ] ++ [
           # Screenshot
           ",      Print, exec, ${runner.gripper "full -c"}"
