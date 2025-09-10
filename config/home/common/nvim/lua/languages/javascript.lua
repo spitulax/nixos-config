@@ -1,15 +1,12 @@
 ---@type LanguageConfig
 return {
   fts = {
-    "css",
-    "scss",
-    "html",
     "javascript",
     "typescript",
     "typescriptreact",
     "javascriptreact",
   },
-  formatter = "prettier",
+  formatter = "prettier4",
   lsp_name = "ts_ls",
   indent = 4,
 }

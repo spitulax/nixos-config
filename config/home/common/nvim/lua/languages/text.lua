@@ -6,5 +6,5 @@ return {
     "json",
     "jsonc",
   },
-  formatter = "prettier",
+  formatter = "prettier2",
 }

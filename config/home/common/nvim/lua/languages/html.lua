@@ -1,6 +1,10 @@
 ---@type LanguageConfig
 return {
+  fts = {
+    "css",
+    "scss",
+    "html",
+  },
   formatter = "prettier4",
-  lsp_name = "svelte",
   indent = 4,
 }

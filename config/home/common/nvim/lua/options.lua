@@ -6,6 +6,7 @@ local g = vim.g
 g.default_indent = 4
 g.disable_autoformat = false
 g.global_multiplier = 10
+g.formatter_timeout_ms = 500
 
 ----------------------
 
