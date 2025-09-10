@@ -11,6 +11,12 @@ let
 
   cfg = config.configs.dev;
 
+  # ISSUE:
+  # pkgs.buildEnv error: two given paths contain a conflicting subpath:
+  # `/nix/store/k3pcjz4kgiyn54m3jm2zb0rh4l0r7l9w-prettier-3.6.2/LICENSE' and
+  # `/nix/store/zq21wnzgh6yf544m66qbh3r8qhwqgd8f-composer-2.8.11/LICENSE'
+  composer = with pkgs; hiPrio phpPackages.composer;
+
   modules = with pkgs; {
     # Languages #
 
@@ -52,6 +58,7 @@ let
         typescript
         typescript-language-server
         svelte-language-server
+        prettier
       ];
     };
 
@@ -112,7 +119,7 @@ let
         php
         phpactor
         mago
-        phpPackages.composer
+        composer
         laravel
         blade-formatter
       ];
