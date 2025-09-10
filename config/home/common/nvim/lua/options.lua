@@ -3,7 +3,7 @@ local g = vim.g
 
 --- Custom Options ---
 
-g.default_indent = 2
+g.default_indent = 4
 g.disable_autoformat = false
 g.global_multiplier = 10
 

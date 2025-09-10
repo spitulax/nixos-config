@@ -112,7 +112,7 @@ let
         mago
         phpPackages.composer
         laravel
-        nodePackages.nodejs
+        blade-formatter
       ];
     };
 
