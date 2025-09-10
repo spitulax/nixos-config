@@ -48,8 +48,10 @@ let
       desc = "JavaScript and TypeScript";
       pkgs = [
         nodePackages.nodejs
+        pnpm
         typescript
         typescript-language-server
+        svelte-language-server
       ];
     };
 
@@ -119,7 +121,7 @@ let
     text = {
       desc = "Text";
       pkgs = [
-        deno
+        prettier
       ];
     };
 

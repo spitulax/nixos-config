@@ -1,5 +1,6 @@
 ---@type LanguageConfig
 return {
-  formatter = "blade-formatter",
+  formatter = "prettier",
+  lsp_name = "svelte",
   indent = 4,
 }

@@ -6,35 +6,6 @@ local lsp_fts = languages.fts_format_with_lsp()
 
 local slow_format_filetypes = {}
 
-local deno_fmt = function()
-  local extensions = {
-    javascript = "js",
-    javascriptreact = "jsx",
-    json = "json",
-    jsonc = "jsonc",
-    markdown = "md",
-    typescript = "ts",
-    typescriptreact = "tsx",
-    html = "html",
-    css = "css",
-    yaml = "yaml",
-  }
-
-  return {
-    command = "deno",
-    args = function(_, ctx)
-      return {
-        "fmt",
-        "-",
-        "--line-width",
-        "100",
-        "--ext",
-        extensions[vim.bo[ctx.buf].filetype],
-      }
-    end,
-  }
-end
-
 local odinfmt = function()
   return {
     command = "odinfmt",
@@ -53,7 +24,6 @@ return {
   opts = function()
     return {
       formatters = {
-        deno_fmt = deno_fmt(),
         odinfmt = odinfmt(),
       },
 

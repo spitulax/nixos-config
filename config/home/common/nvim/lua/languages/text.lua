@@ -6,5 +6,5 @@ return {
     "json",
     "jsonc",
   },
-  formatter = "deno_fmt",
+  formatter = "prettier",
 }
