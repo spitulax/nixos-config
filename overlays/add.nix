@@ -51,22 +51,16 @@
     kde = final.kdePackages;
 
     inherit (final.mypkgs)
-      # hyprlock
-      # hyprpaper
-      # hyprpicker
-      # hyprpolkitagent
+      hyprlock
+      hyprpaper
+      hyprpicker
+      hyprpolkitagent
       waybar
       whitesur-cursors
       gplates
       osu-lazer
       rose-pine-tmux
       ;
-
-    # TEMP: These are here until I can override flakes in mypkgs
-    hyprlock = final.inputs.hyprlock.hyprlock;
-    hyprpaper = final.inputs.hyprpaper.hyprpaper;
-    hyprpicker = final.inputs.hyprpicker.hyprpicker;
-    hyprpolkitagent = final.inputs.hyprpolkitagent.hyprpolkitagent;
   };
 
   postAdd = final: prev: { };

@@ -16,7 +16,6 @@ in
     {
       home.packages = with pkgs; [
         nix-output-monitor
-        nvd
       ];
 
       nix = {
@@ -31,7 +30,7 @@ in
 
       programs.nh = {
         enable = true;
-        package = pkgs.nh.override { inherit (pkgs) nix-output-monitor nvd; };
+        package = pkgs.nh.override { inherit (pkgs) nix-output-monitor; };
         flake = "${config.home.homeDirectory}/Config";
       };
     }

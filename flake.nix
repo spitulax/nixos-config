@@ -52,32 +52,6 @@
       url = "github:rose-pine/btop";
       flake = false;
     };
-
-    #############################
-
-    # TEMP: These are here until I can override flakes in mypkgs
-
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprpolkitagent = {
-      url = "github:hyprwm/hyprpolkitagent";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    #############################
   };
 
   outputs =

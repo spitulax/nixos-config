@@ -17,7 +17,7 @@ in
 
       settings = {
         max-history = 50;
-        on-button-left = "exec makoctl menu -n \"$id\" ${pkgs.rofi-wayland}/bin/rofi -dmenu -p 'Select action'";
+        on-button-left = "exec makoctl menu -n \"$id\" ${pkgs.rofi}/bin/rofi -dmenu -p 'Select action'";
         on-button-middle = "dismiss-all";
         on-button-right = "dismiss";
         on-notify = "exec mpv /run/current-system/sw/share/sounds/freedesktop/stereo/message.oga";

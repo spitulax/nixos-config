@@ -14,9 +14,9 @@ in
   config = lib.mkIf cfg.enable {
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi-wayland;
+      package = pkgs.rofi;
       plugins = with pkgs; [
-        rofi-emoji-wayland
+        rofi-emoji
       ];
       terminal = "${pkgs.kitty}/bin/kitty";
       theme = "catppuccin-mocha";
