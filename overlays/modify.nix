@@ -28,6 +28,13 @@
         rm -r $out/share/applications
       '';
     });
+
+    qgis = prev.qgis.override {
+      extraPythonPackages = (ps: with ps; [
+        numpy
+        matplotlib
+      ]);
+    };
   };
 
   postModify = final: prev: { };
