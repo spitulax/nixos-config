@@ -22,10 +22,11 @@
         cjkFonts = true;
         nerdFonts = true;
         notoFonts = true;
-        defaultFonts.sansSerif = [{
-          name = "Fira Sans";
-          package = pkgs.fira;
-        }];
+        # ISSUE: The font looks wonky (specifically) on Brave
+        # defaultFonts.sansSerif = [{
+        #   name = "Fira Sans";
+        #   package = pkgs.fira;
+        # }];
       };
     };
     laptop.enable = true;

@@ -12,10 +12,9 @@ let
 
   modules = with pkgs; {
     # TODO: Use `programs.anki`
-    # TEMP: https://github.com/NixOS/nixpkgs/pull/438958
     anki = {
       desc = "Anki";
-      pkgs = [ tempPkgs.anki.anki ];
+      pkgs = [ anki ];
     };
 
     art = {
