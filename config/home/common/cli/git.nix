@@ -18,7 +18,7 @@ in
     (lib.mkIf cfg.enable {
       programs.git = {
         enable = true;
-        extraConfig = {
+        settings = {
           core = {
             eol = "lf";
             editor = "nvim";

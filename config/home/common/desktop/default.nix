@@ -47,7 +47,7 @@ in
       networkmanagerapplet
       pwvucontrol
       playerctl
-      xdragon # drag and drop
+      dragon-drop # drag and drop
     ];
 
     home.pointerCursor = {

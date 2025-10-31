@@ -27,7 +27,7 @@ in
           kde.fcitx5-qt
           fcitx5-rose-pine
           fcitx5-mozc
-          fcitx5-chinese-addons
+          kde.fcitx5-chinese-addons
         ];
         waylandFrontend = true;
         settings = {
