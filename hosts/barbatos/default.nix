@@ -1,6 +1,5 @@
 { outputs
 , inputs
-, pkgs
 , ...
 }: {
   imports = with inputs; [
@@ -47,6 +46,7 @@
     docker.enable = false;
     keyd.enable = true;
     sql.enable = true;
+    hotspot.enable = true;
   };
 
   # Hardware

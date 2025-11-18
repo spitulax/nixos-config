@@ -22,6 +22,7 @@ in
     ./avahi.nix
     ./docker.nix
     ./gaming.nix
+    ./hotspot.nix
     ./keymapper.nix
     ./perf.nix
     ./power-manager.nix
