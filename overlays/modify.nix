@@ -30,10 +30,10 @@
     });
 
     qgis = prev.qgis.override {
-      extraPythonPackages = (ps: with ps; [
+      extraPythonPackages = ps: with ps; [
         numpy
         matplotlib
-      ]);
+      ];
     };
   };
 
