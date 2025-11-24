@@ -59,7 +59,6 @@ in
       hyprlock.enable = mkDefault true;
       cliphist.enable = mkDefault true;
       gammastep.enable = mkDefault true;
-      easyeffects.enable = mkDefault true;
       screenshot.enable = mkDefault true;
       udiskie.enable = mkDefault true;
     };
@@ -203,21 +202,21 @@ in
 
         # WINDOW/LAYER RULES
 
-        windowrulev2 = [
-          "tag +term, class:kitty"
-          "suppressevent maximize, class:.*"
-          "float, class:com\\.saivert\\.pwvucontrol"
-          "float, class:qt6ct|qt5ct|nwg-look"
-          "float, class:org\\.kde\\.gwenview"
-          "float, class:zenity"
-          "float, class:org\\.kde\\.polkit-kde-authentication-agent-1"
-          "float, class:org\\.freedesktop\\.impl\\.portal\\.desktop\\.kde"
-          "stayfocused, class:pinentry-.*"
+        windowrule = [
+          "tag +term, match:class kitty"
+          "suppress_event maximize, match:class .*"
+          "float on, match:class com\\.saivert\\.pwvucontrol"
+          "float on, match:class qt6ct|qt5ct|nwg-look"
+          "float on, match:class org\\.kde\\.gwenview"
+          "float on, match:class zenity"
+          "float on, match:class org\\.kde\\.polkit-kde-authentication-agent-1"
+          "float on, match:class org\\.freedesktop\\.impl\\.portal\\.desktop\\.kde"
+          "stay_focused on, match:class pinentry-.*"
         ];
 
         layerrule = [
-          "blur, waybar"
-          "blur, rofi"
+          "blur on, match:namespace waybar"
+          "blur on, match:namespace rofi"
           # TODO: Could not get `btop` to float <https://wiki.hyprland.org/Configuring/Window-Rules/#rules>
           # This is because I can only filter btop by title but float is a static rule
         ];
