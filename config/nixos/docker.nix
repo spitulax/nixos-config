@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ...
 }:
 let
@@ -13,5 +14,9 @@ in
       enable = true;
       enableOnBoot = false;
     };
+
+    environment.systemPackages = with pkgs; [
+      lazydocker
+    ];
   };
 }

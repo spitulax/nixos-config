@@ -17,6 +17,13 @@ let
         osu-lazer
       ];
     };
+
+    mcpe = {
+      desc = "MCPE (Minecraft Bedrock Edition)";
+      pkgs = [
+        mcpelauncher-ui-qt
+      ];
+    };
   };
 in
 {

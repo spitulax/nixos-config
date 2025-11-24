@@ -43,7 +43,7 @@
     hardware.intel.enable = true;
     sops.enable = true;
     perf.enable = true;
-    docker.enable = false;
+    docker.enable = true;
     keyd.enable = true;
     sql.enable = true;
     hotspot.enable = true;
