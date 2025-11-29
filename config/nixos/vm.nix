@@ -8,25 +8,34 @@ let
 in
 {
   options.configs.vm = {
-    enable = lib.mkEnableOption "virtualization tools";
+    qemu = lib.mkEnableOption "QEMU with KVM";
     waydroid = lib.mkEnableOption "waydroid";
-    qemuAllArch = lib.mkEnableOption "QEMU for other architectures";
+    qemuAllArch = lib.mkEnableOption "QEMU for all architectures";
   };
 
-  config = lib.mkIf cfg.enable {
-    boot.kernelModules = [ "vfio-pci" ];
-    virtualisation = {
-      libvirtd = {
-        enable = true;
-        qemu = {
-          package = if cfg.qemuAllArch then pkgs.qemu else pkgs.qemu_kvm;
+  config = lib.mkMerge [
+    (lib.mkIf (cfg.qemu || cfg.qemuAllArch) {
+      boot.kernelModules = [ "vfio-pci" ];
+      virtualisation = {
+        libvirtd = {
+          enable = true;
+          qemu = {
+            package = if cfg.qemuAllArch then pkgs.qemu else pkgs.qemu_kvm;
+          };
         };
       };
-      waydroid.enable = cfg.waydroid;
-    };
-    environment.systemPackages = with pkgs; [
-      virt-manager
-      virtiofsd
-    ];
-  };
+      environment.systemPackages = with pkgs; [
+        virt-manager
+        virtiofsd
+      ];
+    })
+
+    (lib.mkIf cfg.waydroid {
+      virtualisation.waydroid.enable = true;
+      # NOTE: No need to enable nftables module, but the non-nftables package will always not work.
+      virtualisation.waydroid.package = pkgs.waydroid-nftables;
+      systemd.services.waydroid-container.wantedBy = lib.mkForce [ ];
+      # networking.nftables.enable = true;
+    })
+  ];
 }

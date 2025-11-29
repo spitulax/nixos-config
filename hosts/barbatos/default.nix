@@ -34,7 +34,10 @@
     keymapper.enable = false;
     steam.enable = true;
     tablet.enable = true;
-    vm.enable = true;
+    vm = {
+      qemu = true;
+      waydroid = true;
+    };
     warp.enable = true;
     powerManager = {
       enable = true;
