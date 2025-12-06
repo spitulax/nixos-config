@@ -24,6 +24,13 @@ let
         mcpelauncher-ui-qt
       ];
     };
+
+    minecraft = {
+      desc = "Minecraft (Prism Launcher)";
+      pkgs = [
+        prismlauncher
+      ];
+    };
   };
 in
 {
