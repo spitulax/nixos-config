@@ -48,7 +48,11 @@ M.formatters_by_ft = function()
   each_config(function(config)
     return config.formatter ~= nil and config.formatter ~= "lsp"
   end, function(config, ft)
-    formatters[ft] = { config.formatter }
+    if type(config.formatter) == "table" then
+      formatters[ft] = config.formatter
+    else
+      formatters[ft] = { config.formatter }
+    end
   end)
   return formatters
 end

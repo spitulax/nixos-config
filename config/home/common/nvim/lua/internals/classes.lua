@@ -28,7 +28,7 @@
 ---@class LanguageConfig
 ---@field lsp_name? string    -- require("lspconfig").<lsp_name>.setup(<lsp_config>)
 ---@field lsp_config? table
----@field formatter? string   -- formatter from conform.nvim. If "lsp", falls back to LSP formatter
+---@field formatter? string|string[]   -- formatter from conform.nvim. If "lsp", falls back to LSP formatter
 ---@field autocmd? fun()
 ---@field indent? number
 ---@field fts? string[]  -- filetypes to apply (file name not included)

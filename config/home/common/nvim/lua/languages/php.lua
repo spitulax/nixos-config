@@ -1,6 +1,6 @@
 ---@type LanguageConfig
 return {
   lsp_name = "phpactor",
-  formatter = "mago_format",
+  formatter = { "pint", "mago_format" },
   indent = 4,
 }
