@@ -121,7 +121,6 @@ let
         mago
         composer
         laravel
-        blade-formatter
       ];
     };
 

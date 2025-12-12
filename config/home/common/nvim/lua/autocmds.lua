@@ -19,7 +19,10 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
     end
 
     if file ~= "" and buftype ~= "nofile" and vim.g.ui_entered then
-      vim.api.nvim_exec_autocmds("User", { pattern = "FilePost", modeline = false })
+      vim.api.nvim_exec_autocmds(
+        "User",
+        { pattern = "FilePost", modeline = false }
+      )
       vim.api.nvim_del_augroup_by_name("UserFilePost")
 
       vim.schedule(function()
@@ -38,6 +41,16 @@ usercmd("Indent", function(arg)
   if n ~= nil then
     require("utils").indent(n)
   else
-    vim.api.nvim_echo({ { "`" .. arg.args .. "` is not a valid number" } }, true, { err = true })
+    vim.api.nvim_echo(
+      { { "`" .. arg.args .. "` is not a valid number" } },
+      true,
+      { err = true }
+    )
   end
 end, { desc = "Set default indentation for the current buffer", nargs = 1 })
+
+vim.filetype.add({
+  pattern = {
+    [".*%.blade%.php"] = "php",
+  },
+})
