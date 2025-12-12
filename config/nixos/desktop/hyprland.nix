@@ -11,6 +11,7 @@
         portalPackage = xdg-desktop-portal-hyprland;
         withUWSM = true;
       };
+      uwsm.waylandCompositors.hyprland.binPath = lib.mkForce "/run/current-system/sw/bin/start-hyprland";
     };
 
     xdg.portal = {

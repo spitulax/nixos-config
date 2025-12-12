@@ -96,6 +96,7 @@ in
         inherit (cfg) monitor;
 
         env = mapAttrsToList (n: v: n + "," + (toString v)) config.home.sessionVariables ++ [
+          "XDG_CURRENT_DESKTOP,Hyprland"
           "XCURSOR_SIZE,${builtins.toString config.home.pointerCursor.size}"
           "QT_QPA_PLATFORMTHEME,qt6ct"
           "NIXOS_OZONE_WL,1"
