@@ -1,7 +1,5 @@
 { myLib }:
-myLib.genAttrsEachFileExtManual ./. "nix"
-  [
-    "keymapper"
-    "webApps"
-  ]
-  (p: _: import p)
+{
+  keymapper = import ./keymapper.nix;
+  webApps = import ./webApps.nix;
+}

@@ -1,17 +1,12 @@
 { config
 , lib
 , pkgs
-, nixosModules
 , ...
 }:
 let
   cfg = config.configs.sql;
 in
 {
-  imports = [
-    nixosModules.mysql
-  ];
-
   options.configs.sql.enable = lib.mkEnableOption "SQL stuff";
 
   config = lib.mkIf cfg.enable {
@@ -20,9 +15,11 @@ in
       sqlitebrowser
     ];
 
-    services.mysqlNoAutostart = {
+    services.mysql = {
       enable = true;
       package = pkgs.mariadb;
     };
+
+    systemd.services.mysql.wantedBy = lib.mkForce [ ];
   };
 }
