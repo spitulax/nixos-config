@@ -1,4 +1,6 @@
-{
+{ lib
+, ...
+}: {
   imports = [
     ./apps
     ./cli
@@ -18,4 +20,7 @@
     ./wine.nix
     ./xcompose.nix
   ];
+
+  # If enabled, this really slows down build time.
+  programs.man.generateCaches = lib.mkForce false;
 }
