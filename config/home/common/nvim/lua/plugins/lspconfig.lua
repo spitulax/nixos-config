@@ -41,7 +41,6 @@ return {
     require("nvchad.lsp").diagnostic_config()
 
     local languages = require("internals.languages")
-    local lspconfig = require("lspconfig")
 
     vim.diagnostic.config({
       virtual_text = false,
@@ -64,12 +63,13 @@ return {
         capabilities = args.capabilities
       end
 
-      lspconfig[name].setup({
+      vim.lsp.config[name] = {
         on_init = on_init,
         on_attach = on_attach,
         capabilities = capabilities,
         settings = settings,
-      })
+      }
+      vim.lsp.enable(name)
     end
   end,
 
