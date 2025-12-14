@@ -5,13 +5,14 @@
 }: {
   config = lib.mkIf config.configs.desktop.environments.hyprland {
     programs = {
-      hyprland = with pkgs.inputs.hyprland; {
+      hyprland = {
         enable = true;
-        package = hyprland;
-        portalPackage = xdg-desktop-portal-hyprland;
+        package = pkgs.hyprland;
+        portalPackage = pkgs.xdg-desktop-portal-hyprland;
         withUWSM = true;
       };
-      uwsm.waylandCompositors.hyprland.binPath = lib.mkForce "/run/current-system/sw/bin/start-hyprland";
+      # Fix for newer Hyprland
+      # uwsm.waylandCompositors.hyprland.binPath = lib.mkForce "/run/current-system/sw/bin/start-hyprland";
     };
 
     xdg.portal = {

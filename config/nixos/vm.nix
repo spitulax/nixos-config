@@ -32,7 +32,7 @@ in
 
     (lib.mkIf cfg.waydroid {
       virtualisation.waydroid.enable = true;
-      # NOTE: No need to enable nftables module, but the non-nftables package will always not work.
+      # No need to enable nftables module, but the non-nftables package will always not work.
       virtualisation.waydroid.package = pkgs.waydroid-nftables;
       systemd.services.waydroid-container.wantedBy = lib.mkForce [ ];
       # networking.nftables.enable = true;

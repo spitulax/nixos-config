@@ -126,7 +126,8 @@ in
     sops.enable = true;
     neovim.enable = true;
     keymapper.enable = false;
-    wine.enable = true;
+    # Enable nix-gaming cache if you want to use this.
+    wine.enable = false;
     fcitx5.enable = true;
     nix.useAccessToken = cfg.sops.enable;
   };

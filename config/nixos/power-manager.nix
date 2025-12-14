@@ -1,6 +1,5 @@
 { lib
 , config
-, inputs
 , ...
 }:
 let
@@ -16,10 +15,6 @@ let
   cfg = config.configs.powerManager;
 in
 {
-  imports = [
-    inputs.auto-cpufreq.nixosModules.default
-  ];
-
   options.configs.powerManager = {
     enable = mkEnableOption "Power usage management" // {
       default = true;
@@ -46,7 +41,7 @@ in
     })
 
     (mkIf (cfg.enable && cfg.program == "auto-cpufreq") {
-      programs.auto-cpufreq.enable = true;
+      services.auto-cpufreq.enable = true;
       services.tlp.enable = mkForce false;
     })
 

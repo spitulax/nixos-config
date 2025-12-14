@@ -6,7 +6,7 @@ let
   # Compose existing overlays
   compose = [
     inputs.mypkgs.overlays.default
-    inputs.rust-overlay.overlays.default
+    # inputs.rust-overlay.overlays.default
   ];
 in
 {

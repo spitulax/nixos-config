@@ -24,31 +24,12 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      # TEMP: urwid<3.0.0,>=2.6.16 not satisfied by version 3.0.2
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # yazi.url = "github:sxyazi/yazi";
-
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # rust-overlay = {
+    #   url = "github:oxalica/rust-overlay";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     #############################
-
-    rose-pine-kitty = {
-      url = "github:rose-pine/kitty";
-      flake = false;
-    };
-    rose-pine-btop = {
-      url = "github:rose-pine/btop";
-      flake = false;
-    };
   };
 
   outputs =

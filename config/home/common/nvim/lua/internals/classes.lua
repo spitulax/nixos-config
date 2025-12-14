@@ -23,7 +23,7 @@
 ---@field mappings? fun(): MappingTable
 ---@field disable? boolean
 ---@field base46? string|string[] -- base46 cache name
---- NOTE: `opts` and `mappings` must be functions if they call `require` to a plugin module, because the `PluginConfig` is first evaluated before loading the plugin
+--- `opts` and `mappings` must be functions if they call `require` to a plugin module, because the `PluginConfig` is first evaluated before loading the plugin
 
 ---@class LanguageConfig
 ---@field lsp_name? string    -- require("lspconfig").<lsp_name>.setup(<lsp_config>)

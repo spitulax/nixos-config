@@ -86,7 +86,7 @@ end
 
 function __get_help \
 -d "get the help for the command under the cursor by running it with --help or -h"
-  set -l cmd (commandline -b) # NOTE: Using -b instead of -t so running --help for subcommands work
+  set -l cmd (commandline -b) # Using -b instead of -t so running --help for subcommands work
   set -l flags "--help" "-h"
   type -q (string split ' ' $cmd)[1]; or return 1
   for x in $flags

@@ -108,8 +108,9 @@ let
     rust = {
       desc = "Rust";
       pkgs = [
-        rust-analyzer
-        rust-bin.stable.latest.default
+        # Enable `rust-overlay` first (not recommended)
+        # rust-analyzer
+        # rust-bin.stable.latest.default
       ];
     };
 
@@ -142,7 +143,8 @@ let
       ];
     };
 
-    # NOTE: Needs {NixOS Config}`configs.perf.enable`
+    # Needs {NixOS Config}`configs.perf.enable`
+    # TODO: Use `nixosConfig` input for assertion?
     benchmark = {
       desc = "Benchmarking";
       pkgs = [

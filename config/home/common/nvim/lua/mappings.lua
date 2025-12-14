@@ -206,7 +206,7 @@ return {
 
   Window = {
     n = {
-      -- NOTE: Already defined in `plugins/vim_tmux.lua`
+      -- Already defined in `plugins/vim_tmux.lua`
       -- {
       --   desc = "Switch left",
       --   lhs = "<C-h>",
@@ -321,7 +321,10 @@ return {
         desc = "Copy current file path",
         lhs = "<leader>y",
         rhs = function()
-          local fname = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.fn.bufnr("%")), ":.")
+          local fname = vim.fn.fnamemodify(
+            vim.api.nvim_buf_get_name(vim.fn.bufnr("%")),
+            ":."
+          )
           vim.fn.setreg("+", fname)
         end,
       },
@@ -330,7 +333,10 @@ return {
         lhs = "<leader>Y",
         rhs = function()
           local line = vim.api.nvim_win_get_cursor(0)[1]
-          local fname = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.fn.bufnr("%")), ":.")
+          local fname = vim.fn.fnamemodify(
+            vim.api.nvim_buf_get_name(vim.fn.bufnr("%")),
+            ":."
+          )
           vim.fn.setreg("+", fname .. ":" .. line)
         end,
       },

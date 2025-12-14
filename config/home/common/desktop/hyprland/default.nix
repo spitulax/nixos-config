@@ -75,7 +75,7 @@ in
         enable = false;
         variables = [ "--all" ];
       };
-      package = pkgs.inputs.hyprland.hyprland;
+      package = pkgs.hyprland;
       plugins = [
         # pkgs.inputs.hyprspace.Hyprspace
       ];
@@ -203,21 +203,42 @@ in
 
         # WINDOW/LAYER RULES
 
-        windowrule = [
-          "tag +term, match:class kitty"
-          "suppress_event maximize, match:class .*"
-          "float on, match:class com\\.saivert\\.pwvucontrol"
-          "float on, match:class qt6ct|qt5ct|nwg-look"
-          "float on, match:class org\\.kde\\.gwenview"
-          "float on, match:class zenity"
-          "float on, match:class org\\.kde\\.polkit-kde-authentication-agent-1"
-          "float on, match:class org\\.freedesktop\\.impl\\.portal\\.desktop\\.kde"
-          "stay_focused on, match:class pinentry-.*"
+        # Newer version
+        # windowrule = [
+        #   "tag +term, match:class kitty"
+        #   "suppress_event maximize, match:class .*"
+        #   "float on, match:class com\\.saivert\\.pwvucontrol"
+        #   "float on, match:class qt6ct|qt5ct|nwg-look"
+        #   "float on, match:class org\\.kde\\.gwenview"
+        #   "float on, match:class zenity"
+        #   "float on, match:class org\\.kde\\.polkit-kde-authentication-agent-1"
+        #   "float on, match:class org\\.freedesktop\\.impl\\.portal\\.desktop\\.kde"
+        #   "stay_focused on, match:class pinentry-.*"
+        # ];
+        #
+        # layerrule = [
+        #   "blur on, match:namespace waybar"
+        #   "blur on, match:namespace rofi"
+        #   # TODO: Could not get `btop` to float <https://wiki.hyprland.org/Configuring/Window-Rules/#rules>
+        #   # This is because I can only filter btop by title but float is a static rule
+        # ];
+
+        # Older version
+        windowrulev2 = [
+          "tag +term, class:kitty"
+          "suppressevent maximize, class:.*"
+          "float, class:com\\.saivert\\.pwvucontrol"
+          "float, class:qt6ct|qt5ct|nwg-look"
+          "float, class:org\\.kde\\.gwenview"
+          "float, class:zenity"
+          "float, class:org\\.kde\\.polkit-kde-authentication-agent-1"
+          "float, class:org\\.freedesktop\\.impl\\.portal\\.desktop\\.kde"
+          "stayfocused, class:pinentry-.*"
         ];
 
         layerrule = [
-          "blur on, match:namespace waybar"
-          "blur on, match:namespace rofi"
+          "blur, waybar"
+          "blur, rofi"
           # TODO: Could not get `btop` to float <https://wiki.hyprland.org/Configuring/Window-Rules/#rules>
           # This is because I can only filter btop by title but float is a static rule
         ];
