@@ -11,7 +11,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mypkgs.url = "github:spitulax/mypkgs";
+    mypkgs = {
+      url = "./mypkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     #############################
 
@@ -110,6 +113,9 @@
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
       packages = forEachSystem (pkgs: import ./packages { inherit pkgs; });
       overlays = import ./overlays commonArgs;
+      devShells = forEachSystem (pkgs: {
+        default = import ./flake/shell.nix { inherit pkgs; };
+      });
 
       # Modules
       nixosConfigModule = ./config/nixos;

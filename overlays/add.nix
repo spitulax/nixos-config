@@ -55,11 +55,6 @@
     kde = final.kdePackages;
 
     inherit (final.mypkgs)
-      hyprlock
-      hyprpaper
-      hyprpicker
-      hyprpolkitagent
-      waybar
       whitesur-cursors
       gplates
       osu-lazer

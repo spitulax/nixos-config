@@ -1,0 +1,125 @@
+{
+  "nodes": {
+    "crt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735638264,
+        "narHash": "sha256-v61wyEYFYScolEjeaUfC0ys8YZe9x89KmnC/gDIAEpQ=",
+        "owner": "spitulax",
+        "repo": "crt",
+        "rev": "3d4837a7f8d51f6972cdf3626867544e774f1965",
+        "type": "github"
+      },
+      "original": {
+        "owner": "spitulax",
+        "repo": "crt",
+        "type": "github"
+      }
+    },
+    "gripper": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1737137756,
+        "narHash": "sha256-KhL7bHCQgJWNaNQwVInhJt3UtiVaZzte/NSG7ICINV0=",
+        "owner": "spitulax",
+        "repo": "gripper",
+        "rev": "6c4628cdbc0bcceb2b7d38110202c2a0be3813d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "spitulax",
+        "repo": "gripper",
+        "type": "github"
+      }
+    },
+    "mypkgs": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1737120540,
+        "narHash": "sha256-6Iss+F4+kuCMhna8rXU69Lk9IEUxH6zf5SRiDYwnTjI=",
+        "owner": "spitulax",
+        "repo": "mypkgs",
+        "rev": "6215c62ec846c69ae944f33dc3b374726c4a2266",
+        "type": "github"
+      },
+      "original": {
+        "owner": "spitulax",
+        "repo": "mypkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1765472234,
+        "narHash": "sha256-9VvC20PJPsleGMewwcWYKGzDIyjckEz8uWmT0vCDYK0=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "2fbfb1d73d239d2402a8fe03963e37aab15abe8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1736883708,
+        "narHash": "sha256-uQ+NQ0/xYU0N1CnXsa2zghgNaOPxWpMJXSUJJ9W7140=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "eb62e6aa39ea67e0b8018ba8ea077efe65807dc8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pasteme": {
+      "inputs": {
+        "mypkgs": "mypkgs",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1737135098,
+        "narHash": "sha256-AMmXrwO+wHJ/3gZ9K6F25VxM+DKCtYYN2v1sB3ndvs0=",
+        "owner": "spitulax",
+        "repo": "pasteme",
+        "rev": "de3276e9c5b2b6aae8173470ea5ff0f736b28c5c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "spitulax",
+        "repo": "pasteme",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "crt": "crt",
+        "gripper": "gripper",
+        "nixpkgs": "nixpkgs",
+        "pasteme": "pasteme"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

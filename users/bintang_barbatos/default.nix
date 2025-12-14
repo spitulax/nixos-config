@@ -55,8 +55,8 @@ in
       };
       obsidian.enable = true;
       distrobox.enable = false;
-      gplates.enable = true;
-      qgis.enable = true;
+      gplates.enable = false;
+      qgis.enable = false;
     };
 
     cli = {

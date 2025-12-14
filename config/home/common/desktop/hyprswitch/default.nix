@@ -1,4 +1,4 @@
-# NOTE: RETIRED
+# RETIRED
 { config
 , lib
 , pkgs
