@@ -1,6 +1,6 @@
 { config
 , lib
-, inputs
+, pkgs
 , ...
 }:
 let
@@ -45,6 +45,6 @@ in
       '';
     };
 
-    home.file.".config/kitty/theme.conf".source = inputs.rose-pine-kitty + "/dist/rose-pine.conf";
+    home.file.".config/kitty/theme.conf".source = pkgs.inputs.rose-pine-kitty + "/dist/rose-pine.conf";
   };
 }

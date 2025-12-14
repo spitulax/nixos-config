@@ -1,7 +1,7 @@
 { config
 , pkgs
 , lib
-, inputs
+, hmLib
 , ...
 }: {
   options.configs.neovim.enable = lib.mkEnableOption "neovim";
@@ -52,7 +52,7 @@
     configs.cli.aliases.extraAliases.vim = "nvim";
 
     home.activation = {
-      nvimRemoveConfigCache = inputs.home-manager.lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      nvimRemoveConfigCache = hmLib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if [[ -v XDG_CACHE_HOME ]]; then
           CACHE="$XDG_CACHE_HOME"
         else

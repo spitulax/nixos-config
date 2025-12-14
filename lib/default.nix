@@ -291,4 +291,124 @@
   mkFlakeVersion = flake:
     mkDate (flake.lastModifiedDate or "19700101")
     + "_" + (flake.rev or "dirty");
+
+
+  /*
+    Defines a set of options inside Home Manager config and their respective config when enabled.
+  */
+  hmHelper = {
+    /*
+      Defines options to add aliases to shells.
+    */
+    alias = {
+      /*
+        An attribute set, the attributes are for each shells passed to `mkOptions`.
+        Each attribute is a boolean option.
+        Example:
+        {
+          fish = lib.mkOptions ...;
+          bash = lib.mkOptions ...;
+        }
+      */
+      mkOptions =
+        {
+          # String :: The name of the thing being aliased.
+          desc
+          # [String] :: Generate options for the given shells.
+        , shells ? [ "fish" "bash" ]
+        }:
+        let
+          option = name: {
+            ${name} = lib.mkOption {
+              type = lib.types.bool;
+              default = false;
+              description = "Whether to alias ${desc} in ${name}.";
+            };
+          };
+        in
+        lib.mergeAttrsList (map option shells);
+
+      /*
+        Generates config for each enabled shell for defining the aliases.
+        Assign to `programs`.
+      */
+      mkConfig =
+        {
+          # AttrSet :: The config object.
+          config
+          # AttrSet :: An attribute set of strings.
+          # The attribute names are the aliases and the values are the expanded commands.
+        , aliases
+          # AttrSet :: Extra aliases. The same type as `aliases`.
+        , extraAliases ? { }
+        }:
+        lib.mergeAttrsList
+          (lib.mapAttrsToList
+            (k: v: {
+              ${k}.shellAliases = lib.optionalAttrs v (aliases // extraAliases);
+            })
+            config);
+    };
+
+
+    /*
+      Defines options to add packages.
+
+      Module format:
+      {
+        <option name> = {
+          desc :: String: The option description.
+          pkgs :: [Package]: The packages to be added.
+        };
+      }
+    */
+    packages = {
+      /*
+        An attribute set, the attributes are for each attribute in the module.
+        Each attribute is an attribute set containing an "enable" option.
+        Example:
+        {
+          hello = {
+            enable = lib.mkEnableOption ...;
+          };
+        }
+      */
+      mkOptions =
+        {
+          # String -> String :: Takes `desc` from the module and returns the altered description.
+          desc ? lib.id
+          # Module :: The module.
+        , modules
+        }:
+        lib.mapAttrs
+          (k: v: {
+            enable = lib.mkEnableOption (desc v.desc) // {
+              default = v.default or false;
+            };
+          })
+          modules;
+
+      /*
+        Generates config for each enabled module for adding the packages.
+        Assign to `home.packages`.
+      */
+      mkConfig =
+        {
+          # Module :: The module.
+          modules
+          # AttrSet :: The config object.
+        , cfg
+        }: lib.flatten
+          (lib.mapAttrsToList
+            (_: v: v.pkgs)
+            (lib.filterAttrs
+              (_: v: v.enable)
+              (lib.mapAttrs
+                (k: v: {
+                  inherit (cfg.${k}) enable;
+                  inherit (v) pkgs;
+                })
+                modules)));
+    };
+  };
 }

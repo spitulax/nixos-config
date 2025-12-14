@@ -1,7 +1,7 @@
 { config
 , lib
-, outputs
 , pkgs
+, homeManagerModules
 , ...
 }:
 let
@@ -50,7 +50,7 @@ let
 in
 {
   imports = [
-    outputs.homeManagerModules.keymapper
+    homeManagerModules.keymapper
   ];
 
   options.configs.keymapper = {

@@ -1,7 +1,7 @@
 { config
 , lib
 , pkgs
-, outputs
+, nixosModules
 , ...
 }:
 let
@@ -9,7 +9,7 @@ let
 in
 {
   imports = [
-    outputs.nixosModules.mysql
+    nixosModules.mysql
   ];
 
   options.configs.sql.enable = lib.mkEnableOption "SQL stuff";

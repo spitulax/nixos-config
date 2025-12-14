@@ -1,11 +1,12 @@
 { config
 , pkgs
-, outputs
 , lib
 , ...
 }:
 let
   cfg = config.configs.nix;
+
+  inherit (pkgs.myArgs) vars;
 in
 {
   options.configs.nix.useAccessToken = lib.mkEnableOption "" // {
@@ -21,7 +22,7 @@ in
       nix = {
         package = lib.mkForce pkgs.nix;
         settings = {
-          inherit (outputs.vars) substituters trusted-public-keys;
+          inherit (vars) substituters trusted-public-keys;
         };
         extraOptions = lib.optionalString cfg.useAccessToken ''
           !include ${config.sops.secrets.nix-access-tokens.path}
@@ -37,7 +38,7 @@ in
 
     (lib.mkIf cfg.useAccessToken {
       sops.secrets.nix-access-tokens = {
-        sopsFile = /${outputs.vars.usersSecretsPath}/${config.home.username}/nix-access-tokens.yaml;
+        sopsFile = /${vars.usersSecretsPath}/${config.home.username}/nix-access-tokens.yaml;
       };
     })
   ];

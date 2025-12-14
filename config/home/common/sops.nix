@@ -1,6 +1,5 @@
 { config
 , inputs
-, outputs
 , pkgs
 , lib
 , ...
@@ -20,7 +19,7 @@
     ];
 
     sops = {
-      defaultSopsFile = "${outputs.vars.usersSecretsPath}/${config.home.username}/secrets.yaml";
+      defaultSopsFile = "${pkgs.myArgs.vars.usersSecretsPath}/${config.home.username}/secrets.yaml";
       age = {
         keyFile = config.xdg.dataHome + "/age/user.txt";
         # sshKeyPaths = [ (config.home.homeDirectory + "/.ssh/id_ed25519") ];

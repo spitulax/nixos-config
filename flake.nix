@@ -62,13 +62,27 @@
       commonArgs = {
         inherit (self) inputs outputs;
         inherit pkgsFor tempPkgsFor myLib lib;
-        inherit configs specialArgs vars users;
+        inherit configs vars users;
+        inherit specialArgs myArgs;
       };
 
       configs = import ./flake/configs.nix commonArgs;
       vars = import ./flake/vars.nix;
       users = import ./flake/users.nix commonArgs;
-      specialArgs = { inherit inputs outputs myLib tempPkgsFor users; };
+
+      # Use `specialArgs` if the value will be referenced in imports, otherwise prefer `myArgs`.
+      specialArgs = {
+        inherit inputs users;
+        inherit (outputs) nixosModules homeManagerModules;
+        myLib = myLibBase;
+      };
+      myArgs = {
+        inherit tempPkgsFor vars;
+        inherit (outputs) nixosConfigurations;
+      };
+      myArgsOverlay = _: _: {
+        inherit myArgs;
+      };
 
       myLibBase = import ./lib { inherit lib; };
       myLibExtra = import ./lib/extra.nix commonArgs;
@@ -84,6 +98,7 @@
             config.allowUnfree = true;
             overlays = lib.optionals applyOverlays [
               outputs.overlays.default
+              myArgsOverlay
             ];
           }
         );
@@ -113,7 +128,7 @@
       # Standard flake output
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
       packages = forEachSystem (pkgs: import ./packages { inherit pkgs; });
-      overlays = import ./overlays { inherit inputs lib myLib outputs tempPkgsFor; };
+      overlays = import ./overlays commonArgs;
 
       # Modules
       nixosConfigModule = ./config/nixos;
@@ -124,7 +139,6 @@
       inherit (configs)
         nixosConfigurations
         homeConfigurations;
-
     }
     # Expose these to output for easier access
     // commonArgs

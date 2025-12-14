@@ -1,14 +1,7 @@
 { config
-, lib
-, hostname
 , ...
 }:
 let
-  inherit (lib)
-    mkOption
-    types
-    ;
-
   cfg = config.configs;
 in
 {
@@ -37,26 +30,7 @@ in
     ./zram.nix
   ];
 
-  options.configs = {
-    extraPackages = mkOption {
-      type = types.listOf types.package;
-      default = [ ];
-      description = "Extra packages to be included with system packages.";
-    };
-
-    hostname = mkOption {
-      type = types.str;
-      default = hostname;
-      readOnly = true;
-      description = "The system's host name.";
-    };
-
-    stateVersion = mkOption {
-      type = types.str;
-      default = "23.11";
-      description = "Configuration state version.";
-    };
-  };
+  # Default options defined in `lib/extra.nix`.
 
   config = {
     networking.hostName = cfg.hostname;

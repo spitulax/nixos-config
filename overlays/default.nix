@@ -1,8 +1,6 @@
 { inputs
 , lib
-, myLib
-, tempPkgsFor
-, outputs
+, ...
 }@input:
 let
   # Compose existing overlays

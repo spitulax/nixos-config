@@ -1,6 +1,6 @@
 { config
-, outputs
 , lib
+, pkgs
 , ...
 }:
 let
@@ -17,7 +17,7 @@ let
               path = ../../../keys/hosts/${k}/ssh-rsa.pub;
             in
             if builtins.pathExists path then path else null)
-          outputs.nixosConfigurations));
+          pkgs.myArgs.nixosConfigurations));
 in
 {
   options.configs.openssh = {

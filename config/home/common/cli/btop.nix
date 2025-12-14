@@ -1,6 +1,6 @@
 { config
 , lib
-, inputs
+, pkgs
 , ...
 }: {
   options.configs.cli.btop.enable = lib.mkEnableOption "btop" // {
@@ -90,6 +90,6 @@
     };
 
     # TODO: global theming
-    xdg.configFile."btop/themes/rose-pine.theme".source = inputs.rose-pine-btop + "/rose-pine.theme";
+    xdg.configFile."btop/themes/rose-pine.theme".source = pkgs.inputs.rose-pine-btop + "/rose-pine.theme";
   };
 }

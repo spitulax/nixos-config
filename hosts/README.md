@@ -2,8 +2,9 @@
 
 ## Config
 
-The modules are used by `myLib.nixosConfig`. You may also want to import `outputs.nixosConfigModule`
-to utilise the [NixOS config module](../config/README.md#nixos-config-module). See
+The modules are used by `myLib.nixosConfig`. `outputs.nixosConfigModule` is
+imported to utilise the
+[NixOS config module](../config/README.md#nixos-config-module). See
 [here](./barbatos/default.nix) for an example of NixOS config module.
 
 ## Special Arguments

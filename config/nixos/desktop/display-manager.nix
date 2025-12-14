@@ -1,7 +1,6 @@
 { config
 , lib
 , pkgs
-, outputs
 , ...
 }: {
   config = lib.mkIf config.configs.desktop.enable {
@@ -48,7 +47,7 @@
       };
     };
 
-    environment.etc."greetd/regreet.png".source = "${outputs.vars.assetsPath}/wallpapers/nixos-catppuccin-mocha.png";
+    environment.etc."greetd/regreet.png".source = "${pkgs.myArgs.vars.assetsPath}/wallpapers/nixos-catppuccin-mocha.png";
 
     # https://discourse.nixos.org/t/login-keyring-did-not-get-unlocked-hyprland/40869/10
     # It still doesn't work

@@ -1,5 +1,5 @@
 { config
-, outputs
+, homeManagerModules
 , lib
 , ...
 }:
@@ -8,7 +8,7 @@ let
 in
 {
   imports = [
-    outputs.homeManagerModules.webApps
+    homeManagerModules.webApps
   ];
 
   options.configs.apps.browser = {

@@ -22,17 +22,21 @@
 
     custom = outputs.packages.${final.system};
 
-    # inputs.<flake>.packages|legacyPackages.<pkgs.system> -> pkgs.inputs.<flake>
+    # inputs.<flake>.packages|legacyPackages.<pkgs.system> or inputs.<flake> -> pkgs.inputs.<flake>
     inputs =
       builtins.mapAttrs
         (_: flake:
           let
             legacyPackages = (flake.legacyPackages or { }).${final.system} or { };
             packages = (flake.packages or { }).${final.system} or { };
+            self = flake;
           in
           if packages != { }
           then packages
-          else legacyPackages)
+          else if legacyPackages != { }
+          then legacyPackages
+          else self
+        )
         inputs;
 
     tempPkgs =

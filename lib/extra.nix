@@ -1,8 +1,19 @@
 { lib
 , specialArgs
 , inputs
+, outputs
 , ...
-}: {
+}:
+let
+  commonHomeManagerModules = [
+    ../config/home/common
+  ];
+
+  hmSpecialArgs = specialArgs // {
+    hmLib = inputs.home-manager.lib;
+  };
+in
+{
   /*
     Generates a NixOS system config.
     A pair of SSH public keys (rsa and ed25519) are needed if `config.configs.openssh.addHostKeys` is `true`.
@@ -29,16 +40,51 @@
     in
     lib.nixosSystem {
       modules = [
+        outputs.nixosConfigModule
+        inputs.home-manager.nixosModules.default
+
+        {
+          options.configs = with lib; {
+            extraPackages = mkOption {
+              type = types.listOf types.package;
+              default = [ ];
+              description = "Extra packages to be included with system packages.";
+            };
+
+            stateVersion = mkOption {
+              type = types.str;
+              default = "23.11";
+              description = "Configuration state version.";
+            };
+
+            hostname = mkOption {
+              type = types.str;
+              default = hostname;
+              readOnly = true;
+              description = "The system's host name.";
+            };
+          };
+        }
+
         {
           nixpkgs = {
             inherit pkgs;
           };
         }
+
+        {
+          home-manager = {
+            extraSpecialArgs = hmSpecialArgs;
+            sharedModules = commonHomeManagerModules;
+            useGlobalPkgs = true;
+          };
+        }
+
         config
-      ] ++ (map (x: x.nixosModule) users) ++ extraModules;
-      specialArgs = specialArgs // {
-        inherit hostname;
-      };
+      ]
+      ++ (map (x: x.nixosModule) users)
+      ++ extraModules;
+      specialArgs = specialArgs;
     };
 
 
@@ -57,16 +103,15 @@
     , username
       # String :: The system's hostname.
     , hostname
-      # [AttrSet] :: Extra config modules.
-    , extraModules ? [ ]
     }:
     let
       config = ../users/${username}_${hostname};
     in
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      modules = [ config ] ++ extraModules;
-      extraSpecialArgs = specialArgs;
+      modules = [ config ]
+        ++ commonHomeManagerModules;
+      extraSpecialArgs = hmSpecialArgs;
     };
 
   /*
@@ -106,9 +151,6 @@
       */
       homeManagerModule =
         { config
-        , myLib
-        , lib
-        , outputs
         , pkgs
         , ...
         }:
@@ -123,10 +165,7 @@
           homeManagerConfigModule = ../config/home/${username};
         in
         {
-
-          imports = [
-            ../config/home/common
-          ] ++ lib.optionals
+          imports = lib.optionals
             (lib.pathExists homeManagerConfigModule) [
             homeManagerConfigModule
           ];
@@ -160,10 +199,6 @@
               packages = cfg.extraPackages;
             };
 
-            nixpkgs = {
-              inherit (outputs.pkgsFor.x86_64-linux) config overlays;
-            };
-
             programs.home-manager.enable = true;
           };
         };
@@ -175,19 +210,12 @@
       nixosModule =
         { config
         , pkgs
-        , inputs
-        , lib
-        , outputs
         , ...
         }:
         let
           inherit (config.configs) hostname;
         in
         {
-          imports = [
-            inputs.home-manager.nixosModules.default
-          ];
-
           assertions = [{
             assertion = config.configs.sops.enable;
             message = "`configs.sops.enable` must be true to use user password";
@@ -203,10 +231,7 @@
             hashedPasswordFile = config.sops.secrets."password-${username}".path;
           };
 
-          home-manager = {
-            users.${username} = import (../users + "/${username}_${hostname}");
-            extraSpecialArgs = specialArgs;
-          };
+          home-manager.users.${username} = import (../users + "/${username}_${hostname}");
 
           sops.secrets."password-${username}" = {
             neededForUsers = true;
@@ -214,124 +239,4 @@
           };
         };
     };
-
-
-  /*
-    Defines a set of options inside Home Manager config and their respective config when enabled.
-  */
-  hmHelper = {
-    /*
-      Defines options to add aliases to shells.
-    */
-    alias = {
-      /*
-        An attribute set, the attributes are for each shells passed to `mkOptions`.
-        Each attribute is a boolean option.
-        Example:
-        {
-          fish = lib.mkOptions ...;
-          bash = lib.mkOptions ...;
-        }
-      */
-      mkOptions =
-        {
-          # String :: The name of the thing being aliased.
-          desc
-          # [String] :: Generate options for the given shells.
-        , shells ? [ "fish" "bash" ]
-        }:
-        let
-          option = name: {
-            ${name} = lib.mkOption {
-              type = lib.types.bool;
-              default = false;
-              description = "Whether to alias ${desc} in ${name}.";
-            };
-          };
-        in
-        lib.mergeAttrsList (map option shells);
-
-      /*
-        Generates config for each enabled shell for defining the aliases.
-        Assign to `programs`.
-      */
-      mkConfig =
-        {
-          # AttrSet :: The config object.
-          config
-          # AttrSet :: An attribute set of strings.
-          # The attribute names are the aliases and the values are the expanded commands.
-        , aliases
-          # AttrSet :: Extra aliases. The same type as `aliases`.
-        , extraAliases ? { }
-        }:
-        lib.mergeAttrsList
-          (lib.mapAttrsToList
-            (k: v: {
-              ${k}.shellAliases = lib.optionalAttrs v (aliases // extraAliases);
-            })
-            config);
-    };
-
-
-    /*
-      Defines options to add packages.
-
-      Module format:
-      {
-        <option name> = {
-          desc :: String: The option description.
-          pkgs :: [Package]: The packages to be added.
-        };
-      }
-    */
-    packages = {
-      /*
-        An attribute set, the attributes are for each attribute in the module.
-        Each attribute is an attribute set containing an "enable" option.
-        Example:
-        {
-          hello = {
-            enable = lib.mkEnableOption ...;
-          };
-        }
-      */
-      mkOptions =
-        {
-          # String -> String :: Takes `desc` from the module and returns the altered description.
-          desc ? lib.id
-          # Module :: The module.
-        , modules
-        }:
-        lib.mapAttrs
-          (k: v: {
-            enable = lib.mkEnableOption (desc v.desc) // {
-              default = v.default or false;
-            };
-          })
-          modules;
-
-      /*
-        Generates config for each enabled module for adding the packages.
-        Assign to `home.packages`.
-      */
-      mkConfig =
-        {
-          # Module :: The module.
-          modules
-          # AttrSet :: The config object.
-        , cfg
-        }: lib.flatten
-          (lib.mapAttrsToList
-            (_: v: v.pkgs)
-            (lib.filterAttrs
-              (_: v: v.enable)
-              (lib.mapAttrs
-                (k: v: {
-                  inherit (cfg.${k}) enable;
-                  inherit (v) pkgs;
-                })
-                modules)));
-    };
-  };
 }

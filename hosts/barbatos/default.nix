@@ -1,10 +1,7 @@
-{ outputs
-, inputs
+{ inputs
 , ...
 }: {
   imports = with inputs; [
-    outputs.nixosConfigModule
-
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.common-pc-laptop
     nixos-hardware.nixosModules.common-pc-laptop-ssd

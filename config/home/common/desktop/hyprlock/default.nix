@@ -1,6 +1,6 @@
-{ outputs
-, config
+{ config
 , lib
+, pkgs
 , ...
 }:
 let
@@ -20,7 +20,7 @@ in
         };
         background = {
           monitor = "";
-          path = "${outputs.vars.assetsPath}/wallpapers/hyprland.png";
+          path = "${pkgs.myArgs.vars.assetsPath}/wallpapers/hyprland.png";
           color = "rgba(137, 180, 250, 1.0)";
         };
         input-field = {

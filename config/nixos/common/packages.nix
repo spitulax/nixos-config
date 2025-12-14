@@ -1,10 +1,9 @@
 { config
 , pkgs
-, outputs
 , ...
 }: {
   environment = {
-    systemPackages = outputs.vars.commonPackage pkgs ++ config.configs.extraPackages;
+    systemPackages = pkgs.myArgs.vars.commonPackage pkgs ++ config.configs.extraPackages;
     variables.EDITOR = "nvim";
   };
 
