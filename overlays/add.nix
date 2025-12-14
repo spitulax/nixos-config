@@ -1,6 +1,5 @@
 { lib
 , myLib
-, outputs
 , inputs
 , tempPkgsFor
 , ...
@@ -8,7 +7,6 @@
   preAdd = final: prev: { };
 
   # Add custom packages
-  # This is where packages from ../packages are added to pkgs
   addPhase = final: prev: {
     # Custom `callPackage`
     myCallPackage =
@@ -19,8 +17,6 @@
           inherit (self) callPackage;
           inherit (final) system;
         } // final)).callPackage;
-
-    custom = outputs.packages.${final.system};
 
     # inputs.<flake>.packages|legacyPackages.<pkgs.system> or inputs.<flake> -> pkgs.inputs.<flake>
     inputs =

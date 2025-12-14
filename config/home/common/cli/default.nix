@@ -24,8 +24,10 @@ let
     ./newsboat.nix
     ./openssh.nix
     ./shell.nix
+    ./timeinfo.nix
     ./tmux.nix
     ./trash.nix
+    ./upfind.nix
   ];
 
   modules = with pkgs; {
@@ -100,12 +102,6 @@ let
     pasteme = {
       desc = "Pasteme";
       pkgs = [ mypkgs.pasteme ];
-    };
-
-    scripts = {
-      desc = "custom scripts";
-      default = true;
-      pkgs = [ custom.scripts ];
     };
   };
 in

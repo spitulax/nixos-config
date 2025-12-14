@@ -3,10 +3,18 @@
 , lib
 , hmLib
 , ...
-}: {
+}:
+let
+  cfg = config.configs.neovim;
+in
+{
+  imports = [
+    ./lazyup.nix
+  ];
+
   options.configs.neovim.enable = lib.mkEnableOption "neovim";
 
-  config = lib.mkIf config.configs.neovim.enable {
+  config = lib.mkIf cfg.enable {
     programs.neovim = {
       enable = true;
       withNodeJs = false;

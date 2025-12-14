@@ -21,8 +21,6 @@ structuring but I'm happy with this (for now).
 - [`modules/`](./modules): See [here](./modules/README.md)
 - [`mypkgs/`](./mypkgs): See [here](./mypkgs/README.md)
 - [`overlays/`](./overlays): Nix overlays (imported to flake)
-<!-- FIXME: Packages soon to be retired -->
-- [`packages/`](./packages): Nix packages and scripts
 - [`secrets/`](./secrets): See [here](./secrets/README.md)
 - [`users/`](./users): See [here](./users/README.md)
 - [`flake.nix`](./flake.nix): The root of this entire repo

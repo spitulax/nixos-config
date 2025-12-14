@@ -14,6 +14,7 @@ in
     ./mako
     ./rofi
     ./waybar
+    ./brightness.nix
     ./cliphist.nix
     ./easyeffects.nix
     ./gammastep.nix
@@ -22,6 +23,7 @@ in
     ./qt.nix
     ./screenshot.nix
     ./udiskie.nix
+    ./volume.nix
     ./warn-low-battery.nix
   ];
 
@@ -36,16 +38,10 @@ in
       # core
       wl-clipboard # wayland clipboard
       # wtype # wayland xdotool
-      brightnessctl
       zenity # GUI from shell scripts
 
-      # notification
-      libnotify
-
       # misc
-      alsa-utils
       networkmanagerapplet
-      pwvucontrol
       playerctl
       dragon-drop # drag and drop
     ];

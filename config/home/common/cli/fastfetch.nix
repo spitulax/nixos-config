@@ -10,6 +10,8 @@
       fastfetch
     ];
 
+    configs.cli.timeinfo.enable = lib.mkDefault true;
+
     xdg.configFile."fastfetch".source = ./configs/fastfetch;
   };
 }

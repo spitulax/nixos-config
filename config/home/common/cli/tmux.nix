@@ -2,7 +2,20 @@
 , lib
 , pkgs
 , ...
-}: {
+}:
+let
+  tmuxs = pkgs.writeShellScriptBin "tmuxs" ''
+    SOCK=$(upfind . -name .tmux* 2>/dev/null)
+    SOCKNAME=".tmux_$(pwd | rev | cut -d'/' -f1 | rev)"
+    if [ -n "$SOCK" ]; then
+        tmux -S "$SOCK" "$@"
+    else
+        echo "Creating $SOCKNAME"
+        tmux -S "$SOCKNAME" "$@"
+    fi
+  '';
+in
+{
   options.configs.cli.tmux.enable = lib.mkEnableOption "tmux" // {
     default = true;
   };
@@ -74,5 +87,9 @@
         bind-key -T copy-mode-vi 'C-\' select-pane -l
       '';
     };
+
+    home.packages = [
+      tmuxs
+    ];
   };
 }

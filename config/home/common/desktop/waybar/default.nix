@@ -23,6 +23,8 @@ in
       inherit package;
     };
 
+    configs.cli.timeinfo.enable = lib.mkDefault true;
+
     xdg.configFile = {
       "waybar/config.jsonc".source = ./config.jsonc;
       "waybar/style.css".source = ./style.css;

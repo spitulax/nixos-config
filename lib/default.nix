@@ -8,8 +8,8 @@
 
     Type: Path/String -> Bool
   */
-  checkExt = ext: file:
-    lib.last (builtins.split "\\.${ext}$" (builtins.toString file)) == "";
+  # checkExt = ext: file:
+  #   lib.last (builtins.split "\\.${ext}$" (builtins.toString file)) == "";
 
   /*
     Truncate the last extension in the given file name.
@@ -20,10 +20,10 @@
 
     Type: Path/String -> Bool
   */
-  truncateExt = ext: file:
-    if checkExt ext file
-    then builtins.head (builtins.split "\\.${ext}$" (builtins.toString file))
-    else file;
+  # truncateExt = ext: file:
+  #   if checkExt ext file
+  #   then builtins.head (builtins.split "\\.${ext}$" (builtins.toString file))
+  #   else file;
 
   /*
     Returns a list of files in given directory.
@@ -34,11 +34,11 @@
 
     Type: Path -> [String] -> [String]
   */
-  listFilesAll = dir: types:
-    (builtins.attrNames
-      (lib.filterAttrs
-        (_: v: types == [ ] || builtins.elem v types)
-        (builtins.readDir dir)));
+  # listFilesAll = dir: types:
+  #   (builtins.attrNames
+  #     (lib.filterAttrs
+  #       (_: v: types == [ ] || builtins.elem v types)
+  #       (builtins.readDir dir)));
 
 
   /*
@@ -49,7 +49,7 @@
 
     Type: Path -> [String]
   */
-  listFiles = dir: listFilesAll dir [ "regular" ];
+  # listFiles = dir: listFilesAll dir [ "regular" ];
   # listDirs = dir: listFilesAll dir [ "directory" ];
 
 
@@ -62,10 +62,10 @@
 
     Type: Path -> String -> [String]
   */
-  listFilesExt = dir: ext:
-    (builtins.filter
-      (checkExt ext)
-      (listFiles dir));
+  # listFilesExt = dir: ext:
+  #   (builtins.filter
+  #     (checkExt ext)
+  #     (listFiles dir));
 
 
   /*

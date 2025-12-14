@@ -40,6 +40,7 @@ let
 in
 {
   imports = [
+    ./hyprmon.nix
     ./hyprpaper.nix
   ];
 
@@ -61,6 +62,8 @@ in
       gammastep.enable = mkDefault true;
       screenshot.enable = mkDefault true;
       udiskie.enable = mkDefault true;
+      brightness.enable = mkDefault true;
+      volume.enable = mkDefault true;
     };
 
     home.packages = with pkgs; [

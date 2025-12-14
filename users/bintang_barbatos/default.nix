@@ -83,6 +83,8 @@ in
       poppler-utils.enable = true;
       lexurgy.enable = true;
       pasteme.enable = true;
+      timeinfo.enable = true;
+      upfind.enable = true;
     };
 
     desktop = {
