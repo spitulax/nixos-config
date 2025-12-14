@@ -11,11 +11,13 @@ import (
 type SubcommandUpgrade struct {
 	flags *flag.FlagSet
 	NvimUpdateOpts
+	NixosOpts
 }
 
 func NewSubcommandUpgrade() (s SubcommandUpgrade) {
 	s.flags = NewFlagSet(s.Name())
 	s.NvimUpdateOpts = NewNvimUpdateOpts(s.flags)
+	s.NixosOpts = NewNixosOpts(s.flags)
 	return s
 }
 
@@ -32,7 +34,7 @@ func (s SubcommandUpgrade) Run() error {
 		return err
 	}
 
-	if err := Nixos(); err != nil {
+	if err := Nixos(*s.debug); err != nil {
 		return err
 	}
 

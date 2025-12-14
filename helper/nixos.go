@@ -6,12 +6,23 @@ import (
 	"io"
 )
 
+type NixosOpts struct {
+	debug *bool
+}
+
+func NewNixosOpts(f *flag.FlagSet) (o NixosOpts) {
+	o.debug = f.Bool("debug", false, "Add --show-trace option")
+	return o
+}
+
 type SubcommandNixos struct {
 	flags *flag.FlagSet
+	NixosOpts
 }
 
 func NewSubcommandNixos() (s SubcommandNixos) {
 	s.flags = NewFlagSet(s.Name())
+	s.NixosOpts = NewNixosOpts(s.flags)
 	return s
 }
 
@@ -24,7 +35,7 @@ func (s SubcommandNixos) Usage() string {
 }
 
 func (s SubcommandNixos) Run() error {
-	if err := Nixos(); err != nil {
+	if err := Nixos(*s.debug); err != nil {
 		return err
 	}
 	return nil
@@ -39,10 +50,15 @@ func (s SubcommandNixos) Parse(args []string) {
 	s.flags.Parse(args)
 }
 
-func Nixos() error {
+func Nixos(debug bool) error {
 	fmt.Println("\033[1;34mBuilding system config...\033[0m")
 
-	if err := Run("nh os switch"); err != nil {
+	debugOpts := ""
+	if debug {
+		debugOpts = " -- --show-trace"
+	}
+
+	if err := Run(fmt.Sprintf("nh os switch%s", debugOpts)); err != nil {
 		return err
 	}
 
