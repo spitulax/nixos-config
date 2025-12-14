@@ -411,4 +411,41 @@
                 modules)));
     };
   };
+
+  helpers = {
+    /*
+      mypkgs helper "script" derivation.
+
+      Type: AttrSet -> Derivation
+    */
+    helper =
+      { buildGoModule
+      , nix
+      , git
+      , nh
+      }:
+      buildGoModule {
+        pname = "config-helper";
+        version = lib.trim (builtins.readFile ../helper/VERSION);
+
+        src = lib.cleanSource ../helper;
+
+        buildInputs = [
+          nix
+          git
+          nh
+        ];
+
+        vendorHash = null;
+
+        meta = {
+          description = "Helper \"script\" for my NixOS config";
+          mainProgram = "helper";
+          homepage = "https://github.com/spitulax/nixos-config";
+          platforms = lib.platforms.all;
+          license = lib.licenses.mit;
+          maintainers = with lib.maintainers; [ spitulax ];
+        };
+      };
+  };
 }

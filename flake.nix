@@ -111,7 +111,7 @@
     {
       # Standard flake output
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
-      packages = forEachSystem (pkgs: import ./packages { inherit pkgs; });
+      packages = forEachSystem (pkgs: import ./packages { inherit pkgs myLib; });
       overlays = import ./overlays commonArgs;
       devShells = forEachSystem (pkgs: {
         default = import ./flake/shell.nix { inherit pkgs; };

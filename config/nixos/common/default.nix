@@ -36,5 +36,6 @@
 
     # Misc.
     users.mutableUsers = false;
+    documentation.man.generateCaches = lib.mkForce false;
   };
 }

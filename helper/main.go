@@ -1,7 +1,5 @@
-// THIS IS A JOKE BUT EVERYTHING IS BETTER THAN BASH
 // Programs needed:
-// For helper: nix, git, nom (optional)
-// For update scripts: nix, gh (authorised), jq, coreutils
+// nix, git, nh, lazyup (script, optional), home-manager (optional)
 
 package main
 
@@ -13,8 +11,6 @@ import (
 	"os/signal"
 	"syscall"
 )
-
-const DefaultCachixName = "spitulax"
 
 var prog Prog
 
@@ -41,18 +37,14 @@ type Prog struct {
 }
 
 func NewProg() (p Prog) {
-	// Some subcommands are retired in this mypkgs, but I'm too lazy to mark the files individually.
 	p.subcommands = []Subcommand{
-		// NewSubcommandBuild(),
-		// NewSubcommandCommitup(),
-		NewSubcommandNew(),
-		// NewSubcommandPartup(),
-		// NewSubcommandPushinput(),
-		// NewSubcommandPushpkgs(),
-		NewSubcommandUp(),
-		NewSubcommandUpinput(),
-		NewSubcommandUplist(),
-		NewSubcommandUpscript(),
+		NewSubcommandFlakeUpdate(),
+		NewSubcommandHome(),
+		NewSubcommandMypkgs(),
+		NewSubcommandNixos(),
+		NewSubcommandNvimUpdate(),
+		NewSubcommandUpdate(),
+		NewSubcommandUpgrade(),
 	}
 
 	return p

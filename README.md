@@ -14,6 +14,7 @@ structuring but I'm happy with this (for now).
 - [`assets/`](./assets): Images needed for the config
 - [`config/`](./config): See [here](./config/README.md)
 - [`flake/`](./flake): See [here](./flake/README.md)
+- [`helper/`](./helper): Helper script. Don't ask why it's written in Go.
 - [`hosts/`](./hosts): Host-specific configs
 - [`keys/`](./keys): See [here](./keys/README.md)
 - [`lib/`](./lib): Helper functions (imported as `myLib` to flake)
@@ -39,6 +40,10 @@ declared in `./flake/configs.nix` are easily accessible by using
 `nixos-<hostname>` for NixOS configs or `home-<username>-<hostname>` for Home
 Manager configs. This makes searching for options and debugging much more
 convenient.
+
+## Running Helper Script
+
+Simply run `./help`.
 
 ## NixOS Config
 

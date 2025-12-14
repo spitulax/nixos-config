@@ -179,18 +179,35 @@ rec {
       Type: AttrSet -> Derivation
     */
     helper =
-      { buildGoModule }:
+      { buildGoModule
+      , git
+      , nix
+      , nom
+      , gh
+      , jq
+      , coreutils
+      }:
       buildGoModule {
-        pname = "helper";
+        pname = "mypkgs-helper";
         version = lib.trim (builtins.readFile ../helper/VERSION);
 
         src = lib.cleanSource ../helper;
+
+        buildInputs = [
+          git
+          nix
+          nom
+          gh
+          jq
+          coreutils
+        ];
 
         vendorHash = null;
 
         meta = {
           description = "Helper \"script\" for mypkgs";
-          homepage = "https://github.com/spitulax/mypkgs";
+          mainProgram = "helper";
+          homepage = "https://github.com/spitulax/nixos-config";
           platforms = lib.platforms.all;
           license = lib.licenses.mit;
           maintainers = with lib.maintainers; [ spitulax ];
