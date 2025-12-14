@@ -50,7 +50,7 @@
     Type: Path -> [String]
   */
   listFiles = dir: listFilesAll dir [ "regular" ];
-  listDirs = dir: listFilesAll dir [ "directory" ];
+  # listDirs = dir: listFilesAll dir [ "directory" ];
 
 
   /*
@@ -77,10 +77,10 @@
 
     Type: Path -> String -> [String]
   */
-  listFilesExtTruncate = dir: ext:
-    builtins.map
-      (truncateExt ext)
-      (listFilesExt dir ext);
+  # listFilesExtTruncate = dir: ext:
+  #   builtins.map
+  #     (truncateExt ext)
+  #     (listFilesExt dir ext);
 
 
   /*
@@ -93,10 +93,10 @@
 
     Type: Path -> [String] -> (Path -> String -> Any) -> AttrSet
   */
-  genAttrsEachFileAll = dir: types: f:
-    lib.genAttrs
-      (listFilesAll dir types)
-      (n: f /${dir}/${n} n);
+  # genAttrsEachFileAll = dir: types: f:
+  #   lib.genAttrs
+  #     (listFilesAll dir types)
+  #     (n: f /${dir}/${n} n);
 
 
   /*
@@ -109,10 +109,10 @@
 
     Type: Path -> [String] -> (Path -> String -> Any) -> AttrSet
   */
-  genAttrsEachFileManual = dir: names: f:
-    lib.genAttrs
-      names
-      (n: f /${dir}/${n} n);
+  # genAttrsEachFileManual = dir: names: f:
+  #   lib.genAttrs
+  #     names
+  #     (n: f /${dir}/${n} n);
 
 
   /*
@@ -124,8 +124,8 @@
 
     Type: Path -> (Path -> String -> Any) -> AttrSet
   */
-  genAttrsEachFile = dir: f: genAttrsEachFileAll dir [ "regular" ] f;
-  genAttrsEachDir = dir: f: genAttrsEachFileAll dir [ "directory" ] f;
+  # genAttrsEachFile = dir: f: genAttrsEachFileAll dir [ "regular" ] f;
+  # genAttrsEachDir = dir: f: genAttrsEachFileAll dir [ "directory" ] f;
 
 
   /*
@@ -139,15 +139,15 @@
 
     Type: Path -> (Path -> String -> Any) -> AttrSet
   */
-  genAttrsEachFileRec = dir: f:
-    let
-      gen = dir: dirFunc: fileFunc:
-        genAttrsEachDir dir dirFunc
-        // genAttrsEachFile dir fileFunc;
-      f' = prevn: p: n:
-        f /${p} (prevn + "/" + n);
-    in
-    gen dir (p: n: genAttrsEachFileRec (lib.path.append dir n) (f' n)) f;
+  # genAttrsEachFileRec = dir: f:
+  #   let
+  #     gen = dir: dirFunc: fileFunc:
+  #       genAttrsEachDir dir dirFunc
+  #       // genAttrsEachFile dir fileFunc;
+  #     f' = prevn: p: n:
+  #       f /${p} (prevn + "/" + n);
+  #   in
+  #   gen dir (p: n: genAttrsEachFileRec (lib.path.append dir n) (f' n)) f;
 
 
   /*
@@ -167,16 +167,16 @@
 
     Type: Path -> String -> (Path -> String -> Any) -> AttrSet
   */
-  genAttrsEachFileExt = dir: ext: f:
-    let
-      filterExt =
-        lib.filterAttrs
-          (n: _: checkExt ext n);
-      truncateExt' =
-        lib.mapAttrs'
-          (n: lib.nameValuePair (truncateExt ext n));
-    in
-    truncateExt' (filterExt (genAttrsEachFile dir f));
+  # genAttrsEachFileExt = dir: ext: f:
+  #   let
+  #     filterExt =
+  #       lib.filterAttrs
+  #         (n: _: checkExt ext n);
+  #     truncateExt' =
+  #       lib.mapAttrs'
+  #         (n: lib.nameValuePair (truncateExt ext n));
+  #   in
+  #   truncateExt' (filterExt (genAttrsEachFile dir f));
 
 
   /*
@@ -197,10 +197,10 @@
 
     Type: Path -> String -> (Path -> String -> Any) -> AttrSet
   */
-  genAttrsEachFileExtManual = dir: ext: names: f:
-    lib.genAttrs
-      names
-      (n: f /${dir}/${n}.${ext} n);
+  # genAttrsEachFileExtManual = dir: ext: names: f:
+  #   lib.genAttrs
+  #     names
+  #     (n: f /${dir}/${n}.${ext} n);
 
 
   /*
@@ -214,15 +214,15 @@
 
     Type: Path -> String -> (Path -> String -> Any) -> AttrSet
   */
-  genAttrsEachFileExtRec = dir: ext: f:
-    let
-      gen = dir: dirFunc: fileFunc:
-        genAttrsEachDir dir dirFunc
-        // genAttrsEachFileExt dir ext fileFunc;
-      f' = prevn: p: n:
-        f /${p} (prevn + "/" + n);
-    in
-    gen dir (p: n: genAttrsEachFileExtRec (lib.path.append dir n) ext (f' n)) f;
+  # genAttrsEachFileExtRec = dir: ext: f:
+  #   let
+  #     gen = dir: dirFunc: fileFunc:
+  #       genAttrsEachDir dir dirFunc
+  #       // genAttrsEachFileExt dir ext fileFunc;
+  #     f' = prevn: p: n:
+  #       f /${p} (prevn + "/" + n);
+  #   in
+  #   gen dir (p: n: genAttrsEachFileExtRec (lib.path.append dir n) ext (f' n)) f;
 
 
   /*
@@ -234,8 +234,8 @@
 
     Type: [String] -> AttrSet
   */
-  mkEnableOptions = names:
-    mkEnableOptions' names (n: "Whether to enable ${n}.");
+  # mkEnableOptions = names:
+  #   mkEnableOptions' names (n: "Whether to enable ${n}.");
 
 
   /*
@@ -247,10 +247,10 @@
 
     Type: [String] -> (String -> String) -> AttrSet
   */
-  mkEnableOptions' = names: desc:
-    lib.genAttrs
-      names
-      (n: lib.mkEnableOption "" // { description = desc n; });
+  # mkEnableOptions' = names: desc:
+  #   lib.genAttrs
+  #     names
+  #     (n: lib.mkEnableOption "" // { description = desc n; });
 
 
   /*

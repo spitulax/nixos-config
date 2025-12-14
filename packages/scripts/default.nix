@@ -2,6 +2,7 @@
 , writeScriptBin
 , myLib
 }:
+# FIXME: Move the scripts somewhere else...
 symlinkJoin {
   name = "scripts";
   paths =
