@@ -89,10 +89,10 @@ in
 
     desktop = {
       enable = true;
-      hyprland = {
-        enable = true;
-        monitor = "eDP-1,1920x1080@60,0x0,1";
-      };
+      # hyprland = {
+      #   enable = true;
+      #   monitor = "eDP-1,1920x1080@60,0x0,1";
+      # };
       sway = {
         enable = true;
         monitor = {

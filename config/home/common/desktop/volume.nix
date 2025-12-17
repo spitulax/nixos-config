@@ -34,7 +34,7 @@ let
         ${
           if cfg.notify 
           then ''notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Volume" "$(getVolume)" &''
-          else ""
+          else '':''
         }
     }
 
@@ -42,7 +42,7 @@ let
         ${
           if cfg.notify 
           then ''notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Microphone" "$(getMic)" &''
-          else ""
+          else '':''
         }
     }
 
@@ -68,7 +68,9 @@ in
 {
   options.configs.desktop.volume = {
     enable = lib.mkEnableOption "volume control (wpctl)";
-    notify = lib.mkEnableOption "notification";
+    notify = lib.mkEnableOption "notification" // {
+      default = config.configs.desktop.mako.enable;
+    };
   };
 
   config = lib.mkIf cfg.enable {

@@ -25,7 +25,7 @@ let
         ${
           if cfg.notify 
           then ''notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Brightness" "$(get)" &''
-          else ""
+          else '':''
         }
     }
 
@@ -45,7 +45,9 @@ in
 {
   options.configs.desktop.brightness = {
     enable = lib.mkEnableOption "brightness control (brightnessctl)";
-    notify = lib.mkEnableOption "notification";
+    notify = lib.mkEnableOption "notification" // {
+      default = config.configs.desktop.mako.enable;
+    };
   };
 
   config = lib.mkIf cfg.enable {
