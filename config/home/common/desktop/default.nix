@@ -13,6 +13,7 @@ in
     # ./hyprswitch
     ./mako
     ./rofi
+    ./sway
     ./waybar
     ./brightness.nix
     ./cliphist.nix

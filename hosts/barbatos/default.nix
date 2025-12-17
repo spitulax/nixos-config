@@ -13,7 +13,11 @@
   configs = {
     desktop = {
       enable = true;
-      environments.hyprland = true;
+      # TODO: We wanna retire hyprland configs
+      environments = {
+        hyprland = true;
+        sway = true;
+      };
       fonts = {
         cjkFonts = true;
         nerdFonts = true;

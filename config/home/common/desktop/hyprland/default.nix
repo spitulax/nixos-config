@@ -62,8 +62,14 @@ in
       gammastep.enable = mkDefault true;
       screenshot.enable = mkDefault true;
       udiskie.enable = mkDefault true;
-      brightness.enable = mkDefault true;
-      volume.enable = mkDefault true;
+      brightness = {
+        enable = mkDefault true;
+        notify = mkDefault true;
+      };
+      volume = {
+        enable = mkDefault true;
+        notify = mkDefault true;
+      };
     };
 
     home.packages = with pkgs; [
@@ -88,11 +94,12 @@ in
           "${./rose-pine.conf}"
         ];
 
-        # exec-once = [
-        #   "[workspace special:dock silent] ${run "brave --app-id=hnpfjngllnobngcgfapefoaidbinmjnm"}"
-        #   # Autostart this slow app so I won't have to wait for it to load when I want it to open quickly.
-        #   "[workspace special:dock silent] ${run "dolphin"}"
-        # ];
+        exec-once = [
+          "waybar"
+          #   "[workspace special:dock silent] ${run "brave --app-id=hnpfjngllnobngcgfapefoaidbinmjnm"}"
+          #   # Autostart this slow app so I won't have to wait for it to load when I want it to open quickly.
+          #   "[workspace special:dock silent] ${run "dolphin"}"
+        ];
 
         # GENERAL
 
@@ -268,7 +275,6 @@ in
           # Core
           "$mainMod ALT, BackSpace, exit,"
           "$mainMod CTRL, Z, exec, uwsm app -- hyprlock & sleep 1 && systemctl suspend"
-          "$mainMod CTRL, L, exec, pidof hyprlock || uwsm app -- hyprlock"
           "CTRL ALT, Escape, exec, hyprctl reload config-only"
           "$mainMod ALT, K, exec, hyprctl kill"
         ] ++ [

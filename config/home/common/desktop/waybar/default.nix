@@ -35,19 +35,19 @@ in
       };
     };
 
-    systemd.user.services.waybar = {
-      Unit = {
-        Description = "Wayland status bar";
-        After = "graphical-session.target";
-      };
-      Service = {
-        Type = "exec";
-        ExecStart = "${lib.meta.getExe package}";
-        ExecReload = "${pkgs.util-linux}/bin/kill -SIGUSR2 $MAINPID";
-        Restart = "on-failure";
-        Slice = "app-graphical.slice";
-      };
-      Install.WantedBy = [ "graphical-session.target" ];
-    };
+    # systemd.user.services.waybar = {
+    #   Unit = {
+    #     Description = "Wayland status bar";
+    #     After = "graphical-session.target";
+    #   };
+    #   Service = {
+    #     Type = "exec";
+    #     ExecStart = "${lib.meta.getExe package}";
+    #     ExecReload = "${pkgs.util-linux}/bin/kill -SIGUSR2 $MAINPID";
+    #     Restart = "on-failure";
+    #     Slice = "app-graphical.slice";
+    #   };
+    #   # Install.WantedBy = [ "graphical-session.target" ];
+    # };
   };
 }

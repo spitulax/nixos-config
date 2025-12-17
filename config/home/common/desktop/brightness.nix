@@ -22,7 +22,11 @@ let
     }
 
     notify () {
-        notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Brightness" "$(get)" &
+        ${
+          if cfg.notify 
+          then ''notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Brightness" "$(get)" &''
+          else ""
+        }
     }
 
     case "$1" in
@@ -39,7 +43,10 @@ let
   '';
 in
 {
-  options.configs.desktop.brightness.enable = lib.mkEnableOption "brightness control (brightnessctl)";
+  options.configs.desktop.brightness = {
+    enable = lib.mkEnableOption "brightness control (brightnessctl)";
+    notify = lib.mkEnableOption "notification";
+  };
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

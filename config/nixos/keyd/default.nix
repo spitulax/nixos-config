@@ -18,6 +18,7 @@ in
       keyd
     ];
 
+    # FIXME: don't use C-fn
     environment.etc."keyd/default.conf".text = ''
       ${readFile ./default.conf}
 

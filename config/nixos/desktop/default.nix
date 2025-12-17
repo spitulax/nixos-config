@@ -20,12 +20,14 @@ in
     ./input.nix
     ./opengl.nix
     ./sound.nix
+    ./sway.nix
   ];
 
   options.configs.desktop = {
     enable = mkEnableOption "desktop specific modules";
     environments = {
       hyprland = mkEnableOption "Hyprland";
+      sway = mkEnableOption "Sway";
     };
     defaultSession = mkOption {
       type = types.nullOr (types.enum (builtins.attrNames cfg.environments));
@@ -37,6 +39,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.xwayland.enable = true;
 
-    services.speechd.enable = false;
+    # Takes up a lot of space.
+    services.speechd.enable = lib.mkForce false;
   };
 }

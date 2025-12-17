@@ -93,6 +93,16 @@ in
         enable = true;
         monitor = "eDP-1,1920x1080@60,0x0,1";
       };
+      sway = {
+        enable = true;
+        monitor = {
+          "eDP-1" = {
+            mode = "1920x1080@60Hz";
+            pos = "0 0";
+            scale = "1";
+          };
+        };
+      };
       warn-low-battery.enable = true;
     };
 

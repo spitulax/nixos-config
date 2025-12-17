@@ -31,11 +31,19 @@ let
     }
 
     notifyVolume () {
-        notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Volume" "$(getVolume)" &
+        ${
+          if cfg.notify 
+          then ''notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Volume" "$(getVolume)" &''
+          else ""
+        }
     }
 
     notifyMic () {
-        notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Microphone" "$(getMic)" &
+        ${
+          if cfg.notify 
+          then ''notify-send -a popup -h string:x-canonical-private-synchronous:sys-notify "Microphone" "$(getMic)" &''
+          else ""
+        }
     }
 
     case "$1" in
@@ -58,7 +66,10 @@ let
   '';
 in
 {
-  options.configs.desktop.volume.enable = lib.mkEnableOption "volume control (wpctl)";
+  options.configs.desktop.volume = {
+    enable = lib.mkEnableOption "volume control (wpctl)";
+    notify = lib.mkEnableOption "notification";
+  };
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
