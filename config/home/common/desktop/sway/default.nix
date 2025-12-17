@@ -113,7 +113,7 @@ in
           modifier = mod;
           inherit (defaultPrograms) terminal;
           gaps = {
-            outer = 8;
+            outer = 5;
             inner = 3;
           };
           focus.wrapping = "force";
@@ -202,15 +202,15 @@ in
             "xf86monbrightnessdown" = "exec brightness dec";
           };
 
-          bars = [
-            # TODO: man 5 sway-bar, man 7 swaybar-protocol
-            {
-              position = "top";
-              extraConfig = ''
-                icon_theme ${config.gtk.iconTheme.name}
-              '';
-            }
-          ];
+          # bars = [
+          #   # TODO: man 5 sway-bar, man 7 swaybar-protocol
+          #   {
+          #     position = "top";
+          #     extraConfig = ''
+          #       icon_theme ${config.gtk.iconTheme.name}
+          #     '';
+          #   }
+          # ];
 
           # TODO: Duplicated from hyprland
           input = {
