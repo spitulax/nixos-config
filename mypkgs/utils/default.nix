@@ -37,7 +37,7 @@ let
   ghApi = callPackage shell.ghApi { };
   serialiseJSON = callPackage shell.serialiseJSON { };
   importJSON = callPackage shell.importJSON { };
-  getFileHash = callPackage shell.getFileHash { };
+  getHash = callPackage shell.getHash { };
 in
 rec {
   /*
@@ -209,6 +209,9 @@ rec {
             REV=${importJSON (ghApi "/repos/${owner}/${repo}/git/tags/$TAG_SHA") ".object.sha"}
           fi
           RELEASE_NAME=${importJSON "$RELEASE_INFO" ".name"}
+          if [ "$RELEASE_NAME" == "null" ]; then
+            RELEASE_NAME="$TAG"
+          fi
           VERSION=$(echo "$RELEASE_NAME" | $SED 's/[^0-9]*//')
           ORIG_VERSION="$RELEASE_NAME"
         else
@@ -255,7 +258,7 @@ rec {
         set -euo pipefail
 
         URL="${url}"
-        HASH=${getFileHash {url = "$URL"; inherit executable archive;}}
+        HASH=${getHash.url {url = "$URL"; inherit executable archive;}}
 
         ${serialiseJSON {
           url = "$URL";
@@ -333,16 +336,20 @@ rec {
   gitHubPkg =
     { owner
     , repo
-    , ref ? ""        # The branch or tag name. Empty means fetch latest release
+    , ref ? ""            # The branch or tag name. Empty means fetch latest release
+    , submodules ? false
     , dirname ? repo
-    }@inputs:
+    }:
     let
       pkgData = getPkgData dirname;
-      versionScript = gitHubVersionScript inputs;
+      versionScript = gitHubVersionScript {
+        inherit owner repo ref dirname;
+      };
 
       src = fetchFromGitHub {
         inherit owner repo;
         inherit (pkgData) hash rev;
+        fetchSubmodules = submodules;
       };
 
       updateScript = writeShellScript "mypkgs-update-github-${dirname}" ''
@@ -352,7 +359,10 @@ rec {
         REV=${importJSON "$VERSIONDATA" ".rev"}
         VERSION=${importJSON "$VERSIONDATA" ".version"}
         ORIG_VERSION=${importJSON "$VERSIONDATA" ".orig_version"}
-        HASH=${getFileHash {url = "https://github.com/${owner}/${repo}/archive/\${REV}.tar.gz"; archive = true;}}
+        HASH=${getHash.gitHub {
+          inherit owner repo submodules;
+          rev = "$REV";
+        }}
 
         ${serialiseJSON {
           hash = "$HASH";

@@ -356,6 +356,7 @@ rec {
     ghApi = { gh }: endpoint:
       "$(${getExe gh} api --method GET \"${endpoint}\" --header 'Accept: application/vnd.github+json')";
 
+    # DEPRECATED
     getFileHash =
       { nix
       , jq
@@ -380,6 +381,46 @@ rec {
         + "\"${url}\")"
       )
       ".hash"}";
+
+    getHash =
+      { nix-prefetch-git
+      , callPackage
+      , nix
+      }:
+      let
+        importJSON' = callPackage importJSON { };
+      in
+      {
+        url =
+          { url
+          , archive ? null
+          , executable ? false
+          }:
+          let
+            archive' =
+              if archive == null
+              then isArchive url
+              else archive;
+          in
+          "${importJSON' (
+            "$(${nixCmd nix} store prefetch-file --json --name source"
+            + (optionalString archive' " --unpack")
+            + (optionalString executable " --executable")
+            + " \"${url}\")"
+          )
+          ".hash"}";
+
+        gitHub =
+          { owner
+          , repo
+          , rev
+          , submodules ? false
+          }: "${importJSON' (
+            "$(${getExe nix-prefetch-git} --name source --rev \"${rev}\""
+            + (optionalString submodules " --fetch-submodules")
+            + " --url \"https://github.com/${owner}/${repo}\")"
+          ) ".hash"}";
+      };
 
     echo = val:
       "echo \"${val}\"";
