@@ -278,12 +278,13 @@ func UpOne(opts UpscriptOpts, kind UpKind, name string, scriptDir string) error 
 		}
 		file.Close()
 
-		git := exec.Command("git", "add", jsonPath)
-		_, gitErr := git.Output()
-		if git.ProcessState.ExitCode() != 0 {
-			fmt.Fprint(os.Stderr, string(gitErr.(*exec.ExitError).Stderr))
-			return fmt.Errorf("UpOne(): Failed to stage `%s`", jsonPath)
-		}
+		// NOTE: This function is run concurrently but this command can't.
+		// git := exec.Command("git", "add", jsonPath)
+		// _, gitErr := git.Output()
+		// if git.ProcessState.ExitCode() != 0 {
+		// 	fmt.Fprint(os.Stderr, string(gitErr.(*exec.ExitError).Stderr))
+		// 	return fmt.Errorf("UpOne(): Failed to stage `%s`", jsonPath)
+		// }
 	}
 
 	cmd := exec.Command(filepath.Join(scriptDir, name), oldVer)
