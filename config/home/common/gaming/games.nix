@@ -21,7 +21,7 @@ let
     mcpe = {
       desc = "MCPE (Minecraft Bedrock Edition)";
       pkgs = [
-        mcpelauncher-ui-qt
+        mypkgs.mcpelauncher-ui-qt
       ];
     };
 

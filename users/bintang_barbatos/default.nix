@@ -113,7 +113,7 @@ in
     gaming = {
       games = {
         osu.enable = false;
-        mcpe.enable = false;
+        mcpe.enable = true;
         minecraft.enable = true;
       };
       lutris.enable = false;

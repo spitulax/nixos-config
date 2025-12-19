@@ -17,6 +17,8 @@ rec {
   gripper = getByName "gripper";
   hunspell-id = callPackage ./hunspell-id { };
   lexurgy = callPackage ./lexurgy { };
+  mcpelauncher-client = callPackage ./mcpelauncher-client { };
+  mcpelauncher-ui-qt = callPackage ./mcpelauncher-ui-qt { inherit mcpelauncher-client; };
   odin = ignore (callPackage ./odin { });
   odin-doc = ignore (callPackage ./odin-doc { odin = odin-git; });
   odin-git = ignore (callPackage ./odin-git { });
