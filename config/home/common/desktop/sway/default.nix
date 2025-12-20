@@ -74,6 +74,10 @@ in
       udiskie.enable = mkDefault true;
       brightness.enable = mkDefault true;
       volume.enable = mkDefault true;
+      mako = {
+        enable = mkDefault true;
+        simple = mkDefault true;
+      };
     };
 
     home.packages = with pkgs; [
@@ -88,6 +92,7 @@ in
     # - Don't use notification, but maybe use IPC and swaybar protocol to display stuff directly on the status bar
     #   For volume, brightness and screenshot
     # - Warn low battery using swaynag (-y overlay)
+    # FIXME: `swaypaper start` not run on reload
     wayland.windowManager.sway = {
       enable = true;
       # checkConfig = false;
@@ -123,7 +128,7 @@ in
           keybindings = {
             # Core
             "--no-repeat ${mod}+alt+backspace" = "exit";
-            "--no-repeat ${mod}+ctrl+alt+escape" = "reload";
+            "--no-repeat ctrl+alt+escape" = "reload";
             # Workspace
             "--no-repeat ${mod}+x" = "layout toggle split";
             "--no-repeat ${mod}+m" = "layout toggle split tabbed";
@@ -206,6 +211,33 @@ in
           #   # TODO: man 5 sway-bar, man 7 swaybar-protocol
           #   {
           #     position = "top";
+          #     statusCommand = "myswaybar";
+          #     trayOutput = "*";
+          #     colors = {
+          #       background = colors.base;
+          #       statusline = colors.text;
+          #       separator = colors.highlightHigh;
+          #       focusedWorkspace = {
+          #         border = colors.love;
+          #         background = colors.highlightMed;
+          #         text = colors.text;
+          #       };
+          #       activeWorkspace = {
+          #         border = colors.pine;
+          #         background = colors.highlightMed;
+          #         text = colors.text;
+          #       };
+          #       inactiveWorkspace = {
+          #         border = colors.muted;
+          #         background = colors.highlightLow;
+          #         text = colors.text;
+          #       };
+          #       urgentWorkspace = {
+          #         border = colors.love;
+          #         background = colors.love;
+          #         text = colors.text;
+          #       };
+          #     };
           #     extraConfig = ''
           #       icon_theme ${config.gtk.iconTheme.name}
           #     '';
@@ -254,7 +286,7 @@ in
             {
               background = colors.base;
               focused = genColor colors.love colors.highlightMed;
-              focusedInactive = genColor colors.pine colors.highlightLow;
+              focusedInactive = genColor colors.pine colors.highlightMed;
               placeholder = genColor colors.overlay colors.overlay;
               unfocused = genColor colors.muted colors.highlightLow;
               urgent = genColor colors.love colors.love;

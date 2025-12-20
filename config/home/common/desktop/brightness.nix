@@ -46,7 +46,7 @@ in
   options.configs.desktop.brightness = {
     enable = lib.mkEnableOption "brightness control (brightnessctl)";
     notify = lib.mkEnableOption "notification" // {
-      default = config.configs.desktop.mako.enable;
+      default = config.configs.desktop.mako.enable && !config.configs.desktop.mako.simple;
     };
   };
 
