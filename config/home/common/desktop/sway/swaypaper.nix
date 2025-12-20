@@ -64,5 +64,20 @@ in
     home.packages = [
       script
     ];
+
+    systemd.user.services.swaypaper = {
+      Unit = {
+        Description = "Display wallpaper on Sway";
+        After = "sway-session.target";
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${lib.meta.getExe script} start";
+        Environment = [
+          "PATH=${lib.makeBinPath [ pkgs.sway ]}"
+        ];
+      };
+      Install.WantedBy = [ "sway-session.target" ];
+    };
   };
 }

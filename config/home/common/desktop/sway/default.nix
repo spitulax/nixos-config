@@ -92,7 +92,6 @@ in
     # - Don't use notification, but maybe use IPC and swaybar protocol to display stuff directly on the status bar
     #   For volume, brightness and screenshot
     # - Warn low battery using swaynag (-y overlay)
-    # FIXME: `swaypaper start` not run on reload
     wayland.windowManager.sway = {
       enable = true;
       # checkConfig = false;
@@ -306,8 +305,6 @@ in
         for_window [app_id="zenity"] floating enable
         for_window [app_id="org\.kde\.polkit-kde-authentication-agent-1"] floating enable
         for_window [app_id="pinentry-.*"] focus
-
-        exec swaypaper start
       '';
     };
 
