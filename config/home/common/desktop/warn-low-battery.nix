@@ -8,16 +8,15 @@ let
 
   # NOTREALLYIMPORTANT: BAT0 is harcoded
   script = ''
-    HAS_SENT=0
     while :; do
-      WARNING=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -e 'warning-level:' | awk '{print $2}')
-      if [ "$WARNING" = "low" ] && [ $HAS_SENT -eq 0 ]; then
-        notify-send -u critical "󱟟 Battery is Low"
+      WARNING=$(${lib.getExe pkgs.upower} -i /org/freedesktop/UPower/devices/battery_BAT0 | ${lib.getExe pkgs.gawk} '/^\s*warning-level:/ {print $2}')
+      if [[ "$WARNING" = "low" ]] && [[ $HAS_SENT -eq 0 ]]; then
+        ${lib.getExe pkgs.libnotify} -u critical "󱟟 Battery is Low"
         HAS_SENT=1
-      elif [ "$WARNING" != "low" ] && [ $HAS_SENT -eq 1 ]; then
+      elif [[ "$WARNING" != "low" ]] && [[ $HAS_SENT -eq 1 ]]; then
         HAS_SENT=0
       fi
-      sleep 10
+      ${pkgs.coreutils}/bin/sleep 10
     done
   '';
 
