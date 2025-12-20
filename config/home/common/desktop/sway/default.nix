@@ -86,7 +86,6 @@ in
     ];
 
     # TODO:
-    # - Test if mako still works
     # - Swaylock
     # - Tofi `programs.tofi.enable` <https://github.com/philj56/tofi>
     # - Don't use notification, but maybe use IPC and swaybar protocol to display stuff directly on the status bar
@@ -305,6 +304,8 @@ in
         for_window [app_id="zenity"] floating enable
         for_window [app_id="org\.kde\.polkit-kde-authentication-agent-1"] floating enable
         for_window [app_id="pinentry-.*"] focus
+
+        exec_always 'systemctl --user start swaypaper.service'
       '';
     };
 

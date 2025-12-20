@@ -77,7 +77,7 @@ in
           "PATH=${lib.makeBinPath [ pkgs.sway ]}"
         ];
       };
-      Install.WantedBy = [ "sway-session.target" ];
+      # Install.WantedBy = [ "sway-session.target" ];
     };
   };
 }
