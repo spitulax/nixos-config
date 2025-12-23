@@ -69,7 +69,7 @@ in
   options.configs.desktop.volume = {
     enable = lib.mkEnableOption "volume control (wpctl)";
     notify = lib.mkEnableOption "notification" // {
-      default = config.configs.desktop.mako.enable;
+      default = config.configs.desktop.mako.enable && !config.configs.desktop.mako.simple;
     };
   };
 

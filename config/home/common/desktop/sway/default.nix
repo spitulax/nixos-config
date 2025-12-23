@@ -15,22 +15,22 @@ let
 
   inherit (config.configs.env) defaultPrograms;
 
-  run = cmd: cmd;
+  run = cmd: "'${cmd}'";
   runTerm = cmd: run "${defaultPrograms.terminal} ${cmd}";
   runner = {
     inherit (defaultPrograms) fileManager;
     browser = run defaultPrograms.browser;
     btop = runTerm "btop";
-    clipboard = run "rofi -modi \"clipboard:${../rofi/modes/clipboard.sh}\" -show clipboard";
+    clipboard = run "${./scripts/clipboard.sh}";
     colourPicker = "hyprpicker -a -f hex";
-    command = run "rofi -show run";
+    command = run "tofi-run | xargs swaymsg exec --";
     gripper = args: "gripper ${args}";
     hyprmon = args: "hyprmon ${args}";
     nvtop = runTerm "nvtop";
-    runner = run "rofi -show drun";
+    runner = run "tofi-drun | xargs swaymsg exec --";
     terminal = run defaultPrograms.terminal;
     volume = run "pwvucontrol";
-    windows = run "rofi -show window";
+    windows = run "${./scripts/windows.sh}";
     obsidian = run "obsidian";
   };
 
@@ -78,6 +78,7 @@ in
         enable = mkDefault true;
         simple = mkDefault true;
       };
+      tofi.enable = mkDefault true;
     };
 
     home.packages = with pkgs; [
@@ -87,10 +88,6 @@ in
 
     # TODO:
     # - Swaylock
-    # - Tofi `programs.tofi.enable` <https://github.com/philj56/tofi>
-    # - Don't use notification, but maybe use IPC and swaybar protocol to display stuff directly on the status bar
-    #   For volume, brightness and screenshot
-    # - Warn low battery using swaynag (-y overlay)
     wayland.windowManager.sway = {
       enable = true;
       # checkConfig = false;
@@ -122,6 +119,10 @@ in
           focus.wrapping = "force";
           workspaceAutoBackAndForth = true;
           workspaceLayout = "tabbed";
+          fonts = {
+            names = [ "monospace" ];
+            size = 10.0;
+          };
 
           keybindings = {
             # Core
@@ -175,13 +176,13 @@ in
             # Launch shortcuts
             "--no-repeat ${mod}+return" = "exec ${defaultPrograms.terminal}";
             "--no-repeat ${mod}+shift+q" = "exec ${defaultPrograms.terminal}";
-            # "--no-repeat ${mod}+v" = "exec ${runner.clipboard}";
+            "--no-repeat ${mod}+v" = "exec ${runner.clipboard}";
             "--no-repeat ${mod}+shift+v" = "exec ${runner.volume}";
             "--no-repeat ${mod}+b" = "exec ${runner.browser}";
             "--no-repeat ${mod}+e" = "exec ${runner.fileManager}";
-            # "--no-repeat ${mod}+r" = "exec ${runner.runner}";
-            # "--no-repeat ${mod}+w" = "exec ${runner.windows}";
-            # "--no-repeat ${mod}+q" = "exec ${runner.command}";
+            "--no-repeat ${mod}+r" = "exec ${runner.runner}";
+            "--no-repeat ${mod}+w" = "exec ${runner.windows}";
+            "--no-repeat ${mod}+q" = "exec ${runner.command}";
             "--no-repeat ${mod}+escape" = "exec ${runner.btop}";
             "--no-repeat ${mod}+shift+escape" = "exec ${runner.nvtop}";
             "--no-repeat ${mod}+ctrl+p" = "exec ${runner.colourPicker}";
@@ -308,6 +309,77 @@ in
         exec_always 'systemctl --user start swaypaper.service'
       '';
     };
+
+    xdg.configFile."tofi/common".text = ''
+      font = "monospace"
+      font-size = 10
+
+      text-color = ${colors.text}
+
+      prompt-color = ${colors.base}
+      prompt-background = ${colors.love}
+      prompt-background-padding = 0, 8
+      prompt-background-corner-radius = 0
+
+      placeholder-color = ${colors.text}a8
+      placeholder-background = ${colors.base}
+      placeholder-background-padding = 0
+      placeholder-background-corner-radius = 0
+
+      input-background = ${colors.base}
+      input-background-padding = 0
+      input-background-corner-radius = 0
+
+      default-result-background = ${colors.base}
+      default-result-background-padding = 0
+      default-result-background-corner-radius = 0
+
+      alternate-result-color = ${colors.subtle}
+      alternate-result-background = ${colors.base}
+      alternate-result-background-padding = 0
+      alternate-result-background-corner-radius = 0
+
+      selection-color = ${colors.base}
+      selection-background = ${colors.love}
+      selection-background-padding = 0, 4
+      selection-background-corner-radius = 0
+      selection-match-color = ${colors.base}
+
+      text-cursor = true
+      text-cursor-style = block
+
+      prompt-text = "RUN"
+      prompt-padding = 16
+      result-spacing = 20
+      horizontal = true
+      min-input-width = 128
+
+      width = 100%
+      height = 20
+      background-color = ${colors.base}
+      outline-width = 0
+      border-width = 0
+      padding-top = 0
+      padding-bottom = 0
+      padding-left = 0
+      padding-right = 0
+
+      anchor = bottom
+    '';
+
+    xdg.configFile."tofi/config".text = ''
+      include = "./common"
+    '';
+
+    xdg.configFile."tofi/vertical".text = ''
+      include = "./common"
+
+      anchor = bottom
+      result-spacing = 4
+      width = 100%
+      height = 256
+      horizontal = false
+    '';
 
     home.sessionVariables = {
       # XCURSOR_SIZE = builtins.toString config.home.pointerCursor.size;

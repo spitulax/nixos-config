@@ -14,6 +14,7 @@ in
     ./mako
     ./rofi
     ./sway
+    ./tofi
     ./waybar
     ./brightness.nix
     ./cliphist.nix
