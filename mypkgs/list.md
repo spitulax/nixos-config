@@ -11,6 +11,8 @@
 | **gripper** | 1.2.2+date=2025-01-17_6c4628c | Yes | Yes | [🌐](https://github.com/spitulax/gripper) |
 | **hunspell-id** | 2024-11-26+ref=dev_a44e8c3 | Yes | Yes | [🌐](https://github.com/shuLhan/hunspell-id) |
 | **lexurgy** | 1.7.5 | Yes | Yes | [🌐](https://github.com/def-gthill/lexurgy) |
+| **mcpelauncher-client** | 1.5.5-qt6 | Yes | Yes | [🌐](https://minecraft-linux.github.io) |
+| **mcpelauncher-ui-qt** | 1.5.5-qt6 | Yes | Yes | [🌐](https://minecraft-linux.github.io) |
 | **odin** | 0.dev-2025-02 | No | No | [🌐](https://odin-lang.org/) |
 | **odin-doc** | 2025-06-03+ref=master_e89f5a0 | No | No | [🌐](https://github.com/odin-lang/pkg.odin-lang.org) |
 | **odin-git** | 2025-07-17+ref=master_a19e784 | No | No | [🌐](https://odin-lang.org/) |
