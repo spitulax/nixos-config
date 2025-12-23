@@ -13,9 +13,10 @@
   configs = {
     desktop = {
       enable = true;
-      # TODO: We wanna retire hyprland configs
+      # FIXME: We wanna retire hyprland configs
+      # FIXME: Disabling hyprland makes nixos refuses to apply conf (stuck on stopping dbus-broker.service)
       environments = {
-        hyprland = true;
+        hyprland = false;
         sway = true;
       };
       fonts = {
