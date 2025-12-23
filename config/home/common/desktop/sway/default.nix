@@ -88,6 +88,7 @@ in
 
     # TODO:
     # - Swaylock
+    # - Poweroff buttons
     wayland.windowManager.sway = {
       enable = true;
       # checkConfig = false;
