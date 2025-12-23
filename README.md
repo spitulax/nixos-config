@@ -117,7 +117,7 @@ Here are some of the programs configured in this repo.
 #### Desktop
 
 - **Display Manager**: [ReGreet]
-- **Window Manager (Wayland)**: [Hyprland]
+- **Window Manager (Wayland)**: [Sway]
 
 #### CLI Tools
 
@@ -186,7 +186,7 @@ Dotfiles by other people that massively helped my Nix journey.
 [Nerd Fonts]: https://github.com/ryanoasis/nerd-fonts
 [Syncthing]: https://github.com/syncthing/syncthing
 [Keymapper]: https://github.com/houmain/keymapper
-[Hyprland]: https://github.com/hyprwm/Hyprland
+[Sway]: https://swaywm.org/
 [Tmux]: https://github.com/tmux/tmux
 [Dolphin]: https://apps.kde.org/dolphin
 [Gripper]: https://github.com/spitulax/gripper
