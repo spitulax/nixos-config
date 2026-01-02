@@ -114,8 +114,8 @@ in
           modifier = mod;
           inherit (defaultPrograms) terminal;
           gaps = {
-            outer = 5;
-            inner = 3;
+            outer = 0;
+            inner = 0;
           };
           focus.wrapping = "force";
           workspaceAutoBackAndForth = true;
