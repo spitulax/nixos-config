@@ -23,6 +23,7 @@ in
       settings =
         if cfg.simple then {
           max-history = 50;
+          on-button-left = "exec ${pkgs.mako}/bin/makoctl menu -n \"$id\" -- ${pkgs.tofi}/bin/tofi --prompt-text 'Select action'";
           on-button-middle = "dismiss-all";
           on-button-right = "dismiss";
           background-color = "#191724";
@@ -69,7 +70,7 @@ in
           };
         } else {
           max-history = 50;
-          on-button-left = "exec makoctl menu -n \"$id\" ${pkgs.rofi}/bin/rofi -dmenu -p 'Select action'";
+          on-button-left = "exec ${pkgs.mako}/bin/makoctl menu -n \"$id\" ${pkgs.rofi}/bin/rofi -dmenu -p 'Select action'";
           on-button-middle = "dismiss-all";
           on-button-right = "dismiss";
           on-notify = "exec mpv /run/current-system/sw/share/sounds/freedesktop/stereo/message.oga";
