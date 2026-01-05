@@ -18,6 +18,7 @@ in
     ./gaming.nix
     ./hotspot.nix
     ./keymapper.nix
+    ./mpd.nix
     ./perf.nix
     ./power-manager.nix
     ./printing.nix

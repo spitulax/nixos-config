@@ -38,7 +38,7 @@
     tablet.enable = true;
     vm = {
       qemu = true;
-      waydroid = true;
+      waydroid = false;
     };
     warp.enable = true;
     powerManager = {
