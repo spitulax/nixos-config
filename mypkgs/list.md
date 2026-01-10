@@ -11,8 +11,8 @@
 | **gripper** | 1.2.2+date=2025-01-17_6c4628c | Yes | Yes | [🌐](https://github.com/spitulax/gripper) |
 | **hunspell-id** | 2024-11-26+ref=dev_a44e8c3 | Yes | Yes | [🌐](https://github.com/shuLhan/hunspell-id) |
 | **lexurgy** | 1.7.5 | Yes | Yes | [🌐](https://github.com/def-gthill/lexurgy) |
-| **mcpelauncher-client** | 1.5.5-qt6 | Yes | Yes | [🌐](https://minecraft-linux.github.io) |
-| **mcpelauncher-ui-qt** | 1.5.5-qt6 | Yes | Yes | [🌐](https://minecraft-linux.github.io) |
+| **mcpelauncher-client** | 1.6.0-qt6 | Yes | Yes | [🌐](https://minecraft-linux.github.io) |
+| **mcpelauncher-ui-qt** | 1.6.0-qt6 | Yes | Yes | [🌐](https://minecraft-linux.github.io) |
 | **odin** | 0.dev-2025-02 | No | No | [🌐](https://odin-lang.org/) |
 | **odin-doc** | 2025-06-03+ref=master_e89f5a0 | No | No | [🌐](https://github.com/odin-lang/pkg.odin-lang.org) |
 | **odin-git** | 2025-07-17+ref=master_a19e784 | No | No | [🌐](https://odin-lang.org/) |
@@ -20,7 +20,7 @@
 | **ols** | 2025-07-16+ref=master_0ab1503 | No | No | [🌐](https://github.com/DanielGavin/ols) |
 | **osu-lazer** | 2025.118.3 | No | No | [🌐](https://osu.ppy.sh) |
 | **pasteme** | 0.0.0+date=2025-01-17_de3276e | Yes | Yes | [🌐](https://github.com/spitulax/pasteme) |
-| **rose-pine-tmux** | 2025-11-22+ref=main_8f171f6 | Yes | Yes | [🌐](https://github.com/rose-pine/tmux) |
+| **rose-pine-tmux** | 2026-01-02+ref=main_8613447 | Yes | Yes | [🌐](https://github.com/rose-pine/tmux) |
 | **whitesur-cursors** | 2025-04-05+ref=master_e190baf | Yes | Yes | [🌐](https://github.com/vinceliuice/WhiteSur-cursors) |
 
 ## Flakes
