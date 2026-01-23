@@ -35,6 +35,10 @@ in
       ];
     };
 
+    home.sessionVariables = {
+      CHROME_EXECUTABLE = "brave";
+    };
+
     programs.brave.webApps = {
       enable = true;
       inherit (config.programs.brave) commandLineArgs package;

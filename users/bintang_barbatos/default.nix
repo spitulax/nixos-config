@@ -118,6 +118,7 @@ in
       misc.enable = true;
       php.enable = true;
       javascript.enable = true;
+      flutter.enable = true;
     };
 
     gaming = {

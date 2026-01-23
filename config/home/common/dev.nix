@@ -34,6 +34,17 @@ let
       ];
     };
 
+    flutter = {
+      desc = "Flutter";
+      pkgs = [
+        flutter
+        android-studio
+        android-tools
+        android-studio-tools
+        jdk
+      ];
+    };
+
     go = {
       desc = "Go";
       pkgs = [
