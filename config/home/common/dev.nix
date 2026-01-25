@@ -42,6 +42,7 @@ let
         android-tools
         openjdk
         mesa-demos
+        scrcpy
       ];
     };
 
@@ -209,6 +210,10 @@ in
       home.sessionVariables = rec {
         ANDROID_SDK_ROOT = "${config.xdg.dataHome}/android/sdk";
         ANDROID_HOME = ANDROID_SDK_ROOT;
+      };
+
+      configs.cli.aliases.extraAliases = {
+        scrcpy = "scrcpy --render-driver=opengl";
       };
     })
   ];
