@@ -8,7 +8,7 @@
   };
 
   programs = {
-    nix-ld.enable = false;
+    nix-ld.enable = true;
     fish.enable = true;
     dconf.enable = true;
   };
