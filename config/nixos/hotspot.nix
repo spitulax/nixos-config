@@ -7,17 +7,29 @@ let
   cfg = config.configs.hotspot;
 
   script = pkgs.writeShellScriptBin "hotspot" ''
-    if [[ $# -ne 2 ]]; then
-        echo "$0 <ssid> <password>" >&2
+    quit () {
+        nmcli r wifi on
+    }
+
+    if [[ $# -lt 2 ]]; then
+        echo "$0 <ssid> <password> [gateway]" >&2
         exit 1
     fi
 
+    trap quit EXIT
+
     SSID=$1
     PASSWORD=$2
+    [[ -v 3 ]] && GATEWAY=$3
 
     nmcli r wifi off
     rfkill unblock wlan
-    sudo lnxrouter --ap wlp1s0 "$SSID" -p "$PASSWORD" --qr
+
+    if [[ -v GATEWAY ]]; then
+        sudo lnxrouter --ap wlp1s0 "$SSID" -p "$PASSWORD" -g "$GATEWAY" --qr
+    else
+        sudo lnxrouter --ap wlp1s0 "$SSID" -p "$PASSWORD" --qr
+    fi
   '';
 in
 {
