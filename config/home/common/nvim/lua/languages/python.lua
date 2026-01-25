@@ -11,7 +11,8 @@ return {
             enabled = false,
           },
           pycodestyle = {
-            maxLineLength = 80,
+            maxLineLength = 100,
+            ignore = { "E203" },
           },
         },
       },
