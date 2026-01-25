@@ -40,8 +40,8 @@ let
         flutter
         android-studio
         android-tools
-        android-studio-tools
-        jdk
+        openjdk
+        mesa-demos
       ];
     };
 
@@ -203,6 +203,13 @@ in
         inherits = "release"
         debug = "line-tables-only"
       '';
+    })
+
+    (lib.mkIf cfg.flutter.enable {
+      home.sessionVariables = rec {
+        ANDROID_SDK_ROOT = "${config.xdg.dataHome}/android/sdk";
+        ANDROID_HOME = ANDROID_SDK_ROOT;
+      };
     })
   ];
 }
