@@ -3,14 +3,15 @@
 ---@type PluginConfig
 return {
   spec = {
-    "ggandor/leap.nvim",
+    "https://codeberg.org/andyg/leap.nvim",
     event = "User FilePost",
   },
 
   config = function(_, _)
     require("leap").opts.prev_target = "<backspace>"
     require("leap").opts.prev_group = "<backspace>"
-    require("leap").opts.equivalence_classes = { " \t\r\n", "([{", ")]}", "'\"`" }
+    require("leap").opts.equivalence_classes =
+      { " \t\r\n", "([{", ")]}", "'\"`" }
     require("leap.user").set_repeat_keys("<kPageUp>", "<kPageDown>")
   end,
 
