@@ -7,6 +7,9 @@
   };
 
   config = lib.mkIf config.configs.cli.openssh.enable {
-    programs.ssh.enable = true;
+    programs.ssh = {
+      enable = true;
+      enableDefaultConfig = false;
+    };
   };
 }

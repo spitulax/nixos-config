@@ -50,7 +50,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = [
       distrobox
-      (pkgs.hiPrio distrobox-enter)
+      (lib.hiPrio distrobox-enter)
       distrobox-env
     ];
   };
