@@ -34,10 +34,10 @@ let
             get
             ;;
         "inc")
-            brightnessctl set 5%+ && notify
+            brightnessctl set 1%+ && notify
             ;;
         "dec")
-            brightnessctl set 5%- && notify
+            brightnessctl set 1%- && notify
             ;;
     esac
   '';
