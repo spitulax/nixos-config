@@ -22,10 +22,10 @@ in
         [
           "--password-store=gnome"
           "--profile-directory=Default"
-          "--enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL"
-          # "--ignore-gpu-blocklist"
           # "--gtk-version=4"
           # "--force-device-scale-factor=1.0" # without this sometimes tab bar gets unusually big at least on KDE Plasma Wayland
+          "--enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL"
+          "--ignore-gpu-blocklist"
         ];
       extensions = [
         { id = "kfhgpagdjjoieckminnmigmpeclkdmjm"; } # Automatic Twitch
