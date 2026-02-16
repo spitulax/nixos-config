@@ -11,23 +11,36 @@ let
 
     usage () {
         echo "Start:                swaypaper start"
-        echo "Change:               swaypaper change <wallpaper>"
+        echo "Change:               swaypaper change <wallpaper> [mode]"
         echo "Help:                 swaypaper --help"
     }
 
     start () {
-        local wallpaper="$(< "$WALLPAPERRC")"
-        swaymsg output '*' bg "$wallpaper" fit
+        local wallpaper
+        local mode
+        IFS=':' read wallpaper mode < "$WALLPAPERRC"
+        swaymsg output '*' bg "$wallpaper" "$mode"
     }
 
     change () {
         local wallpaper="$(realpath "$1")"
-        echo "$wallpaper" > "$WALLPAPERRC"
+        local mode="''${2:-fit}"
+        echo -n "$wallpaper:$mode" > "$WALLPAPERRC"
         start
-        echo "Changed current wallpaper to $1"
+        echo "Changed current wallpaper to $1 with mode $mode"
     }
 
     case $# in
+        3)
+            case "$1" in
+                "change")
+                    change "$2" "$3"
+                    ;;
+                *)
+                    usage
+                    exit 1
+            esac
+            ;;
         2)
             case "$1" in
                 "change")
