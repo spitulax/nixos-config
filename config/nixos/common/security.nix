@@ -18,7 +18,7 @@ in
   programs.seahorse.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryPackage = lib.mkForce pkgs.pinentry-gnome3;
+    pinentryPackage = lib.mkForce pkgs.pinentry-qt;
     enableExtraSocket = true;
     settings = {
       default-cache-ttl = cacheTime;
