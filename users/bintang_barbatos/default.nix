@@ -24,8 +24,9 @@ in
     };
 
     apps = {
-      anki.enable = true;
-      art.enable = true;
+      anki.enable = false;
+      # TEMP: https://github.com/NixOS/nixpkgs/issues/485826 (`lager` fails, which is needed by krita)
+      art.enable = false;
       browser.brave = true;
       dolphin.enable = true;
       entries.enable = true;
@@ -124,8 +125,9 @@ in
     gaming = {
       games = {
         osu.enable = false;
-        mcpe.enable = true;
+        mcpe.enable = false;
         minecraft.enable = true;
+        eden.enable = true;
       };
       lutris.enable = false;
       misc.enable = true;

@@ -9,7 +9,7 @@
       screenshots = {
         name = "Screenshots";
         comment = "View the screenshots folder";
-        exec = "xdg-open ${config.xdg.userDirs.extraConfig.SCREENSHOT_DIR}";
+        exec = "xdg-open ${config.xdg.userDirs.extraConfig.SCREENSHOT}";
         icon = "folder";
         categories = [ "System" ];
         type = "Application";

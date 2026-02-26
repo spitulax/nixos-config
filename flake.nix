@@ -92,6 +92,7 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 
       # Temporary nixpkgs
+      # Use one of their packages as `pkgs.tempPkgs.<name>.<pkgs>`
       tempPkgsFor = { };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output

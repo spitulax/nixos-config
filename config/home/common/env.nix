@@ -117,19 +117,19 @@ in
         templates = null;
         videos = "${home}/Videos";
         extraConfig = {
-          TEMP_DIR = "${home}/.temp";
-          THIRDPARTY_DIR = "${home}/Thirdparty";
+          TEMP = "${home}/.temp";
+          THIRDPARTY = "${home}/Thirdparty";
         }
         // lib.optionalAttrs cfg.addExtraDirs {
-          BACKUPS_DIR = "${home}/Backups";
-          GAMES_DIR = "${home}/Games";
-          IMPORTANT_DIR = "${home}/Important";
-          NOTES_DIR = "${home}/Notes";
-          REPOS_DIR = "${home}/Repos";
-          SYNC_DIR = "${home}/Sync";
-          SCREENSHOT_DIR = "${pictures}/Screenshots";
-          CAPTURE_DIR = "${videos}/Captures";
-          FLAKE_DIR = "${home}/Config";
+          BACKUPS = "${home}/Backups";
+          GAMES = "${home}/Games";
+          IMPORTANT = "${home}/Important";
+          NOTES = "${home}/Notes";
+          REPOS = "${home}/Repos";
+          SYNC = "${home}/Sync";
+          SCREENSHOT = "${pictures}/Screenshots";
+          CAPTURE = "${videos}/Captures";
+          FLAKE = "${home}/Config";
         }
         // cfg.extraXdgDirs;
       };

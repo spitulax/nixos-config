@@ -31,6 +31,13 @@ let
         prismlauncher
       ];
     };
+
+    eden = {
+      desc = "Switch emulator";
+      pkgs = [
+        eden
+      ];
+    };
   };
 in
 {

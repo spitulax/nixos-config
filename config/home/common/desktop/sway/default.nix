@@ -23,7 +23,7 @@ let
     btop = runTerm "btop";
     clipboard = run "${./scripts/clipboard.sh}";
     colourPicker = "hyprpicker -a -f hex";
-    command = run "tofi-run | xargs swaymsg exec --";
+    command = run "tofi-run | xargs swaymsg exec -- kitty";
     gripper = args: "gripper ${args}";
     hyprmon = args: "hyprmon ${args}";
     nvtop = runTerm "nvtop";
@@ -89,6 +89,7 @@ in
     # TODO:
     # - Swaylock
     # - Poweroff buttons
+    # - swaymon
     wayland.windowManager.sway = {
       enable = true;
       # checkConfig = false;
@@ -198,7 +199,6 @@ in
             "--no-repeat shift+pause" = "exec ${runner.gripper "last-region --copy"}";
             "--no-repeat ctrl+pause" = "exec ${runner.gripper "active-window -c --copy"}";
             # Fn keys
-            # TODO: swaymon
             "--no-repeat xf86audiomute" = "exec volume toggle";
             "--no-repeat xf86audiomicmute" = "exec volume toggle-mic";
             "xf86audioraisevolume" = "exec volume inc";
