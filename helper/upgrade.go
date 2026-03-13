@@ -44,7 +44,7 @@ func (s SubcommandUpgrade) Run() error {
 		fmt.Scanln(&ans)
 		ans = strings.ToLower(ans)
 		if ans == "y" || ans == "yes" {
-			if err := Run("home-manager news --flake $FLAKE_DIR"); err != nil {
+			if err := Run("home-manager news --flake $XDG_FLAKE_DIR"); err != nil {
 				return err
 			}
 		}

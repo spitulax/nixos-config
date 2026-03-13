@@ -78,7 +78,7 @@ return {
         n = {
           {
             desc = "Toggle nvim-dap-ui",
-            lhs = "<leader>D",
+            lhs = "<leader>Do",
             rhs = require("dapui").toggle,
           },
           {

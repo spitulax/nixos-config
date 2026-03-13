@@ -108,7 +108,7 @@ in
     };
 
     dev = {
-      cpp.enable = true;
+      cpp.enable = false;
       python.enable = true;
       lua.enable = true;
       nix.enable = true;
@@ -117,7 +117,7 @@ in
       make.enable = true;
       text.enable = true;
       misc.enable = true;
-      php.enable = true;
+      php.enable = false;
       javascript.enable = true;
       flutter.enable = true;
     };
@@ -127,7 +127,6 @@ in
         osu.enable = false;
         mcpe.enable = false;
         minecraft.enable = true;
-        eden.enable = true;
       };
       lutris.enable = false;
       misc.enable = true;
