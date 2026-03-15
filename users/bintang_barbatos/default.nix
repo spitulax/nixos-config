@@ -25,8 +25,7 @@ in
 
     apps = {
       anki.enable = false;
-      # TEMP: https://github.com/NixOS/nixpkgs/issues/485826 (`lager` fails, which is needed by krita)
-      art.enable = false;
+      art.enable = true;
       browser.brave = true;
       dolphin.enable = true;
       entries.enable = true;
