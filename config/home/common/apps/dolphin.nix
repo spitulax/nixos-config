@@ -16,6 +16,7 @@ in
       dolphin
       ffmpegthumbs
       kio-extras
+      ark
     ];
 
     # https://discourse.nixos.org/t/dolphin-does-not-have-mime-associations/48985

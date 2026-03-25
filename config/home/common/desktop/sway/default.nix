@@ -313,7 +313,7 @@ in
 
     xdg.configFile."tofi/common".text = ''
       font = "monospace"
-      font-size = 10
+      font-size = 12
 
       text-color = ${colors.text}
 
@@ -356,7 +356,7 @@ in
       min-input-width = 128
 
       width = 100%
-      height = 20
+      height = 24
       background-color = ${colors.base}
       outline-width = 0
       border-width = 0
