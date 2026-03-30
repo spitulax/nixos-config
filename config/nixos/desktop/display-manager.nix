@@ -49,9 +49,19 @@
 
     environment.etc."greetd/regreet.png".source = "${pkgs.myArgs.vars.assetsPath}/wallpapers/nixos-catppuccin-mocha.png";
 
-    # https://discourse.nixos.org/t/login-keyring-did-not-get-unlocked-hyprland/40869/10
-    # It still doesn't work
-    security.pam.services.gdm-password.enableGnomeKeyring = true;
-    environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
+    # Fix "the login keyring did not get unlocked when you logged into your computer"
+    # https://github.com/JohnRTitor/nix-conf/commit/53bc83aef18849976d5a42cc727d38dd0e38c5b0
+    security.pam.services = {
+      greetd.enableGnomeKeyring = true;
+      greetd-password.enableGnomeKeyring = true;
+      login.enableGnomeKeyring = true;
+    };
+    services = {
+      dbus.packages = [ pkgs.gnome-keyring pkgs.gcr ];
+      xserver.displayManager.sessionCommands = ''
+        eval $(gnome-keyring-daemon --start --daemonize --components=ssh,secrets)
+        export SSH_AUTH_SOCK
+      '';
+    };
   };
 }
