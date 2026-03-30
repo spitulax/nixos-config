@@ -54,12 +54,11 @@ let
       version = mkLongVersion flake prevAttrs.version;
     });
 
-  scope = makeScope callPackageWith
+  scope = makeScope pkgs.newScope
     (self: {
-      inherit myLib pkgs lib utils getByName getByName';
-      inherit (self) callPackage;
-      inherit (pkgs) system;
-    } // pkgs // utils);
+      inherit myLib utils getByName getByName';
+      inherit (self) system;
+    } // utils);
 
   updateScripts = packages:
     let

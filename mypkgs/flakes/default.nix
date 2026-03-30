@@ -18,12 +18,11 @@ let
     toShellVar
     ;
 
-  scope = makeScope callPackageWith
+  scope = makeScope pkgs.newScope
     (self: {
-      inherit myLib pkgs lib utils;
-      inherit (self) callPackage;
-      inherit (pkgs) system;
-    } // pkgs // utils);
+      inherit myLib utils;
+      inherit (self) system;
+    } // utils);
 
   updateScripts = flakes:
     let

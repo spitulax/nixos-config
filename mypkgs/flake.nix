@@ -68,10 +68,10 @@
       overlays = {
         default = self.overlays.mypkgs;
         mypkgs = final: _: {
-          mypkgs = packagesFor.${final.system}.packages;
+          mypkgs = packagesFor.${final.stdenv.hostPlatform.system}.packages;
         };
         mypkgsOverride = _: prev:
-          packagesFor.${prev.system}.packages;
+          packagesFor.${prev.stdenv.hostPlatform.system}.packages;
       };
 
       packages = eachSystem

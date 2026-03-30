@@ -41,6 +41,7 @@ in
           commit.gpgSign = true;
           gpg.program = "${config.programs.gpg.package}/bin/gpg2";
         };
+        signing.format = "openpgp";
       };
     })
 

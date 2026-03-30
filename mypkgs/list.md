@@ -19,8 +19,8 @@
 | **odin-nightly** | 2025-01-17 | No | No | [🌐](https://odin-lang.org/) |
 | **ols** | 2025-07-16+ref=master_0ab1503 | No | No | [🌐](https://github.com/DanielGavin/ols) |
 | **osu-lazer** | 2025.118.3 | No | No | [🌐](https://osu.ppy.sh) |
-| **pasteme** | 0.0.0+date=2025-01-17_de3276e | Yes | Yes | [🌐](https://github.com/spitulax/pasteme) |
-| **rose-pine-tmux** | 2026-02-03+ref=main_45f5026 | Yes | Yes | [🌐](https://github.com/rose-pine/tmux) |
+| **pasteme** | 0.0.0+date=2026-03-30_0da5233 | Yes | Yes | [🌐](https://github.com/spitulax/pasteme) |
+| **rose-pine-tmux** | 2026-03-24+ref=main_b6138c5 | Yes | Yes | [🌐](https://github.com/rose-pine/tmux) |
 | **whitesur-cursors** | 2025-04-05+ref=master_e190baf | Yes | Yes | [🌐](https://github.com/vinceliuice/WhiteSur-cursors) |
 
 ## Flakes
@@ -29,4 +29,4 @@
 | :-: | :-: | :-: | :-: |
 | **crt** | 3d4837a7f8d51f6972cdf3626867544e774f1965 | Yes | [🌐](https://github.com/spitulax/crt) |
 | **gripper** | 6c4628cdbc0bcceb2b7d38110202c2a0be3813d8 | Yes | [🌐](https://github.com/spitulax/gripper) |
-| **pasteme** | de3276e9c5b2b6aae8173470ea5ff0f736b28c5c | Yes | [🌐](https://github.com/spitulax/pasteme) |
+| **pasteme** | 0da523322ec9f6ac2c62d2c3ec7fd54d56a624b3 | Yes | [🌐](https://github.com/spitulax/pasteme) |

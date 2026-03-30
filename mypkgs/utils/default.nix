@@ -93,7 +93,7 @@ rec {
     Type: String -> Flake
   */
   getFlake = name:
-    outputs.flakes.${pkgs.system}.${name}.flake;
+    outputs.flakes.${pkgs.stdenv.hostPlatform.system}.${name}.flake;
 
   /*
     Returns a package provided by a flake.
@@ -105,7 +105,7 @@ rec {
     Type: Flake -> String -> Derivation
   */
   getFlakePackage = flake: name:
-    flake.packages.${pkgs.system}.${name};
+    flake.packages.${pkgs.stdenv.hostPlatform.system}.${name};
 
   /*
     Returns a package provided by a flake.
@@ -117,7 +117,7 @@ rec {
     Type: String -> String -> Derivation
   */
   getFlakePackage' = flakeName: pkgName:
-    (getFlake flakeName).packages.${pkgs.system}.${pkgName};
+    (getFlake flakeName).packages.${pkgs.stdenv.hostPlatform.system}.${pkgName};
 
   /*
     Returns packages provided by a flake.
@@ -128,7 +128,7 @@ rec {
     Type: Flake -> AttrSet
   */
   getFlakePackages = flake:
-    flake.packages.${pkgs.system};
+    flake.packages.${pkgs.stdenv.hostPlatform.system};
 
   /*
     Returns packages provided by a flake.
@@ -140,7 +140,7 @@ rec {
     Type: String -> AttrSet
   */
   getFlakePackages' = flakeName:
-    (getFlake flakeName).packages.${pkgs.system};
+    (getFlake flakeName).packages.${pkgs.stdenv.hostPlatform.system};
 
   /*
     Notes about *VersionScript functions:

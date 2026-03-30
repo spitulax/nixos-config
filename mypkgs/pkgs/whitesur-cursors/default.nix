@@ -1,7 +1,7 @@
 { lib
 , gitHubPkg
 , makeWrapper
-, xorg
+, xcursorgen
 , librsvg
 , stdenvNoCC
 }:
@@ -19,7 +19,7 @@ stdenvNoCC.mkDerivation (pkg // {
   nativeBuildInputs = [
     makeWrapper
     librsvg
-    xorg.xcursorgen
+    xcursorgen
   ];
 
   patches = [

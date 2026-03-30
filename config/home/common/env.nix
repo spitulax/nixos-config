@@ -107,6 +107,7 @@ in
       stateHome = "${home}/.local/state";
       userDirs = rec {
         enable = true;
+        setSessionVariables = true;
         createDirectories = cfg.autoCreateXdgDirs;
         desktop = null;
         documents = "${home}/Documents";
