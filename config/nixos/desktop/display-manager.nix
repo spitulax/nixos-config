@@ -49,7 +49,7 @@
 
     environment.etc."greetd/regreet.png".source = "${pkgs.myArgs.vars.assetsPath}/wallpapers/nixos-catppuccin-mocha.png";
 
-    # Fix "the login keyring did not get unlocked when you logged into your computer"
+    # FIXME: Fix "the login keyring did not get unlocked when you logged into your computer" (NOT WORKING)
     # https://github.com/JohnRTitor/nix-conf/commit/53bc83aef18849976d5a42cc727d38dd0e38c5b0
     security.pam.services = {
       greetd.enableGnomeKeyring = true;

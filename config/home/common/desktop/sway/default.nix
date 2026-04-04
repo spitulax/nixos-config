@@ -308,6 +308,8 @@ in
         for_window [app_id="pinentry-.*"] focus
 
         exec_always 'systemctl --user start swaypaper.service'
+
+        include /etc/sway/config.d/*
       '';
     };
 

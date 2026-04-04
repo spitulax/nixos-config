@@ -125,7 +125,7 @@ in
       games = {
         osu.enable = false;
         mcpe.enable = false;
-        minecraft.enable = true;
+        minecraft.enable = false;
       };
       lutris.enable = false;
       misc.enable = true;

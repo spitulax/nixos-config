@@ -37,10 +37,10 @@
     steam.enable = true;
     tablet.enable = true;
     vm = {
-      qemu = true;
+      qemu = false;
       waydroid = false;
     };
-    warp.enable = true;
+    warp.enable = false;
     powerManager = {
       enable = true;
       program = "auto-cpufreq";
@@ -48,9 +48,9 @@
     hardware.intel.enable = true;
     sops.enable = true;
     perf.enable = true;
-    docker.enable = true;
+    docker.enable = false;
     keyd.enable = true;
-    sql.enable = true;
+    sql.enable = false;
     hotspot.enable = true;
   };
 

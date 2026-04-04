@@ -51,10 +51,10 @@ let
             getVolume && getMic
             ;;
         "inc")
-            wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+ && notifyVolume
+            wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+ && notifyVolume
             ;;
         "dec")
-            wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && notifyVolume
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && notifyVolume
             ;;
         "toggle")
             wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && notifyVolume
