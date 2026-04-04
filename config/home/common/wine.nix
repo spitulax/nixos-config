@@ -35,8 +35,7 @@ in
     home.packages = with pkgs; [
       winetricks
       winekill
-    ] ++ [
-      pkgs.inputs.nix-gaming.wine-ge
+      wineWow64Packages.unstable
     ];
   };
 }
