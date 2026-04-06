@@ -57,6 +57,7 @@ in
       distrobox.enable = false;
       gplates.enable = false;
       qgis.enable = false;
+      qbittorrent.enable = true;
     };
 
     cli = {
