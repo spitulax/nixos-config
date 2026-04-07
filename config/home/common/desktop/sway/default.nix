@@ -81,10 +81,10 @@ in
     home.packages = with pkgs; [
       hyprpicker
       hyprpolkitagent
+      swaylock
     ];
 
     # TODO:
-    # - Swaylock
     # - Poweroff buttons
     # - swaymon
     wayland.windowManager.sway = {
@@ -119,13 +119,14 @@ in
           workspaceLayout = "tabbed";
           fonts = {
             names = [ "monospace" ];
-            size = 10.0;
+            size = 11.0;
           };
 
           keybindings = {
             # Core
             "--no-repeat ${mod}+alt+backspace" = "exit";
             "--no-repeat ctrl+alt+escape" = "reload";
+            "--no-repeat ${mod}+alt+z" = "exec swaylock & sleep 1 && systemctl suspend";
             # Workspace
             "--no-repeat ${mod}+x" = "layout toggle split";
             "--no-repeat ${mod}+m" = "layout toggle split tabbed";
