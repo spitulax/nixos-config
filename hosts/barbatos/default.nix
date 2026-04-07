@@ -13,9 +13,7 @@
   configs = {
     desktop = {
       enable = true;
-      # FIXME: We wanna retire hyprland configs
       environments = {
-        hyprland = false;
         sway = true;
       };
       fonts = {

@@ -8,14 +8,14 @@ let
 in
 {
   imports = [
-    ./hyprland
-    ./hyprlock
+    # ./hyprland
+    # ./hyprlock
     # ./hyprswitch
     ./mako
-    ./rofi
+    # ./rofi
     ./sway
     ./tofi
-    ./waybar
+    # ./waybar
     ./brightness.nix
     ./cliphist.nix
     ./easyeffects.nix

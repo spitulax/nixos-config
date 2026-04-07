@@ -68,6 +68,22 @@ in
           "mode=do-not-disturb urgency=critical" = {
             invisible = 0;
           };
+
+          "app-name=popup" = {
+            invisible = 0;
+            layer = "overlay";
+            width = 150;
+            height = 150;
+            anchor = "bottom-center";
+            default-timeout = 1000;
+            text-alignment = "center";
+            on-button-left = "none";
+            on-button-middle = "none";
+            on-button-right = "none";
+            on-notify = "none";
+            ignore-timeout = 0;
+            format = "<b>%s\\n%b</b>";
+          };
         } else {
           max-history = 50;
           on-button-left = "exec ${pkgs.mako}/bin/makoctl menu -n \"$id\" ${pkgs.rofi}/bin/rofi -dmenu -p 'Select action'";
