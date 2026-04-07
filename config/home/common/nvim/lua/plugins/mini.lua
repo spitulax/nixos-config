@@ -23,5 +23,8 @@ return {
         update_n_lines = "gsn",
       },
     })
+    utils.setup("mini.trailspace", {
+      only_in_normal_buffers = true,
+    })
   end,
 }
