@@ -92,7 +92,6 @@ in
       # checkConfig = false;
       swaynag.enable = true;
       wrapperFeatures.gtk = true;
-      # TODO: Duplicated from hyprland
       extraSessionCommands = ''
         export XCURSOR_SIZE=${builtins.toString config.home.pointerCursor.size}
         export QT_QPA_PLATFORMTHEME=qt6ct
@@ -205,7 +204,6 @@ in
           };
 
           bars = [
-            # TODO: man 5 sway-bar, man 7 swaybar-protocol
             {
               position = "bottom";
               statusCommand = "${pkgs.i3status}/bin/i3status";
@@ -376,6 +374,80 @@ in
       width = 100%
       height = 256
       horizontal = false
+    '';
+
+    xdg.configFile."i3status/config".text = ''
+      general {
+          output_format = "i3bar"
+          colors = true
+          interval = 1
+      }
+
+      order += "volume master"
+      order += "ethernet enp0s31f6"
+      order += "wireless wlp1s0"
+      order += "battery 0"
+      order += "load"
+      order += "cpu_temperature 0"
+      order += "memory"
+      order += "time"
+      order += "tztime utc"
+
+      wireless wlp1s0 {
+          format_up = "[W] %essid %frequency %quality %ip"
+          format_down = "[W]"
+          format_quality = "%d%%"
+      }
+
+      ethernet enp0s31f6 {
+          format_up = "[E] %ip"
+          format_down = "[E]"
+      }
+
+      battery 0 {
+          format = "[B] %status %percentage"
+          format_down = "[B]"
+          low_threshold = 20
+          status_chr = "+"
+          status_bat = "-"
+          status_unk = "?"
+          status_full = "~"
+          status_idle = "@"
+          format_percentage = "%.00f%s"
+          last_full_capacity = true
+      }
+
+      load {
+          format = "[C] %1min"
+          separator = false
+          separator_block_width = 0
+      }
+      cpu_temperature 0 {
+          format = " %degrees°C"
+          path = "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input"
+      }
+
+      memory {
+          format = "[M] %used %percentage_used"
+          decimals = 2
+      }
+
+      time {
+          format = "%a %m/%d %H:%M:%S %Z"
+          separator = false
+          separator_block_width = 0
+      }
+      tztime utc {
+          format = " %m/%d %H:%M:%S %Z"
+          timezone = "Etc/UTC"
+          hide_if_equals_localtime = true
+          separator = false
+      }
+
+      volume master {
+          format = "[V] %volume"
+          format_muted = "[V] %volume M"
+      }
     '';
 
     home.sessionVariables = {
