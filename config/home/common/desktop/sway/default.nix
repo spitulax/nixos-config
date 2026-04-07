@@ -207,44 +207,43 @@ in
             "xf86monbrightnessdown" = "exec brightness dec";
           };
 
-          # bars = [
-          #   # TODO: man 5 sway-bar, man 7 swaybar-protocol
-          #   {
-          #     position = "top";
-          #     statusCommand = "myswaybar";
-          #     trayOutput = "*";
-          #     colors = {
-          #       background = colors.base;
-          #       statusline = colors.text;
-          #       separator = colors.highlightHigh;
-          #       focusedWorkspace = {
-          #         border = colors.love;
-          #         background = colors.highlightMed;
-          #         text = colors.text;
-          #       };
-          #       activeWorkspace = {
-          #         border = colors.pine;
-          #         background = colors.highlightMed;
-          #         text = colors.text;
-          #       };
-          #       inactiveWorkspace = {
-          #         border = colors.muted;
-          #         background = colors.highlightLow;
-          #         text = colors.text;
-          #       };
-          #       urgentWorkspace = {
-          #         border = colors.love;
-          #         background = colors.love;
-          #         text = colors.text;
-          #       };
-          #     };
-          #     extraConfig = ''
-          #       icon_theme ${config.gtk.iconTheme.name}
-          #     '';
-          #   }
-          # ];
+          bars = [
+            # TODO: man 5 sway-bar, man 7 swaybar-protocol
+            {
+              position = "bottom";
+              statusCommand = "${pkgs.i3status}/bin/i3status";
+              trayOutput = "*";
+              colors = {
+                background = colors.base;
+                statusline = colors.text;
+                separator = colors.highlightHigh;
+                focusedWorkspace = {
+                  border = colors.iris;
+                  background = colors.highlightMed;
+                  text = colors.text;
+                };
+                activeWorkspace = {
+                  border = colors.pine;
+                  background = colors.highlightMed;
+                  text = colors.text;
+                };
+                inactiveWorkspace = {
+                  border = colors.muted;
+                  background = colors.highlightLow;
+                  text = colors.text;
+                };
+                urgentWorkspace = {
+                  border = colors.love;
+                  background = colors.love;
+                  text = colors.text;
+                };
+              };
+              extraConfig = ''
+                icon_theme ${config.gtk.iconTheme.name}
+              '';
+            }
+          ];
 
-          # TODO: Duplicated from hyprland
           input = {
             "type:keyboard" = {
               repeat_delay = "300";
@@ -285,7 +284,7 @@ in
             in
             {
               background = colors.base;
-              focused = genColor colors.love colors.highlightMed;
+              focused = genColor colors.iris colors.highlightMed;
               focusedInactive = genColor colors.pine colors.highlightMed;
               placeholder = genColor colors.overlay colors.overlay;
               unfocused = genColor colors.muted colors.highlightLow;
@@ -308,8 +307,6 @@ in
         for_window [app_id="pinentry-.*"] focus
 
         exec_always 'systemctl --user start swaypaper.service'
-
-        include /etc/sway/config.d/*
       '';
     };
 
