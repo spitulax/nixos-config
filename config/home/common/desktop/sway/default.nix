@@ -32,6 +32,8 @@ let
     volume = run "pwvucontrol";
     windows = run "${./scripts/windows.sh}";
     obsidian = run "obsidian";
+    poweroff = run "${./scripts/poweroff.sh}";
+    swaylock = run "swaylock & sleep 1 && systemctl suspend";
   };
 
   # TODO: global theming
@@ -85,7 +87,6 @@ in
     ];
 
     # TODO:
-    # - Poweroff buttons
     # - swaymon
     wayland.windowManager.sway = {
       enable = true;
@@ -124,9 +125,10 @@ in
 
           keybindings = {
             # Core
-            "--no-repeat ${mod}+alt+backspace" = "exit";
-            "--no-repeat ctrl+alt+escape" = "reload";
-            "--no-repeat ${mod}+alt+z" = "exec swaylock & sleep 1 && systemctl suspend";
+            "--no-repeat ${mod}+alt+q" = "exit";
+            "--no-repeat ${mod}+alt+r" = "reload";
+            "--no-repeat ${mod}+alt+z" = "exec ${runner.swaylock}";
+            "--no-repeat ${mod}+alt+x" = "exec ${runner.poweroff}";
             # Workspace
             "--no-repeat ${mod}+x" = "layout toggle split";
             "--no-repeat ${mod}+m" = "layout toggle split tabbed";
