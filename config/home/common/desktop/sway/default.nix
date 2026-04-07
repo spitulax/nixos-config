@@ -74,10 +74,7 @@ in
       udiskie.enable = mkDefault true;
       brightness.enable = mkDefault true;
       volume.enable = mkDefault true;
-      mako = {
-        enable = mkDefault true;
-        simple = mkDefault true;
-      };
+      mako.enable = mkDefault true;
       tofi.enable = mkDefault true;
     };
 
