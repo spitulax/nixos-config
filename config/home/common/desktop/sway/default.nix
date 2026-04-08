@@ -120,7 +120,7 @@ in
           workspaceLayout = "tabbed";
           fonts = {
             names = [ "monospace" ];
-            size = 11.0;
+            size = 10.0;
           };
 
           keybindings = {
@@ -211,6 +211,7 @@ in
               position = "bottom";
               statusCommand = "${pkgs.i3status}/bin/i3status";
               trayOutput = "*";
+              fonts.size = 10.0;
               colors = {
                 background = colors.base;
                 statusline = colors.text;
