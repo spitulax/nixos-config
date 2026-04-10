@@ -1,4 +1,4 @@
-local menu = require("ui.menu")
+-- local menu = require("ui.menu")
 local utils = require("utils")
 
 ---@type MappingTable
@@ -516,17 +516,17 @@ return {
     },
   },
 
-  Menu = {
-    a = {
-      {
-        desc = "Right-click",
-        lhs = "<RightMouse>",
-        rhs = function()
-          vim.cmd.exec('"normal! \\<RightMouse>"')
-          local options = vim.bo.ft == "NvimTree" and "nvimtree" or menu.default
-          require("menu").open(options, { mouse = true })
-        end,
-      },
-    },
-  },
+  -- Menu = {
+  --   a = {
+  --     {
+  --       desc = "Right-click",
+  --       lhs = "<RightMouse>",
+  --       rhs = function()
+  --         vim.cmd.exec('"normal! \\<RightMouse>"')
+  --         local options = vim.bo.ft == "NvimTree" and "nvimtree" or menu.default
+  --         require("menu").open(options, { mouse = true })
+  --       end,
+  --     },
+  --   },
+  -- },
 }

@@ -51,6 +51,7 @@ opt.timeoutlen = 400
 opt.undofile = true
 opt.updatetime = 250
 opt.whichwrap:append("<>[]hl")
+opt.mousemodel = "extend"
 
 --- Global Plugin Options ---
 
