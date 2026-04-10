@@ -16,43 +16,37 @@ return {
   mappings = function()
     return {
       Hop = {
-        a = {
+        n = {
           {
             desc = "Word",
-            lhs = "<C-f>",
-            rhs = "<cmd>HopWord<cr>",
-            opts = { remap = true },
-          },
-          {
-            desc = "Word",
-            lhs = "<C-f>f",
+            lhs = "<Tab>",
             rhs = "<cmd>HopWord<cr>",
           },
-          {
-            desc = "One char",
-            lhs = "<C-f>c",
-            rhs = "<cmd>HopChar1<cr>",
-          },
-          {
-            desc = "Two chars",
-            lhs = "<C-f>C",
-            rhs = "<cmd>HopChar2<cr>",
-          },
-          {
-            desc = "Search pattern",
-            lhs = "<C-f>/",
-            rhs = "<cmd>HopPattern<cr>",
-          },
+          -- {
+          --   desc = "One char",
+          --   lhs = "<Tab>c",
+          --   rhs = "<cmd>HopChar1<cr>",
+          -- },
+          -- {
+          --   desc = "Two chars",
+          --   lhs = "<C-f>C",
+          --   rhs = "<cmd>HopChar2<cr>",
+          -- },
+          -- {
+          --   desc = "Search pattern",
+          --   lhs = "<C-f>/",
+          --   rhs = "<cmd>HopPattern<cr>",
+          -- },
           {
             desc = "Line start",
-            lhs = "<C-f>l",
+            lhs = "<S-Tab>",
             rhs = "<cmd>HopLineStart<cr>",
           },
-          {
-            desc = "Line",
-            lhs = "<C-f>L",
-            rhs = "<cmd>HopLine<cr>",
-          },
+          -- {
+          --   desc = "Line",
+          --   lhs = "<C-f>L",
+          --   rhs = "<cmd>HopLine<cr>",
+          -- },
         },
       },
     }

@@ -2,6 +2,8 @@
 
 ---@type PluginConfig
 return {
+  disable = true,
+
   spec = {
     "https://codeberg.org/andyg/leap.nvim",
     event = "User FilePost",
