@@ -8,14 +8,25 @@ import (
 	"strings"
 )
 
+type UpgradeOpts struct {
+	buildOnly *bool
+}
+
+func NewUpgradeOpts(f *flag.FlagSet) (o UpgradeOpts) {
+	o.buildOnly = f.Bool("build-only", false, "Only build, do not update")
+	return o
+}
+
 type SubcommandUpgrade struct {
 	flags *flag.FlagSet
+	UpgradeOpts
 	NvimUpdateOpts
 	NixosOpts
 }
 
 func NewSubcommandUpgrade() (s SubcommandUpgrade) {
 	s.flags = NewFlagSet(s.Name())
+	s.UpgradeOpts = NewUpgradeOpts(s.flags)
 	s.NvimUpdateOpts = NewNvimUpdateOpts(s.flags)
 	s.NixosOpts = NewNixosOpts(s.flags)
 	return s
@@ -30,8 +41,10 @@ func (s SubcommandUpgrade) Usage() string {
 }
 
 func (s SubcommandUpgrade) Run() error {
-	if err := Update(*s.configName); err != nil {
-		return err
+	if (!*s.buildOnly) {
+		if err := Update(*s.configName); err != nil {
+			return err
+		}
 	}
 
 	if err := Nixos(*s.debug); err != nil {

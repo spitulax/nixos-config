@@ -66,7 +66,7 @@ let
     javascript = {
       desc = "JavaScript and TypeScript";
       pkgs = [
-        nodePackages.nodejs
+        nodejs
         pnpm
         typescript
         typescript-language-server
