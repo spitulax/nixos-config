@@ -1,5 +1,6 @@
 local opt = vim.opt
 local g = vim.g
+local bo = vim.bo
 
 --- Custom Options ---
 
@@ -62,5 +63,6 @@ g.loaded_ruby_provider = 0
 g.c_syntax_for_h = 1
 g.tmux_navigator_disable_when_zoomed = 1
 g.tmux_navigator_no_mappings = 1
+bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 -----------------------------

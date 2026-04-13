@@ -6,20 +6,13 @@ return {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     event = { "BufReadPost", "BufNewFile" },
-    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    cmd = { "TSInstall", "TSUninstall", "TSUpdate" },
     build = ":TSUpdate",
   },
 
   opts = function()
     return {
-      highlight = {
-        enable = true,
-        use_languagetree = true,
-      },
-
-      indent = {
-        enable = true,
-      },
+      install_dir = vim.fn.stdpath("data") .. "/site",
     }
   end,
 
