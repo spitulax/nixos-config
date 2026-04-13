@@ -37,7 +37,7 @@ let
     flutter = {
       desc = "Flutter";
       pkgs = [
-        flutter
+        pkgs.tempPkgs.flutter.flutter
         android-studio
         android-tools
         openjdk

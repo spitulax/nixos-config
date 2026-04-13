@@ -6,6 +6,8 @@
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.follows = "nixpkgs-unstable";
 
+    nixpkgs-flutter.url = "github:nixos/nixpkgs/8110df5ad7abf5d4c0f6fb0f8f978390e77f9685";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -93,7 +95,9 @@
 
       # Temporary nixpkgs
       # Use one of their packages as `pkgs.tempPkgs.<name>.<pkgs>`
-      tempPkgsFor = { };
+      tempPkgsFor = {
+        flutter = genNixpkgs inputs.nixpkgs-flutter false;
+      };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
       replConfigShortcuts =
