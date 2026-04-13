@@ -52,7 +52,7 @@ in
 
     home.packages = with pkgs; [
       # For :TSInstallFromGrammar
-      # tree-sitter
+      tree-sitter
       # nodePackages.nodejs
       wakatime-cli
     ];

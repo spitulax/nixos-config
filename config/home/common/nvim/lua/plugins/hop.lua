@@ -19,7 +19,7 @@ return {
         n = {
           {
             desc = "Word",
-            lhs = "<Tab>",
+            lhs = "<S-Tab>",
             rhs = "<cmd>HopWord<cr>",
           },
           -- {
@@ -39,7 +39,7 @@ return {
           -- },
           {
             desc = "Line start",
-            lhs = "<S-Tab>",
+            lhs = "<M-Tab>",
             rhs = "<cmd>HopLineStart<cr>",
           },
           -- {

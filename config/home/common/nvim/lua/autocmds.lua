@@ -36,6 +36,12 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   end,
 })
 
+autocmd("BufReadPost", {
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
+
 usercmd("Indent", function(arg)
   local n = tonumber(arg.args)
   if n ~= nil then

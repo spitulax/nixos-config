@@ -4,6 +4,7 @@
 return {
   spec = {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
@@ -23,7 +24,7 @@ return {
   end,
 
   config = function(_, opts)
-    require("utils").setup("nvim-treesitter.configs", opts)
+    require("utils").setup("nvim-treesitter", opts)
   end,
 
   base46 = { "syntax", "treesitter" },
