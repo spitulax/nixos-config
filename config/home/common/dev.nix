@@ -21,10 +21,18 @@ let
   modules = with pkgs; {
     # Languages #
 
+    man = {
+      desc = "Manual pages";
+      pkgs = [
+        man-pages
+        man-pages-posix
+        linux-manual
+      ];
+    };
+
     cpp = {
       desc = "C/C++";
       pkgs = [
-        man-pages
         (lib.hiPrio gcc)
         clang
         clang-tools

@@ -108,6 +108,7 @@ in
     };
 
     dev = {
+      man.enable = true;
       cpp.enable = false;
       python.enable = true;
       lua.enable = true;
