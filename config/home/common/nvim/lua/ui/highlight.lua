@@ -5,6 +5,7 @@ local M = {}
 M.override = {
   CursorLineNr = { bold = true },
   Visual = { reverse = true },
+  Cursor = { link = "Visual" }, -- Does not work and I gave up
   NvimTreeRootFolder = { fg = "green" },
   NvimTreeCursorLine = { link = "CursorLine" },
   Comment = { fg = "teal", italic = true },

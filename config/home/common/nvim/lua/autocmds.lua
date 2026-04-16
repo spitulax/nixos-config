@@ -38,7 +38,7 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
 
 autocmd("BufReadPost", {
   callback = function()
-    vim.treesitter.start()
+    pcall(vim.treesitter.start)
   end,
 })
 
