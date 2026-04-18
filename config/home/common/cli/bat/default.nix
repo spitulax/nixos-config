@@ -1,7 +1,5 @@
-# RETIRED
 { config
 , lib
-, inputs
 , pkgs
 , myLib
 , ...
@@ -24,7 +22,6 @@ let
     bgrep = "batgrep";
     bwatch = "batwatch";
     bdiff = "batdiff";
-    cat = "bat --style numbers";
   };
 in
 {
@@ -37,21 +34,14 @@ in
     (mkIf cfg.enable {
       programs.bat = {
         enable = true;
-        themes = {
-          # TODO: global theming
-          catppuccin = {
-            src = inputs.catppuccin-bat;
-            file = "themes/Catppuccin Mocha.tmTheme";
-          };
-        };
         config = {
-          theme = "Catppuccin Mocha";
+          theme = "Rose-Pine";
         };
       };
 
       # TODO: global theming
       xdg.configFile."bat/themes" = {
-        source = "${inputs.catppuccin-bat}/themes";
+        source = ./themes;
         recursive = true;
       };
 
@@ -59,8 +49,7 @@ in
         batgrep
         batman
         batwatch
-        # FAILED: https://github.com/NixOS/nixpkgs/issues/332957
-        # batdiff
+        batdiff
       ];
     })
 

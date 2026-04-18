@@ -11,9 +11,9 @@ let
   cfg = config.configs.cli;
 
   imports = [
+    ./bat
     ./fish
     ./aliases.nix
-    # ./bat.nix
     ./btop.nix
     ./cava.nix
     ./downloader.nix

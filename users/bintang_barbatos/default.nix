@@ -86,6 +86,10 @@ in
       pasteme.enable = true;
       timeinfo.enable = true;
       upfind.enable = true;
+      bat = {
+        enable = true;
+        alias.fish = true;
+      };
     };
 
     desktop = {
