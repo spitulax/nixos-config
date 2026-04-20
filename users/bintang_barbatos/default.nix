@@ -133,6 +133,10 @@ in
         mcpe.enable = false;
         minecraft.enable = false;
       };
+      emulators = {
+        ryujinx.enable = true;
+        retroarch.enable = true;
+      };
       lutris.enable = false;
       misc.enable = true;
     };
