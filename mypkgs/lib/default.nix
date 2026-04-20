@@ -420,6 +420,18 @@ rec {
             + (optionalString submodules " --fetch-submodules")
             + " --url \"https://github.com/${owner}/${repo}\")"
           ) ".hash"}";
+
+        gitea =
+          { domain
+          , owner
+          , repo
+          , rev
+          , submodules ? false
+          }: "${importJSON' (
+            "$(${getExe nix-prefetch-git} --name source --rev \"${rev}\""
+            + (optionalString submodules " --fetch-submodules")
+            + " --url \"https://${domain}/${owner}/${repo}\")"
+          ) ".hash"}";
       };
 
     echo = val:

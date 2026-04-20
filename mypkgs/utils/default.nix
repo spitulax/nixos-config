@@ -7,6 +7,7 @@
 , jq
 , writeShellScript
 , fetchFromGitHub
+, fetchFromGitea
 , nix
 , coreutils
 , fetchzip
@@ -236,6 +237,54 @@ rec {
     updateScript;
 
   /*
+    A script that fetches the latest commit in a branch/tag or release from a Gitea repository.
+    See Notes about *VersionScript functions.
+
+    JSON output:
+      {
+        rev: The Git commit hash
+        version: The version will be generated based on the branch name and commit hash
+        orig_version: Propagate this.
+      }
+
+    Type: AttrSet -> Derivation
+  */
+  giteaVersionScript =
+    { domain
+    , owner
+    , repo
+    , ref             # The branch or tag name.
+    , dirname ? repo  # For identification only
+    }:
+    let
+      updateScript = writeShellScript "mypkgs-update-version-${dirname}" ''
+        set -euo pipefail
+
+        ${toShellVar "CURL" (getExe curl)}
+        ${toShellVar "DATE" "${coreutils}/bin/date"}
+        ${toShellVar "HEAD" "${coreutils}/bin/head"}
+
+        COMMITS=$($CURL -G 'https://${domain}/api/v1/repos/${owner}/${repo}/commits' -d 'sha=${ref}')
+        COMMIT=${importJSON "$COMMITS" ".[0]"}
+        REV=${importJSON "$COMMIT" ".sha"}
+        COMMIT_DATE=${importJSON "$COMMIT" ".commit.committer.date"}
+        DATE=$($DATE -d "$COMMIT_DATE" --utc '+%Y-%m-%d')
+        VERSION=$(printf '%s+ref=%s_%s' "$DATE" "${ref}" "$(echo "$REV" | "$HEAD" -c7)")
+        ORIG_VERSION="$REV"
+
+        ${exitIfNoNewVer "$ORIG_VERSION"}
+
+        ${serialiseJSON {
+          rev = "$REV";
+          version = "$VERSION";
+          orig_version = "$ORIG_VERSION";
+        }}
+      '';
+    in
+    updateScript;
+
+
+  /*
     A script that fetches the hash of a file from a url.
     See Notes about *VersionScript functions.
 
@@ -455,6 +504,66 @@ rec {
     in
     mkPkg {
       inherit updateScript dirname src version;
+    };
+
+  /*
+    Returns a `MypkgsPkg` fetched from a Gitea source from a commit in a branch/tag.
+    See Notes about *Pkg functions.
+    See also `giteaVersionScript`.
+
+    JSON output:
+      {
+        hash: The source's hash
+        rev: The commit hash
+        version: The version will be generated based on the branch name and commit hash
+        orig_version: Propagated from `GiteaVersionScript`
+      }
+
+    Type: AttrSet -> MypkgsPkg
+  */
+  giteaPkg =
+    { domain
+    , owner
+    , repo
+    , ref                 # The branch or tag name
+    , submodules ? false
+    , dirname ? repo
+    }:
+    let
+      pkgData = getPkgData dirname;
+      versionScript = giteaVersionScript {
+        inherit domain owner repo ref dirname;
+      };
+
+      src = fetchFromGitea {
+        inherit domain owner repo;
+        inherit (pkgData) hash rev;
+        fetchSubmodules = submodules;
+      };
+
+      updateScript = writeShellScript "mypkgs-update-gitea-${dirname}" ''
+        set -euo pipefail
+
+        VERSIONDATA=$(${versionScript} "$1")
+        REV=${importJSON "$VERSIONDATA" ".rev"}
+        VERSION=${importJSON "$VERSIONDATA" ".version"}
+        ORIG_VERSION=${importJSON "$VERSIONDATA" ".orig_version"}
+        HASH=${getHash.gitea {
+          inherit domain owner repo submodules;
+          rev = "$REV";
+        }}
+
+        ${serialiseJSON {
+          hash = "$HASH";
+          rev = "$REV";
+          version = "$VERSION";
+          orig_version = "$ORIG_VERSION";
+        }}
+      '';
+    in
+    mkPkg {
+      inherit (pkgData) version;
+      inherit src updateScript dirname;
     };
 
   /*
