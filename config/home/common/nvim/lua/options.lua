@@ -53,6 +53,7 @@ opt.undofile = true
 opt.updatetime = 250
 opt.whichwrap:append("<>[]hl")
 opt.mousemodel = "extend"
+opt.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 --- Global Plugin Options ---
 
@@ -63,6 +64,5 @@ g.loaded_ruby_provider = 0
 g.c_syntax_for_h = 1
 g.tmux_navigator_disable_when_zoomed = 1
 g.tmux_navigator_no_mappings = 1
-bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 -----------------------------
