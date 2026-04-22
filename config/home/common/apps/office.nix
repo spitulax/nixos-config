@@ -20,7 +20,7 @@ in
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
       home.packages = with pkgs; [
-        libreoffice-fresh
+        libreoffice
         hunspell
       ] ++ lib.optionals cfg.installSpellingDicts [
         mypkgs.hunspell-id
