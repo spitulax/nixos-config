@@ -139,7 +139,7 @@ let
       desc = "PHP";
       pkgs = [
         php
-        phpactor
+        intelephense
         mago
         composer
         laravel
@@ -186,6 +186,13 @@ let
       desc = "Miscellaneous";
       pkgs = [
         tokei
+      ];
+    };
+
+    api = {
+      desc = "API Testing";
+      pkgs = [
+        bruno
       ];
     };
   };

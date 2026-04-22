@@ -122,9 +122,10 @@ in
       make.enable = true;
       text.enable = true;
       misc.enable = true;
-      php.enable = false;
+      php.enable = true;
       javascript.enable = true;
       flutter.enable = true;
+      api.enable = true;
     };
 
     gaming = {
