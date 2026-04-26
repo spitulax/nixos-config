@@ -73,7 +73,6 @@ in
       cliphist.enable = mkDefault true;
       gammastep.enable = mkDefault true;
       screenshot.enable = mkDefault true;
-      udiskie.enable = mkDefault true;
       brightness.enable = mkDefault true;
       volume.enable = mkDefault true;
       mako.enable = mkDefault true;

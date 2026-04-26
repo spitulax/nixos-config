@@ -24,7 +24,7 @@ in
     ./kvantum.nix
     ./qt.nix
     ./screenshot.nix
-    ./udiskie.nix
+    # ./udiskie.nix
     ./volume.nix
     ./warn-low-battery.nix
   ];
