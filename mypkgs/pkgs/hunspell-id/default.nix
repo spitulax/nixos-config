@@ -33,7 +33,7 @@ mkDict (
   (gitHubPkg {
     owner = "shuLhan";
     repo = "hunspell-id";
-    ref = "dev";
+    ref = "main";
   }) // {
     pname = "hunspell-dict-id-id";
     dictFileName = "id_ID";

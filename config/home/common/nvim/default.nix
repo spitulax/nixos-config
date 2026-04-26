@@ -17,6 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.neovim = {
       enable = true;
+      sideloadInitLua = true;
       withNodeJs = false;
       withPython3 = true;
       withRuby = false;

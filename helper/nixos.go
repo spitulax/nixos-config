@@ -9,11 +9,13 @@ import (
 type NixosOpts struct {
 	debug *bool
 	abortOnWarn *bool
+	swtch *bool
 }
 
 func NewNixosOpts(f *flag.FlagSet) (o NixosOpts) {
 	o.debug = f.Bool("debug", false, "Add --show-trace option")
 	o.abortOnWarn = f.Bool("abort-on-warn", false, "Abort when encountering warning, useful for tracking the source of the warning")
+	o.swtch = f.Bool("switch", false, "Activate the new configuration immediately")
 	return o
 }
 
@@ -37,7 +39,7 @@ func (s SubcommandNixos) Usage() string {
 }
 
 func (s SubcommandNixos) Run() error {
-	if err := NixosEx(*s.debug, *s.abortOnWarn); err != nil {
+	if err := NixosEx(*s.debug, *s.abortOnWarn, *s.swtch); err != nil {
 		return err
 	}
 	return nil
@@ -53,10 +55,10 @@ func (s SubcommandNixos) Parse(args []string) {
 }
 
 func Nixos(debug bool) error {
-	return NixosEx(debug, false)
+	return NixosEx(debug, false, false)
 }
 
-func NixosEx(debug bool, abortOnWarn bool) error {
+func NixosEx(debug bool, abortOnWarn bool, swtch bool) error {
 	fmt.Println("\033[1;34mBuilding system config...\033[0m")
 
 	debugOpts := ""
@@ -67,7 +69,12 @@ func NixosEx(debug bool, abortOnWarn bool) error {
 		debugOpts = " -- --option abort-on-warn true --show-trace"
 	}
 
-	if err := Run(fmt.Sprintf("nh os switch%s", debugOpts)); err != nil {
+	subcommand := "boot"
+	if swtch {
+		subcommand = "switch"
+	}
+
+	if err := Run(fmt.Sprintf("nh os %s%s", subcommand, debugOpts)); err != nil {
 		return err
 	}
 

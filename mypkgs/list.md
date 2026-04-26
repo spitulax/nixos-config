@@ -9,7 +9,7 @@
 | **crt** | 0.2.0+date=2024-12-31_3d4837a | Yes | Yes | [🌐](https://github.com/spitulax/crt) |
 | **gplates** | 2.5 | No | Yes | [🌐](https://www.gplates.org) |
 | **gripper** | 1.2.2+date=2025-01-17_6c4628c | Yes | Yes | [🌐](https://github.com/spitulax/gripper) |
-| **hunspell-id** | 2024-11-26+ref=dev_a44e8c3 | Yes | Yes | [🌐](https://github.com/shuLhan/hunspell-id) |
+| **hunspell-id** | 2026-04-09+ref=main_5939c33 | Yes | Yes | [🌐](https://github.com/shuLhan/hunspell-id) |
 | **lexurgy** | 1.7.5 | Yes | Yes | [🌐](https://github.com/def-gthill/lexurgy) |
 | **mcpelauncher-client** | 1.6.5-qt6 | No | No | [🌐](https://minecraft-linux.github.io) |
 | **mcpelauncher-ui-qt** | 1.6.5-qt6 | No | No | [🌐](https://minecraft-linux.github.io) |
