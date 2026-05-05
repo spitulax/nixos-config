@@ -42,6 +42,13 @@ let
       ];
     };
 
+    devenv = {
+      desc = "devenv";
+      pkgs = [
+        devenv
+      ];
+    };
+
     flutter = {
       desc = "Flutter";
       pkgs = [

@@ -47,7 +47,7 @@
     perf.enable = true;
     docker.enable = false;
     keyd.enable = true;
-    sql.enable = false;
+    sql.enable = true;
     hotspot.enable = true;
   };
 

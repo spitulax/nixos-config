@@ -126,6 +126,7 @@ in
       javascript.enable = true;
       flutter.enable = true;
       api.enable = true;
+      devenv.enable = true;
     };
 
     gaming = {

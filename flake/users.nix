@@ -13,6 +13,8 @@
       "wireshark"
       "docker"
       "mysql"
+      "dialout"
+      "tty"
     ];
   };
 }

@@ -391,7 +391,7 @@ in
       order += "wireless wlp1s0"
       order += "battery 0"
       order += "load"
-      order += "cpu_temperature 0"
+      #order += "cpu_temperature 0"
       order += "memory"
       order += "time"
       order += "tztime utc"
@@ -422,8 +422,8 @@ in
 
       load {
           format = "[C] %1min"
-          separator = false
-          separator_block_width = 0
+          #separator = false
+          #separator_block_width = 0
       }
       cpu_temperature 0 {
           format = " %degrees°C"
