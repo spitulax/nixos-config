@@ -14,7 +14,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.kitty = {
       enable = true;
-      font.size = 12.0;
+      font.size = 16.0;
       font.name = "monospace";
       settings = {
         # Scrollback
