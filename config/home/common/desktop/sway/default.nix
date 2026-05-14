@@ -126,10 +126,10 @@ in
             # Core
             "--no-repeat ${mod}+alt+q" = "exit";
             "--no-repeat ${mod}+alt+r" = "reload";
-            "--no-repeat ${mod}+alt+z" = "exec ${runner.swaylock}";
-            "--no-repeat ${mod}+alt+x" = "exec ${runner.poweroff}";
+            "--no-repeat ${mod}+z" = "exec ${runner.swaylock}";
+            "--no-repeat ${mod}+x" = "exec ${runner.poweroff}";
             # Workspace
-            "--no-repeat ${mod}+x" = "layout toggle split";
+            "--no-repeat ${mod}+shift+m" = "layout toggle split";
             "--no-repeat ${mod}+m" = "layout toggle split tabbed";
             "--no-repeat ${mod}+comma" = "workspace prev";
             "--no-repeat ${mod}+period" = "workspace next";
@@ -150,6 +150,8 @@ in
             "--no-repeat ${mod}+j" = "focus down";
             "--no-repeat ${mod}+k" = "focus up";
             "--no-repeat ${mod}+l" = "focus right";
+            "--no-repeat ${mod}+a" = "focus prev";
+            "--no-repeat ${mod}+d" = "focus next";
             "--no-repeat ${mod}+shift+1" = "move container to workspace 1";
             "--no-repeat ${mod}+shift+2" = "move container to workspace 2";
             "--no-repeat ${mod}+shift+3" = "move container to workspace 3";
