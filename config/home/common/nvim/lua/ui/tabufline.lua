@@ -32,7 +32,7 @@ local modules = {
 }
 
 return {
-  enabled = true,
+  enabled = false,
   lazyload = false,
   order = { "tablist", "bufname" },
   modules = modules,

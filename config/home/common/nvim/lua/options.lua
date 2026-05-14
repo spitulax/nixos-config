@@ -54,6 +54,7 @@ opt.updatetime = 250
 opt.whichwrap:append("<>[]hl")
 opt.mousemodel = "extend"
 opt.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+opt.showtabline = 0
 
 --- Global Plugin Options ---
 

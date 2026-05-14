@@ -304,12 +304,12 @@ return {
       },
       {
         desc = "Go to next tab",
-        lhs = "<M-.>",
+        lhs = "<M-f>",
         rhs = "gt",
       },
       {
         desc = "Go to previous tab",
-        lhs = "<M-,>",
+        lhs = "<M-b>",
         rhs = "gT",
       },
     },

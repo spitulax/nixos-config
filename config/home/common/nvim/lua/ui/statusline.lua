@@ -1,22 +1,37 @@
 local utils = require("nvchad.stl.utils")
 
 local modules = {
+  tablist = function()
+    local result, tabs = "", vim.fn.tabpagenr("$")
+
+    for nr = 1, tabs, 1 do
+      local tab_hl = "Tabs" .. (nr == vim.fn.tabpagenr() and "On" or "")
+      result = result .. "%#" .. tab_hl .. "#" .. nr .. " "
+    end
+
+    return "%#Tabs# " .. result .. "%#StText#"
+  end,
+
   file = function()
     local x = utils.file()
     local name = "  " .. x[2] .. " "
     local is_modified = vim.bo[utils.stbufnr()].modified
-    return "  %#StText#" .. x[1] .. name .. (is_modified and "  " or "")
+    return " %#StText#" .. x[1] .. name .. (is_modified and "  " or "")
   end,
+
   cursor_position = function()
     return "%#StText# %l:%c (%P)  "
   end,
+
   eol_type = function()
     return vim.bo[utils.stbufnr()].ff .. "  "
   end,
+
   filetype = function()
     local ft = vim.bo[utils.stbufnr()].ft
     return ft == "" and "plain text  " or ft .. "  "
   end,
+
   lsp_status = function()
     if rawget(vim, "lsp") and vim.version().minor >= 10 then
       for _, client in ipairs(vim.lsp.get_clients()) do
@@ -27,15 +42,18 @@ local modules = {
     end
     return ""
   end,
+
   cwd = function()
     ---@diagnostic disable-next-line: undefined-field
     local name = vim.uv.cwd()
     name = "%#st_mode# 󰉖 " .. (name:match("([^/\\]+)[/\\]*$") or name) .. " "
     return name
   end,
+
   diagnostics_enabled = function()
     return vim.diagnostic.is_enabled() and "" or " 󰩂󰍶  "
   end,
+
   autoformat_enabled = function()
     return vim.g.disable_autoformat and " 󰉼󰍶  " or ""
   end,
@@ -45,6 +63,7 @@ return {
   theme = "vscode",
   separator_style = "block",
   order = {
+    "tablist",
     "file",
     "git",
     "%=",

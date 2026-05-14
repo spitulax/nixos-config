@@ -41,6 +41,8 @@ M.add = {
   TbBufname = { link = "StText" },
   TabLineFill = { link = "TbFill" },
   SpecialChar = { link = "Special" },
+  Tabs = { bg = "one_bg2" },
+  TabsOn = { bg = "one_bg2", fg = "blue" },
 
   NeogitDiffContext = { bg = "black2" },
   NeogitDiffContextCursor = { bg = "black2" },
