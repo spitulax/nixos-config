@@ -15,7 +15,6 @@
           pkgs = final;
           inherit myLib lib;
           inherit (self) callPackage;
-          inherit (final) system;
         } // final)).callPackage;
 
     # inputs.<flake>.packages|legacyPackages.<pkgs.system> or inputs.<flake> -> pkgs.inputs.<flake>
@@ -23,8 +22,8 @@
       builtins.mapAttrs
         (_: flake:
           let
-            legacyPackages = (flake.legacyPackages or { }).${final.system} or { };
-            packages = (flake.packages or { }).${final.system} or { };
+            legacyPackages = (flake.legacyPackages or { }).${final.stdenv.hostPlatform.system} or { };
+            packages = (flake.packages or { }).${final.stdenv.hostPlatform.system} or { };
             self = flake;
           in
           if packages != { }
@@ -37,7 +36,7 @@
 
     tempPkgs =
       builtins.mapAttrs
-        (_: pkgs: pkgs.${final.system})
+        (_: pkgs: pkgs.${final.stdenv.hostPlatform.system})
         tempPkgsFor;
 
     # Helper functions
