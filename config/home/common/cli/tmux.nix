@@ -59,8 +59,8 @@ in
         set -g renumber-windows on
         set -g status-interval 1
 
-        bind -n M-H previous-window
-        bind -n M-L next-window
+        bind -n M-A previous-window
+        bind -n M-D next-window
         bind C-l send-keys 'C-l'
         bind C-k kill-session
 
