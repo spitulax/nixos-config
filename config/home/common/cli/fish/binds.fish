@@ -109,43 +109,48 @@ end
 
 ### KEYBINDINGS ###
 
-for mode in default insert
-  bind --mode $mode ! __history_previous_command
-  bind --mode $mode '$' __history_previous_command_arguments
-  bind --mode $mode \ca "__run_cmdline -n cdi"
-  bind --mode $mode \cs "__run_cmdline cdh"
-  bind --mode $mode \cz "__run_cmdline -n cd -"
-  bind --mode $mode \cx "__run_cmdline -n cd .."
-  bind --mode $mode \cf "__run_cmdline fg"
-  bind --mode $mode \cj "__run_cmdline jobs"
-  bind --mode $mode \cq exit
-  bind --mode $mode \cc __delete_prompt
-  bind --mode $mode \cp "__run_from_prompt -p '\$prompt &| $(eval __fish_anypager)'"
-  bind --mode $mode \ea __prev_command
-  bind --mode $mode \et "__run_from_prompt -t 'builtin type \$prompt'"
-  bind --mode $mode \eq __get_help
+bind ! __history_previous_command
+bind '$' __history_previous_command_arguments
+bind alt-a "__run_cmdline -n cdi"
+bind alt-shift-s "__run_cmdline cdh"
+bind alt-shift-z "__run_cmdline -n cd -"
+bind alt-shift-x "__run_cmdline -n cd .."
+bind alt-shift-f "__run_cmdline fg"
+bind alt-shift-j "__run_cmdline jobs"
+bind ctrl-q 'pkill .wl-copy; exit'
+bind ctrl-c __delete_prompt
+bind alt-shift-p "__run_from_prompt -p '\$prompt &| $(eval __fish_anypager)'"
+bind alt-shift-a __prev_command
+bind alt-t "__run_from_prompt -t 'builtin type \$prompt'"
+bind alt-q __get_help
 
-  if command -q yazi
-    bind --mode $mode \cy yy
-  end
+# if command -q yazi
+#   bind ctrl-y yy
+# end
 
-  if command -q tldr
-    bind --mode $mode \eh "__run_from_prompt 'tldr \$prompt'"
-  end
-
-  # fzf.fish
-  bind --mode $mode \e\ce __fzf_edit_file
-  # ctrl-alt-f - files
-  # ctrl-alt-l - git log
-  # ctrl-alt-s - git status
-  # ctrl-alt-p - processes
-  # ctrl-v     - variable
-
-  # atuin
-  if command -q atuin
-    bind --mode $mode \cr _atuin_search
-    bind --mode $mode \er _atuin_bind_up
-  end
+if command -q tldr
+  bind alt-h "__run_from_prompt 'tldr \$prompt'"
 end
+
+# fzf.fish
+bind alt-ctrl-e __fzf_edit_file
+# ctrl-alt-f - files
+# ctrl-alt-l - git log
+# ctrl-alt-s - git status
+# ctrl-alt-p - processes
+# ctrl-v     - variable
+
+# atuin
+if command -q atuin
+  bind ctrl-r _atuin_search
+  bind alt-r _atuin_bind_up
+end
+
+# selection
+bind ctrl-space begin-selection
+bind alt-space end-selection
+bind alt-ctrl-w 'fish_clipboard_copy; commandline -f kill-selection; commandline -f end-selection'
+bind alt-w 'fish_clipboard_copy; end-selection'
+bind ctrl-y fish_clipboard_paste
 
 ######

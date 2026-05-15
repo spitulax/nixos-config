@@ -61,7 +61,6 @@ in
           auto_sync = false;
           update_check = false;
           sync_address = "";
-          keymap_mode = "vim-insert";
           show_preview = true;
           show_help = false;
           enter_accept = false;
@@ -110,10 +109,10 @@ in
             format = "$symbol ";
             success_symbol = "[](bold green)";
             error_symbol = "[](bold red)";
-            vimcmd_symbol = "[󰄾](bold green)";
-            vimcmd_replace_one_symbol = "[󰄾](bold yellow)";
-            vimcmd_replace_symbol = "[󰄾](bold yellow)";
-            vimcmd_visual_symbol = "[󰄾](bold blue)";
+            # vimcmd_symbol = "[󰄾](bold green)";
+            # vimcmd_replace_one_symbol = "[󰄾](bold yellow)";
+            # vimcmd_replace_symbol = "[󰄾](bold yellow)";
+            # vimcmd_visual_symbol = "[󰄾](bold blue)";
             disabled = false;
           };
 

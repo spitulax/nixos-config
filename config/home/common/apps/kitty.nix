@@ -16,6 +16,7 @@ in
       enable = true;
       font.size = 16.0;
       font.name = "monospace";
+      shellIntegration.mode = "no-cursor";
       settings = {
         # Scrollback
         scrollback_indicator_opacity = 0;

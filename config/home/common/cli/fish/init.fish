@@ -2,28 +2,32 @@
 
 # Change fish intro
 function fish_greeting
-  set_color -o blue
-  echo '-*-   Welcome back! -*-'
-  if command -q crt
-    if command -q atuin
-      crt atuin --verbose
-    else
-      crt fish --verbose
-    end
-  end
-  set_color normal
-  echo
+  # set_color -o blue
+  # echo '-*-   Welcome back! -*-'
+  # if command -q crt
+  #   if command -q atuin
+  #     crt atuin --verbose
+  #   else
+  #     crt fish --verbose
+  #   end
+  # end
+  # set_color normal
+  # echo
 end
 
 # Vi mode
-fish_vi_key_bindings
+# fish_vi_key_bindings
 
-# Cursor appearance indicates mode
-set fish_cursor_default     block      blink
-set fish_cursor_insert      line       blink
-set fish_cursor_replace_one underscore blink
-set fish_cursor_visual      block
-set -g fish_vi_force_cursor 1 # Set this to force cursor shape in tmux
+# Emacs mode
+fish_default_key_bindings
+set -g fish_cursor_selection_mode inclusive
+
+# Cursor appearance indicates mode (Vi mode)
+# set -g fish_cursor_default     block      blink
+# set fish_cursor_insert      line       blink
+# set fish_cursor_replace_one underscore blink
+# set fish_cursor_visual      block
+# set -g fish_vi_force_cursor 1 # Set this to force cursor shape in tmux
 
 # Atuin
 if command -q atuin
