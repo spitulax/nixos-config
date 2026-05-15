@@ -10,22 +10,22 @@ return {
         lhs = "<C-s>",
         rhs = "<cmd>w<CR>",
       },
-    },
-    n = {
       {
-        desc = "Clear highlights",
-        lhs = "<Esc>",
-        rhs = "<cmd>noh<CR>",
+        desc = "Close Neovim",
+        lhs = "<leader>q",
+        rhs = "<cmd>qa<cr>",
       },
       {
         desc = "Reload highlights",
         lhs = "<leader>rt",
         rhs = require("base46").load_all_highlights,
       },
+    },
+    n = {
       {
-        desc = "Close Neovim",
-        lhs = "<leader>Q",
-        rhs = "<cmd>qa<cr>",
+        desc = "Clear highlights",
+        lhs = "<Esc>",
+        rhs = "<cmd>noh<CR>",
       },
     },
   },
