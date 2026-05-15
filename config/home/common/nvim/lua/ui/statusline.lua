@@ -14,9 +14,9 @@ local modules = {
 
   file = function()
     local x = utils.file()
-    local name = "  " .. x[2] .. " "
+    local name = x[2]
     local is_modified = vim.bo[utils.stbufnr()].modified
-    return " %#StText#" .. x[1] .. name .. (is_modified and "  " or "")
+    return " %#StText#" .. name .. (is_modified and "  " or " ")
   end,
 
   cursor_position = function()
