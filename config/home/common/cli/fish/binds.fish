@@ -150,7 +150,8 @@ end
 bind ctrl-space begin-selection
 bind alt-space end-selection
 bind alt-ctrl-w 'fish_clipboard_copy; commandline -f kill-selection; commandline -f end-selection'
-bind alt-w 'fish_clipboard_copy; end-selection'
+bind alt-w 'fish_clipboard_copy; commandline -f end-selection'
 bind ctrl-y fish_clipboard_paste
+bind alt-y yank
 
 ######
