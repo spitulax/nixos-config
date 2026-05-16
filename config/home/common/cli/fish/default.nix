@@ -25,9 +25,7 @@ in
     zoxide = mkEnableOption "zoxide" // {
       default = true;
     };
-    crt = mkEnableOption "Commands Run Today" // {
-      default = true;
-    };
+    crt = mkEnableOption "Commands Run Today";
   };
 
   config = mkMerge [

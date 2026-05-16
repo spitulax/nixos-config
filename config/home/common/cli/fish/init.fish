@@ -20,7 +20,7 @@ end
 
 # Emacs mode
 fish_default_key_bindings
-set -g fish_cursor_selection_mode inclusive
+set -g fish_cursor_selection_mode exclusive
 
 # Cursor appearance indicates mode (Vi mode)
 # set -g fish_cursor_default     block      blink

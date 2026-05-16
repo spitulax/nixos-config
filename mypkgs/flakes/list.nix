@@ -4,12 +4,12 @@
 }:
 let
   inherit (myLib.drv)
-    unmaintain
+    ignore
     ;
 in
 {
   # KEEP THE LIST ALPHABETICALLY SORTED!
-  crt = callPackage ./crt { };
+  crt = ignore (callPackage ./crt { });
   gripper = callPackage ./gripper { };
   pasteme = callPackage ./pasteme { };
 }

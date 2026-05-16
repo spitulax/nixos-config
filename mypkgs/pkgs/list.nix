@@ -12,7 +12,7 @@ let
 in
 rec {
   # KEEP THE LIST ALPHABETICALLY SORTED!
-  crt = getByName' "crt";
+  crt = ignore (getByName' "crt");
   gplates = uncache (callPackage ./gplates { });
   gripper = getByName "gripper";
   hunspell-id = callPackage ./hunspell-id { };
