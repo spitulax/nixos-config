@@ -10,12 +10,18 @@
         Policy = {
           AutoEnable = false;
         };
+        General = {
+          Experimental = true;
+        };
       };
     };
     environment.etc."bluetooth/audio.conf".text = ''
       [General]
       Enable=Source
     '';
-    services.blueman.enable = true;
+    services.blueman = {
+      enable = true;
+      withApplet = false;
+    };
   };
 }
