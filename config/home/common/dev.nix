@@ -203,6 +203,10 @@ let
       ];
     };
   };
+
+  devScript = pkgs.writeShellScriptBin "dev" ''
+    nix develop $@ --command tmuxs
+  '';
 in
 {
   options.configs.dev = packages.mkOptions {
@@ -213,7 +217,9 @@ in
   config = lib.mkMerge [
     {
       home = {
-        packages = packages.mkConfig { inherit modules cfg; };
+        packages =
+          packages.mkConfig { inherit modules cfg; }
+          ++ [ devScript ];
       };
     }
 
