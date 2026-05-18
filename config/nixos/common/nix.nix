@@ -91,9 +91,8 @@ in
       nix-path = config.nix.nixPath; # This is a working alternative to nix.nixPath
     };
     gc = {
-      automatic = true;
+      automatic = false;
       dates = "weekly";
-      options = "--delete-older-than +3";
     };
   };
 
