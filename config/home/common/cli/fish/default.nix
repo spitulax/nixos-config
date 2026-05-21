@@ -65,6 +65,7 @@ in
           show_tabs = false;
           style = "compact";
           filter_mode_shell_up_key_binding = "session";
+          logs.dir = "${config.xdg.stateHome}/atuin/logs";
         };
       };
     })
