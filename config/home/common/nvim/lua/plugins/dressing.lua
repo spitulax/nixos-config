@@ -13,10 +13,10 @@ return {
         default_prompt = "Input: ",
         title_pos = "center",
         insert_only = false,
-        start_in_insert = true,
+        start_mode = "insert",
         border = "rounded",
         relative = "editor",
-        prefer_width = 0.8,
+        prefer_width = 0.999,
         mappings = {
           n = {
             ["<Esc>"] = "Close",

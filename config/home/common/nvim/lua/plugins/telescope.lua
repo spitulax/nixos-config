@@ -16,17 +16,20 @@ return {
   opts = function()
     return {
       defaults = {
+        previewer = false,
         prompt_prefix = "   ",
         selection_caret = " ",
         entry_prefix = " ",
         sorting_strategy = "ascending",
+        layout_strategy = "horizontal",
         layout_config = {
           horizontal = {
+            anchor = "S",
             prompt_position = "top",
-            preview_width = 0.55,
+            preview_width = 0.4,
           },
-          width = 0.87,
-          height = 0.80,
+          height = 0.6,
+          width = 0.999,
         },
         mappings = {
           n = { ["q"] = require("telescope.actions").close },
@@ -88,21 +91,6 @@ return {
             rhs = "<cmd>Telescope highlights<cr>",
           },
           {
-            desc = "Git commits",
-            lhs = "<leader>gc",
-            rhs = "<cmd>Telescope git_commits<cr>",
-          },
-          {
-            desc = "Git branches",
-            lhs = "<leader>gb",
-            rhs = "<cmd>Telescope git_branches<cr>",
-          },
-          {
-            desc = "Git stash",
-            lhs = "<leader>gs",
-            rhs = "<cmd>Telescope git_stash<cr>",
-          },
-          {
             desc = "Find oldfiles",
             lhs = "<leader>fo",
             rhs = "<cmd>Telescope oldfiles<cr>",
@@ -126,6 +114,11 @@ return {
             desc = "Find all files",
             lhs = "<leader>fa",
             rhs = "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>",
+          },
+          {
+            desc = "Suggest spellings",
+            lhs = "<leader>fs",
+            rhs = "<cmd>Telescope spell_suggest<cr>",
           },
         },
       },
