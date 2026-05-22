@@ -6,7 +6,7 @@
 
 | **Name** | **Version** | **Cached** | **Maintained** | **Homepage** |
 | :-: | :-: | :-: | :-: | :-: |
-| **crt** | 0.2.0+date=2024-12-31_3d4837a | Yes | Yes | [🌐](https://github.com/spitulax/crt) |
+| **crt** | 0.2.0+date=2024-12-31_3d4837a | No | No | [🌐](https://github.com/spitulax/crt) |
 | **gplates** | 2.5 | No | Yes | [🌐](https://www.gplates.org) |
 | **gripper** | 1.2.2+date=2025-01-17_6c4628c | Yes | Yes | [🌐](https://github.com/spitulax/gripper) |
 | **hunspell-id** | 2026-04-09+ref=main_5939c33 | Yes | Yes | [🌐](https://github.com/shuLhan/hunspell-id) |
@@ -27,6 +27,6 @@
 
 | **Name** | **Rev** | **Maintained** | **Homepage** |
 | :-: | :-: | :-: | :-: |
-| **crt** | 3d4837a7f8d51f6972cdf3626867544e774f1965 | Yes | [🌐](https://github.com/spitulax/crt) |
+| **crt** | 3d4837a7f8d51f6972cdf3626867544e774f1965 | No | [🌐](https://github.com/spitulax/crt) |
 | **gripper** | 6c4628cdbc0bcceb2b7d38110202c2a0be3813d8 | Yes | [🌐](https://github.com/spitulax/gripper) |
 | **pasteme** | 0da523322ec9f6ac2c62d2c3ec7fd54d56a624b3 | Yes | [🌐](https://github.com/spitulax/pasteme) |
