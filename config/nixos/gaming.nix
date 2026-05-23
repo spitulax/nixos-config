@@ -17,11 +17,17 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    configs.steam.enable = lib.mkDefault true;
+
     # Gamemode
     programs.gamemode = {
       enable = true;
       settings.general.renice = 15;
     };
+
+    environment.systemPackages = with pkgs; [
+      gamescope
+    ];
 
     # Gaming Kernel
     boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;

@@ -11,6 +11,7 @@ in
     ./emulators
     ./games.nix
     ./lutris.nix
+    ./steam.nix
   ];
 
   options.configs.gaming.misc.enable = lib.mkEnableOption "miscellaneous packages";
@@ -18,7 +19,6 @@ in
   config = lib.mkIf cfg.misc.enable {
     home.packages = with pkgs; [
       mangohud
-      gamescope
     ];
   };
 }

@@ -77,6 +77,7 @@ in
       volume.enable = mkDefault true;
       mako.enable = mkDefault true;
       tofi.enable = mkDefault true;
+      polkitAgent.enable = mkDefault true;
     };
 
     home.packages = with pkgs; [

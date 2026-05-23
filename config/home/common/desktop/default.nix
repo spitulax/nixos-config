@@ -22,6 +22,7 @@ in
     ./gammastep.nix
     ./gtk.nix
     ./kvantum.nix
+    ./polkit-agent.nix
     ./qt.nix
     ./screenshot.nix
     # ./udiskie.nix

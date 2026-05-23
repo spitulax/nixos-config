@@ -130,6 +130,7 @@ in
     };
 
     gaming = {
+      steam.enable = true;
       games = {
         osu.enable = false;
         mcpe.enable = false;
