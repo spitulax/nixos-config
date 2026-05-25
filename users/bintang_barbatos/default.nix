@@ -137,7 +137,7 @@ in
         minecraft.enable = false;
       };
       emulators = {
-        ryujinx.enable = false;
+        switch.enable = false;
         retroarch.enable = true;
       };
       lutris.enable = false;

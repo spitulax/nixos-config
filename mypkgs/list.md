@@ -7,6 +7,7 @@
 | **Name** | **Version** | **Cached** | **Maintained** | **Homepage** |
 | :-: | :-: | :-: | :-: | :-: |
 | **crt** | 0.2.0+date=2024-12-31_3d4837a | No | No | [🌐](https://github.com/spitulax/crt) |
+| **eden** | 2026-05-23+ref=master_0d736d4 | No | No | [🌐](https://eden-emu.dev/) |
 | **gplates** | 2.5 | No | Yes | [🌐](https://www.gplates.org) |
 | **gripper** | 1.2.2+date=2025-01-17_6c4628c | Yes | Yes | [🌐](https://github.com/spitulax/gripper) |
 | **hunspell-id** | 2026-04-09+ref=main_5939c33 | Yes | Yes | [🌐](https://github.com/shuLhan/hunspell-id) |

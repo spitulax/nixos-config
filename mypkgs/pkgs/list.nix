@@ -13,6 +13,7 @@ in
 rec {
   # KEEP THE LIST ALPHABETICALLY SORTED!
   crt = ignore (getByName' "crt");
+  eden = ignore (callPackage ./eden { });
   gplates = uncache (callPackage ./gplates { });
   gripper = getByName "gripper";
   hunspell-id = callPackage ./hunspell-id { };
