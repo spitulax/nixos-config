@@ -134,7 +134,7 @@ in
       games = {
         osu.enable = false;
         mcpe.enable = false;
-        minecraft.enable = false;
+        minecraft.enable = true;
       };
       emulators = {
         switch.enable = false;
