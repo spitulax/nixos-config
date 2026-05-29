@@ -78,11 +78,30 @@ let
           ${coreutils}/bin/ln -s ''${SCRIPTS[$name]} $out/$name
         done
       '';
+
+  listMaintainedScripts = packages:
+    let
+      scripts = mapAttrs'
+        (_: v: nameValuePair v.passthru.dirname v.passthru.mypkgsUpdateScript)
+        (filterAttrs
+          (_: v: v.passthru ? mypkgsUpdateScript && v.passthru.mypkgsUpdateScript != null)
+          packages);
+    in
+    runCommand
+      "mypkgs-pkgs-list-maintained-scripts"
+      { }
+      ''
+        touch $out
+        ${toShellVar "SCRIPTS" scripts}
+        for name in "''${!SCRIPTS[@]}"; do
+          echo "$name" >> $out
+        done
+      '';
 in
 rec {
   # Before adding packages from a flake, make sure the flake.json file for the flake already exists.
   packages = import ./list.nix scope;
 
-  update-scripts = updateScripts (drv.maintained packages);
-  update-scripts-all = updateScripts packages;
+  update-scripts = updateScripts (drv.updateable packages);
+  list-maintained-scripts = listMaintainedScripts (drv.maintained packages);
 }

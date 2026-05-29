@@ -92,6 +92,7 @@ func Upscript(opts UpscriptOpts) error {
 	if buildFlakes {
 		var flakesScripts string
 		var flakes []string
+		_ = flakesScripts
 
 		fmt.Println("Building `flakes-update-scripts`...")
 		var drvErr error
@@ -103,11 +104,16 @@ func Upscript(opts UpscriptOpts) error {
 		if *opts.flakes != "" {
 			flakes = SplitAndTrim(*opts.flakes, ",")
 		} else if !relyOnOpts {
-			var err error
-			flakes, err = ReadDir(flakesScripts)
-			if err != nil {
-				return err
+			var scriptListFile string
+			scriptListFile, drvErr = NixBuild(".#flakes-list-maintained-scripts")
+			if drvErr != nil {
+				return drvErr
 			}
+			scriptList, scriptListErr := os.ReadFile(scriptListFile)
+			if scriptListErr != nil {
+				return errors.Join(scriptListErr, fmt.Errorf("Upscript(): Failed to read `%s`", scriptListFile))
+			}
+			flakes = SplitAndTrim(string(scriptList), "\n")
 		}
 
 		fmt.Printf("\033[1;32mRunning %d flake update scripts...\033[0m\n", len(flakes))
@@ -119,6 +125,7 @@ func Upscript(opts UpscriptOpts) error {
 	if buildPkgs {
 		var pkgsScripts string
 		var pkgs []string
+		_ = pkgsScripts
 
 		fmt.Println("Building `pkgs-update-scripts`...")
 		var drvErr error
@@ -130,11 +137,16 @@ func Upscript(opts UpscriptOpts) error {
 		if *opts.pkgs != "" {
 			pkgs = SplitAndTrim(*opts.pkgs, ",")
 		} else if !relyOnOpts {
-			var err error
-			pkgs, err = ReadDir(pkgsScripts)
-			if err != nil {
-				return err
+			var scriptListFile string
+			scriptListFile, drvErr = NixBuild(".#pkgs-list-maintained-scripts")
+			if drvErr != nil {
+				return drvErr
 			}
+			scriptList, scriptListErr := os.ReadFile(scriptListFile)
+			if scriptListErr != nil {
+				return errors.Join(scriptListErr, fmt.Errorf("Upscript(): Failed to read `%s`", scriptListFile))
+			}
+			pkgs = SplitAndTrim(string(scriptList), "\n")
 		}
 
 		fmt.Printf("\033[1;32mRunning %d package update scripts...\033[0m\n", len(pkgs))

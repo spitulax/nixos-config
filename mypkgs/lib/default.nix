@@ -139,6 +139,30 @@ rec {
     maintained = ds: filterAttrs (_: isMaintained) ds;
 
     /*
+      Determines if a package or flake is able to be updated.
+      Updateable packages or flakes will have their update script be built, but
+      not necessarily be run on every update.
+
+      Inputs:
+        - `d`: The package or flake
+
+      Type: AttrSet -> Bool
+    */
+    isUpdateable = d: !(d ? _notUpdateable && d._notUpdateable);
+
+    /*
+      Gets packages or flakes that have built update script or not from a set of packages or flakes.
+      See `isUpdateable`.
+
+      Inputs:
+        - `ds`: Attribute set of packages or flakes
+
+      Type: AttrSet -> AttrSet
+    */
+    unupdateable = ds: filterAttrs (_: v: !isUpdateable v) ds;
+    updateable = ds: filterAttrs (_: isUpdateable) ds;
+
+    /*
       Mark a package as not cached.
       See `isCached`.
 
@@ -161,15 +185,37 @@ rec {
     unmaintain = d: d // { _notMaintained = true; };
 
     /*
-      Mark a package as both not maintained and not cached.
-      See `isCached` and `isMaintained`.
+      Mark a package or flake as not updateable.
+      See `isUpdateable`.
+
+      Inputs:
+        - `d`: The package or flake
+
+      Type: AttrSet -> AttrSet
+    */
+    unupdated = d: d // { _notUpdateable = true; };
+
+    /*
+      Mark a package as not maintained, cached, nor updateable.
+      See `isCached`, `isMaintained`, and `isUpdateable`.
 
       Inputs:
         - `d`: The package
 
       Type: AttrSet -> AttrSet
     */
-    ignore = d: d // { _notCached = true; _notMaintained = true; };
+    ignore = d: d // { _notCached = true; _notMaintained = true; _notUpdateable = true; };
+
+    /*
+      Mark a package as not maintained or cached, but updateable.
+      See `isCached`, `isMaintained`, and `isUpdateable`.
+
+      Inputs:
+        - `d`: The package
+
+      Type: AttrSet -> AttrSet
+    */
+    ignoreUpdateable = d: d // { _notCached = true; _notMaintained = true; };
   };
 
   helpers = {

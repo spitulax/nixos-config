@@ -93,6 +93,10 @@
             pkgs-update-scripts = packages.update-scripts;
             flakes-update-scripts = flakes.update-scripts;
 
+            # List of scripts that will be run on every update.
+            pkgs-list-maintained-scripts = packages.list-maintained-scripts;
+            flakes-list-maintained-scripts = flakes.list-maintained-scripts;
+
             # Lists packages in a form of a Markdown table for documentation.
             mypkgs-list = pkgs.callPackage myLib.helpers.pkgsListTable {
               inherit (packages) packages;

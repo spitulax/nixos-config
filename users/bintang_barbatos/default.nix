@@ -82,7 +82,7 @@ in
       hexyl.enable = true;
       jq.enable = true;
       poppler-utils.enable = true;
-      lexurgy.enable = true;
+      lexurgy.enable = false;
       pasteme.enable = true;
       timeinfo.enable = true;
       upfind.enable = true;

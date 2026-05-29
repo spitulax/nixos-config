@@ -7,6 +7,7 @@ let
     owner = "minecraft-linux";
     repo = "mcpelauncher-ui-manifest";
     dirname = "mcpelauncher-ui-qt";
+    ref = "qt6";
     submodules = true;
   };
 in

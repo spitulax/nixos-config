@@ -1,6 +1,6 @@
 {
-  "hash": "sha256-Oh1mB+imYc303I1N9Mpd8We8k1Nk1reP1WvWldxyep8=",
-  "orig_version": "v1.6.5-qt6",
-  "rev": "4a28b03fceeff87fef1f1e8d2a80b70c40cb2376",
-  "version": "1.6.5-qt6"
+  "hash": "sha256-fRhAWQI4IeIrk9XTRiwfQ9cYO2RhaR8uhqK+/osP8tY=",
+  "orig_version": "4db367f0bde5d030dd658d09229f7b3367befb49",
+  "rev": "4db367f0bde5d030dd658d09229f7b3367befb49",
+  "version": "2026-05-07+ref=qt6_4db367f"
 }
