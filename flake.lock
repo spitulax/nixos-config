@@ -229,22 +229,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-flutter": {
-      "locked": {
-        "lastModified": 1779455731,
-        "narHash": "sha256-QH2tvA/tfkmKdBj3bEHAcfeqA7bSfs4Ui2KbPo/b+GA=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "c88807e015bf54046bb787782420f39211a47435",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1777168982,
@@ -323,7 +307,6 @@
         "nixpkgs": [
           "nixpkgs-unstable"
         ],
-        "nixpkgs-flutter": "nixpkgs-flutter",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix"
       }

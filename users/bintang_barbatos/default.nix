@@ -109,6 +109,7 @@ in
         };
       };
       warn-low-battery.enable = true;
+      easyeffects.enable = true;
     };
 
     dev = {
