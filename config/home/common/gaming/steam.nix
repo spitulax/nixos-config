@@ -20,9 +20,9 @@ in
 
     xdg.desktopEntries = {
       steam-deck-mode = {
-        name = "Steam (Deck Mode)";
-        comment = "Launch Steam in Steam Deck mode";
-        exec = "gamescope -e -f -w 1600 -h 900 -- steam -steamdeck -steamos3";
+        name = "Steam (Big Picture)";
+        comment = "Launch Steam in big picture mode";
+        exec = "gamescope -e -f -w 1600 -h 900 -- steam -gamepadui -steamos3";
         icon = "steam";
         categories = [ "Network" "FileTransfer" "Game" ];
         type = "Application";
