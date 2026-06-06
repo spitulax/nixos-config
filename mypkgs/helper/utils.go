@@ -175,7 +175,10 @@ func CopyToDir(dst string, src string, newName string) error {
 }
 
 func SplitAndTrim(s string, sep string) []string {
-	strs := strings.Split(s, sep)
+	if len(s) == 0 {
+		return []string{}
+	}
+	strs := strings.Split(strings.TrimSpace(s), sep)
 	for i, v := range strs {
 		strs[i] = strings.TrimSpace(v)
 	}

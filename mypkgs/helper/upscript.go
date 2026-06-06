@@ -92,7 +92,6 @@ func Upscript(opts UpscriptOpts) error {
 	if buildFlakes {
 		var flakesScripts string
 		var flakes []string
-		_ = flakesScripts
 
 		fmt.Println("Building `flakes-update-scripts`...")
 		var drvErr error
@@ -125,7 +124,6 @@ func Upscript(opts UpscriptOpts) error {
 	if buildPkgs {
 		var pkgsScripts string
 		var pkgs []string
-		_ = pkgsScripts
 
 		fmt.Println("Building `pkgs-update-scripts`...")
 		var drvErr error
