@@ -133,7 +133,7 @@ in
     gaming = {
       steam.enable = true;
       games = {
-        osu.enable = false;
+        osu.enable = true;
         mcpe.enable = false;
         minecraft.enable = true;
       };

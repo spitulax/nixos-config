@@ -1,30 +1,29 @@
 # Taken from https://github.com/fufexan/nix-gaming/blob/master/pkgs/osu-lazer-bin/default.nix
 { lib
-, gitHubReleasePkg
 , appimageTools
-, stdenvNoCC
-, SDL2
-, alsa-lib
-, ffmpeg_4
-, icu
-, libkrb5
-, lttng-ust
-, numactl
-, openssl
-, vulkan-loader
-, autoPatchelfHook
-, makeWrapper
-, gamemode
-, makeDesktopItem
-, symlinkJoin
 , fetchurl
+, makeWrapper
+, symlinkJoin
+, gamemode
+, gitHubReleasePkg
+, makeDesktopItem
+, stdenvNoCC
+, fetchgit
 , librsvg
 , imagemagick
 
-, pipewireLatency ? "64/48000"
+, pipewire_latency ? "64/44100"
+, gmrun_enable ? true
+, command_prefix ? if
+    gmrun_enable
+  then
+    "${gamemode}/bin/gamemoderun"
+  else
+    null
+, releaseStream ? "lazer"
 }:
 let
-  command_prefix = "${gamemode}/bin/gamemoderun";
+  pname = "osu-lazer-bin";
 
   pkg = gitHubReleasePkg {
     owner = "ppy";
@@ -34,55 +33,39 @@ let
   };
   inherit (pkg) version;
 
-  extracted = appimageTools.extract {
-    inherit (pkg) version src;
-    pname = "osu.AppImage";
-  };
+  derivation = appimageTools.wrapType2 {
+    inherit version pname;
+    inherit (pkg) src;
 
-  derivation = stdenvNoCC.mkDerivation (finalAttrs: {
-    pname = "osu-lazer";
-    inherit version;
-    src = extracted;
-    buildInputs = [
-      SDL2
-      alsa-lib
-      ffmpeg_4
-      icu
-      libkrb5
-      lttng-ust
-      numactl
-      openssl
-      vulkan-loader
-    ];
-    nativeBuildInputs = [
-      autoPatchelfHook
-      makeWrapper
-    ];
-    autoPatchelfIgnoreMissingDeps = true;
-    installPhase = ''
-      runHook preInstall
-      install -d $out/bin $out/lib
-      install osu.png $out/osu.png
-      cp -r usr/bin $out/lib/osu
-      makeWrapper $out/lib/osu/osu\! $out/bin/osu-lazer \
-        --set COMPlus_GCGen0MaxBudget "600000" \
-        --set PIPEWIRE_LATENCY "${pipewireLatency}" \
-        --set OSU_EXTERNAL_UPDATE_PROVIDER "1" \
-        --set vblank_mode "0" \
-        --suffix LD_LIBRARY_PATH : "${lib.makeLibraryPath finalAttrs.buildInputs}"
-      ${
-        lib.optionalString (builtins.isString command_prefix) ''
-          sed -i '$s:exec :exec ${command_prefix} :' $out/bin/osu-lazer
-        ''
-      }
-      runHook postInstall
-    '';
-    fixupPhase = ''
-      runHook preFixup
-      ln -sft $out/lib/osu ${SDL2}/lib/libSDL2${stdenvNoCC.hostPlatform.extensions.sharedLibrary}
-      runHook postFixup
-    '';
-  });
+    extraPkgs = pkgs: [ pkgs.icu ];
+
+    extraInstallCommands =
+      let
+        contents = appimageTools.extract { inherit pname version; inherit (pkg) src; };
+      in
+      ''
+        . ${makeWrapper}/nix-support/setup-hook
+        mv -v $out/bin/${pname} $out/bin/osu!
+
+        wrapProgram $out/bin/osu! \
+          --set PIPEWIRE_LATENCY "${pipewire_latency}" \
+          --set OSU_EXTERNAL_UPDATE_PROVIDER "1" \
+          --set OSU_EXTERNAL_UPDATE_STREAM "${releaseStream}" \
+          --set vblank_mode "0"
+
+        ${
+          # a hack to infiltrate the command in the wrapper
+          lib.optionalString (builtins.isString command_prefix) ''
+            sed -i '$s:exec -a "$0":exec ${command_prefix}:' $out/bin/osu!
+          ''
+        }
+
+        install -m 444 -D ${contents}/osu!.desktop $out/share/applications/osu-lazer.desktop
+        for i in 16 32 48 64 96 128 256 512 1024; do
+          install -D ${contents}/osu.png $out/share/icons/hicolor/''${i}x$i/apps/osu.png
+        done
+      '';
+  };
 
   desktopItem = makeDesktopItem {
     name = "osu-lazer";
@@ -118,9 +101,10 @@ let
           url = "https://raw.githubusercontent.com/ppy/osu-web/${osu-web-rev}/public/images/layout/osu-logo-white.svg";
           sha256 = "XvYBIGyvTTfMAozMP9gmr3uYEJaMcvMaIzwO7ZILrkY=";
         })
-        (fetchurl {
-          url = "https://aur.archlinux.org/cgit/aur.git/plain/osu-file-extensions.xml?h=osu-mime&id=${osu-mime-spec-rev}";
-          sha256 = "MgQNW0RpnEYTC0ym6wB8cA6a8GCED1igsjOtHPXNZVo=";
+        (fetchgit {
+          url = "https://aur.archlinux.org/osu-mime";
+          rev = osu-mime-spec-rev;
+          sha256 = "sha256-Ef/nApqNOD8mMqTxb0XV6oxgaYGweWsy9zUalgHruDM=";
         })
       ];
 
@@ -154,7 +138,7 @@ let
             mv 'osu!.png' "$icon_dir"
         done
 
-        cp "''${srcs[2]}" "$mime_dir/osu.xml"
+        cp "''${srcs[2]}/osu-file-extensions.xml" "$mime_dir/osu.xml"
       '';
     };
 in
