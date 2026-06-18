@@ -166,6 +166,8 @@ in
             "--no-repeat ${mod}+shift+j" = "mark _swap, focus down, swap container with mark _swap, focus down";
             "--no-repeat ${mod}+shift+k" = "mark _swap, focus up, swap container with mark _swap, focus up";
             "--no-repeat ${mod}+shift+l" = "mark _swap, focus right, swap container with mark _swap, focus right";
+            "--no-repeat ${mod}+shift+a" = "mark _swap, focus prev, swap container with mark _swap, focus prev";
+            "--no-repeat ${mod}+shift+d" = "mark _swap, focus next, swap container with mark _swap, focus next";
             "--no-repeat ${mod}+shift+comma" = "move container to workspace prev";
             "--no-repeat ${mod}+shift+period" = "move container to workspace next";
             # Monitor
