@@ -28,10 +28,11 @@ in
           "--ignore-gpu-blocklist"
         ];
       extensions = [
-        { id = "kfhgpagdjjoieckminnmigmpeclkdmjm"; } # Automatic Twitch
+        { id = "ammjkodgmmoknidbanneddgankgfejfh"; } # 7TV
         { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark Reader
         { id = "gebbhagfogifgggkldgodflihgfeippi"; } # Return YouTube Dislike
         { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # SponsorBlock for YouTube
+        { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden Password Manager
       ];
     };
 
@@ -52,12 +53,10 @@ in
           };
         };
         GitHub = "mjoklplbddabcmpepnokjaffbmgbkkgg";
-        Spotify = "pjibgclleladliembfgfagdaldikeohf";
         Twitch = "comkdlimbkhemidbbpchhepidbmjpnhh";
         Discord = "pliiebkcmokkgndfalahlmimanmbjlab";
         Syncthing = "mfinobjnbcnohnemakjeccbjljpebmlm"; # on port 8384
-        Anilist = "nhpkhfhppiampjblenncchhnipmeafgd";
-        Bitwarden = "hophjnbpmamkldmdaeggjlnpfechpkfl";
+        "Bitwarden Vault" = "hophjnbpmamkldmdaeggjlnpfechpkfl";
         "Telegram Web" = "majiogicmcnmdhhlgmkahaleckhjbmlk";
         "Proton Mail" = "jnpecgipniidlgicjocehkhajgdnjekh";
         "WhatsApp Web" = "hnpfjngllnobngcgfapefoaidbinmjnm";
