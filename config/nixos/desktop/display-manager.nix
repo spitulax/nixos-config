@@ -38,30 +38,32 @@
         package = pkgs.whitesur-cursors;
       };
       settings = {
-        background.path = "/etc/greetd/regreet.png";
-        appearance.greeting_msg = "Welcome to ${config.configs.hostname}!";
+        # FIXME: No wallpaper until https://nixpkgs-tracker.ocfox.me/?pr=530302
+        # background.path = "/etc/greetd/regreet.png";
+        appearance.greeting_msg = "Welcome back to ${config.configs.hostname}!";
         widget.clock = {
           format = "%H:%M";
           timezone = config.time.timeZone;
         };
+        env.XCURSOR_SIZE = "36";
       };
     };
 
     environment.etc."greetd/regreet.png".source = "${pkgs.myArgs.vars.assetsPath}/wallpapers/nixos-catppuccin-mocha.png";
 
-    # FIXME: Fix "the login keyring did not get unlocked when you logged into your computer" (NOT WORKING)
-    # https://github.com/JohnRTitor/nix-conf/commit/53bc83aef18849976d5a42cc727d38dd0e38c5b0
+    # FIXME: Fix login keyring not unlocked after logging in
+    # https://www.reddit.com/r/NixOS/comments/1p6dgnu/comment/nqpxcqk
+    services.gnome.gnome-keyring.enable = true;
+    programs.seahorse.enable = true;
     security.pam.services = {
       greetd.enableGnomeKeyring = true;
       greetd-password.enableGnomeKeyring = true;
       login.enableGnomeKeyring = true;
     };
-    services = {
-      dbus.packages = [ pkgs.gnome-keyring pkgs.gcr ];
-      xserver.displayManager.sessionCommands = ''
-        eval $(gnome-keyring-daemon --start --daemonize --components=ssh,secrets)
-        export SSH_AUTH_SOCK
-      '';
-    };
+    services.dbus.packages = [ pkgs.gnome-keyring pkgs.gcr ];
+    services.xserver.displayManager.sessionCommands = ''
+      eval $(gnome-keyring-daemon --start --daemonize --components=ssh,secrets)
+      export SSH_AUTH_SOCK
+    '';
   };
 }
