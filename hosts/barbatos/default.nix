@@ -27,6 +27,14 @@
         # }];
       };
     };
+
+    server = {
+      seanime = {
+        enable = true;
+        openFirewall = true;
+      };
+    };
+
     laptop.enable = true;
     openssh.addHostKeys = true;
     gaming.enable = true;

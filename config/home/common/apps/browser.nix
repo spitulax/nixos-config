@@ -61,6 +61,7 @@ in
         "Proton Mail" = "jnpecgipniidlgicjocehkhajgdnjekh";
         "WhatsApp Web" = "hnpfjngllnobngcgfapefoaidbinmjnm";
         Gmail = "fmgjjmmmlfnkbppncabfkddbjimcfncm";
+        Seanime = "lkgmpnjhodekilpmpdmhlckdhaicacea";
       };
     };
   };
