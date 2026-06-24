@@ -49,7 +49,7 @@ let
 
     fontpreview = {
       desc = "fontpreview";
-      pkgs = [ fontpreview ];
+      pkgs = [ gnome-font-viewer ];
     };
 
     diskVisualizers = {
