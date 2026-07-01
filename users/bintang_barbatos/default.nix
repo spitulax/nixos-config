@@ -68,7 +68,7 @@ in
       cava.enable = true;
       downloader.enable = false;
       fish = {
-        atuin = true;
+        atuin = false;
       };
       git = {
         gh = true;
