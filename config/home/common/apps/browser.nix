@@ -54,7 +54,6 @@ in
         };
         GitHub = "mjoklplbddabcmpepnokjaffbmgbkkgg";
         Twitch = "comkdlimbkhemidbbpchhepidbmjpnhh";
-        Discord = "pliiebkcmokkgndfalahlmimanmbjlab";
         Syncthing = "mfinobjnbcnohnemakjeccbjljpebmlm"; # on port 8384
         "Bitwarden Vault" = "hophjnbpmamkldmdaeggjlnpfechpkfl";
         "Telegram Web" = "majiogicmcnmdhhlgmkahaleckhjbmlk";
