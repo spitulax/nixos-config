@@ -64,6 +64,7 @@ in
 {
   imports = [
     ./browser.nix
+    ./discord.nix
     ./distrobox.nix
     ./dolphin.nix
     ./entries.nix

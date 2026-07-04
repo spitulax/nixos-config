@@ -58,6 +58,7 @@ in
       gplates.enable = false;
       qgis.enable = false;
       qbittorrent.enable = true;
+      discord.enable = true;
     };
 
     cli = {
