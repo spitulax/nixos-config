@@ -105,6 +105,7 @@ in
             mode = "1920x1080@60Hz";
             pos = "0 0";
             scale = "1";
+            allow_tearing = "yes";
           };
         };
       };
