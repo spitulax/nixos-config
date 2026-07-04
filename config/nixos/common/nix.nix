@@ -24,22 +24,23 @@ let
     printf "\033[1;31mPress ENTER to delete \`result\` links...\n"
     printf "\033[0m"
     read
+    IFS=$'\n'
     for i in $(findResult "$HOME" && findResult $(fd -t d '^nh-.*$' /tmp)); do
         echo "Deleting $i"
-        sudo unlink $i
+        sudo unlink "$i"
     done
     echo
 
     printf "\033[1;31mPress ENTER to delete home-manager profiles...\n"
     printf "\033[0m"
     read
-    nix profile wipe-history --debug $FLAGS --profile $XDG_STATE_HOME/nix/profiles/home-manager
+    nix profile wipe-history --debug $FLAGS --profile "$XDG_STATE_HOME/nix/profiles/home-manager"
     echo
 
     printf "\033[1;31mPress ENTER to delete user profiles...\n"
     printf "\033[0m"
     read
-    nix profile wipe-history --debug $FLAGS --profile $XDG_STATE_HOME/nix/profiles/profile
+    nix profile wipe-history --debug $FLAGS --profile "$XDG_STATE_HOME/nix/profiles/profile"
     echo
 
     printf "\033[1;31mPress ENTER to delete system profiles...\n"

@@ -126,7 +126,7 @@ in
       misc.enable = true;
       php.enable = true;
       javascript.enable = true;
-      flutter.enable = true;
+      flutter.enable = false;
       api.enable = true;
       devenv.enable = true;
     };
@@ -140,7 +140,7 @@ in
       };
       emulators = {
         switch.enable = false;
-        retroarch.enable = true;
+        retroarch.enable = false;
       };
       lutris.enable = false;
       misc.enable = true;
