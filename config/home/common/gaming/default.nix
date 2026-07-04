@@ -8,10 +8,10 @@ let
 in
 {
   imports = [
+    ./steam
     ./emulators
     ./games.nix
     ./lutris.nix
-    ./steam.nix
   ];
 
   options.configs.gaming.misc.enable = lib.mkEnableOption "miscellaneous packages";

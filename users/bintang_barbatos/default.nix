@@ -133,7 +133,10 @@ in
     };
 
     gaming = {
-      steam.enable = true;
+      steam = {
+        enable = true;
+        discordRPC = true;
+      };
       games = {
         osu.enable = true;
         mcpe.enable = false;

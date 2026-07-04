@@ -27,6 +27,11 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
+    steam-presence = {
+      url = "github:JustTemmie/steam-presence";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # rust-overlay = {
     #   url = "github:oxalica/rust-overlay";
     #   inputs.nixpkgs.follows = "nixpkgs";

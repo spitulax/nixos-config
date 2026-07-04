@@ -4,16 +4,25 @@
 , ...
 }:
 let
-  cfg = config.configs.gaming;
+  cfg = config.configs.gaming.steam;
 
   steamos-session-select = pkgs.writeShellScriptBin "steamos-session-select" ''
     steam -shutdown
   '';
 in
 {
-  options.configs.gaming.steam.enable = lib.mkEnableOption "Steam";
+  imports = [
+    ./steam-presence.nix
+  ];
 
-  config = lib.mkIf cfg.steam.enable {
+  options.configs.gaming.steam = {
+    enable = lib.mkEnableOption "Steam";
+    bigPicture = lib.mkEnableOption "Steam Big Picture shortcut" // {
+      default = cfg.enable;
+    };
+  };
+
+  config = lib.mkIf cfg.bigPicture {
     home.packages = [
       steamos-session-select
     ];
