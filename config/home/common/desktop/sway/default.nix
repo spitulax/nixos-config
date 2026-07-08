@@ -116,7 +116,7 @@ in
             inner = 0;
           };
           focus.wrapping = "force";
-          workspaceAutoBackAndForth = true;
+          workspaceAutoBackAndForth = false;
           workspaceLayout = "tabbed";
           fonts = {
             names = [ "monospace" ];
