@@ -42,7 +42,7 @@
     steam.enable = true;
     tablet.enable = true;
     vm = {
-      qemu = false;
+      qemu = true;
       waydroid = false;
     };
     warp.enable = false;
