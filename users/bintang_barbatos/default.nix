@@ -58,7 +58,8 @@ in
       gplates.enable = false;
       qgis.enable = false;
       qbittorrent.enable = true;
-      discord.enable = true;
+      # TEMP: Vesktop is still using EOLed electron https://github.com/NixOS/nixpkgs/issues/537847
+      discord.enable = false;
     };
 
     cli = {

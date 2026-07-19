@@ -17,11 +17,11 @@ let
   cfg = config.configs.cli.eza;
 
   shellAlias = {
-    ls = "eza -G -laH --no-user --color=always --group-directories-first --icons";
-    lr = "eza -G --no-user --color=always --group-directories-first --icons";
-    la = "eza -G -a --no-user --color=always --group-directories-first --icons";
-    ll = "eza -G -lH --no-user --color=always --group-directories-first --icons";
-    lt = "eza -G -T --no-user --color=always --group-directories-first --icons --long -L";
+    ls = "eza -G -laH --no-user --color=always --group-directories-first --icons=always";
+    lr = "eza -G --no-user --color=always --group-directories-first --icons=always";
+    la = "eza -G -a --no-user --color=always --group-directories-first --icons=always";
+    ll = "eza -G -lH --no-user --color=always --group-directories-first --icons=always";
+    lt = "eza -G -T --no-user --color=always --group-directories-first --icons=always --long -L";
   };
 in
 {

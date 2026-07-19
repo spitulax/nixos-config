@@ -19,7 +19,7 @@
 | **odin-git** | 2025-07-17+ref=master_a19e784 | No | No | [🌐](https://odin-lang.org/) |
 | **odin-nightly** | 2025-01-17 | No | No | [🌐](https://odin-lang.org/) |
 | **ols** | 2025-07-16+ref=master_0ab1503 | No | No | [🌐](https://github.com/DanielGavin/ols) |
-| **osu-lazer** | 2026.518.0-lazer | No | No | [🌐](https://osu.ppy.sh) |
+| **osu-lazer** | 2026.711.0-lazer | No | Yes | [🌐](https://osu.ppy.sh) |
 | **pasteme** | 0.0.0+date=2026-03-30_0da5233 | Yes | Yes | [🌐](https://github.com/spitulax/pasteme) |
 | **rose-pine-tmux** | 2026-03-24+ref=main_b6138c5 | Yes | Yes | [🌐](https://github.com/rose-pine/tmux) |
 | **whitesur-cursors** | 2025-04-05+ref=master_e190baf | Yes | Yes | [🌐](https://github.com/vinceliuice/WhiteSur-cursors) |

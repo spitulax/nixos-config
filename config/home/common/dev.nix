@@ -126,7 +126,8 @@ let
       pkgs = [
         (python3.withPackages (ps: with ps; [
           python-lsp-server
-          pylsp-mypy
+          # TEMP: https://github.com/NixOS/nixpkgs/pull/541116
+          # pylsp-mypy
           flake8
           black
         ]))
