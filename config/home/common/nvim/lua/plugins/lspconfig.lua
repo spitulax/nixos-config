@@ -48,33 +48,35 @@ return {
     vim.diagnostic.enable(true)
 
     for name, args in pairs(languages.lsp_servers()) do
-      local settings = {}
-      local cmd = {}
+      local config = {}
 
       if args.settings ~= nil then
-        settings = args.settings
+        config = vim.tbl_extend("force", config, {
+          settings = args.settings,
+        })
       end
       if args.on_init ~= nil then
-        on_init = args.on_init
+        config = vim.tbl_extend("force", config, {
+          on_init = args.on_init,
+        })
       end
       if args.on_attach ~= nil then
-        on_attach = args.on_attach
+        config = vim.tbl_extend("force", config, {
+          on_attach = args.on_attach,
+        })
       end
       if args.capabilities ~= nil then
-        capabilities = args.capabilities
+        config = vim.tbl_extend("force", config, {
+          capabilities = args.capabilities,
+        })
       end
       if args.cmd ~= nil then
-        cmd = args.cmd
+        config = vim.tbl_extend("force", config, {
+          cmd = args.cmd,
+        })
       end
 
-      vim.lsp.config[name] = {
-        on_init = on_init,
-        on_attach = on_attach,
-        capabilities = capabilities,
-        settings = settings,
-        cmd = cmd,
-      }
-
+      vim.lsp.config[name] = config
       vim.lsp.enable(name)
     end
   end,
