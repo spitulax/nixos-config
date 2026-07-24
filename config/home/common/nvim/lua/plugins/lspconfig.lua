@@ -49,6 +49,7 @@ return {
 
     for name, args in pairs(languages.lsp_servers()) do
       local settings = {}
+      local cmd = {}
 
       if args.settings ~= nil then
         settings = args.settings
@@ -62,13 +63,18 @@ return {
       if args.capabilities ~= nil then
         capabilities = args.capabilities
       end
+      if args.cmd ~= nil then
+        cmd = args.cmd
+      end
 
       vim.lsp.config[name] = {
         on_init = on_init,
         on_attach = on_attach,
         capabilities = capabilities,
         settings = settings,
+        cmd = cmd,
       }
+
       vim.lsp.enable(name)
     end
   end,

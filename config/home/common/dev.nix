@@ -30,6 +30,15 @@ let
       ];
     };
 
+    arduino = {
+      desc = "Arduino";
+      pkgs = [
+        arduino-language-server
+        arduino-cli
+        clang-tools
+      ];
+    };
+
     cpp = {
       desc = "C/C++";
       pkgs = [
