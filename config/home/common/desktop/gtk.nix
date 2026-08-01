@@ -9,8 +9,11 @@ let
   };
 
   gtkConfig = {
+    # TEMP: 'rose-pine-gtk-theme' has been removed because it depended on 'gtk-engine-murrine', which was removed because it was unmaintained upstream and depended on GTK 2.
+    # FIXME: Create my own rose-pine-gtk-theme derivation
+    # See also config/nixos/desktop/display-manager.nix:22
     theme = {
-      package = pkgs.rose-pine-gtk-theme;
+      package = pkgs.tempPkgs.stable.rose-pine-gtk-theme;
       name = "rose-pine";
     };
     iconTheme = {

@@ -8,44 +8,40 @@
       xserver.enable = true;
       displayManager = {
         inherit (config.configs.desktop) defaultSession;
+        regreet = {
+          enable = true;
+          # TODO: global theming (gtk)
+          # NOT PRETTY :(
+          theme = {
+            # FIXME: This theme is kinda broken in regreet
+            package = pkgs.tempPkgs.stable.rose-pine-gtk-theme;
+            name = "rose-pine";
+          };
+          iconTheme = {
+            package = pkgs.papirus-icon-theme;
+            name = "Papirus-Dark";
+          };
+          font = {
+            name = "sans-serif";
+            size = 10;
+          };
+          cursorTheme = {
+            name = "WhiteSur-cursors";
+            package = pkgs.whitesur-cursors;
+          };
+          settings = {
+            background.path = "/etc/greetd/regreet.png";
+            appearance.greeting_msg = "Welcome back to ${config.configs.hostname}!";
+            widget.clock = {
+              format = "%H:%M";
+              timezone = config.time.timeZone;
+            };
+            env.XCURSOR_SIZE = "36";
+          };
+        };
       };
       greetd = {
         enable = true;
-      };
-    };
-
-    programs.regreet = {
-      enable = true;
-      # TODO: global theming (gtk)
-      # NOT PRETTY :(
-      theme = {
-        package = pkgs.fluent-gtk-theme.override {
-          tweaks = [ "round" ];
-          colorVariants = [ "dark" ];
-        };
-        name = "Fluent-round-Dark";
-      };
-      iconTheme = {
-        package = pkgs.papirus-icon-theme;
-        name = "Papirus-Dark";
-      };
-      font = {
-        name = "sans-serif";
-        size = 10;
-      };
-      cursorTheme = {
-        name = "WhiteSur-cursors";
-        package = pkgs.whitesur-cursors;
-      };
-      settings = {
-        # FIXME: No wallpaper until https://nixpkgs-tracker.ocfox.me/?pr=530302
-        # background.path = "/etc/greetd/regreet.png";
-        appearance.greeting_msg = "Welcome back to ${config.configs.hostname}!";
-        widget.clock = {
-          format = "%H:%M";
-          timezone = config.time.timeZone;
-        };
-        env.XCURSOR_SIZE = "36";
       };
     };
 

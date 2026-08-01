@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs.follows = "nixpkgs-unstable";
 
     home-manager = {
@@ -98,7 +98,9 @@
 
       # Temporary nixpkgs
       # Use one of their packages as `pkgs.tempPkgs.<name>.<pkgs>`
-      tempPkgsFor = { };
+      tempPkgsFor = {
+        stable = genNixpkgs inputs.nixpkgs-stable false;
+      };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
       replConfigShortcuts =
