@@ -127,13 +127,13 @@ in
             # Core
             "--no-repeat ${mod}+alt+q" = "exit";
             "--no-repeat ${mod}+alt+r" = "reload";
-            "--no-repeat ${mod}+z" = "exec ${runner.swaylock}";
-            "--no-repeat ${mod}+x" = "exec ${runner.poweroff}";
+            "--no-repeat ${mod}+alt+z" = "exec ${runner.swaylock}";
+            "--no-repeat ${mod}+alt+x" = "exec ${runner.poweroff}";
             # Workspace
             "--no-repeat ${mod}+shift+m" = "layout toggle split";
             "--no-repeat ${mod}+m" = "layout toggle split tabbed";
-            "--no-repeat ${mod}+comma" = "workspace prev";
-            "--no-repeat ${mod}+period" = "workspace next";
+            "--no-repeat ${mod}+z" = "workspace prev";
+            "--no-repeat ${mod}+x" = "workspace next";
             "--no-repeat ${mod}+1" = "workspace 1";
             "--no-repeat ${mod}+2" = "workspace 2";
             "--no-repeat ${mod}+3" = "workspace 3";
@@ -168,13 +168,13 @@ in
             "--no-repeat ${mod}+shift+l" = "mark _swap, focus right, swap container with mark _swap, focus right";
             "--no-repeat ${mod}+shift+a" = "mark _swap, focus prev, swap container with mark _swap, focus prev";
             "--no-repeat ${mod}+shift+d" = "mark _swap, focus next, swap container with mark _swap, focus next";
-            "--no-repeat ${mod}+shift+comma" = "move container to workspace prev";
-            "--no-repeat ${mod}+shift+period" = "move container to workspace next";
+            "--no-repeat ${mod}+shift+z" = "move container to workspace prev";
+            "--no-repeat ${mod}+shift+x" = "move container to workspace next";
             # Monitor
-            "--no-repeat ${mod}+ctrl+h" = "focus output left";
-            "--no-repeat ${mod}+ctrl+l" = "focus output right";
-            "--no-repeat ${mod}+ctrl+comma" = "move workspace to output left";
-            "--no-repeat ${mod}+ctrl+period" = "move workspace to output right";
+            # "--no-repeat ${mod}+ctrl+h" = "focus output left";
+            # "--no-repeat ${mod}+ctrl+l" = "focus output right";
+            # "--no-repeat ${mod}+ctrl+z" = "move workspace to output left";
+            # "--no-repeat ${mod}+ctrl+x" = "move workspace to output right";
             # Scratchpad
             "--no-repeat ${mod}+s" = "scratchpad show";
             "--no-repeat ${mod}+shift+s" = "move container to scratchpad";
@@ -190,17 +190,17 @@ in
             "--no-repeat ${mod}+q" = "exec ${runner.command}";
             "--no-repeat ${mod}+escape" = "exec ${runner.btop}";
             "--no-repeat ${mod}+shift+escape" = "exec ${runner.nvtop}";
-            "--no-repeat ${mod}+ctrl+p" = "exec ${runner.colourPicker}";
+            "--no-repeat ${mod}+p" = "exec ${runner.colourPicker}";
             "--no-repeat ${mod}+o" = "exec ${runner.obsidian}";
             # Screenshot
             "--no-repeat print" = "exec ${runner.gripper "full -c"}";
             "--no-repeat ${mod}+print" = "exec ${runner.gripper "region"}";
             "--no-repeat shift+print" = "exec ${runner.gripper "last-region"}";
-            "--no-repeat ctrl+print" = "exec ${runner.gripper "active-window -c"}";
+            "--no-repeat alt+print" = "exec ${runner.gripper "active-window -c"}";
             "--no-repeat pause" = "exec ${runner.gripper "full -c --copy"}";
             "--no-repeat ${mod}+pause" = "exec ${runner.gripper "region --copy"}";
             "--no-repeat shift+pause" = "exec ${runner.gripper "last-region --copy"}";
-            "--no-repeat ctrl+pause" = "exec ${runner.gripper "active-window -c --copy"}";
+            "--no-repeat alt+pause" = "exec ${runner.gripper "active-window -c --copy"}";
             # Fn keys
             "--no-repeat xf86audiomute" = "exec volume toggle";
             "--no-repeat xf86audiomicmute" = "exec volume toggle-mic";

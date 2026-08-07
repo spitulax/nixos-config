@@ -160,7 +160,7 @@ in
     neovim.enable = true;
     keymapper.enable = false;
     wine.enable = true;
-    fcitx5.enable = true;
+    fcitx5.enable = false;
     nix.useAccessToken = cfg.sops.enable;
   };
 }
