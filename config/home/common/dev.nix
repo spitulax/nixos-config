@@ -40,6 +40,21 @@ let
       ];
     };
 
+    c3 = {
+      desc = "C3";
+      pkgs = [
+        # TODO: Compile the newest c3c version
+        # TODO: Build <https://github.com/lmichaudel/c3fmt>
+        c3c
+        (c3-lsp.overrideAttrs (_: _: {
+          postInstall = ''
+            mv $out/bin/lsp $out/bin/c3lsp
+          '';
+        }))
+        gcc # Needs C runtime
+      ];
+    };
+
     cpp = {
       desc = "C/C++";
       pkgs = [

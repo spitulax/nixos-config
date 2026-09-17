@@ -28,6 +28,7 @@ in
         "${lib.makeBinPath (with pkgs; [
           lua51Packages.lua
           lua51Packages.luarocks-nix
+          gcc # C compiler is needed to install treesitter parsers
         ])}"
       ];
       # extraPackages = with pkgs; [
