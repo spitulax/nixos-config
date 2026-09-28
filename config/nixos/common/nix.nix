@@ -89,7 +89,7 @@ in
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
       trusted-users = [ "root" "@wheel" ];
-      nix-path = config.nix.nixPath; # This is a working alternative to nix.nixPath
+      # nix-path = config.nix.nixPath; # This is a working alternative to nix.nixPath
     };
     gc = {
       automatic = false;

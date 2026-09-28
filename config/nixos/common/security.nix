@@ -12,7 +12,7 @@ in
     gcr-ssh-agent.enable = false;
   };
   environment.systemPackages = with pkgs; [
-    gcr
+    gcr_4
     libsecret
   ];
   programs.seahorse.enable = true;

@@ -8,7 +8,7 @@
 | :-: | :-: | :-: | :-: | :-: |
 | **crt** | 0.2.0+date=2024-12-31_3d4837a | No | No | [🌐](https://github.com/spitulax/crt) |
 | **eden** | 2026-05-23+ref=master_0d736d4 | No | No | [🌐](https://eden-emu.dev/) |
-| **gplates** | 2.5.0-dev3 | No | Yes | [🌐](https://www.gplates.org) |
+| **gplates** | 2.6.0-47 | No | Yes | [🌐](https://www.gplates.org) |
 | **gripper** | 1.2.2+date=2025-01-17_6c4628c | Yes | Yes | [🌐](https://github.com/spitulax/gripper) |
 | **hunspell-id** | 2026-04-09+ref=main_5939c33 | Yes | Yes | [🌐](https://github.com/shuLhan/hunspell-id) |
 | **lexurgy** | 1.7.5 | No | No | [🌐](https://github.com/def-gthill/lexurgy) |
@@ -19,7 +19,7 @@
 | **odin-git** | 2025-07-17+ref=master_a19e784 | No | No | [🌐](https://odin-lang.org/) |
 | **odin-nightly** | 2025-01-17 | No | No | [🌐](https://odin-lang.org/) |
 | **ols** | 2025-07-16+ref=master_0ab1503 | No | No | [🌐](https://github.com/DanielGavin/ols) |
-| **osu-lazer** | 2026.804.2-lazer | No | Yes | [🌐](https://osu.ppy.sh) |
+| **osu-lazer** | 2026.921.0-lazer | No | Yes | [🌐](https://osu.ppy.sh) |
 | **pasteme** | 0.0.0+date=2026-03-30_0da5233 | Yes | Yes | [🌐](https://github.com/spitulax/pasteme) |
 | **rose-pine-tmux** | 2026-09-01+ref=main_6222fc7 | Yes | Yes | [🌐](https://github.com/rose-pine/tmux) |
 | **whitesur-cursors** | 2025-04-05+ref=master_e190baf | Yes | Yes | [🌐](https://github.com/vinceliuice/WhiteSur-cursors) |
