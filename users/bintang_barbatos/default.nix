@@ -56,7 +56,7 @@ in
       obsidian.enable = true;
       distrobox.enable = false;
       gplates.enable = false;
-      qgis.enable = false;
+      qgis.enable = true;
       qbittorrent.enable = true;
       discord.enable = true;
     };
