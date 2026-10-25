@@ -54,6 +54,9 @@ let
     highlightMed = "#403d52";
     highlightHigh = "#524f67";
   };
+
+  fontSize = 11.0;
+  borderSize = 3;
 in
 {
   imports = [
@@ -120,8 +123,10 @@ in
           workspaceLayout = "tabbed";
           fonts = {
             names = [ "monospace" ];
-            size = 10.0;
+            size = fontSize;
           };
+          window.border = borderSize;
+          floating.border = borderSize;
 
           keybindings = {
             # Core
@@ -215,7 +220,7 @@ in
               position = "bottom";
               statusCommand = "${pkgs.i3status}/bin/i3status";
               trayOutput = "*";
-              fonts.size = 10.0;
+              fonts.size = fontSize;
               colors = {
                 background = colors.base;
                 statusline = colors.text;

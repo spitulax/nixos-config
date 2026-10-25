@@ -29,7 +29,7 @@ in
         # Window layout
         remember_window_size = "yes";
         enabled_layouts = "*";
-        hide_window_decorations = "yes";
+        hide_window_decorations = "no";
         # Tab bar
         tab_bar_min_tabs = 2;
         tab_bar_edge = "top";
