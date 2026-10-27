@@ -34,6 +34,7 @@ in
       default = null;
       description = "The default desktop environment to log into.";
     };
+    displayManager = mkEnableOption "display manager";
   };
 
   config = lib.mkIf cfg.enable {

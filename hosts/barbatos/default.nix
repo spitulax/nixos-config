@@ -13,6 +13,7 @@
   configs = {
     desktop = {
       enable = true;
+      displayManager = false;
       environments = {
         sway = true;
       };

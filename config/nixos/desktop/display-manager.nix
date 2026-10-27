@@ -2,8 +2,12 @@
 , lib
 , pkgs
 , ...
-}: {
-  config = lib.mkIf config.configs.desktop.enable {
+}:
+let
+  cfg = config.configs.desktop;
+in
+{
+  config = lib.mkIf (cfg.enable && cfg.displayManager) {
     services = {
       xserver.enable = true;
       displayManager = {
@@ -47,19 +51,21 @@
 
     environment.etc."greetd/regreet.png".source = "${pkgs.myArgs.vars.assetsPath}/wallpapers/nixos-catppuccin-mocha.png";
 
-    # FIXME: Fix login keyring not unlocked after logging in
-    # https://www.reddit.com/r/NixOS/comments/1p6dgnu/comment/nqpxcqk
-    services.gnome.gnome-keyring.enable = true;
-    programs.seahorse.enable = true;
-    security.pam.services = {
-      greetd.enableGnomeKeyring = true;
-      greetd-password.enableGnomeKeyring = true;
-      login.enableGnomeKeyring = true;
-    };
-    services.dbus.packages = [ pkgs.gnome-keyring pkgs.gcr_4 ];
-    services.xserver.displayManager.sessionCommands = ''
-      # eval $(gnome-keyring-daemon --start --daemonize --components=ssh,secrets)
-      export SSH_AUTH_SOCK
-    '';
+    # The login keyring did not get unlocked after login. I gave up.
+    # But there's a potential fix I haven't tried yet...
+    # https://github.com/NixOS/nixpkgs/issues/246197
+    # https://codeberg.org/ivanbrennan/nixos-config/commit/d8a77d947838a6e9c5ef117ddf97fb68c577112a
+
+    # services.gnome.gnome-keyring.enable = true;
+    # security.pam.services = {
+    #   greetd.enableGnomeKeyring = true;
+    #   greetd-password.enableGnomeKeyring = true;
+    #   login.enableGnomeKeyring = true;
+    # };
+    # services.dbus.packages = [ pkgs.gnome-keyring pkgs.gcr_4 ];
+    # services.xserver.displayManager.sessionCommands = ''
+    #   # eval $(gnome-keyring-daemon --start --daemonize --components=ssh,secrets)
+    #   export SSH_AUTH_SOCK
+    # '';
   };
 }
