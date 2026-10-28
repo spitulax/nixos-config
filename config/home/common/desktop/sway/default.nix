@@ -175,6 +175,11 @@ in
             "--no-repeat ${mod}+shift+d" = "mark _swap, focus next, swap container with mark _swap, focus next";
             "--no-repeat ${mod}+shift+z" = "move container to workspace prev";
             "--no-repeat ${mod}+shift+x" = "move container to workspace next";
+            # Resizing
+            "--no-repeat ${mod}+alt+a" = "resize shrink width";
+            "--no-repeat ${mod}+alt+d" = "resize grow width";
+            "--no-repeat ${mod}+alt+w" = "resize grow height";
+            "--no-repeat ${mod}+alt+s" = "resize shrink height";
             # Monitor
             # "--no-repeat ${mod}+ctrl+h" = "focus output left";
             # "--no-repeat ${mod}+ctrl+l" = "focus output right";
