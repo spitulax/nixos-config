@@ -33,12 +33,12 @@
     fzf
     which
     file
-    tldr
     git
     mediainfo
     lsof
     exiftool
     nix-tree
+    ripgrep
 
     # monitoring
     htop
@@ -51,6 +51,8 @@
     unzip
     xz
     p7zip
+    unrar
+    ouch
 
     # system utils
     patchelf

@@ -24,6 +24,7 @@ let
     ./newsboat.nix
     ./openssh.nix
     ./shell.nix
+    ./tealdeer.nix
     ./timeinfo.nix
     ./tmux.nix
     ./trash.nix
@@ -34,12 +35,6 @@ let
     ani-cli = {
       desc = "ani-cli";
       pkgs = [ ani-cli ];
-    };
-
-    ripgrep = {
-      desc = "ripgrep";
-      default = true;
-      pkgs = [ ripgrep ];
     };
 
     imagemagick = {
@@ -81,12 +76,6 @@ let
         jq
         jqp
       ];
-    };
-
-    ouch = {
-      desc = "ouch";
-      default = true;
-      pkgs = [ ouch ];
     };
 
     poppler-utils = {
