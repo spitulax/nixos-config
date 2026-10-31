@@ -1,5 +1,18 @@
-local txt = require("nvchad.tabufline.utils").txt
-local btn = require("nvchad.tabufline.utils").btn
+-- Cannot require nvchad.tabufline.utils due to cyclic dependency, since that file requires chadrc.
+-- local txt = require("nvchad.tabufline.utils").txt
+-- local btn = require("nvchad.tabufline.utils").btn
+
+local txt = function(str, hl)
+  str = str or ""
+  local a = "%#Tb" .. hl .. "#" .. str
+  return a
+end
+
+local btn = function(str, hl, func, arg)
+  str = hl and txt(str, hl) or str
+  arg = arg or ""
+  return "%" .. arg .. "@Tb" .. func .. "@" .. str .. "%X"
+end
 
 local modules = {
   tablist = function()
