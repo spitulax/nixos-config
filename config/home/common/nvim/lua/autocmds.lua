@@ -43,15 +43,21 @@ autocmd("BufReadPost", {
 })
 
 usercmd("Indent", function(arg)
-  local n = tonumber(arg.args)
+  if #arg.fargs < 1 then
+    vim.api.nvim_echo({ { 'Usage: Indent <n|"tab">' } }, true, { err = true })
+  end
+
+  local a = arg.fargs[1]
+
+  if a == "tab" then
+    require("utils").indent_tab()
+    return
+  end
+
+  local n = tonumber(a)
   if n ~= nil then
     require("utils").indent(n)
-  else
-    vim.api.nvim_echo(
-      { { "`" .. arg.args .. "` is not a valid number" } },
-      true,
-      { err = true }
-    )
+    return
   end
 end, { desc = "Set default indentation for the current buffer", nargs = 1 })
 

@@ -68,9 +68,17 @@ end
 
 ---@param n number
 M.indent = function(n)
+  vim.bo.expandtab = true
   vim.bo.shiftwidth = n
   vim.bo.tabstop = n
   vim.bo.softtabstop = n
+end
+
+M.indent_tab = function()
+  vim.bo.expandtab = false
+  vim.bo.shiftwidth = 4
+  vim.bo.tabstop = 4
+  vim.bo.softtabstop = 0
 end
 
 ---@return table<string, PluginConfig>
