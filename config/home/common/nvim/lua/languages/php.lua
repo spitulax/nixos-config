@@ -1,7 +1,8 @@
 ---@type LanguageConfig
 return {
   lsp_name = "intelephense",
-  formatter = { "pint", "mago_format" },
+  formatter = "mago_format",
+  -- formatter = "lsp",
   indent = 4,
   autocmd = function()
     -- Somehow something changes indentexpr to `GetPhpIndent()`
