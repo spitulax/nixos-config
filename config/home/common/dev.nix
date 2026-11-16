@@ -30,16 +30,6 @@ let
       ];
     };
 
-    arduino = {
-      desc = "Arduino";
-      pkgs = [
-        arduino-ide
-        arduino-language-server
-        arduino-cli
-        clang-tools
-      ];
-    };
-
     c3 = {
       desc = "C3";
       pkgs = [

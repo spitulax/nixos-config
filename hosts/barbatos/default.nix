@@ -58,6 +58,7 @@
     keyd.enable = true;
     sql.enable = true;
     hotspot.enable = true;
+    iotDev.enable = true;
   };
 
   # Hardware

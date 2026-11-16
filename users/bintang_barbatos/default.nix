@@ -130,7 +130,6 @@ in
       flutter.enable = false;
       api.enable = true;
       devenv.enable = true;
-      arduino.enable = true;
       c3.enable = true;
     };
 

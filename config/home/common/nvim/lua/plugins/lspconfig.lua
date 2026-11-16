@@ -8,17 +8,6 @@ return {
   },
 
   config = function()
-    local function on_attach()
-      -- nothing
-    end
-
-    local function on_init(client, _)
-      -- Disable semanticTokens
-      if client.supports_method("textDocument/semanticTokens") then
-        client.server_capabilities.semanticTokensProvider = nil
-      end
-    end
-
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem = {
       documentationFormat = { "markdown", "plaintext" },
@@ -48,33 +37,21 @@ return {
     vim.diagnostic.enable(true)
 
     for name, args in pairs(languages.lsp_servers()) do
-      local config = {}
+      local config = args
 
-      if args.settings ~= nil then
-        config = vim.tbl_extend("force", config, {
-          settings = args.settings,
-        })
-      end
       if args.on_init ~= nil then
-        config = vim.tbl_extend("force", config, {
-          on_init = args.on_init,
-        })
+        config.on_init = function(client, result)
+          -- Disable semanticTokens
+          if client.supports_method("textDocument/semanticTokens") then
+            client.server_capabilities.semanticTokensProvider = nil
+          end
+
+          args.on_init(client, result)
+        end
       end
-      if args.on_attach ~= nil then
-        config = vim.tbl_extend("force", config, {
-          on_attach = args.on_attach,
-        })
-      end
-      if args.capabilities ~= nil then
-        config = vim.tbl_extend("force", config, {
-          capabilities = args.capabilities,
-        })
-      end
-      if args.cmd ~= nil then
-        config = vim.tbl_extend("force", config, {
-          cmd = args.cmd,
-        })
-      end
+
+      config.capabilities =
+        vim.tbl_extend("force", capabilities, args.capabilities or {})
 
       vim.lsp.config[name] = config
       vim.lsp.enable(name)

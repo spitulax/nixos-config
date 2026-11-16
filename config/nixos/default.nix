@@ -17,6 +17,7 @@ in
     ./docker.nix
     ./gaming.nix
     ./hotspot.nix
+    ./iot-dev.nix
     ./keymapper.nix
     ./mpd.nix
     ./perf.nix
