@@ -9,6 +9,7 @@ let
     uncache
     ignore
     ignoreUpdateable
+    unmaintain
     ;
 in
 rec {
@@ -26,7 +27,8 @@ rec {
   odin-git = ignore (callPackage ./odin-git { });
   odin-nightly = ignore (callPackage ./odin-nightly { });
   ols = ignore (callPackage ./ols { odin = odin-git; });
-  osu-lazer = uncache (callPackage ./osu-lazer { });
+  # FIXME: Broken update
+  osu-lazer = unmaintain (uncache (callPackage ./osu-lazer { }));
   pasteme = getByName "pasteme";
   rose-pine-tmux = callPackage ./rose-pine-tmux { };
   whitesur-cursors = callPackage ./whitesur-cursors { };
