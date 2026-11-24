@@ -6,7 +6,10 @@ let
   cacheTime = 1 * 7 * 24 * 60 * 60;
 in
 {
-  security.polkit.enable = true;
+  security = {
+    polkit.enable = true;
+    pam.services.login.enableGnomeKeyring = true;
+  };
   services.gnome = {
     gnome-keyring.enable = true;
     gcr-ssh-agent.enable = false;
