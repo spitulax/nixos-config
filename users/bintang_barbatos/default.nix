@@ -131,6 +131,7 @@ in
       api.enable = true;
       devenv.enable = true;
       c3.enable = true;
+      adb.enable = true;
     };
 
     gaming = {

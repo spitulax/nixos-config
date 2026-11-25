@@ -19,14 +19,29 @@ let
   composer = lib.hiPrio pkgs.phpPackages.composer;
 
   modules = with pkgs; {
-    # Languages #
-
-    man = {
-      desc = "Manual pages";
+    adb = {
+      desc = "ADB";
       pkgs = [
-        man-pages
-        man-pages-posix
-        linux-manual
+        android-tools
+        scrcpy
+      ];
+    };
+
+    api = {
+      desc = "API Testing";
+      pkgs = [
+        bruno
+      ];
+    };
+
+    # Needs {NixOS Config}`configs.perf.enable`
+    # TODO: Use `nixosConfig` input for assertion?
+    benchmark = {
+      desc = "Benchmarking";
+      pkgs = [
+        hyperfine
+        cargo-flamegraph
+        inferno
       ];
     };
 
@@ -57,6 +72,15 @@ let
       ];
     };
 
+    debugger = {
+      desc = "Debuggers";
+      pkgs = [
+        gdb
+        lldb
+        valgrind
+      ];
+    };
+
     devenv = {
       desc = "devenv";
       pkgs = [
@@ -69,10 +93,8 @@ let
       pkgs = [
         flutter
         android-studio
-        android-tools
         openjdk
         mesa-demos
-        scrcpy
       ];
     };
 
@@ -111,6 +133,22 @@ let
         luajitPackages.lua
         stylua
         lua-language-server
+      ];
+    };
+
+    make = {
+      desc = "Make";
+      pkgs = [
+        gnumake
+      ];
+    };
+
+    man = {
+      desc = "Manual pages";
+      pkgs = [
+        man-pages
+        man-pages-posix
+        linux-manual
       ];
     };
 
@@ -175,46 +213,10 @@ let
       ];
     };
 
-    # Tools #
-
-    debugger = {
-      desc = "Debuggers";
-      pkgs = [
-        gdb
-        lldb
-        valgrind
-      ];
-    };
-
-    # Needs {NixOS Config}`configs.perf.enable`
-    # TODO: Use `nixosConfig` input for assertion?
-    benchmark = {
-      desc = "Benchmarking";
-      pkgs = [
-        hyperfine
-        cargo-flamegraph
-        inferno
-      ];
-    };
-
-    make = {
-      desc = "Make";
-      pkgs = [
-        gnumake
-      ];
-    };
-
     misc = {
       desc = "Miscellaneous";
       pkgs = [
         tokei
-      ];
-    };
-
-    api = {
-      desc = "API Testing";
-      pkgs = [
-        bruno
       ];
     };
   };
@@ -238,6 +240,21 @@ in
       };
     }
 
+    (lib.mkIf cfg.adb.enable {
+      configs.cli.aliases.extraAliases = {
+        scrcpy = "scrcpy --render-driver=opengl";
+      };
+    })
+
+    (lib.mkIf cfg.flutter.enable {
+      configs.dev.adb.enable = lib.mkForce true;
+
+      home.sessionVariables = rec {
+        ANDROID_SDK_ROOT = "${config.xdg.dataHome}/android/sdk";
+        ANDROID_HOME = ANDROID_SDK_ROOT;
+      };
+    })
+
     (lib.mkIf cfg.misc.enable {
       home.file.".cargo/config.toml".text = ''
         [build]
@@ -247,17 +264,6 @@ in
         inherits = "release"
         debug = "line-tables-only"
       '';
-    })
-
-    (lib.mkIf cfg.flutter.enable {
-      home.sessionVariables = rec {
-        ANDROID_SDK_ROOT = "${config.xdg.dataHome}/android/sdk";
-        ANDROID_HOME = ANDROID_SDK_ROOT;
-      };
-
-      configs.cli.aliases.extraAliases = {
-        scrcpy = "scrcpy --render-driver=opengl";
-      };
     })
   ];
 }
