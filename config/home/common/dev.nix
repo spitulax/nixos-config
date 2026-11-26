@@ -224,6 +224,17 @@ let
   devScript = pkgs.writeShellScriptBin "dev" ''
     nix develop $@ --command tmuxs
   '';
+
+  # Update nixpkgs input to the system flake nixpkgs version to minimize redownload.
+  updateNixpkgs =
+    let
+      jq = lib.getExe pkgs.jq;
+    in
+    pkgs.writeShellScriptBin "upnixpkgs" ''
+      tmp="$(mktemp)"
+      ${jq} '.nodes.nixpkgs = $nixpkgs' --argjson nixpkgs "$(${jq} '.nodes."nixpkgs-unstable"' "$XDG_FLAKE_DIR/flake.lock")" flake.lock > "$tmp"
+      mv "$tmp" flake.lock
+    '';
 in
 {
   options.configs.dev = packages.mkOptions {
@@ -236,7 +247,10 @@ in
       home = {
         packages =
           packages.mkConfig { inherit modules cfg; }
-          ++ [ devScript ];
+          ++ [
+            devScript
+            updateNixpkgs
+          ];
       };
     }
 
