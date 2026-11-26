@@ -91,6 +91,7 @@ in
         enable = true;
         alias.fish = true;
       };
+      moreutils.enable = true;
     };
 
     desktop = {

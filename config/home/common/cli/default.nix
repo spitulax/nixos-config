@@ -78,6 +78,13 @@ let
       ];
     };
 
+    moreutils = {
+      desc = "moreutils";
+      pkgs = [
+        moreutils
+      ];
+    };
+
     poppler-utils = {
       desc = "Poppler PDF rendering library";
       pkgs = [ poppler-utils ];
