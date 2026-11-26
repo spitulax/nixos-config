@@ -10,7 +10,8 @@
     programs.steam = {
       enable = true;
       extraCompatPackages = [
-        pkgs.proton-ge-bin
+        # proton-ge-bin
+        pkgs.tempPkgs.proton-wineland.proton-wineland-bin
       ];
       protontricks.enable = true;
     };

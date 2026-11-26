@@ -6,6 +6,9 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs.follows = "nixpkgs-unstable";
 
+    # TEMP: Not ready to update yet
+    nixpkgs-temp-proton-wineland.url = "github:nixos/nixpkgs/2786a2a72088ecf32aea5b3ec52099e6a7cff78f";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,8 +27,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-gaming.url = "github:fufexan/nix-gaming";
 
     steam-presence = {
       url = "github:JustTemmie/steam-presence";
@@ -100,6 +101,7 @@
       # Use one of their packages as `pkgs.tempPkgs.<name>.<pkgs>`
       tempPkgsFor = {
         stable = genNixpkgs inputs.nixpkgs-stable false;
+        proton-wineland = genNixpkgs inputs.nixpkgs-temp-proton-wineland false;
       };
 
       # Allow easy config access by exporting "nixos-${hostname}" and "home-${username}-${hostname}" to flake output
