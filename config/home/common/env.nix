@@ -89,6 +89,7 @@ in
       NIXOS_PROFILE = "/nix/var/nix/profiles/system";
       HM_PROFILE = "${config.xdg.stateHome}/nix/profiles/home-manager";
       USER_PROFILE = "${config.xdg.stateHome}/nix/profiles/profile"; # aka ~/.nix-profile
+      GOPATH = "${config.xdg.dataHome}/go";
     }
     // mapAttrs'
       (k: v:
